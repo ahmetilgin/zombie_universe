@@ -204,7 +204,7 @@ func _physics_process(delta):
 
 func dead(damage):
 	hp -= damage
-	player_health.update_powerbar(hp)
+	player_health.set_value(hp)
 	#player_health.set_value(hp)
 	#updated_tween.interpolate_property(player_health,"value",player_health.value,hp,0.4,Tween.TRANS_SINE,Tween.EASE_IN_OUT)
 	#updated_tween.start()

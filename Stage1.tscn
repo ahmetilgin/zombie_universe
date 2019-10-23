@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Ground_Tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://zombie_scripts/Punk_Zombie.tscn" type="PackedScene" id=2]
@@ -7,12 +7,9 @@
 [ext_resource path="res://zombie_scripts/Basic_Zombie.tscn" type="PackedScene" id=5]
 [ext_resource path="res://oyun sprite/graveyardtilesetnew/png/BG.png" type="Texture" id=6]
 [ext_resource path="res://Upgrade_Bullet.tscn" type="PackedScene" id=7]
-[ext_resource path="res://CanvasLayer.gd" type="Script" id=8]
-[ext_resource path="res://oyun sprite/healthbar/back.png" type="Texture" id=9]
-[ext_resource path="res://oyun sprite/healthbar/decrease.png" type="Texture" id=10]
-[ext_resource path="res://oyun sprite/healthbar/health.png" type="Texture" id=11]
-
-[sub_resource type="GDScript" id=1]
+[ext_resource path="res://oyun sprite/healthbar/back.png" type="Texture" id=8]
+[ext_resource path="res://oyun sprite/healthbar/decrease.png" type="Texture" id=9]
+[ext_resource path="res://oyun sprite/healthbar/health.png" type="Texture" id=10]
 
 [node name="stage1" type="Node2D"]
 
@@ -53,7 +50,6 @@ centered = false
 position = Vector2( 618.819, 346.905 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-script = ExtResource( 8 )
 
 [node name="Player_Health" type="TextureProgress" parent="CanvasLayer"]
 self_modulate = Color( 0.909804, 0.85098, 0.85098, 1 )
@@ -63,11 +59,10 @@ margin_right = 158.264
 margin_bottom = 52.3018
 max_value = 1000.0
 value = 1000.0
-texture_under = ExtResource( 9 )
-texture_over = ExtResource( 10 )
-texture_progress = ExtResource( 11 )
+texture_under = ExtResource( 8 )
+texture_over = ExtResource( 9 )
+texture_progress = ExtResource( 10 )
 tint_over = Color( 0.933333, 0.345098, 0.137255, 1 )
 nine_patch_stretch = true
-script = SubResource( 1 )
 
 [node name="Updated_Tween" type="Tween" parent="CanvasLayer"]
