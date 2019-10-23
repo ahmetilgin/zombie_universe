@@ -82,15 +82,15 @@ animations = [ {
 "name": "attack",
 "speed": 12.0
 }, {
-"frames": [ ExtResource( 17 ), ExtResource( 17 ), ExtResource( 17 ), ExtResource( 17 ) ],
-"loop": false,
-"name": "hurt",
-"speed": 12.0
-}, {
 "frames": [ ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ) ],
 "loop": true,
 "name": "run",
 "speed": 15.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 17 ), ExtResource( 17 ), ExtResource( 17 ) ],
+"loop": false,
+"name": "hurt",
+"speed": 12.0
 }, {
 "frames": [ ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 47 ) ],
 "loop": false,
@@ -104,7 +104,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 43.405, 52.8314 )
+extents = Vector2( 28.6588, 49.0829 )
 
 [node name="player" type="KinematicBody2D"]
 position = Vector2( 238.902, 145.127 )
@@ -115,12 +115,13 @@ position = Vector2( -40.0063, -53.6242 )
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 1 )
 animation = "melee"
-frame = 3
+frame = 6
+playing = true
 centered = false
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 24.3898, 0.00926566 )
+position = Vector2( 30.5499, 0.00926566 )
 shape = SubResource( 2 )
 
 [node name="Position2D" type="Position2D" parent="."]
@@ -144,6 +145,11 @@ polygon = PoolVector2Array( -12.1676, 26.791, -14.1037, 22.8471, -16.3044, 13.16
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 16.2595, 0.802887 )
 current = true
+limit_left = -10000
+limit_top = -1500
+limit_right = 10000
+limit_bottom = 1500
+smoothing_enabled = true
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

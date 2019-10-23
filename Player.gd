@@ -172,7 +172,7 @@ func _physics_process(delta):
 			if Input.is_action_just_pressed("ui_up"):
 				motion.y = jump
 			if _is_shift_stop():
-				motion.x = lerp(motion.x, 0, 0.002)
+				motion.x = lerp(motion.x, 0, 0.2)
 		else:
 				if _is_movable():
 					if motion.y < 0:
@@ -180,7 +180,7 @@ func _physics_process(delta):
 					else:
 						$AnimatedSprite.play("fall")
 					if _is_shift_stop():
-						motion.x=lerp(motion.x,0,0.05)
+						motion.x=lerp(motion.x,0,0.5)
 						
 		motion=move_and_slide(motion,UP)
 
