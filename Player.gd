@@ -206,8 +206,8 @@ func dead(damage):
 	hp -= damage
 	player_health.set_value(hp)
 	#player_health.set_value(hp)
-	#updated_tween.interpolate_property(player_health,"value",player_health.value,hp,0.4,Tween.TRANS_SINE,Tween.EASE_IN_OUT)
-	#updated_tween.start()
+	updated_tween.interpolate_property(player_health,"value",player_health.value,hp,0.4,Tween.TRANS_SINE,Tween.EASE_IN_OUT)
+	updated_tween.start()
 	if hp < 0:
 		_set_dead(true)
 		motion=Vector2(0,0)
