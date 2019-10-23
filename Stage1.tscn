@@ -53,10 +53,10 @@ position = Vector2( 618.819, 346.905 )
 
 [node name="Player_Health" type="TextureProgress" parent="CanvasLayer"]
 self_modulate = Color( 0.909804, 0.85098, 0.85098, 1 )
-margin_left = 40.2638
-margin_top = 24.3018
-margin_right = 158.264
-margin_bottom = 52.3018
+margin_left = 41.3718
+margin_top = 22.0857
+margin_right = 159.372
+margin_bottom = 50.0857
 max_value = 1000.0
 value = 1000.0
 texture_under = ExtResource( 8 )
