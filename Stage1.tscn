@@ -1,0 +1,73 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Ground_Tiles.tres" type="TileSet" id=1]
+[ext_resource path="res://zombie_scripts/Punk_Zombie.tscn" type="PackedScene" id=2]
+[ext_resource path="res://zombie_scripts/Big_Zombie.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://zombie_scripts/Basic_Zombie.tscn" type="PackedScene" id=5]
+[ext_resource path="res://oyun sprite/graveyardtilesetnew/png/BG.png" type="Texture" id=6]
+[ext_resource path="res://Upgrade_Bullet.tscn" type="PackedScene" id=7]
+[ext_resource path="res://CanvasLayer.gd" type="Script" id=8]
+[ext_resource path="res://oyun sprite/healthbar/back.png" type="Texture" id=9]
+[ext_resource path="res://oyun sprite/healthbar/decrease.png" type="Texture" id=10]
+[ext_resource path="res://oyun sprite/healthbar/health.png" type="Texture" id=11]
+
+[sub_resource type="GDScript" id=1]
+
+[node name="stage1" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 65580, 20, 0, 65702, 20, 0, 131150, 13, 0, 131151, 13, 0, 131152, 13, 0, 196676, 13, 0, 196677, 13, 0, 196678, 13, 0, 196679, 13, 0, 196680, 13, 0, 196681, 13, 0, 196682, 13, 0, 196683, 13, 0, 196684, 13, 0, 196685, 13, 0, 196686, 13, 0, 262211, 13, 0, 262212, 13, 0, 327731, 25, 0, 327740, 13, 0, 327746, 13, 0, 327747, 13, 0, 327843, 21, 0, 393258, 17, 0, 393267, 25, 0, 393276, 13, 0, 393277, 13, 0, 393278, 13, 0, 393279, 13, 0, 393280, 13, 0, 393281, 13, 0, 393282, 13, 0, 393339, 24, 0, 393349, 25, 0, 393352, 22, 0, 393355, 23, 0, 393394, 17, 0, 393396, 17, 0, 393398, 17, 0, 393481, 23, 0, 458792, 18, 0, 458796, 19, 0, 458869, 19, 0, 458919, 19, 0, 458925, 19, 0, 458929, 18, 0, 458931, 18, 0, 458933, 18, 0, 458935, 18, 0, 459021, 19, 0, 524293, 20, 0, 524324, 13, 0, 524328, 14, 0, 524332, 14, 0, 524336, 14, 0, 524340, 15, 0, 524389, 13, 0, 524393, 14, 0, 524397, 14, 0, 524401, 14, 0, 524405, 14, 0, 524409, 14, 0, 524413, 14, 0, 524417, 14, 0, 524421, 14, 0, 524425, 14, 0, 524429, 15, 0, 524444, 13, 0, 524448, 14, 0, 524452, 14, 0, 524456, 14, 0, 524460, 14, 0, 524464, 14, 0, 524468, 14, 0, 524472, 15, 0, 524550, 13, 0, 524554, 14, 0, 524558, 15, 0, 589847, 2, 0, 720923, 13, 0, 720927, 15, 0, 720962, 24, 0, 720974, 24, 0, 720980, 23, 0, 721196, 20, 0, 721217, 20, 0, 786451, 2, 0, 786455, 2, 0, 786504, 19, 0, 786680, 2, 0, 786714, 21, 0, 851983, 17, 0, 852029, 1, 0, 852033, 0, 0, 852037, 0, 0, 852041, 0, 0, 852045, 0, 0, 852049, 0, 0, 852053, 6, 0, 852170, 20, 0, 852190, 20, 0, 852213, 23, 0, 917757, 19, 0, 983040, 14, 0, 983044, 6, 0, 983048, 5, 0, 983052, 6, 0, 983056, 0, 0, 983060, 0, 0, 983064, 6, 0, 983282, 13, 0, 983286, 14, 0, 983290, 14, 0, 983294, 15, 0, 983318, 13, 0, 983322, 15, 0, 1048875, 24, 0, 1048889, 24, 0, 1048899, 24, 0, 1114346, 21, 0, 1179859, 22, 0, 1179866, 22, 0, 1179877, 22, 0, 1179944, 1, 0, 1179948, 0, 0, 1179952, 0, 0, 1179956, 0, 0, 1179960, 0, 0, 1179964, 0, 0, 1179965, 0, 0, 1179969, 0, 0, 1179973, 6, 0, 1245398, 19, 0, 1245406, 19, 0, 1310824, 22, 0, 1310835, 22, 0, 1310836, 22, 0, 1310848, 22, 0, 1310876, 20, 0, 1310920, 1, 0, 1310924, 0, 0, 1310928, 0, 0, 1310932, 0, 0, 1310936, 0, 0, 1310940, 0, 0, 1310944, 0, 0, 1310948, 0, 0, 1310952, 0, 0, 1310956, 6, 0, 1376365, 19, 0, 1376372, 22, 0, 1376381, 19, 0, 1441887, 13, 0, 1441891, 14, 0, 1441895, 14, 0, 1441899, 14, 0, 1441903, 14, 0, 1441907, 14, 0, 1441911, 14, 0, 1441915, 14, 0, 1441919, 14, 0, 1441923, 14, 0, 1441927, 15, 0, 1442088, 11, 0, 1442091, 8, 0, 1442095, 8, 0, 1442099, 8, 0, 1442103, 8, 0, 1442105, 8, 0, 1442109, 8, 0, 1442113, 8, 0, 1442117, 12, 0, 1573064, 5, 0, 1573068, 3, 0, 1573072, 3, 0, 1573076, 3, 0, 1573080, 3, 0, 1573084, 3, 0, 1573088, 3, 0, 1573092, 3, 0, 1573096, 3, 0, 1573100, 4, 0, 1638568, 23, 0, 1638572, 24, 0, 1638578, 24, 0, 1704111, 19, 0, 1769622, 13, 0, 1769626, 14, 0, 1769630, 14, 0, 1769634, 14, 0, 1769638, 14, 0, 1769642, 14, 0, 1769646, 14, 0, 1769650, 14, 0, 1769654, 14, 0, 1769658, 14, 0, 1769662, 15, 0, 1835208, 5, 0, 1835212, 3, 0, 1835216, 3, 0, 1835220, 3, 0, 1835224, 3, 0, 1835228, 3, 0, 1835232, 3, 0, 1835236, 9, 0, 1835238, 3, 0, 1835240, 3, 0, 1835244, 4, 0, 2031824, 8, 0, 2097352, 11, 0, 2097356, 8, 0, 2097360, 8, 0, 2097364, 8, 0, 2097368, 8, 0, 2097372, 8, 0, 2097376, 8, 0, 2097380, 8, 0, 2097384, 8, 0, 2097388, 12, 0 )
+
+[node name="Punk_Zombie" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1568.42, 162.367 )
+
+[node name="big_enemy" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2334.26, 15.1859 )
+
+[node name="player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 525.049, 153.258 )
+
+[node name="enemy" parent="." instance=ExtResource( 5 )]
+position = Vector2( 2102.98, 352.315 )
+
+[node name="enemy2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1236.4, 144.344 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_base_scale = Vector2( 0.2, 0.2 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1652.94, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( -0.00012207, -123.929 )
+scale = Vector2( 0.827, 0.827 )
+texture = ExtResource( 6 )
+centered = false
+
+[node name="upgrade" parent="." instance=ExtResource( 7 )]
+position = Vector2( 618.819, 346.905 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource( 8 )
+
+[node name="Player_Health" type="TextureProgress" parent="CanvasLayer"]
+self_modulate = Color( 0.909804, 0.85098, 0.85098, 1 )
+margin_left = 40.2638
+margin_top = 24.3018
+margin_right = 158.264
+margin_bottom = 52.3018
+max_value = 1000.0
+value = 1000.0
+texture_under = ExtResource( 9 )
+texture_over = ExtResource( 10 )
+texture_progress = ExtResource( 11 )
+tint_over = Color( 0.933333, 0.345098, 0.137255, 1 )
+nine_patch_stretch = true
+script = SubResource( 1 )
+
+[node name="Updated_Tween" type="Tween" parent="CanvasLayer"]

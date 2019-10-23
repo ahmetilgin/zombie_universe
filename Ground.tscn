@@ -1,0 +1,328 @@
+[gd_scene load_steps=42 format=2]
+
+[ext_resource path="res://oyun sprite/graveyardtilesetnew/png/Tiles/Tile (2).png" type="Texture" id=1]
+[ext_resource path="res://oyun sprite/graveyardtilesetnew/png/Tiles/Tile (1).png" type="Texture" id=2]
+[ext_resource path="res://oyun sprite/graveyardtilesetnew/png/Objects/Crate.png" type="Texture" id=3]
+[ext_resource path="res://oyun sprite/graveyardtilesetnew/png/Tiles/Tile (5).png" type="Texture" id=4]
+[ext_resource path="res://oyun sprite/graveyardtilesetnew/png/Tiles/Tile (6).png" type="Texture" id=5]
+[ext_resource path="res://oyun sprite/graveyardtilesetnew/png/Tiles/Tile (4).png" type="Texture" id=6]
+[ext_resource path="res://oyun sprite/graveyardtilesetnew/png/Tiles/Tile (3).png" type="Texture" id=7]
+[ext_resource path="res://oyun sprite/graveyardtilesetnew/png/Tiles/Tile (8).png" type="Texture" id=8]
+[ext_resource path="res://oyun sprite/graveyardtilesetnew/png/Tiles/Tile (9).png" type="Texture" id=9]
+[ext_resource path="res://oyun sprite/graveyardtilesetnew/png/Tiles/Tile (10).png" type="Texture" id=10]
+[ext_resource path="res://oyun sprite/graveyardtilesetnew/png/Tiles/Tile (11).png" type="Texture" id=11]
+[ext_resource path="res://oyun sprite/graveyardtilesetnew/png/Tiles/Tile (12).png" type="Texture" id=12]
+[ext_resource path="res://oyun sprite/graveyardtilesetnew/png/Tiles/Tile (13).png" type="Texture" id=13]
+[ext_resource path="res://oyun sprite/graveyardtilesetnew/png/Tiles/Tile (14).png" type="Texture" id=14]
+[ext_resource path="res://oyun sprite/graveyardtilesetnew/png/Tiles/Tile (15).png" type="Texture" id=15]
+[ext_resource path="res://oyun sprite/graveyardtilesetnew/png/Tiles/Tile (16).png" type="Texture" id=16]
+[ext_resource path="res://oyun sprite/graveyardtilesetnew/png/Objects/TombStone (2).png" type="Texture" id=17]
+[ext_resource path="res://oyun sprite/graveyardtilesetnew/png/Objects/TombStone (1).png" type="Texture" id=18]
+[ext_resource path="res://oyun sprite/graveyardtilesetnew/png/Objects/Skeleton.png" type="Texture" id=19]
+[ext_resource path="res://oyun sprite/graveyardtilesetnew/png/Objects/Tree.png" type="Texture" id=20]
+[ext_resource path="res://oyun sprite/graveyardtilesetnew/png/Objects/Sign.png" type="Texture" id=21]
+[ext_resource path="res://oyun sprite/graveyardtilesetnew/png/Objects/DeadBush.png" type="Texture" id=22]
+[ext_resource path="res://oyun sprite/graveyardtilesetnew/png/Objects/Bush (2).png" type="Texture" id=23]
+[ext_resource path="res://oyun sprite/graveyardtilesetnew/png/Objects/Bush (1).png" type="Texture" id=24]
+[ext_resource path="res://oyun sprite/graveyardtilesetnew/png/Objects/ArrowSign.png" type="Texture" id=25]
+[ext_resource path="res://oyun sprite/graveyardtilesetnew/png/Tiles/Tile (7).png" type="Texture" id=26]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 64.3459, 64.0209 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 63.5548, 63.2658 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 53, 53 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 64.2238, 64.2238 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 64.0642, 64.0686 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 64.346, 63.8851 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 63.556, 64.5212 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 64.4327, 64.1998 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 63.9149, 63.8868 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 64.0725, 63.9501 )
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 64.6882, 64.0256 )
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 64.2337, 46.5197 )
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 64.2359, 46.7877 )
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 63.698, 46.4358 )
+
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 63.888, 64.3169 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Tile (2)" type="Sprite" parent="."]
+position = Vector2( 160, 232 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile (2)"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tile (2)/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Tile (1)" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 653.375, 204.57 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile (1)"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tile (1)/StaticBody2D"]
+position = Vector2( 2.09502, 0.168945 )
+shape = SubResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Crate" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 615.375, 377.57 )
+texture = ExtResource( 3 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Crate"]
+position = Vector2( 51, 56 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Crate/StaticBody2D"]
+position = Vector2( 2, -3 )
+shape = SubResource( 3 )
+
+[node name="Tile (5)" type="Sprite" parent="."]
+position = Vector2( 410.338, 532.041 )
+texture = ExtResource( 4 )
+
+[node name="Tile (6)" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 520.215, 357.941 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile (6)"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tile (6)/StaticBody2D"]
+shape = SubResource( 4 )
+
+[node name="Tile (4)" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 173.383, 401.651 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile (4)"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tile (4)/StaticBody2D"]
+shape = SubResource( 5 )
+
+[node name="Tile (3)" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 316, 232 )
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile (3)"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tile (3)/StaticBody2D"]
+shape = SubResource( 6 )
+
+[node name="Tile (8)" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( -366.281, 612.905 )
+scale = Vector2( 1.14614, 1.06283 )
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile (8)"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tile (8)/StaticBody2D"]
+shape = SubResource( 7 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Tile (9)" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( -394.006, 341.345 )
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile (9)"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tile (9)/StaticBody2D"]
+shape = SubResource( 8 )
+
+[node name="Tile (10)" type="Sprite" parent="."]
+position = Vector2( -155.169, 376.419 )
+texture = ExtResource( 10 )
+
+[node name="Tile (11)" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( -248.7, 817.348 )
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile (11)"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tile (11)/StaticBody2D"]
+shape = SubResource( 9 )
+
+[node name="Tile (12)" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( -475.845, 817.348 )
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile (12)"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tile (12)/StaticBody2D"]
+shape = SubResource( 10 )
+
+[node name="Tile (13)" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( -59.969, 802.316 )
+texture = ExtResource( 13 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile (13)"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tile (13)/StaticBody2D"]
+shape = SubResource( 11 )
+
+[node name="Tile (14)" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 187.218, 814.007 )
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile (14)"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tile (14)/StaticBody2D"]
+position = Vector2( 0, -17.108 )
+shape = SubResource( 12 )
+
+[node name="Tile (15)" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 426.054, 803.986 )
+texture = ExtResource( 15 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile (15)"]
+position = Vector2( -0.698334, -6.9834 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tile (15)/StaticBody2D"]
+position = Vector2( 0.46936, -10.1727 )
+shape = SubResource( 13 )
+
+[node name="Tile (16)" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 579.711, 812.337 )
+texture = ExtResource( 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile (16)"]
+position = Vector2( -6.94934, -10.1924 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tile (16)/StaticBody2D"]
+position = Vector2( 6.78564, -7.40027 )
+shape = SubResource( 14 )
+
+[node name="TombStone (2)" type="Sprite" parent="."]
+position = Vector2( 88.5112, 593.968 )
+texture = ExtResource( 17 )
+
+[node name="TombStone (1)" type="Sprite" parent="."]
+position = Vector2( 49.3694, 511.704 )
+texture = ExtResource( 18 )
+
+[node name="Skeleton" type="Sprite" parent="."]
+position = Vector2( 103.77, 690.827 )
+texture = ExtResource( 19 )
+
+[node name="Tree" type="Sprite" parent="."]
+position = Vector2( -588.125, 482.385 )
+texture = ExtResource( 20 )
+
+[node name="Sign" type="Sprite" parent="."]
+position = Vector2( -638.23, 208.475 )
+texture = ExtResource( 21 )
+
+[node name="DeadBush" type="Sprite" parent="."]
+position = Vector2( -439.478, 139.997 )
+texture = ExtResource( 22 )
+
+[node name="Bush (2)" type="Sprite" parent="."]
+position = Vector2( -175.589, 114.944 )
+texture = ExtResource( 23 )
+
+[node name="Bush (1)" type="Sprite" parent="."]
+position = Vector2( -102.101, 213.485 )
+texture = ExtResource( 24 )
+
+[node name="ArrowSign" type="Sprite" parent="."]
+position = Vector2( -791.887, 310.356 )
+texture = ExtResource( 25 )
+
+[node name="Tile (7)" type="Sprite" parent="."]
+position = Vector2( -106.734, 601.894 )
+texture = ExtResource( 26 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile (7)"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tile (7)/StaticBody2D"]
+shape = SubResource( 15 )

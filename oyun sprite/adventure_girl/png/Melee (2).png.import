@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/Melee (2).png-ee90969761d8c4c21593d400e5f0487b.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://oyun sprite/adventure_girl/png/Melee (2).png"
+dest_files=[ "res://.import/Melee (2).png-ee90969761d8c4c21593d400e5f0487b.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0
