@@ -68,3 +68,13 @@ tint_over = Color( 0.933333, 0.345098, 0.137255, 1 )
 nine_patch_stretch = true
 
 [node name="Updated_Tween" type="Tween" parent="CanvasLayer"]
+
+[node name="bullet_counter" type="Label" parent="CanvasLayer"]
+margin_left = 710.0
+margin_top = 19.0
+margin_right = 750.0
+margin_bottom = 40.0
+custom_colors/font_color = Color( 0.180392, 1, 0.0862745, 1 )
+custom_colors/font_outline_modulate = Color( 0.431373, 0.219608, 0.219608, 1 )
+text = "30"
+valign = 1

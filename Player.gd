@@ -26,12 +26,18 @@ var is_dead = false
 var is_hurt = false
 var is_melee = false
 var is_shift_stop = false
-
+const max_bullet_size=30
+var bullet_size=30
+onready var bullet_number = get_node("../CanvasLayer/bullet_counter")
 onready var player_health = get_node("../CanvasLayer/Player_Health")
 onready var updated_tween = get_node("../CanvasLayer/Updated_Tween")
 func _set_current_bullet(bullet):
 	current_bullet = bullet
 
+func _bullet_counter():
+	bullet_size-=1
+	bullet_number.text=String(bullet_size)
+	
 func _set_bullet_direction(direction):
 	current_bullet.set_bullet_direction(direction)
 
@@ -126,6 +132,7 @@ func _clear_states():
 var UP = Vector2(0,-1)
 
 func _physics_process(delta):
+	print(bullet_size)
 	if $AnimatedSprite.flip_h==true:
 		$CollisionShape2D.position.x=30
 	else:
@@ -160,6 +167,8 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("ui_focus_next"):
 			if _is_movable():
 				_set_is_attack(true)
+				
+				_bullet_counter()
 				_play_attack_animation()
 				if current_bullet_power == 1:
 					_set_current_bullet(bullet.instance())
