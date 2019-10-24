@@ -309,6 +309,7 @@ texture = ExtResource( 20 )
 
 [node name="Sign" type="Sprite" parent="."]
 position = Vector2( -288, 240 )
+
 scale = Vector2( 1.18385, 1.12775 )
 texture = ExtResource( 21 )
 
@@ -341,3 +342,8 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tile (7)/StaticBody2D"]
 shape = SubResource( 14 )
+
+__meta__ = {
+"_edit_group_": true
+}
+

@@ -30,6 +30,7 @@ const max_bullet_size=30
 var bullet_size=30
 onready var bullet_number = get_node("../CanvasLayer/bullet_counter")
 onready var player_health = get_node("../CanvasLayer/Player_Health")
+onready var health_text = get_node("../CanvasLayer/Health_Text")
 onready var updated_tween = get_node("../CanvasLayer/Updated_Tween")
 func _set_current_bullet(bullet):
 	current_bullet = bullet
@@ -214,6 +215,7 @@ func _physics_process(delta):
 func dead(damage):
 	hp -= damage
 	player_health.set_value(hp)
+	health_text.set_text(str(hp))
 	#player_health.set_value(hp)
 	updated_tween.interpolate_property(player_health,"value",player_health.value,hp,0.4,Tween.TRANS_SINE,Tween.EASE_IN_OUT)
 	updated_tween.start()
