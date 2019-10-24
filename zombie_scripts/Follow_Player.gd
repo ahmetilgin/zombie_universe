@@ -1,6 +1,6 @@
 extends KinematicBody2D
-const FLOOR=Vector2(0,-1)
-var motion=Vector2()
+const FLOOR = Vector2(0,-1)
+var motion = Vector2()
 const gravity=10
 
 var direction=1
@@ -63,7 +63,6 @@ func _physics_process(delta):
 			else:
 				$Area2D/CollisionShape2D.disabled=true
 				motion.y+=gravity
-				print( -250<=Player.position.x-position.x and -60>=Player.position.x-position.x and is_on_floor()and is_on_wall()  or  Player.position.x-position.x<=250 and  Player.position.x-position.x>=60 and is_on_floor() and is_on_wall())
 				if  -60<=Player.position.x-position.x and -30>=Player.position.x-position.x  or Player.position.x-position.x<=37 and Player.position.x-position.x>=15 :
 					is_attack=true
 					motion.x=0
@@ -136,9 +135,6 @@ func _physics_process(delta):
 						
 						else:
 							motion.x=0
-							
-
-				
 					
 				if get_slide_count()>0:
 							for i in range(get_slide_count()):

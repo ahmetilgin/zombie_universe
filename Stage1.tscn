@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Ground_Tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://zombie_scripts/Punk_Zombie.tscn" type="PackedScene" id=2]
@@ -8,8 +8,30 @@
 [ext_resource path="res://oyun sprite/graveyardtilesetnew/png/BG.png" type="Texture" id=6]
 [ext_resource path="res://Upgrade_Bullet.tscn" type="PackedScene" id=7]
 [ext_resource path="res://oyun sprite/healthbar/back.png" type="Texture" id=8]
-[ext_resource path="res://oyun sprite/healthbar/decrease.png" type="Texture" id=9]
-[ext_resource path="res://oyun sprite/healthbar/health.png" type="Texture" id=10]
+[ext_resource path="res://oyun sprite/healthbar/health.png" type="Texture" id=9]
+[ext_resource path="res://oyun sprite/fonts/coffin_stone/coffinstoneexpand.ttf" type="DynamicFontData" id=10]
+
+[sub_resource type="DynamicFont" id=1]
+size = 14
+outline_color = Color( 0.905882, 0.156863, 0.156863, 1 )
+use_filter = true
+font_data = ExtResource( 10 )
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends RichTextLabel
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
 
 [node name="stage1" type="Node2D"]
 
@@ -19,7 +41,7 @@ scale = Vector2( 0.827, 0.827 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( 458800, 20, 0, 720951, 2, 0, 786478, 22, 0, 786495, 24, 0, 852018, 18, 0, 852030, 18, 0, 917549, 13, 0, 917553, 14, 0, 917557, 14, 0, 917561, 14, 0, 917565, 14, 0, 917569, 15, 0, 983123, 1, 0, 983127, 0, 0, 983131, 0, 0, 983135, 6, 0, 1048591, 20, 0, 1114139, 2, 0, 1179689, 2, 0, 1245267, 27, 0, 1245271, 3, 0, 1245275, 3, 0, 1245279, 26, 0, 1310744, 2, 0, 1310747, 2, 0, 1376264, 25, 0, 1376273, 17, 0, 1376293, 13, 0, 1376297, 15, 0, 1376331, 23, 0, 1376334, 23, 0, 1441804, 18, 0, 1441806, 18, 0, 1441807, 19, 0, 1507333, 1, 0, 1507337, 0, 0, 1507341, 0, 0, 1507345, 0, 0, 1507349, 0, 0, 1507353, 0, 0, 1507357, 0, 0, 1507361, 6, 0, 1507397, 1, 0, 1507401, 0, 0, 1507405, 0, 0, 1507409, 0, 0, 1507413, 0, 0, 1507417, 0, 0, 1507421, 0, 0, 1507425, 0, 0, 1507429, 0, 0, 1507433, 6, 0 )
+tile_data = PoolIntArray( 0, 25, 0, 458800, 20, 0, 720951, 2, 0, 786478, 22, 0, 786495, 24, 0, 852018, 18, 0, 852030, 18, 0, 917549, 13, 0, 917553, 14, 0, 917557, 14, 0, 917561, 14, 0, 917565, 14, 0, 917569, 15, 0, 983123, 1, 0, 983127, 0, 0, 983131, 0, 0, 983135, 6, 0, 1048591, 20, 0, 1114139, 2, 0, 1179689, 2, 0, 1245267, 27, 0, 1245271, 3, 0, 1245275, 3, 0, 1245279, 26, 0, 1310744, 2, 0, 1310747, 2, 0, 1376264, 25, 0, 1376273, 17, 0, 1376293, 13, 0, 1376297, 15, 0, 1376331, 23, 0, 1376334, 23, 0, 1441804, 18, 0, 1441806, 18, 0, 1441807, 19, 0, 1507333, 1, 0, 1507337, 0, 0, 1507341, 0, 0, 1507345, 0, 0, 1507349, 0, 0, 1507353, 0, 0, 1507357, 0, 0, 1507361, 6, 0, 1507397, 1, 0, 1507401, 0, 0, 1507405, 0, 0, 1507409, 0, 0, 1507413, 0, 0, 1507417, 0, 0, 1507421, 0, 0, 1507425, 0, 0, 1507429, 0, 0, 1507433, 6, 0, 1769515, 7, 0 )
 
 [node name="Punk_Zombie" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1568.42, 162.367 )
@@ -40,31 +62,46 @@ position = Vector2( 1236.4, 144.344 )
 scroll_base_scale = Vector2( 0.2, 0.2 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( -235.496, 11.6913 )
 motion_mirroring = Vector2( 1652.94, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( -0.00012207, -123.929 )
+position = Vector2( 238.39, -10.8105 )
 scale = Vector2( 0.827, 0.827 )
 texture = ExtResource( 6 )
 centered = false
 
 [node name="upgrade" parent="." instance=ExtResource( 7 )]
-position = Vector2( 618.819, 346.905 )
+position = Vector2( 673.819, 362.905 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Player_Health" type="TextureProgress" parent="CanvasLayer"]
 self_modulate = Color( 0.909804, 0.85098, 0.85098, 1 )
-margin_left = 41.3718
-margin_top = 22.0857
-margin_right = 159.372
-margin_bottom = 50.0857
+margin_left = 22.1357
+margin_top = 13.9164
+margin_right = 140.136
+margin_bottom = 41.9164
+rect_scale = Vector2( 1.29786, 0.626299 )
 max_value = 1000.0
 value = 1000.0
 texture_under = ExtResource( 8 )
-texture_over = ExtResource( 9 )
-texture_progress = ExtResource( 10 )
+texture_progress = ExtResource( 9 )
 tint_over = Color( 0.933333, 0.345098, 0.137255, 1 )
 nine_patch_stretch = true
 
 [node name="Updated_Tween" type="Tween" parent="CanvasLayer"]
+
+[node name="Health_Text" type="RichTextLabel" parent="CanvasLayer"]
+margin_left = 179.172
+margin_top = 13.0814
+margin_right = 219.172
+margin_bottom = 53.0814
+rect_scale = Vector2( 1.39274, 1.32774 )
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "1000"
+tab_size = 2
+text = "1000"
+scroll_active = false
+script = SubResource( 2 )
