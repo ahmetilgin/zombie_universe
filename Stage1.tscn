@@ -8,7 +8,29 @@
 [ext_resource path="res://oyun sprite/graveyardtilesetnew/png/BG.png" type="Texture" id=6]
 [ext_resource path="res://Upgrade_Bullet.tscn" type="PackedScene" id=7]
 [ext_resource path="res://oyun sprite/healthbar/back.png" type="Texture" id=8]
-[ext_resource path="res://oyun sprite/healthbar/decrease.png" type="Texture" id=9]
+[ext_resource path="res://oyun sprite/healthbar/health.png" type="Texture" id=9]
+[ext_resource path="res://oyun sprite/fonts/coffin_stone/coffinstoneexpand.ttf" type="DynamicFontData" id=10]
+
+[sub_resource type="DynamicFont" id=1]
+use_filter = true
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 14
+outline_color = Color( 0.905882, 0.156863, 0.156863, 1 )
+use_filter = true
+font_data = ExtResource( 10 )
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends RichTextLabel
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -74,13 +96,12 @@ nine_patch_stretch = true
 
 [node name="Updated_Tween" type="Tween" parent="CanvasLayer"]
 
-margin_bottom = 40.0
 [node name="bullet_counter" type="RichTextLabel" parent="CanvasLayer"]
 margin_left = 740.0
 margin_top = 22.1343
 margin_right = 780.0
 margin_bottom = 62.1343
-custom_fonts/normal_font = SubResource( 3 )
+custom_fonts/normal_font = SubResource( 1 )
 tab_size = 2
 text = "10"
 scroll_active = false
@@ -91,10 +112,10 @@ margin_top = 13.0814
 margin_right = 219.172
 margin_bottom = 53.0814
 rect_scale = Vector2( 1.39274, 1.32774 )
-custom_fonts/normal_font = SubResource( 1 )
+custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
 bbcode_text = "1000"
 tab_size = 2
 text = "1000"
 scroll_active = false
-script = SubResource( 2 )
+script = SubResource( 3 )

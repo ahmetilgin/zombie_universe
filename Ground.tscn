@@ -179,7 +179,9 @@ __meta__ = {
 shape = SubResource( 6 )
 
 [node name="Tile (8)" type="Sprite" parent="."]
+
 position = Vector2( 704, 82.944 )
+
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 8 )
 
