@@ -1,6 +1,7 @@
 extends Area2D
 
-const speed=450
+const speed=1000
+
 var motion=Vector2()
 var direction=1
 func set_bullet_direction(dir):

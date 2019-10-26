@@ -46,10 +46,9 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 material = SubResource( 4 )
 position = Vector2( -0.100512, -1.53374 )
-scale = Vector2( 0.085, 0.092 )
+scale = Vector2( 0.137547, 0.154048 )
 frames = SubResource( 5 )
 animation = "shoot"
-frame = 4
 centered = false
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]

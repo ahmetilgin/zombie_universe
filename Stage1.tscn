@@ -7,35 +7,27 @@
 [ext_resource path="res://zombie_scripts/Basic_Zombie.tscn" type="PackedScene" id=5]
 [ext_resource path="res://oyun sprite/graveyardtilesetnew/png/BG.png" type="Texture" id=6]
 [ext_resource path="res://Upgrade_Bullet.tscn" type="PackedScene" id=7]
-[ext_resource path="res://oyun sprite/healthbar/back.png" type="Texture" id=8]
-[ext_resource path="res://oyun sprite/healthbar/health.png" type="Texture" id=9]
-[ext_resource path="res://oyun sprite/fonts/coffin_stone/coffinstoneexpand.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://oyun sprite/png/Window2s.png" type="Texture" id=8]
+[ext_resource path="res://oyun sprite/fonts/coffin_stone/coffinstoneexpand.ttf" type="DynamicFontData" id=9]
 
-[sub_resource type="DynamicFont" id=1]
-use_filter = true
-font_data = ExtResource( 10 )
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 1894.66, 910.469, 119.713, 129.236 )
 
-[sub_resource type="DynamicFont" id=2]
-size = 14
-outline_color = Color( 0.905882, 0.156863, 0.156863, 1 )
-use_filter = true
-font_data = ExtResource( 10 )
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 502.319, 1801.44, 506.196, 120.134 )
 
-[sub_resource type="GDScript" id=3]
-script/source = "extends RichTextLabel
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 1617.74, 1795.05, 336.842, 55.7896 )
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = \"text\"
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-"
+[sub_resource type="DynamicFont" id=4]
+size = 20
+font_data = ExtResource( 9 )
 
 [node name="stage1" type="Node2D"]
 
@@ -54,7 +46,7 @@ position = Vector2( 1568.42, 162.367 )
 position = Vector2( 2334.26, 15.1859 )
 
 [node name="player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 525.049, 153.258 )
+position = Vector2( 519.792, 159.258 )
 
 [node name="enemy" parent="." instance=ExtResource( 5 )]
 position = Vector2( 2102.98, 352.315 )
@@ -63,6 +55,7 @@ position = Vector2( 2102.98, 352.315 )
 position = Vector2( 1236.4, 144.344 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+editor/display_folded = true
 scroll_base_scale = Vector2( 0.2, 0.2 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -78,44 +71,58 @@ centered = false
 [node name="upgrade" parent="." instance=ExtResource( 7 )]
 position = Vector2( 673.819, 362.905 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Game_UI" type="CanvasLayer" parent="."]
+editor/display_folded = true
 
-[node name="Player_Health" type="TextureProgress" parent="CanvasLayer"]
+[node name="BulletIcon" type="TextureRect" parent="Game_UI"]
+margin_left = 200.013
+margin_top = 38.1762
+margin_right = 672.013
+margin_bottom = 189.176
+rect_scale = Vector2( 0.190372, 0.192707 )
+texture = SubResource( 1 )
+
+[node name="Health_Background" type="TextureRect" parent="Game_UI"]
+margin_left = 18.7253
+margin_top = 29.6243
+margin_right = 524.725
+margin_bottom = 149.624
+rect_scale = Vector2( 0.34317, 0.341894 )
+texture = SubResource( 2 )
+
+[node name="Player_Health" type="TextureProgress" parent="Game_UI"]
 self_modulate = Color( 0.909804, 0.85098, 0.85098, 1 )
-margin_left = 22.1357
-margin_top = 13.9164
-margin_right = 140.136
-margin_bottom = 41.9164
-rect_scale = Vector2( 1.29786, 0.626299 )
-max_value = 1000.0
-value = 1000.0
-texture_under = ExtResource( 8 )
-texture_progress = ExtResource( 9 )
+margin_left = 59.6742
+margin_top = 39.4957
+margin_right = 184.674
+margin_bottom = 99.4957
+rect_scale = Vector2( 0.955942, 0.364713 )
+value = 100.0
+rounded = true
+texture_progress = SubResource( 3 )
 tint_over = Color( 0.933333, 0.345098, 0.137255, 1 )
 nine_patch_stretch = true
 
-[node name="Updated_Tween" type="Tween" parent="CanvasLayer"]
+[node name="Updated_Tween" type="Tween" parent="Game_UI"]
 
-[node name="bullet_counter" type="RichTextLabel" parent="CanvasLayer"]
-margin_left = 740.0
-margin_top = 22.1343
-margin_right = 780.0
-margin_bottom = 62.1343
-custom_fonts/normal_font = SubResource( 1 )
-tab_size = 2
-text = "10"
-scroll_active = false
+[node name="bullet_counter" type="RichTextLabel" parent="Game_UI"]
+margin_left = 235.148
+margin_top = 37.0503
+margin_right = 275.148
+margin_bottom = 77.0503
+rect_scale = Vector2( 0.932722, 1.32486 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.0
+custom_fonts/normal_font = SubResource( 4 )
+custom_constants/table_vseparation = 4
+bbcode_text = "30
 
-[node name="Health_Text" type="RichTextLabel" parent="CanvasLayer"]
-margin_left = 179.172
-margin_top = 13.0814
-margin_right = 219.172
-margin_bottom = 53.0814
-rect_scale = Vector2( 1.39274, 1.32774 )
-custom_fonts/normal_font = SubResource( 2 )
-bbcode_enabled = true
-bbcode_text = "1000"
-tab_size = 2
-text = "1000"
+"
+visible_characters = 2
+meta_underlined = false
+tab_size = 1
+text = "30
+
+"
 scroll_active = false
-script = SubResource( 3 )

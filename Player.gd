@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 const bullet = preload("res://Bullet.tscn")
 const upgrade_bullet = preload("res://Fire_Bullet.tscn")
+var zombie_generator = preload("res://Zombie_Generator.gd").new()
 
 
 enum bullet_power{
@@ -12,11 +13,11 @@ enum bullet_power{
 const jump = -550
 const gravity = 20
 # player options
-var hp = 1000
-var speed = 100
-var max_speed = 250
+var hp = 100
+var speed = 150
+var max_speed = 500
 var motion = Vector2(0,0)
-var slide_speed = 300
+var slide_speed = 500
 var current_bullet = null
 var current_bullet_power = 1
 # player motions
@@ -27,15 +28,21 @@ var is_hurt = false
 var is_melee = false
 var is_shift_stop = false
 const max_bullet_size=30
-var bullet_size=30
-onready var bullet_number = get_node("../CanvasLayer/bullet_counter")
-onready var player_health = get_node("../CanvasLayer/Player_Health")
-onready var health_text = get_node("../CanvasLayer/Health_Text")
-onready var updated_tween = get_node("../CanvasLayer/Updated_Tween")
+var bullet_size = 30
+onready var bullet_number = get_node("../Game_UI/bullet_counter")
+onready var player_health = get_node("../Game_UI/Player_Health")
+onready var updated_tween = get_node("../Game_UI/Updated_Tween")
+
+func _ready():
+	zombie_generator.Generate_Zombies($AnimatedSprite.get_global_position())
+
 func _set_current_bullet(bullet):
 	current_bullet = bullet
 
-func _bullet_counter():
+func _check_bullet_count():
+	return bullet_size > 0
+
+func _fire_bullet():
 	bullet_size-=1
 	bullet_number.text=String(bullet_size)
 	
@@ -102,7 +109,7 @@ func _move_slide():
 		motion.x = -slide_speed
 
 func _move_right():
-	motion.x=min(motion.x+speed,max_speed)
+	motion.x=min(motion.x + speed,max_speed)
 	_play_animation("run")
 	$AnimatedSprite.flip_h=false
 	if sign($Position2D.position.x)==-1:
@@ -166,10 +173,10 @@ func _physics_process(delta):
 					_play_melee_animation()
 					_change_collision_rotation()
 		if Input.is_action_just_pressed("ui_focus_next"):
-			if _is_movable():
+			if _is_movable() && _check_bullet_count():
+				_fire_bullet()
 				_set_is_attack(true)
 				
-				_bullet_counter()
 				_play_attack_animation()
 				if current_bullet_power == 1:
 					_set_current_bullet(bullet.instance())
@@ -192,7 +199,7 @@ func _physics_process(delta):
 					if _is_shift_stop():
 						motion.x=lerp(motion.x,0,0.5)
 						
-		motion=move_and_slide(motion,UP)
+		motion = move_and_slide(motion,UP)
 
 		if get_slide_count()>0:
 			for i in range(get_slide_count()):
@@ -215,8 +222,6 @@ func _physics_process(delta):
 func dead(damage):
 	hp -= damage
 	player_health.set_value(hp)
-	health_text.set_text(str(hp))
-	#player_health.set_value(hp)
 	updated_tween.interpolate_property(player_health,"value",player_health.value,hp,0.4,Tween.TRANS_SINE,Tween.EASE_IN_OUT)
 	updated_tween.start()
 	if hp < 0:

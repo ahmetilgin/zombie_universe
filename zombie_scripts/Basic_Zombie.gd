@@ -54,4 +54,5 @@ func _on_Timer_timeout():
 func _on_AnimatedSprite_animation_finished():
 	is_hurt=false
 	
-	
+func _set_zombie_position(new_position):
+	$AnimatedSprite.position = new_position

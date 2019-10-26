@@ -47,7 +47,6 @@
 [ext_resource path="res://oyun sprite/zombie/png/male/Walk (9).png" type="Texture" id=45]
 [ext_resource path="res://oyun sprite/zombie/png/male/Walk (10).png" type="Texture" id=46]
 
-
 [sub_resource type="ShaderMaterial" id=1]
 
 [sub_resource type="SpriteFrames" id=2]
