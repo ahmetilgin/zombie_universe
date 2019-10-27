@@ -2,7 +2,6 @@ extends KinematicBody2D
 
 const bullet = preload("res://Bullet.tscn")
 const upgrade_bullet = preload("res://Fire_Bullet.tscn")
-var zombie_generator = preload("res://Zombie_Generator.gd").new()
 
 
 enum bullet_power{
@@ -33,10 +32,9 @@ var bullet_size = 30
 onready var bullet_number = get_node("../Game_UI/bullet_counter")
 onready var player_health = get_node("../Game_UI/Player_Health")
 onready var updated_tween = get_node("../Game_UI/Updated_Tween")
+const basic_zombie = preload("res://zombie_scripts/Basic_Zombie.tscn")
 
-func _ready():
-	"""zombie_generator.Generate_Zombies($AnimatedSprite.get_global_position())
-"""
+
 func _set_current_bullet(bullet):
 	current_bullet = bullet
 
@@ -140,8 +138,9 @@ func _clear_states():
 	
 var UP = Vector2(0,-1)
 
+var is_generated = false
+
 func _physics_process(delta):
-	#print(bullet_size)
 	if $AnimatedSprite.flip_h==true:
 		$CollisionShape2D.position.x=30
 	else:
@@ -208,9 +207,9 @@ func _physics_process(delta):
 
 		if get_slide_count()>0:
 			for i in range(get_slide_count()):
-				if "enemy" in get_slide_collision(i).collider.name:
+				if "Basic_Zombie" in get_slide_collision(i).collider.name:
 					dead(1)
-				if "big_enemy" in get_slide_collision(i).collider.name:
+				if "Big_Zombie" in get_slide_collision(i).collider.name:
 					dead(2)
 				if "Punk_Zombie" in get_slide_collision(i).collider.name:
 					dead(3)
@@ -246,19 +245,11 @@ func upgrade_power_up():
 	current_bullet_power = 2
 
 func _on_Area2D_body_entered(body):
-	if "enemy" in body.name:
-		body.dead(1) 
-	if "big_enemy" in body.name:
-		body.dead(1) 
-	if "Punk_Zombie" in body.name:
+	if "Zombie" in body.name:
 		body.dead(1) 
 
 func _on_mele_flip_h_true_body_entered(body):
-	if "enemy" in body.name:
-		body.dead(1) 
-	if "big_enemy" in body.name:
-		body.dead(1) 
-	if "Punk_Zombie" in body.name:
+	if "Zombie" in body.name:
 		body.dead(1) 
 
 func tramboline_jump():
@@ -269,8 +260,6 @@ func tramboline_jump():
 		if tramb_count>6:
 			tramb_count=6
 		$jump_counter_time.start()
-
-
 
 
 func _on_jump_counter_time_timeout():

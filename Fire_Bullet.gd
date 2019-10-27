@@ -22,11 +22,7 @@ func _physics_process(delta):
 
 
 func _on_upgradebllet_body_entered(body):
-	if "enemy" in body.name:
-		body.dead(2) 
-	if "big_enemy" in body.name:
-		body.dead(2) 
-	if "Punk_Zombie" in body.name:
+	if "Zombie" in body.name:
 		body.dead(2) 
 	queue_free()
 

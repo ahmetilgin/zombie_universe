@@ -66,15 +66,15 @@ animations = [ {
 "name": "attack",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ) ],
-"loop": false,
-"name": "hurt",
-"speed": 10.0
-}, {
 "frames": [ ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ) ],
 "loop": true,
 "name": "walk",
 "speed": 25.0
+}, {
+"frames": [ ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ) ],
+"loop": false,
+"name": "hurt",
+"speed": 10.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=3]
@@ -90,7 +90,7 @@ position = Vector2( -39.2369, -57.9162 )
 scale = Vector2( 0.197407, 0.211089 )
 frames = SubResource( 2 )
 animation = "attack"
-frame = 4
+frame = 6
 playing = true
 centered = false
 

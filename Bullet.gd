@@ -24,11 +24,8 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 
 func _on_bullet_body_entered(body):
-	if "enemy" in body.name:
+	if "Zombie" in body.name:
 		body.dead(1) 
-	if "big_enemy" in body.name:
-		body.dead(1) 
-	if "Punk_Zombie" in body.name:
-		body.dead(1) 
+
 	queue_free()
 

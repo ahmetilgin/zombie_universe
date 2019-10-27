@@ -6,7 +6,6 @@ extends Area2D
 var is_jump=false
 # Called when the node enters the scene tree for the first time.
 func _physics_process(delta): 
-
 	if not is_jump:
 		$AnimatedSprite.play("salik")
 	else:
