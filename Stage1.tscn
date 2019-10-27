@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Ground_Tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://zombie_scripts/Punk_Zombie.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Upgrade_Bullet.tscn" type="PackedScene" id=7]
 [ext_resource path="res://oyun sprite/png/Window2s.png" type="Texture" id=8]
 [ext_resource path="res://oyun sprite/fonts/coffin_stone/coffinstoneexpand.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://Trambolin.tscn" type="PackedScene" id=10]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -55,15 +56,14 @@ position = Vector2( 2102.98, 352.315 )
 position = Vector2( 1236.4, 144.344 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-editor/display_folded = true
-scroll_base_scale = Vector2( 0.2, 0.2 )
+scroll_base_scale = Vector2( 0.01, 0.01 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2( -235.496, 11.6913 )
 motion_mirroring = Vector2( 1652.94, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 238.39, -10.8105 )
+position = Vector2( 235.496, -271.691 )
 scale = Vector2( 0.827, 0.827 )
 texture = ExtResource( 6 )
 centered = false
@@ -72,7 +72,6 @@ centered = false
 position = Vector2( 673.819, 362.905 )
 
 [node name="Game_UI" type="CanvasLayer" parent="."]
-editor/display_folded = true
 
 [node name="BulletIcon" type="TextureRect" parent="Game_UI"]
 margin_left = 200.013
@@ -126,3 +125,6 @@ text = "30
 
 "
 scroll_active = false
+
+[node name="trambolin" parent="." instance=ExtResource( 10 )]
+position = Vector2( 380, 470 )

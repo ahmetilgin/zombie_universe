@@ -10,12 +10,13 @@ enum bullet_power{
 	upgrated_bullet = 2
 }
 # environment options
+var tramb_count=1
 const jump = -550
 const gravity = 20
 # player options
 var hp = 100
 var speed = 150
-var max_speed = 500
+var max_speed = 300
 var motion = Vector2(0,0)
 var slide_speed = 500
 var current_bullet = null
@@ -34,8 +35,8 @@ onready var player_health = get_node("../Game_UI/Player_Health")
 onready var updated_tween = get_node("../Game_UI/Updated_Tween")
 
 func _ready():
-	zombie_generator.Generate_Zombies($AnimatedSprite.get_global_position())
-
+	"""zombie_generator.Generate_Zombies($AnimatedSprite.get_global_position())
+"""
 func _set_current_bullet(bullet):
 	current_bullet = bullet
 
@@ -140,11 +141,15 @@ func _clear_states():
 var UP = Vector2(0,-1)
 
 func _physics_process(delta):
-	print(bullet_size)
+	#print(bullet_size)
 	if $AnimatedSprite.flip_h==true:
 		$CollisionShape2D.position.x=30
 	else:
 		$CollisionShape2D.position.x=18
+	if $AnimatedSprite.flip_h==true:
+		$collision_2.position.x=30
+	else:
+		$collision_2.position.x=18
 	motion.y += gravity 
 	if !_is_dead():
 		$Area2D/CollisionShape2D.disabled=true
@@ -256,4 +261,18 @@ func _on_mele_flip_h_true_body_entered(body):
 	if "Punk_Zombie" in body.name:
 		body.dead(1) 
 
+func tramboline_jump():
 
+		tramb_count+=1
+		
+		motion.y=jump-50*tramb_count
+		if tramb_count>6:
+			tramb_count=6
+		$jump_counter_time.start()
+
+
+
+
+func _on_jump_counter_time_timeout():
+	tramb_count=1
+	pass # Replace with function body.

@@ -1,4 +1,4 @@
-extends Node
+"""extends Node
 var basic_zombie = preload("res://zombie_scripts/Basic_Zombie.tscn")
 
 func Generate_Zombies(player_position:Vector2):
@@ -18,4 +18,4 @@ func Generate_Zombies(player_position:Vector2):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
-#	pass
+#	pass"""
