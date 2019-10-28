@@ -39,7 +39,7 @@ func _physics_process(delta):
 	if is_dead==false:
 		if is_hurt==false:
 			
-			if not -350 <= Player.position.x-position.x or Player.position.x-position.x>=350:
+			if not (-500 <= Player.position.x-position.x or Player.position.x-position.x>=500):
 				if is_attack==false:
 					motion.y+=gravity
 					motion.x=speed*direction
@@ -63,7 +63,7 @@ func _physics_process(delta):
 			else:
 				$Area2D/CollisionShape2D.disabled=true
 				motion.y+=gravity
-				if  -60<=Player.position.x-position.x and -30>=Player.position.x-position.x  or Player.position.x-position.x<=37 and Player.position.x-position.x>=15 :
+				if  (-75<=Player.position.x-position.x and -30>=Player.position.x-position.x )and(Player.position.y-position.y>-1 or Player.position.y-position.y<1) or ( Player.position.x-position.x<=52 and Player.position.x-position.x>=15)and(Player.position.y-position.y>-1 or Player.position.y-position.y<1):
 					is_attack=true
 					motion.x=0
 					if $AnimatedSprite.flip_h==true:
@@ -77,7 +77,7 @@ func _physics_process(delta):
 						motion.x=-120
 						$AnimatedSprite.flip_h=true
 						$AnimatedSprite.play("run")
-					if  -350<=Player.position.x-position.x and -100>=Player.position.x-position.x and is_on_floor()and is_on_wall()  :
+					if  -500<=Player.position.x-position.x and -70>=Player.position.x-position.x and is_on_floor()and is_on_wall()  :
 						motion.y=-400
 						motion.y+=1
 						$AnimatedSprite.play("jump")
@@ -98,7 +98,7 @@ func _physics_process(delta):
 						motion.x=120
 						$AnimatedSprite.flip_h=false
 						$AnimatedSprite.play("run")
-					if   Player.position.x-position.x<=350 and  Player.position.x-position.x>=100 and is_on_floor() and is_on_wall():
+					if   Player.position.x-position.x<=500 and  Player.position.x-position.x>=70 and is_on_floor() and is_on_wall():
 						motion.y=-400
 						motion.y+=1
 						$AnimatedSprite.play("jump")
@@ -114,7 +114,7 @@ func _physics_process(delta):
 						
 						else:
 							motion.x=0
-				
+				"""
 				if -60<=Player.position.x-position.x and -58>=Player.position.x-position.x and is_on_floor()  or Player.position.x-position.x<=60 and Player.position.x-position.x>=58 and is_on_floor() :
 					if is_attack==false:
 						motion.y=-200
@@ -140,7 +140,7 @@ func _physics_process(delta):
 							for i in range(get_slide_count()):
 								if "player" in get_slide_collision(i).collider.name:
 									get_slide_collision(i).collider.dead(1)
-						
+						"""
 				motion=move_and_slide(motion,FLOOR)
 	else:
 		
