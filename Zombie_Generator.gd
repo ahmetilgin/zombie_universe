@@ -1,6 +1,8 @@
 extends Node2D
 
-var basic_zombie = preload("res://zombie_scripts/Punk_Zombie.tscn")
+var punk_zombie = preload("res://zombie_scripts/Punk_Zombie.tscn")
+var basic_zombie = preload("res://zombie_scripts/Basic_Zombie.tscn")
+var big_zombie = preload("res://zombie_scripts/Big_Zombie.tscn")
 onready var tilemap = get_parent().get_node("TileMap")
 var max_x = 0
 var min_x = 0
@@ -22,14 +24,27 @@ func calculate_bounds():
 		
 
 func _ready():
+	randomize()
 	calculate_bounds()
 	generate_Zombies()
 
 func generate_Zombies():
-	for i in range(0,10):
-		var zombie_instance = basic_zombie.instance()
+	for i in range(0,9):
+		var zombie_instance = null
+		var select_zombie = randi() % 3 
+		if select_zombie == 0:
+			zombie_instance = basic_zombie.instance()
+		elif select_zombie == 1:
+			zombie_instance = big_zombie.instance()
+		else: 
+			zombie_instance = punk_zombie.instance()
+		
+		print(punk_zombie)
+		print("selected_zombie: " + str(select_zombie))
+		print(zombie_instance)
 		var new_location = Vector2((randi() % (10 * max_x)) + (10 * min_x) ,  min_y - 100)
 		print(new_location)
+
 		get_parent().call_deferred("add_child",zombie_instance)
 		zombie_instance.position  = (new_location) + Vector2(1000,-500)
 	pass # Replace with function body.
