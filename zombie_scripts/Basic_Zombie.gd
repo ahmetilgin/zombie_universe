@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+var FollowPlayerTimer = Timer.new()
+var velocity = Vector2()
 const gravity=20
 export (int) var hp=1
 export (int) var speed=100
@@ -8,6 +10,39 @@ var direction=1
 const UP=Vector2(0,-1)
 var is_dead=false
 var is_hurt=false
+
+var is_follow = false
+var path = []
+
+
+
+func follow_path():	
+	if len(path) > 0:
+		var target_point_world = path[1]
+		#var arrived_to_next_point = move_to(target_point_world)
+		#if arrived_to_next_point:
+#			path.remove(0)
+#			if len(path) == 0:
+#				return
+
+func _get_path():
+	var player = get_parent().get_node('player/CollisionShape2D')
+	print(get_global_position())
+	print(player.get_global_position())
+	path = get_parent().get_node('TileMap')._get_path(get_global_position(), player.get_global_position())
+	print(path)
+	if not path or len(path) == 1:
+			return
+		
+func _set_is_follow(follow):
+	is_follow = follow
+	FollowPlayerTimer.connect("timeout",self,"_on_FollowPlayerTimer_timeout") 
+	#timeout is what says in docs, in signals
+	#self is who respond to the callback
+	#_on_timer_timeout is the callback, can have any name
+	add_child(FollowPlayerTimer) #to process
+	FollowPlayerTimer.start() #to start
+
 func dead(damage):
 	
 	hp-=damage
@@ -23,11 +58,13 @@ func dead(damage):
 	else:
 		is_hurt=true
 		
-		$AnimatedSprite.play("hurt")
-		
+		$AnimatedSprite.play("hurt")	
+
 func _physics_process(delta):
 	if is_dead==false:
 		if is_hurt==false:
+			if is_follow:
+				follow_path()
 			motion.x=speed*direction
 			if direction==1:
 				$AnimatedSprite.flip_h=false
@@ -56,3 +93,9 @@ func _on_AnimatedSprite_animation_finished():
 	
 func _set_zombie_position(new_position):
 	$AnimatedSprite.position = new_position
+
+
+func _on_FollowPlayerTimer_timeout():
+	_get_path()
+		
+	pass # Replace with function body.

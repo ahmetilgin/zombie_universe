@@ -39,11 +39,7 @@ func generate_Zombies():
 		else: 
 			zombie_instance = punk_zombie.instance()
 		
-		print(punk_zombie)
-		print("selected_zombie: " + str(select_zombie))
-		print(zombie_instance)
 		var new_location = Vector2((randi() % (10 * max_x)) + (10 * min_x) ,  min_y - 100)
-		print(new_location)
 
 		get_parent().call_deferred("add_child",zombie_instance)
 		zombie_instance.position  = (new_location) + Vector2(1000,-500)

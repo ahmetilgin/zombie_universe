@@ -30,7 +30,7 @@ func dead(damage):
 		$AnimatedSprite.play("hurt")
 		
 func _physics_process(delta):
-	$enemy_attack/CollisionShape2D.disabled=true
+	$Area2D/CollisionShape2D.disabled=true
 	if $AnimatedSprite.flip_h==true:
 		$CollisionShape2D.position.x=20
 	else:
@@ -61,17 +61,17 @@ func _physics_process(delta):
 						$RayCast2D.position.x*=-1
 				
 			else:
-				$enemy_attack/CollisionShape2D.disabled=true
+				$Area2D/CollisionShape2D.disabled=true
 				motion.y+=gravity
 				
 				if  -55<=Player.position.x-position.x and -25>=Player.position.x-position.x  or Player.position.x-position.x<=37 and Player.position.x-position.x>=15 :
 					is_attack=true
 					motion.x=0
 					if $AnimatedSprite.flip_h==true:
-						$enemy_attack/CollisionShape2D.position.x=-20
+						$Area2D/CollisionShape2D.position.x=-20
 					else:
-						$enemy_attack/CollisionShape2D.position.x=36
-					$enemy_attack/CollisionShape2D.disabled=false
+						$Area2D/CollisionShape2D.position.x=36
+					$Area2D/CollisionShape2D.disabled=false
 					$AnimatedSprite.play("attack")
 				elif Player.position.x<position.x:
 					if is_attack==false:
@@ -148,7 +148,7 @@ func _on_AnimatedSprite_animation_finished():
 	is_hurt=false
 	is_attack=false
 	if is_attack==false:
-		$enemy_attack/CollisionShape2D.disabled=true
+		$Area2D/CollisionShape2D.disabled=true
 
 func _on_enemy_attack_body_entered(body):
 	if "player" in body.name:

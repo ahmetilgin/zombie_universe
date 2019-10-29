@@ -70,6 +70,7 @@ extents = Vector2( 64.1637, 46.4073 )
 extents = Vector2( 64, 64 )
 
 [node name="Node2D" type="Node2D"]
+editor/display_folded = true
 
 [node name="Tile (2)" type="Sprite" parent="."]
 editor/display_folded = true
@@ -86,7 +87,6 @@ __meta__ = {
 shape = SubResource( 1 )
 
 [node name="Tile (1)" type="Sprite" parent="."]
-editor/display_folded = true
 position = Vector2( 576, 192 )
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 2 )

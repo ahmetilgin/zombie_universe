@@ -33,43 +33,43 @@ extents = Vector2( 64, 64 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 61.905, 64.1689 )
 
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 64.1637, 46.4073 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 64, 64 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 52.9999, 53 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 64.0001, 64 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 64, 64 )
+
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 64, 64 )
 
 [sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 64, 64 )
+extents = Vector2( 63.556, 64.5212 )
 
 [sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 64, 64 )
+extents = Vector2( 52.9999, 53 )
 
 [sub_resource type="RectangleShape2D" id=11]
-extents = Vector2( 64, 46.892 )
+extents = Vector2( 64.0001, 64 )
 
 [sub_resource type="RectangleShape2D" id=12]
-extents = Vector2( 64.229, 46.8439 )
+extents = Vector2( 64, 64 )
 
 [sub_resource type="RectangleShape2D" id=13]
-extents = Vector2( 64.1637, 46.4073 )
+extents = Vector2( 64, 64 )
 
 [sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 64, 64 )
 
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 52.9999, 53 )
-
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 64.0001, 64 )
-
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 64, 64 )
-
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 64, 64 )
-
 [sub_resource type="RectangleShape2D" id=15]
-extents = Vector2( 63.556, 64.5212 )
-
-[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 64, 64 )
 
 [resource]
@@ -117,7 +117,7 @@ extents = Vector2( 64, 64 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 3 ),
+"shape": SubResource( 10 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 53, 53 )
 } ]
 2/z_index = 0
@@ -143,7 +143,7 @@ extents = Vector2( 64, 64 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 4 ),
+"shape": SubResource( 11 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 64, 64 )
 } ]
 4/z_index = 0
@@ -159,7 +159,7 @@ extents = Vector2( 64, 64 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 5 ),
+"shape": SubResource( 12 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 64, 64 )
 } ]
 5/z_index = 0
@@ -175,7 +175,7 @@ extents = Vector2( 64, 64 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 6 ),
+"shape": SubResource( 13 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 64, 64 )
 } ]
 6/z_index = 0
@@ -191,7 +191,7 @@ extents = Vector2( 64, 64 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 15 ),
+"shape": SubResource( 14 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 64, 64 )
 } ]
 7/z_index = 0
@@ -207,7 +207,7 @@ extents = Vector2( 64, 64 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 7 ),
+"shape": SubResource( 15 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 64, 64 )
 } ]
 8/z_index = 0
@@ -233,7 +233,7 @@ extents = Vector2( 64, 64 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 8 ),
+"shape": SubResource( 3 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 64, 64 )
 } ]
 10/z_index = 0
@@ -249,7 +249,7 @@ extents = Vector2( 64, 64 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 9 ),
+"shape": SubResource( 4 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 64, 64 )
 } ]
 11/z_index = 0
@@ -265,7 +265,7 @@ extents = Vector2( 64, 64 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 10 ),
+"shape": SubResource( 5 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 64, 64 )
 } ]
 12/z_index = 0
@@ -281,7 +281,7 @@ extents = Vector2( 64, 64 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 11 ),
+"shape": SubResource( 6 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 64, 46.892 )
 } ]
 13/z_index = 0
@@ -297,7 +297,7 @@ extents = Vector2( 64, 64 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 12 ),
+"shape": SubResource( 7 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 63.771, 46.8439 )
 } ]
 14/z_index = 0
@@ -313,7 +313,7 @@ extents = Vector2( 64, 64 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 13 ),
+"shape": SubResource( 8 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 63.8363, 46.4073 )
 } ]
 15/z_index = 0
@@ -329,7 +329,7 @@ extents = Vector2( 64, 64 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 14 ),
+"shape": SubResource( 9 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 64, 64 )
 } ]
 16/z_index = 0
