@@ -1,34 +1,33 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Ground_Tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://TileMap.gd" type="Script" id=2]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://oyun sprite/graveyardtilesetnew/png/BG.png" type="Texture" id=4]
-[ext_resource path="res://Upgrade_Bullet.tscn" type="PackedScene" id=5]
-[ext_resource path="res://oyun sprite/png/Window2s.png" type="Texture" id=6]
-[ext_resource path="res://oyun sprite/fonts/coffin_stone/coffinstoneexpand.ttf" type="DynamicFontData" id=7]
-[ext_resource path="res://Trambolin.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Zombie_Generator.gd" type="Script" id=9]
-[ext_resource path="res://zombie_scripts/Follow_Zombie.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Upgrade_Bullet.tscn" type="PackedScene" id=4]
+[ext_resource path="res://oyun sprite/png/Window2s.png" type="Texture" id=5]
+[ext_resource path="res://oyun sprite/fonts/coffin_stone/coffinstoneexpand.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Trambolin.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Zombie_Generator.gd" type="Script" id=8]
+[ext_resource path="res://zombie_scripts/Follow_Zombie.tscn" type="PackedScene" id=9]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
-atlas = ExtResource( 6 )
+atlas = ExtResource( 5 )
 region = Rect2( 1894.66, 910.469, 119.713, 129.236 )
 
 [sub_resource type="AtlasTexture" id=2]
 flags = 4
-atlas = ExtResource( 6 )
+atlas = ExtResource( 5 )
 region = Rect2( 502.319, 1801.44, 506.196, 120.134 )
 
 [sub_resource type="AtlasTexture" id=3]
 flags = 4
-atlas = ExtResource( 6 )
+atlas = ExtResource( 5 )
 region = Rect2( 1617.74, 1795.05, 336.842, 55.7896 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 20
-font_data = ExtResource( 7 )
+font_data = ExtResource( 6 )
 
 [node name="stage1" type="Node2D"]
 
@@ -36,29 +35,16 @@ font_data = ExtResource( 7 )
 position = Vector2( -0.00012207, -123.929 )
 scale = Vector2( 0.827, 0.827 )
 tile_set = ExtResource( 1 )
-cell_size = Vector2( 32, 32 )
-cell_quadrant_size = 32
+cell_size = Vector2( 128, 128 )
+cell_quadrant_size = 128
 format = 1
-tile_data = PoolIntArray( 458800, 20, 0, 720951, 2, 0, 786478, 22, 0, 786495, 24, 0, 852018, 18, 0, 852030, 18, 0, 917549, 13, 0, 917553, 14, 0, 917557, 14, 0, 917561, 14, 0, 917565, 14, 0, 917569, 15, 0, 983123, 1, 0, 983127, 0, 0, 983131, 0, 0, 983135, 6, 0, 1048591, 20, 0, 1114139, 2, 0, 1179689, 2, 0, 1245267, 27, 0, 1245271, 3, 0, 1245275, 3, 0, 1245279, 26, 0, 1310744, 2, 0, 1310747, 2, 0, 1376264, 25, 0, 1376273, 17, 0, 1376293, 13, 0, 1376297, 15, 0, 1376331, 23, 0, 1376334, 23, 0, 1441804, 18, 0, 1441806, 18, 0, 1441807, 19, 0, 1507333, 1, 0, 1507337, 0, 0, 1507341, 0, 0, 1507345, 0, 0, 1507349, 0, 0, 1507353, 0, 0, 1507357, 0, 0, 1507361, 6, 0, 1507397, 1, 0, 1507401, 0, 0, 1507405, 0, 0, 1507409, 0, 0, 1507413, 0, 0, 1507417, 0, 0, 1507421, 0, 0, 1507425, 0, 0, 1507429, 0, 0, 1507433, 6, 0 )
+tile_data = PoolIntArray( -393214, 2, 0, -393213, 2, 0, -393212, 2, 0, -393211, 2, 0, -393210, 2, 0, -327674, 2, 0, -262138, 2, 0, -196602, 2, 0, -196601, 2, 0, -131064, 2, 0, -65528, 2, 0, 7, 2, 0, 65543, 2, 0, 131079, 2, 0, 196615, 2, 0, 262151, 2, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 327692, 0, 0, 393221, 2, 0, 458757, 2, 0, 458758, 2, 0, 524294, 2, 0, 524295, 2, 0, 589832, 2, 0, 589833, 2, 0, 655369, 2, 0, 655370, 2, 0, 720906, 2, 0, 720907, 2, 0, 720908, 2, 0, 786444, 2, 0, 786445, 2, 0, 851981, 2, 0, 851982, 2, 0, 917518, 2, 0, 917519, 2, 0, 917520, 2, 0 )
 script = ExtResource( 2 )
 
 [node name="player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 519.792, 159.258 )
+position = Vector2( 776, -225 )
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-scroll_base_scale = Vector2( 0.01, 0.01 )
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2( -235.496, 11.6913 )
-motion_mirroring = Vector2( 1652.94, 0 )
-
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 226.058, -263.935 )
-scale = Vector2( 0.827, 0.827 )
-texture = ExtResource( 4 )
-centered = false
-
-[node name="upgrade" parent="." instance=ExtResource( 5 )]
+[node name="upgrade" parent="." instance=ExtResource( 4 )]
 position = Vector2( 673.819, 362.905 )
 
 [node name="Game_UI" type="CanvasLayer" parent="."]
@@ -117,11 +103,12 @@ text = "30
 "
 scroll_active = false
 
-[node name="trambolin" parent="." instance=ExtResource( 8 )]
+[node name="trambolin" parent="." instance=ExtResource( 7 )]
 position = Vector2( 999.766, 413.797 )
 
 [node name="Zombie_Generator" type="Node2D" parent="."]
-script = ExtResource( 9 )
+position = Vector2( -9, 0 )
+script = ExtResource( 8 )
 
-[node name="Female_Zombie" parent="." instance=ExtResource( 10 )]
+[node name="Female_Zombie" parent="." instance=ExtResource( 9 )]
 position = Vector2( 294.115, 219.52 )
