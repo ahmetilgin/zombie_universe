@@ -90,7 +90,7 @@ position = Vector2( -39.2369, -57.9162 )
 scale = Vector2( 0.197407, 0.211089 )
 frames = SubResource( 2 )
 animation = "attack"
-frame = 7
+frame = 1
 playing = true
 centered = false
 

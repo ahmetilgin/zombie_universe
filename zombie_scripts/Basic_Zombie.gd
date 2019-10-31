@@ -16,25 +16,21 @@ var is_follow = false
 var path = []
 
 
-func move_to(world_position):
-	var MASS = 10.0
-	var ARRIVE_DISTANCE = 5.0
+func move_to():
+	if len(path) > 0:
+		var ARRIVE_DISTANCE = 5.0
 
-	var desired_velocity = (world_position - position).normalized() * speed
-	var steering = desired_velocity - velocity
-	velocity += steering / MASS
-	position += velocity * get_process_delta_time() * 5
-	return position.distance_to(world_position) < ARRIVE_DISTANCE
-
+		var direction = (target_point_world - get_global_position()).normalized()
+		set_global_position(target_point_world)
+		return get_global_position().distance_to(target_point_world) < ARRIVE_DISTANCE
 
 func follow_path():	
-	var arrived_to_next_point = move_to(target_point_world)
-	if arrived_to_next_point:
+	if move_to():
+		path.pop_front()
 		if len(path) > 0:
-			path.remove(0)
-		if len(path) == 0:
-			return
-		target_point_world = path[0]
+			target_point_world = path[0]	
+	pass
+		
 		
 
 func _get_path():
@@ -42,6 +38,7 @@ func _get_path():
 	path = get_parent().get_node('TileMap')._get_path(get_global_position(), player.get_global_position())
 	if not path or len(path) == 1:
 			return
+	target_point_world = path[0]
 		
 func _set_is_follow(follow):
 	is_follow = follow
