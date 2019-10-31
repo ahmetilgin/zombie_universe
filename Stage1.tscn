@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://Ground_Tiles.tres" type="TileSet" id=1]
+[ext_resource path="res://new_ground.tres" type="TileSet" id=1]
 [ext_resource path="res://TileMap.gd" type="Script" id=2]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Upgrade_Bullet.tscn" type="PackedScene" id=4]
@@ -35,10 +35,9 @@ font_data = ExtResource( 6 )
 position = Vector2( -0.00012207, -123.929 )
 scale = Vector2( 0.827, 0.827 )
 tile_set = ExtResource( 1 )
-cell_size = Vector2( 128, 128 )
+cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 128
 format = 1
-tile_data = PoolIntArray( -393214, 2, 0, -393213, 2, 0, -393212, 2, 0, -393211, 2, 0, -393210, 2, 0, -327674, 2, 0, -262138, 2, 0, -196602, 2, 0, -196601, 2, 0, -131064, 2, 0, -65528, 2, 0, 7, 2, 0, 65543, 2, 0, 131079, 2, 0, 196615, 2, 0, 262151, 2, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 327692, 0, 0, 393221, 2, 0, 458757, 2, 0, 458758, 2, 0, 524294, 2, 0, 524295, 2, 0, 589832, 2, 0, 589833, 2, 0, 655369, 2, 0, 655370, 2, 0, 720906, 2, 0, 720907, 2, 0, 720908, 2, 0, 786444, 2, 0, 786445, 2, 0, 851981, 2, 0, 851982, 2, 0, 917518, 2, 0, 917519, 2, 0, 917520, 2, 0 )
 script = ExtResource( 2 )
 
 [node name="player" parent="." instance=ExtResource( 3 )]
