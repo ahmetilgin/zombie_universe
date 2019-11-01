@@ -114,5 +114,5 @@ script = ExtResource( 8 )
 [node name="Female_Zombie" parent="." instance=ExtResource( 9 )]
 position = Vector2( 655, -751 )
 
-[node name="RigidBody2D" parent="." instance=ExtResource( 10 )]
-position = Vector2( 280, -1256 )
+[node name="stone" parent="." instance=ExtResource( 10 )]
+position = Vector2( 23.9999, -1256 )
