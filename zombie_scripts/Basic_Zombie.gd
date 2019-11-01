@@ -3,6 +3,7 @@ extends KinematicBody2D
 var target_point_world = Vector2()
 var FollowPlayerTimer = Timer.new()
 var velocity = Vector2()
+onready var player = get_parent().get_node('player/CollisionShape2D')
 const gravity=20
 export (int) var hp=1
 export (int) var speed=100
@@ -18,7 +19,7 @@ var path = []
 
 func move_to():
 	if len(path) > 0:
-		var ARRIVE_DISTANCE = 5.0
+		var ARRIVE_DISTANCE = 20
 
 		var direction = (target_point_world - get_global_position()).normalized()
 		set_global_position(target_point_world)
@@ -34,7 +35,6 @@ func follow_path():
 		
 
 func _get_path():
-	var player = get_parent().get_node('player/CollisionShape2D')
 	path = get_parent().get_node('TileMap')._get_path(get_global_position(), player.get_global_position())
 	if not path or len(path) == 1:
 			return
@@ -104,6 +104,7 @@ func _set_zombie_position(new_position):
 
 
 func _on_FollowPlayerTimer_timeout():
-	_get_path()
+	if get_global_position().distance_to(player.get_global_position()) > 500:
+		_get_path()
 		
 	pass # Replace with function body.

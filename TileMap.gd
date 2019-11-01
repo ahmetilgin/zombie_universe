@@ -6,7 +6,10 @@ onready var _half_cell_size = cell_size / 2
 var world_path = []
 const BASE_LINE_WIDTH = 3.0
 const DRAW_COLOR = Color('#fff')
-
+const PLAYER_COLOR = Color('#00f')
+const TARGET_COLOR = Color('#f00')
+var init_pos = Vector2()
+var target_pos = Vector2()
 
 func calculate_point_index(point: Vector2) -> float:
     return point.x + map_size.x * point.y
@@ -53,9 +56,10 @@ func _ready() -> void:
     connect_walkable_cells(cells)
 
 func _get_path(init_position: Vector2, target_position: Vector2) -> Array:
-
-	var start_position: = world_to_map(init_position)
-	var end_position: = world_to_map(target_position)
+	init_pos = init_position
+	target_pos = target_position
+	var start_position = world_to_map(init_position)
+	var end_position = world_to_map(target_position)
 
 	var path: = find_path(start_position, end_position)
 	world_path = []
@@ -67,6 +71,8 @@ func _get_path(init_position: Vector2, target_position: Vector2) -> Array:
 
 func _draw():
 	var i = 1
+	draw_circle(init_pos , 20, PLAYER_COLOR)
+	draw_circle(target_pos, 20, TARGET_COLOR)
 	if len(world_path) > 2:
 		for point_index in range(0,len(world_path) - 1):
 			i = i + 1
@@ -82,10 +88,3 @@ func find_path(start_position: Vector2, end_position: Vector2) -> Array:
 		calculate_point_index(start_position),
 		calculate_point_index(end_position))
 	return map_path
-
-func get_pawn(coordinate: Vector2) -> Dictionary:
-    var coord = world_to_map(coordinate)
-    for unit in get_children():
-        if world_to_map(unit.position) == coord:
-            return { "some": unit }
-    return { "none": 0 }

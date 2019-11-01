@@ -115,4 +115,4 @@ script = ExtResource( 8 )
 position = Vector2( 655, -751 )
 
 [node name="RigidBody2D" parent="." instance=ExtResource( 10 )]
-position = Vector2( -104, -1256 )
+position = Vector2( 280, -1256 )

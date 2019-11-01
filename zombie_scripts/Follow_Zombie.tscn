@@ -76,7 +76,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 1.47121, 0.197591 )
+extents = Vector2( 0.0799026, 0.00164604 )
 
 [node name="Zombie_Body" type="KinematicBody2D"]
 position = Vector2( 404.918, 267.165 )
@@ -96,12 +96,12 @@ rotation = -3.14159
 scale = Vector2( -28.6544, 113.058 )
 z_as_relative = false
 shape = SubResource( 2 )
+disabled = true
 one_way_collision_margin = 0.0
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2( 27.0186, -34.5694 )
 scale = Vector2( 1.18694, 1.7588 )
-enabled = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
