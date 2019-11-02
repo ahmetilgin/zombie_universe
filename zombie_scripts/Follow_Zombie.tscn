@@ -76,7 +76,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 0.0799026, 0.00164604 )
+extents = Vector2( 0.365235, 0.410716 )
 
 [node name="Zombie_Body" type="KinematicBody2D"]
 position = Vector2( 404.918, 267.165 )
@@ -86,21 +86,22 @@ script = ExtResource( 1 )
 position = Vector2( -57.698, -65.7058 )
 scale = Vector2( 0.187484, 0.207584 )
 frames = SubResource( 1 )
-animation = "hurt"
+animation = "attack"
+frame = 7
 speed_scale = 3.0
+playing = true
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -5.15433, -16.146 )
+position = Vector2( -3.57101, 10.4519 )
 rotation = -3.14159
-scale = Vector2( -28.6544, 113.058 )
+scale = Vector2( -95.231, 104.237 )
 z_as_relative = false
 shape = SubResource( 2 )
-disabled = true
 one_way_collision_margin = 0.0
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2( 27.0186, -34.5694 )
+position = Vector2( 14.1887, -39.475 )
 scale = Vector2( 1.18694, 1.7588 )
 
 [node name="Timer" type="Timer" parent="."]

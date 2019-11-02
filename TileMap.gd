@@ -65,18 +65,17 @@ func _get_path(init_position: Vector2, target_position: Vector2) -> Array:
 	world_path = []
 	for point in path:
 		var point_world: = map_to_world(Vector2(point.x, point.y))
-		world_path.append(point_world)
+		world_path.append(point_world + _half_cell_size)
 	update()
 	return world_path
 
 func _draw():
 	var i = 1
-	draw_circle(init_pos , 20, PLAYER_COLOR)
-	draw_circle(target_pos, 20, TARGET_COLOR)
+	draw_circle(init_pos , 10, PLAYER_COLOR)
+	draw_circle(target_pos, 10, TARGET_COLOR)
 	if len(world_path) > 2:
 		for point_index in range(0,len(world_path) - 1):
-			i = i + 1
-			draw_circle(world_path[point_index] , i, DRAW_COLOR)
+			draw_circle(world_path[point_index] , 5 , DRAW_COLOR)
 
 
 

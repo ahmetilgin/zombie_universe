@@ -13,17 +13,12 @@ var is_hurt=false
 func dead(damage):
 	
 	hp-=damage
-	if hp<0:
-		
-		is_dead=true
-		
+	if hp<0:		
+		is_dead=true	
 		motion=Vector2(0,0)
 		$AnimatedSprite.position.y+=10
-		$AnimatedSprite.play("dead")
-		
-		
-		$Timer.start()
-		
+		$AnimatedSprite.play("dead")		
+		$Timer.start()		
 	else:
 		is_hurt=true
 		
@@ -102,7 +97,7 @@ func _physics_process(delta):
 						elif Player.position.x>position.x:
 							motion.x=300
 							$AnimatedSprite.flip_h=false
-						
+
 						else:
 							motion.x=0
 							"""
