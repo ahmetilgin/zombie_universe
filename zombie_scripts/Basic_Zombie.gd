@@ -21,16 +21,19 @@ func move_to():
 		var ARRIVE_DISTANCE = 50
 		var dir = sign(((target_point_world - get_global_position()).normalized()).x)
 		if dir == 1:
-			dir = Vector2(1,0)
+			dir = Vector2(min(motion.x+20,300),0)
 		else:
-			dir = Vector2(-1, 0)
+			dir = Vector2(max(motion.x-20,-300), 0)
 			
-		motion += dir
+		
+		motion = dir
+		motion.y+=500
+		
 		return get_global_position().distance_to(target_point_world) < ARRIVE_DISTANCE
 	
 func follow_path():	
 	$AnimatedSprite.flip_h = sign(player.get_global_position().x - get_global_position().x) != 1	
-	if player.get_global_position().distance_to(get_global_position()) < 200:
+	if player.get_global_position().distance_to(get_global_position()) < 100:
 		$AnimatedSprite.play("idle")
 	else:
 		$AnimatedSprite.play("walk")
