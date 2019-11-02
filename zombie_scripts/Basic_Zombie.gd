@@ -19,8 +19,15 @@ var path = []
 func move_to():
 	if len(path) > 1:
 		var ARRIVE_DISTANCE = 50
+		var dir = sign(((target_point_world - get_global_position()).normalized()).x)
+		if dir == 1:
+			dir = Vector2(1,0)
+		else:
+			dir = Vector2(-1, 0)
+			
+		motion += dir
 		return get_global_position().distance_to(target_point_world) < ARRIVE_DISTANCE
-
+	
 func follow_path():	
 	$AnimatedSprite.flip_h = sign(player.get_global_position().x - get_global_position().x) != 1	
 	if player.get_global_position().distance_to(get_global_position()) < 200:
@@ -81,11 +88,10 @@ func _jump_is_on_wall():
 func _physics_process(delta):
 	if is_dead==false:
 		if is_hurt==false:
-			motion = (target_point_world - get_global_position()).normalized() * 150
 			motion.y += gravity
+			motion = move_and_slide(motion, UP)
 			_jump_is_on_wall()
 			follow_path()
-			motion = move_and_slide(motion)
 #			if get_slide_count()>0:
 #				for i in range(get_slide_count()):
 #					if "player" in get_slide_collision(i).collider.name:
