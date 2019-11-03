@@ -32,8 +32,9 @@ func move_to():
 		return get_global_position().distance_to(target_point_world) < ARRIVE_DISTANCE
 	
 func follow_path():	
-	$AnimatedSprite.flip_h = sign(player.get_global_position().x - get_global_position().x) != 1	
-	if player.get_global_position().distance_to(get_global_position()) < 100:
+	if len(path) > 2:
+		$AnimatedSprite.flip_h = sign(path[1].x - get_global_position().x) != 1	
+	if player.get_global_position().distance_to(get_global_position()) < 200:
 		$AnimatedSprite.play("idle")
 	else:
 		$AnimatedSprite.play("walk")
