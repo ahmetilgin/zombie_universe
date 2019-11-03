@@ -75,7 +75,7 @@ func _draw():
 	draw_circle(target_pos, 10, TARGET_COLOR)
 	if len(world_path) > 2:
 		for point_index in range(0,len(world_path) - 1):
-			draw_circle(world_path[point_index] , 5 , DRAW_COLOR)
+			draw_circle(world_path[point_index] , 10 , DRAW_COLOR)
 
 
 

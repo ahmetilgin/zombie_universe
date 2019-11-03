@@ -26,9 +26,8 @@ func _physics_process(delta):
 		$Timer.start()
 	print(get_floor_velocity())
 	velocity=move_and_slide(velocity,Vector2(0,-1))
+	
 	"""
-	set_constant_linear_velocity(Vector2(0,30))
-	get_constant_linear_velocity()
 
 func _on_Timer_timeout():
 	down=true

@@ -1,5 +1,5 @@
 extends KinematicBody2D
-
+var total_distance
 var target_point_world = Vector2()
 var FollowPlayerTimer = Timer.new()
 var velocity = Vector2(20,20)
@@ -21,20 +21,26 @@ func move_to():
 		var ARRIVE_DISTANCE = 50
 		var dir = sign(((target_point_world - get_global_position()).normalized()).x)
 		if dir == 1:
-			dir = Vector2(min(motion.x+20,300),0)
+			dir = min(motion.x+20,300)
 		else:
-			dir = Vector2(max(motion.x-20,-300), 0)
-			
-		
-		motion = dir
-		motion.y+=500
+			dir = max(motion.x-20,-300)
+		total_distance =Vector2(0,0)
+		for i in range(0, len(path) - 1):
+			total_distance += path[i + 1] - path[i]
+			if path[i].x != path[i + 1].x:
+				break
+		motion.x = dir
+		if total_distance.y < -31 and player.get_global_position().y< get_global_position().y and is_on_floor():
+			motion.y -= 500
+		motion.y += 10
+		motion=move_and_slide(motion,UP)
 		
 		return get_global_position().distance_to(target_point_world) < ARRIVE_DISTANCE
 	
 func follow_path():	
 	if len(path) > 2:
 		$AnimatedSprite.flip_h = sign(path[1].x - get_global_position().x) != 1	
-	if player.get_global_position().distance_to(get_global_position()) < 200:
+	if player.get_global_position().distance_to(get_global_position()) < 95:
 		$AnimatedSprite.play("idle")
 	else:
 		$AnimatedSprite.play("walk")
