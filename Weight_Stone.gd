@@ -1,7 +1,8 @@
-extends StaticBody2D
+extends KinematicBody2D
 var velocity=Vector2(0,0)
-var gravity=30
-var down=true
+var gravity=Vector2(0,30)
+var down=1
+onready var floore=get_node("Stage1")
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -16,25 +17,23 @@ func _ready():
 #	pass
 
 func _physics_process(delta):
-	"""
-	if down==true:
-		velocity.y+=gravity
+	if down==-1:
+		 
+		set_global_position(get_global_position()+gravity*delta*5)
+	else:
+		 
+		set_global_position(get_global_position()-gravity*delta*5)
 		
-	if is_on_floor():
-		down=false
-		velocity.y-=gravity
-		$Timer.start()
-	print(get_floor_velocity())
-	velocity=move_and_slide(velocity,Vector2(0,-1))
 	
-	"""
+	
+	
 
 func _on_Timer_timeout():
-	down=true
+	down*=-1
 
 
 func _on_Area2D_body_exited(body):
 	if "player" in body.name:
-		body.dead(50)
+		body.dead(101)
 	if "Zombie" in body.name:
-		body.dead(50) 
+		body.dead(101) 

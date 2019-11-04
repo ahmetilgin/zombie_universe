@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://new_ground.tres" type="TileSet" id=1]
 [ext_resource path="res://TileMap.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Trambolin.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Zombie_Generator.gd" type="Script" id=8]
 [ext_resource path="res://zombie_scripts/Follow_Zombie.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Weight_Stone.tscn" type="PackedScene" id=10]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -112,3 +113,6 @@ script = ExtResource( 8 )
 
 [node name="Female_Zombie" parent="." instance=ExtResource( 9 )]
 position = Vector2( 2166, 580 )
+
+[node name="stone" parent="." instance=ExtResource( 10 )]
+position = Vector2( 1839.68, 320.232 )
