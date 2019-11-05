@@ -34,7 +34,6 @@ onready var player_health = get_node("../Game_UI/Player_Health")
 onready var updated_tween = get_node("../Game_UI/Updated_Tween")
 const basic_zombie = preload("res://zombie_scripts/Basic_Zombie.tscn")
 
-
 func _set_current_bullet(bullet):
 	current_bullet = bullet
 
@@ -102,6 +101,8 @@ func _play_attack_animation():
 	_play_animation("attack")	
 
 func _move_slide():
+	$CollisionShape2D.scale = Vector2 (1, 0.7)
+
 	if $AnimatedSprite.flip_h==false:
 		motion.x = slide_speed
 	else:
@@ -135,6 +136,8 @@ func _clear_states():
 	is_down=false
 	is_hurt=false
 	is_melee=false
+	$CollisionShape2D.scale = Vector2 (1, 1)
+
 	
 var UP = Vector2(0,-1)
 

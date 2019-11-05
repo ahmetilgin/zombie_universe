@@ -19,22 +19,7 @@ var path = []
 func move_to():
 	if len(path) > 1:
 		var ARRIVE_DISTANCE = 50
-		var dir = sign(((target_point_world - get_global_position()).normalized()).x)
-		if dir == 1:
-			dir = min(motion.x+20,300)
-		else:
-			dir = max(motion.x-20,-300)
-		total_distance =Vector2(0,0)
-		for i in range(0, len(path) - 1):
-			total_distance += path[i + 1] - path[i]
-			if path[i].x != path[i + 1].x:
-				break
-		motion.x = dir
-		if total_distance.y < -31 and player.get_global_position().y< get_global_position().y and is_on_floor():
-			motion.y -= 500
-		motion.y += 10
-		motion=move_and_slide(motion,UP)
-		
+		move_and_slide((target_point_world-get_global_position()) * 5)
 		return get_global_position().distance_to(target_point_world) < ARRIVE_DISTANCE
 	
 func follow_path():	
