@@ -39,21 +39,16 @@ func follow_path():
 		
 
 func _get_path():
-	path = get_parent().get_node('TileMap')._get_path(get_global_position(), player.get_global_position())
-	path.pop_front()
+	if len(path) < 2:
+		path = get_parent().get_node('TileMap')._get_path(get_global_position(), player.get_global_position())
+		path.pop_front()
 	if not path or len(path) == 1:
 			return
 	target_point_world = path[0]
 		
 func _set_is_follow(follow):
 	is_follow = follow
-	FollowPlayerTimer.connect("timeout",self,"_on_FollowPlayerTimer_timeout") 
-	#timeout is what says in docs, in signals
-	#self is who respond to the callback
-	#_on_timer_timeout is the callback, can have any name
-	add_child(FollowPlayerTimer) #to process
-	FollowPlayerTimer.set_wait_time(5)
-	FollowPlayerTimer.start() #to start
+
 
 func dead(damage):
 	
@@ -103,7 +98,4 @@ func _on_AnimatedSprite_animation_finished():
 func _set_zombie_position(new_position):
 	$AnimatedSprite.position = new_position
 
-
-func _on_FollowPlayerTimer_timeout():	
-	pass
 
