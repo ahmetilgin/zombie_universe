@@ -1,34 +1,35 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://new_ground.tres" type="TileSet" id=1]
 [ext_resource path="res://TileMap.gd" type="Script" id=2]
-[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Upgrade_Bullet.tscn" type="PackedScene" id=4]
-[ext_resource path="res://oyun sprite/png/Window2s.png" type="Texture" id=5]
-[ext_resource path="res://oyun sprite/fonts/coffin_stone/coffinstoneexpand.ttf" type="DynamicFontData" id=6]
-[ext_resource path="res://Trambolin.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Zombie_Generator.gd" type="Script" id=8]
-[ext_resource path="res://zombie_scripts/Follow_Zombie.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Weight_Stone.tscn" type="PackedScene" id=10]
+[ext_resource path="res://zombie_scripts/Big_Zombie.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Upgrade_Bullet.tscn" type="PackedScene" id=5]
+[ext_resource path="res://oyun sprite/png/Window2s.png" type="Texture" id=6]
+[ext_resource path="res://oyun sprite/fonts/coffin_stone/coffinstoneexpand.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://Trambolin.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Zombie_Generator.gd" type="Script" id=9]
+[ext_resource path="res://zombie_scripts/Follow_Zombie.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Weight_Stone.tscn" type="PackedScene" id=11]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
-atlas = ExtResource( 5 )
+atlas = ExtResource( 6 )
 region = Rect2( 1894.66, 910.469, 119.713, 129.236 )
 
 [sub_resource type="AtlasTexture" id=2]
 flags = 4
-atlas = ExtResource( 5 )
+atlas = ExtResource( 6 )
 region = Rect2( 502.319, 1801.44, 506.196, 120.134 )
 
 [sub_resource type="AtlasTexture" id=3]
 flags = 4
-atlas = ExtResource( 5 )
+atlas = ExtResource( 6 )
 region = Rect2( 1617.74, 1795.05, 336.842, 55.7896 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 20
-font_data = ExtResource( 6 )
+font_data = ExtResource( 7 )
 
 [node name="stage1" type="Node2D"]
 
@@ -42,10 +43,13 @@ format = 1
 tile_data = PoolIntArray( 1507391, 23, 0, 1507392, 23, 0, 1507393, 23, 0, 1507394, 23, 0, 1507395, 23, 0, 1507396, 23, 0, 1507397, 23, 0, 1507398, 23, 0, 1507399, 23, 0, 1507400, 23, 0, 1769480, 23, 0, 1769481, 23, 0, 1769482, 23, 0, 1769483, 23, 0, 1769484, 23, 0, 1769485, 23, 0, 1769486, 23, 0, 1769487, 23, 0, 1769488, 23, 0, 1769489, 23, 0, 1769490, 23, 0, 1769491, 23, 0, 1769492, 23, 0, 1769493, 23, 0, 1769494, 23, 0, 1769495, 23, 0, 1769496, 23, 0, 1769497, 23, 0, 1769498, 23, 0, 1769499, 23, 0, 1769500, 23, 0, 1769501, 23, 0, 1769502, 23, 0, 1769503, 23, 0, 1769504, 23, 0, 1769505, 23, 0, 1769506, 23, 0, 1769507, 23, 0, 1769508, 23, 0, 1769509, 23, 0, 1769510, 23, 0, 1769511, 23, 0, 1769512, 23, 0, 1769513, 23, 0, 1769514, 23, 0, 1769515, 23, 0, 1769516, 23, 0, 1769517, 23, 0, 1769518, 23, 0, 1769519, 23, 0, 1769520, 23, 0, 1769521, 23, 0, 1769522, 23, 0, 1769523, 23, 0, 1769524, 23, 0, 1769525, 23, 0, 1769526, 23, 0, 1769527, 23, 0, 1769528, 23, 0, 1769529, 23, 0, 1769530, 23, 0, 1769531, 23, 0, 1769532, 23, 0, 1769533, 23, 0, 1769534, 23, 0, 1769535, 23, 0, 1769536, 23, 0, 1769537, 23, 0, 1769538, 23, 0, 1769539, 23, 0, 1769540, 23, 0, 1769541, 23, 0, 1769542, 23, 0, 1769543, 23, 0, 1769544, 23, 0, 1769545, 23, 0, 1769546, 23, 0, 1769547, 23, 0, 1769548, 23, 0, 1769549, 23, 0, 1769550, 23, 0, 1769551, 23, 0, 1769552, 23, 0, 1769553, 23, 0, 1769554, 23, 0, 1769555, 23, 0, 1769556, 23, 0, 1769557, 23, 0, 1769558, 23, 0, 1769559, 23, 0, 1769560, 23, 0, 1769561, 23, 0, 1769562, 23, 0, 1835042, 23, 0, 1835043, 23, 0, 1835044, 23, 0, 1835051, 23, 0, 1835052, 23, 0, 1835053, 23, 0, 1835054, 23, 0, 1835055, 23, 0, 1835056, 23, 0, 1835057, 23, 0, 1835058, 23, 0, 1835059, 23, 0, 1835064, 23, 0, 1835065, 23, 0, 1835066, 23, 0, 1835067, 23, 0, 1835068, 23, 0, 1835069, 23, 0, 1835070, 23, 0, 1835093, 23, 0, 1835094, 23, 0, 1835095, 23, 0, 1835097, 23, 0, 1900591, 23, 0, 1900592, 23, 0, 1900593, 23, 0, 1900606, 23, 0, 2097220, 23, 0, 2162751, 23, 0, 2162752, 23, 0 )
 script = ExtResource( 2 )
 
-[node name="player" parent="." instance=ExtResource( 3 )]
+[node name="Big_Zombie" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2779.77, 820.803 )
+
+[node name="player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1988.85, 819.651 )
 
-[node name="upgrade" parent="." instance=ExtResource( 4 )]
+[node name="upgrade" parent="." instance=ExtResource( 5 )]
 position = Vector2( 673.819, 362.905 )
 
 [node name="Game_UI" type="CanvasLayer" parent="."]
@@ -104,15 +108,16 @@ text = "30
 "
 scroll_active = false
 
-[node name="trambolin" parent="." instance=ExtResource( 7 )]
+[node name="trambolin" parent="." instance=ExtResource( 8 )]
 position = Vector2( 1469, 403 )
 
 [node name="Zombie_Generator" type="Node2D" parent="."]
 position = Vector2( -9, 0 )
-script = ExtResource( 8 )
+script = ExtResource( 9 )
 
-[node name="Female_Zombie" parent="." instance=ExtResource( 9 )]
+[node name="Female_Zombie" parent="." instance=ExtResource( 10 )]
 position = Vector2( 2166, 580 )
+hp = 5
 
-[node name="stone" parent="." instance=ExtResource( 10 )]
+[node name="stone" parent="." instance=ExtResource( 11 )]
 position = Vector2( 1801, 297 )

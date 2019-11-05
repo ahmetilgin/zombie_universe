@@ -63,7 +63,8 @@ func dead(damage):
 		$Timer.start()
 	else:
 		is_hurt=true
-		
+		if is_hurt:
+			$Particles2D.emitting=true
 		$AnimatedSprite.play("hurt")	
 
 func _jump_is_on_wall():
@@ -94,6 +95,7 @@ func _on_Timer_timeout():
 
 func _on_AnimatedSprite_animation_finished():
 	is_hurt=false
+	
 	
 func _set_zombie_position(new_position):
 	$AnimatedSprite.position = new_position

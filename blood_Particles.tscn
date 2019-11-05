@@ -1,0 +1,80 @@
+[gd_scene load_steps=13 format=2]
+
+[sub_resource type="CanvasItemMaterial" id=4]
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="Curve" id=6]
+min_value = -360.0
+max_value = 360.0
+_data = [ Vector2( 0, -159.192 ), 0.0, 0.0, 0, 0, Vector2( 0.97689, 360 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=7]
+curve = SubResource( 6 )
+
+[sub_resource type="Curve" id=14]
+max_value = 200.0
+_data = [ Vector2( 0.016835, 200 ), 0.0, 0.0, 0, 0, Vector2( 0.97689, 200 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=15]
+curve = SubResource( 14 )
+
+[sub_resource type="Gradient" id=8]
+offsets = PoolRealArray( 0, 0, 0.703704, 1 )
+colors = PoolColorArray( 0.215686, 0.00784314, 0.00784314, 1, 0.321569, 0.00784314, 0.00784314, 1, 0.352941, 0.0156863, 0.0156863, 1, 0.517647, 0.00784314, 0.00784314, 1 )
+
+[sub_resource type="GradientTexture" id=9]
+gradient = SubResource( 8 )
+width = 4000
+
+[sub_resource type="Curve" id=10]
+min_value = -200.0
+max_value = 200.0
+_data = [ Vector2( 0.0105601, 0.440002 ), 0.0, 0.0, 0, 0, Vector2( 0.0795837, -3.07999 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=11]
+curve = SubResource( 10 )
+
+[sub_resource type="Curve" id=12]
+_data = [ Vector2( 0.0105601, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.2668 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=13]
+width = 2050
+curve = SubResource( 12 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+emission_shape = 1
+emission_sphere_radius = 0.01
+flag_disable_z = true
+spread = 130.25
+gravity = Vector3( 9, 0, 0 )
+initial_velocity = 12.49
+initial_velocity_random = 1.0
+angular_velocity = 720.0
+angular_velocity_curve = SubResource( 7 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 52.87
+linear_accel_curve = SubResource( 11 )
+damping = 19.55
+scale = 2.6
+scale_curve = SubResource( 13 )
+color_ramp = SubResource( 9 )
+hue_variation = 1.0
+anim_speed = 125.05
+anim_speed_curve = SubResource( 15 )
+
+[node name="Particles2D" type="Particles2D"]
+material = SubResource( 4 )
+position = Vector2( 100.874, 173.967 )
+scale = Vector2( 3.2788, 3.82437 )
+emitting = false
+amount = 200
+one_shot = true
+speed_scale = 3.0
+explosiveness = 0.63
+randomness = 1.0
+fract_delta = false
+process_material = SubResource( 5 )

@@ -21,7 +21,8 @@ func dead(damage):
 		$Timer.start()		
 	else:
 		is_hurt=true
-		
+		if is_hurt:
+			$AnimatedSprite/Particles2D.emitting=true
 		$AnimatedSprite.play("hurt")
 		
 func _physics_process(delta):
@@ -144,6 +145,7 @@ func _on_AnimatedSprite_animation_finished():
 	is_attack=false
 	if is_attack==false:
 		$Area2D/CollisionShape2D.disabled=true
+		
 
 func _on_enemy_attack_body_entered(body):
 	if "player" in body.name:
