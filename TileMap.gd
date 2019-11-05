@@ -36,9 +36,7 @@ func connect_walkable_cells(points: Array) -> void:
         var index: = calculate_point_index(point)
         var points_relative: = PoolVector2Array([
             Vector2(point.x + 1, point.y),
-            Vector2(point.x - 1, point.y),
-            Vector2(point.x, point.y + 1),
-            Vector2(point.x, point.y - 1),
+            Vector2(point.x - 1, point.y)
         ])
         
         for point_relative in points_relative:

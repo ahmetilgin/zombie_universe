@@ -19,7 +19,7 @@ var path = []
 func move_to():
 	if len(path) > 1:
 		var ARRIVE_DISTANCE = 50
-		move_and_slide((target_point_world-get_global_position()) * 5)
+		move_and_slide((target_point_world-get_global_position()) * 4)
 		return get_global_position().distance_to(target_point_world) < ARRIVE_DISTANCE
 	
 func follow_path():	
