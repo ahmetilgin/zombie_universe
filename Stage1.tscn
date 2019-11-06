@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://new_ground.tres" type="TileSet" id=1]
 [ext_resource path="res://TileMap.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Zombie_Generator.gd" type="Script" id=9]
 [ext_resource path="res://zombie_scripts/Follow_Zombie.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Weight_Stone.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Fire_hellD.tscn" type="PackedScene" id=12]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -121,3 +122,7 @@ hp = 5
 
 [node name="stone" parent="." instance=ExtResource( 11 )]
 position = Vector2( 1801, 297 )
+
+[node name="Area2D" parent="." instance=ExtResource( 12 )]
+position = Vector2( 2452.86, 848.276 )
+scale = Vector2( 2, 1.5 )
