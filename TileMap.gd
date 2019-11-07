@@ -31,22 +31,35 @@ func is_outside_bounds(point: Vector2) -> bool:
     return point.x < 0\
         or point.y < 0 or point.x >= map_size.x or point.y >= map_size.y
 		
+func left_and_right_area_control(point, points_relative):
+	# sağ tarafta tile varsa o an ki point geçersiz
+	if  get_cellv(points_relative[0])  == INVALID_CELL:
+		return true
+		# sol tarafta tile varsa o tile geçersiz
+	elif get_cellv(points_relative[1]) == INVALID_CELL:
+		return true
+	else:
+		return false
+		
+
 func connect_walkable_cells(points: Array) -> void:
     for point in points:
         var index: = calculate_point_index(point)
         var points_relative: = PoolVector2Array([
             Vector2(point.x + 1, point.y),
-            Vector2(point.x - 1, point.y)
+            Vector2(point.x - 1, point.y),
+            Vector2(point.x, point.y + 1),
+            Vector2(point.x, point.y - 1),
         ])
-        
-        for point_relative in points_relative:
-            var index_relative: = calculate_point_index(point_relative)
-
-            if is_outside_bounds(point_relative):
-                continue    
-            if not astar.has_point(index_relative):
-                continue
-            astar.connect_points(index, index_relative, false)
+        if left_and_right_area_control(point,points_relative):
+	        for point_relative in points_relative:
+	            var index_relative: = calculate_point_index(point_relative)
+	
+	            if is_outside_bounds(point_relative):
+	                continue    
+	            if not astar.has_point(index_relative):
+	                continue
+	            astar.connect_points(index, index_relative, false)
 
 func _ready() -> void:
     var obstacles: = get_used_cells()

@@ -1,80 +1,88 @@
 [gd_scene load_steps=13 format=2]
 
-[sub_resource type="CanvasItemMaterial" id=4]
+[sub_resource type="CanvasItemMaterial" id=1]
 particles_animation = true
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = true
 
-[sub_resource type="Curve" id=6]
+[sub_resource type="Curve" id=2]
 min_value = -360.0
 max_value = 360.0
 _data = [ Vector2( 0, -159.192 ), 0.0, 0.0, 0, 0, Vector2( 0.97689, 360 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=7]
-curve = SubResource( 6 )
+[sub_resource type="CurveTexture" id=3]
+curve = SubResource( 2 )
 
-[sub_resource type="Curve" id=14]
+[sub_resource type="Curve" id=4]
 max_value = 200.0
 _data = [ Vector2( 0.016835, 200 ), 0.0, 0.0, 0, 0, Vector2( 0.97689, 200 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=15]
-curve = SubResource( 14 )
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
 
-[sub_resource type="Gradient" id=8]
-offsets = PoolRealArray( 0, 0, 0.703704, 1 )
-colors = PoolColorArray( 0.215686, 0.00784314, 0.00784314, 1, 0.321569, 0.00784314, 0.00784314, 1, 0.352941, 0.0156863, 0.0156863, 1, 0.517647, 0.00784314, 0.00784314, 1 )
+[sub_resource type="Gradient" id=6]
+offsets = PoolRealArray( -20.061, 0, 0, 0.27, 17.187 )
+colors = PoolColorArray( 0.215686, 0.00784314, 0.00784314, 1, 0.321569, 0.00784314, 0.00784314, 1, 0.870588, 0.100794, 0.0281373, 1, 1, 0.12207, 0.03125, 1, 0.352941, 0.0156863, 0.0156863, 1 )
 
-[sub_resource type="GradientTexture" id=9]
-gradient = SubResource( 8 )
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 6 )
 width = 4000
 
+[sub_resource type="Curve" id=8]
+min_value = -974.45
+max_value = 103.15
+_data = [ Vector2( 0.19465, 187.559 ), 0.0, 0.0, 0, 0, Vector2( 0.264444, 42.7116 ), 0.0, 0.0, 0, 0, Vector2( 0.273169, -102.136 ), -2788.48, 0.0, 0, 0, Vector2( 0.630864, 120.188 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=9]
+curve = SubResource( 8 )
+
 [sub_resource type="Curve" id=10]
-min_value = -200.0
-max_value = 200.0
-_data = [ Vector2( 0.0105601, 0.440002 ), 0.0, 0.0, 0, 0, Vector2( 0.0795837, -3.07999 ), 0.0, 0.0, 0, 0 ]
+max_value = 0.01
+_data = [ Vector2( 0.155391, 0.9983 ), 0.0, 0.0, 0, 0, Vector2( 0.456379, 0.4967 ), 0.0, 0.0, 0, 0, Vector2( 0.787901, 0.7959 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="CurveTexture" id=11]
+width = 2050
 curve = SubResource( 10 )
 
-[sub_resource type="Curve" id=12]
-_data = [ Vector2( 0.0105601, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.2668 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=13]
-width = 2050
-curve = SubResource( 12 )
-
-[sub_resource type="ParticlesMaterial" id=5]
+[sub_resource type="ParticlesMaterial" id=12]
 emission_shape = 1
-emission_sphere_radius = 0.01
+emission_sphere_radius = 7.8
+flag_rotate_y = true
 flag_disable_z = true
-spread = 130.25
+spread = 0.0
+flatness = 1.0
 gravity = Vector3( 9, 0, 0 )
-initial_velocity = 12.49
+initial_velocity = 34.98
 initial_velocity_random = 1.0
-angular_velocity = 720.0
-angular_velocity_curve = SubResource( 7 )
+angular_velocity = -380.49
+angular_velocity_curve = SubResource( 3 )
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-linear_accel = 52.87
-linear_accel_curve = SubResource( 11 )
-damping = 19.55
-scale = 2.6
-scale_curve = SubResource( 13 )
-color_ramp = SubResource( 9 )
+linear_accel = -100.0
+linear_accel_random = 0.37
+linear_accel_curve = SubResource( 9 )
+radial_accel = -55.0
+damping = 70.73
+damping_random = 0.4
+scale = 0.5
+scale_random = 0.37
+scale_curve = SubResource( 11 )
+color_ramp = SubResource( 7 )
 hue_variation = 1.0
-anim_speed = 125.05
-anim_speed_curve = SubResource( 15 )
+anim_speed = 112.8
+anim_speed_random = 1.0
+anim_speed_curve = SubResource( 5 )
+anim_offset_random = 1.0
 
 [node name="Particles2D" type="Particles2D"]
-material = SubResource( 4 )
+material = SubResource( 1 )
 position = Vector2( 100.874, 173.967 )
 scale = Vector2( 3.2788, 3.82437 )
 emitting = false
-amount = 200
+amount = 110
 one_shot = true
-speed_scale = 3.0
-explosiveness = 0.63
-randomness = 1.0
-fract_delta = false
-process_material = SubResource( 5 )
+preprocess = 19.66
+speed_scale = 4.95
+randomness = 0.05
+process_material = SubResource( 12 )
