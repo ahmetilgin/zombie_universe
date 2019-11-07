@@ -7,34 +7,24 @@ onready var player = get_parent().get_node('player/CollisionShape2D')
 const gravity=20
 export (int) var hp=1
 export (int) var speed=100
-var motion=Vector2()
-var direction=1
+var motion=Vector2(0,0)
 const UP=Vector2(0,-1)
 var is_dead=false
 var is_hurt=false
-
+var acceleration = 10
 var is_follow = false
 var path = []
 
 func move_to():
 	if len(path) > 1:
 		var ARRIVE_DISTANCE = 50
-		var dir = sign(((target_point_world - get_global_position()).normalized()).x)
-		if dir == 1:
-			dir = min(motion.x+20,100)
+		var direction = get_global_position().direction_to(target_point_world)
+		#var distance = target_point_world.direction_to(get_global_position())
+		motion += direction	
+		if direction.x > 0:
+			motion.x = min(motion.x + acceleration, speed)
 		else:
-			dir = max(motion.x-20,-100)
-		total_distance =Vector2(0,0)
-		for i in range(0, len(path) - 1):
-			total_distance += path[i + 1] - path[i]
-			if path[i].x != path[i + 1].x:
-				break
-		motion.x = dir
-		if total_distance.y < -64 and player.get_global_position().y< get_global_position().y and is_on_floor():
-			motion.y -= 500
-		motion.y += 10
-		motion=move_and_slide(motion,UP)
-		
+			motion.x = max(motion.x - acceleration, -speed)
 		return get_global_position().distance_to(target_point_world) < ARRIVE_DISTANCE
 	
 func follow_path():	
@@ -42,6 +32,7 @@ func follow_path():
 		$AnimatedSprite.flip_h = sign(path[1].x - get_global_position().x) != 1	
 	if player.get_global_position().distance_to(get_global_position()) < 94:
 		$AnimatedSprite.play("idle")
+		motion = Vector2(0, 0)
 	else:
 		$AnimatedSprite.play("walk")
 		_get_path()
@@ -99,9 +90,10 @@ func _physics_process(delta):
 	if is_dead==false:
 		if is_hurt==false:
 			motion.y += gravity
-			motion = move_and_slide(motion, UP)
-			_jump_is_on_wall()
 			follow_path()
+			_jump_is_on_wall()
+			motion = move_and_slide(motion, UP)
+
 #			if get_slide_count()>0:
 #				for i in range(get_slide_count()):
 #					if "player" in get_slide_collision(i).collider.name:
