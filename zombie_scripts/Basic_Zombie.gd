@@ -40,7 +40,7 @@ func move_to():
 func follow_path():	
 	if len(path) > 2:
 		$AnimatedSprite.flip_h = sign(path[1].x - get_global_position().x) != 1	
-	if player.get_global_position().distance_to(get_global_position()) < 30:
+	if player.get_global_position().distance_to(get_global_position()) < 94:
 		$AnimatedSprite.play("idle")
 	else:
 		$AnimatedSprite.play("walk")
