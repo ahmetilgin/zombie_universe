@@ -85,22 +85,27 @@ func _get_path(init_position: Vector2, target_position: Vector2) -> Array:
 	target_pos = target_position
 	var start_position = world_to_map(init_position)
 	var end_position = world_to_map(target_position)
-
-	var path: = find_path(start_position, end_position)
-	world_path = []
-	for point in path:
-		var point_world: = map_to_world(Vector2(point.x, point.y))
-		world_path.append(point_world)
-	update()
-	return world_path
-
+	var start_index: = calculate_point_index(start_position)
+	var end_index: = calculate_point_index(end_position)
+	if astar.has_point(start_index) and astar.has_point(end_index):
+		var path: = find_path(start_position, end_position)
+		world_path = []
+		for point in path:
+			var point_world: = map_to_world(Vector2(point.x, point.y))
+			world_path.append(point_world + _half_cell_size) 
+		#update()
+		return world_path
+	else:
+		return []
+		
 func _draw():
-	var i = 1
-	draw_circle(init_pos , 10, PLAYER_COLOR)
-	draw_circle(target_pos, 10, TARGET_COLOR)
-	if len(world_path) > 2:
-		for point_index in range(0,len(world_path) - 1):
-			draw_circle(world_path[point_index] , 10 , DRAW_COLOR)
+	pass
+#	var i = 1
+#	draw_circle(init_pos , 10, PLAYER_COLOR)
+#	draw_circle(target_pos, 10, TARGET_COLOR)
+#	if len(world_path) > 2:
+#		for point_index in range(0,len(world_path) - 1):
+#			draw_circle(world_path[point_index] , 10 , DRAW_COLOR)
 
 
 

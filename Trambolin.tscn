@@ -1,20 +1,20 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Area2D.gd" type="Script" id=1]
-[ext_resource path="res://oyun sprite/item/spring.png" type="Texture" id=2]
-[ext_resource path="res://oyun sprite/item/sprung.png" type="Texture" id=3]
+[ext_resource path="res://oyun sprite/item/sprung.png" type="Texture" id=2]
+[ext_resource path="res://oyun sprite/item/spring.png" type="Texture" id=3]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
-"loop": false,
-"name": "gergin",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 3 ) ],
+"frames": [ ExtResource( 2 ) ],
 "loop": false,
 "name": "salik",
 "speed": 10.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 2 ) ],
+"loop": false,
+"name": "gergin",
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -24,7 +24,7 @@ extents = Vector2( 50.7786, 9.93037 )
 extents = Vector2( 33.3088, 21.465 )
 
 [node name="trambolin" type="Area2D"]
-position = Vector2( 78.3186, 110.95 )
+position = Vector2( 1461.19, 828.803 )
 script = ExtResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]

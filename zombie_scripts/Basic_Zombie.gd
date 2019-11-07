@@ -19,12 +19,14 @@ func move_to():
 	if len(path) > 1:
 		var ARRIVE_DISTANCE = 50
 		var direction = get_global_position().direction_to(target_point_world)
-		#var distance = target_point_world.direction_to(get_global_position())
 		motion += direction	
 		if direction.x > 0:
 			motion.x = min(motion.x + acceleration, speed)
 		else:
 			motion.x = max(motion.x - acceleration, -speed)
+		
+		if direction.y < 0 && is_on_floor():
+			motion.y += -700
 		return get_global_position().distance_to(target_point_world) < ARRIVE_DISTANCE
 	
 func follow_path():	
@@ -85,6 +87,10 @@ func _jump_is_on_wall():
 				playerFound = true
 			if !playerFound:
 				motion.y -= 200
+
+func move_like_basic_zombie():
+	if len(path) == 0:
+		pass
 
 func _physics_process(delta):
 	if is_dead==false:

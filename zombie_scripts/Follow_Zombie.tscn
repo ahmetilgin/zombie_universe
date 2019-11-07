@@ -16,26 +16,26 @@
 [ext_resource path="res://oyun sprite/zombie/png/female/Idle (13).png" type="Texture" id=14]
 [ext_resource path="res://oyun sprite/zombie/png/female/Idle (14).png" type="Texture" id=15]
 [ext_resource path="res://oyun sprite/zombie/png/female/Idle (15).png" type="Texture" id=16]
-[ext_resource path="res://oyun sprite/zombie/png/female/Attack (1).png" type="Texture" id=17]
-[ext_resource path="res://oyun sprite/zombie/png/female/Attack (2).png" type="Texture" id=18]
-[ext_resource path="res://oyun sprite/zombie/png/female/Attack (3).png" type="Texture" id=19]
-[ext_resource path="res://oyun sprite/zombie/png/female/Attack (4).png" type="Texture" id=20]
-[ext_resource path="res://oyun sprite/zombie/png/female/Attack (5).png" type="Texture" id=21]
-[ext_resource path="res://oyun sprite/zombie/png/female/Attack (6).png" type="Texture" id=22]
-[ext_resource path="res://oyun sprite/zombie/png/female/Attack (7).png" type="Texture" id=23]
-[ext_resource path="res://oyun sprite/zombie/png/female/Attack (8).png" type="Texture" id=24]
-[ext_resource path="res://oyun sprite/zombie/png/female/Dead (1).png" type="Texture" id=25]
-[ext_resource path="res://oyun sprite/zombie/png/female/Dead (2).png" type="Texture" id=26]
-[ext_resource path="res://oyun sprite/zombie/png/female/Dead (3).png" type="Texture" id=27]
-[ext_resource path="res://oyun sprite/zombie/png/female/Dead (4).png" type="Texture" id=28]
-[ext_resource path="res://oyun sprite/zombie/png/female/Dead (5).png" type="Texture" id=29]
-[ext_resource path="res://oyun sprite/zombie/png/female/Dead (6).png" type="Texture" id=30]
-[ext_resource path="res://oyun sprite/zombie/png/female/Dead (7).png" type="Texture" id=31]
-[ext_resource path="res://oyun sprite/zombie/png/female/Dead (8).png" type="Texture" id=32]
-[ext_resource path="res://oyun sprite/zombie/png/female/Dead (9).png" type="Texture" id=33]
-[ext_resource path="res://oyun sprite/zombie/png/female/Dead (10).png" type="Texture" id=34]
-[ext_resource path="res://oyun sprite/zombie/png/female/Dead (11).png" type="Texture" id=35]
-[ext_resource path="res://oyun sprite/zombie/png/female/Dead (12).png" type="Texture" id=36]
+[ext_resource path="res://oyun sprite/zombie/png/female/Dead (1).png" type="Texture" id=17]
+[ext_resource path="res://oyun sprite/zombie/png/female/Dead (2).png" type="Texture" id=18]
+[ext_resource path="res://oyun sprite/zombie/png/female/Dead (3).png" type="Texture" id=19]
+[ext_resource path="res://oyun sprite/zombie/png/female/Dead (4).png" type="Texture" id=20]
+[ext_resource path="res://oyun sprite/zombie/png/female/Dead (5).png" type="Texture" id=21]
+[ext_resource path="res://oyun sprite/zombie/png/female/Dead (6).png" type="Texture" id=22]
+[ext_resource path="res://oyun sprite/zombie/png/female/Dead (7).png" type="Texture" id=23]
+[ext_resource path="res://oyun sprite/zombie/png/female/Dead (8).png" type="Texture" id=24]
+[ext_resource path="res://oyun sprite/zombie/png/female/Dead (9).png" type="Texture" id=25]
+[ext_resource path="res://oyun sprite/zombie/png/female/Dead (10).png" type="Texture" id=26]
+[ext_resource path="res://oyun sprite/zombie/png/female/Dead (11).png" type="Texture" id=27]
+[ext_resource path="res://oyun sprite/zombie/png/female/Dead (12).png" type="Texture" id=28]
+[ext_resource path="res://oyun sprite/zombie/png/female/Attack (1).png" type="Texture" id=29]
+[ext_resource path="res://oyun sprite/zombie/png/female/Attack (2).png" type="Texture" id=30]
+[ext_resource path="res://oyun sprite/zombie/png/female/Attack (3).png" type="Texture" id=31]
+[ext_resource path="res://oyun sprite/zombie/png/female/Attack (4).png" type="Texture" id=32]
+[ext_resource path="res://oyun sprite/zombie/png/female/Attack (5).png" type="Texture" id=33]
+[ext_resource path="res://oyun sprite/zombie/png/female/Attack (6).png" type="Texture" id=34]
+[ext_resource path="res://oyun sprite/zombie/png/female/Attack (7).png" type="Texture" id=35]
+[ext_resource path="res://oyun sprite/zombie/png/female/Attack (8).png" type="Texture" id=36]
 [ext_resource path="res://oyun sprite/zombie/png/female/Walk (1).png" type="Texture" id=37]
 [ext_resource path="res://oyun sprite/zombie/png/female/Walk (2).png" type="Texture" id=38]
 [ext_resource path="res://oyun sprite/zombie/png/female/Walk (3).png" type="Texture" id=39]
@@ -55,19 +55,19 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ) ],
+"frames": [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ) ],
 "loop": false,
-"name": "hurt",
+"name": "dead",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ) ],
+"frames": [ ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ) ],
 "loop": true,
 "name": "attack",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ) ],
+"frames": [ ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ) ],
 "loop": false,
-"name": "dead",
+"name": "hurt",
 "speed": 10.0
 }, {
 "frames": [ ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ) ],
