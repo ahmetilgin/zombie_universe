@@ -235,7 +235,7 @@ func dead(damage):
 		_set_dead(true)
 		motion=Vector2(0,0)
 		$AnimatedSprite.play("dead")
-		$Timer.start()
+		$player_dead_timer.start()
 	else:
 		is_hurt=true
 		$AnimatedSprite.play("hurt")
@@ -267,4 +267,9 @@ func tramboline_jump():
 
 func _on_jump_counter_time_timeout():
 	tramb_count=1
+	pass # Replace with function body.
+
+
+func _on_player_dead_timer_timeout():
+	# burda player silinmeli ya da oyun durmalı
 	pass # Replace with function body.

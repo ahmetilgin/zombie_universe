@@ -11,7 +11,7 @@ export_presets.cfg
 # Mono-specific ignores
 .mono/
 
-# Kde Settings File
+# System/tool-specific ignores
 .directory
-
+*~
 # End of https://www.gitignore.io/api/godot
