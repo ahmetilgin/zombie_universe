@@ -225,18 +225,19 @@ func _physics_process(delta):
 
 
 func dead(damage):
-	hp -= damage
-	player_health.set_value(hp)
-	updated_tween.interpolate_property(player_health,"value",player_health.value,hp,0.4,Tween.TRANS_SINE,Tween.EASE_IN_OUT)
-	updated_tween.start()
-	if hp < 0:
-		_set_dead(true)
-		motion=Vector2(0,0)
-		$AnimatedSprite.play("dead")
-		$player_dead_timer.start()#karakter hareket etmeyince timerin içine girmiyor
-	else:
-		is_hurt=true
-		$AnimatedSprite.play("hurt")
+	if !_is_dead():
+		hp -= damage
+		player_health.set_value(hp)
+		updated_tween.interpolate_property(player_health,"value",player_health.value,hp,0.4,Tween.TRANS_SINE,Tween.EASE_IN_OUT)
+		updated_tween.start()
+		if hp < 0:
+			_set_dead(true)
+			motion=Vector2(0,0)
+			$AnimatedSprite.play("dead")
+			$player_dead_timer.start()#karakter hareket etmeyince timerin içine girmiyor
+		else:
+			is_hurt=true
+			$AnimatedSprite.play("hurt")
 
 
 func _on_AnimatedSprite_animation_finished():
