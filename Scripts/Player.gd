@@ -141,8 +141,6 @@ func _clear_states():
 	
 var UP = Vector2(0,-1)
 
-var is_generated = false
-
 func _physics_process(delta):
 	if $AnimatedSprite.flip_h==true:
 		$CollisionShape2D.position.x=30

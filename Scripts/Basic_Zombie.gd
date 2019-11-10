@@ -1,8 +1,6 @@
 extends KinematicBody2D
-var total_distance
 var target_point_world = Vector2()
 var FollowPlayerTimer = Timer.new()
-var velocity = Vector2(20,20)
 onready var player = get_parent().get_node('player/CollisionShape2D')
 onready var tile_map = get_parent().get_node('TileMap')
 const gravity=20
@@ -26,33 +24,30 @@ func move_to():
 		else:
 			motion.x = max(motion.x - acceleration, -speed)
 		
-		
-		# zıplamadan önce 
-		# gidilecek yolda ki kırılma ilk 3 nokta için direk kırılıyorsa 
-		# x i degisiyorsa  ve y si degismiyorsa küçük zıplasın
-		# bir yukarı bir sola <-- --> bir yukari bir sağa giriş
-		#					 	 | 
-		#					 Player Pozisyonu
-		var is_small_jump = true
-
+		var cross_index = 0
+		var same_line = false
 		if len(path) > 2:
-			# x aynı y farklı
-			is_small_jump = (path[0].x == path[1].x)  and (path[0].y != path[1].y)  and (path[1].y == path[2].y) and (path[1].x != path[2].x)
-			
+			for i in range(0,len(path) - 1):
+				if path[i].x == path[i + 1].x and path[i].y != path[i + 1].y:
+					same_line = true
+				if same_line:
+					if path[i].x != path[i + 1].x and path[i].y == path[i + 1].y:
+						cross_index = i
+						break
 	
+			
+		var target_distance = 0
 		if direction.y < 0 && is_on_floor():
-			if !is_small_jump:
-				motion.y += -700
-			else:
-				motion.y += -300
+			target_distance = round(get_global_position().distance_to(path[cross_index]) / tile_map.cell_size.y)
+			motion.y += max((-200 * target_distance) - gravity, -700)
 		return get_global_position().distance_to(target_point_world) < ARRIVE_DISTANCE
 	
 func follow_path():	
 	if len(path) > 2:
 		$AnimatedSprite.flip_h = sign(path[1].x - get_global_position().x) != 1	
-	if player.get_global_position().distance_to(get_global_position()) < 100:
+	if player.get_global_position().distance_to(get_global_position()) < 80:
 		$AnimatedSprite.play("idle")
-		motion = Vector2(0, 0)
+		motion.x= 0
 	else:
 		$AnimatedSprite.play("walk")
 		_get_path()
@@ -118,11 +113,11 @@ func _physics_process(delta):
 			#_jump_is_on_wall()
 			motion = move_and_slide(motion, UP)
 
-#			if get_slide_count()>0:
-#				for i in range(get_slide_count()):
-#					if "player" in get_slide_collision(i).collider.name:
-#						pass
-						#(i).collider.dead(1)
+			if get_slide_count()>0:
+				for i in range(get_slide_count()):
+					if "player" in get_slide_collision(i).collider.name:
+						$AnimatedSprite.play("attack")
+						get_slide_collision(i).collider.dead(1)
  
 func _on_Timer_timeout():
 	queue_free()
