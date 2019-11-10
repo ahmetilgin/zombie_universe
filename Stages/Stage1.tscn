@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://new_ground.tres" type="TileSet" id=1]
 [ext_resource path="res://Scripts/TileMap.gd" type="Script" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Resources/Follow_Zombie.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Resources/Weight_Stone.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Resources/Fire_hellD.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Sprites/GameBackgrounds/1_game_background/1_game_background.png" type="Texture" id=13]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -125,3 +126,12 @@ position = Vector2( 989, -4 )
 
 [node name="FIRE" parent="." instance=ExtResource( 12 )]
 position = Vector2( 2638.1, 584.528 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1820, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 991.1, 548.791 )
+texture = ExtResource( 13 )
