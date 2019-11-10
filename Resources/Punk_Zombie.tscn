@@ -1,0 +1,123 @@
+[gd_scene load_steps=47 format=2]
+
+[ext_resource path="res://Scripts/Punk_Zombie.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/zombie/Animationz4/Idle1.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/zombie/Animationz4/Idle2.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/zombie/Animationz4/Idle3.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/zombie/Animationz4/Idle4.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/zombie/Animationz4/Dead1.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/zombie/Animationz4/Dead2.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/zombie/Animationz4/Dead3.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/zombie/Animationz4/Dead4.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/zombie/Animationz4/Dead5.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/zombie/Animationz4/Dead6.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/zombie/Animationz4/Dead7.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/zombie/Animationz4/Dead8.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/zombie/Animationz4/Jump1.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/zombie/Animationz4/Jump2.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/zombie/Animationz4/Jump3.png" type="Texture" id=16]
+[ext_resource path="res://Sprites/zombie/Animationz4/Jump4.png" type="Texture" id=17]
+[ext_resource path="res://Sprites/zombie/Animationz4/Jump5.png" type="Texture" id=18]
+[ext_resource path="res://Sprites/zombie/Animationz4/Jump6.png" type="Texture" id=19]
+[ext_resource path="res://Sprites/zombie/Animationz4/Jump7.png" type="Texture" id=20]
+[ext_resource path="res://Sprites/zombie/Animationz4/Hurt1.png" type="Texture" id=21]
+[ext_resource path="res://Sprites/zombie/Animationz4/Hurt2.png" type="Texture" id=22]
+[ext_resource path="res://Sprites/zombie/Animationz4/Hurt3.png" type="Texture" id=23]
+[ext_resource path="res://Sprites/zombie/Animationz4/Hurt4.png" type="Texture" id=24]
+[ext_resource path="res://Sprites/zombie/Animationz4/Hurt5.png" type="Texture" id=25]
+[ext_resource path="res://Sprites/zombie/Animationz4/Walk1.png" type="Texture" id=26]
+[ext_resource path="res://Sprites/zombie/Animationz4/Walk2.png" type="Texture" id=27]
+[ext_resource path="res://Sprites/zombie/Animationz4/Walk3.png" type="Texture" id=28]
+[ext_resource path="res://Sprites/zombie/Animationz4/Walk4.png" type="Texture" id=29]
+[ext_resource path="res://Sprites/zombie/Animationz4/Walk5.png" type="Texture" id=30]
+[ext_resource path="res://Sprites/zombie/Animationz4/Walk6.png" type="Texture" id=31]
+[ext_resource path="res://Sprites/zombie/Animationz4/Attack1.png" type="Texture" id=32]
+[ext_resource path="res://Sprites/zombie/Animationz4/Attack2.png" type="Texture" id=33]
+[ext_resource path="res://Sprites/zombie/Animationz4/Attack3.png" type="Texture" id=34]
+[ext_resource path="res://Sprites/zombie/Animationz4/Attack4.png" type="Texture" id=35]
+[ext_resource path="res://Sprites/zombie/Animationz4/Attack5.png" type="Texture" id=36]
+[ext_resource path="res://Sprites/zombie/Animationz4/Attack6.png" type="Texture" id=37]
+[ext_resource path="res://Sprites/zombie/Animationz4/Run5.png" type="Texture" id=38]
+[ext_resource path="res://Sprites/zombie/Animationz4/Run6.png" type="Texture" id=39]
+[ext_resource path="res://Sprites/zombie/Animationz4/Run7.png" type="Texture" id=40]
+[ext_resource path="res://Sprites/zombie/Animationz4/Run8.png" type="Texture" id=41]
+[ext_resource path="res://Sprites/zombie/Animationz4/Run9.png" type="Texture" id=42]
+[ext_resource path="res://Sprites/zombie/Animationz4/Run10.png" type="Texture" id=43]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ null, null, null, null, ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "idle",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": false,
+"name": "dead",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ) ],
+"loop": false,
+"name": "jump",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ) ],
+"loop": false,
+"name": "hurt",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ) ],
+"loop": true,
+"name": "walk",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ) ],
+"loop": true,
+"name": "attack",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ) ],
+"loop": true,
+"name": "run",
+"speed": 15.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 28.6137, 44.8503 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 3.40308, 26.9384 )
+
+[node name="Punk_Zombie" type="KinematicBody2D"]
+position = Vector2( 235.812, 178.397 )
+script = ExtResource( 1 )
+speed = 150
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -43.8694, -48.7841 )
+scale = Vector2( 0.324464, 0.233544 )
+frames = SubResource( 1 )
+animation = "run"
+frame = 2
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -14.5952, 1.32683 )
+shape = SubResource( 2 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( 12.3866, 10.2226 )
+enabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 31.1806, -10.6146 )
+shape = SubResource( 3 )
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

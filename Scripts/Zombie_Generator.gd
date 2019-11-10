@@ -1,8 +1,8 @@
 extends Node2D
 
-var punk_zombie = preload("res://zombie_scripts/Punk_Zombie.tscn")
-var basic_zombie = preload("res://zombie_scripts/Basic_Zombie.tscn")
-var big_zombie = preload("res://zombie_scripts/Big_Zombie.tscn")
+var punk_zombie = preload("res://Resources/Punk_Zombie.tscn")
+var basic_zombie = preload("res://Resources/Basic_Zombie.tscn")
+var big_zombie = preload("res://Resources/Big_Zombie.tscn")
 onready var tilemap = get_parent().get_node("TileMap")
 var max_x = 0
 var min_x = 0

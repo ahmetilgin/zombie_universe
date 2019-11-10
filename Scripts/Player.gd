@@ -32,7 +32,7 @@ var bullet_size = 30
 onready var bullet_number = get_node("../Game_UI/bullet_counter")
 onready var player_health = get_node("../Game_UI/Player_Health")
 onready var updated_tween = get_node("../Game_UI/Updated_Tween")
-const basic_zombie = preload("res://zombie_scripts/Basic_Zombie.tscn")
+const basic_zombie = preload("res://Resources/Basic_Zombie.tscn")
 
 func _set_current_bullet(bullet):
 	current_bullet = bullet

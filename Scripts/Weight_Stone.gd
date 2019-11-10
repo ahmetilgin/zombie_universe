@@ -2,7 +2,7 @@ extends KinematicBody2D
 var velocity=Vector2(0,0)
 var gravity=Vector2(0,30)
 var down=1
-onready var floore=get_node("Stage1")
+# onready var floore=get_node("Stage1")
 
 # Declare member variables here. Examples:
 # var a = 2
