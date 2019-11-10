@@ -48,7 +48,7 @@ script = ExtResource( 2 )
 position = Vector2( 2779.77, 820.803 )
 
 [node name="player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 2343, 704 )
+position = Vector2( 2476.9, 790.475 )
 
 [node name="upgrade" parent="." instance=ExtResource( 5 )]
 position = Vector2( 714.716, 540.127 )
@@ -117,7 +117,7 @@ position = Vector2( -9, 0 )
 script = ExtResource( 9 )
 
 [node name="Female_Zombie" parent="." instance=ExtResource( 10 )]
-position = Vector2( 2173, 684 )
+position = Vector2( 1910.79, 418.996 )
 hp = 5
 
 [node name="stone" parent="." instance=ExtResource( 11 )]

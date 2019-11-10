@@ -235,7 +235,7 @@ func dead(damage):
 		_set_dead(true)
 		motion=Vector2(0,0)
 		$AnimatedSprite.play("dead")
-		$player_dead_timer.start()
+		$player_dead_timer.start()#karakter hareket etmeyince timerin içine girmiyor
 	else:
 		is_hurt=true
 		$AnimatedSprite.play("hurt")
@@ -271,5 +271,8 @@ func _on_jump_counter_time_timeout():
 
 
 func _on_player_dead_timer_timeout():
-	# burda player silinmeli ya da oyun durmalı
-	pass # Replace with function body.
+	get_tree().change_scene("Stages/Title_Screen.tscn")
+	#skor hesaplama yerine gitmesi gerekir.
+	#game over kaç saniyede bitirdi, zombi oldürdü, yıldız topladı vs. puan
+	#sonra ana ekrana döner
+	 
