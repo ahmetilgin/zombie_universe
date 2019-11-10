@@ -101,7 +101,6 @@ func _get_path(init_position: Vector2, target_position: Vector2) -> Array:
 		return []
 		
 func _draw():
-	var i = 1
 	draw_circle(init_pos , 2, PLAYER_COLOR)
 	draw_circle(target_pos, 2, TARGET_COLOR)
 	if len(world_path) > 2:
