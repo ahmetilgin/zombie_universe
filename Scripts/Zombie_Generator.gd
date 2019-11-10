@@ -29,19 +29,19 @@ func _ready():
 	generate_Zombies()
 
 func generate_Zombies():
-#	for i in range(0,9):
-#		var zombie_instance = null
-#		var select_zombie = randi() % 3 
-#		if select_zombie == 0:
-#			zombie_instance = basic_zombie.instance()
-#		elif select_zombie == 1:
-#			zombie_instance = big_zombie.instance()
-#		else: 
-#			zombie_instance = punk_zombie.instance()
-#
-#		var new_location = Vector2((randi() % (10 * max_x)) + (10 * min_x) ,  min_y - 100)
+	for i in range(0,9):
+		var zombie_instance = null
+		var select_zombie = randi() % 3 
+		if select_zombie == 0:
+			zombie_instance = basic_zombie.instance()
+		elif select_zombie == 1:
+			zombie_instance = big_zombie.instance()
+		else: 
+			zombie_instance = punk_zombie.instance()
 
-#		get_parent().call_deferred("add_child",zombie_instance)
-#		zombie_instance.position  = (new_location) + Vector2(1000,-500)
+		var new_location = Vector2((randi() % (10 * max_x)) + (10 * min_x) ,  min_y - 100)
+
+		get_parent().call_deferred("add_child",zombie_instance)
+		zombie_instance.set_global_position((new_location) + Vector2(1000,-500))
 	pass # Replace with function body.
 

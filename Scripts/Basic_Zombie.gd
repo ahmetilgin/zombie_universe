@@ -4,6 +4,7 @@ var target_point_world = Vector2()
 var FollowPlayerTimer = Timer.new()
 var velocity = Vector2(20,20)
 onready var player = get_parent().get_node('player/CollisionShape2D')
+onready var tile_map = get_parent().get_node('TileMap')
 const gravity=20
 export (int) var hp=1
 export (int) var speed=100
@@ -25,23 +26,40 @@ func move_to():
 		else:
 			motion.x = max(motion.x - acceleration, -speed)
 		
+		
+		# zıplamadan önce 
+		# gidilecek yolda ki kırılma ilk 3 nokta için direk kırılıyorsa 
+		# x i degisiyorsa  ve y si degismiyorsa küçük zıplasın
+		# bir yukarı bir sola <-- --> bir yukari bir sağa giriş
+		#					 	 | 
+		#					 Player Pozisyonu
+		var is_small_jump = true
+
+		if len(path) > 2:
+			# x aynı y farklı
+			is_small_jump = (path[0].x == path[1].x)  and (path[0].y != path[1].y)  and (path[1].y == path[2].y) and (path[1].x != path[2].x)
+			
+	
 		if direction.y < 0 && is_on_floor():
-			motion.y += -700
+			if !is_small_jump:
+				motion.y += -700
+			else:
+				motion.y += -300
 		return get_global_position().distance_to(target_point_world) < ARRIVE_DISTANCE
 	
 func follow_path():	
 	if len(path) > 2:
 		$AnimatedSprite.flip_h = sign(path[1].x - get_global_position().x) != 1	
-	if player.get_global_position().distance_to(get_global_position()) < 94:
+	if player.get_global_position().distance_to(get_global_position()) < 100:
 		$AnimatedSprite.play("idle")
 		motion = Vector2(0, 0)
 	else:
 		$AnimatedSprite.play("walk")
 		_get_path()
-	if move_to():
-		path.pop_front()
-		if len(path) > 0:
-			target_point_world = path[0]	
+		if move_to():
+			path.pop_front()
+			if len(path) > 0:
+				target_point_world = path[0]	
 	pass
 		
 		
@@ -80,7 +98,7 @@ func dead(damage):
 		$AnimatedSprite.play("hurt")	
 
 func _jump_is_on_wall():
-	if is_on_wall():
+	if is_on_wall() && is_on_floor():
 		for i in range(get_slide_count()):
 			var playerFound = false
 			if "player" in get_slide_collision(i).collider.name:
@@ -97,7 +115,7 @@ func _physics_process(delta):
 		if is_hurt==false:
 			motion.y += gravity
 			follow_path()
-			_jump_is_on_wall()
+			#_jump_is_on_wall()
 			motion = move_and_slide(motion, UP)
 
 #			if get_slide_count()>0:

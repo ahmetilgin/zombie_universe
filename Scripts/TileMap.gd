@@ -53,6 +53,8 @@ func left_and_right_area_control(points_relative):
 	var right_bottom_has_tile = get_cellv(points_relative[5]) != INVALID_CELL
 	var left_bottom_has_tile = get_cellv(points_relative[6]) != INVALID_CELL
 	var right_top_has_tile = get_cellv(points_relative[7]) != INVALID_CELL
+	if (right_has_tile or left_has_tile) and bottom_has_tile:
+		return true
 	return !(right_top_has_tile or left_bottom_has_tile or right_bottom_has_tile or left_top_has_tile or left_has_tile or right_has_tile or top_has_tile or bottom_has_tile)
 		
 
@@ -93,19 +95,18 @@ func _get_path(init_position: Vector2, target_position: Vector2) -> Array:
 		for point in path:
 			var point_world: = map_to_world(Vector2(point.x, point.y))
 			world_path.append(point_world + _half_cell_size) 
-		#update()
+		update()
 		return world_path
 	else:
 		return []
 		
 func _draw():
-	pass
-#	var i = 1
-#	draw_circle(init_pos , 10, PLAYER_COLOR)
-#	draw_circle(target_pos, 10, TARGET_COLOR)
-#	if len(world_path) > 2:
-#		for point_index in range(0,len(world_path) - 1):
-#			draw_circle(world_path[point_index] , 10 , DRAW_COLOR)
+	var i = 1
+	draw_circle(init_pos , 2, PLAYER_COLOR)
+	draw_circle(target_pos, 2, TARGET_COLOR)
+	if len(world_path) > 2:
+		for point_index in range(0,len(world_path) - 1):
+			draw_circle(world_path[point_index] , 2 , DRAW_COLOR)
 
 
 
