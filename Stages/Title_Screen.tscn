@@ -12,6 +12,7 @@
 
 [node name="Title_Screen" type="Node"]
 script = ExtResource( 1 )
+stage_one = "res://Load_screen.tscn"
 
 [node name="BG" type="Sprite" parent="."]
 position = Vector2( -113.892, -0.644806 )
