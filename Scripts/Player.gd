@@ -3,7 +3,6 @@ extends KinematicBody2D
 const bullet = preload("res://Resources/Bullet.tscn")
 const upgrade_bullet = preload("res://Resources/Fire_Bullet.tscn")
 
-
 enum bullet_power{
 	basic_bullet = 1
 	upgrated_bullet = 2
@@ -161,6 +160,8 @@ func _physics_process(delta):
 		elif Input.is_action_pressed("ui_left"):
 			if _is_movable():
 				_move_left()
+		elif Input.is_key_pressed(KEY_SPACE):
+			get_node("Camera2D").shake(1,10,5)
 		else:
 			if _is_idle():
 				_set_shift_stop(true)

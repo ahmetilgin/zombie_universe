@@ -34,7 +34,6 @@ size = 20
 font_data = ExtResource( 7 )
 
 [node name="stage1" type="Node2D"]
-editor/display_folded = true
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
@@ -56,6 +55,7 @@ position = Vector2( 2476.9, 790.475 )
 position = Vector2( 714.716, 540.127 )
 
 [node name="Game_UI" type="CanvasLayer" parent="."]
+editor/display_folded = true
 
 [node name="BulletIcon" type="TextureRect" parent="Game_UI"]
 margin_left = 200.013
@@ -125,9 +125,10 @@ hp = 5
 position = Vector2( 989, -4 )
 
 [node name="FIRE" parent="." instance=ExtResource( 12 )]
-position = Vector2( 2638.1, 584.528 )
+position = Vector2( 2672.18, 841.272 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+editor/display_folded = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2( 1820, 0 )
