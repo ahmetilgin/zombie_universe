@@ -31,7 +31,8 @@ func add_walkable_cells(obstacles := []) -> Array:
 				Vector2(point.x - 1, point.y + 1),
 				Vector2(point.x + 1, point.y - 1),
 			])
-			if !left_and_right_area_control(points_relative):
+			
+			if left_and_right_area_control(points_relative):
 				continue
                 
 			points.append(point)
@@ -53,9 +54,10 @@ func left_and_right_area_control(points_relative):
 	var right_bottom_has_tile = get_cellv(points_relative[5]) != INVALID_CELL
 	var left_bottom_has_tile = get_cellv(points_relative[6]) != INVALID_CELL
 	var right_top_has_tile = get_cellv(points_relative[7]) != INVALID_CELL
+	
 	if (right_has_tile or left_has_tile) and bottom_has_tile:
-		return true
-	return !(right_top_has_tile or left_bottom_has_tile or right_bottom_has_tile or left_top_has_tile or left_has_tile or right_has_tile or top_has_tile or bottom_has_tile)
+		return false
+	return (right_top_has_tile or left_bottom_has_tile or right_bottom_has_tile or left_top_has_tile or left_has_tile or right_has_tile or top_has_tile or bottom_has_tile)
 		
 
 func connect_walkable_cells(points: Array) -> void:
@@ -85,8 +87,10 @@ func _ready() -> void:
 func _get_path(init_position: Vector2, target_position: Vector2) -> Array:
 	init_pos = init_position
 	target_pos = target_position
-	var start_position = world_to_map(init_position)
-	var end_position = world_to_map(target_position)
+	var grid_start = init_position / cell_size
+	var grid_end = target_position / cell_size
+	var start_position = Vector2(round(grid_start.x),round(grid_start.y))
+	var end_position = Vector2(round(grid_end.x),round(grid_end.y))
 	var start_index: = calculate_point_index(start_position)
 	var end_index: = calculate_point_index(end_position)
 	if astar.has_point(start_index) and astar.has_point(end_index):

@@ -1,10 +1,9 @@
 extends Node
-export(String,FILE,"*.tscn" )var stage_one
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 
-# Called when the node enters the scene tree for the first time.
+
+signal start_load_scene
+onready var loading_screen =preload("res://Main_Screen/Loading_Screen.tscn")
+
 func _ready():
 	 pass
 
@@ -15,11 +14,12 @@ func _physics_process(delta):
 	if $MarginContainer/VBoxContainer/VBoxContainer/Quit_Button.is_hovered():
 		$MarginContainer/VBoxContainer/VBoxContainer/Quit_Button.grab_focus()
 
+func go_to_loading_screen():
+	add_child(loading_screen.instance())
 
 func _on_Start_Button_pressed():
-	get_tree().change_scene(stage_one)
-	 
-
+	go_to_loading_screen()
+	emit_signal("start_load_scene")
 
 func _on_Quit_Button_pressed():
 	get_tree().quit()

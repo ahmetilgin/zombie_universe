@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Node2D.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Loading_Screen.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/GameBackgrounds/3_game_background/3_game_background.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/healthbar/decrease.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/png/Window2s.png" type="Texture" id=4]
@@ -17,7 +17,6 @@ font_data = ExtResource( 5 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
-stage_one = "res://Stages/Stage1.tscn"
 
 [node name="3_game_background" type="Sprite" parent="."]
 scale = Vector2( 0.416646, 0.555558 )
