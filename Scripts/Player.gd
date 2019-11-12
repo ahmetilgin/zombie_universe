@@ -1,5 +1,5 @@
 extends KinematicBody2D
-
+signal dead_signal
 const bullet = preload("res://Resources/Bullet.tscn")
 const upgrade_bullet = preload("res://Resources/Fire_Bullet.tscn")
 
@@ -235,6 +235,7 @@ func dead(damage):
 			_set_dead(true)
 			motion=Vector2(0,0)
 			$AnimatedSprite.play("dead")
+			emit_signal("dead_signal")
 			$player_dead_timer.start()#karakter hareket etmeyince timerin içine girmiyor
 		else:
 			is_hurt=true
