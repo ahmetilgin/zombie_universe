@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Node2D.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/GameBackgrounds/3_game_background/3_game_background.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/healthbar/decrease.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/png/Window2s.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/fonts/coffin_stone/coffinstone.ttf" type="DynamicFontData" id=5]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 1012, 494, 262, 83 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+font_data = ExtResource( 5 )
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+stage_one = "res://Stages/Stage1.tscn"
+
+[node name="3_game_background" type="Sprite" parent="."]
+scale = Vector2( 0.416646, 0.555558 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 165.2
+margin_top = 346.947
+margin_right = 652.2
+margin_bottom = 399.947
+texture = ExtResource( 3 )
+expand = true
+
+[node name="TextureProgress" type="TextureProgress" parent="."]
+margin_left = 175.876
+margin_top = 356.113
+margin_right = 2506.88
+margin_bottom = 2554.11
+rect_scale = Vector2( 1.76, 0.43 )
+size_flags_horizontal = 4
+size_flags_vertical = 5
+max_value = 1000.0
+value = 1000.0
+texture_progress = SubResource( 1 )
+tint_over = Color( 0.964706, 0.0196078, 0.0196078, 1 )
+tint_progress = Color( 0.486275, 0, 0, 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 185.2
+margin_top = 282.947
+margin_right = 556.2
+margin_bottom = 336.947
+custom_fonts/normal_font = SubResource( 2 )
+custom_colors/default_color = Color( 0.415686, 0, 0, 1 )
+custom_colors/selection_color = Color( 0, 0, 0, 1 )
+text = "LOADING..."

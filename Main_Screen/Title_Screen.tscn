@@ -1,0 +1,88 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scripts/Title_Screen.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/graveyardtilesetnew/png/BG.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/balangic_ekranı_yazıları/Zombie_Universe.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/balangic_ekranı_yazıları/Start_Red.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/balangic_ekranı_yazıları/Start_Green.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/balangic_ekranı_yazıları/Continue_Red.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/balangic_ekranı_yazıları/Continue_green.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/balangic_ekranı_yazıları/Quit_Red.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/balangic_ekranı_yazıları/Quit_green.png" type="Texture" id=9]
+
+[node name="Title_Screen" type="Node"]
+script = ExtResource( 1 )
+stage_one = "res://Main_Screen/Load_screen.tscn"
+
+[node name="BG" type="Sprite" parent="."]
+position = Vector2( -113.892, -0.644806 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 76.7469
+margin_top = 4.68439
+margin_right = -84.2531
+margin_bottom = -84.3156
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 619.0
+margin_bottom = 491.0
+size_flags_horizontal = 5
+custom_constants/separation = 32
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+margin_left = 58.0
+margin_right = 540.0
+margin_bottom = 64.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 3 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_left = 173.0
+margin_top = 96.0
+margin_right = 425.0
+margin_bottom = 294.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Start_Button" type="TextureButton" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+margin_left = 20.0
+margin_right = 232.0
+margin_bottom = 65.0
+size_flags_horizontal = 4
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 5 )
+
+[node name="Continue_Button" type="TextureButton" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+margin_top = 69.0
+margin_right = 252.0
+margin_bottom = 130.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+
+[node name="Quit_Button" type="TextureButton" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+margin_left = 20.0
+margin_top = 134.0
+margin_right = 232.0
+margin_bottom = 198.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/Start_Button" to="." method="_on_Start_Button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/Quit_Button" to="." method="_on_Quit_Button_pressed"]
