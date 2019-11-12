@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/adventure_girl/png/Slide (1).png" type="Texture" id=2]
@@ -34,26 +34,27 @@
 [ext_resource path="res://Sprites/adventure_girl/png/Shoot (1).png" type="Texture" id=32]
 [ext_resource path="res://Sprites/adventure_girl/png/Shoot (2).png" type="Texture" id=33]
 [ext_resource path="res://Sprites/adventure_girl/png/Shoot (3).png" type="Texture" id=34]
-[ext_resource path="res://Sprites/adventure_girl/png/Jump (6).png" type="Texture" id=35]
-[ext_resource path="res://Sprites/adventure_girl/png/Jump (8).png" type="Texture" id=36]
-[ext_resource path="res://Sprites/adventure_girl/png/Jump (7).png" type="Texture" id=37]
-[ext_resource path="res://Sprites/adventure_girl/png/Jump (9).png" type="Texture" id=38]
-[ext_resource path="res://Sprites/adventure_girl/png/Jump (10).png" type="Texture" id=39]
-[ext_resource path="res://Sprites/adventure_girl/png/Melee (1).png" type="Texture" id=40]
-[ext_resource path="res://Sprites/adventure_girl/png/Melee (2).png" type="Texture" id=41]
-[ext_resource path="res://Sprites/adventure_girl/png/Melee (3).png" type="Texture" id=42]
-[ext_resource path="res://Sprites/adventure_girl/png/Melee (4).png" type="Texture" id=43]
-[ext_resource path="res://Sprites/adventure_girl/png/Melee (5).png" type="Texture" id=44]
-[ext_resource path="res://Sprites/adventure_girl/png/Melee (6).png" type="Texture" id=45]
-[ext_resource path="res://Sprites/adventure_girl/png/Melee (7).png" type="Texture" id=46]
-[ext_resource path="res://Sprites/adventure_girl/png/Run (1).png" type="Texture" id=47]
-[ext_resource path="res://Sprites/adventure_girl/png/Run (2).png" type="Texture" id=48]
-[ext_resource path="res://Sprites/adventure_girl/png/Run (3).png" type="Texture" id=49]
-[ext_resource path="res://Sprites/adventure_girl/png/Run (4).png" type="Texture" id=50]
-[ext_resource path="res://Sprites/adventure_girl/png/Run (5).png" type="Texture" id=51]
-[ext_resource path="res://Sprites/adventure_girl/png/Run (6).png" type="Texture" id=52]
-[ext_resource path="res://Sprites/adventure_girl/png/Run (7).png" type="Texture" id=53]
-[ext_resource path="res://Sprites/adventure_girl/png/Run (8).png" type="Texture" id=54]
+[ext_resource path="res://Sprites/adventure_girl/png/Run (1).png" type="Texture" id=35]
+[ext_resource path="res://Sprites/adventure_girl/png/Run (2).png" type="Texture" id=36]
+[ext_resource path="res://Sprites/adventure_girl/png/Run (3).png" type="Texture" id=37]
+[ext_resource path="res://Sprites/adventure_girl/png/Run (4).png" type="Texture" id=38]
+[ext_resource path="res://Sprites/adventure_girl/png/Run (5).png" type="Texture" id=39]
+[ext_resource path="res://Sprites/adventure_girl/png/Run (6).png" type="Texture" id=40]
+[ext_resource path="res://Sprites/adventure_girl/png/Run (7).png" type="Texture" id=41]
+[ext_resource path="res://Sprites/adventure_girl/png/Run (8).png" type="Texture" id=42]
+[ext_resource path="res://Sprites/adventure_girl/png/Melee (1).png" type="Texture" id=43]
+[ext_resource path="res://Sprites/adventure_girl/png/Melee (2).png" type="Texture" id=44]
+[ext_resource path="res://Sprites/adventure_girl/png/Melee (3).png" type="Texture" id=45]
+[ext_resource path="res://Sprites/adventure_girl/png/Melee (4).png" type="Texture" id=46]
+[ext_resource path="res://Sprites/adventure_girl/png/Melee (5).png" type="Texture" id=47]
+[ext_resource path="res://Sprites/adventure_girl/png/Melee (6).png" type="Texture" id=48]
+[ext_resource path="res://Sprites/adventure_girl/png/Melee (7).png" type="Texture" id=49]
+[ext_resource path="res://Sprites/adventure_girl/png/Jump (6).png" type="Texture" id=50]
+[ext_resource path="res://Sprites/adventure_girl/png/Jump (8).png" type="Texture" id=51]
+[ext_resource path="res://Sprites/adventure_girl/png/Jump (7).png" type="Texture" id=52]
+[ext_resource path="res://Sprites/adventure_girl/png/Jump (9).png" type="Texture" id=53]
+[ext_resource path="res://Sprites/adventure_girl/png/Jump (10).png" type="Texture" id=54]
+[ext_resource path="res://Resources/Camera2D.gd" type="Script" id=55]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -87,20 +88,20 @@ animations = [ {
 "name": "attack",
 "speed": 12.0
 }, {
-"frames": [ ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ) ],
-"loop": false,
-"name": "fall",
-"speed": 12.0
+"frames": [ ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ) ],
+"loop": true,
+"name": "run",
+"speed": 15.0
 }, {
-"frames": [ ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ) ],
+"frames": [ ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 48 ), ExtResource( 49 ) ],
 "loop": false,
 "name": "melee",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 47 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 54 ) ],
-"loop": true,
-"name": "run",
-"speed": 15.0
+"frames": [ ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 54 ) ],
+"loop": false,
+"name": "fall",
+"speed": 12.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -157,6 +158,7 @@ limit_top = -1500
 limit_right = 10000
 limit_bottom = 1500
 smoothing_enabled = true
+script = ExtResource( 55 )
 
 [node name="jump_counter_time" type="Timer" parent="."]
 wait_time = 11.81
