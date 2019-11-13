@@ -15,7 +15,8 @@ func _physics_process(delta):
 		$MarginContainer/VBoxContainer/VBoxContainer/Quit_Button.grab_focus()
 
 func go_to_loading_screen():
-	add_child(loading_screen.instance())
+	queue_free()
+	get_tree().get_root().add_child(loading_screen.instance())
 
 func _on_Start_Button_pressed():
 	go_to_loading_screen()

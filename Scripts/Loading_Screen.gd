@@ -10,8 +10,9 @@ func _ready():
 	pass
 	
 func _physics_process(delta):
-		$TextureProgress.set_value(time)
-		time=time+1
+		if time < ($TextureProgress.max_value * 85 / 100):
+			time=time + randi() % 30
+			$TextureProgress.set_value(time)
 
 func on_start_loading():
 	parallel_load_stage.start(self,"load_scene", ResourceLoader.load_interactive("res://Stages/Stage1.tscn"))
@@ -19,16 +20,19 @@ func on_start_loading():
 
 func load_scene(interactive_ldr):
 	while (true):
-	    var err = interactive_ldr.poll();
-	    if(err == ERR_FILE_EOF):
-	        call_deferred("_on_load_level_done");
-	        return interactive_ldr.get_resource();
+		var err = interactive_ldr.poll();
+		if(err == ERR_FILE_EOF):
+			call_deferred("_on_load_level");
+			return interactive_ldr.get_resource();
 
 		
-func _on_load_level_done():
+func _on_load_level():
 	var level_res = parallel_load_stage.wait_to_finish()
-	var scene = level_res.instance();
 	$TextureProgress.set_value(1000)
-	add_child(scene);
+	yield(get_tree().create_timer(0.1), "timeout")
+	var scene = level_res.instance();
+	queue_free()
+	get_tree().get_root().add_child(scene);
 	emit_signal("level_load_completed")
-	
+
+
