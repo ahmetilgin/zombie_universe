@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://new_ground.tres" type="TileSet" id=1]
 [ext_resource path="res://Scripts/TileMap.gd" type="Script" id=2]
@@ -13,6 +13,8 @@
 [ext_resource path="res://Resources/Weight_Stone.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Resources/Fire_hellD.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Sprites/GameBackgrounds/1_game_background/1_game_background.png" type="Texture" id=13]
+[ext_resource path="res://Main_Screen/Gameover_Screen.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Resources/Basic_Zombie.tscn" type="PackedScene" id=15]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -55,7 +57,6 @@ position = Vector2( 2476.9, 790.475 )
 position = Vector2( 714.716, 540.127 )
 
 [node name="Game_UI" type="CanvasLayer" parent="."]
-editor/display_folded = true
 
 [node name="BulletIcon" type="TextureRect" parent="Game_UI"]
 margin_left = 200.013
@@ -128,7 +129,6 @@ position = Vector2( 989, -4 )
 position = Vector2( 2672.18, 841.272 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-editor/display_folded = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2( 1820, 0 )
@@ -136,3 +136,11 @@ motion_mirroring = Vector2( 1820, 0 )
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2( 991.1, 548.791 )
 texture = ExtResource( 13 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Gameover_Screen" parent="CanvasLayer" instance=ExtResource( 14 )]
+visible = false
+
+[node name="Basic_Zombie" parent="." instance=ExtResource( 15 )]
+position = Vector2( 2330.32, 647.536 )

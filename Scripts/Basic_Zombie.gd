@@ -4,6 +4,7 @@ var FollowPlayerTimer = Timer.new()
 onready var player = get_parent().get_node('player/CollisionShape2D')
 onready var tile_map = get_parent().get_node('TileMap')
 const gravity=20
+signal dead_counter
 export (int) var hp=1
 export (int) var speed=100
 var motion=Vector2(0,0)
@@ -80,7 +81,7 @@ func dead(damage):
 	
 	hp-=damage
 	if hp<0:
-		
+		emit_signal("dead_counter")
 		is_dead=true
 		motion=Vector2(0,0)
 		$AnimatedSprite.position.y+=10
