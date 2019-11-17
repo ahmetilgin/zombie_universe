@@ -106,7 +106,6 @@ animation = "attack"
 centered = false
 
 [node name="Particles2D" parent="AnimatedSprite" instance=ExtResource( 48 )]
-emitting = true
 lifetime = 10.3
 
 [node name="Timer" type="Timer" parent="."]

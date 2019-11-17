@@ -77,11 +77,12 @@ func _set_is_follow(follow):
 	FollowPlayerTimer.set_wait_time(5)
 	FollowPlayerTimer.start() #to start
 
-func dead(damage):
+func dead(damage,whodead):
 	
 	hp-=damage
 	if hp<0:
-		emit_signal("dead_counter")
+		if whodead=="player":
+			emit_signal("dead_counter")
 		is_dead=true
 		motion=Vector2(0,0)
 		$AnimatedSprite.position.y+=10
@@ -118,7 +119,7 @@ func _physics_process(delta):
 				for i in range(get_slide_count()):
 					if "player" in get_slide_collision(i).collider.name:
 						$AnimatedSprite.play("attack")
-						get_slide_collision(i).collider.dead(1)
+						get_slide_collision(i).collider.dead(1,"zombie")
  
 func _on_Timer_timeout():
 	queue_free()

@@ -23,7 +23,7 @@ func _physics_process(delta):
 
 func _on_upgradebllet_body_entered(body):
 	if "Zombie" in body.name:
-		body.dead(2) 
+		body.dead(2,"player") 
 	queue_free()
 
 

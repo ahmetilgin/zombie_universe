@@ -2,7 +2,7 @@ extends KinematicBody2D
 const FLOOR = Vector2(0,-1)
 var motion = Vector2()
 const gravity=10
-
+signal dead_counter
 var direction=1
 export (int) var hp=5
 export (int) var speed=100
@@ -10,13 +10,14 @@ var is_dead=false
 onready var Player=get_parent().get_node("player")
 var is_attack=false
 var is_hurt=false
-func dead(damage):
+func dead(damage,whodead):
 	
 	hp-=damage
 	if hp<0:
 		
 		is_dead=true
-		
+		if whodead=="player":
+			emit_signal("dead_counter")
 		motion=Vector2(0,0)
 		$AnimatedSprite.position.y+=10
 		$AnimatedSprite.play("dead")
@@ -165,4 +166,4 @@ func _on_Timer_timeout():
 
 func _on_Area2D_body_entered(body):
 	if "player" in body.name:
-		body.dead(2) 
+		body.dead(2,"zombie") 

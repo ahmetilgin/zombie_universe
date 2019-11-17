@@ -34,6 +34,6 @@ func _on_Timer_timeout():
 
 func _on_Area2D_body_exited(body):
 	if "player" in body.name:
-		body.dead(101)
+		body.dead(101,"weight")
 	if "Zombie" in body.name:
-		body.dead(101) 
+		body.dead(101,"weight") 

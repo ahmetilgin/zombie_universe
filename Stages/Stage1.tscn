@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://new_ground.tres" type="TileSet" id=1]
 [ext_resource path="res://Scripts/TileMap.gd" type="Script" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Sprites/GameBackgrounds/1_game_background/1_game_background.png" type="Texture" id=13]
 [ext_resource path="res://Main_Screen/Gameover_Screen.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Resources/Basic_Zombie.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Resources/Punk_Zombie.tscn" type="PackedScene" id=16]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -126,7 +127,7 @@ hp = 5
 position = Vector2( 989, -4 )
 
 [node name="FIRE" parent="." instance=ExtResource( 12 )]
-position = Vector2( 2672.18, 841.272 )
+position = Vector2( 2625.02, 837.171 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -144,3 +145,5 @@ visible = false
 
 [node name="Basic_Zombie" parent="." instance=ExtResource( 15 )]
 position = Vector2( 2330.32, 647.536 )
+
+[node name="Punk_Zombie" parent="." instance=ExtResource( 16 )]

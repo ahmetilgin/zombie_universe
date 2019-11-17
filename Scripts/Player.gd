@@ -210,11 +210,11 @@ func _physics_process(delta):
 		if get_slide_count()>0:
 			for i in range(get_slide_count()):
 				if "Basic_Zombie" in get_slide_collision(i).collider.name:
-					dead(1)
+					dead(1,"zombie")
 				if "Big_Zombie" in get_slide_collision(i).collider.name:
-					dead(2)
+					dead(2,"zombie")
 				if "Punk_Zombie" in get_slide_collision(i).collider.name:
-					dead(3)
+					dead(3,"zombie")
 	else:
 		if is_on_floor():
 			$CollisionShape2D.set_deferred("disabled",true)
@@ -225,7 +225,7 @@ func _physics_process(delta):
 
 
 
-func dead(damage):
+func dead(damage,whodead):
 	if !_is_dead():
 		hp -= damage
 		player_health.set_value(hp)
@@ -250,11 +250,11 @@ func upgrade_power_up():
 
 func _on_Area2D_body_entered(body):
 	if "Zombie" in body.name:
-		body.dead(1) 
+		body.dead(1,"zombie") 
 
 func _on_mele_flip_h_true_body_entered(body):
 	if "Zombie" in body.name:
-		body.dead(1) 
+		body.dead(1,"zombie") 
 
 func tramboline_jump():
 
@@ -272,7 +272,7 @@ func _on_jump_counter_time_timeout():
 
 
 func _on_player_dead_timer_timeout():
-	get_tree().change_scene("Stages/Title_Screen.tscn")
+	pass
 	#skor hesaplama yerine gitmesi gerekir.
 	#game over kaç saniyede bitirdi, zombi oldürdü, yıldız topladı vs. puan
 	#sonra ana ekrana döner
