@@ -2,7 +2,7 @@ extends KinematicBody2D
 const FLOOR=Vector2(0,-1)
 var motion=Vector2()
 const gravity=10
-signal dead_counter
+
 var direction=1
 export (int) var hp=5
 export (int) var speed=100
@@ -16,7 +16,7 @@ func dead(damage,whodead):
 	if hp<0:		
 		is_dead=true
 		if whodead=="player":
-			emit_signal("dead_counter")
+			get_parent().get_node("player").increase_dead_counter()
 		
 		motion=Vector2(0,0)
 		$AnimatedSprite.position.y+=10

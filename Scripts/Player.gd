@@ -17,6 +17,7 @@ var speed = 150
 var max_speed = 300
 var motion = Vector2(0,0)
 var slide_speed = 500
+var killed_counter = 0
 var current_bullet = null
 var current_bullet_power = 1
 # player motions
@@ -206,7 +207,6 @@ func _physics_process(delta):
 						motion.x=lerp(motion.x,0,0.5)
 						
 		motion = move_and_slide(motion,UP)
-
 		if get_slide_count()>0:
 			for i in range(get_slide_count()):
 				if "Basic_Zombie" in get_slide_collision(i).collider.name:
@@ -218,7 +218,6 @@ func _physics_process(delta):
 	else:
 		if is_on_floor():
 			$CollisionShape2D.set_deferred("disabled",true)
-
 		else:
 			motion.y += gravity
 			motion = move_and_slide(motion,UP)
@@ -277,3 +276,6 @@ func _on_player_dead_timer_timeout():
 	#game over kaç saniyede bitirdi, zombi oldürdü, yıldız topladı vs. puan
 	#sonra ana ekrana döner
 	 
+func increase_dead_counter():
+	killed_counter += 1
+	pass

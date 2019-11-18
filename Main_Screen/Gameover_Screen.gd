@@ -1,29 +1,15 @@
 extends Node2D
-var dead_counter=0
+
+var restart_screen = preload("res://Main_Screen/Loading_Screen.tscn")
 func _ready():
 	var screen_hide=get_parent().get_parent().get_node("player")
 	screen_hide.connect("dead_signal",self,"on_dead_signal")
-	var dead_zombie_counter_basic=get_parent().get_parent().get_node("Basic_Zombie")
-	dead_zombie_counter_basic.connect("dead_counter",self,"on_dead_zombie_counter")
-	var dead_zombie_counter_big=get_parent().get_parent().get_node("Big_Zombie")
-	dead_zombie_counter_big.connect("dead_counter",self,"on_dead_zombie_counter")
-	var dead_zombie_counter_follow=get_parent().get_parent().get_node("Female_Zombie")
-	dead_zombie_counter_follow.connect("dead_counter",self,"on_dead_zombie_counter")
-	var dead_zombie_counter_punk=get_parent().get_parent().get_node("Punk_Zombie")
-	dead_zombie_counter_punk.connect("dead_counter",self,"on_dead_zombie_counter")
-func on_dead_zombie_counter():
-	dead_counter+=1
-	$dead_zombie_text/dead_zombie_counter.text=String(dead_counter)
-func on_dead_signal():
-	visible=true
 	
 
-
+func on_dead_signal():
+	visible=true
+	$dead_zombie_text/dead_zombie_counter.text=String(get_parent().get_parent().get_node("player").killed_counter)
 	pass # Replace with function body.
-
-
-
-
 
 func _physics_process(delta):
 	if $MarginContainer/CenterContainer/VBoxContainer/start.is_hovered():
@@ -39,5 +25,8 @@ func _on_quit_pressed():
 
 
 func _on_start_pressed():
-
+	get_parent().get_parent().queue_free()
+	var instance_restart = restart_screen.instance()
+	get_tree().get_root().add_child(instance_restart)
+	instance_restart.on_start_loading()
 	pass # Replace with function body.

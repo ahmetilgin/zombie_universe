@@ -9,6 +9,7 @@ func _ready():
 	start_scene.connect("start_load_scene", self, "on_start_loading")
 	pass
 	
+	
 func _physics_process(delta):
 		if time < ($TextureProgress.max_value * 85 / 100):
 			time=time + randi() % 30
@@ -33,6 +34,6 @@ func _on_load_level():
 	var scene = level_res.instance();
 	queue_free()
 	get_tree().get_root().add_child(scene);
-	emit_signal("level_load_completed")
+
 
 

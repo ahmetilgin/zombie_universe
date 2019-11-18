@@ -14,10 +14,9 @@ func dead(damage,whodead):
 	
 	hp-=damage
 	if hp<0:
-		
 		is_dead=true
 		if whodead=="player":
-			emit_signal("dead_counter")
+			get_parent().get_node("player").increase_dead_counter()
 		motion=Vector2(0,0)
 		$AnimatedSprite.position.y+=10
 		$AnimatedSprite.play("dead")
