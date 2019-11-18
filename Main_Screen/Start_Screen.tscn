@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/Start_Screen.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/graveyardtilesetnew/png/BG.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Sprites/balangic_ekranı_yazıları/Continue_green.png" type="Texture" id=7]
 [ext_resource path="res://Sprites/balangic_ekranı_yazıları/Quit_Red.png" type="Texture" id=8]
 [ext_resource path="res://Sprites/balangic_ekranı_yazıları/Quit_green.png" type="Texture" id=9]
+[ext_resource path="res://AudioFiles/MainScreen/green.ogg" type="AudioStream" id=10]
 
 [node name="Start_Screen" type="Node"]
 script = ExtResource( 1 )
@@ -84,5 +85,10 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource( 8 )
 texture_pressed = ExtResource( 9 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -31.424
+autoplay = true
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/Start_Button" to="." method="_on_Start_Button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/Quit_Button" to="." method="_on_Quit_Button_pressed"]
