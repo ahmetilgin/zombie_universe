@@ -85,7 +85,7 @@ size_flags_vertical = 4
 texture_normal = ExtResource( 8 )
 texture_pressed = ExtResource( 9 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="MainScreenSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
 volume_db = 4.49
 autoplay = true

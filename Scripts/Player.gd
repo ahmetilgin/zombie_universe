@@ -182,12 +182,14 @@ func _physics_process(delta):
 				_fire_bullet()
 				get_node("Camera2D").shake(1,10,1)
 				_set_is_attack(true)
-				$ShotSound.play()
+
 				
 				_play_attack_animation()
 				if current_bullet_power == 1:
+					$ShotSound.play()
 					_set_current_bullet(bullet.instance())
 				elif current_bullet_power == 2:
+					$ShotGun.play()
 					_set_current_bullet(upgrade_bullet.instance())
 				get_parent().add_child(current_bullet)
 				_set_bullet_direction(sign($Position2D.position.x))
