@@ -78,12 +78,13 @@ func _set_is_follow(follow):
 	FollowPlayerTimer.start() #to start
 
 func dead(damage,whodead):
-	
 	hp-=damage
 	if hp<0:
 		if whodead=="player":
 			get_parent().get_node("player").increase_dead_counter()
 		is_dead=true
+		if $DeadSound != null:
+			$DeadSound.play()
 		motion=Vector2(0,0)
 		$AnimatedSprite.position.y+=10
 		$AnimatedSprite.play("dead")
@@ -91,7 +92,8 @@ func dead(damage,whodead):
 		$Timer.start()
 	else:
 		is_hurt=true
-		
+		if $ZombieHurt != null:
+			$ZombieHurt	.play()
 		$AnimatedSprite.play("hurt")	
 
 func _jump_is_on_wall():

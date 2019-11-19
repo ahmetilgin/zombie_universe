@@ -161,8 +161,6 @@ func _physics_process(delta):
 		elif Input.is_action_pressed("ui_left"):
 			if _is_movable():
 				_move_left()
-		elif Input.is_key_pressed(KEY_SPACE):
-			get_node("Camera2D").shake(1,10,5)
 		else:
 			if _is_idle():
 				_set_shift_stop(true)
@@ -182,7 +180,9 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("ui_focus_next"):
 			if _is_movable() && _check_bullet_count():
 				_fire_bullet()
+				get_node("Camera2D").shake(1,10,1)
 				_set_is_attack(true)
+				$ShotSound.play()
 				
 				_play_attack_animation()
 				if current_bullet_power == 1:

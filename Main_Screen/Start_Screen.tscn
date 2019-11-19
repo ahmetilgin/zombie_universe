@@ -9,7 +9,7 @@
 [ext_resource path="res://Sprites/balangic_ekranı_yazıları/Continue_green.png" type="Texture" id=7]
 [ext_resource path="res://Sprites/balangic_ekranı_yazıları/Quit_Red.png" type="Texture" id=8]
 [ext_resource path="res://Sprites/balangic_ekranı_yazıları/Quit_green.png" type="Texture" id=9]
-[ext_resource path="res://AudioFiles/MainScreen/green.ogg" type="AudioStream" id=10]
+[ext_resource path="res://AudioFiles/MainScreen/main_screen.ogg" type="AudioStream" id=10]
 
 [node name="Start_Screen" type="Node"]
 script = ExtResource( 1 )
@@ -21,7 +21,6 @@ texture = ExtResource( 2 )
 centered = false
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 76.7469
@@ -88,7 +87,7 @@ texture_pressed = ExtResource( 9 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
-volume_db = -31.424
+volume_db = 4.49
 autoplay = true
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/Start_Button" to="." method="_on_Start_Button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/Quit_Button" to="." method="_on_Quit_Button_pressed"]

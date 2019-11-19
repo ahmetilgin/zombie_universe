@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/adventure_girl/png/Slide (1).png" type="Texture" id=2]
@@ -55,6 +55,7 @@
 [ext_resource path="res://Sprites/adventure_girl/png/Melee (6).png" type="Texture" id=53]
 [ext_resource path="res://Sprites/adventure_girl/png/Melee (7).png" type="Texture" id=54]
 [ext_resource path="res://Resources/Camera2D.gd" type="Script" id=55]
+[ext_resource path="res://AudioFiles/Shots/pistol.wav" type="AudioStream" id=56]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -163,6 +164,10 @@ script = ExtResource( 55 )
 [node name="jump_counter_time" type="Timer" parent="."]
 wait_time = 11.81
 one_shot = true
+
+[node name="ShotSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 56 )
+volume_db = -2.35
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="player_dead_timer" to="." method="_on_player_dead_timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

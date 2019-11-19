@@ -6,7 +6,8 @@ onready var parallel_load_stage = Thread.new()
 
 func _ready():
 	var start_scene = get_tree().get_root().get_node("Start_Screen")
-	start_scene.connect("start_load_scene", self, "on_start_loading")
+	if start_scene != null:
+		start_scene.connect("start_load_scene", self, "on_start_loading")
 	pass
 	
 	
