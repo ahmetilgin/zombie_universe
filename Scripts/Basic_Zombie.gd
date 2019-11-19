@@ -83,8 +83,8 @@ func dead(damage,whodead):
 		if whodead=="player":
 			get_parent().get_node("player").increase_dead_counter()
 		is_dead=true
-		if $DeadSound != null:
-			$DeadSound.play()
+		if get_node("ZombieDead") != null:
+			get_node("ZombieDead").play()
 		motion=Vector2(0,0)
 		$AnimatedSprite.position.y+=10
 		$AnimatedSprite.play("dead")
@@ -92,8 +92,9 @@ func dead(damage,whodead):
 		$Timer.start()
 	else:
 		is_hurt=true
+		print_tree_pretty()
 		if $ZombieHurt != null:
-			$ZombieHurt	.play()
+			$ZombieHurt.play()
 		$AnimatedSprite.play("hurt")	
 
 func _jump_is_on_wall():

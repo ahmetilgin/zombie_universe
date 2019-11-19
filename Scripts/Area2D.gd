@@ -11,12 +11,6 @@ func _physics_process(delta):
 	else:
 		$AnimatedSprite.play("gergin")
 
-	
-	
-	
-
-
- 	
 	pass # Replace with function body.
 func _ready():
 	pass # Replace with function body.

@@ -5,38 +5,38 @@
 [ext_resource path="res://Sprites/zombie/Animationz4/Idle2.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/zombie/Animationz4/Idle3.png" type="Texture" id=4]
 [ext_resource path="res://Sprites/zombie/Animationz4/Idle4.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/zombie/Animationz4/Dead1.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/zombie/Animationz4/Dead2.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/zombie/Animationz4/Dead3.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/zombie/Animationz4/Dead4.png" type="Texture" id=9]
-[ext_resource path="res://Sprites/zombie/Animationz4/Dead5.png" type="Texture" id=10]
-[ext_resource path="res://Sprites/zombie/Animationz4/Dead6.png" type="Texture" id=11]
-[ext_resource path="res://Sprites/zombie/Animationz4/Dead7.png" type="Texture" id=12]
-[ext_resource path="res://Sprites/zombie/Animationz4/Dead8.png" type="Texture" id=13]
-[ext_resource path="res://Sprites/zombie/Animationz4/Jump1.png" type="Texture" id=14]
-[ext_resource path="res://Sprites/zombie/Animationz4/Jump2.png" type="Texture" id=15]
-[ext_resource path="res://Sprites/zombie/Animationz4/Jump3.png" type="Texture" id=16]
-[ext_resource path="res://Sprites/zombie/Animationz4/Jump4.png" type="Texture" id=17]
-[ext_resource path="res://Sprites/zombie/Animationz4/Jump5.png" type="Texture" id=18]
-[ext_resource path="res://Sprites/zombie/Animationz4/Jump6.png" type="Texture" id=19]
-[ext_resource path="res://Sprites/zombie/Animationz4/Jump7.png" type="Texture" id=20]
-[ext_resource path="res://Sprites/zombie/Animationz4/Attack1.png" type="Texture" id=21]
-[ext_resource path="res://Sprites/zombie/Animationz4/Attack2.png" type="Texture" id=22]
-[ext_resource path="res://Sprites/zombie/Animationz4/Attack3.png" type="Texture" id=23]
-[ext_resource path="res://Sprites/zombie/Animationz4/Attack4.png" type="Texture" id=24]
-[ext_resource path="res://Sprites/zombie/Animationz4/Attack5.png" type="Texture" id=25]
-[ext_resource path="res://Sprites/zombie/Animationz4/Attack6.png" type="Texture" id=26]
-[ext_resource path="res://Sprites/zombie/Animationz4/Hurt1.png" type="Texture" id=27]
-[ext_resource path="res://Sprites/zombie/Animationz4/Hurt2.png" type="Texture" id=28]
-[ext_resource path="res://Sprites/zombie/Animationz4/Hurt3.png" type="Texture" id=29]
-[ext_resource path="res://Sprites/zombie/Animationz4/Hurt4.png" type="Texture" id=30]
-[ext_resource path="res://Sprites/zombie/Animationz4/Hurt5.png" type="Texture" id=31]
-[ext_resource path="res://Sprites/zombie/Animationz4/Walk1.png" type="Texture" id=32]
-[ext_resource path="res://Sprites/zombie/Animationz4/Walk2.png" type="Texture" id=33]
-[ext_resource path="res://Sprites/zombie/Animationz4/Walk3.png" type="Texture" id=34]
-[ext_resource path="res://Sprites/zombie/Animationz4/Walk4.png" type="Texture" id=35]
-[ext_resource path="res://Sprites/zombie/Animationz4/Walk5.png" type="Texture" id=36]
-[ext_resource path="res://Sprites/zombie/Animationz4/Walk6.png" type="Texture" id=37]
+[ext_resource path="res://Sprites/zombie/Animationz4/Jump1.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/zombie/Animationz4/Jump2.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/zombie/Animationz4/Jump3.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/zombie/Animationz4/Jump4.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/zombie/Animationz4/Jump5.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/zombie/Animationz4/Jump6.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/zombie/Animationz4/Jump7.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/zombie/Animationz4/Hurt1.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/zombie/Animationz4/Hurt2.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/zombie/Animationz4/Hurt3.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/zombie/Animationz4/Hurt4.png" type="Texture" id=16]
+[ext_resource path="res://Sprites/zombie/Animationz4/Hurt5.png" type="Texture" id=17]
+[ext_resource path="res://Sprites/zombie/Animationz4/Walk1.png" type="Texture" id=18]
+[ext_resource path="res://Sprites/zombie/Animationz4/Walk2.png" type="Texture" id=19]
+[ext_resource path="res://Sprites/zombie/Animationz4/Walk3.png" type="Texture" id=20]
+[ext_resource path="res://Sprites/zombie/Animationz4/Walk4.png" type="Texture" id=21]
+[ext_resource path="res://Sprites/zombie/Animationz4/Walk5.png" type="Texture" id=22]
+[ext_resource path="res://Sprites/zombie/Animationz4/Walk6.png" type="Texture" id=23]
+[ext_resource path="res://Sprites/zombie/Animationz4/Attack1.png" type="Texture" id=24]
+[ext_resource path="res://Sprites/zombie/Animationz4/Attack2.png" type="Texture" id=25]
+[ext_resource path="res://Sprites/zombie/Animationz4/Attack3.png" type="Texture" id=26]
+[ext_resource path="res://Sprites/zombie/Animationz4/Attack4.png" type="Texture" id=27]
+[ext_resource path="res://Sprites/zombie/Animationz4/Attack5.png" type="Texture" id=28]
+[ext_resource path="res://Sprites/zombie/Animationz4/Attack6.png" type="Texture" id=29]
+[ext_resource path="res://Sprites/zombie/Animationz4/Dead1.png" type="Texture" id=30]
+[ext_resource path="res://Sprites/zombie/Animationz4/Dead2.png" type="Texture" id=31]
+[ext_resource path="res://Sprites/zombie/Animationz4/Dead3.png" type="Texture" id=32]
+[ext_resource path="res://Sprites/zombie/Animationz4/Dead4.png" type="Texture" id=33]
+[ext_resource path="res://Sprites/zombie/Animationz4/Dead5.png" type="Texture" id=34]
+[ext_resource path="res://Sprites/zombie/Animationz4/Dead6.png" type="Texture" id=35]
+[ext_resource path="res://Sprites/zombie/Animationz4/Dead7.png" type="Texture" id=36]
+[ext_resource path="res://Sprites/zombie/Animationz4/Dead8.png" type="Texture" id=37]
 [ext_resource path="res://Sprites/zombie/Animationz4/Run5.png" type="Texture" id=38]
 [ext_resource path="res://Sprites/zombie/Animationz4/Run6.png" type="Texture" id=39]
 [ext_resource path="res://Sprites/zombie/Animationz4/Run7.png" type="Texture" id=40]
@@ -51,30 +51,30 @@ animations = [ {
 "name": "idle",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
-"loop": false,
-"name": "dead",
-"speed": 12.0
-}, {
-"frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
 "loop": false,
 "name": "jump",
 "speed": 12.0
 }, {
-"frames": [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ) ],
-"loop": true,
-"name": "attack",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ) ],
+"frames": [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
 "loop": false,
 "name": "hurt",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ) ],
+"frames": [ ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ) ],
 "loop": true,
 "name": "walk",
 "speed": 10.0
+}, {
+"frames": [ ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ) ],
+"loop": true,
+"name": "attack",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ) ],
+"loop": false,
+"name": "dead",
+"speed": 12.0
 }, {
 "frames": [ ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ) ],
 "loop": true,

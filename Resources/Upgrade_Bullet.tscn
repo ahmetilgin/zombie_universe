@@ -3,8 +3,6 @@
 [ext_resource path="res://Scripts/Upgrade_Bullet.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/png/Window2s.png" type="Texture" id=2]
 
-
-
 [node name="upgrade" type="Area2D"]
 position = Vector2( 77.2714, 41.0673 )
 script = ExtResource( 1 )
