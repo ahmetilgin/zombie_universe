@@ -102,7 +102,7 @@ func _play_attack_animation():
 
 func _move_slide():
 	$CollisionShape2D.scale = Vector2 (1, 0.7)
-
+	$CollisionShape2D.position.y=20
 	if $AnimatedSprite.flip_h==false:
 		motion.x = slide_speed
 	else:
@@ -137,19 +137,18 @@ func _clear_states():
 	is_hurt=false
 	is_melee=false
 	$CollisionShape2D.scale = Vector2 (1, 1)
-
+	$CollisionShape2D.position.y=0
 	
 var UP = Vector2(0,-1)
 
 func _physics_process(delta):
 	if $AnimatedSprite.flip_h==true:
 		$CollisionShape2D.position.x=30
-	else:
-		$CollisionShape2D.position.x=18
-	if $AnimatedSprite.flip_h==true:
 		$collision_2.position.x=30
 	else:
+		$CollisionShape2D.position.x=18
 		$collision_2.position.x=18
+	
 	motion.y += gravity 
 	if !_is_dead():
 		$Area2D/CollisionShape2D.disabled=true
@@ -166,7 +165,7 @@ func _physics_process(delta):
 				_set_shift_stop(true)
 				_play_idle_animation()							
 		if Input.is_action_just_pressed("ui_down"):
-			if is_hurt==false:
+			if is_hurt==false && is_on_floor():
 				if is_melee==false:
 					is_down=true
 					_set_is_down(true)
@@ -241,6 +240,7 @@ func dead(damage,whodead):
 		else:
 			is_hurt=true
 			$AnimatedSprite.play("hurt")
+			
 
 
 func _on_AnimatedSprite_animation_finished():
