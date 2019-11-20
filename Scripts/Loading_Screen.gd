@@ -31,8 +31,10 @@ func load_scene(interactive_ldr):
 func _on_load_level():
 	var level_res = parallel_load_stage.wait_to_finish()
 	$TextureProgress.set_value(1000)
-	yield(get_tree().create_timer(0.1), "timeout")
 	var scene = level_res.instance();
+	scene.get_node("Game_UI").get_node("Snowing").set_emitting(true)
+	yield(get_tree().create_timer(0.1), "timeout")
+
 	queue_free()
 	get_tree().get_root().add_child(scene);
 
