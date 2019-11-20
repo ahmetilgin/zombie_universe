@@ -42,6 +42,7 @@ emission_shape = 2
 emission_box_extents = Vector3( 2000, 1, 1 )
 flag_disable_z = true
 gravity = Vector3( 45, 50, 0 )
+angular_velocity = 1.87276e-026
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 
@@ -127,6 +128,10 @@ preprocess = 5.0
 speed_scale = 2.0
 randomness = 0.5
 process_material = SubResource( 5 )
+
+[node name="Coin_Counter" type="RichTextLabel" parent="Game_UI"]
+margin_right = 40.0
+margin_bottom = 40.0
 
 [node name="trambolin" parent="." instance=ExtResource( 7 )]
 position = Vector2( 681, 842 )
