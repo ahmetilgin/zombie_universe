@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://new_ground.tres" type="TileSet" id=1]
 [ext_resource path="res://Scripts/TileMap.gd" type="Script" id=2]
@@ -36,6 +36,15 @@ region = Rect2( 1617.74, 1795.05, 336.842, 55.7896 )
 size = 20
 font_data = ExtResource( 6 )
 
+[sub_resource type="ParticlesMaterial" id=5]
+trail_divisor = 5
+emission_shape = 2
+emission_box_extents = Vector3( 2000, 1, 1 )
+flag_disable_z = true
+gravity = Vector3( 45, 50, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+
 [node name="stage1" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -55,7 +64,6 @@ position = Vector2( 1509.9, 747.306 )
 position = Vector2( 714.716, 540.127 )
 
 [node name="Game_UI" type="CanvasLayer" parent="."]
-editor/display_folded = true
 
 [node name="BulletIcon" type="TextureRect" parent="Game_UI"]
 margin_left = 200.013
@@ -109,6 +117,16 @@ text = "30
 
 "
 scroll_active = false
+
+[node name="Particles2D" type="Particles2D" parent="Game_UI"]
+position = Vector2( 392.817, -3.41812 )
+scale = Vector2( 2, 2 )
+amount = 5000
+lifetime = 5.0
+preprocess = 5.0
+speed_scale = 2.0
+randomness = 0.5
+process_material = SubResource( 5 )
 
 [node name="trambolin" parent="." instance=ExtResource( 7 )]
 position = Vector2( 681, 842 )
