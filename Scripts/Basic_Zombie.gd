@@ -92,10 +92,10 @@ func dead(damage,whodead):
 		$Timer.start()
 	else:
 		is_hurt=true
-		print_tree_pretty()
+		
 		if $ZombieHurt != null:
 			$ZombieHurt.play()
-		$AnimatedSprite.play("hurt")	
+		$AnimatedSprite.play("hurt")
 
 func _jump_is_on_wall():
 	if is_on_wall() && is_on_floor():
