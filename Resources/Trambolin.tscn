@@ -1,8 +1,9 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Scripts/Area2D.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Tramboline.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/item/sprung.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/item/spring.png" type="Texture" id=3]
+
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
