@@ -1,40 +1,47 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://new_ground.tres" type="TileSet" id=1]
 [ext_resource path="res://Scripts/TileMap.gd" type="Script" id=2]
 [ext_resource path="res://Resources/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Resources/Upgrade_Bullet.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Sprites/png/Window2s.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/fonts/coffin_stone/coffinstoneexpand.ttf" type="DynamicFontData" id=6]
-[ext_resource path="res://Resources/Trambolin.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scripts/Zombie_Generator.gd" type="Script" id=8]
-[ext_resource path="res://Resources/Follow_Zombie.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Resources/Weight_Stone.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Sprites/GameBackgrounds/1_game_background/1_game_background.png" type="Texture" id=11]
-[ext_resource path="res://Main_Screen/Gameover_Screen.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Resources/Basic_Zombie.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Resources/Fire_hellD.tscn" type="PackedScene" id=14]
-[ext_resource path="res://AudioFiles/Stage1/savymerchant.ogg" type="AudioStream" id=15]
-[ext_resource path="res://AudioFiles/Zombies/zombies/zombie-18.wav" type="AudioStream" id=16]
+[ext_resource path="res://Sprites/fonts/coffin_stone/coffinstoneexpand.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Sprites/png/Window2s.png" type="Texture" id=6]
+[ext_resource path="res://Stages/Coin_Counter.gd" type="Script" id=7]
+[ext_resource path="res://Resources/Trambolin.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scripts/Zombie_Generator.gd" type="Script" id=9]
+[ext_resource path="res://Resources/Follow_Zombie.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Resources/Weight_Stone.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Sprites/GameBackgrounds/1_game_background/1_game_background.png" type="Texture" id=12]
+[ext_resource path="res://Main_Screen/Gameover_Screen.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Resources/Basic_Zombie.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Resources/Fire_hellD.tscn" type="PackedScene" id=15]
+[ext_resource path="res://AudioFiles/Stage1/savymerchant.ogg" type="AudioStream" id=16]
+[ext_resource path="res://AudioFiles/Zombies/zombies/zombie-18.wav" type="AudioStream" id=17]
+[ext_resource path="res://Resources/Coin.tscn" type="PackedScene" id=18]
+
+[sub_resource type="StreamTexture" id=6]
+resource_local_to_scene = true
+flags = 4
+load_path = "res://.import/Window2s.png-ce993d419ccf1cb6299ab9a08a83b24e.stex"
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
-atlas = ExtResource( 5 )
+atlas = SubResource( 6 )
 region = Rect2( 1894.66, 910.469, 119.713, 129.236 )
 
 [sub_resource type="AtlasTexture" id=2]
 flags = 4
-atlas = ExtResource( 5 )
+atlas = SubResource( 6 )
 region = Rect2( 502.319, 1801.44, 506.196, 120.134 )
 
 [sub_resource type="AtlasTexture" id=3]
 flags = 4
-atlas = ExtResource( 5 )
+atlas = SubResource( 6 )
 region = Rect2( 1617.74, 1795.05, 336.842, 55.7896 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 20
-font_data = ExtResource( 6 )
+font_data = ExtResource( 5 )
 
 [sub_resource type="ParticlesMaterial" id=5]
 trail_divisor = 2
@@ -47,6 +54,16 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 1.2
 scale_random = 0.32
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 1625.25, 1375.16, 343.527, 143.802 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = SubResource( 6 )
+region = Rect2( 1616.44, 1043.62, 148.854, 163.775 )
 
 [node name="stage1" type="Node2D"]
 
@@ -133,22 +150,46 @@ randomness = 0.5
 local_coords = false
 process_material = SubResource( 5 )
 
-[node name="Coin_Counter" type="RichTextLabel" parent="Game_UI"]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="CoinIcon" type="TextureRect" parent="Game_UI"]
+editor/display_folded = true
+margin_left = 646.633
+margin_top = 31.6374
+margin_right = 796.633
+margin_bottom = 81.6374
+texture = SubResource( 8 )
+expand = true
 
-[node name="trambolin" parent="." instance=ExtResource( 7 )]
+[node name="CoinIcon2" type="TextureRect" parent="Game_UI/CoinIcon"]
+margin_left = 100.0
+margin_top = -2.0
+margin_right = 148.0
+margin_bottom = 38.0
+texture = SubResource( 7 )
+expand = true
+
+[node name="Coin_Counter" type="RichTextLabel" parent="Game_UI"]
+margin_left = 670.991
+margin_top = 41.7457
+margin_right = 766.991
+margin_bottom = 81.7457
+custom_fonts/normal_font = SubResource( 4 )
+custom_colors/default_color = Color( 0.901961, 0.992157, 0.00784314, 1 )
+bbcode_text = "0"
+text = "0"
+script = ExtResource( 7 )
+
+[node name="trambolin" parent="." instance=ExtResource( 8 )]
 position = Vector2( 681, 842 )
 
 [node name="Zombie_Generator" type="Node2D" parent="."]
 position = Vector2( -9, 0 )
-script = ExtResource( 8 )
+script = ExtResource( 9 )
 
-[node name="Female_Zombie" parent="." instance=ExtResource( 9 )]
+[node name="Female_Zombie" parent="." instance=ExtResource( 10 )]
 position = Vector2( 1910.79, 418.996 )
 hp = 5
 
-[node name="stone" parent="." instance=ExtResource( 10 )]
+[node name="stone" parent="." instance=ExtResource( 11 )]
 position = Vector2( 989, -4 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
@@ -158,26 +199,56 @@ motion_mirroring = Vector2( 1820, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2( 991.1, 548.791 )
-texture = ExtResource( 11 )
+texture = ExtResource( 12 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Gameover_Screen" parent="CanvasLayer" instance=ExtResource( 12 )]
+[node name="Gameover_Screen" parent="CanvasLayer" instance=ExtResource( 13 )]
 visible = false
 
-[node name="Basic_Zombie" parent="." instance=ExtResource( 13 )]
+[node name="Basic_Zombie" parent="." instance=ExtResource( 14 )]
 position = Vector2( 2330.32, 647.536 )
 
-[node name="FIRE" parent="." instance=ExtResource( 14 )]
+[node name="FIRE" parent="." instance=ExtResource( 15 )]
 position = Vector2( 2407.05, 808.052 )
 
-[node name="Basic_Zombie2" parent="." instance=ExtResource( 13 )]
+[node name="Basic_Zombie2" parent="." instance=ExtResource( 14 )]
 position = Vector2( 2271.56, 469.801 )
 
 [node name="Stage1Sound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 15 )
+stream = ExtResource( 16 )
 volume_db = -31.424
 autoplay = true
 
 [node name="DeadSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 16 )
+stream = ExtResource( 17 )
+
+[node name="Coin" parent="." instance=ExtResource( 18 )]
+position = Vector2( 1116.99, 817.763 )
+
+[node name="Coin2" parent="." instance=ExtResource( 18 )]
+position = Vector2( 976.009, 817.763 )
+
+[node name="Coin3" parent="." instance=ExtResource( 18 )]
+position = Vector2( 1051.53, 787.553 )
+
+[node name="Coin4" parent="." instance=ExtResource( 18 )]
+position = Vector2( 1061.24, 774.116 )
+
+[node name="Coin5" parent="." instance=ExtResource( 18 )]
+position = Vector2( 964.62, 822.645 )
+
+[node name="Coin6" parent="." instance=ExtResource( 18 )]
+position = Vector2( 1032.52, 810.799 )
+
+[node name="Coin7" parent="." instance=ExtResource( 18 )]
+position = Vector2( 1066.98, 786.218 )
+
+[node name="Coin8" parent="." instance=ExtResource( 18 )]
+position = Vector2( 1015.09, 782.99 )
+
+[node name="Coin9" parent="." instance=ExtResource( 18 )]
+position = Vector2( 1079.26, 844.106 )
+
+[node name="Coin10" parent="." instance=ExtResource( 18 )]
+position = Vector2( 1011.49, 808.225 )
