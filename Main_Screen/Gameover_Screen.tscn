@@ -10,12 +10,11 @@
 [ext_resource path="res://Sprites/fonts/coffin_stone/coffinstonerotal.ttf" type="DynamicFontData" id=8]
 
 [sub_resource type="DynamicFont" id=1]
-size = 50
+size = 55
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 30
-outline_color = Color( 1, 0.984314, 0.984314, 1 )
 use_mipmaps = true
 font_data = ExtResource( 7 )
 
@@ -34,9 +33,9 @@ margin_bottom = 600.0
 color = Color( 0, 0, 0, 0.333333 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 250.0
-margin_top = 120.0
-margin_right = 800.0
+margin_left = 230.0
+margin_top = 125.0
+margin_right = 1091.0
 margin_bottom = 597.0
 custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 0.254902, 0.0117647, 0.0117647, 1 )
@@ -73,25 +72,48 @@ texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 6 )
 
 [node name="dead_zombie_text" type="RichTextLabel" parent="."]
-margin_left = 260.163
-margin_top = 183.61
-margin_right = 477.163
-margin_bottom = 236.61
+margin_left = 260.0
+margin_top = 184.0
+margin_right = 779.0
+margin_bottom = 237.0
 custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_colors/selection_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_selected = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0.615686, 0, 0, 1 )
-text = "dead zombi:"
+text = "dead zombi :"
 
 [node name="dead_zombie_counter" type="RichTextLabel" parent="dead_zombie_text"]
-margin_left = 176.432
-margin_right = 216.432
+margin_left = 176.0
+margin_right = 528.0
 margin_bottom = 40.0
 custom_fonts/normal_font = SubResource( 3 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0.615686, 0, 0, 1 )
 bbcode_text = "0"
+text = "0"
+
+[node name="Coin" type="RichTextLabel" parent="."]
+margin_left = 260.0
+margin_top = 227.0
+margin_right = 793.0
+margin_bottom = 280.0
+custom_fonts/normal_font = SubResource( 2 )
+custom_colors/default_color = Color( 1, 0.843137, 0, 1 )
+custom_colors/selection_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.458824, 0, 0, 1 )
+text = "Gold :"
+
+[node name="Coin_count" type="RichTextLabel" parent="Coin"]
+margin_left = 87.0
+margin_right = 545.0
+margin_bottom = 33.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/normal_font = SubResource( 2 )
+custom_colors/default_color = Color( 1, 0.843137, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.458824, 0, 0, 1 )
+tab_size = 8
 text = "0"
 [connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/quit" to="." method="_on_quit_pressed"]

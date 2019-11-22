@@ -1,5 +1,5 @@
 extends Node2D
-
+onready var coin_count =get_node("../../Game_UI/Coin_Counter")
 var restart_screen = preload("res://Main_Screen/Loading_Screen.tscn")
 func _ready():
 	var screen_hide=get_parent().get_parent().get_node("player")
@@ -9,6 +9,7 @@ func _ready():
 func on_dead_signal():
 	visible=true
 	$dead_zombie_text/dead_zombie_counter.text=String(get_parent().get_parent().get_node("player").killed_counter)
+	$Coin/Coin_count.text=String( coin_count.count)
 	pass # Replace with function body.
 
 func _physics_process(delta):

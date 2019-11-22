@@ -19,31 +19,31 @@
 [ext_resource path="res://AudioFiles/Zombies/zombies/zombie-18.wav" type="AudioStream" id=17]
 [ext_resource path="res://Resources/Coin.tscn" type="PackedScene" id=18]
 
-[sub_resource type="StreamTexture" id=6]
+[sub_resource type="StreamTexture" id=1]
 resource_local_to_scene = true
 flags = 4
 load_path = "res://.import/Window2s.png-ce993d419ccf1cb6299ab9a08a83b24e.stex"
 
-[sub_resource type="AtlasTexture" id=1]
-flags = 4
-atlas = SubResource( 6 )
-region = Rect2( 1894.66, 910.469, 119.713, 129.236 )
-
 [sub_resource type="AtlasTexture" id=2]
 flags = 4
-atlas = SubResource( 6 )
-region = Rect2( 502.319, 1801.44, 506.196, 120.134 )
+atlas = SubResource( 1 )
+region = Rect2( 1894.66, 910.469, 119.713, 129.236 )
 
 [sub_resource type="AtlasTexture" id=3]
 flags = 4
-atlas = SubResource( 6 )
+atlas = SubResource( 1 )
+region = Rect2( 502.319, 1801.44, 506.196, 120.134 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = SubResource( 1 )
 region = Rect2( 1617.74, 1795.05, 336.842, 55.7896 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=5]
 size = 20
 font_data = ExtResource( 5 )
 
-[sub_resource type="ParticlesMaterial" id=5]
+[sub_resource type="ParticlesMaterial" id=6]
 trail_divisor = 2
 emission_shape = 2
 emission_box_extents = Vector3( 2000, 1, 1 )
@@ -55,14 +55,14 @@ orbit_velocity_random = 0.0
 scale = 1.2
 scale_random = 0.32
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=7]
 flags = 4
 atlas = ExtResource( 6 )
 region = Rect2( 1625.25, 1375.16, 343.527, 143.802 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=8]
 flags = 4
-atlas = SubResource( 6 )
+atlas = SubResource( 1 )
 region = Rect2( 1616.44, 1043.62, 148.854, 163.775 )
 
 [node name="stage1" type="Node2D"]
@@ -91,7 +91,7 @@ margin_top = 38.1762
 margin_right = 672.013
 margin_bottom = 189.176
 rect_scale = Vector2( 0.190372, 0.192707 )
-texture = SubResource( 1 )
+texture = SubResource( 2 )
 
 [node name="Health_Background" type="TextureRect" parent="Game_UI"]
 margin_left = 18.7253
@@ -99,7 +99,7 @@ margin_top = 29.6243
 margin_right = 524.725
 margin_bottom = 149.624
 rect_scale = Vector2( 0.34317, 0.341894 )
-texture = SubResource( 2 )
+texture = SubResource( 3 )
 
 [node name="Player_Health" type="TextureProgress" parent="Game_UI"]
 self_modulate = Color( 0.909804, 0.85098, 0.85098, 1 )
@@ -110,7 +110,7 @@ margin_bottom = 99.4957
 rect_scale = Vector2( 0.955942, 0.364713 )
 value = 100.0
 rounded = true
-texture_progress = SubResource( 3 )
+texture_progress = SubResource( 4 )
 tint_over = Color( 0.933333, 0.345098, 0.137255, 1 )
 nine_patch_stretch = true
 
@@ -125,7 +125,7 @@ rect_scale = Vector2( 0.932722, 1.32486 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 size_flags_stretch_ratio = 0.0
-custom_fonts/normal_font = SubResource( 4 )
+custom_fonts/normal_font = SubResource( 5 )
 custom_constants/table_vseparation = 4
 bbcode_text = "30
 
@@ -148,7 +148,7 @@ preprocess = 5.0
 speed_scale = 2.0
 randomness = 0.5
 local_coords = false
-process_material = SubResource( 5 )
+process_material = SubResource( 6 )
 
 [node name="CoinIcon" type="TextureRect" parent="Game_UI"]
 editor/display_folded = true
@@ -156,7 +156,7 @@ margin_left = 646.633
 margin_top = 31.6374
 margin_right = 796.633
 margin_bottom = 81.6374
-texture = SubResource( 8 )
+texture = SubResource( 7 )
 expand = true
 
 [node name="CoinIcon2" type="TextureRect" parent="Game_UI/CoinIcon"]
@@ -164,7 +164,7 @@ margin_left = 100.0
 margin_top = -2.0
 margin_right = 148.0
 margin_bottom = 38.0
-texture = SubResource( 7 )
+texture = SubResource( 8 )
 expand = true
 
 [node name="Coin_Counter" type="RichTextLabel" parent="Game_UI"]
@@ -172,7 +172,7 @@ margin_left = 670.991
 margin_top = 41.7457
 margin_right = 766.991
 margin_bottom = 81.7457
-custom_fonts/normal_font = SubResource( 4 )
+custom_fonts/normal_font = SubResource( 5 )
 custom_colors/default_color = Color( 0.901961, 0.992157, 0.00784314, 1 )
 bbcode_text = "0"
 text = "0"
@@ -248,7 +248,7 @@ position = Vector2( 1066.98, 786.218 )
 position = Vector2( 1015.09, 782.99 )
 
 [node name="Coin9" parent="." instance=ExtResource( 18 )]
-position = Vector2( 1079.26, 844.106 )
+position = Vector2( 1699.86, 821.251 )
 
 [node name="Coin10" parent="." instance=ExtResource( 18 )]
 position = Vector2( 1011.49, 808.225 )
