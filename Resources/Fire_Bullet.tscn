@@ -7,12 +7,11 @@
 [ext_resource path="res://Sprites/upgrade_bullet/Bullet_003.png" type="Texture" id=5]
 [ext_resource path="res://Sprites/upgrade_bullet/Bullet_004.png" type="Texture" id=6]
 
-
 [sub_resource type="CircleShape2D" id=1]
 radius = 8.35491
 
 [sub_resource type="ParticlesMaterial" id=2]
-angular_velocity = 3.32403e+21
+angular_velocity = 3.32403e+021
 
 [sub_resource type="CanvasItemMaterial" id=3]
 render_priority = 4

@@ -30,7 +30,6 @@
 [ext_resource path="res://Sprites/graveyardtilesetnew/png/Objects/TombStone (2).png" type="Texture" id=28]
 [ext_resource path="res://Sprites/graveyardtilesetnew/png/Objects/Tree.png" type="Texture" id=29]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 16 )
 
@@ -78,7 +77,6 @@ extents = Vector2( 53, 53.0001 )
 [node name="Tile (6)" type="Sprite" parent="."]
 editor/display_folded = true
 position = Vector2( 557, 432 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 32, 32 )
 __meta__ = {
@@ -92,7 +90,6 @@ shape = SubResource( 1 )
 
 [node name="Tile (6)2" type="Sprite" parent="."]
 position = Vector2( 581, 384 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 32, 32 )
 __meta__ = {
@@ -109,7 +106,6 @@ __meta__ = {
 [node name="Tile (9)" type="Sprite" parent="."]
 editor/display_folded = true
 position = Vector2( 205, 368 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
@@ -122,7 +118,6 @@ shape = SubResource( 2 )
 
 [node name="Tile (9)2" type="Sprite" parent="."]
 position = Vector2( 157, 368 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
@@ -139,7 +134,6 @@ __meta__ = {
 [node name="Tile (11)" type="Sprite" parent="."]
 editor/display_folded = true
 position = Vector2( 141, 432 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 5 )
 __meta__ = {
 "_edit_group_": true
@@ -153,7 +147,6 @@ shape = SubResource( 3 )
 [node name="Tile (12)" type="Sprite" parent="."]
 editor/display_folded = true
 position = Vector2( 397, 432 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 6 )
 __meta__ = {
 "_edit_group_": true
@@ -166,7 +159,6 @@ shape = SubResource( 4 )
 
 [node name="Tile (12)2" type="Sprite" parent="."]
 position = Vector2( 445, 480 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 6 )
 __meta__ = {
 "_edit_group_": true
@@ -175,7 +167,6 @@ __meta__ = {
 [node name="Tile (13)" type="Sprite" parent="."]
 editor/display_folded = true
 position = Vector2( 141, 304 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 7 )
 __meta__ = {
 "_edit_group_": true
@@ -188,7 +179,6 @@ shape = SubResource( 5 )
 
 [node name="Tile (13)2" type="Sprite" parent="."]
 position = Vector2( 205, 272 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 7 )
 __meta__ = {
 "_edit_group_": true
@@ -197,7 +187,6 @@ __meta__ = {
 [node name="Tile (14)" type="Sprite" parent="."]
 editor/display_folded = true
 position = Vector2( 333, 304 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 8 )
 __meta__ = {
 "_edit_group_": true
@@ -211,7 +200,6 @@ shape = SubResource( 6 )
 [node name="Tile (15)" type="Sprite" parent="."]
 editor/display_folded = true
 position = Vector2( 269, 272 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 9 )
 __meta__ = {
 "_edit_group_": true
@@ -253,7 +241,6 @@ texture = ExtResource( 14 )
 
 [node name="Tile (3)" type="Sprite" parent="."]
 position = Vector2( 301, 432 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 15 )
 __meta__ = {
 "_edit_group_": true
@@ -292,7 +279,6 @@ texture = ExtResource( 17 )
 [node name="Tile (7)" type="Sprite" parent="."]
 editor/display_folded = true
 position = Vector2( 301, 368 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 18 )
 region_rect = Rect2( 0, 0, 32, 32 )
 __meta__ = {
@@ -307,7 +293,6 @@ shape = SubResource( 11 )
 [node name="Tile (2)" type="Sprite" parent="."]
 editor/display_folded = true
 position = Vector2( 397, 144 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 19 )
 __meta__ = {
 "_edit_group_": true
@@ -321,7 +306,6 @@ shape = SubResource( 12 )
 [node name="Tile (1) (1)" type="Sprite" parent="."]
 editor/display_folded = true
 position = Vector2( 269, 112 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 20 )
 __meta__ = {
 "_edit_group_": true

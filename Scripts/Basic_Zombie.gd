@@ -3,6 +3,13 @@ var target_point_world = Vector2()
 var FollowPlayerTimer = Timer.new()
 onready var player = get_parent().get_node('player/CollisionShape2D')
 onready var tile_map = get_parent().get_node('TileMap')
+
+var zombie_hurt_player = AudioStreamPlayer.new()
+var zombie_dead_player = AudioStreamPlayer.new()
+var zombie_hurt_sound = load("res://AudioFiles/Zombies/zombies/zombie-2.wav")
+var zombie_dead_sound = load("res://AudioFiles/Zombies/zombies/zombie-21.wav")
+var zombie_dead_timer = Timer.new()
+
 const gravity=20
 
 export (int) var hp=1
@@ -15,67 +22,112 @@ var acceleration = 10
 var is_follow = false
 var path = []
 
-func move_to():
-	if len(path) > 1:
-		var ARRIVE_DISTANCE = 50
-		var direction = get_global_position().direction_to(target_point_world)
-		motion += direction	
-		if direction.x > 0:
-			motion.x = min(motion.x + acceleration, speed)
-		else:
-			motion.x = max(motion.x - acceleration, -speed)
-		
-		var cross_index = 0
-		var same_line = false
-		if len(path) > 2:
-			for i in range(0,len(path) - 1):
-				if path[i].x == path[i + 1].x and path[i].y != path[i + 1].y:
-					same_line = true
-				if same_line:
-					if path[i].x != path[i + 1].x and path[i].y == path[i + 1].y:
-						cross_index = i
-						break
-	
+func create_zombie_follow_timer():
+	FollowPlayerTimer.connect("timeout",self,"_on_FollowPlayerTimer_timeout") 
+	add_child(FollowPlayerTimer) #to process
+	FollowPlayerTimer.set_wait_time(1)
+	FollowPlayerTimer.start() #to start
+
+func add_zombie_sounds():
+	zombie_dead_player.set_stream(zombie_dead_sound)
+	zombie_hurt_player.set_stream(zombie_hurt_sound)
+	zombie_hurt_player.volume_db = 1
+	zombie_hurt_player.pitch_scale = 1
+	zombie_dead_player.volume_db = 1
+	zombie_dead_player.pitch_scale = 1	
+	add_child(zombie_dead_player)
+	add_child(zombie_hurt_player)
+
+func create_zombie_dead_timer():
+	zombie_dead_timer.set_one_shot(true)
+	zombie_dead_timer.set_wait_time(2)
+	add_child(zombie_dead_timer) #to process
+	zombie_dead_timer.connect("timeout",self, "_zombie_dead_timer_timeout") 
+
+func _ready():
+	add_zombie_sounds()
+	create_zombie_dead_timer()
+	create_zombie_follow_timer()
+
+func get_zombie_and_player_distance():
+	return player.get_global_position().distance_to(get_global_position())
+
+func find_zombie_x_movement(direction):
+	if direction.x > 0:
+		motion.x = min(motion.x + acceleration, speed)
+	else:
+		motion.x = max(motion.x - acceleration, -speed)
 			
-		var target_distance = 0
-		if direction.y < 0 && is_on_floor():
+func can_zombie_jump(direction,cross_index):
+	var target_distance = 0
+	if direction.y < 0 && is_on_floor():
+		var y_distance =player.get_global_position().y - get_global_position().y 
+		if  y_distance < 0 and abs(y_distance) > 10:
 			target_distance = round(get_global_position().distance_to(path[cross_index]) / tile_map.cell_size.y)
 			motion.y += max((-200 * target_distance) - gravity, -700)
+
+func find_cross_index():
+	var cross_index = 0
+	var same_line = false
+	if len(path) > 2:
+		for i in range(0,len(path) - 1):
+			if path[i].x == path[i + 1].x and path[i].y != path[i + 1].y:
+				same_line = true
+			else:
+				break
+			if same_line:
+				if path[i].x != path[i + 1].x and path[i].y == path[i + 1].y:
+					cross_index = i
+					
+	return cross_index
+	
+func move_to():
+	if len(path) > 1:
+		var direction = get_global_position().direction_to(target_point_world)
+		find_zombie_x_movement(direction)
+		can_zombie_jump(direction,find_cross_index())
+		var ARRIVE_DISTANCE = 50
 		return get_global_position().distance_to(target_point_world) < ARRIVE_DISTANCE
 	
-func follow_path():	
-	if len(path) > 2:
-		$AnimatedSprite.flip_h = sign(path[1].x - get_global_position().x) != 1	
-	if player.get_global_position().distance_to(get_global_position()) < 80:
-		$AnimatedSprite.play("idle")
+func get_next_target_point():
+	if move_to():
+		path.pop_front()
+		if len(path) > 0:
+			target_point_world = path[0]	
+
+func check_zombie_found_player():
+	if get_zombie_and_player_distance() < 80:
+		$AnimatedSprite.play("attack")
+		player.get_parent().dead(1,"zombie")
 		motion.x= 0
+		if !FollowPlayerTimer.is_stopped():
+			FollowPlayerTimer.stop()
+			path = []
 	else:
 		$AnimatedSprite.play("walk")
-		_get_path()
-		if move_to():
-			path.pop_front()
-			if len(path) > 0:
-				target_point_world = path[0]	
-	pass
-		
+		if FollowPlayerTimer.is_stopped():
+			FollowPlayerTimer.start()
+		get_next_target_point()
 		
 
+func set_zombie_direction():
+	if len(path) > 2:
+		$AnimatedSprite.flip_h = sign(path[1].x - get_global_position().x) != 1	
+	
+func follow_path():	
+	set_zombie_direction()
+	check_zombie_found_player()
+	pass
+
 func _get_path():
-	path = get_parent().get_node('TileMap')._get_path(get_global_position(), player.get_global_position())
+	path = get_parent().get_node('TileMap')._get_path($CollisionShape2D.get_global_position(), player.get_global_position())
 	path.pop_front()
-	if not path or len(path) == 1:
-			return
-	target_point_world = path[0]
+	if len(path) > 2:
+		target_point_world = path[1]
+		
 		
 func _set_is_follow(follow):
 	is_follow = follow
-	FollowPlayerTimer.connect("timeout",self,"_on_FollowPlayerTimer_timeout") 
-	#timeout is what says in docs, in signals
-	#self is who respond to the callback
-	#_on_timer_timeout is the callback, can have any name
-	add_child(FollowPlayerTimer) #to process
-	FollowPlayerTimer.set_wait_time(5)
-	FollowPlayerTimer.start() #to start
 
 func dead(damage,whodead):
 	hp-=damage
@@ -83,18 +135,15 @@ func dead(damage,whodead):
 		if whodead=="player":
 			get_parent().get_node("player").increase_dead_counter()
 		is_dead=true
-		if get_node("ZombieDead") != null:
-			get_node("ZombieDead").play()
+		zombie_dead_player.play()
 		motion=Vector2(0,0)
 		$AnimatedSprite.position.y+=10
 		$AnimatedSprite.play("dead")
 		$CollisionShape2D.set_deferred("disabled",true)
-		$Timer.start()
+		zombie_dead_timer.start()
 	else:
 		is_hurt=true
-		
-		if $ZombieHurt != null:
-			$ZombieHurt.play()
+		zombie_hurt_player.play()
 		$AnimatedSprite.play("hurt")
 
 func _jump_is_on_wall():
@@ -124,16 +173,13 @@ func _physics_process(delta):
 						$AnimatedSprite.play("attack")
 						get_slide_collision(i).collider.dead(1,"zombie")
  
-func _on_Timer_timeout():
+func _zombie_dead_timer_timeout():
 	queue_free()
 
-
+func _on_FollowPlayerTimer_timeout():
+	_get_path()
+	
 func _on_AnimatedSprite_animation_finished():
 	is_hurt=false
 	
-func _set_zombie_position(new_position):
-	$AnimatedSprite.position = new_position
-
-
-func _on_FollowPlayerTimer_timeout():	
-	pass
+	
