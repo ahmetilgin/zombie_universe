@@ -10,6 +10,9 @@ var zombie_hurt_sound = load("res://AudioFiles/Zombies/zombies/zombie-2.wav")
 var zombie_dead_sound = load("res://AudioFiles/Zombies/zombies/zombie-21.wav")
 var zombie_dead_timer = Timer.new()
 
+var can_zombie_attack = true
+var zombie_attack_timer = Timer.new()
+
 const gravity=20
 
 export (int) var hp=1
@@ -44,10 +47,17 @@ func create_zombie_dead_timer():
 	add_child(zombie_dead_timer) #to process
 	zombie_dead_timer.connect("timeout",self, "_zombie_dead_timer_timeout") 
 
+func create_zombie_attack_timer():
+	zombie_attack_timer.set_one_shot(true)
+	zombie_attack_timer.set_wait_time(1)
+	add_child(zombie_attack_timer) #to process
+	zombie_attack_timer.connect("timeout",self, "_zombie_attack_timer_timeout") 
+
 func _ready():
 	add_zombie_sounds()
 	create_zombie_dead_timer()
 	create_zombie_follow_timer()
+	create_zombie_attack_timer()
 
 func get_zombie_and_player_distance():
 	return player.get_global_position().distance_to(get_global_position())
@@ -97,8 +107,7 @@ func get_next_target_point():
 
 func check_zombie_found_player():
 	if get_zombie_and_player_distance() < 80:
-		$AnimatedSprite.play("attack")
-		player.get_parent().dead(1,"zombie")
+		_zombie_attack_to_player(15)
 		motion.x= 0
 		if !FollowPlayerTimer.is_stopped():
 			FollowPlayerTimer.stop()
@@ -170,14 +179,30 @@ func _physics_process(delta):
 			if get_slide_count()>0:
 				for i in range(get_slide_count()):
 					if "player" in get_slide_collision(i).collider.name:
-						$AnimatedSprite.play("attack")
-						get_slide_collision(i).collider.dead(1,"zombie")
+						_zombie_attack_to_player(25)
  
 func _zombie_dead_timer_timeout():
 	queue_free()
 
+
+	
+
+
 func _on_FollowPlayerTimer_timeout():
 	_get_path()
+
+func _zombie_attack_timer_timeout():
+	can_zombie_attack = true
+	
+func _zombie_attack_to_player(damage):
+	if can_zombie_attack:
+		print("zombie_attacked")
+		zombie_attack_timer.start()
+		$AnimatedSprite.play("attack")
+		player.get_parent().dead(damage,"zombie")
+		can_zombie_attack = false
+	
+	
 	
 func _on_AnimatedSprite_animation_finished():
 	is_hurt=false

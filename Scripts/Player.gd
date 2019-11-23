@@ -205,17 +205,9 @@ func _physics_process(delta):
 					else:
 						$AnimatedSprite.play("fall")
 					if _is_shift_stop():
-						motion.x=lerp(motion.x,0,0.5)
-						
+						motion.x=lerp(motion.x,0,0.5)						
 		motion = move_and_slide(motion,UP)
-		if get_slide_count()>0:
-			for i in range(get_slide_count()):
-				if "Basic_Zombie" in get_slide_collision(i).collider.name:
-					dead(1,"zombie")
-				if "Big_Zombie" in get_slide_collision(i).collider.name:
-					dead(2,"zombie")
-				if "Punk_Zombie" in get_slide_collision(i).collider.name:
-					dead(3,"zombie")
+		
 	else:
 		if is_on_floor():
 			$CollisionShape2D.set_deferred("disabled",true)
