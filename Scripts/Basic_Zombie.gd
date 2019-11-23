@@ -191,7 +191,6 @@ func _zombie_attack_timer_timeout():
 	
 func _zombie_attack_to_player(damage):
 	if can_zombie_attack:
-		print("zombie_attacked")
 		zombie_attack_timer.start()
 		$AnimatedSprite.play("attack")
 		player.get_parent().dead(damage,"zombie")
