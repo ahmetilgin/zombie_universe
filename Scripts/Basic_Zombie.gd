@@ -78,17 +78,12 @@ func can_zombie_jump(direction,cross_index):
 
 func find_cross_index():
 	var cross_index = 0
-	var same_line = false
 	if len(path) > 2:
 		for i in range(0,len(path) - 1):
 			if path[i].x == path[i + 1].x and path[i].y != path[i + 1].y:
-				same_line = true
+				cross_index = i
 			else:
 				break
-			if same_line:
-				if path[i].x != path[i + 1].x and path[i].y == path[i + 1].y:
-					cross_index = i
-					
 	return cross_index
 	
 func move_to():
