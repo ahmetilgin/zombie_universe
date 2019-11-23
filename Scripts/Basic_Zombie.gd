@@ -71,8 +71,8 @@ func find_zombie_x_movement(direction):
 func can_zombie_jump(direction,cross_index):
 	var target_distance = 0
 	if direction.y < 0 && is_on_floor():
-		var y_distance =player.get_global_position().y - get_global_position().y 
-		if  y_distance < 0 and abs(y_distance) > 10:
+		var y_distance = player.get_global_position().y - get_global_position().y 
+		if  y_distance < 0 and abs(y_distance) > 10 and player.get_parent().is_on_floor():
 			target_distance = round(get_global_position().distance_to(path[cross_index]) / tile_map.cell_size.y)
 			motion.y += max((-200 * target_distance) - gravity, -700)
 
