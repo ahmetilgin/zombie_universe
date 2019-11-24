@@ -73,6 +73,7 @@ func can_zombie_jump(direction,cross_index):
 	if direction.y < 0 && is_on_floor():
 		var y_distance = player.get_global_position().y - get_global_position().y 
 		if  y_distance < 0 and abs(y_distance) > 10 and player.get_parent().is_on_floor():
+			
 			target_distance = round(get_global_position().distance_to(path[cross_index]) / tile_map.cell_size.y)
 			motion.y += max((-200 * target_distance) - gravity, -700)
 
@@ -126,6 +127,7 @@ func follow_path():
 func _get_path():
 	path = get_parent().get_node('TileMap')._get_path($CollisionShape2D.get_global_position(), player.get_global_position())
 	path.pop_front()
+	path.pop_front()
 	if len(path) > 2:
 		target_point_world = path[1]
 		
@@ -168,7 +170,7 @@ func _physics_process(delta):
 		if is_hurt==false:
 			motion.y += gravity
 			follow_path()
-			#_jump_is_on_wall()
+			_jump_is_on_wall()
 			motion = move_and_slide(motion, UP)
 
 			if get_slide_count()>0:

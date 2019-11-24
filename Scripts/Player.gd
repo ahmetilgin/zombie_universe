@@ -3,6 +3,7 @@ signal dead_signal
 const bullet = preload("res://Resources/Bullet.tscn")
 const upgrade_bullet = preload("res://Resources/Fire_Bullet.tscn")
 
+
 enum bullet_power{
 	basic_bullet = 1
 	upgrated_bullet = 2

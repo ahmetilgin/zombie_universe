@@ -173,6 +173,7 @@ func _get_path(init_position: Vector2, target_position: Vector2) -> Array:
 		for point in path:
 			var point_world: = map_to_world(Vector2(point.x, point.y))
 			world_path.append(point_world + _half_cell_size) 
+		update()
 		return world_path
 	else:
 		return []
@@ -180,13 +181,12 @@ func _get_path(init_position: Vector2, target_position: Vector2) -> Array:
 
 
 func _draw():
-	pass
-#	draw_circle(init_pos , 2, PLAYER_COLOR)
-#	draw_circle(target_pos, 2, TARGET_COLOR)
-#	if len(world_path) > 2:
-#		for point_index in range(0,len(connected_cells) - 1):
-#			draw_circle(connected_cells[point_index] , 1 , DRAW_COLOR)
-#
+	draw_circle(init_pos , 2, PLAYER_COLOR)
+	draw_circle(target_pos, 2, TARGET_COLOR)
+	if len(world_path) > 2:
+		for point_index in range(0,len(world_path) - 1):
+			draw_circle(world_path[point_index] , 1 , DRAW_COLOR)
+
 func find_path(start_position: Vector2, end_position: Vector2) -> Array:
 	var map_path = []
 	map_path = astar.get_point_path(
