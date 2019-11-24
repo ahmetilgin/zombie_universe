@@ -34,6 +34,22 @@ onready var player_health = get_node("../Game_UI/Player_Health")
 onready var updated_tween = get_node("../Game_UI/Updated_Tween")
 const basic_zombie = preload("res://Resources/Basic_Zombie.tscn")
 
+var slow_shot_timer = Timer.new()
+func _create_zombie_shot_slow_timer():
+	slow_shot_timer.connect("timeout",self,"_on_slow_motion_timer_start") 
+	add_child(slow_shot_timer) #to process
+	slow_shot_timer.set_wait_time(0.1)
+
+	
+func _ready():
+	_create_zombie_shot_slow_timer()
+
+func _on_slow_motion_timer_start():
+	Engine.time_scale = 1
+	slow_shot_timer.stop()
+
+
+
 func _set_current_bullet(bullet):
 	current_bullet = bullet
 
@@ -171,6 +187,9 @@ func _physics_process(delta):
 					_set_is_down(true)
 					_play_slide_animation()
 					_move_slide()
+		if Input.is_key_pressed(KEY_SPACE):
+			Engine.time_scale = 0.1
+			slow_shot_timer.start()
 		if Input.is_action_just_pressed("ui_focus_prev"):
 			if _is_movable():
 					_set_is_melee(true)
@@ -181,6 +200,7 @@ func _physics_process(delta):
 				_fire_bullet()
 				get_node("Camera2D").shake(1,10,1)
 				_set_is_attack(true)
+				
 
 				
 				_play_attack_animation()

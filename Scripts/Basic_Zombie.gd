@@ -108,10 +108,11 @@ func check_zombie_found_player():
 			FollowPlayerTimer.stop()
 			path = []
 	else:
-		$AnimatedSprite.play("walk")
-		if FollowPlayerTimer.is_stopped():
-			FollowPlayerTimer.start()
-		get_next_target_point()
+		if get_zombie_and_player_distance() < 220:
+			$AnimatedSprite.play("walk")
+			if FollowPlayerTimer.is_stopped():
+				FollowPlayerTimer.start()
+			get_next_target_point()
 		
 
 func set_zombie_direction():
