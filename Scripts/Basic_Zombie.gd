@@ -28,7 +28,7 @@ var path = []
 func create_zombie_follow_timer():
 	FollowPlayerTimer.connect("timeout",self,"_on_FollowPlayerTimer_timeout") 
 	add_child(FollowPlayerTimer) #to process
-	FollowPlayerTimer.set_wait_time(1)
+	FollowPlayerTimer.set_wait_time(0.5)
 	FollowPlayerTimer.start() #to start
 
 func add_zombie_sounds():

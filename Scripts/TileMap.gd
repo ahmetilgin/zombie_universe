@@ -37,11 +37,27 @@ func calculate_point_index(point: Vector2) -> float:
     return point.x + map_size.x * point.y
 
 func find_any_tile_neighbors(point):
-	if get_cellv(Vector2(point.x, point.y + 1)) != INVALID_CELL:
+	if get_cell(point.x, point.y + 1) != INVALID_CELL:
 		return true
-	if get_cellv(Vector2(point.x, point.y - 1)) != INVALID_CELL:
+	if get_cell(point.x , point.y + 2) != INVALID_CELL:
+		return false
+	if get_cell(point.x, point.y - 1) != INVALID_CELL:
 		return true
-	var left_top = point + Vector2(-3,-3)
+	if get_cell(point.x - 1, point.y) != INVALID_CELL:
+		return true
+	if get_cell(point.x + 1, point.y) != INVALID_CELL:
+		return true
+	if get_cell(point.x - 1, point.y - 1) != INVALID_CELL:
+		return true
+	if get_cell(point.x + 1, point.y - 1) != INVALID_CELL:
+		return true
+	if get_cell(point.x - 1, point.y - 1) != INVALID_CELL:
+		return true
+	if get_cell(point.x + 1, point.y + 1) != INVALID_CELL:
+		return true
+	if get_cell(point.x -1 , point.y + 1) != INVALID_CELL:
+		return true
+	var left_top = point + Vector2(-2,-3)
 	var right_bottom = point + Vector2(3,3)
 	for x in range(left_top.x,right_bottom.x):
 		for y in range(left_top.y, right_bottom.y):
@@ -138,8 +154,8 @@ func _ready() -> void:
 	map_size = Vector2(max_x, max_y)
 	var cells = add_walkable_cells(obstacles)
 	connect_walkable_cells(cells)
-	for connectedPoint in connected_cells:
-		set_cellv(connectedPoint,21)
+	#for connectedPoint in connected_cells:
+	#	set_cellv(connectedPoint,21)
 
 func _get_path(init_position: Vector2, target_position: Vector2) -> Array:
 	init_pos = init_position
