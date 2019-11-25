@@ -88,7 +88,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 25.9776, 45.5532 )
+extents = Vector2( 31.5216, 51.6078 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 2.91031, 28.5098 )
@@ -100,7 +100,7 @@ speed = 150
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -32.2041, -42.5131 )
-scale = Vector2( 0.30499, 0.261481 )
+scale = Vector2( 0.314, 0.301 )
 frames = SubResource( 1 )
 animation = "attack"
 centered = false
@@ -117,7 +117,7 @@ position = Vector2( 17.0701, 6.94835 )
 enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -6.22613, 4.07521 )
+position = Vector2( -1.81436, 9.11723 )
 shape = SubResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="."]

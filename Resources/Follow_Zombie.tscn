@@ -47,7 +47,7 @@
 [ext_resource path="res://Sprites/zombie/png/female/Attack (8).png" type="Texture" id=45]
 [ext_resource path="res://Resources/blood_Particles.tscn" type="PackedScene" id=46]
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
 "loop": true,
@@ -75,7 +75,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 0.365235, 0.410716 )
 
 [node name="Zombie_Body" type="KinematicBody2D"]
@@ -84,7 +84,7 @@ position = Vector2( 404.918, 267.165 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -57.698, -65.7058 )
 scale = Vector2( 0.187484, 0.207584 )
-frames = SubResource( 2 )
+frames = SubResource( 1 )
 animation = "attack"
 speed_scale = 3.0
 playing = true
@@ -95,7 +95,7 @@ position = Vector2( -3.57101, 10.4519 )
 rotation = -3.14159
 scale = Vector2( -95.231, 104.237 )
 z_as_relative = false
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 one_way_collision_margin = 0.0
 
 [node name="RayCast2D" type="RayCast2D" parent="."]

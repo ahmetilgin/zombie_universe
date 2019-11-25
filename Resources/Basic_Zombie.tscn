@@ -78,19 +78,19 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 25.8147, 45.3463 )
+extents = Vector2( 17.7719, 46.3212 )
 
 [node name="Basic_Zombie" type="KinematicBody2D"]
-position = Vector2( 155.4, 80.4566 )
+position = Vector2( 143.858, 80.457 )
 script = ExtResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 material = SubResource( 1 )
-position = Vector2( -39.2369, -57.9162 )
-scale = Vector2( 0.197407, 0.211089 )
+position = Vector2( -7.88678, -29.4161 )
+scale = Vector2( 0.184, 0.204 )
 frames = SubResource( 2 )
 animation = "attack"
-frame = 1
+frame = 3
 playing = true
 centered = false
 
@@ -100,6 +100,7 @@ enabled = true
 cast_to = Vector2( 0, 38.27 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 1.04172, 3.28896 )
+position = Vector2( 31.7284, 27.9574 )
+scale = Vector2( 1.49575, 1 )
 shape = SubResource( 3 )
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]

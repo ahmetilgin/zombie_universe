@@ -18,16 +18,13 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+var gr = Vector2(0, 10)  # gravity force
+var velocity = Vector2()  # the area's velocity
 
-
-func _on_Area2D_body_entered(body):
+func _on_Area2D_body_entered(body):	
 	if "player" in body.name:
 		coin_number.counting()
-		
-
 		$Sound.play()
-		
-		set_deferred("monitoring",false)
 		$Tween.start()
 		$Timer.start()
 
@@ -41,4 +38,10 @@ func _on_Tween_tween_completed(object, key):
 func _on_Timer_timeout():
 	queue_free()
 	pass # Replace with function body.
+
+
+func _process(delta):
+	pass
+#	velocity += gr  * delta 
+#	set_position(get_position() + velocity * delta)
 
