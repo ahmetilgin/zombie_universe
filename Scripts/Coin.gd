@@ -25,6 +25,7 @@ func _on_Area2D_body_entered(body):
 	if "player" in body.name:
 		coin_number.counting()
 		$Sound.play()
+		set_deferred("monitoring",false)
 		$Tween.start()
 		$Timer.start()
 
