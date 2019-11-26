@@ -13,6 +13,8 @@ var zombie_dead_timer = Timer.new()
 var can_zombie_attack = true
 var zombie_attack_timer = Timer.new()
 
+var player_found_icon = TextureRect.new()
+
 const gravity=20
 
 export (int) var hp=1
@@ -53,11 +55,25 @@ func create_zombie_attack_timer():
 	add_child(zombie_attack_timer) #to process
 	zombie_attack_timer.connect("timeout",self, "_zombie_attack_timer_timeout") 
 
+func create_zombie_found_player_label():
+	var texture = ImageTexture.new()
+	var image = Image.new()
+	image.load("res://Sprites/warningicon/warning.png")
+	texture.create_from_image(image, 7)
+	var textureRect = TextureRect.new()
+	textureRect.texture = texture
+	texture.set_size_override(Vector2(20,20))
+	image.resize (20,20)
+	textureRect.set_size(Vector2(20,20))
+	add_child(textureRect)
+
 func _ready():
 	add_zombie_sounds()
 	create_zombie_dead_timer()
 	create_zombie_follow_timer()
 	create_zombie_attack_timer()
+	create_zombie_found_player_label()
+
 
 func get_zombie_and_player_distance():
 	return player.get_global_position().distance_to(get_global_position())
@@ -72,8 +88,7 @@ func can_zombie_jump(direction,cross_index):
 	var target_distance = 0
 	if direction.y < 0 && is_on_floor():
 		var y_distance = player.get_global_position().y - get_global_position().y 
-		if  y_distance < 0 and abs(y_distance) > 10 and player.get_parent().is_on_floor():
-			
+		if  y_distance < 0 and abs(y_distance) > 10 and player.get_parent().is_on_floor():		
 			target_distance = round(get_global_position().distance_to(path[cross_index]) / tile_map.cell_size.y)
 			motion.y += max((-200 * target_distance) - gravity, -700)
 
@@ -109,10 +124,16 @@ func check_zombie_found_player():
 			FollowPlayerTimer.stop()
 			path = []
 	else:
-		$AnimatedSprite.play("walk")
-		if FollowPlayerTimer.is_stopped():
-			FollowPlayerTimer.start()
-		get_next_target_point()
+		if player.get_global_position().distance_to(get_global_position()) < 600:
+			player_found_icon.set_visible(true)
+			$AnimatedSprite.play("walk")
+			if FollowPlayerTimer.is_stopped():
+				FollowPlayerTimer.start()
+			get_next_target_point()
+		else:
+			$AnimatedSprite.play("idle")
+			player_found_icon.set_visible(false)
+
 		
 
 func set_zombie_direction():
