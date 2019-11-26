@@ -3,6 +3,14 @@ signal dead_signal
 const bullet = preload("res://Resources/Bullet.tscn")
 const upgrade_bullet = preload("res://Resources/Fire_Bullet.tscn")
 
+#touch screen option
+var touch_right=false
+var touch_left=false
+var touch_up=false
+var touch_down=false
+var touch_fire=false
+var touch_melee=false
+
 
 enum bullet_power{
 	basic_bullet = 1
@@ -171,7 +179,7 @@ func _physics_process(delta):
 		$Area2D/CollisionShape2D.disabled=true
 		$mele_flip_h_true/CollisionPolygon2D.disabled=true
 		_set_shift_stop(false)
-		if Input.is_action_pressed("ui_right"):
+		if Input.is_action_pressed("ui_right") or touch_right:
 			if _is_movable():
 				_move_right()		
 		elif Input.is_action_pressed("ui_left"):
@@ -294,3 +302,34 @@ func _on_player_dead_timer_timeout():
 func increase_dead_counter():
 	killed_counter += 1
 	pass
+
+
+func _on_right_pressed():
+	touch_right=true
+	$Controller/Node2D/right.modulate=Color(0.341176, 0.341176, 0.341176)
+
+
+
+func _on_left_pressed():
+	touch_left=true
+	$Controller/Node2D/right.modulate=Color(0.341176, 0.341176, 0.341176)
+
+
+func _on_up_pressed():
+	touch_up=true
+	$Controller/Node2D/right.modulate=Color(0.341176, 0.341176, 0.341176)
+
+
+func _on_down_pressed():
+	touch_down=true
+	$Controller/Node2D/right.modulate=Color(0.341176, 0.341176, 0.341176)
+
+
+func _on_gun_shoot_pressed():
+	touch_fire=true
+	$Controller/Node2D/right.modulate=Color(0.341176, 0.341176, 0.341176)
+
+
+func _on_melee_attack_pressed():
+	touch_melee=true
+	$Controller/Node2D/right.modulate=Color(0.341176, 0.341176, 0.341176)
