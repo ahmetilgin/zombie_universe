@@ -181,37 +181,35 @@ func _physics_process(delta):
 		_set_shift_stop(false)
 		if Input.is_action_pressed("ui_right") or touch_right:
 			if _is_movable():
-				_move_right()		
-		elif Input.is_action_pressed("ui_left"):
+				_move_right()
+
+		elif Input.is_action_pressed("ui_left") or touch_left:
 			if _is_movable():
 				_move_left()
 		else:
 			if _is_idle():
 				_set_shift_stop(true)
 				_play_idle_animation()							
-		if Input.is_action_just_pressed("ui_down"):
+		if Input.is_action_just_pressed("ui_down") or touch_down:
 			if is_hurt==false && is_on_floor():
 				if is_melee==false:
-					is_down=true
 					_set_is_down(true)
 					_play_slide_animation()
 					_move_slide()
+					touch_down = false
 		if Input.is_key_pressed(KEY_SPACE):
 			Engine.time_scale = 0.1
 			slow_shot_timer.start()
-		if Input.is_action_just_pressed("ui_focus_prev"):
+		if Input.is_action_just_pressed("ui_focus_prev") or touch_melee:
 			if _is_movable():
 					_set_is_melee(true)
 					_play_melee_animation()
 					_change_collision_rotation()
-		if Input.is_action_just_pressed("ui_focus_next"):
+		if Input.is_action_just_pressed("ui_focus_next") or touch_fire:
 			if _is_movable() && _check_bullet_count():
 				_fire_bullet()
 				get_node("Camera2D").shake(1,10,1)
-				_set_is_attack(true)
-				
-
-				
+				_set_is_attack(true)		
 				_play_attack_animation()
 				if current_bullet_power == 1:
 					$ShotSound.play()
@@ -223,7 +221,7 @@ func _physics_process(delta):
 				_set_bullet_direction(sign($Position2D.position.x))
 				current_bullet.position = $Position2D.global_position
 		if is_on_floor():
-			if Input.is_action_just_pressed("ui_up"):
+			if Input.is_action_just_pressed("ui_up") or touch_up:
 				motion.y = jump
 			if _is_shift_stop():
 				motion.x = lerp(motion.x, 0, 0.2)
@@ -312,24 +310,59 @@ func _on_right_pressed():
 
 func _on_left_pressed():
 	touch_left=true
-	$Controller/Node2D/right.modulate=Color(0.341176, 0.341176, 0.341176)
+	$Controller/Node2D/left.modulate=Color(0.341176, 0.341176, 0.341176)
 
 
 func _on_up_pressed():
 	touch_up=true
-	$Controller/Node2D/right.modulate=Color(0.341176, 0.341176, 0.341176)
+	$Controller/Node2D/up.modulate=Color(0.341176, 0.341176, 0.341176)
 
 
 func _on_down_pressed():
 	touch_down=true
-	$Controller/Node2D/right.modulate=Color(0.341176, 0.341176, 0.341176)
+	$Controller/Node2D/down.modulate=Color(0.341176, 0.341176, 0.341176)
 
 
 func _on_gun_shoot_pressed():
 	touch_fire=true
-	$Controller/Node2D/right.modulate=Color(0.341176, 0.341176, 0.341176)
+	$Controller/Node2D/gun_shoot.modulate = Color(1, 1, 1)
 
 
 func _on_melee_attack_pressed():
 	touch_melee=true
-	$Controller/Node2D/right.modulate=Color(0.341176, 0.341176, 0.341176)
+	$Controller/Node2D/melee_attack.modulate = Color(1, 1, 1)
+
+func _on_right_released():
+	$Controller/Node2D/right.modulate = Color(1, 1, 1)
+	touch_right = false
+	pass # Replace with function body.
+
+
+func _on_left_released():
+	$Controller/Node2D/left.modulate = Color(1, 1, 1)
+	touch_left = false
+	pass # Replace with function body.
+
+
+func _on_up_released():
+	$Controller/Node2D/up.modulate=Color(1, 1, 1)
+	touch_up = false
+	pass # Replace with function body.
+
+
+func _on_down_released():
+	$Controller/Node2D/down.modulate=Color(1, 1, 1)
+	touch_down = false
+	pass # Replace with function body.
+
+
+func _on_gun_shoot_released():
+	$Controller/Node2D/gun_shoot.modulate=Color(1, 1, 1)
+	touch_fire = false
+	pass # Replace with function body.
+
+
+func _on_melee_attack_released():
+	$Controller/Node2D/melee_attack.modulate=Color(1, 1, 1)
+	touch_melee = false
+	pass # Replace with function body.
