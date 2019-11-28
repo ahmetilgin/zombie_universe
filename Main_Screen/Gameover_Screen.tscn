@@ -2,12 +2,13 @@
 
 [ext_resource path="res://Main_Screen/Gameover_Screen.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/fonts/coffin_stone/coffinstoneexpandital.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Sprites/balangic_ekranı_yazıları/Start_Red.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/balangic_ekranı_yazıları/Start_Green.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/balangic_ekranı_yazıları/Quit_Red.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/balangic_ekranı_yazıları/Quit_green.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/balangic_screen_fonts/Start_Red.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/balangic_screen_fonts/Start_Green.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/balangic_screen_fonts/Quit_Red.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/balangic_screen_fonts/Quit_green.png" type="Texture" id=6]
 [ext_resource path="res://Sprites/fonts/coffin_stone/coffinstonerotate.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://Sprites/fonts/coffin_stone/coffinstonerotal.ttf" type="DynamicFontData" id=8]
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 55
