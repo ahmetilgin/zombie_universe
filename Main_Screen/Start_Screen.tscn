@@ -11,7 +11,6 @@
 [ext_resource path="res://Sprites/balangic_screen_fonts/Quit_green.png" type="Texture" id=9]
 [ext_resource path="res://AudioFiles/MainScreen/main_screen.ogg" type="AudioStream" id=10]
 
-
 [node name="Start_Screen" type="Node"]
 script = ExtResource( 1 )
 
