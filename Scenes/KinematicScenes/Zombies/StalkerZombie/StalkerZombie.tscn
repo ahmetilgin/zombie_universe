@@ -1,0 +1,81 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/KinematicScenes/Zombies/StalkerZombie/StalkerZombie.gd" type="Script" id=1]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ null, null, null, null ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ null, null, null, null, null, null, null, null ],
+"loop": true,
+"name": "dead",
+"speed": 12.0
+}, {
+"frames": [ null, null, null, null, null, null, null, null, null, null ],
+"loop": true,
+"name": "run",
+"speed": 15.0
+}, {
+"frames": [ null, null, null, null, null, null ],
+"loop": true,
+"name": "attack",
+"speed": 10.0
+}, {
+"frames": [ null, null, null, null, null, null, null ],
+"loop": false,
+"name": "jump",
+"speed": 15.0
+}, {
+"frames": [ null, null, null, null, null ],
+"loop": false,
+"name": "hurt",
+"speed": 15.0
+}, {
+"frames": [ null, null, null, null, null, null ],
+"loop": true,
+"name": "walk",
+"speed": 10.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 31.5216, 51.6078 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 2.91031, 28.5098 )
+
+[node name="Big_Zombie" type="KinematicBody2D"]
+position = Vector2( 291.747, 171.457 )
+script = ExtResource( 1 )
+speed = 150
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -32.2041, -42.5131 )
+scale = Vector2( 0.314, 0.301 )
+frames = SubResource( 1 )
+animation = "attack"
+centered = false
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( 17.0701, 6.94835 )
+enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -1.81436, 9.11723 )
+shape = SubResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 36.7444, -9.18611 )
+shape = SubResource( 3 )
+disabled = true
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_enemy_attack_body_entered"]

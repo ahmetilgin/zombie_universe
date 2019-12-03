@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/StaticScenes/BulletPowerUp/BulletPowerUp.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Sprites/UISprites/Window2s.png" type="Texture" id=2]
+
+[node name="upgrade" type="Area2D"]
+position = Vector2( 77.2714, 41.0673 )
+script = ExtResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( -15.5001, -17.2389 )
+scale = Vector2( 0.222585, 0.251616 )
+polygon = PoolVector2Array( 112.105, 19.8135, 93.9069, 16.6366, 69.4531, 14.9725, 50.1722, 14.1405, 28.54, 17.0526, 17.7239, 19.9646, 14.4321, 57.4052, 20.819, 87.7201, 43.5885, 114.398, 64.2802, 130.206, 79.7994, 118.658, 100.02, 99.0058, 104.992, 89.5554, 110.836, 77.3735, 115.069, 34.5249 )
+
+[node name="Windows" type="Sprite" parent="."]
+position = Vector2( -15.5001, -17.2389 )
+scale = Vector2( 0.222585, 0.251616 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 1747.86, 901, 131.857, 140 )
+[connection signal="body_entered" from="." to="." method="_on_upgrade_body_entered"]

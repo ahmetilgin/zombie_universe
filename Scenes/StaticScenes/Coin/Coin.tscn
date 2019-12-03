@@ -1,0 +1,47 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Scenes/StaticScenes/Coin/Coin.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Sprites/StarCoin/starcoinrotate1.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Sprites/StarCoin/starcoinrotate2.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Sprites/StarCoin/starcoinrotate3.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Sprites/StarCoin/starcoinrotate4.png" type="Texture" id=5]
+[ext_resource path="res://Resources/Sprites/StarCoin/starcoinrotate5.png" type="Texture" id=6]
+[ext_resource path="res://Resources/Sprites/StarCoin/starcoinrotate6.png" type="Texture" id=7]
+[ext_resource path="res://Resources/AudioFiles/CoinSound/coinsound .wav" type="AudioStream" id=8]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "coin",
+"speed": 6.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 15.9169
+
+[node name="Coin" type="Area2D"]
+position = Vector2( 256, 241.253 )
+script = ExtResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -0.257813, -0.916016 )
+scale = Vector2( 0.0143305, 0.0142666 )
+frames = SubResource( 1 )
+animation = "coin"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.265076, -0.740707 )
+shape = SubResource( 2 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 8 )
+volume_db = 2.0
+[connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
+[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
