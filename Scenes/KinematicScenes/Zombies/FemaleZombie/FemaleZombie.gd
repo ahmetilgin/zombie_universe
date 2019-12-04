@@ -1,4 +1,4 @@
-extends "res://Scripts/Basic_Zombie.gd"
+extends "res://Scenes/KinematicScenes/Zombies/SimpleZombie/SimpleZombie.gd"
 
 # Declare member variables here. Examples:
 # var a = 2

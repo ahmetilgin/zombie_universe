@@ -1,4 +1,4 @@
-extends "Basic_Zombie.gd"
+extends "res://Scenes/KinematicScenes/Zombies/SimpleZombie/SimpleZombie.gd"
 
 
 func _ready():

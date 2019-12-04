@@ -1,9 +1,9 @@
 extends Node2D
 
-var punk_zombie = preload("res://Resources/Punk_Zombie.tscn")
-var basic_zombie = preload("res://Resources/Basic_Zombie.tscn")
-var big_zombie = preload("res://Resources/Big_Zombie.tscn")
-var coin = preload("res://Resources/Coin.tscn")
+var punk_zombie = preload("res://Scenes/KinematicScenes/Zombies/PunkZombie/PunkZombie.tscn")
+var simple_zombie = preload("res://Scenes/KinematicScenes/Zombies/SimpleZombie/SimpleZombie.tscn")
+var stalker_zombie = preload("res://Scenes/KinematicScenes/Zombies/StalkerZombie/StalkerZombie.tscn")
+var coin = preload("res://Scenes/StaticScenes/Coin/Coin.tscn")
 onready var player = get_parent().get_node("player")
 onready var tilemap = get_parent().get_node("TileMap")
 var max_x = 0
@@ -51,11 +51,11 @@ func generate_Zombies():
 		var zombie_instance = null
 		var select_zombie = randi() % 3 
 		if select_zombie == 0:
-			zombie_instance = basic_zombie.instance()
+			zombie_instance = simple_zombie.instance()
 		elif select_zombie == 1:
-			zombie_instance = basic_zombie.instance()
+			zombie_instance = punk_zombie.instance()
 		else: 
-			zombie_instance = basic_zombie.instance()
+			zombie_instance = stalker_zombie.instance()
 		var new_location = Vector2((randi() % (20 * max_x)) + (10 * min_x) ,  min_y - 100)
 		get_parent().call_deferred("add_child",zombie_instance)
 		zombie_instance.set_global_position((new_location) + Vector2(1000,-500))

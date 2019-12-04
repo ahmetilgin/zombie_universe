@@ -6,8 +6,8 @@ onready var tile_map = get_parent().get_node('TileMap')
 
 var zombie_hurt_player = AudioStreamPlayer.new()
 var zombie_dead_player = AudioStreamPlayer.new()
-var zombie_hurt_sound = load("res://AudioFiles/Zombies/zombies/zombie-2.wav")
-var zombie_dead_sound = load("res://AudioFiles/Zombies/zombies/zombie-21.wav")
+var zombie_hurt_sound = load("res://Resources/AudioFiles/Zombies/zombies/zombie-2.wav")
+var zombie_dead_sound = load("res://Resources/AudioFiles/Zombies/zombies/zombie-21.wav")
 var zombie_dead_timer = Timer.new()
 
 var can_zombie_attack = true

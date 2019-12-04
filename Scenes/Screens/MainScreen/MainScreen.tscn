@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://Scenes/Screens/MainScreen/Start_Screen.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Screens/MainScreen/MainScreen.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/GraveyardTileSet/png/BG.png" type="Texture" id=2]
 [ext_resource path="res://Resources/Sprites/MainScreenButtons/ZombieUniverse.png" type="Texture" id=3]
 [ext_resource path="res://Resources/Sprites/MainScreenButtons/StartRed.png" type="Texture" id=4]

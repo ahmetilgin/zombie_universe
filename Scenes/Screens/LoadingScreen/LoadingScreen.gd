@@ -17,7 +17,7 @@ func _physics_process(delta):
 			$TextureProgress.set_value(time)
 
 func on_start_loading():
-	parallel_load_stage.start(self,"load_scene", ResourceLoader.load_interactive("res://Stages/Stage1.tscn"))
+	parallel_load_stage.start(self,"load_scene", ResourceLoader.load_interactive("res://Stages/Game.tscn"))
 
 
 func load_scene(interactive_ldr):

@@ -1,6 +1,7 @@
 extends Node2D
 onready var coin_count =get_node("../../Game_UI/Coin_Counter")
-var restart_screen = preload("res://Main_Screen/Loading_Screen.tscn")
+var restart_screen = preload("res://Scenes/Screens/LoadingScreen/LoadingScreen.tscn")
+
 func _ready():
 	var screen_hide=get_parent().get_parent().get_node("player")
 	screen_hide.connect("dead_signal",self,"on_dead_signal")

@@ -1,7 +1,7 @@
 extends KinematicBody2D
 signal dead_signal
-const bullet = preload("res://Resources/Bullet.tscn")
-const upgrade_bullet = preload("res://Resources/Fire_Bullet.tscn")
+const bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/SimpleBullet/SimpleBullet.tscn")
+const upgrade_bullet =preload("res://Scenes/KinematicScenes/Player/Bullets/UpgradedBullet/UpgratedBullet.tscn")
 
 #touch screen option
 var touch_right=false
@@ -41,8 +41,8 @@ var bullet_size = 30
 onready var bullet_number = get_node("../Game_UI/bullet_counter")
 onready var player_health = get_node("../Game_UI/Player_Health")
 onready var updated_tween = get_node("../Game_UI/Updated_Tween")
-const basic_zombie = preload("res://Resources/Basic_Zombie.tscn")
-
+const basic_zombie = preload("res://Scenes/KinematicScenes/Zombies/SimpleZombie/SimpleZombie.tscn")
+#basic zombie nerede kullanıyor??
 var slow_shot_timer = Timer.new()
 func _create_zombie_shot_slow_timer():
 	slow_shot_timer.connect("timeout",self,"_on_slow_motion_timer_start") 
