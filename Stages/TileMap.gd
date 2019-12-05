@@ -12,7 +12,6 @@ var init_pos = Vector2()
 var target_pos = Vector2()
 var connected_cells = []
 
-
 var max_x = 0
 var min_x = 0
 var max_y = 0

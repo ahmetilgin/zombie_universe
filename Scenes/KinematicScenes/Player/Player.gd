@@ -57,8 +57,6 @@ func _on_slow_motion_timer_start():
 	Engine.time_scale = 1
 	slow_shot_timer.stop()
 
-
-
 func _set_current_bullet(bullet):
 	current_bullet = bullet
 
@@ -72,7 +70,6 @@ func _fire_bullet():
 func _set_bullet_direction(direction):
 	current_bullet.set_bullet_direction(direction)
 
-	
 func _set_player_options(_max_speed, _speed):
 	speed = _speed
 	max_speed = _max_speed
@@ -241,9 +238,7 @@ func _physics_process(delta):
 		else:
 			motion.y += gravity
 			motion = move_and_slide(motion,UP)
-
-
-
+			
 func dead(damage,whodead):
 	if !_is_dead():
 		hp -= damage
@@ -259,8 +254,6 @@ func dead(damage,whodead):
 		else:
 			is_hurt=true
 			$AnimatedSprite.play("hurt")
-			
-
 
 func _on_AnimatedSprite_animation_finished():
 	_clear_states()
@@ -284,12 +277,10 @@ func tramboline_jump():
 		if tramb_count>6:
 			tramb_count=6
 		$jump_counter_time.start()
-
-
+		
 func _on_jump_counter_time_timeout():
 	tramb_count=1
 	pass # Replace with function body.
-
 
 func _on_player_dead_timer_timeout():
 	pass
@@ -301,32 +292,25 @@ func increase_dead_counter():
 	killed_counter += 1
 	pass
 
-
 func _on_right_pressed():
 	touch_right=true
 	$Controller/Node2D/right.modulate=Color(0.341176, 0.341176, 0.341176)
-
-
 
 func _on_left_pressed():
 	touch_left=true
 	$Controller/Node2D/left.modulate=Color(0.341176, 0.341176, 0.341176)
 
-
 func _on_up_pressed():
 	touch_up=true
 	$Controller/Node2D/up.modulate=Color(0.341176, 0.341176, 0.341176)
-
 
 func _on_down_pressed():
 	touch_down=true
 	$Controller/Node2D/down.modulate=Color(0.341176, 0.341176, 0.341176)
 
-
 func _on_gun_shoot_pressed():
 	touch_fire=true
 	$Controller/Node2D/gun_shoot.modulate = Color(1, 1, 1)
-
 
 func _on_melee_attack_pressed():
 	touch_melee=true
@@ -337,30 +321,25 @@ func _on_right_released():
 	touch_right = false
 	pass # Replace with function body.
 
-
 func _on_left_released():
 	$Controller/Node2D/left.modulate = Color(1, 1, 1)
 	touch_left = false
 	pass # Replace with function body.
-
 
 func _on_up_released():
 	$Controller/Node2D/up.modulate=Color(1, 1, 1)
 	touch_up = false
 	pass # Replace with function body.
 
-
 func _on_down_released():
 	$Controller/Node2D/down.modulate=Color(1, 1, 1)
 	touch_down = false
 	pass # Replace with function body.
 
-
 func _on_gun_shoot_released():
 	$Controller/Node2D/gun_shoot.modulate=Color(1, 1, 1)
 	touch_fire = false
 	pass # Replace with function body.
-
 
 func _on_melee_attack_released():
 	$Controller/Node2D/melee_attack.modulate=Color(1, 1, 1)

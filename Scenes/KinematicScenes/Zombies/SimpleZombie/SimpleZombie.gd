@@ -58,7 +58,7 @@ func create_zombie_attack_timer():
 func create_zombie_found_player_label():
 	var texture = ImageTexture.new()
 	var image = Image.new()
-	image.load("res://Sprites/warningicon/warning.png")
+	image.load("res://Resources/Sprites/WarningIcon/warning.png")
 	texture.create_from_image(image, 7)
 	var textureRect = TextureRect.new()
 	textureRect.texture = texture

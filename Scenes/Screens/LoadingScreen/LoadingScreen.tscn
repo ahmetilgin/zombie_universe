@@ -19,38 +19,45 @@ font_data = ExtResource( 5 )
 script = ExtResource( 1 )
 
 [node name="3_game_background" type="Sprite" parent="."]
-scale = Vector2( 0.416646, 0.555558 )
+position = Vector2( -251.654, -15.978 )
+scale = Vector2( 0.838589, 0.858995 )
 texture = ExtResource( 2 )
 centered = false
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 165.2
-margin_top = 346.947
-margin_right = 652.2
-margin_bottom = 399.947
+margin_left = 361.934
+margin_top = 399.801
+margin_right = 848.934
+margin_bottom = 452.801
 texture = ExtResource( 3 )
 expand = true
 
 [node name="TextureProgress" type="TextureProgress" parent="."]
-margin_left = 175.876
-margin_top = 356.113
-margin_right = 2506.88
-margin_bottom = 2554.11
-rect_scale = Vector2( 1.76, 0.43 )
+margin_left = 372.61
+margin_top = 408.967
+margin_right = 2703.61
+margin_bottom = 2606.96
+rect_scale = Vector2( 0.194278, 0.0158816 )
 size_flags_horizontal = 4
 size_flags_vertical = 5
-max_value = 1000.0
-value = 1000.0
+value = 100.0
+rounded = true
 texture_progress = SubResource( 1 )
 tint_over = Color( 0.964706, 0.0196078, 0.0196078, 1 )
 tint_progress = Color( 0.486275, 0, 0, 1 )
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 185.2
-margin_top = 282.947
-margin_right = 556.2
-margin_bottom = 336.947
+margin_left = 381.934
+margin_top = 335.801
+margin_right = 752.934
+margin_bottom = 389.801
+rect_scale = Vector2( 1.19796, 1.2001 )
 custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0.415686, 0, 0, 1 )
 custom_colors/selection_color = Color( 0, 0, 0, 1 )

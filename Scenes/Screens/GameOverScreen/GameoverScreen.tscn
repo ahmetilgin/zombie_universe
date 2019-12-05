@@ -30,21 +30,23 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 800.0
 margin_bottom = 600.0
+rect_scale = Vector2( 1.5117, 1.34578 )
 color = Color( 0, 0, 0, 0.333333 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 230.0
-margin_top = 125.0
-margin_right = 1091.0
-margin_bottom = 597.0
+margin_left = 389.78
+margin_top = 180.923
+margin_right = 1250.78
+margin_bottom = 652.923
 custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 0.254902, 0.0117647, 0.0117647, 1 )
 text = "Game Over"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-margin_top = 366.0
-margin_right = 800.0
-margin_bottom = 597.0
+margin_left = 159.78
+margin_top = 421.923
+margin_right = 959.78
+margin_bottom = 652.923
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
 margin_right = 800.0
@@ -72,10 +74,10 @@ texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 6 )
 
 [node name="dead_zombie_text" type="RichTextLabel" parent="."]
-margin_left = 260.0
-margin_top = 184.0
-margin_right = 779.0
-margin_bottom = 237.0
+margin_left = 419.78
+margin_top = 239.923
+margin_right = 938.78
+margin_bottom = 292.923
 custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_colors/selection_color = Color( 0, 0, 0, 1 )
@@ -94,10 +96,10 @@ bbcode_text = "0"
 text = "0"
 
 [node name="Coin" type="RichTextLabel" parent="."]
-margin_left = 260.0
-margin_top = 227.0
-margin_right = 793.0
-margin_bottom = 280.0
+margin_left = 419.78
+margin_top = 282.923
+margin_right = 952.78
+margin_bottom = 335.923
 custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 1, 0.843137, 0, 1 )
 custom_colors/selection_color = Color( 0, 0, 0, 1 )

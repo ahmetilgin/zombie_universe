@@ -1,75 +1,202 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=35 format=2]
 
-[ext_resource path="res://new_ground.tres" type="TileSet" id=1]
-[ext_resource path="res://Stages/TileMap.gd" type="Script" id=2]
-[ext_resource path="res://Scenes/KinematicScenes/Player/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/StaticScenes/BulletPowerUp/BulletPowerUp.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Resources/Fonts/coffin_stone/coffinstoneexpand.ttf" type="DynamicFontData" id=5]
-[ext_resource path="res://Resources/Sprites/UISprites/Window2s.png" type="Texture" id=6]
-[ext_resource path="res://Stages/CoinCounter.gd" type="Script" id=7]
-[ext_resource path="res://Scenes/StaticScenes/Trambolin/Trambolin.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Stages/Zombie_Generator.gd" type="Script" id=9]
-[ext_resource path="res://Scenes/StaticScenes/CrushingStone/CrushingStone.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Resources/Sprites/GameBackgrounds/1gamebackground/1gamebackground.png" type="Texture" id=11]
-[ext_resource path="res://Scenes/Screens/GameOverScreen/GameoverScreen.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Scenes/StaticScenes/Flame/Flame.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Resources/AudioFiles/Game/savymerchant.ogg" type="AudioStream" id=14]
-[ext_resource path="res://Scenes/StaticScenes/Coin/Coin.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Scenes/KinematicScenes/Zombies/PunkZombie/PunkZombie.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Resources/Sprites/GraveyardTileSet/png/Tiles/Tile1.png" type="Texture" id=1]
+[ext_resource path="res://Resources/Sprites/GraveyardTileSet/png/Tiles/Tile2.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Sprites/GraveyardTileSet/png/Tiles/Tile3.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Sprites/GraveyardTileSet/png/Tiles/Tile7.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Sprites/GraveyardTileSet/png/Tiles/Tile11.png" type="Texture" id=5]
+[ext_resource path="res://Resources/Sprites/GraveyardTileSet/png/Tiles/Tile14.png" type="Texture" id=6]
+[ext_resource path="res://Resources/Sprites/GraveyardTileSet/png/Tiles/Tile15.png" type="Texture" id=7]
+[ext_resource path="res://Resources/Sprites/GraveyardTileSet/png/Tiles/Tile16.png" type="Texture" id=8]
+[ext_resource path="res://Stages/TileMap.gd" type="Script" id=9]
+[ext_resource path="res://Scenes/KinematicScenes/Player/Player.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Resources/Fonts/coffin_stone/coffinstoneexpand.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://Resources/Sprites/UISprites/Window2s.png" type="Texture" id=12]
+[ext_resource path="res://Stages/CoinCounter.gd" type="Script" id=13]
+[ext_resource path="res://Stages/Zombie_Generator.gd" type="Script" id=14]
+[ext_resource path="res://Resources/Sprites/GameBackgrounds/1gamebackground/1gamebackground.png" type="Texture" id=15]
+[ext_resource path="res://Scenes/Screens/GameOverScreen/GameoverScreen.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Resources/AudioFiles/Game/savymerchant.ogg" type="AudioStream" id=17]
 
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
 
+[sub_resource type="ConvexPolygonShape2D" id=2]
+points = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
 
+[sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
 
+[sub_resource type="ConvexPolygonShape2D" id=4]
+points = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
 
+[sub_resource type="ConvexPolygonShape2D" id=5]
+points = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
 
+[sub_resource type="ConvexPolygonShape2D" id=6]
+points = PoolVector2Array( 0, 0, 128, 0, 128, 96, 0, 96 )
 
+[sub_resource type="ConvexPolygonShape2D" id=7]
+points = PoolVector2Array( 0, 0, 128, 0, 128, 96, 0, 96 )
 
+[sub_resource type="ConvexPolygonShape2D" id=8]
+points = PoolVector2Array( 0, 0, 128, 0, 128, 96, 0, 96 )
 
+[sub_resource type="TileSet" id=9]
+0/name = "Tile1.png 0"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 128, 128 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+1/name = "Tile2.png 1"
+1/texture = ExtResource( 2 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 128, 128 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+1/z_index = 0
+2/name = "Tile3.png 2"
+2/texture = ExtResource( 3 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 0, 128, 128 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+2/z_index = 0
+3/name = "Tile7.png 3"
+3/texture = ExtResource( 4 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 0, 0, 128, 128 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 4 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+3/z_index = 0
+4/name = "Tile11.png 4"
+4/texture = ExtResource( 5 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 0, 0, 128, 128 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 5 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+4/z_index = 0
+5/name = "Tile14.png 5"
+5/texture = ExtResource( 6 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 0, 0, 128, 96 )
+5/tile_mode = 0
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 6 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+5/z_index = 0
+6/name = "Tile15.png 6"
+6/texture = ExtResource( 7 )
+6/tex_offset = Vector2( 0, 0 )
+6/modulate = Color( 1, 1, 1, 1 )
+6/region = Rect2( 0, 0, 128, 96 )
+6/tile_mode = 0
+6/occluder_offset = Vector2( 0, 0 )
+6/navigation_offset = Vector2( 0, 0 )
+6/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 7 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+6/z_index = 0
+7/name = "Tile16.png 7"
+7/texture = ExtResource( 8 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 0, 0, 128, 96 )
+7/tile_mode = 0
+7/occluder_offset = Vector2( 0, 0 )
+7/navigation_offset = Vector2( 0, 0 )
+7/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 8 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+7/z_index = 0
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-[sub_resource type="StreamTexture" id=1]
+[sub_resource type="StreamTexture" id=10]
 resource_local_to_scene = true
 flags = 4
 load_path = "res://.import/Window2s.png-ce993d419ccf1cb6299ab9a08a83b24e.stex"
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=11]
 flags = 4
-atlas = SubResource( 1 )
+atlas = SubResource( 10 )
 region = Rect2( 1894.66, 910.469, 119.713, 129.236 )
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=12]
 flags = 4
-atlas = SubResource( 1 )
+atlas = SubResource( 10 )
 region = Rect2( 502.319, 1801.44, 506.196, 120.134 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=13]
 flags = 4
-atlas = SubResource( 1 )
+atlas = SubResource( 10 )
 region = Rect2( 1617.74, 1795.05, 336.842, 55.7896 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=14]
 size = 20
-font_data = ExtResource( 5 )
+font_data = ExtResource( 11 )
 
-[sub_resource type="ParticlesMaterial" id=6]
+[sub_resource type="ParticlesMaterial" id=15]
 trail_divisor = 2
 emission_shape = 2
 emission_box_extents = Vector3( 2000, 1, 1 )
@@ -81,36 +208,32 @@ orbit_velocity_random = 0.0
 scale = 1.2
 scale_random = 0.32
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=16]
 flags = 4
-atlas = ExtResource( 6 )
+atlas = ExtResource( 12 )
 region = Rect2( 1625.25, 1375.16, 343.527, 143.802 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=17]
 flags = 4
-atlas = SubResource( 1 )
+atlas = SubResource( 10 )
 region = Rect2( 1616.44, 1043.62, 148.854, 163.775 )
 
 [node name="stage1" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = ExtResource( 1 )
-cell_size = Vector2( 32, 32 )
+tile_set = SubResource( 9 )
+cell_size = Vector2( 128, 128 )
 collision_use_kinematic = true
 collision_friction = 0.0
 collision_bounce = 1.0
 format = 1
-tile_data = PoolIntArray( 393278, 23, 0, 393285, 23, 0, 589900, 23, 0, 720977, 23, 0, 786500, 23, 0, 786501, 23, 0, 786502, 23, 0, 786503, 23, 0, 786504, 23, 0, 786505, 23, 0, 786512, 23, 0, 852047, 23, 0, 917582, 23, 0, 983082, 23, 0, 983083, 23, 0, 983084, 23, 0, 983085, 23, 0, 983086, 23, 0, 983087, 23, 0, 983088, 23, 0, 983117, 23, 0, 1048634, 23, 0, 1048635, 23, 0, 1048636, 23, 0, 1048637, 23, 0, 1048638, 23, 0, 1048639, 23, 0, 1048640, 23, 0, 1048652, 23, 0, 1114187, 23, 0, 1179681, 24, 0, 1179682, 23, 0, 1179683, 23, 0, 1179684, 23, 0, 1179685, 23, 0, 1179686, 23, 0, 1179687, 18, 0, 1179722, 23, 0, 1245217, 20, 0, 1245218, 21, 0, 1245219, 21, 0, 1245220, 21, 0, 1245221, 21, 0, 1245222, 21, 0, 1245223, 0, 0, 1245257, 23, 0, 1310753, 20, 0, 1310754, 21, 0, 1310755, 21, 0, 1310756, 21, 0, 1310757, 21, 0, 1310758, 21, 0, 1310759, 0, 0, 1310792, 23, 0, 1376289, 8, 0, 1376290, 4, 0, 1376291, 3, 0, 1376292, 3, 0, 1376293, 3, 0, 1376294, 3, 0, 1376295, 10, 0, 1376306, 23, 0, 1376307, 23, 0, 1376308, 23, 0, 1376309, 23, 0, 1376310, 23, 0, 1376311, 23, 0, 1376312, 23, 0, 1376313, 23, 0, 1376314, 23, 0, 1376327, 23, 0, 1441825, 23, 0, 1441826, 23, 0, 1441827, 23, 0, 1441828, 23, 0, 1441829, 23, 0, 1441830, 23, 0, 1441831, 23, 0, 1441862, 23, 0, 1507397, 23, 0, 1572932, 23, 0, 1638467, 23, 0, 1704002, 23, 0, 1769480, 23, 0, 1769481, 23, 0, 1769482, 23, 0, 1769483, 23, 0, 1769484, 23, 0, 1769485, 23, 0, 1769486, 23, 0, 1769487, 23, 0, 1769488, 23, 0, 1769489, 23, 0, 1769490, 23, 0, 1769491, 23, 0, 1769492, 23, 0, 1769493, 23, 0, 1769494, 23, 0, 1769495, 23, 0, 1769496, 23, 0, 1769497, 23, 0, 1769498, 23, 0, 1769499, 23, 0, 1769500, 23, 0, 1769501, 23, 0, 1769502, 23, 0, 1769503, 23, 0, 1769504, 23, 0, 1769505, 23, 0, 1769506, 23, 0, 1769507, 23, 0, 1769508, 23, 0, 1769509, 23, 0, 1769510, 23, 0, 1769511, 23, 0, 1769512, 23, 0, 1769513, 23, 0, 1769514, 23, 0, 1769515, 23, 0, 1769516, 23, 0, 1769517, 23, 0, 1769518, 23, 0, 1769519, 23, 0, 1769520, 23, 0, 1769521, 23, 0, 1769522, 23, 0, 1769523, 23, 0, 1769524, 23, 0, 1769525, 23, 0, 1769526, 23, 0, 1769527, 23, 0, 1769528, 23, 0, 1769529, 23, 0, 1769530, 23, 0, 1769531, 23, 0, 1769532, 23, 0, 1769533, 23, 0, 1769534, 23, 0, 1769535, 23, 0, 1769536, 23, 0, 1769537, 23, 0, 1769538, 23, 0, 1769539, 23, 0, 1769540, 23, 0, 1769541, 23, 0, 1769542, 23, 0, 1769543, 23, 0, 1769544, 23, 0, 1769545, 23, 0, 1769546, 23, 0, 1769547, 23, 0, 1769548, 23, 0, 1769549, 23, 0, 1769550, 23, 0, 1769551, 23, 0, 1769552, 23, 0, 1769553, 23, 0, 1769554, 23, 0, 1769555, 23, 0, 1769556, 23, 0, 1769557, 23, 0, 1769558, 23, 0, 1769559, 23, 0, 1769560, 23, 0, 1769561, 23, 0, 1769562, 23, 0 )
-script = ExtResource( 2 )
+tile_data = PoolIntArray( 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 1, 0, 16, 1, 0, 17, 1, 0, 18, 1, 0, 19, 1, 0, 20, 1, 0, 21, 1, 0, 22, 1, 0, 23, 1, 0, 24, 1, 0, 25, 1, 0, 26, 1, 0, 27, 1, 0, 28, 1, 0, 65545, 1, 0, 65564, 1, 0, 131081, 1, 0, 131100, 1, 0, 196617, 1, 0, 196636, 1, 0, 262153, 1, 0, 262172, 1, 0, 327689, 1, 0, 327708, 1, 0, 393225, 1, 0, 393244, 1, 0, 393278, 23, 0, 393285, 23, 0, 458761, 1, 0, 458762, 1, 0, 458763, 1, 0, 458764, 1, 0, 458765, 1, 0, 458766, 1, 0, 458767, 1, 0, 458768, 1, 0, 458769, 1, 0, 458770, 1, 0, 458771, 1, 0, 458772, 1, 0, 458773, 1, 0, 458774, 1, 0, 458775, 1, 0, 458776, 1, 0, 458777, 1, 0, 458778, 1, 0, 458779, 1, 0, 458780, 1, 0, 589900, 23, 0, 720977, 23, 0, 786500, 23, 0, 786501, 23, 0, 786502, 23, 0, 786503, 23, 0, 786504, 23, 0, 786505, 23, 0, 786512, 23, 0, 852047, 23, 0, 917582, 23, 0, 983082, 23, 0, 983083, 23, 0, 983084, 23, 0, 983085, 23, 0, 983086, 23, 0, 983087, 23, 0, 983088, 23, 0, 983117, 23, 0, 1048634, 23, 0, 1048635, 23, 0, 1048636, 23, 0, 1048637, 23, 0, 1048638, 23, 0, 1048639, 23, 0, 1048640, 23, 0, 1048652, 23, 0, 1114187, 23, 0, 1179681, 24, 0, 1179682, 23, 0, 1179683, 23, 0, 1179684, 23, 0, 1179685, 23, 0, 1179686, 23, 0, 1179687, 18, 0, 1179722, 23, 0, 1245217, 20, 0, 1245218, 21, 0, 1245219, 21, 0, 1245220, 21, 0, 1245221, 21, 0, 1245222, 21, 0, 1245257, 23, 0, 1310753, 20, 0, 1310754, 21, 0, 1310755, 21, 0, 1310756, 21, 0, 1310757, 21, 0, 1310758, 21, 0, 1310792, 23, 0, 1376306, 23, 0, 1376307, 23, 0, 1376308, 23, 0, 1376309, 23, 0, 1376310, 23, 0, 1376311, 23, 0, 1376312, 23, 0, 1376313, 23, 0, 1376314, 23, 0, 1376327, 23, 0, 1441828, 23, 0, 1441862, 23, 0, 1507397, 23, 0, 1572932, 23, 0, 1638467, 23, 0, 1704002, 23, 0, 1769480, 23, 0, 1769481, 23, 0, 1769482, 23, 0, 1769483, 23, 0, 1769484, 23, 0, 1769485, 23, 0, 1769486, 23, 0, 1769487, 23, 0, 1769488, 23, 0, 1769489, 23, 0, 1769490, 23, 0, 1769491, 23, 0, 1769492, 23, 0, 1769493, 23, 0, 1769494, 23, 0, 1769495, 23, 0, 1769496, 23, 0, 1769497, 23, 0, 1769498, 23, 0, 1769499, 23, 0, 1769500, 23, 0, 1769501, 23, 0, 1769502, 23, 0, 1769503, 23, 0, 1769504, 23, 0, 1769505, 23, 0, 1769506, 23, 0, 1769507, 23, 0, 1769508, 23, 0, 1769509, 23, 0, 1769510, 23, 0, 1769511, 23, 0, 1769512, 23, 0, 1769513, 23, 0, 1769514, 23, 0, 1769515, 23, 0, 1769516, 23, 0, 1769517, 23, 0, 1769518, 23, 0, 1769519, 23, 0, 1769520, 23, 0, 1769521, 23, 0, 1769522, 23, 0, 1769523, 23, 0, 1769524, 23, 0, 1769525, 23, 0, 1769526, 23, 0, 1769527, 23, 0, 1769528, 23, 0, 1769529, 23, 0, 1769530, 23, 0, 1769531, 23, 0, 1769532, 23, 0, 1769533, 23, 0, 1769534, 23, 0, 1769535, 23, 0, 1769536, 23, 0, 1769537, 23, 0, 1769538, 23, 0, 1769539, 23, 0, 1769540, 23, 0, 1769541, 23, 0, 1769542, 23, 0, 1769543, 23, 0, 1769544, 23, 0, 1769545, 23, 0, 1769546, 23, 0, 1769547, 23, 0, 1769548, 23, 0, 1769549, 23, 0, 1769550, 23, 0, 1769551, 23, 0, 1769552, 23, 0, 1769553, 23, 0, 1769554, 23, 0, 1769555, 23, 0, 1769556, 23, 0, 1769557, 23, 0, 1769558, 23, 0, 1769559, 23, 0, 1769560, 23, 0, 1769561, 23, 0, 1769562, 23, 0, 1966116, 1, 0, 1966120, 1, 0, 1966124, 1, 0, 1966128, 1, 0, 1966132, 1, 0, 1966136, 1, 0, 1966140, 1, 0 )
+script = ExtResource( 9 )
 
-[node name="player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 374.035, 739.818 )
-
-[node name="upgrade" parent="." instance=ExtResource( 4 )]
-position = Vector2( 714.716, 540.127 )
+[node name="player" parent="." instance=ExtResource( 10 )]
+position = Vector2( 2254.39, 768.796 )
 
 [node name="Game_UI" type="CanvasLayer" parent="."]
-editor/display_folded = true
 
 [node name="BulletIcon" type="TextureRect" parent="Game_UI"]
 margin_left = 200.013
@@ -118,7 +241,7 @@ margin_top = 38.1762
 margin_right = 672.013
 margin_bottom = 189.176
 rect_scale = Vector2( 0.190372, 0.192707 )
-texture = SubResource( 2 )
+texture = SubResource( 11 )
 
 [node name="Health_Background" type="TextureRect" parent="Game_UI"]
 margin_left = 18.7253
@@ -126,7 +249,7 @@ margin_top = 29.6243
 margin_right = 524.725
 margin_bottom = 149.624
 rect_scale = Vector2( 0.34317, 0.341894 )
-texture = SubResource( 3 )
+texture = SubResource( 12 )
 
 [node name="Player_Health" type="TextureProgress" parent="Game_UI"]
 self_modulate = Color( 0.909804, 0.85098, 0.85098, 1 )
@@ -137,7 +260,7 @@ margin_bottom = 99.4957
 rect_scale = Vector2( 0.955942, 0.364713 )
 value = 100.0
 rounded = true
-texture_progress = SubResource( 4 )
+texture_progress = SubResource( 13 )
 tint_over = Color( 0.933333, 0.345098, 0.137255, 1 )
 nine_patch_stretch = true
 
@@ -152,7 +275,7 @@ rect_scale = Vector2( 0.932722, 1.32486 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 size_flags_stretch_ratio = 0.0
-custom_fonts/normal_font = SubResource( 5 )
+custom_fonts/normal_font = SubResource( 14 )
 custom_constants/table_vseparation = 4
 bbcode_text = "30
 
@@ -175,15 +298,15 @@ preprocess = 5.0
 speed_scale = 2.0
 randomness = 0.5
 local_coords = false
-process_material = SubResource( 6 )
+process_material = SubResource( 15 )
 
 [node name="CoinIcon" type="TextureRect" parent="Game_UI"]
 editor/display_folded = true
-margin_left = 646.633
+margin_left = 980.537
 margin_top = 31.6374
-margin_right = 796.633
+margin_right = 1130.54
 margin_bottom = 81.6374
-texture = SubResource( 7 )
+texture = SubResource( 16 )
 expand = true
 
 [node name="CoinIcon2" type="TextureRect" parent="Game_UI/CoinIcon"]
@@ -191,29 +314,29 @@ margin_left = 100.0
 margin_top = -2.0
 margin_right = 148.0
 margin_bottom = 38.0
-texture = SubResource( 8 )
+texture = SubResource( 17 )
 expand = true
 
 [node name="Coin_Counter" type="RichTextLabel" parent="Game_UI"]
-margin_left = 670.991
-margin_top = 41.7457
-margin_right = 766.991
-margin_bottom = 81.7457
-custom_fonts/normal_font = SubResource( 5 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 435.198
+margin_top = -359.101
+margin_right = 485.198
+margin_bottom = -309.101
+rect_scale = Vector2( 0.888418, 0.851962 )
+custom_fonts/normal_font = SubResource( 14 )
 custom_colors/default_color = Color( 0.901961, 0.992157, 0.00784314, 1 )
 bbcode_text = "0"
 text = "0"
-script = ExtResource( 7 )
-
-[node name="trambolin" parent="." instance=ExtResource( 8 )]
-position = Vector2( 681, 842 )
+scroll_active = false
+script = ExtResource( 13 )
 
 [node name="Zombie_Generator" type="Node2D" parent="."]
 position = Vector2( -9, 0 )
-script = ExtResource( 9 )
-
-[node name="stone" parent="." instance=ExtResource( 10 )]
-position = Vector2( 989, -4 )
+script = ExtResource( 14 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -222,50 +345,14 @@ motion_mirroring = Vector2( 1820, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2( 991.1, 548.791 )
-texture = ExtResource( 11 )
+texture = ExtResource( 15 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Gameover_Screen" parent="CanvasLayer" instance=ExtResource( 12 )]
+[node name="Gameover_Screen" parent="CanvasLayer" instance=ExtResource( 16 )]
 visible = false
 
-[node name="FIRE" parent="." instance=ExtResource( 13 )]
-position = Vector2( 2407.05, 808.052 )
-
 [node name="Stage1Sound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 14 )
+stream = ExtResource( 17 )
 volume_db = -31.424
 autoplay = true
-
-[node name="Coin" parent="." instance=ExtResource( 15 )]
-position = Vector2( 1116.99, 817.763 )
-
-[node name="Coin2" parent="." instance=ExtResource( 15 )]
-position = Vector2( 976.009, 817.763 )
-
-[node name="Coin3" parent="." instance=ExtResource( 15 )]
-position = Vector2( 1051.53, 787.553 )
-
-[node name="Coin4" parent="." instance=ExtResource( 15 )]
-position = Vector2( 1061.24, 774.116 )
-
-[node name="Coin5" parent="." instance=ExtResource( 15 )]
-position = Vector2( 964.62, 822.645 )
-
-[node name="Coin6" parent="." instance=ExtResource( 15 )]
-position = Vector2( 1032.52, 810.799 )
-
-[node name="Coin7" parent="." instance=ExtResource( 15 )]
-position = Vector2( 1066.98, 786.218 )
-
-[node name="Coin8" parent="." instance=ExtResource( 15 )]
-position = Vector2( 1015.09, 782.99 )
-
-[node name="Coin9" parent="." instance=ExtResource( 15 )]
-position = Vector2( 1079.26, 844.106 )
-
-[node name="Coin10" parent="." instance=ExtResource( 15 )]
-position = Vector2( 1011.49, 808.225 )
-
-[node name="Punk_Zombie" parent="." instance=ExtResource( 16 )]
-position = Vector2( 1806.39, 788.461 )
