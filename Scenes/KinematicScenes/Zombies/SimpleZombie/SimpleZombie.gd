@@ -6,8 +6,8 @@ onready var tile_map = get_parent().get_node('TileMap')
 
 var zombie_hurt_player = AudioStreamPlayer.new()
 var zombie_dead_player = AudioStreamPlayer.new()
-var zombie_hurt_sound = load("res://Resources/AudioFiles/Zombies/zombies/zombie-2.wav")
-var zombie_dead_sound = load("res://Resources/AudioFiles/Zombies/zombies/zombie-21.wav")
+var zombie_hurt_sound = load("res://Resources/AudioFiles/Zombies/zombies/zombie2.wav")
+var zombie_dead_sound = load("res://Resources/AudioFiles/Zombies/zombies/zombie21.wav")
 var zombie_dead_timer = Timer.new()
 
 var can_zombie_attack = true
@@ -56,13 +56,13 @@ func create_zombie_attack_timer():
 	zombie_attack_timer.connect("timeout",self, "_zombie_attack_timer_timeout") 
 
 func create_zombie_found_player_label():
-	var texture = ImageTexture.new()
-	var image = Image.new()
-	image.load("res://Resources/Sprites/WarningIcon/warning.png")
-	texture.create_from_image(image, 7)
+	var stream_texture = load("res://Resources/Sprites/WarningIcon/warning.png")
+	var image_texture = ImageTexture.new()
+	var image = stream_texture.get_data()
+	image_texture.create_from_image(image, 0)
 	var textureRect = TextureRect.new()
-	textureRect.texture = texture
-	texture.set_size_override(Vector2(20,20))
+	textureRect.texture = image_texture
+	image_texture.set_size_override(Vector2(20,20))
 	image.resize (20,20)
 	textureRect.set_size(Vector2(20,20))
 	add_child(textureRect)
@@ -202,10 +202,6 @@ func _physics_process(delta):
 func _zombie_dead_timer_timeout():
 	queue_free()
 
-
-	
-
-
 func _on_FollowPlayerTimer_timeout():
 	_get_path()
 
@@ -218,8 +214,6 @@ func _zombie_attack_to_player(damage):
 		$AnimatedSprite.play("attack")
 		player.get_parent().dead(damage,"zombie")
 		can_zombie_attack = false
-	
-	
 	
 func _on_AnimatedSprite_animation_finished():
 	is_hurt=false
