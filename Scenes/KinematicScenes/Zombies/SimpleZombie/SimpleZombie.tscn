@@ -18,8 +18,8 @@ animations = [ {
 }, {
 "frames": [  ],
 "loop": true,
-"name": "attack",
-"speed": 15.0
+"name": "walk",
+"speed": 25.0
 }, {
 "frames": [  ],
 "loop": false,
@@ -28,8 +28,8 @@ animations = [ {
 }, {
 "frames": [  ],
 "loop": true,
-"name": "walk",
-"speed": 25.0
+"name": "attack",
+"speed": 15.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=3]

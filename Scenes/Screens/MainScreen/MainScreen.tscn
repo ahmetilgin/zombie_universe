@@ -38,14 +38,14 @@ custom_constants/margin_bottom = 20
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 margin_left = 20.0
 margin_top = 20.0
-margin_right = 1421.0
-margin_bottom = 691.0
+margin_right = 1420.0
+margin_bottom = 690.0
 size_flags_horizontal = 5
 custom_constants/separation = 32
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
-margin_left = 200.0
-margin_right = 1201.0
+margin_left = 199.0
+margin_right = 1200.0
 margin_bottom = 135.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
