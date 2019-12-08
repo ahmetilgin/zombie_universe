@@ -26,17 +26,17 @@
 [ext_resource path="res://Resources/Sprites/Zombies/PunkZombie/Walk4.png" type="Texture" id=24]
 [ext_resource path="res://Resources/Sprites/Zombies/PunkZombie/Walk5.png" type="Texture" id=25]
 [ext_resource path="res://Resources/Sprites/Zombies/PunkZombie/Walk6.png" type="Texture" id=26]
-[ext_resource path="res://Resources/Sprites/Zombies/PunkZombie/Hurt1.png" type="Texture" id=27]
-[ext_resource path="res://Resources/Sprites/Zombies/PunkZombie/Hurt2.png" type="Texture" id=28]
-[ext_resource path="res://Resources/Sprites/Zombies/PunkZombie/Hurt3.png" type="Texture" id=29]
-[ext_resource path="res://Resources/Sprites/Zombies/PunkZombie/Hurt4.png" type="Texture" id=30]
-[ext_resource path="res://Resources/Sprites/Zombies/PunkZombie/Hurt5.png" type="Texture" id=31]
-[ext_resource path="res://Resources/Sprites/Zombies/PunkZombie/Attack1.png" type="Texture" id=32]
-[ext_resource path="res://Resources/Sprites/Zombies/PunkZombie/Attack2.png" type="Texture" id=33]
-[ext_resource path="res://Resources/Sprites/Zombies/PunkZombie/Attack3.png" type="Texture" id=34]
-[ext_resource path="res://Resources/Sprites/Zombies/PunkZombie/Attack4.png" type="Texture" id=35]
-[ext_resource path="res://Resources/Sprites/Zombies/PunkZombie/Attack5.png" type="Texture" id=36]
-[ext_resource path="res://Resources/Sprites/Zombies/PunkZombie/Attack6.png" type="Texture" id=37]
+[ext_resource path="res://Resources/Sprites/Zombies/PunkZombie/Attack1.png" type="Texture" id=27]
+[ext_resource path="res://Resources/Sprites/Zombies/PunkZombie/Attack2.png" type="Texture" id=28]
+[ext_resource path="res://Resources/Sprites/Zombies/PunkZombie/Attack3.png" type="Texture" id=29]
+[ext_resource path="res://Resources/Sprites/Zombies/PunkZombie/Attack4.png" type="Texture" id=30]
+[ext_resource path="res://Resources/Sprites/Zombies/PunkZombie/Attack5.png" type="Texture" id=31]
+[ext_resource path="res://Resources/Sprites/Zombies/PunkZombie/Attack6.png" type="Texture" id=32]
+[ext_resource path="res://Resources/Sprites/Zombies/PunkZombie/Hurt1.png" type="Texture" id=33]
+[ext_resource path="res://Resources/Sprites/Zombies/PunkZombie/Hurt2.png" type="Texture" id=34]
+[ext_resource path="res://Resources/Sprites/Zombies/PunkZombie/Hurt3.png" type="Texture" id=35]
+[ext_resource path="res://Resources/Sprites/Zombies/PunkZombie/Hurt4.png" type="Texture" id=36]
+[ext_resource path="res://Resources/Sprites/Zombies/PunkZombie/Hurt5.png" type="Texture" id=37]
 [ext_resource path="res://Resources/Sprites/Zombies/PunkZombie/Run1.png" type="Texture" id=38]
 [ext_resource path="res://Resources/Sprites/Zombies/PunkZombie/Run2.png" type="Texture" id=39]
 [ext_resource path="res://Resources/Sprites/Zombies/PunkZombie/Run3.png" type="Texture" id=40]
@@ -70,15 +70,15 @@ animations = [ {
 "name": "walk",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ) ],
-"loop": false,
-"name": "hurt",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ) ],
+"frames": [ ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ) ],
 "loop": true,
 "name": "attack",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ) ],
+"loop": false,
+"name": "hurt",
+"speed": 10.0
 }, {
 "frames": [ ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 47 ) ],
 "loop": true,

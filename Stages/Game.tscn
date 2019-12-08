@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://Resources/Sprites/GraveyardTileSet/png/Tiles/Tile1.png" type="Texture" id=1]
 [ext_resource path="res://Resources/Sprites/GraveyardTileSet/png/Tiles/Tile2.png" type="Texture" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://Resources/Sprites/GameBackgrounds/1gamebackground/1gamebackground.png" type="Texture" id=15]
 [ext_resource path="res://Scenes/Screens/GameOverScreen/GameoverScreen.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Resources/AudioFiles/Game/savymerchant.ogg" type="AudioStream" id=17]
+[ext_resource path="res://Scenes/StaticScenes/ZombiePortal/ZombiePortal.tscn" type="PackedScene" id=18]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
@@ -356,3 +357,9 @@ visible = false
 stream = ExtResource( 17 )
 volume_db = -31.424
 autoplay = true
+
+[node name="ZombiePortal" parent="." instance=ExtResource( 18 )]
+position = Vector2( 1866.84, 805.058 )
+
+[node name="ZombiePortal2" parent="." instance=ExtResource( 18 )]
+position = Vector2( 2755.4, 729.025 )
