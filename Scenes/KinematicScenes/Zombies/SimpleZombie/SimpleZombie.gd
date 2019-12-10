@@ -26,6 +26,7 @@ var is_hurt=false
 var acceleration = 10
 var is_follow = false
 var path = []
+signal dead_counter_for_wave
 
 func create_zombie_follow_timer():
 	FollowPlayerTimer.connect("timeout",self,"_on_FollowPlayerTimer_timeout") 
@@ -159,6 +160,7 @@ func _set_is_follow(follow):
 func dead(damage,whodead):
 	hp-=damage
 	if hp<0:
+		emit_signal("dead_counter_for_wave")
 		if whodead=="player":
 			get_parent().get_node("player").increase_dead_counter()
 		is_dead=true

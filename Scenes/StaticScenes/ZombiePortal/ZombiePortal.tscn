@@ -1,11 +1,12 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://ZombiePortal.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/StaticScenes/ZombiePortal/ZombiePortal.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/Portal/portalRings1.png" type="Texture" id=2]
 [ext_resource path="res://Resources/Sprites/Portal/portalRings2.png" type="Texture" id=3]
 [ext_resource path="res://Resources/Sprites/Portal/portalRings3.png" type="Texture" id=4]
 [ext_resource path="res://Resources/Sprites/Portal/portalRings4.png" type="Texture" id=5]
 [ext_resource path="res://Resources/Sprites/Portal/portalRings5.png" type="Texture" id=6]
+
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
