@@ -5,6 +5,7 @@ var simple_zombie = preload("res://Scenes/KinematicScenes/Zombies/SimpleZombie/S
 var stalker_zombie = preload("res://Scenes/KinematicScenes/Zombies/StalkerZombie/StalkerZombie.tscn")
 var generate_zombie_timer=Timer.new()
 var generate_wave_timer=Timer.new()
+var wave_paused_timer=Timer.new()
 var can_wave_come=true
 var wave_is_coming=true
 var zombie_dead_counter=0
@@ -14,9 +15,10 @@ func _ready():
 	randomize()
 	create_generate_wave_timer()
 	create_generate_zombie_timer()
-	
+	create_wave_paused_timer()#bütün zombieler ölünce yeni dalga gelene kadar bekleme süresi oluşturuldu.
 
 func _process(delta):
+	$AnimatedSprite.play("move")
 	if wave_is_coming:
 		wave_is_contiune=true
 		if can_create_zombie:
@@ -25,11 +27,9 @@ func _process(delta):
 	if can_wave_come:
 		generate_wave_timer.start()
 		can_wave_come=false
-	if( zombie_dead_counter==zombie_generate_counter ) and !wave_is_contiune:
-		#!wave_is_contiune ile dalganın başladığını ve olumle doğum eşit olsa bile
-		#yeni dalga oluşturmaması için koyuldu.
-		can_wave_come=true
-		wave_is_coming=true
+	if( zombie_dead_counter==zombie_generate_counter ) and !wave_is_contiune:#!wave_is_contiune ile dalganın başladığını ve olumle doğum eşit olsa bile,yeni dalga oluşturmaması için koyuldu.
+		wave_paused_timer.start()
+		wave_is_contiune=true
 	pass
 
 func create_generate_zombie_timer():
@@ -37,12 +37,20 @@ func create_generate_zombie_timer():
 	generate_zombie_timer.set_wait_time(2)
 	add_child(generate_zombie_timer) #to process
 	generate_zombie_timer.connect("timeout",self, "_on_generate_zombie_timer_timeout") 
+	
 func create_generate_wave_timer():
 	
 	generate_wave_timer.set_one_shot(true)
-	generate_wave_timer.set_wait_time(20)
+	generate_wave_timer.set_wait_time(10)
 	add_child(generate_wave_timer) #to process
 	generate_wave_timer.connect("timeout",self, "_on_generate_wave_timer_timeout") 
+
+func create_wave_paused_timer():
+	
+	wave_paused_timer.set_one_shot(true)
+	wave_paused_timer.set_wait_time(10)
+	add_child(wave_paused_timer) #to process
+	wave_paused_timer.connect("timeout",self, "_on_wave_paused_timer_timeout") 
 
 func generate_Zombies():
 
@@ -74,3 +82,6 @@ func _on_generate_zombie_timer_timeout():
 func _on_generate_wave_timer_timeout():
 	wave_is_coming=false
 	wave_is_contiune=false
+func _on_wave_paused_timer_timeout():
+		can_wave_come=true
+		wave_is_coming=true

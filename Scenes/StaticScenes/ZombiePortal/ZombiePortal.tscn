@@ -7,12 +7,11 @@
 [ext_resource path="res://Resources/Sprites/Portal/portalRings4.png" type="Texture" id=5]
 [ext_resource path="res://Resources/Sprites/Portal/portalRings5.png" type="Texture" id=6]
 
-
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": true,
-"name": "default",
+"name": "move",
 "speed": 5.0
 } ]
 
@@ -27,6 +26,7 @@ script = ExtResource( 1 )
 position = Vector2( -30, -26.6 )
 scale = Vector2( 1.875, 1.53568 )
 frames = SubResource( 1 )
+animation = "move"
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
