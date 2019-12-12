@@ -3,7 +3,7 @@ var target_point_world = Vector2()
 var FollowPlayerTimer = Timer.new()
 onready var player = get_parent().get_node('player/CollisionShape2D')
 onready var tile_map = get_parent().get_node('TileMap')
-
+var coin = preload("res://Scenes/StaticScenes/Coin/Coin.tscn")
 var zombie_hurt_player = AudioStreamPlayer.new()
 var zombie_dead_player = AudioStreamPlayer.new()
 var zombie_hurt_sound = load("res://Resources/AudioFiles/Zombies/zombies/zombie2.wav")
@@ -156,10 +156,16 @@ func _get_path():
 		
 func _set_is_follow(follow):
 	is_follow = follow
+func generate_coins():
+
+	var coin_instance = coin.instance()
+	coin_instance.set_global_position(Vector2(get_global_position().x,get_global_position().y))
+	get_parent().call_deferred("add_child",coin_instance)
 
 func dead(damage,whodead):
 	hp-=damage
 	if hp<0:
+		generate_coins()
 		emit_signal("dead_counter_for_wave")
 		if whodead=="player":
 			get_parent().get_node("player").increase_dead_counter()
