@@ -12,6 +12,8 @@ var zombie_dead_counter=0
 var zombie_generate_counter=0
 var wave_is_contiune=false
 var zombie_level=1
+var wave_time_max_limit=10.0
+
 func _ready():
 	randomize()
 	create_generate_wave_timer()
@@ -19,6 +21,7 @@ func _ready():
 	create_wave_paused_timer()#bütün zombieler ölünce yeni dalga gelene kadar bekleme süresi oluşturuldu.
 
 func _process(delta):
+	
 	$AnimatedSprite.play("move")
 	if wave_is_coming:
 		wave_is_contiune=true
@@ -35,7 +38,7 @@ func _process(delta):
 
 func create_generate_zombie_timer():
 	generate_zombie_timer.set_one_shot(true)
-	generate_zombie_timer.set_wait_time(2)
+	generate_zombie_timer.set_wait_time( 10)
 	add_child(generate_zombie_timer) #to process
 	generate_zombie_timer.connect("timeout",self, "_on_generate_zombie_timer_timeout") 
 	
@@ -61,8 +64,14 @@ func select_zombie_for_level( _level):
 	elif zombie_by_level < 30:
 		zombie_by_level = randi() % 3
 	return zombie_by_level
+func zombie_count_for_level(_level):
+	var zombie_time_by_level = _level
+	var wave_time_limit = null
 	
-	
+	wave_time_limit = wave_time_max_limit / zombie_time_by_level * 2
+	generate_zombie_timer.set_wait_time( wave_time_limit)
+
+
 func generate_Zombies():
 
 	var zombie_instance = null
@@ -71,9 +80,9 @@ func generate_Zombies():
 	if select_zombie == 0:
 		zombie_instance = simple_zombie.instance()
 	elif select_zombie == 1:
-		zombie_instance = punk_zombie.instance()
-	else: 
 		zombie_instance = stalker_zombie.instance()
+	else: 
+		zombie_instance = punk_zombie.instance()
 		
 	get_parent().call_deferred("add_child",zombie_instance)
 	zombie_instance.set_global_position(Vector2(get_global_position().x,get_global_position().y))
@@ -94,6 +103,7 @@ func _on_generate_wave_timer_timeout():
 	wave_is_coming=false
 	wave_is_contiune=false
 	zombie_level += 1
+	
 	
 func _on_wave_paused_timer_timeout():
 		can_wave_come=true
