@@ -11,6 +11,7 @@ var wave_is_coming=true
 var zombie_dead_counter=0
 var zombie_generate_counter=0
 var wave_is_contiune=false
+var zombie_level=1
 func _ready():
 	randomize()
 	create_generate_wave_timer()
@@ -51,12 +52,22 @@ func create_wave_paused_timer():
 	wave_paused_timer.set_wait_time(10)
 	add_child(wave_paused_timer) #to process
 	wave_paused_timer.connect("timeout",self, "_on_wave_paused_timer_timeout") 
-
+func select_zombie_for_level( _level):
+	var zombie_by_level = _level
+	if zombie_by_level < 10:
+		zombie_by_level = 0
+	elif zombie_by_level < 20:
+		zombie_by_level = randi() % 2
+	elif zombie_by_level < 30:
+		zombie_by_level = randi() % 3
+	return zombie_by_level
+	
+	
 func generate_Zombies():
 
 	var zombie_instance = null
 	
-	var select_zombie = randi() % 3 
+	var select_zombie = select_zombie_for_level(zombie_level)
 	if select_zombie == 0:
 		zombie_instance = simple_zombie.instance()
 	elif select_zombie == 1:
@@ -82,6 +93,8 @@ func _on_generate_zombie_timer_timeout():
 func _on_generate_wave_timer_timeout():
 	wave_is_coming=false
 	wave_is_contiune=false
+	zombie_level += 1
+	
 func _on_wave_paused_timer_timeout():
 		can_wave_come=true
 		wave_is_coming=true
