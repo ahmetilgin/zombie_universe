@@ -354,5 +354,5 @@ volume_db = -31.424
 autoplay = true
 
 [node name="ZombiePortal" parent="." instance=ExtResource( 17 )]
-position = Vector2( 1780.22, 796.775 )
+position = Vector2( 1774.35, 670.513 )
 z_index = -1

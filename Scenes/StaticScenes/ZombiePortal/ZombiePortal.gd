@@ -11,9 +11,12 @@ var wave_is_coming = true
 var zombie_dead_counter = 0
 var zombie_generate_counter = 0
 var wave_is_contiune = false
-var zombie_level = 0
+var zombie_level = 1
 var wave_time = 60.0
 var first_wave_zombie_size = 12
+var zombie_types = { 0 : simple_zombie , 
+					 1 : stalker_zombie,
+					 2 : punk_zombie }
 func _ready():
 	randomize()
 	create_generate_wave_timer()
@@ -57,34 +60,21 @@ func create_wave_paused_timer():
 	wave_paused_timer.connect("timeout",self, "_on_wave_paused_timer_timeout") 
 func select_zombie_for_level( _level):
 	var zombie_by_level = _level
-	if zombie_by_level < 10:
-		zombie_by_level = 0
-	elif zombie_by_level < 20:
-		zombie_by_level = randi() % 2
-	elif zombie_by_level < 30:
-		zombie_by_level = randi() % 3
-	return zombie_by_level
+	
+	return int( floor(randi( ) % ((zombie_by_level / 10) +1 ) ))
 	
 func zombie_count_for_level(_level):
-	var zombie_size_by_level = _level
+	var zombie_size_by_level = _level + 1
 	var wave_zombie_limit = first_wave_zombie_size + zombie_size_by_level
-	var zombie_generate_time
-	zombie_generate_time = wave_time / wave_zombie_limit 
+	var zombie_generate_time = wave_time / wave_zombie_limit 
 	generate_zombie_timer.set_wait_time( zombie_generate_time)
 
 
 func generate_Zombies():
 
-	var zombie_instance = null
 	
-	var select_zombie = select_zombie_for_level(zombie_level)
-	if select_zombie == 0:
-		zombie_instance = simple_zombie.instance()
-	elif select_zombie == 1:
-		zombie_instance = stalker_zombie.instance()
-	else: 
-		zombie_instance = punk_zombie.instance()
-		
+	var zombie_instance =zombie_types.get( select_zombie_for_level(zombie_level)).instance()
+	
 	get_parent().call_deferred("add_child",zombie_instance)
 	zombie_instance.set_global_position(Vector2(get_global_position().x,get_global_position().y))
 	zombie_instance.connect("dead_counter_for_wave",self,"on_dead_counter_for_wave")
