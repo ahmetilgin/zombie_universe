@@ -364,6 +364,9 @@ stream = ExtResource( 17 )
 volume_db = -31.424
 autoplay = true
 
-[node name="ZombiePortal" parent="." instance=ExtResource( 18 )]
-position = Vector2( 1774.35, 670.513 )
+[node name="LeftPortal" parent="." instance=ExtResource( 18 )]
+position = Vector2( 1322.16, 790.902 )
 z_index = -1
+
+[node name="RightPortal" parent="." instance=ExtResource( 18 )]
+position = Vector2( 3517.71, 784.884 )

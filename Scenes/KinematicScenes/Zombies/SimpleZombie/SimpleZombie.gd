@@ -18,7 +18,7 @@ var player_found_icon = TextureRect.new()
 const gravity=20
 
 export (int) var hp=1
-export (int) var speed=100
+export (int) var speed=200
 var motion=Vector2(0,0)
 const UP=Vector2(0,-1)
 var is_dead=false
@@ -31,7 +31,7 @@ signal dead_counter_for_wave
 func create_zombie_follow_timer():
 	FollowPlayerTimer.connect("timeout",self,"_on_FollowPlayerTimer_timeout") 
 	add_child(FollowPlayerTimer) #to process
-	FollowPlayerTimer.set_wait_time(0.5)
+	FollowPlayerTimer.set_wait_time(0.1)
 	FollowPlayerTimer.start() #to start
 
 func add_zombie_sounds():
@@ -57,23 +57,24 @@ func create_zombie_attack_timer():
 	zombie_attack_timer.connect("timeout",self, "_zombie_attack_timer_timeout") 
 
 func create_zombie_found_player_label():
-	var stream_texture = load("res://Resources/Sprites/WarningIcon/warning.png")
-	var image_texture = ImageTexture.new()
-	var image = stream_texture.get_data()
-	image_texture.create_from_image(image, 0)
-	var textureRect = TextureRect.new()
-	textureRect.texture = image_texture
-	image_texture.set_size_override(Vector2(20,20))
-	image.resize (20,20)
-	textureRect.set_size(Vector2(20,20))
-	add_child(textureRect)
+	pass
+#	var stream_texture = load("res://Resources/Sprites/WarningIcon/warning.png")
+#	var image_texture = ImageTexture.new()
+#	var image = stream_texture.get_data()
+#	image_texture.create_from_image(image, 0)
+#	var textureRect = TextureRect.new()
+#	textureRect.texture = image_texture
+#	image_texture.set_size_override(Vector2(20,20))
+#	image.resize (20,20)
+#	textureRect.set_size(Vector2(20,20))
+#	add_child(textureRect)
 
 func _ready():
 	add_zombie_sounds()
 	create_zombie_dead_timer()
 	create_zombie_follow_timer()
 	create_zombie_attack_timer()
-	create_zombie_found_player_label()
+#	create_zombie_found_player_label()
 
 
 func get_zombie_and_player_distance():
@@ -125,15 +126,11 @@ func check_zombie_found_player():
 			FollowPlayerTimer.stop()
 			path = []
 	else:
-		if player.get_global_position().distance_to(get_global_position()) < 600:
-			player_found_icon.set_visible(true)
-			$AnimatedSprite.play("walk")
-			if FollowPlayerTimer.is_stopped():
-				FollowPlayerTimer.start()
-			get_next_target_point()
-		else:
-			$AnimatedSprite.play("idle")
-			player_found_icon.set_visible(false)
+		$AnimatedSprite.play("walk")
+		if FollowPlayerTimer.is_stopped():
+			FollowPlayerTimer.start()
+		get_next_target_point()
+
 
 		
 
@@ -157,9 +154,8 @@ func _get_path():
 func _set_is_follow(follow):
 	is_follow = follow
 func generate_coins():
-
 	var coin_instance = coin.instance()
-	coin_instance.set_global_position(Vector2(get_global_position().x,get_global_position().y))
+	coin_instance.set_global_position(Vector2(get_global_position().x + 64,get_global_position().y + 64))
 	get_parent().call_deferred("add_child",coin_instance)
 
 func dead(damage,whodead):
@@ -200,7 +196,7 @@ func _physics_process(delta):
 			motion.y += gravity
 			follow_path()
 			_jump_is_on_wall()
-			motion = move_and_slide(motion, UP)
+			motion = move_and_slide(motion , UP)
 
 			if get_slide_count()>0:
 				for i in range(get_slide_count()):

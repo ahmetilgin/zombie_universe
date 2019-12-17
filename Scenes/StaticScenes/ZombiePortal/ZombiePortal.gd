@@ -41,7 +41,7 @@ func _process(delta):
 
 func create_generate_zombie_timer():
 	generate_zombie_timer.set_one_shot(true)
-	generate_zombie_timer.set_wait_time(5)
+	generate_zombie_timer.set_wait_time(1)
 	add_child(generate_zombie_timer) #to process
 	generate_zombie_timer.connect("timeout",self, "_on_generate_zombie_timer_timeout") 
 	
