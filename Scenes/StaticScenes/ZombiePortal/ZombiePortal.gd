@@ -3,6 +3,7 @@ var can_create_zombie=true
 var punk_zombie = preload("res://Scenes/KinematicScenes/Zombies/PunkZombie/PunkZombie.tscn")
 var simple_zombie = preload("res://Scenes/KinematicScenes/Zombies/SimpleZombie/SimpleZombie.tscn")
 var stalker_zombie = preload("res://Scenes/KinematicScenes/Zombies/StalkerZombie/StalkerZombie.tscn")
+onready var level_text = get_node("../Game_UI/level_text/level_counter")
 var generate_zombie_timer = Timer.new()
 var generate_wave_timer = Timer.new()
 var wave_paused_timer = Timer.new()
@@ -41,21 +42,21 @@ func _process(delta):
 
 func create_generate_zombie_timer():
 	generate_zombie_timer.set_one_shot(true)
-	generate_zombie_timer.set_wait_time(1)
+	generate_zombie_timer.set_wait_time(5)
 	add_child(generate_zombie_timer) #to process
 	generate_zombie_timer.connect("timeout",self, "_on_generate_zombie_timer_timeout") 
 	
 func create_generate_wave_timer():
 	
 	generate_wave_timer.set_one_shot(true)
-	generate_wave_timer.set_wait_time(60)
+	generate_wave_timer.set_wait_time(20)
 	add_child(generate_wave_timer) #to process
 	generate_wave_timer.connect("timeout",self, "_on_generate_wave_timer_timeout") 
 
 func create_wave_paused_timer():
 	
 	wave_paused_timer.set_one_shot(true)
-	wave_paused_timer.set_wait_time(10)
+	wave_paused_timer.set_wait_time(20)
 	add_child(wave_paused_timer) #to process
 	wave_paused_timer.connect("timeout",self, "_on_wave_paused_timer_timeout") 
 func select_zombie_for_level( _level):
@@ -94,6 +95,8 @@ func _on_generate_wave_timer_timeout():
 	wave_is_coming = false
 	wave_is_contiune = false
 	zombie_level += 1
+	level_text.text=String(zombie_level)
+	
 	
 	
 func _on_wave_paused_timer_timeout():

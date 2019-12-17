@@ -20,6 +20,7 @@ extents = Vector2( 50, 70 )
 
 [node name="ZombiePortal" type="Area2D"]
 position = Vector2( 70, 36.6 )
+z_index = -1
 script = ExtResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
@@ -27,6 +28,7 @@ position = Vector2( -40, -36.6 )
 scale = Vector2( 3.125, 4.375 )
 frames = SubResource( 1 )
 animation = "move"
+frame = 4
 playing = true
 centered = false
 

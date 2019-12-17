@@ -277,6 +277,22 @@ nine_patch_stretch = true
 
 [node name="Updated_Tween" type="Tween" parent="Game_UI"]
 
+[node name="level_text" type="RichTextLabel" parent="Game_UI"]
+margin_left = 502.0
+margin_top = 34.0
+margin_right = 755.0
+margin_bottom = 74.0
+custom_fonts/normal_font = SubResource( 14 )
+text = "LEVEL :"
+
+[node name="level_counter" type="RichTextLabel" parent="Game_UI/level_text"]
+margin_left = 117.723
+margin_top = 1.47899
+margin_right = 253.723
+margin_bottom = 41.479
+custom_fonts/normal_font = SubResource( 14 )
+text = "1"
+
 [node name="bullet_counter" type="RichTextLabel" parent="Game_UI"]
 margin_left = 235.148
 margin_top = 37.0503
@@ -366,7 +382,6 @@ autoplay = true
 
 [node name="LeftPortal" parent="." instance=ExtResource( 18 )]
 position = Vector2( 1322.16, 790.902 )
-z_index = -1
 
 [node name="RightPortal" parent="." instance=ExtResource( 18 )]
 position = Vector2( 3517.71, 784.884 )
