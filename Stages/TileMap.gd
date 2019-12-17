@@ -36,34 +36,8 @@ func calculate_point_index(point: Vector2) -> float:
     return point.x + map_size.x * point.y
 
 func find_any_tile_neighbors(point):
-	if get_cell(point.x, point.y + 1) != INVALID_CELL:
-		return true
-	if get_cell(point.x , point.y + 2) != INVALID_CELL:
-		return false
-	if get_cell(point.x, point.y - 1) != INVALID_CELL:
-		return true
-	if get_cell(point.x - 1, point.y) != INVALID_CELL:
-		return true
-	if get_cell(point.x + 1, point.y) != INVALID_CELL:
-		return true
-	if get_cell(point.x - 1, point.y - 1) != INVALID_CELL:
-		return true
-	if get_cell(point.x + 1, point.y - 1) != INVALID_CELL:
-		return true
-	if get_cell(point.x - 1, point.y - 1) != INVALID_CELL:
-		return true
-	if get_cell(point.x + 1, point.y + 1) != INVALID_CELL:
-		return true
-	if get_cell(point.x -1 , point.y + 1) != INVALID_CELL:
-		return true
-	var left_top = point + Vector2(-2,-3)
-	var right_bottom = point + Vector2(3,3)
-	for x in range(left_top.x,right_bottom.x):
-		for y in range(left_top.y, right_bottom.y):
-			if get_cellv(Vector2(x,y)) != INVALID_CELL:
-				return false
-	return true
-	
+	return false
+
 func add_walkable_cells(obstacles := []) -> Array:
 	var points: = []
 	for x in range(min_x + 3,max_x):
@@ -71,24 +45,7 @@ func add_walkable_cells(obstacles := []) -> Array:
 			var point: = Vector2(x, y)
 			if point in obstacles:
 				continue
-				
-			if find_any_tile_neighbors(point):
-				continue
-				
-#			var points_relative: = PoolVector2Array([
-#				Vector2(point.x + 1, point.y),
-#				Vector2(point.x - 1, point.y),
-#				Vector2(point.x, point.y + 1),
-#				Vector2(point.x, point.y - 1),
-#				Vector2(point.x - 1, point.y - 1),
-#				Vector2(point.x + 1, point.y + 1),
-#				Vector2(point.x - 1, point.y + 1),
-#				Vector2(point.x + 1, point.y - 1),
-#			])
-#
-#			if left_and_right_area_control(points_relative):
-#				continue
-		
+
 			points.append(point)
 			var index: = calculate_point_index(point)
 			astar.add_point(index, Vector3(point.x, point.y, 0))
@@ -100,31 +57,6 @@ func is_outside_bounds(point: Vector2) -> bool:
 		
 
 	
-
-func left_and_right_area_control(points_relative):
-	# sağ tarafta tile varsa o an ki point geçersiz
-	var right_has_tile = get_cellv(points_relative[0])  != INVALID_CELL
-	var left_has_tile = get_cellv(points_relative[1]) != INVALID_CELL
-	
-	var bottom_has_tile = get_cellv(points_relative[2]) != INVALID_CELL
-	var top_has_tile = get_cellv(points_relative[3]) != INVALID_CELL
-	
-	var left_top_has_tile = get_cellv(points_relative[4]) != INVALID_CELL
-	var right_bottom_has_tile = get_cellv(points_relative[5]) != INVALID_CELL
-	
-	var left_bottom_has_tile = get_cellv(points_relative[6]) != INVALID_CELL
-	var right_top_has_tile = get_cellv(points_relative[7]) != INVALID_CELL
-	
-	if bottom_has_tile:
-		return true
-	else:
-		return false
-	
-	if (right_has_tile or left_has_tile) and bottom_has_tile:
-		return false
-		
-	return (right_top_has_tile or left_bottom_has_tile or right_bottom_has_tile or left_top_has_tile or left_has_tile or right_has_tile or top_has_tile or bottom_has_tile)
-		
 
 
 func connect_walkable_cells(points: Array) -> void:
@@ -153,16 +85,15 @@ func _ready() -> void:
 	map_size = Vector2(max_x, max_y)
 	var cells = add_walkable_cells(obstacles)
 	connect_walkable_cells(cells)
-	#for connectedPoint in connected_cells:
-	#	set_cellv(connectedPoint,21)
+#	for connectedPoint in connected_cells:
+#		set_cellv(connectedPoint,8)
 
 func _get_path(init_position: Vector2, target_position: Vector2) -> Array:
 	init_pos = init_position
 	target_pos = target_position
-	var grid_start = init_position / cell_size
-	var grid_end = target_position / cell_size
-	var start_position = Vector2(round(grid_start.x),round(grid_start.y))
-	var end_position = Vector2(round(grid_end.x),round(grid_end.y))
+
+	var start_position = world_to_map(init_position)
+	var end_position = world_to_map(target_position)
 	var start_index: = calculate_point_index(start_position)
 	var end_index: = calculate_point_index(end_position)
 
