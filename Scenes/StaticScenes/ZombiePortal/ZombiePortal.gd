@@ -18,6 +18,8 @@ var first_wave_zombie_size = 12
 var zombie_types = { 0 : simple_zombie , 
 					 1 : stalker_zombie,
 					 2 : punk_zombie }
+					
+signal wave_finished
 func _ready():
 	randomize()
 	create_generate_wave_timer()
@@ -38,6 +40,8 @@ func _process(delta):
 	if( zombie_dead_counter == zombie_generate_counter ) and !wave_is_contiune:#!wave_is_contiune ile dalganın başladığını ve olumle doğum eşit olsa bile,yeni dalga oluşturmaması için koyuldu.
 		wave_paused_timer.start()
 		wave_is_contiune = true
+		emit_signal("wave_finished")
+		
 	pass
 
 func create_generate_zombie_timer():
