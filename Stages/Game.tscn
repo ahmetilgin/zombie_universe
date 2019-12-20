@@ -284,6 +284,8 @@ margin_top = 34.0
 margin_right = 755.0
 margin_bottom = 74.0
 custom_fonts/normal_font = SubResource( 14 )
+custom_colors/default_color = Color( 0.403922, 0.0196078, 0.0196078, 1 )
+custom_colors/selection_color = Color( 0, 0, 0, 1 )
 text = "LEVEL :"
 
 [node name="level_counter" type="RichTextLabel" parent="Game_UI/level_text"]
@@ -292,6 +294,7 @@ margin_top = 1.47899
 margin_right = 253.723
 margin_bottom = 41.479
 custom_fonts/normal_font = SubResource( 14 )
+custom_colors/default_color = Color( 0.403922, 0.0196078, 0.0196078, 1 )
 text = "1"
 
 [node name="bullet_counter" type="RichTextLabel" parent="Game_UI"]
