@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Stages/Game.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/GraveyardTileSet/png/Tiles/Tile1.png" type="Texture" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://Resources/Sprites/GameBackgrounds/1gamebackground/1gamebackground.png" type="Texture" id=16]
 [ext_resource path="res://Scenes/Screens/GameOverScreen/GameoverScreen.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Resources/AudioFiles/Game/savymerchant.ogg" type="AudioStream" id=18]
+[ext_resource path="res://Scenes/KinematicScenes/Turrent/Turret.tscn" type="PackedScene" id=19]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
@@ -383,3 +384,6 @@ visible = false
 stream = ExtResource( 18 )
 volume_db = -31.424
 autoplay = true
+
+[node name="Turret" parent="." instance=ExtResource( 19 )]
+position = Vector2( 2170.94, 827.672 )
