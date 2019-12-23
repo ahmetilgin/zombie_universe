@@ -14,10 +14,10 @@ func fire(zombie_position):
 #		degree = degree + 360
 #
 	degree = degree + 90
-	print(degree)
+	
 	var x_dir = cos(deg2rad(degree))
 	var y_dir = sin(deg2rad(degree))
-	print(degree)
+
 	direction = Vector2(x_dir,y_dir)
 	
 func _physics_process(delta):
