@@ -52,7 +52,7 @@ var is_opened_market = false
 func show_grid():
 	for i in range(min_border.x, max_border.x):
 		for j in range(min_border.y, max_border.y):
-			if get_node("TileMap").get_cell(i,j) == -1:				
+			if get_node("TileMap").get_cell(i,j) == -1 and get_node("TileMap").get_cell(i,j+1) != -1: 				
 				get_node("TileMap").set_cellv(Vector2(i,j),9)
 			pass
 
