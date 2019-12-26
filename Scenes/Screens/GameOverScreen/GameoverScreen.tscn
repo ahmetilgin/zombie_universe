@@ -50,13 +50,13 @@ margin_bottom = 652.923
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
 margin_right = 800.0
-margin_bottom = 231.0
+margin_bottom = 230.0
 
 [node name="VBoxContainer" type="HBoxContainer" parent="MarginContainer/CenterContainer"]
 margin_left = 186.0
-margin_top = 83.0
+margin_top = 82.0
 margin_right = 614.0
-margin_bottom = 148.0
+margin_bottom = 147.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 

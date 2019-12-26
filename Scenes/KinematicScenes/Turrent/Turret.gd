@@ -28,17 +28,14 @@ func _ready():
 var current_rotation = 0
 var rotation_direction = 0.001
 func find_any_zombies():
-	
-	
-	if(60 > $Base/Top/Radar.get_global_rotation_degrees() ):
+	if(90 > $Base/Top/Radar.get_global_rotation_degrees() ):
 		rotation_direction *= -1
 	elif($Base/Top/Radar.get_global_rotation_degrees()  > 120):
 		rotation_direction *= -1
 	 
 	$Base/Top.rotate(rotation_direction)
 	if $Base/Top/Radar.is_colliding():
-		if "Zombie" in $Base/Top/Radar.get_collider().name:
-			
+		if "Zombie" in $Base/Top/Radar.get_collider().name:		
 			zombie_position = $Base/Top/Radar.get_collider().get_global_position()
 			if is_shooting_free:
 				bullet_timer.start()

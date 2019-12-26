@@ -24,12 +24,17 @@ func create_portals(portal_count):
 		portal_list.push_back(portal)
 	pass # Replace with function body.
 	
+	
+func get_tile_borders():
+	max_border = get_node("TileMap").get_max_border()
+	min_border = get_node("TileMap").get_min_border()
+	
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	create_portals(start_portal)
+	get_tile_borders()
 
 func _process(delta):
-	
 	pass
 
 func wave_finish():
@@ -38,3 +43,44 @@ func wave_finish():
 		finish_portal = 0
 		emit_signal("stop_wave")
 	pass
+
+var max_border = Vector2()
+var min_border = Vector2()
+
+var is_opened_market = false
+
+func show_grid():
+	for i in range(min_border.x, max_border.x):
+		for j in range(min_border.y, max_border.y):
+			if get_node("TileMap").get_cell(i,j) == -1:				
+				get_node("TileMap").set_cellv(Vector2(i,j),9)
+			pass
+
+func hide_grid():
+	for i in range(min_border.x, max_border.x):
+		for j in range(min_border.y, max_border.y):
+			if get_node("TileMap").get_cell(i,j) == 9:				
+				get_node("TileMap").set_cellv(Vector2(i,j),-1)
+			pass
+
+
+func _draw():
+	if is_opened_market:
+		show_grid()
+	else:
+		hide_grid()
+
+
+
+
+
+
+
+func _on_TouchScreenButton_pressed():
+	if !is_opened_market:
+		$Market.set_offset(Vector2(-5,0))
+	else:
+		$Market.set_offset(Vector2(-325,0))
+	is_opened_market = !is_opened_market
+	update()
+	pass # Replace with function body.

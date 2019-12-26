@@ -17,6 +17,13 @@ var min_x = 0
 var max_y = 0
 var min_y = 0
 
+
+func get_max_border():
+	return Vector2(max_x,max_y)
+
+func get_min_border():
+	return Vector2(min_x, min_y)
+
 func calculate_bounds(obstacles):
 	for pos in obstacles:
 		if pos.x < min_x:
