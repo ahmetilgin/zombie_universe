@@ -80,7 +80,7 @@ func _on_TouchScreenButton_pressed():
 	if !is_opened_market:
 		$Market.set_offset(Vector2(-5,0))
 	else:
-		$Market.set_offset(Vector2(-325,0))
+		$Market.set_offset(Vector2(-400,0))
 	is_opened_market = !is_opened_market
 	update()
 	pass # Replace with function body.

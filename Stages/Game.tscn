@@ -418,6 +418,6 @@ autoplay = true
 position = Vector2( 2170.94, 827.672 )
 
 [node name="Market" parent="." instance=ExtResource( 22 )]
-offset = Vector2( -325, 0 )
-transform = Transform2D( 1, 0, 0, 1, -325, 0 )
+offset = Vector2( -400, 0 )
+transform = Transform2D( 1, 0, 0, 1, -400, 0 )
 [connection signal="pressed" from="Game_UI/TouchScreenButton" to="." method="_on_TouchScreenButton_pressed"]

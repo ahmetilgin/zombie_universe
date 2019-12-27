@@ -1,19 +1,78 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/StaticScenes/Market/Market.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Sprites/UISprites/Windows.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Sprites/Turret/Turret1Top.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Sprites/UISprites/Button.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Sprites/StarCoin/starcoinrotate1.png" type="Texture" id=5]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 800.908, 912.725, 553.266, 806.717 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 169.419, 201.025, 370.124, 168.406 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0, 0, 0, 0 )
+border_color = Color( 0.0980392, 0.0352941, 0.0352941, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.6, 0.6, 0.505882, 0 )
 
 [node name="Market" type="CanvasLayer"]
+layer = 10
 script = ExtResource( 1 )
 
-[node name="MarketPalace" type="ColorRect" parent="."]
+[node name="MarketPalace" type="TextureRect" parent="."]
 margin_left = 2.0
 margin_top = 107.0
 margin_right = 324.0
 margin_bottom = 799.0
-color = Color( 0.788235, 0, 0, 0.584314 )
+rect_scale = Vector2( 0.761802, 0.851395 )
+texture = SubResource( 1 )
 
-[node name="Turret" type="ColorRect" parent="MarketPalace"]
-margin_left = 84.0
-margin_top = 53.0
-margin_right = 235.0
-margin_bottom = 105.0
+[node name="Sprite" type="TouchScreenButton" parent="."]
+position = Vector2( 85.2879, 292.048 )
+scale = Vector2( 0.377836, 0.309448 )
+normal = ExtResource( 3 )
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+position = Vector2( 136.091, 626.477 )
+scale = Vector2( 0.410531, 0.272709 )
+z_index = 1
+normal = SubResource( 2 )
+
+[node name="TextEdit" type="TextEdit" parent="TouchScreenButton"]
+margin_left = 139.329
+margin_top = 27.408
+margin_right = 179.329
+margin_bottom = 67.408
+rect_scale = Vector2( 3.87358, 5.57259 )
+custom_styles/normal = SubResource( 3 )
+custom_colors/font_color_selected = Color( 0.788235, 0.529412, 0.529412, 1 )
+custom_colors/font_color = Color( 0.160784, 0.00784314, 0.00784314, 1 )
+custom_colors/completion_font_color = Color( 0, 0, 0, 1 )
+text = "BUY
+"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 290.501
+margin_top = 285.619
+margin_right = 2523.5
+margin_bottom = 2528.62
+rect_scale = Vector2( 0.0239306, 0.0231322 )
+texture = ExtResource( 5 )
+
+[node name="TextEdit" type="TextEdit" parent="TextureRect"]
+margin_left = 655.314
+margin_top = 508.447
+margin_right = 695.314
+margin_bottom = 548.447
+rect_scale = Vector2( 61.542, 64.5021 )
+custom_styles/normal = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "20"
