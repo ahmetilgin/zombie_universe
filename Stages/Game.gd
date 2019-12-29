@@ -31,9 +31,27 @@ func get_tile_borders():
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	create_portals(start_portal)
 	get_tile_borders()
-
+	market_button_create()
+	on_market_button_unvisible()
+	
+func market_button_create():
+	var portal = portal_scene.instance()
+	add_child(portal)
+	portal.connect("market_button_visible",self, "on_market_button_visible")
+	portal.connect("market_button_unvisible",self, "on_market_button_unvisible")
+	pass
+func on_market_button_visible():
+	$Game_UI/Market_Button.disabled = false
+	pass
+func on_market_button_unvisible():
+	$Game_UI/Market_Button.disabled = true
+	$Market.set_offset(Vector2(-420,0))
+	hide_grid()
+	is_opened_market = false
+	pass
 func _process(delta):
 	pass
 

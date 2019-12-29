@@ -10,6 +10,8 @@ var generate_wave_timer = Timer.new()
 var wave_paused_timer = Timer.new()
 var can_wave_come = true
 var wave_is_coming = true
+signal market_button_unvisible
+signal market_button_visible
 var zombie_dead_counter = 0
 var zombie_generate_counter = 0
 var wave_is_contiune = false
@@ -42,7 +44,8 @@ func _process(delta):
 	if( zombie_dead_counter == zombie_generate_counter ) and !wave_is_contiune:#!wave_is_contiune ile dalganın başladığını ve olumle doğum eşit olsa bile,yeni dalga oluşturmaması için koyuldu.
 		emit_signal("wave_finished")
 		wave_is_contiune = true
-		
+		zombie_dead_counter = 0
+		zombie_generate_counter = 0
 		
 		
 		
@@ -57,7 +60,7 @@ func create_generate_zombie_timer():
 func create_generate_wave_timer():
 	
 	generate_wave_timer.set_one_shot(true)
-	generate_wave_timer.set_wait_time(20)
+	generate_wave_timer.set_wait_time(10)
 	add_child(generate_wave_timer) #to process
 	generate_wave_timer.connect("timeout",self, "_on_generate_wave_timer_timeout") 
 
@@ -105,11 +108,15 @@ func  wave_start():
 	level_text_counter.add_color_override("default_color", Color(1,1,1))
 	level_text.add_color_override("default_color", Color(1,1,1))
 	level_text_counter.text = String(zombie_level)
+	emit_signal("market_button_visible")
+	
 	
 func _on_wave_paused_timer_timeout():
 		can_wave_come = true
 		wave_is_coming = true
+		emit_signal("market_button_unvisible")
 		level_text.add_color_override("default_color", Color(0.403922, 0.019608, 0.019608))
 		level_text_counter.add_color_override("default_color", Color(0.403922, 0.019608, 0.019608))
 		zombie_count_for_level(zombie_level)
+		
 		

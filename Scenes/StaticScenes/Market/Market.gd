@@ -1,5 +1,5 @@
 extends CanvasLayer
-
+var turret = preload("res://Scenes/KinematicScenes/Turrent/Turret.tscn")
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"

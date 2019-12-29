@@ -30,9 +30,11 @@ var rotation_direction = 0.001
 func find_any_zombies():
 	if(90 > $Base/Top/Radar.get_global_rotation_degrees() ):
 		rotation_direction *= -1
+		
 	elif($Base/Top/Radar.get_global_rotation_degrees()  > 120):
 		rotation_direction *= -1
-	 
+		
+	$TopCollision.rotate(rotation_direction)
 	$Base/Top.rotate(rotation_direction)
 	if $Base/Top/Radar.is_colliding():
 		if "Zombie" in $Base/Top/Radar.get_collider().name:		

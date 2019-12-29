@@ -1,6 +1,6 @@
 extends RichTextLabel
 var count=0
-var count_size=100
+var count_size=1
 
 # Declare member variables here. Examples:
 # var a = 2

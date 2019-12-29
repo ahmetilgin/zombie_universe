@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://Stages/Game.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/GraveyardTileSet/png/Tiles/Tile1.png" type="Texture" id=2]
@@ -246,12 +246,17 @@ region = Rect2( 1616.44, 1043.62, 148.854, 163.775 )
 [sub_resource type="AtlasTexture" id=18]
 flags = 4
 atlas = ExtResource( 17 )
-region = Rect2( 1102.91, 1629.27, 182.05, 172.029 )
+region = Rect2( 1104, 1629, 180, 180 )
 
 [sub_resource type="AtlasTexture" id=19]
 flags = 4
 atlas = ExtResource( 17 )
-region = Rect2( 1297.62, 1629.84, 179.569, 179.569 )
+region = Rect2( 1490, 1629, 180, 180 )
+
+[sub_resource type="AtlasTexture" id=20]
+flags = 4
+atlas = ExtResource( 17 )
+region = Rect2( 1683, 1629, 180, 180 )
 
 [node name="stage1" type="Node2D"]
 script = ExtResource( 1 )
@@ -389,11 +394,15 @@ text = "0"
 scroll_active = false
 script = ExtResource( 16 )
 
-[node name="TouchScreenButton" type="TouchScreenButton" parent="Game_UI"]
-position = Vector2( 8.86435, 11.0804 )
-scale = Vector2( 0.470087, 0.448415 )
-normal = SubResource( 18 )
-pressed = SubResource( 19 )
+[node name="Market_Button" type="TextureButton" parent="Game_UI"]
+margin_left = 24.3086
+margin_top = 25.2595
+margin_right = 25.3086
+margin_bottom = 26.2595
+rect_scale = Vector2( 0.26105, 0.245481 )
+texture_normal = SubResource( 18 )
+texture_pressed = SubResource( 19 )
+texture_disabled = SubResource( 20 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -424,4 +433,4 @@ transform = Transform2D( 1, 0, 0, 1, -420, 0 )
 [node name="Turret2" parent="." instance=ExtResource( 21 )]
 position = Vector2( 2244.27, 835.096 )
 scale = Vector2( -0.3, 0.3 )
-[connection signal="pressed" from="Game_UI/TouchScreenButton" to="." method="_on_TouchScreenButton_pressed"]
+[connection signal="pressed" from="Game_UI/Market_Button" to="." method="_on_TouchScreenButton_pressed"]

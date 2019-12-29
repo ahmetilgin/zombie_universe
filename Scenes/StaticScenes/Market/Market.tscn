@@ -6,7 +6,7 @@
 [ext_resource path="res://Resources/Sprites/UISprites/Button.png" type="Texture" id=4]
 [ext_resource path="res://Resources/Sprites/StarCoin/starcoinrotate1.png" type="Texture" id=5]
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=1]
 flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 800.908, 912.725, 553.266, 806.717 )
@@ -26,7 +26,7 @@ margin_top = 107.0
 margin_right = 324.0
 margin_bottom = 799.0
 rect_scale = Vector2( 0.761802, 0.851395 )
-texture = SubResource( 3 )
+texture = SubResource( 1 )
 
 [node name="TurrenButton" type="TouchScreenButton" parent="."]
 position = Vector2( 85.2879, 292.048 )
