@@ -82,15 +82,15 @@ animations = [ {
 "name": "jump",
 "speed": 12.0
 }, {
-"frames": [ ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ) ],
-"loop": true,
-"name": "run",
-"speed": 15.0
-}, {
 "frames": [ ExtResource( 16 ), ExtResource( 17 ) ],
 "loop": false,
 "name": "hurt",
 "speed": 50.0
+}, {
+"frames": [ ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ) ],
+"loop": true,
+"name": "run",
+"speed": 15.0
 }, {
 "frames": [ ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ) ],
 "loop": false,
@@ -211,11 +211,11 @@ position = Vector2( -0.110915, 11.4617 )
 polygon = PoolVector2Array( -12.1676, 26.791, -14.1037, 22.8471, -16.3044, 13.1644, -15.4241, 4.36185, -15.394, -1.1709, -13.2431, -3.68028, -17.5449, -6.54817, -21.8468, 0.621536, -24.2266, 7.44273, -21.5859, 22.8471, -19.6958, 27.1494, -16.4695, 31.4513, -13.9601, 33.9606 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 17.6143, 12.2646 )
+position = Vector2( 30.5919, 12.325 )
 current = true
-limit_left = 1200
+limit_left = 1025
 limit_top = 0
-limit_right = 3700
+limit_right = 3840
 limit_bottom = 1000
 smoothing_enabled = true
 script = ExtResource( 54 )

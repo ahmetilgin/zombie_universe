@@ -9,7 +9,7 @@ func _ready():
 	set_global_position(get_parent().get_node("Base/Top/Radar/Position2D").get_global_position())
 
 func fire(zombie_position):
-	var degree = get_parent().get_node("Base/Top/Radar").get_global_rotation_degrees()
+	var degree = get_parent().get_node("Base/Top/Radar").get_rotation_degrees()
 #	if degree < 0:
 #		degree = degree + 360
 #

@@ -10,9 +10,11 @@ var _previous_y = 0.0
 var _last_offset = Vector2(0, 0)
 
 func _ready():
-    set_process(true)
+	set_process(true)
+	var game_screen=get_parent().get_parent().get_node(".")
+	game_screen.connect("camera_zoom_out",self,"on_camera_zoom_out")
+	game_screen.connect("camera_zoom_in",self,"on_camera_zoom_in")
 
-# Shake with decreasing intensity while there's time remaining.
 func _process(delta):
     # Only shake when there's shake time remaining.
     if _timer == 0:
