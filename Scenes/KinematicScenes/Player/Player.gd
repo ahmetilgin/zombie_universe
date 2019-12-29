@@ -124,7 +124,7 @@ func _play_attack_animation():
 
 func _move_slide():
 	$CollisionShape2D.scale = Vector2 (1, 0.7)
-	$CollisionShape2D.position.y=20
+	$CollisionShape2D.position.y=25
 	if $AnimatedSprite.flip_h==false:
 		motion.x = slide_speed
 	else:
@@ -159,14 +159,14 @@ func _clear_states():
 	is_hurt=false
 	is_melee=false
 	$CollisionShape2D.scale = Vector2 (1, 1)
-	$CollisionShape2D.position.y=0
+	$CollisionShape2D.position.y=11
 	
 var UP = Vector2(0,-1)
 
 func _physics_process(delta):
 	if $AnimatedSprite.flip_h==true:
-		$CollisionShape2D.position.x=30
-		$collision_2.position.x=30
+		$CollisionShape2D.position.x=36
+		$collision_2.position.x=36
 	else:
 		$CollisionShape2D.position.x=18
 		$collision_2.position.x=18
