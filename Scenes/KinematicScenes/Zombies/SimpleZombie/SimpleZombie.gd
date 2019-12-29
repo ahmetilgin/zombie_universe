@@ -191,17 +191,16 @@ func move_like_basic_zombie():
 		pass
 
 func _physics_process(delta):
+	motion.y += gravity
 	if is_dead==false:
-		if is_hurt==false:
-			motion.y += gravity
-			follow_path()
-			_jump_is_on_wall()
-			motion = move_and_slide(motion , UP)
+		follow_path()
+		_jump_is_on_wall()
+		motion = move_and_slide(motion , UP)
 
-			if get_slide_count()>0:
-				for i in range(get_slide_count()):
-					if "player" in get_slide_collision(i).collider.name:
-						_zombie_attack_to_player(25)
+		if get_slide_count()>0:
+			for i in range(get_slide_count()):
+				if "player" in get_slide_collision(i).collider.name:
+					_zombie_attack_to_player(25)
  
 func _zombie_dead_timer_timeout():
 	queue_free()

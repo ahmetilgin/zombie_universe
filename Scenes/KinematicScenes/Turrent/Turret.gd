@@ -19,18 +19,19 @@ func _ready():
 	create_turret_attack_timer()
 	pass # Replace with function body.
 
-var current_rotation_degree = 1
-var rotation_angle = 30
+var current_rotation_degree = 0.1
+var rotation_angle = 300
 var rotation_angle_count = 0
-
+# 30 kez + yönde 1 derece döndür 30 kez - yönde -1 derece döndür
 func find_any_zombies():
-	if rotation_angle_count < rotation_angle:
-		rotation_angle_count += 1
-	else:
-		current_rotation_degree = -1 * current_rotation_degree
-		rotation_angle_count = 0
+	if is_shooting_free:
+		if rotation_angle_count < rotation_angle:
+			rotation_angle_count += 1
+		else:
+			current_rotation_degree = -1 * current_rotation_degree
+			rotation_angle_count = 0
 			
-	$Base/Top.rotate(deg2rad(current_rotation_degree))
+		$Base/Top.rotate(deg2rad(current_rotation_degree))
 	if $Base/Top/Radar.is_colliding():
 		if "Zombie" in $Base/Top/Radar.get_collider().name:		
 			zombie_position = $Base/Top/Radar.get_collider().get_global_position()

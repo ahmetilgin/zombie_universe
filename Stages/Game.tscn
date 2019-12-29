@@ -436,4 +436,7 @@ zoom = Vector2( 2.35, 2.35 )
 [node name="Turret2" parent="." instance=ExtResource( 22 )]
 position = Vector2( 2388.03, 837.304 )
 scale = Vector2( -0.3, 0.3 )
+
+[node name="Turret" parent="." instance=ExtResource( 22 )]
+position = Vector2( 2237.81, 834.841 )
 [connection signal="pressed" from="Game_UI/Market_Button" to="." method="_on_TouchScreenButton_pressed"]

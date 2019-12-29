@@ -1,19 +1,21 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/StaticScenes/Market/Market.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/UISprites/Windows.png" type="Texture" id=2]
 [ext_resource path="res://Resources/Sprites/Turret/Turret1Top.png" type="Texture" id=3]
-[ext_resource path="res://Resources/Sprites/UISprites/Button.png" type="Texture" id=4]
-[ext_resource path="res://Resources/Sprites/StarCoin/starcoinrotate1.png" type="Texture" id=5]
+[ext_resource path="res://Resources/Sprites/Turret/turret1_focused.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Sprites/Turret/turret1_focusedgreen.png" type="Texture" id=5]
+[ext_resource path="res://Resources/Sprites/UISprites/Button.png" type="Texture" id=6]
+[ext_resource path="res://Resources/Sprites/StarCoin/starcoinrotate1.png" type="Texture" id=7]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 800.908, 912.725, 553.266, 806.717 )
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=3]
 flags = 4
-atlas = ExtResource( 4 )
+atlas = ExtResource( 6 )
 region = Rect2( 169.419, 201.025, 370.124, 168.406 )
 
 [node name="Market" type="CanvasLayer"]
@@ -28,16 +30,31 @@ margin_bottom = 799.0
 rect_scale = Vector2( 0.761802, 0.851395 )
 texture = SubResource( 1 )
 
-[node name="TurrenButton" type="TouchScreenButton" parent="."]
-position = Vector2( 85.2879, 292.048 )
-scale = Vector2( 0.377836, 0.309448 )
-normal = ExtResource( 3 )
+[node name="TurrenButton" type="TextureButton" parent="."]
+margin_left = 77.1176
+margin_top = 274.375
+margin_right = 583.118
+margin_bottom = 405.375
+rect_scale = Vector2( 0.41238, 0.603234 )
+action_mode = 0
+texture_normal = ExtResource( 3 )
+texture_focused = ExtResource( 4 )
+
+[node name="TurrenButton2" type="TextureButton" parent="."]
+margin_left = 80.2909
+margin_top = 372.749
+margin_right = 586.291
+margin_bottom = 503.749
+rect_scale = Vector2( 0.41238, 0.603234 )
+action_mode = 0
+texture_normal = ExtResource( 3 )
+texture_focused = ExtResource( 5 )
 
 [node name="BuyButton" type="TouchScreenButton" parent="."]
 position = Vector2( 136.091, 626.477 )
 scale = Vector2( 0.410531, 0.272709 )
 z_index = 1
-normal = SubResource( 2 )
+normal = SubResource( 3 )
 
 [node name="BuyLabel" type="Label" parent="BuyButton"]
 margin_left = 129.594
@@ -55,12 +72,12 @@ margin_top = 285.619
 margin_right = 2523.5
 margin_bottom = 2528.62
 rect_scale = Vector2( 0.0239306, 0.0231322 )
-texture = ExtResource( 5 )
+texture = ExtResource( 7 )
 
 [node name="Label" type="Label" parent="TurrentCoin"]
-margin_left = 764.324
+margin_left = 890.302
 margin_top = 716.576
-margin_right = 804.324
+margin_right = 930.302
 margin_bottom = 747.576
 rect_scale = Vector2( 48.3624, 70.4237 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
