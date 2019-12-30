@@ -130,7 +130,7 @@ func wave_started():
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.pressed:
-#			var pos = event.get_global_mouse_pos()
+			var pos = get_global_mouse_position()
 			var tile_pos = get_node("TileMap").world_to_map(pos)
 			print(tile_pos)
-			get_node("TileMap").set_cell(tile_pos.x ,tile_pos.y, -1)
+			$TileMap.set_cell(tile_pos.x ,tile_pos.y, 1)
