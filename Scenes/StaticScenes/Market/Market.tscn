@@ -36,21 +36,21 @@ rect_scale = Vector2( 0.761802, 0.851395 )
 texture = SubResource( 1 )
 
 [node name="TurrenButton" type="TextureButton" parent="."]
-margin_left = 77.1176
-margin_top = 274.375
-margin_right = 583.118
-margin_bottom = 405.375
-rect_scale = Vector2( 0.41238, 0.603234 )
+margin_left = 75.002
+margin_top = 284.953
+margin_right = 581.002
+margin_bottom = 415.953
+rect_scale = Vector2( 0.41238, 0.468576 )
 action_mode = 0
 texture_normal = ExtResource( 3 )
 texture_focused = ExtResource( 4 )
 
 [node name="TurrenButton2" type="TextureButton" parent="."]
-margin_left = 80.2909
-margin_top = 372.749
-margin_right = 586.291
-margin_bottom = 503.749
-rect_scale = Vector2( 0.41238, 0.603234 )
+margin_left = 73.6533
+margin_top = 373.0
+margin_right = 579.653
+margin_bottom = 504.0
+rect_scale = Vector2( 0.41238, 0.450081 )
 action_mode = 0
 texture_normal = ExtResource( 3 )
 texture_focused = ExtResource( 5 )
@@ -81,6 +81,24 @@ rect_scale = Vector2( 0.0239306, 0.0231322 )
 texture = ExtResource( 7 )
 
 [node name="Label" type="Label" parent="TurrentCoin"]
+margin_left = 890.302
+margin_top = 716.576
+margin_right = 930.302
+margin_bottom = 747.576
+rect_scale = Vector2( 48.3624, 70.4237 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "20
+"
+
+[node name="TurrentCoin2" type="TextureRect" parent="."]
+margin_left = 295.942
+margin_top = 376.311
+margin_right = 2528.94
+margin_bottom = 2619.31
+rect_scale = Vector2( 0.0239306, 0.0231322 )
+texture = ExtResource( 7 )
+
+[node name="Label" type="Label" parent="TurrentCoin2"]
 margin_left = 890.302
 margin_top = 716.576
 margin_right = 930.302

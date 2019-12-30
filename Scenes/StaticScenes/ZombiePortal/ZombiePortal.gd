@@ -3,19 +3,15 @@ var can_create_zombie=true
 var punk_zombie = preload("res://Scenes/KinematicScenes/Zombies/PunkZombie/PunkZombie.tscn")
 var simple_zombie = preload("res://Scenes/KinematicScenes/Zombies/SimpleZombie/SimpleZombie.tscn")
 var stalker_zombie = preload("res://Scenes/KinematicScenes/Zombies/StalkerZombie/StalkerZombie.tscn")
-onready var level_text_counter = get_node("../Game_UI/level_text/level_counter")
-onready var level_text = get_node("../Game_UI/level_text")
+var zombie_level = 1
 var generate_zombie_timer = Timer.new()
 var generate_wave_timer = Timer.new()
 var wave_paused_timer = Timer.new()
 var can_wave_come = true
 var wave_is_coming = true
-signal market_button_unvisible
-signal market_button_visible
 var zombie_dead_counter = 0
 var zombie_generate_counter = 0
 var wave_is_contiune = false
-var zombie_level = 1
 var wave_time = 60.0
 var first_wave_zombie_size = 12
 var zombie_types = { 0 : simple_zombie , 
@@ -23,15 +19,14 @@ var zombie_types = { 0 : simple_zombie ,
 					 2 : punk_zombie }
 					
 signal wave_finished
+signal wave_started
 func _ready():
 	randomize()
 	create_generate_wave_timer()
 	create_generate_zombie_timer()
 	create_wave_paused_timer()#bütün zombieler ölünce yeni dalga gelene kadar bekleme süresi oluşturuldu.
-	var game_screen=get_node("../.")
-	game_screen.connect("stop_wave",self,"wave_start")
+
 func _process(delta):
-	
 	$AnimatedSprite.play("move")
 	if wave_is_coming:
 		wave_is_contiune = true
@@ -46,9 +41,7 @@ func _process(delta):
 		wave_is_contiune = true
 		zombie_dead_counter = 0
 		zombie_generate_counter = 0
-		
-		
-		
+
 	pass
 
 func create_generate_zombie_timer():
@@ -58,18 +51,17 @@ func create_generate_zombie_timer():
 	generate_zombie_timer.connect("timeout",self, "_on_generate_zombie_timer_timeout") 
 	
 func create_generate_wave_timer():
-	
 	generate_wave_timer.set_one_shot(true)
 	generate_wave_timer.set_wait_time(10)
 	add_child(generate_wave_timer) #to process
 	generate_wave_timer.connect("timeout",self, "_on_generate_wave_timer_timeout") 
 
 func create_wave_paused_timer():
-	
 	wave_paused_timer.set_one_shot(true)
 	wave_paused_timer.set_wait_time(20)
 	add_child(wave_paused_timer) #to process
 	wave_paused_timer.connect("timeout",self, "_on_wave_paused_timer_timeout") 
+
 func select_zombie_for_level( _level):
 	var zombie_by_level = _level
 	return int( floor(randi( ) % ((zombie_by_level / 10) +1 ) ))
@@ -80,13 +72,14 @@ func zombie_count_for_level(_level):
 	var zombie_generate_time = wave_time / wave_zombie_limit 
 	generate_zombie_timer.set_wait_time( zombie_generate_time)
 
+func set_zombie_level(level):
+	zombie_level = level
 
 func generate_Zombies():
 	var zombie_instance =zombie_types.get( select_zombie_for_level(zombie_level)).instance()
 	get_parent().call_deferred("add_child",zombie_instance)
 	zombie_instance.set_global_position(Vector2(get_global_position().x,get_global_position().y))
 	zombie_instance.connect("dead_counter_for_wave",self,"on_dead_counter_for_wave")
-	pass # Replace with function body.
 	
 func on_dead_counter_for_wave():
 	zombie_dead_counter += 1
@@ -96,27 +89,16 @@ func _on_generate_zombie_timer_timeout():
 	can_create_zombie = true
 	generate_Zombies()
 
-
-	pass # Replace with function body.
 func _on_generate_wave_timer_timeout():
 	wave_is_coming = false
 	wave_is_contiune = false
 	
-func  wave_start():
+func wave_stop():
 	wave_paused_timer.start()
 	zombie_level += 1
-	level_text_counter.add_color_override("default_color", Color(1,1,1))
-	level_text.add_color_override("default_color", Color(1,1,1))
-	level_text_counter.text = String(zombie_level)
-	emit_signal("market_button_visible")
-	
-	
+
 func _on_wave_paused_timer_timeout():
-		can_wave_come = true
-		wave_is_coming = true
-		emit_signal("market_button_unvisible")
-		level_text.add_color_override("default_color", Color(0.403922, 0.019608, 0.019608))
-		level_text_counter.add_color_override("default_color", Color(0.403922, 0.019608, 0.019608))
-		zombie_count_for_level(zombie_level)
-		
-		
+	can_wave_come = true
+	wave_is_coming = true
+	emit_signal("wave_started")
+	

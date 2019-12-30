@@ -2,27 +2,17 @@ extends CanvasLayer
 var turret = preload("res://Scenes/KinematicScenes/Turrent/Turret.tscn")
 var turret2 = preload("res://Scenes/KinematicScenes/Turrent/Turret.tscn")
 onready var coin = get_node("../Game_UI/Coin_Counter")
-signal item_sold
+signal item_sold(item_price, item)
 var coin_price = 0
 var selected_item = null
 var selected_item_price = null
 var turret_price = 20
 var turret2_price = 1 # silinecek deneme için yapıyorum
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	
 	pass # Replace with function body.
 func _process(delta):
-	coin_price=coin.count
-	
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	coin_price = coin.count
 
 func market_calculator(item_price_tag):
 	if coin_price > item_price_tag:
@@ -45,8 +35,7 @@ func _on_TurrenButton_focus_entered():
 
 
 func _on_BuyButton_pressed():
-	
 	if market_calculator(selected_item_price):
-		emit_signal("item_sold")
-		selected_item.instance()
+		emit_signal("item_sold", selected_item_price, selected_item)
+		
 	pass # Replace with function body.
