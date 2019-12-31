@@ -96,6 +96,7 @@ func _on_generate_wave_timer_timeout():
 func wave_stop():
 	wave_paused_timer.start()
 	zombie_level += 1
+	zombie_count_for_level(zombie_level)
 
 func _on_wave_paused_timer_timeout():
 	can_wave_come = true

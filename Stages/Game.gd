@@ -71,7 +71,13 @@ func _process(delta):
 func show_current_level():
 	level_text_counter.add_color_override("default_color", Color(1,1,1))
 	level_text.add_color_override("default_color", Color(1,1,1))
+
+
+func show_current_start_level():
+	level_text_counter.add_color_override("default_color", Color(0.47,0.05127, 0.05127))
+	level_text.add_color_override("default_color", Color(0.47,0.05127, 0.05127))
 	level_text_counter.text = String(game_level)
+
 
 func wave_finish():
 	finish_portal += 1
@@ -124,7 +130,9 @@ var started_wave_count = 0
 func wave_started():
 	started_wave_count += 1
 	if start_portal == started_wave_count:
+		started_wave_count = 0
 		on_market_button_unvisible()
+		show_current_start_level()
 		pass
 		
 func _input(event):
