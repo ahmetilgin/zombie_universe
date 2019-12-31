@@ -10,10 +10,12 @@ var wave_paused_timer = Timer.new()
 var can_wave_come = true
 var wave_is_coming = true
 var zombie_dead_counter = 0
+var wave_zombie_limit 
+var zombie_generate_time
 var zombie_generate_counter = 0
 var wave_is_contiune = false
-var wave_time = 60.0
-var first_wave_zombie_size = 12
+var wave_time = 10.0
+var first_wave_zombie_size = 3
 var zombie_types = { 0 : simple_zombie , 
 					 1 : stalker_zombie,
 					 2 : punk_zombie }
@@ -22,11 +24,13 @@ signal wave_finished
 signal wave_started
 func _ready():
 	randomize()
+	zombie_count_for_level(zombie_level)
 	create_generate_wave_timer()
 	create_generate_zombie_timer()
 	create_wave_paused_timer()#bütün zombieler ölünce yeni dalga gelene kadar bekleme süresi oluşturuldu.
-
+	
 func _process(delta):
+
 	$AnimatedSprite.play("move")
 	if wave_is_coming:
 		wave_is_contiune = true
@@ -36,7 +40,7 @@ func _process(delta):
 	if can_wave_come:
 		generate_wave_timer.start()
 		can_wave_come = false
-	if( zombie_dead_counter == zombie_generate_counter ) and !wave_is_contiune:#!wave_is_contiune ile dalganın başladığını ve olumle doğum eşit olsa bile,yeni dalga oluşturmaması için koyuldu.
+	if( zombie_dead_counter == wave_zombie_limit ) and !wave_is_contiune:#!wave_is_contiune ile dalganın başladığını ve olumle doğum eşit olsa bile,yeni dalga oluşturmaması için koyuldu.
 		emit_signal("wave_finished")
 		wave_is_contiune = true
 		zombie_dead_counter = 0
@@ -46,13 +50,13 @@ func _process(delta):
 
 func create_generate_zombie_timer():
 	generate_zombie_timer.set_one_shot(true)
-	generate_zombie_timer.set_wait_time(5)
+	generate_zombie_timer.set_wait_time( zombie_generate_time)
 	add_child(generate_zombie_timer) #to process
 	generate_zombie_timer.connect("timeout",self, "_on_generate_zombie_timer_timeout") 
 	
 func create_generate_wave_timer():
 	generate_wave_timer.set_one_shot(true)
-	generate_wave_timer.set_wait_time(10)
+	generate_wave_timer.set_wait_time(wave_time)
 	add_child(generate_wave_timer) #to process
 	generate_wave_timer.connect("timeout",self, "_on_generate_wave_timer_timeout") 
 
@@ -68,8 +72,8 @@ func select_zombie_for_level( _level):
 	
 func zombie_count_for_level(_level):
 	var zombie_size_by_level = _level + 1
-	var wave_zombie_limit = first_wave_zombie_size + zombie_size_by_level
-	var zombie_generate_time = wave_time / wave_zombie_limit 
+	wave_zombie_limit = first_wave_zombie_size + zombie_size_by_level
+	zombie_generate_time = wave_time / wave_zombie_limit 
 	generate_zombie_timer.set_wait_time( zombie_generate_time)
 
 func set_zombie_level(level):
@@ -85,7 +89,7 @@ func on_dead_counter_for_wave():
 	zombie_dead_counter += 1
 
 func _on_generate_zombie_timer_timeout():
-	zombie_generate_counter += 1
+	
 	can_create_zombie = true
 	generate_Zombies()
 
@@ -95,7 +99,6 @@ func _on_generate_wave_timer_timeout():
 	
 func wave_stop():
 	wave_paused_timer.start()
-	zombie_level += 1
 	zombie_count_for_level(zombie_level)
 
 func _on_wave_paused_timer_timeout():

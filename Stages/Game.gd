@@ -9,7 +9,9 @@ signal camera_zoom_out
 signal camera_zoom_in
 var start_portal = 2
 var portal_list = []
+var tile_pos = Vector2()
 var game_level = 1
+var use_can_grid_matrix = []
 var portal_coordinates = [Vector2(9,2),Vector2(9,4),Vector2(9,6),Vector2(28,2), Vector2(28,4), Vector2(28,6)]
 func create_portals(portal_count):
 	for portal in portal_list:
@@ -34,8 +36,12 @@ func item_solded(selected_item_price, selected_item):
 	$Game_UI/Coin_Counter.decrease_coins(selected_item_price)
 	$Game_UI/SelectPositionLabel.set_visible(true)
 	hide_market()
+	
 	var created_turret = selected_item.instance()
 	add_child(created_turret)
+	
+	if get_node("TileMap").get_cell(tile_pos.x,tile_pos.y) == 9:
+		created_turret.set_global_position(Vector2(tile_pos.x + 64,tile_pos.y + 64) )
 	pass
 
 func connect_market():
@@ -100,6 +106,7 @@ func show_grid():
 		for j in range(min_border.y, max_border.y):
 			if get_node("TileMap").get_cell(i,j) == -1 and get_node("TileMap").get_cell(i,j+1) != -1: 				
 				get_node("TileMap").set_cellv(Vector2(i,j),9)
+				
 			pass
 
 func hide_grid():
@@ -136,9 +143,12 @@ func wave_started():
 		pass
 		
 func _input(event):
+	
 	if event is InputEventMouseButton:
 		if event.pressed:
+	
 			var pos = get_global_mouse_position()
-			var tile_pos = get_node("TileMap").world_to_map(pos)
-			print(tile_pos)
-			$TileMap.set_cell(tile_pos.x ,tile_pos.y, 1)
+			tile_pos = get_node("TileMap").world_to_map(pos)
+			
+			
+			

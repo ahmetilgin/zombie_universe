@@ -16,12 +16,12 @@ region = Rect2( 800.908, 912.725, 553.266, 806.717 )
 [sub_resource type="AtlasTexture" id=2]
 flags = 4
 atlas = ExtResource( 6 )
-region = Rect2( 169.419, 201.025, 370.124, 168.406 )
+region = Rect2( 169.878, 192.777, 376.727, 178.089 )
 
 [sub_resource type="AtlasTexture" id=3]
 flags = 4
 atlas = ExtResource( 6 )
-region = Rect2( 940.614, 197.276, 369.877, 181.514 )
+region = Rect2( 930.725, 191.844, 390.48, 188.763 )
 
 [node name="Market" type="CanvasLayer"]
 layer = 10
@@ -55,18 +55,20 @@ action_mode = 0
 texture_normal = ExtResource( 3 )
 texture_focused = ExtResource( 5 )
 
-[node name="BuyButton" type="TouchScreenButton" parent="."]
-position = Vector2( 136.091, 626.477 )
-scale = Vector2( 0.410531, 0.272709 )
-z_index = 1
-normal = SubResource( 2 )
-pressed = SubResource( 3 )
+[node name="BuyButton" type="TextureButton" parent="."]
+margin_left = 161.097
+margin_top = 654.695
+margin_right = 162.097
+margin_bottom = 655.695
+rect_scale = Vector2( 0.202571, 0.21436 )
+texture_normal = SubResource( 2 )
+texture_pressed = SubResource( 3 )
 
 [node name="BuyLabel" type="Label" parent="BuyButton"]
-margin_left = 129.594
-margin_top = 15.0068
-margin_right = 169.594
-margin_bottom = 46.0068
+margin_left = 116.228
+margin_top = 40.2678
+margin_right = 156.228
+margin_bottom = 71.2678
 rect_scale = Vector2( 5.40589, 9.92518 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "BUY
