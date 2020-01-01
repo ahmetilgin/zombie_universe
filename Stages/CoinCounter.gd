@@ -17,3 +17,5 @@ func counting():
 	
 func decrease_coins(price):
 	text = String(count - price)
+func increase_coins(price):
+	text = String(count - price)

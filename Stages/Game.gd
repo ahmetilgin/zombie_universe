@@ -9,7 +9,10 @@ signal camera_zoom_out
 signal camera_zoom_in
 var start_portal = 2
 var portal_list = []
-var tile_pos = Vector2()
+var is_the_buy_button_clicked = false
+
+var created_turret 
+var created_turret_price
 var game_level = 1
 var use_can_grid_matrix = []
 var portal_coordinates = [Vector2(9,2),Vector2(9,4),Vector2(9,6),Vector2(28,2), Vector2(28,4), Vector2(28,6)]
@@ -36,17 +39,17 @@ func item_solded(selected_item_price, selected_item):
 	$Game_UI/Coin_Counter.decrease_coins(selected_item_price)
 	$Game_UI/SelectPositionLabel.set_visible(true)
 	hide_market()
-	
-	var created_turret = selected_item.instance()
-	add_child(created_turret)
-	
-	if get_node("TileMap").get_cell(tile_pos.x,tile_pos.y) == 9:
-		created_turret.set_global_position(Vector2(tile_pos.x + 64,tile_pos.y + 64) )
-	pass
+	is_the_buy_button_clicked = true
+	created_turret = selected_item
+	created_turret_price = selected_item_price
 
 func connect_market():
 	$Market.connect("item_sold",self, "item_solded")
 
+func item_solded_failed():
+	is_the_buy_button_clicked = false
+	$Game_UI/Coin_Counter.increase_coins(created_turret_price)
+	
 func _ready():
 	create_portals(start_portal)
 	get_tile_borders()
@@ -140,6 +143,8 @@ func wave_started():
 		started_wave_count = 0
 		on_market_button_unvisible()
 		show_current_start_level()
+		if is_the_buy_button_clicked :
+			item_solded_failed()
 		pass
 		
 func _input(event):
@@ -148,7 +153,17 @@ func _input(event):
 		if event.pressed:
 	
 			var pos = get_global_mouse_position()
-			tile_pos = get_node("TileMap").world_to_map(pos)
+			var tile_pos = get_node("TileMap").world_to_map(pos)
 			
+			
+
+			if  get_node("TileMap").get_cell(tile_pos.x,tile_pos.y) == 9   and is_the_buy_button_clicked == true:
+				is_the_buy_button_clicked = false
+				created_turret = created_turret.instance()
+				add_child(created_turret)
+				tile_pos =  get_node("TileMap").map_to_world(tile_pos)
+				created_turret.set_global_position(Vector2(tile_pos.x + 64,tile_pos.y + 64) )
+ 	
+		
 			
 			

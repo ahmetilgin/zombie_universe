@@ -448,7 +448,7 @@ scale = Vector2( -324.135, -89.984 )
 zoom = Vector2( 2.35, 2.35 )
 
 [node name="Turret2" parent="." instance=ExtResource( 22 )]
-position = Vector2( 2388.03, 837.304 )
+position = Vector2( 2348.09, 833.31 )
 scale = Vector2( -0.3, 0.3 )
 
 [node name="Turret" parent="." instance=ExtResource( 22 )]

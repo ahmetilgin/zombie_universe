@@ -30,7 +30,7 @@ func _ready():
 	create_wave_paused_timer()#bütün zombieler ölünce yeni dalga gelene kadar bekleme süresi oluşturuldu.
 	
 func _process(delta):
-
+	print(zombie_dead_counter)
 	$AnimatedSprite.play("move")
 	if wave_is_coming:
 		wave_is_contiune = true
@@ -89,7 +89,7 @@ func on_dead_counter_for_wave():
 	zombie_dead_counter += 1
 
 func _on_generate_zombie_timer_timeout():
-	
+	zombie_generate_counter += 1
 	can_create_zombie = true
 	generate_Zombies()
 
