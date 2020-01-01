@@ -1,5 +1,5 @@
 extends Node2D
-
+var turret_grid 
 onready var level_text_counter = get_node("Game_UI/level_text/level_counter")
 onready var level_text = get_node("Game_UI/level_text")
 var portal_scene = preload("res://Scenes/StaticScenes/ZombiePortal/ZombiePortal.tscn")
@@ -10,7 +10,7 @@ signal camera_zoom_in
 var start_portal = 2
 var portal_list = []
 var is_the_buy_button_clicked = false
-
+var left_right_select = false
 var created_turret 
 var created_turret_price
 var game_level = 1
@@ -48,7 +48,9 @@ func connect_market():
 
 func item_solded_failed():
 	is_the_buy_button_clicked = false
+	left_right_select = false
 	$Game_UI/Coin_Counter.increase_coins(created_turret_price)
+	created_turret.queue_free()
 	
 func _ready():
 	create_portals(start_portal)
@@ -143,27 +145,34 @@ func wave_started():
 		started_wave_count = 0
 		on_market_button_unvisible()
 		show_current_start_level()
-		if is_the_buy_button_clicked :
+		if is_item_solded_failed() :
 			item_solded_failed()
 		pass
 		
+func is_item_solded_failed():
+	return is_the_buy_button_clicked or left_right_select
+	
 func _input(event):
 	
 	if event is InputEventMouseButton:
 		if event.pressed:
 	
 			var pos = get_global_mouse_position()
-			var tile_pos = get_node("TileMap").world_to_map(pos)
+			var tile_grid = get_node("TileMap").world_to_map(pos)
 			
 			
-
-			if  get_node("TileMap").get_cell(tile_pos.x,tile_pos.y) == 9   and is_the_buy_button_clicked == true:
+			if left_right_select:
+				left_right_select = false
+				if turret_grid.x < tile_grid.x:
+					created_turret.scale.x = -0.3
+			if  get_node("TileMap").get_cell(tile_grid.x,tile_grid.y) == 9   and is_the_buy_button_clicked == true:
 				is_the_buy_button_clicked = false
+				left_right_select = true
+				turret_grid =tile_grid
 				created_turret = created_turret.instance()
 				add_child(created_turret)
-				tile_pos =  get_node("TileMap").map_to_world(tile_pos)
+				var tile_pos =  get_node("TileMap").map_to_world(tile_grid)
 				created_turret.set_global_position(Vector2(tile_pos.x + 64,tile_pos.y + 64) )
- 	
-		
 			
-			
+				
+					

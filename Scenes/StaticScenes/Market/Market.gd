@@ -16,8 +16,7 @@ func _process(delta):
 
 func market_calculator(item_price_tag):
 	if coin_price > item_price_tag:
-		coin_price -= item_price_tag
-		coin.count = coin_price
+
 		return true
 	else:
 		return false

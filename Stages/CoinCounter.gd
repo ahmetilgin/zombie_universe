@@ -9,6 +9,7 @@ func _ready():
 func on_purchase():
 	pass
 func _process(delta):
+	
 	pass
 	
 func counting():
@@ -16,6 +17,9 @@ func counting():
 	text = String(count)
 	
 func decrease_coins(price):
-	text = String(count - price)
+	count -= price
+	text = String(count)
+	
 func increase_coins(price):
-	text = String(count - price)
+	count += price
+	text = String(count)
