@@ -196,7 +196,7 @@ func _physics_process(delta):
 		follow_path()
 		_jump_is_on_wall()
 		motion = move_and_slide(motion , UP)
-
+		_jump_is_on_wall()
 		if get_slide_count()>0:
 			for i in range(get_slide_count()):
 				if "player" in get_slide_collision(i).collider.name:
