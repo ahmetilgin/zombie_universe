@@ -20,6 +20,8 @@ var zombie_types = { 0 : simple_zombie ,
 					 1 : stalker_zombie,
 					 2 : punk_zombie }
 					
+
+
 signal wave_finished
 signal wave_started
 func _ready():
@@ -28,9 +30,11 @@ func _ready():
 	create_generate_wave_timer()
 	create_generate_zombie_timer()
 	create_wave_paused_timer()#bütün zombieler ölünce yeni dalga gelene kadar bekleme süresi oluşturuldu.
+
+
+
 	
 func _process(delta):
-
 	$AnimatedSprite.play("move")
 	if wave_is_coming:
 		wave_is_contiune = true
@@ -62,7 +66,7 @@ func create_generate_wave_timer():
 
 func create_wave_paused_timer():
 	wave_paused_timer.set_one_shot(true)
-	wave_paused_timer.set_wait_time(5)
+	wave_paused_timer.set_wait_time(15)
 	add_child(wave_paused_timer) #to process
 	wave_paused_timer.connect("timeout",self, "_on_wave_paused_timer_timeout") 
 

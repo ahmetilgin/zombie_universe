@@ -138,9 +138,11 @@ func set_zombie_direction():
 	if len(path) > 2:
 		$AnimatedSprite.flip_h = sign(path[1].x - get_global_position().x) != 1	
 	
-func follow_path():	
-	set_zombie_direction()
-	check_zombie_found_player()
+var is_zombie_action = false
+func follow_path():
+	if !is_zombie_action:
+		set_zombie_direction()
+		check_zombie_found_player()
 	pass
 
 func _get_path():
@@ -181,8 +183,15 @@ func _jump_is_on_wall():
 	if is_on_wall() && is_on_floor():
 		for i in range(get_slide_count()):
 			var playerFound = false
+			is_zombie_action = false
 			if "player" in get_slide_collision(i).collider.name:
 				playerFound = true
+			if "Top" in get_slide_collision(i).collider.name:
+				$AnimatedSprite.play("attack")
+				var colliding_turret = get_slide_collision(i).collider.get_parent().get_parent()
+				colliding_turret.change_turret_health(-20)
+				is_zombie_action = true
+				break
 			if !playerFound:
 				motion.y -= 200
 
