@@ -16,7 +16,7 @@
 [ext_resource path="res://Resources/Sprites/UISprites/Window2s.png" type="Texture" id=14]
 [ext_resource path="res://Stages/CoinCounter.gd" type="Script" id=15]
 [ext_resource path="res://Resources/Sprites/UISprites/Button.png" type="Texture" id=16]
-[ext_resource path="res://Resources/Sprites/GameBackgrounds/1gamebackground/1gamebackground.png" type="Texture" id=17]
+[ext_resource path="res://Resources/Sprites/background brick/bckgrndbrick.png" type="Texture" id=17]
 [ext_resource path="res://Scenes/Screens/GameOverScreen/GameoverScreen.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Resources/AudioFiles/Game/savymerchant.ogg" type="AudioStream" id=19]
 [ext_resource path="res://Scenes/StaticScenes/Market/Market.tscn" type="PackedScene" id=20]
@@ -418,11 +418,11 @@ texture_disabled = SubResource( 20 )
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-visible = false
-motion_mirroring = Vector2( 1820, 0 )
+position = Vector2( 854.57, 750 )
+motion_mirroring = Vector2( 1920.08, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 962.529, 540.999 )
+position = Vector2( 964.949, -232.291 )
 texture = ExtResource( 17 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
