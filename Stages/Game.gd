@@ -11,10 +11,18 @@ var start_portal = 2
 var portal_list = []
 var is_the_buy_button_clicked = false
 var left_right_select = false
+var sales_successful = false
 var created_turret 
+var turret_instance
 var created_turret_price
 var game_level = 1
-var use_can_grid_matrix = []
+var tile_pos
+
+var sales_fail = false
+ 
+var is_create_instance = false
+var tile_grid 
+ 
 var portal_coordinates = [Vector2(9,2),Vector2(9,4),Vector2(9,6),Vector2(28,2), Vector2(28,4), Vector2(28,6)]
 func create_portals(portal_count):
 	for portal in portal_list:
@@ -40,8 +48,10 @@ func item_solded(selected_item_price, selected_item):
 	$Game_UI/SelectPositionLabel.set_visible(true)
 	hide_market()
 	is_the_buy_button_clicked = true
+	$Market/accept_button.set_visible(true)
 	created_turret = selected_item
 	created_turret_price = selected_item_price
+	create_instance()
 
 func connect_market():
 	$Market.connect("item_sold",self, "item_solded")
@@ -49,9 +59,8 @@ func connect_market():
 func item_solded_failed():
 	is_the_buy_button_clicked = false
 	left_right_select = false
-	$Game_UI/Coin_Counter.increase_coins(created_turret_price)
-	created_turret.queue_free()
-	
+	sales_fail = true
+
 func _ready():
 	create_portals(start_portal)
 	get_tile_borders()
@@ -59,19 +68,25 @@ func _ready():
 	connect_market()
 	$Game_UI/SelectPositionLabel.set_visible(false)
 
+
 func on_market_button_visible():
 	$Game_UI/Market_Button.disabled = false
+	
 	pass
 func hide_market():
 	$Market.set_offset(Vector2(-420,0))
+	turret_cancelled()
+	
 
 func show_market():
 	$Market.set_offset(Vector2(-5,0))
 	
 func on_market_button_unvisible():
 	$Game_UI/Market_Button.disabled = true
+	is_not_accept_button_set_visible()
 	hide_market()
 	$player/Camera2D.current = true
+	
 	hide_grid()
 	is_opened_market = false
 	pass
@@ -128,7 +143,11 @@ func _draw():
 	else:
 		hide_grid()
 		$player/Camera2D.current = true
-
+		is_not_accept_button_set_visible()
+func is_not_accept_button_set_visible():
+	$Market/accept_button.set_visible(false)
+	is_the_buy_button_clicked = false
+	left_right_select = false
 func _on_TouchScreenButton_pressed():
 	if !is_opened_market:
 		show_market()
@@ -137,8 +156,18 @@ func _on_TouchScreenButton_pressed():
 	is_opened_market = !is_opened_market
 	update()
 	pass # Replace with function body.
+	
+func turret_cancelled():
+	if is_create_instance :
+		if !sales_successful:
+			$Game_UI/Coin_Counter.increase_coins(created_turret_price)
+		else:
+			sales_successful = false
+		turret_instance.queue_free()
+		is_create_instance = false
 
 var started_wave_count = 0
+
 func wave_started():
 	started_wave_count += 1
 	if start_portal == started_wave_count:
@@ -153,26 +182,48 @@ func is_item_solded_failed():
 	return is_the_buy_button_clicked or left_right_select
 	
 func _input(event):
-	
 	if event is InputEventMouseButton:
 		if event.pressed:
-	
 			var pos = get_global_mouse_position()
-			var tile_grid = get_node("TileMap").world_to_map(pos)
+			tile_grid = get_node("TileMap").world_to_map(pos)
+			select_turret_direction()
+			select_turret_position()
 			
+func select_turret_position():
+	if  get_node("TileMap").get_cell(tile_grid.x,tile_grid.y) == 9   and is_the_buy_button_clicked:
+		turret_grid =tile_grid
+		if is_create_instance   and( sales_fail ):
+			sales_fail = false
+			if !sales_successful:
+				$Game_UI/Coin_Counter.increase_coins(created_turret_price)
+			else:
+				sales_successful = false
+			turret_instance.queue_free()
+			is_create_instance = false
+		if is_create_instance:
+			tile_pos =  get_node("TileMap").map_to_world(tile_grid)
+			turret_instance.set_global_position(Vector2(tile_pos.x + 64,tile_pos.y + 64) )
 			
-			if left_right_select:
-				left_right_select = false
-				if turret_grid.x < tile_grid.x:
-					created_turret.scale.x = -0.3
-			if  get_node("TileMap").get_cell(tile_grid.x,tile_grid.y) == 9   and is_the_buy_button_clicked == true:
-				is_the_buy_button_clicked = false
-				left_right_select = true
-				turret_grid =tile_grid
-				created_turret = created_turret.instance()
-				add_child(created_turret)
-				var tile_pos =  get_node("TileMap").map_to_world(tile_grid)
-				created_turret.set_global_position(Vector2(tile_pos.x + 64,tile_pos.y + 64) )
+func select_turret_direction():
+	if left_right_select and get_node("TileMap").get_cell(tile_grid.x,tile_grid.y) == 9 :
+		
+		if turret_grid.x < tile_grid.x:
+			turret_instance.scale.x = -0.3
+		else:
+			turret_instance.scale.x = 0.3
 			
-				
-					
+func create_instance():
+	is_create_instance = true
+	turret_instance = created_turret.instance()
+	add_child(turret_instance)
+
+func _on_acceptbutton_pressed():
+	if left_right_select :
+		left_right_select = false
+		sales_successful = true
+		turret_instance = created_turret.instance()
+	if is_the_buy_button_clicked :
+		is_the_buy_button_clicked = false
+		left_right_select = true
+	pass # Replace with function body.
+

@@ -53,12 +53,15 @@ func find_any_zombies():
 			rotation_angle_count = 0
 			
 		$Base/Top.rotate(deg2rad(current_rotation_degree))
+		
 	if $Base/Top/Radar.is_colliding():
-		if "Zombie" in $Base/Top/Radar.get_collider().name:		
-			zombie_position = $Base/Top/Radar.get_collider().get_global_position()
-			if is_shooting_free:
-				bullet_timer.start()
-				is_shooting_free = false
+		
+			if "Zombie" in $Base/Top/Radar.get_collider().name:		
+			
+				zombie_position = $Base/Top/Radar.get_collider().get_global_position()
+				if is_shooting_free:
+					bullet_timer.start()
+					is_shooting_free = false
 		
 		
 func fire_on_zombie():

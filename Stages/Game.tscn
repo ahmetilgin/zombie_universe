@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://Stages/Game.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/GraveyardTileSet/png/Tiles/Tile1.png" type="Texture" id=2]
@@ -20,8 +20,9 @@
 [ext_resource path="res://Scenes/Screens/GameOverScreen/GameoverScreen.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Resources/AudioFiles/Game/savymerchant.ogg" type="AudioStream" id=19]
 [ext_resource path="res://Scenes/StaticScenes/Market/Market.tscn" type="PackedScene" id=20]
-[ext_resource path="res://Scenes/KinematicScenes/Player/Player.tscn" type="PackedScene" id=21]
-[ext_resource path="res://Scenes/KinematicScenes/Turrent/Turret.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Resources/Fonts/coffin_stone/coffinstonecond.ttf" type="DynamicFontData" id=21]
+[ext_resource path="res://Scenes/KinematicScenes/Player/Player.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Scenes/KinematicScenes/Turrent/Turret.tscn" type="PackedScene" id=23]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
@@ -258,6 +259,20 @@ flags = 4
 atlas = ExtResource( 16 )
 region = Rect2( 1683, 1629, 180, 180 )
 
+[sub_resource type="AtlasTexture" id=21]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 171, 196, 375, 185 )
+
+[sub_resource type="AtlasTexture" id=22]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 939, 196, 384, 185 )
+
+[sub_resource type="DynamicFont" id=23]
+size = 36
+font_data = ExtResource( 21 )
+
 [node name="stage1" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -439,7 +454,26 @@ autoplay = true
 offset = Vector2( -420, 0 )
 transform = Transform2D( 1, 0, 0, 1, -420, 0 )
 
-[node name="player" parent="." instance=ExtResource( 21 )]
+[node name="accept_button" type="TextureButton" parent="Market"]
+margin_left = 911.114
+margin_top = 677.609
+margin_right = 1286.11
+margin_bottom = 862.609
+rect_scale = Vector2( 0.411429, 0.445503 )
+texture_normal = SubResource( 21 )
+texture_pressed = SubResource( 22 )
+
+[node name="RichTextLabel" type="Label" parent="Market/accept_button"]
+margin_left = 56.1044
+margin_top = 62.1167
+margin_right = 182.105
+margin_bottom = 136.116
+rect_scale = Vector2( 2.59427, 1.25715 )
+custom_fonts/font = SubResource( 23 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "ACCEPT"
+
+[node name="player" parent="." instance=ExtResource( 22 )]
 position = Vector2( 1648.35, 659.676 )
 
 [node name="GameAreaCam" type="Camera2D" parent="."]
@@ -447,10 +481,11 @@ position = Vector2( 2445.62, 507.812 )
 scale = Vector2( -324.135, -89.984 )
 zoom = Vector2( 2.35, 2.35 )
 
-[node name="Turret2" parent="." instance=ExtResource( 22 )]
+[node name="Turret2" parent="." instance=ExtResource( 23 )]
 position = Vector2( 2348.09, 833.31 )
 scale = Vector2( -0.3, 0.3 )
 
-[node name="Turret" parent="." instance=ExtResource( 22 )]
+[node name="Turret" parent="." instance=ExtResource( 23 )]
 position = Vector2( 2237.81, 834.841 )
 [connection signal="pressed" from="Game_UI/Market_Button" to="." method="_on_TouchScreenButton_pressed"]
+[connection signal="pressed" from="Market/accept_button" to="." method="_on_acceptbutton_pressed"]
