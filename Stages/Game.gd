@@ -17,12 +17,14 @@ var turret_instance
 var created_turret_price
 var game_level = 1
 var tile_pos
-
 var sales_fail = false
- 
 var is_create_instance = false
 var tile_grid 
- 
+var countdown_timer = Timer.new()
+var is_countdown_pause_timer = false
+var pause_time = 59
+var counttimer
+var second_passed = true
 var portal_coordinates = [Vector2(9,2),Vector2(9,4),Vector2(9,6),Vector2(28,2), Vector2(28,4), Vector2(28,6)]
 func create_portals(portal_count):
 	for portal in portal_list:
@@ -65,10 +67,17 @@ func _ready():
 	create_portals(start_portal)
 	get_tile_borders()
 	on_market_button_unvisible()
+	on_time_countdown_unvisible()
 	connect_market()
+	countdown_timer()
 	$Game_UI/SelectPositionLabel.set_visible(false)
 
-
+func on_time_countdown_visible():
+	$Game_UI/CountDownTimer.set_visible(true)
+	is_countdown_pause_timer = true
+	
+func on_time_countdown_unvisible():
+	$Game_UI/CountDownTimer.set_visible(false)
 func on_market_button_visible():
 	$Game_UI/Market_Button.disabled = false
 	
@@ -92,6 +101,9 @@ func on_market_button_unvisible():
 	pass
 	
 func _process(delta):
+	if second_passed and $Game_UI/CountDownTimer.visible :
+		countdown_timer.start()
+		second_passed = false
 	pass
 
 func show_current_level():
@@ -115,6 +127,7 @@ func wave_finish():
 			portal.set_zombie_level(game_level)
 		show_current_level()
 		on_market_button_visible()
+		on_time_countdown_visible()
 	pass
 
 var max_border = Vector2()
@@ -173,6 +186,7 @@ func wave_started():
 	if start_portal == started_wave_count:
 		started_wave_count = 0
 		on_market_button_unvisible()
+		on_time_countdown_unvisible()
 		show_current_start_level()
 		if is_item_solded_failed() :
 			item_solded_failed()
@@ -227,3 +241,21 @@ func _on_acceptbutton_pressed():
 		left_right_select = true
 	pass # Replace with function body.
 
+
+func countdown_timer():
+	countdown_timer.set_one_shot(true)
+	countdown_timer.set_wait_time( 1 )
+	add_child(countdown_timer) #to process
+	countdown_timer.connect("timeout",self, "_on_count_down_timer_timeout") 
+	
+func _on_count_down_timer_timeout():
+	if is_countdown_pause_timer :
+		counttimer = pause_time
+		is_countdown_pause_timer = false
+	counttimer -= 1
+	if  (counttimer < 0):
+		counttimer = pause_time
+	$Game_UI/CountDownTimer/Time.text = String(counttimer)
+	second_passed = true
+
+		

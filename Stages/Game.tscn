@@ -430,6 +430,21 @@ texture_normal = SubResource( 18 )
 texture_pressed = SubResource( 19 )
 texture_disabled = SubResource( 20 )
 
+[node name="CountDownTimer" type="RichTextLabel" parent="Game_UI"]
+margin_left = 767.0
+margin_top = 34.0
+margin_right = 975.0
+margin_bottom = 74.0
+custom_fonts/normal_font = SubResource( 10 )
+text = "TIME:"
+
+[node name="Time" type="RichTextLabel" parent="Game_UI/CountDownTimer"]
+margin_left = 76.0
+margin_right = 186.0
+margin_bottom = 40.0
+custom_fonts/normal_font = SubResource( 10 )
+text = "59"
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
