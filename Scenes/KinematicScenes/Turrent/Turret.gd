@@ -55,7 +55,8 @@ func find_any_zombies():
 		$Base/Top.rotate(deg2rad(current_rotation_degree))
 		
 	if $Base/Top/Radar.is_colliding():
-		
+	
+		if $Base/Top/Radar.get_collider() != null:
 			if "Zombie" in $Base/Top/Radar.get_collider().name:		
 			
 				zombie_position = $Base/Top/Radar.get_collider().get_global_position()
