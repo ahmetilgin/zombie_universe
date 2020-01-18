@@ -1,8 +1,8 @@
 extends KinematicBody2D
 signal dead_signal
 const bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/SimpleBullet/SimpleBullet.tscn")
-const upgrade_bullet =preload("res://Scenes/KinematicScenes/Player/Bullets/UpgradedBullet/UpgratedBullet.tscn")
-
+const upgrade_bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/UpgradedBullet/UpgratedBullet.tscn")
+const tracked_bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/TrackedBullet/TrackedBullet.tscn")
 #touch screen option
 var touch_right=false
 var touch_left=false
@@ -28,7 +28,7 @@ var motion = Vector2(0,0)
 var slide_speed = 500
 var killed_counter = 0
 var current_bullet = null
-var current_bullet_power = 1
+var current_bullet_power = 3
 # player motions
 var is_attack = false
 var is_down = false
@@ -214,6 +214,9 @@ func _physics_process(delta):
 				elif current_bullet_power == 2:
 					$ShotGun.play()
 					_set_current_bullet(upgrade_bullet.instance())
+				elif  current_bullet_power == 3:
+					$Ak47Sound.play()
+					_set_current_bullet(tracked_bullet.instance())
 				get_parent().add_child(current_bullet)
 				_set_bullet_direction(sign($Position2D.position.x))
 				current_bullet.position = $Position2D.global_position
