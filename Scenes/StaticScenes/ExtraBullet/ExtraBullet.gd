@@ -16,5 +16,5 @@ func _ready():
 func _on_ExtraBullet_body_shape_entered(body_id, body, body_shape, area_shape):
 	if "player" in body.name:
 		body.increase_bullet_count(10)
-	queue_free()
+		queue_free()
 	pass # Replace with function body.

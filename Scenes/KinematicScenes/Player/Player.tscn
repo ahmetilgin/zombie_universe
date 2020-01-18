@@ -190,7 +190,6 @@ frames = SubResource( 1 )
 animation = "melee"
 frame = 3
 centered = false
-flip_h = true
 
 [node name="collision_2" type="CollisionShape2D" parent="."]
 position = Vector2( 32.7234, 58.5418 )
