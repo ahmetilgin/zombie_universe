@@ -36,8 +36,7 @@ var is_dead = false
 var is_hurt = false
 var is_melee = false
 var is_shift_stop = false
-const max_bullet_size=1000
-var bullet_size = 1000
+var bullet_size = 20
 onready var bullet_number = get_node("../Game_UI/bullet_counter")
 onready var player_health = get_node("../Game_UI/Player_Health")
 onready var updated_tween = get_node("../Game_UI/Updated_Tween")
@@ -49,6 +48,9 @@ func _create_zombie_shot_slow_timer():
 	add_child(slow_shot_timer) #to process
 	slow_shot_timer.set_wait_time(0.1)
 
+func increase_bullet_count(bullet_count):
+	bullet_size += bullet_count
+	bullet_number.text=String(bullet_size)
 	
 func _ready():
 	_create_zombie_shot_slow_timer()

@@ -4,6 +4,8 @@ var FollowPlayerTimer = Timer.new()
 onready var player = get_parent().get_node('player/CollisionShape2D')
 onready var tile_map = get_parent().get_node('TileMap')
 var coin = preload("res://Scenes/StaticScenes/Coin/Coin.tscn")
+var extra_bullet = preload("res://Scenes/StaticScenes/ExtraBullet/ExtraBullet.tscn")
+
 var zombie_hurt_player = AudioStreamPlayer.new()
 var zombie_dead_player = AudioStreamPlayer.new()
 var zombie_hurt_sound = load("res://Resources/AudioFiles/Zombies/zombies/zombie2.wav")
@@ -155,15 +157,29 @@ func _get_path():
 		
 func _set_is_follow(follow):
 	is_follow = follow
+	
 func generate_coins():
 	var coin_instance = coin.instance()
 	coin_instance.set_global_position(Vector2(get_global_position().x + 64,get_global_position().y + 64))
 	get_parent().call_deferred("add_child",coin_instance)
+	
+func generate_extra_bullet():
+	var extra_bullet_instance = extra_bullet.instance()
+	extra_bullet_instance.set_global_position(Vector2(get_global_position().x + 64,get_global_position().y + 64))
+	get_parent().call_deferred("add_child",extra_bullet_instance)
+
+func create_extra_resources():
+	var power_up = randi() % 3
+	if power_up == 0:
+		generate_coins()
+	elif power_up == 1:
+		generate_extra_bullet()
+		
 
 func dead(damage,whodead):
 	hp-=damage
 	if hp<0:
-		generate_coins()
+		create_extra_resources()
 		emit_signal("dead_counter_for_wave")
 		if whodead=="player":
 			get_parent().get_node("player").increase_dead_counter()
