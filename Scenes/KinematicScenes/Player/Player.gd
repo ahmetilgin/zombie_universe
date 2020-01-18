@@ -204,7 +204,7 @@ func _physics_process(delta):
 					_set_is_melee(true)
 					_play_melee_animation()
 					_change_collision_rotation()
-		if Input.is_action_just_pressed("ui_focus_next") or touch_fire:
+		if Input.is_action_pressed("ui_focus_next") or touch_fire:
 			if _is_movable() && _check_bullet_count():
 				_fire_bullet()
 				#get_node("Camera2D").shake(1,10,1)

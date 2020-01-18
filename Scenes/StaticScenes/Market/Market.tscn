@@ -28,6 +28,7 @@ layer = 10
 script = ExtResource( 1 )
 
 [node name="MarketPalace" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0.572549 )
 margin_left = 2.0
 margin_top = 107.0
 margin_right = 324.0
@@ -56,11 +57,11 @@ texture_normal = ExtResource( 3 )
 texture_focused = ExtResource( 5 )
 
 [node name="BuyButton" type="TextureButton" parent="."]
-margin_left = 161.097
-margin_top = 654.695
-margin_right = 162.097
-margin_bottom = 655.695
-rect_scale = Vector2( 0.202571, 0.21436 )
+margin_left = 140.123
+margin_top = 636.189
+margin_right = 516.123
+margin_bottom = 814.189
+rect_scale = Vector2( 0.357216, 0.20382 )
 texture_normal = SubResource( 2 )
 texture_pressed = SubResource( 3 )
 
