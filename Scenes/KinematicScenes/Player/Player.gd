@@ -135,7 +135,7 @@ func _move_slide():
 
 func _move_right():
 	motion.x=min(motion.x + speed,max_speed)
-	$AnimationPlayer.play("run")
+	$AnimationPlayer.play("runAk47")
 	animation_flip_h(false)
 	$AnimatedSprite.flip_h=false
 	if sign($Position2D.position.x)==-1:
@@ -143,7 +143,7 @@ func _move_right():
 		
 func _move_left():
 	motion.x = max(motion.x-speed,-max_speed)
-	$AnimationPlayer.play("run")
+	$AnimationPlayer.play("runAk47")
 	animation_flip_h(true)
 	$AnimatedSprite.flip_h = true
 	if sign($Position2D.position.x)==1:
