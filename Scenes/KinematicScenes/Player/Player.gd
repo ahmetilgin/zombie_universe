@@ -10,6 +10,7 @@ var touch_up=false
 var touch_down=false
 var touch_fire=false
 var touch_melee=false
+var body_scale = 1
 
 
 enum bullet_power{
@@ -134,18 +135,30 @@ func _move_slide():
 
 func _move_right():
 	motion.x=min(motion.x + speed,max_speed)
-	_play_animation("run")
+	$AnimationPlayer.play("run")
+	animation_flip_h(false)
 	$AnimatedSprite.flip_h=false
 	if sign($Position2D.position.x)==-1:
 		$Position2D.position.x*=-1
 		
 func _move_left():
 	motion.x = max(motion.x-speed,-max_speed)
-	_play_animation("run")
+	$AnimationPlayer.play("run")
+	animation_flip_h(true)
 	$AnimatedSprite.flip_h = true
 	if sign($Position2D.position.x)==1:
 		$Position2D.position.x*=-1
+
+func animation_flip_h(choice):
+	if choice == true:
 		
+		$human.scale.x = -body_scale
+		
+	elif choice == false:
+		$human.scale.x = body_scale
+
+		
+	
 func _set_shift_stop(shift_stop_state):
 	is_shift_stop = shift_stop_state
 
