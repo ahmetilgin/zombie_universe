@@ -111,19 +111,19 @@ func _is_idle():
 	return !is_down && !is_melee && !is_attack && !is_hurt
 
 func _play_animation(animation_state):
-	$AnimatedSprite.play(animation_state)
+	$AnimationPlayer.play(animation_state)
 	
 func _play_idle_animation():
-	_play_animation("idle")
+	_play_animation("idleAk47")
 
 func _play_melee_animation():
-	_play_animation("melee")
+	_play_animation("idleAk47")
 
 func _play_slide_animation():
-	_play_animation("slide")	
+	_play_animation("idleAk47")	
 	
 func _play_attack_animation():
-	_play_animation("attack")	
+	_play_animation("shootAk47")	
 
 func _move_slide():
 	$CollisionShape2D.scale = Vector2 (1, 0.7)
@@ -363,3 +363,14 @@ func _on_melee_attack_released():
 	$Controller/Node2D/melee_attack.modulate=Color(1, 1, 1)
 	touch_melee = false
 	pass # Replace with function body.
+
+
+
+
+
+func _on_AnimationPlayer_animation_finished(shootAk47):
+	
+
+	_clear_states()
+	pass # Replace with function body.
+
