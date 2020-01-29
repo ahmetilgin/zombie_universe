@@ -118,7 +118,7 @@ func _play_idle_animation():
 	_play_animation("idleAk47")
 
 func _play_melee_animation():
-	_play_animation("idleAk47")
+	_play_animation("meleeAk47")
 
 func _play_slide_animation():
 	_play_animation("slideAk47")	
@@ -377,3 +377,9 @@ func _on_AnimationPlayer_animation_finished(shootAk47):
 
 
 
+
+
+func _on_AnimationPlayer_shootWalkAk47_finished(anim_name):
+
+	_clear_states()
+	pass # Replace with function body.
