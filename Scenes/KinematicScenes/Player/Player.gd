@@ -180,13 +180,7 @@ func _clear_states():
 var UP = Vector2(0,-1)
 
 func _physics_process(delta):
-	if $AnimatedSprite.flip_h==true:
-		$CollisionShape2D.position.x=36
-		$collision_2.position.x=36
-	else:
-		$CollisionShape2D.position.x=18
-		$collision_2.position.x=18
-	
+
 	motion.y += gravity 
 	if !_is_dead():
 		$Area2D/CollisionShape2D.disabled=true
@@ -244,9 +238,9 @@ func _physics_process(delta):
 		else:
 				if _is_movable():
 					if motion.y < 0:
-						$AnimatedSprite.play("jump")
+						$AnimationPlayer.play("fallAk47")
 					else:
-						$AnimatedSprite.play("fall")
+						$AnimationPlayer.play("jumpAk47")
 					if _is_shift_stop():
 						motion.x=lerp(motion.x,0,0.5)						
 		motion = move_and_slide(motion,UP)
@@ -267,12 +261,12 @@ func dead(damage,whodead):
 		if hp < 0:
 			_set_dead(true)
 			motion=Vector2(0,0)
-			$AnimatedSprite.play("dead")
+			$AnimationPlayer.play("deadAk47")
 			emit_signal("dead_signal")
 			$player_dead_timer.start()#karakter hareket etmeyince timerin içine girmiyor
 		else:
 			is_hurt=true
-			$AnimatedSprite.play("hurt")
+			$AnimationPlayer.play("HurtAk47")
 
 func _on_AnimatedSprite_animation_finished():
 	_clear_states()
@@ -367,19 +361,18 @@ func _on_melee_attack_released():
 
 
 
-
-
-func _on_AnimationPlayer_animation_finished(shootAk47):
-	
-
+func _on_AnimationPlayer_shootAk47_finished(shootAk47):
 	_clear_states()
 	pass # Replace with function body.
 
 
-
-
-
-func _on_AnimationPlayer_shootWalkAk47_finished(anim_name):
-
+func _on_AnimationPlayer_slideAk47_finished(slideAk47):
 	_clear_states()
+	pass # Replace with function body.
+
+func _on_AnimationPlayer_hurtAk47_finished(HurtAk47):
+	_clear_states()
+	pass # Replace with function body.
+
+func _on_AnimationPlayer_meleeAk47_finished(meleeAk47):
 	pass # Replace with function body.
