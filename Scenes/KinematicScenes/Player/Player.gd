@@ -10,6 +10,7 @@ var touch_up=false
 var touch_down=false
 var touch_fire=false
 var touch_melee=false
+var body_scale = 1
 
 
 enum bullet_power{
@@ -110,19 +111,20 @@ func _is_idle():
 	return !is_down && !is_melee && !is_attack && !is_hurt
 
 func _play_animation(animation_state):
-	$AnimatedSprite.play(animation_state)
+	$AnimationPlayer.play(animation_state)
 	
 func _play_idle_animation():
-	_play_animation("idle")
+
+	_play_animation("idleAk47")
 
 func _play_melee_animation():
-	_play_animation("melee")
+	_play_animation("meleeAk47")
 
 func _play_slide_animation():
-	_play_animation("slide")	
+	_play_animation("slideAk47")	
 	
 func _play_attack_animation():
-	_play_animation("attack")	
+	_play_animation("shootAk47")	
 
 func _move_slide():
 	$CollisionShape2D.scale = Vector2 (1, 0.7)
@@ -134,18 +136,30 @@ func _move_slide():
 
 func _move_right():
 	motion.x=min(motion.x + speed,max_speed)
-	_play_animation("run")
+	$AnimationPlayer.play("runAk47")
+	animation_flip_h(false)
 	$AnimatedSprite.flip_h=false
 	if sign($Position2D.position.x)==-1:
 		$Position2D.position.x*=-1
 		
 func _move_left():
 	motion.x = max(motion.x-speed,-max_speed)
-	_play_animation("run")
+	$AnimationPlayer.play("runAk47")
+	animation_flip_h(true)
 	$AnimatedSprite.flip_h = true
 	if sign($Position2D.position.x)==1:
 		$Position2D.position.x*=-1
+
+func animation_flip_h(choice):
+	if choice == true:
 		
+		$human.scale.x = -body_scale
+		
+	elif choice == false:
+		$human.scale.x = body_scale
+
+		
+	
 func _set_shift_stop(shift_stop_state):
 	is_shift_stop = shift_stop_state
 
@@ -166,13 +180,7 @@ func _clear_states():
 var UP = Vector2(0,-1)
 
 func _physics_process(delta):
-	if $AnimatedSprite.flip_h==true:
-		$CollisionShape2D.position.x=36
-		$collision_2.position.x=36
-	else:
-		$CollisionShape2D.position.x=18
-		$collision_2.position.x=18
-	
+
 	motion.y += gravity 
 	if !_is_dead():
 		$Area2D/CollisionShape2D.disabled=true
@@ -230,9 +238,9 @@ func _physics_process(delta):
 		else:
 				if _is_movable():
 					if motion.y < 0:
-						$AnimatedSprite.play("jump")
+						$AnimationPlayer.play("fallAk47")
 					else:
-						$AnimatedSprite.play("fall")
+						$AnimationPlayer.play("jumpAk47")
 					if _is_shift_stop():
 						motion.x=lerp(motion.x,0,0.5)						
 		motion = move_and_slide(motion,UP)
@@ -253,12 +261,12 @@ func dead(damage,whodead):
 		if hp < 0:
 			_set_dead(true)
 			motion=Vector2(0,0)
-			$AnimatedSprite.play("dead")
+			$AnimationPlayer.play("deadAk47")
 			emit_signal("dead_signal")
 			$player_dead_timer.start()#karakter hareket etmeyince timerin içine girmiyor
 		else:
 			is_hurt=true
-			$AnimatedSprite.play("hurt")
+			$AnimationPlayer.play("HurtAk47")
 
 func _on_AnimatedSprite_animation_finished():
 	_clear_states()
@@ -349,4 +357,22 @@ func _on_gun_shoot_released():
 func _on_melee_attack_released():
 	$Controller/Node2D/melee_attack.modulate=Color(1, 1, 1)
 	touch_melee = false
+	pass # Replace with function body.
+
+
+
+func _on_AnimationPlayer_shootAk47_finished(shootAk47):
+	_clear_states()
+	pass # Replace with function body.
+
+
+func _on_AnimationPlayer_slideAk47_finished(slideAk47):
+	_clear_states()
+	pass # Replace with function body.
+
+func _on_AnimationPlayer_hurtAk47_finished(HurtAk47):
+	_clear_states()
+	pass # Replace with function body.
+
+func _on_AnimationPlayer_meleeAk47_finished(meleeAk47):
 	pass # Replace with function body.
