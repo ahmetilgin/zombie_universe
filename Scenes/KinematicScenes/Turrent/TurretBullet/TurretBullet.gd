@@ -32,6 +32,6 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 func _on_bullet_body_entered(body):
 	if "Zombie" in body.name:
-		body.dead(0.1,"player") 
+		body.dead_from_turrent(1,get_parent().name, direction) 
 	queue_free()
 

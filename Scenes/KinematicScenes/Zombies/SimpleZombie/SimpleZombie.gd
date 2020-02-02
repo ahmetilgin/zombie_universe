@@ -193,8 +193,40 @@ func dead(damage,whodead):
 	else:
 		is_hurt=true
 		zombie_hurt_player.play()
+		var back = 0;
+		if get_parent().get_node(whodead).get_global_position().x < get_global_position().x:
+			back = 400
+		else:
+			back = -400
+		motion = move_and_slide(Vector2(motion.x + back, motion.y) , UP)
 		$AnimatedSprite.play("hurt")
 
+func dead_from_turrent(damage,whodead,dir):
+	hp-=damage
+	if hp<0:
+		generate_coins()
+		emit_signal("dead_counter_for_wave")
+		if whodead=="player":
+			get_parent().get_node("player").increase_dead_counter()
+		is_dead=true
+		zombie_dead_player.play()
+		motion=Vector2(0,0)
+		$AnimatedSprite.position.y+=10
+		$AnimatedSprite.play("dead")
+		$CollisionShape2D.set_deferred("disabled",true)
+		zombie_dead_timer.start()
+		print(get_instance_id())
+	else:
+		is_hurt=true
+		zombie_hurt_player.play()
+		var back = 0;
+		if get_parent().get_node(whodead).get_global_position().x > get_global_position().x:
+			back = 400
+		else:
+			back = -400
+		motion = move_and_slide(Vector2(dir.x*(motion.x + back), dir.y*(motion.y + back) - gravity) , UP)
+		$AnimatedSprite.play("hurt")
+		
 func _jump_is_on_wall():
 	if is_on_wall() && is_on_floor():
 		for i in range(get_slide_count()):
