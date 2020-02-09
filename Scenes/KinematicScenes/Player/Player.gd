@@ -276,11 +276,11 @@ func upgrade_power_up():
 
 func _on_Area2D_body_entered(body):
 	if "Zombie" in body.name:
-		body.dead(1,"zombie") 
+		body.dead(1,"Zombie") 
 
 func _on_mele_flip_h_true_body_entered(body):
 	if "Zombie" in body.name:
-		body.dead(1,"zombie") 
+		body.dead(1,"Zombie") 
 
 func tramboline_jump():
 

@@ -194,7 +194,7 @@ func dead(damage,whodead):
 		is_hurt=true
 		zombie_hurt_player.play()
 		var back = 0;
-		if get_parent().get_node(whodead).get_global_position().x < get_global_position().x:
+		if get_parent().get_node("player").get_global_position().x < get_global_position().x:
 			back = 400
 		else:
 			back = -400
