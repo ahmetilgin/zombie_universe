@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://Stages/Game.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/GraveyardTileSet/png/Tiles/Tile1.png" type="Texture" id=2]
@@ -23,7 +23,6 @@
 [ext_resource path="res://Resources/Fonts/coffin_stone/coffinstonecond.ttf" type="DynamicFontData" id=21]
 [ext_resource path="res://Scenes/KinematicScenes/Player/Player.tscn" type="PackedScene" id=22]
 [ext_resource path="res://Scenes/KinematicScenes/Turrent/Turret.tscn" type="PackedScene" id=23]
-[ext_resource path="res://Scenes/StaticScenes/door/Node2D.tscn" type="PackedScene" id=24]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
@@ -498,18 +497,10 @@ scale = Vector2( -324.135, -89.984 )
 zoom = Vector2( 2.35, 2.35 )
 
 [node name="Turret2" parent="." instance=ExtResource( 23 )]
-position = Vector2( 2348.09, 833.31 )
+position = Vector2( 2721.4, 826.46 )
 scale = Vector2( -0.3, 0.3 )
 
 [node name="Turret" parent="." instance=ExtResource( 23 )]
-position = Vector2( 2237.81, 834.841 )
-
-[node name="Node2D" parent="." instance=ExtResource( 24 )]
-position = Vector2( 1596.77, 349.174 )
-rotation = -2.53518e-006
-
-[node name="Node2D2" parent="." instance=ExtResource( 24 )]
-position = Vector2( 1823.34, 349.156 )
-scale = Vector2( -1, 1 )
+position = Vector2( 3007.09, 828.898 )
 [connection signal="pressed" from="Game_UI/Market_Button" to="." method="_on_TouchScreenButton_pressed"]
 [connection signal="pressed" from="Market/accept_button" to="." method="_on_acceptbutton_pressed"]

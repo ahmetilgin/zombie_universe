@@ -180,7 +180,7 @@ func _clear_states():
 var UP = Vector2(0,-1)
 
 func _physics_process(delta):
-
+	Engine.time_scale = 1.5
 	motion.y += gravity 
 	if !_is_dead():
 		$Area2D/CollisionShape2D.disabled=true
