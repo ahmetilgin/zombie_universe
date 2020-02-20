@@ -29,7 +29,8 @@ var acceleration = 10
 var is_follow = false
 var path = []
 signal dead_counter_for_wave
-
+var body_scale = 0.45
+var body_rotation = 35.5
 func create_zombie_follow_timer():
 	FollowPlayerTimer.connect("timeout",self,"_on_FollowPlayerTimer_timeout") 
 	add_child(FollowPlayerTimer) #to process
@@ -128,7 +129,7 @@ func check_zombie_found_player():
 			FollowPlayerTimer.stop()
 			path = []
 	else:
-		$AnimatedSprite.play("walk")
+		$AnimationPlayer.play("Run")
 		if FollowPlayerTimer.is_stopped():
 			FollowPlayerTimer.start()
 		get_next_target_point()
@@ -138,8 +139,12 @@ func check_zombie_found_player():
 
 func set_zombie_direction():
 	if len(path) > 2:
-		$AnimatedSprite.flip_h = sign(path[1].x - get_global_position().x) != 1	
-	
+		if sign(path[1].x - get_global_position().x) != 1:
+			$Zombie.scale.x = -body_scale
+		
+		else:
+			$Zombie.scale.x = body_scale
+			 
 var is_zombie_action = false
 func follow_path():
 	if !is_zombie_action:
@@ -186,8 +191,8 @@ func dead(damage,whodead):
 		is_dead=true
 		zombie_dead_player.play()
 		motion=Vector2(0,0)
-		$AnimatedSprite.position.y+=10
-		$AnimatedSprite.play("dead")
+	
+		$AnimationPlayer.play("Dead")
 		$CollisionShape2D.set_deferred("disabled",true)
 		zombie_dead_timer.start()
 	else:
@@ -199,7 +204,7 @@ func dead(damage,whodead):
 		else:
 			back = -400
 		motion = move_and_slide(Vector2(motion.x + back, motion.y) , UP)
-		$AnimatedSprite.play("hurt")
+		$AnimationPlayer.play("Hurt")
 
 func dead_from_turrent(damage,whodead,dir):
 	hp-=damage
@@ -211,11 +216,11 @@ func dead_from_turrent(damage,whodead,dir):
 		is_dead=true
 		zombie_dead_player.play()
 		motion=Vector2(0,0)
-		$AnimatedSprite.position.y+=10
-		$AnimatedSprite.play("dead")
+	
+		$AnimationPlayer.play("Dead")
 		$CollisionShape2D.set_deferred("disabled",true)
 		zombie_dead_timer.start()
-		print(get_instance_id())
+		
 	else:
 		is_hurt=true
 		zombie_hurt_player.play()
@@ -225,7 +230,7 @@ func dead_from_turrent(damage,whodead,dir):
 		else:
 			back = -400
 		motion = move_and_slide(Vector2(dir.x*(motion.x + back), dir.y*(motion.y + back) - gravity) , UP)
-		$AnimatedSprite.play("hurt")
+		$AnimationPlayer.play("Hurt")
 		
 func _jump_is_on_wall():
 	if is_on_wall() && is_on_floor():
@@ -235,7 +240,7 @@ func _jump_is_on_wall():
 			if "player" in get_slide_collision(i).collider.name:
 				playerFound = true
 			if "Top" in get_slide_collision(i).collider.name:
-				$AnimatedSprite.play("attack")
+				$AnimationPlayer.play("Attack")
 				var colliding_turret = get_slide_collision(i).collider.get_parent().get_parent()
 				colliding_turret.change_turret_health(-20)
 				is_zombie_action = true
@@ -271,11 +276,13 @@ func _zombie_attack_timer_timeout():
 func _zombie_attack_to_player(damage):
 	if can_zombie_attack:
 		zombie_attack_timer.start()
-		$AnimatedSprite.play("attack")
+		$AnimationPlayer.play("Attack")
 		player.get_parent().dead(damage,"zombie")
 		can_zombie_attack = false
 	
-func _on_AnimatedSprite_animation_finished():
+
+	
+	
+
+func _on_AnimationPlayer_animation_finished(Hurt):
 	is_hurt=false
-	
-	
