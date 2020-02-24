@@ -19,7 +19,7 @@ enum bullet_power{
 }
 # environment options
 var tramb_count=1
-const jump = -550
+const jump = -900
 const gravity = 20
 # player options
 var hp = 100
