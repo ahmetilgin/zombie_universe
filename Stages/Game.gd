@@ -7,7 +7,7 @@ var finish_portal = 0
 signal stop_wave
 signal camera_zoom_out
 signal camera_zoom_in
-var start_portal = 2
+var start_portal = 3
 var portal_list = []
 var is_the_buy_button_clicked = false
 var left_right_select = false
@@ -25,7 +25,7 @@ var is_countdown_pause_timer = false
 var pause_time = 59
 var counttimer
 var second_passed = true
-var portal_coordinates = [Vector2(9,2),Vector2(9,4),Vector2(9,6),Vector2(28,2), Vector2(28,4), Vector2(28,6)]
+var portal_coordinates = [Vector2(9,2),Vector2(9,4),Vector2(9,6)]
 func create_portals(portal_count):
 	for portal in portal_list:
 		portal.queue_free()
@@ -80,13 +80,12 @@ func on_time_countdown_unvisible():
 	$Game_UI/CountDownTimer.set_visible(false)
 func on_market_button_visible():
 	$Game_UI/Market_Button.disabled = false
-	
 	pass
+	
 func hide_market():
 	$Market.set_offset(Vector2(-420,0))
 	turret_cancelled()
 	
-
 func show_market():
 	$Market.set_offset(Vector2(-5,0))
 	

@@ -40,7 +40,7 @@ func calculate_bounds(obstacles):
 
 			
 func calculate_point_index(point: Vector2) -> float:
-    return point.x + map_size.x * point.y
+	return point.x + map_size.x * point.y
 
 func find_any_tile_neighbors(point):
 	return false
@@ -59,8 +59,8 @@ func add_walkable_cells(obstacles := []) -> Array:
 	return points
 
 func is_outside_bounds(point: Vector2) -> bool:
-    return point.x <= min_x\
-        or point.y <= min_y or point.x >= map_size.x or point.y >= map_size.y
+	return point.x <= min_x\
+		or point.y <= min_y or point.x >= map_size.x or point.y >= map_size.y
 		
 
 	

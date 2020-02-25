@@ -114,7 +114,6 @@ func _play_animation(animation_state):
 	$AnimationPlayer.play(animation_state)
 	
 func _play_idle_animation():
-
 	_play_animation("idleAk47")
 
 func _play_melee_animation():
@@ -158,8 +157,6 @@ func animation_flip_h(choice):
 	elif choice == false:
 		$human.scale.x = body_scale
 
-		
-	
 func _set_shift_stop(shift_stop_state):
 	is_shift_stop = shift_stop_state
 
