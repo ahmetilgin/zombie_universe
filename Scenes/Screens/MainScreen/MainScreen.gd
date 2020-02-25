@@ -2,7 +2,7 @@ extends Node
 
 
 signal start_load_scene
-onready var loading_screen =preload("res://Scenes/Screens/LoadingScreen/LoadingScreen.tscn")
+onready var loading_screen = preload("res://Scenes/Screens/LoadingScreen/LoadingScreen.tscn")
 
 func _ready():
 	 pass
@@ -15,7 +15,6 @@ func _physics_process(delta):
 		$MarginContainer/VBoxContainer/VBoxContainer/Quit_Button.grab_focus()
 
 func go_to_loading_screen():
-	queue_free()
 	get_tree().get_root().add_child(loading_screen.instance())
 
 func _on_Start_Button_pressed():

@@ -185,7 +185,7 @@ func dead(damage,whodead):
 	hp-=damage
 	if hp < 0 and !is_dead:
 		is_dead=true
-		create_extra_resources()
+
 		emit_signal("dead_counter_for_wave")
 		if whodead=="player":
 			get_parent().get_node("player").increase_dead_counter()
@@ -210,17 +210,14 @@ func dead(damage,whodead):
 func dead_from_turrent(damage,whodead,dir):
 	hp-=damage
 	if hp<0:
-		generate_coins()
 		if whodead=="player":
 			get_parent().get_node("player").increase_dead_counter()
 		is_dead=true
 		zombie_dead_player.play()
 		motion=Vector2(0,0)
-	
 		$AnimationPlayer.play("Dead")
 		$CollisionShape2D.set_deferred("disabled",true)
 		zombie_dead_timer.start()
-		
 	else:
 		is_hurt=true
 		zombie_hurt_player.play()
@@ -265,6 +262,7 @@ func _physics_process(delta):
 					_zombie_attack_to_player(25)
  
 func _zombie_dead_timer_timeout():
+	create_extra_resources()
 	queue_free()
 	emit_signal("dead_counter_for_wave")
 

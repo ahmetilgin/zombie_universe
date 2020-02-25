@@ -3,9 +3,9 @@ extends Node2D
 var time = 1
 
 onready var parallel_load_stage = Thread.new()
-
+var start_scene = null
 func _ready():
-	var start_scene = get_tree().get_root().get_node("Start_Screen")
+	start_scene = get_tree().get_root().get_node("MainScreen")
 	if start_scene != null:
 		start_scene.connect("start_load_scene", self, "on_start_loading")
 	pass
@@ -32,10 +32,7 @@ func _on_load_level():
 	var level_res = parallel_load_stage.wait_to_finish()
 	$TextureProgress.set_value(1000)
 	var scene = level_res.instance();
-	scene.get_node("Game_UI").get_node("Snowing").set_emitting(true)
 	yield(get_tree().create_timer(0.1), "timeout")
-
-	queue_free()
 	get_tree().get_root().add_child(scene);
 
 
