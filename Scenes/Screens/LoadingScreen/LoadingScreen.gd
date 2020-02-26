@@ -6,7 +6,8 @@ onready var parallel_load_stage = Thread.new()
 var start_scene = null
 func _ready():
 	start_scene = get_tree().get_root().get_node("MainScreen")
-	if start_scene != null:
+	 
+	if  is_instance_valid( start_scene ):
 		start_scene.connect("start_load_scene", self, "on_start_loading")
 	pass
 	
@@ -34,6 +35,9 @@ func _on_load_level():
 	var scene = level_res.instance();
 	yield(get_tree().create_timer(0.1), "timeout")
 	get_tree().get_root().add_child(scene);
+	
+	
+	
 
 
 

@@ -71,6 +71,10 @@ func _ready():
 	connect_market()
 	countdown_timer()
 	$Game_UI/SelectPositionLabel.set_visible(false)
+	var stage =get_tree().get_root().get_node(".")
+	if is_instance_valid(stage):
+		get_parent().get_tree().get_root().get_node("Node2D")
+		
 
 func on_time_countdown_visible():
 	$Game_UI/CountDownTimer.set_visible(true)
