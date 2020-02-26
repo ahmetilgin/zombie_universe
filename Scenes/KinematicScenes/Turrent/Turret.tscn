@@ -1,19 +1,22 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/KinematicScenes/Turrent/Turret.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/Turret/Turret1Base.png" type="Texture" id=2]
 [ext_resource path="res://Resources/Sprites/Turret/Turret1Top.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Sprites/UISprites/Window2s.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 112.221, 91.3389 )
 
-[sub_resource type="Gradient" id=2]
-offsets = PoolRealArray( 0, 0.404545, 0.718182, 1 )
-colors = PoolColorArray( 1, 0.0705882, 0.188235, 1, 0.72549, 0.780392, 0.223529, 1, 0.286275, 0.643137, 0.00392157, 1, 0.415686, 0.964706, 0.027451, 1 )
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 1995, 1797, 338, 52 )
 
-[sub_resource type="GradientTexture" id=3]
-gradient = SubResource( 2 )
-width = 50
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 1995, 1796, 338, 54 )
 
 [node name="Turret" type="KinematicBody2D"]
 scale = Vector2( 0.3, 0.3 )
@@ -51,12 +54,25 @@ polygon = PoolVector2Array( -236.515, -3.55566, -197.501, -3.55566, -142.231, -1
 position = Vector2( 32.6876, 111.157 )
 shape = SubResource( 1 )
 
+[node name="TurretHealthBack" type="TextureProgress" parent="."]
+modulate = Color( 0.278431, 0.0117647, 0.0117647, 1 )
+margin_left = -121.236
+margin_top = -366.972
+margin_right = 1926.76
+margin_bottom = -304.972
+rect_scale = Vector2( 0.158, 0.631 )
+value = 100.0
+texture_progress = SubResource( 2 )
+nine_patch_stretch = true
+
 [node name="TurretHealth" type="TextureProgress" parent="."]
-margin_left = -124.569
-margin_top = -363.639
-margin_right = 1923.43
-margin_bottom = -301.639
+modulate = Color( 0.00784314, 1, 0, 1 )
+margin_left = -121.236
+margin_top = -366.972
+margin_right = 1926.76
+margin_bottom = -304.972
 rect_scale = Vector2( 0.157843, 0.630786 )
 value = 100.0
 texture_progress = SubResource( 3 )
+tint_under = Color( 0.439216, 0, 0, 1 )
 nine_patch_stretch = true
