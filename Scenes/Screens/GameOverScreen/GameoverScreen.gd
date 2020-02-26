@@ -5,7 +5,7 @@ var restart_screen = preload("res://Scenes/Screens/LoadingScreen/LoadingScreen.t
 func _ready():
 	var screen_hide=get_parent().get_parent().get_node("player")
 	screen_hide.connect("dead_signal",self,"on_dead_signal")
-	
+	visible = false
 
 func on_dead_signal():
 	visible=true
@@ -27,11 +27,10 @@ func _on_quit_pressed():
 
 
 func _on_start_pressed():
-	get_tree().get_root().get_node("stage1").queue_free()
 	var instance_restart = restart_screen.instance()
 	get_tree().get_root().add_child(instance_restart)
 	instance_restart.on_start_loading()
-
-	queue_free()
+	get_tree().get_root().get_node("stage1").queue_free()
+	visible = false
 
 	pass # Replace with function body.

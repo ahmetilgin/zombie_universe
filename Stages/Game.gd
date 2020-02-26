@@ -3,6 +3,9 @@ var turret_grid
 onready var level_text_counter = get_node("Game_UI/level_text/level_counter")
 onready var level_text = get_node("Game_UI/level_text")
 var portal_scene = preload("res://Scenes/StaticScenes/ZombiePortal/ZombiePortal.tscn")
+var player_scene = preload("res://Scenes/KinematicScenes/Player/Player.tscn")
+var gameover_scene = preload("res://Scenes/Screens/GameOverScreen/GameoverScreen.tscn")
+
 var finish_portal = 0
 signal stop_wave
 signal camera_zoom_out
@@ -66,12 +69,14 @@ func item_solded_failed():
 func _ready():
 	create_portals(start_portal)
 	get_tile_borders()
-	on_market_button_unvisible()
-	on_time_countdown_unvisible()
 	connect_market()
 	countdown_timer()
 	$Game_UI/SelectPositionLabel.set_visible(false)
-
+	add_child(player_scene.instance())
+	get_node("CanvasLayer").add_child(gameover_scene.instance())
+	on_market_button_unvisible()
+	on_time_countdown_unvisible()
+		
 
 func on_time_countdown_visible():
 	$Game_UI/CountDownTimer.set_visible(true)
@@ -161,6 +166,7 @@ func is_not_accept_button_set_visible():
 	$Market/accept_button.set_visible(false)
 	is_the_buy_button_clicked = false
 	left_right_select = false
+	
 func _on_TouchScreenButton_pressed():
 	if !is_opened_market:
 		show_market()

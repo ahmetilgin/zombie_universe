@@ -2,13 +2,9 @@ extends Node2D
 
 var time = 1
 
-onready var parallel_load_stage = Thread.new()
+onready var parallel_load_stage = null
 var start_scene = null
 func _ready():
-	start_scene = get_tree().get_root().get_node("MainScreen")
-	 
-	if  is_instance_valid( start_scene ):
-		start_scene.connect("start_load_scene", self, "on_start_loading")
 	pass
 	
 	
@@ -18,6 +14,7 @@ func _physics_process(delta):
 			$TextureProgress.set_value(time)
 
 func on_start_loading():
+	parallel_load_stage = Thread.new()
 	parallel_load_stage.start(self,"load_scene", ResourceLoader.load_interactive("res://Stages/Game.tscn"))
 
 
@@ -35,7 +32,7 @@ func _on_load_level():
 	var scene = level_res.instance();
 	yield(get_tree().create_timer(0.1), "timeout")
 	get_tree().get_root().add_child(scene);
-	
+	queue_free()
 	
 	
 
