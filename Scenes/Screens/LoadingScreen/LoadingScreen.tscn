@@ -15,7 +15,7 @@ region = Rect2( 1012, 494, 262, 83 )
 size = 50
 font_data = ExtResource( 5 )
 
-[node name="Node2D" type="Node2D"]
+[node name="loading" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="3_game_background" type="Sprite" parent="."]
