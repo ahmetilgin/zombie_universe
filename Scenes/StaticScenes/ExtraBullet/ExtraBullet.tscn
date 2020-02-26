@@ -17,4 +17,8 @@ texture = ExtResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2( -0.97766, 1.93686 )
 shape = SubResource( 1 )
+
+[node name="Ground" type="RayCast2D" parent="."]
+position = Vector2( -0.214638, 28.9764 )
+enabled = true
 [connection signal="body_shape_entered" from="." to="." method="_on_ExtraBullet_body_shape_entered"]

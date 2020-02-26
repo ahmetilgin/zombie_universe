@@ -49,7 +49,6 @@ position = Vector2( -0.00590515, 15.8801 )
 scale = Vector2( 0.0878503, 0.219497 )
 enabled = true
 exclude_parent = false
-cast_to = Vector2( 0, 50 )
 [connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
 [connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
