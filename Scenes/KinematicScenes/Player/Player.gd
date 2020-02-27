@@ -38,8 +38,15 @@ var is_hurt = false
 var is_melee = false
 var is_shift_stop = false
 var bullet_size = 20
+var change_color_tween= Tween.new()
+var damage_healt_color_timer= Timer.new()
+var healt_75 = null
+var healt_50 = null
+var healt_25 = null
+
 onready var bullet_number = get_node("../Game_UI/bullet_counter")
 onready var player_health = get_node("../Game_UI/Player_Health")
+onready var player_health_back = get_node("../Game_UI/Player_Health_Back")
 onready var updated_tween = get_node("../Game_UI/Updated_Tween")
 const basic_zombie = preload("res://Scenes/KinematicScenes/Zombies/SimpleZombie/SimpleZombie.tscn")
 #basic zombie nerede kullanıyor??
@@ -48,6 +55,13 @@ func _create_zombie_shot_slow_timer():
 	slow_shot_timer.connect("timeout",self,"_on_slow_motion_timer_start") 
 	add_child(slow_shot_timer) #to process
 	slow_shot_timer.set_wait_time(0.1)
+func damage_healt_color_timer():
+	damage_healt_color_timer.set_one_shot(true)
+	damage_healt_color_timer.set_wait_time(0.5)
+	add_child(damage_healt_color_timer) #to process
+	damage_healt_color_timer.connect("timeout",self, "on_damage_healt_color_timer") 	
+func color_change_tween():
+	add_child(change_color_tween) #to process
 
 func increase_bullet_count(bullet_count):
 	bullet_size += bullet_count
@@ -55,6 +69,12 @@ func increase_bullet_count(bullet_count):
 	
 func _ready():
 	_create_zombie_shot_slow_timer()
+	damage_healt_color_timer()
+	color_change_tween()
+	healt_75 = true
+	healt_50 = true
+	healt_25 = true
+
 
 func _on_slow_motion_timer_start():
 	Engine.time_scale = 1
@@ -252,6 +272,8 @@ func _physics_process(delta):
 func dead(damage,whodead):
 	if !_is_dead():
 		hp -= damage
+		damage_healt_color_timer.start()
+		healt_color()
 		player_health.set_value(hp)
 		updated_tween.interpolate_property(player_health,"value",player_health.value,hp,0.4,Tween.TRANS_SINE,Tween.EASE_IN_OUT)
 		updated_tween.start()
@@ -287,7 +309,29 @@ func tramboline_jump():
 		if tramb_count>6:
 			tramb_count=6
 		$jump_counter_time.start()
-		
+func healt_color():
+	
+	if  hp > 60  and healt_75 :
+		change_color_tween.interpolate_property(player_health,'modulate',Color(0,1,0,1),
+								Color(0,0.8,0,1),0.5,Tween.TRANS_QUAD,Tween.EASE_IN_OUT)
+		healt_75 = false
+	 
+	elif hp < 60 and hp > 35 and healt_50:
+		change_color_tween.interpolate_property(player_health,'modulate',Color(0,8,0,1),
+								Color(1,1,0,1),0.5,Tween.TRANS_QUAD,Tween.EASE_IN_OUT)
+		healt_50 = false
+	 
+	elif  hp < 35  and healt_25:
+		change_color_tween.interpolate_property(player_health,'modulate',Color(1,1,0,1),
+								Color(0.8,0,0,1),0.5,Tween.TRANS_QUAD,Tween.EASE_IN_OUT)
+		healt_25 = false
+	change_color_tween.start()
+	yield(change_color_tween, "tween_completed")
+	
+func on_damage_healt_color_timer():
+	player_health_back.set_value(hp)
+	pass
+
 func _on_jump_counter_time_timeout():
 	tramb_count=1
 	pass # Replace with function body.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://Stages/Game.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/GraveyardTileSet/png/Tiles/Tile1.png" type="Texture" id=2]
@@ -14,14 +14,15 @@
 [ext_resource path="res://Stages/TileMap.gd" type="Script" id=12]
 [ext_resource path="res://Resources/Fonts/coffin_stone/coffinstoneexpand.ttf" type="DynamicFontData" id=13]
 [ext_resource path="res://Resources/Sprites/UISprites/Window2s.png" type="Texture" id=14]
-[ext_resource path="res://Resources/Sprites/StarCoin/starcoinrotate1.png" type="Texture" id=15]
-[ext_resource path="res://Stages/CoinCounter.gd" type="Script" id=16]
-[ext_resource path="res://Resources/Sprites/UISprites/Button.png" type="Texture" id=17]
-[ext_resource path="res://Resources/Sprites/background brick/indoorbackgroun.png" type="Texture" id=18]
-[ext_resource path="res://Resources/AudioFiles/Game/savymerchant.ogg" type="AudioStream" id=19]
-[ext_resource path="res://Scenes/StaticScenes/Market/Market.tscn" type="PackedScene" id=20]
-[ext_resource path="res://Resources/Fonts/coffin_stone/coffinstonecond.ttf" type="DynamicFontData" id=21]
-[ext_resource path="res://Scenes/KinematicScenes/Turrent/Turret.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Resources/Sprites/UISprites/Windows.png" type="Texture" id=15]
+[ext_resource path="res://Resources/Sprites/StarCoin/starcoinrotate1.png" type="Texture" id=16]
+[ext_resource path="res://Stages/CoinCounter.gd" type="Script" id=17]
+[ext_resource path="res://Resources/Sprites/UISprites/Button.png" type="Texture" id=18]
+[ext_resource path="res://Resources/Sprites/background brick/indoorbackgroun.png" type="Texture" id=19]
+[ext_resource path="res://Resources/AudioFiles/Game/savymerchant.ogg" type="AudioStream" id=20]
+[ext_resource path="res://Scenes/StaticScenes/Market/Market.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Resources/Fonts/coffin_stone/coffinstonecond.ttf" type="DynamicFontData" id=22]
+[ext_resource path="res://Scenes/KinematicScenes/Turrent/Turret.tscn" type="PackedScene" id=23]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
@@ -213,10 +214,15 @@ region = Rect2( 499, 1782, 535, 152 )
 
 [sub_resource type="AtlasTexture" id=13]
 flags = 4
-atlas = ExtResource( 14 )
-region = Rect2( 1615, 1792, 342, 62 )
+atlas = ExtResource( 15 )
+region = Rect2( 4532, 3384, 336, 53 )
 
-[sub_resource type="ParticlesMaterial" id=14]
+[sub_resource type="AtlasTexture" id=14]
+flags = 4
+atlas = ExtResource( 14 )
+region = Rect2( 1997, 1796, 336, 53 )
+
+[sub_resource type="ParticlesMaterial" id=15]
 trail_divisor = 2
 emission_shape = 2
 emission_box_extents = Vector3( 2000, 1, 1 )
@@ -228,44 +234,44 @@ orbit_velocity_random = 0.0
 scale = 1.2
 scale_random = 0.32
 
-[sub_resource type="AtlasTexture" id=15]
+[sub_resource type="AtlasTexture" id=16]
 flags = 4
 atlas = ExtResource( 14 )
 region = Rect2( 1625.25, 1375.16, 343.527, 143.802 )
 
-[sub_resource type="AtlasTexture" id=16]
-flags = 4
-atlas = ExtResource( 15 )
-region = Rect2( -23, 16, 2281, 2410 )
-
 [sub_resource type="AtlasTexture" id=17]
 flags = 4
-atlas = ExtResource( 17 )
-region = Rect2( 1104, 1629, 180, 180 )
+atlas = ExtResource( 16 )
+region = Rect2( -23, 16, 2281, 2410 )
 
 [sub_resource type="AtlasTexture" id=18]
 flags = 4
-atlas = ExtResource( 17 )
-region = Rect2( 1490, 1629, 180, 180 )
+atlas = ExtResource( 18 )
+region = Rect2( 1104, 1629, 180, 180 )
 
 [sub_resource type="AtlasTexture" id=19]
 flags = 4
-atlas = ExtResource( 17 )
-region = Rect2( 1683, 1629, 180, 180 )
+atlas = ExtResource( 18 )
+region = Rect2( 1490, 1629, 180, 180 )
 
 [sub_resource type="AtlasTexture" id=20]
 flags = 4
-atlas = ExtResource( 17 )
-region = Rect2( 171, 196, 375, 185 )
+atlas = ExtResource( 18 )
+region = Rect2( 1683, 1629, 180, 180 )
 
 [sub_resource type="AtlasTexture" id=21]
 flags = 4
-atlas = ExtResource( 17 )
+atlas = ExtResource( 18 )
+region = Rect2( 171, 196, 375, 185 )
+
+[sub_resource type="AtlasTexture" id=22]
+flags = 4
+atlas = ExtResource( 18 )
 region = Rect2( 939, 196, 384, 185 )
 
-[sub_resource type="DynamicFont" id=22]
+[sub_resource type="DynamicFont" id=23]
 size = 36
-font_data = ExtResource( 21 )
+font_data = ExtResource( 22 )
 
 [node name="stage1" type="Node2D"]
 script = ExtResource( 1 )
@@ -319,17 +325,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Player_Health" type="TextureProgress" parent="Game_UI"]
-self_modulate = Color( 0.909804, 0.85098, 0.85098, 1 )
-margin_left = 154.79
-margin_top = 41.0118
-margin_right = 279.79
-margin_bottom = 101.012
-rect_scale = Vector2( 0.937578, 0.317843 )
+[node name="Player_Health_Back" type="TextureProgress" parent="Game_UI"]
+modulate = Color( 0.364706, 0, 0, 1 )
+margin_left = 150.41
+margin_top = 39.2454
+margin_right = 275.41
+margin_bottom = 99.2454
+rect_scale = Vector2( 1.01, 0.4 )
 value = 100.0
 rounded = true
 texture_progress = SubResource( 13 )
-tint_over = Color( 0.933333, 0.345098, 0.137255, 1 )
+nine_patch_stretch = true
+
+[node name="Player_Health" type="TextureProgress" parent="Game_UI"]
+modulate = Color( 0.0392157, 0.576471, 0.0509804, 1 )
+self_modulate = Color( 0.909804, 0.85098, 0.85098, 1 )
+margin_left = 149.992
+margin_top = 39.245
+margin_right = 274.992
+margin_bottom = 99.2452
+rect_scale = Vector2( 1.01, 0.4 )
+value = 100.0
+rounded = true
+texture_progress = SubResource( 14 )
 nine_patch_stretch = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -388,7 +406,7 @@ preprocess = 5.0
 speed_scale = 2.0
 randomness = 0.5
 local_coords = false
-process_material = SubResource( 14 )
+process_material = SubResource( 15 )
 
 [node name="CoinIcon" type="TextureRect" parent="Game_UI"]
 margin_left = 979.067
@@ -396,7 +414,7 @@ margin_top = 21.3461
 margin_right = 1129.07
 margin_bottom = 71.3461
 rect_scale = Vector2( 1.03412, 1.21914 )
-texture = SubResource( 15 )
+texture = SubResource( 16 )
 expand = true
 
 [node name="CoinIcon2" type="TextureRect" parent="Game_UI/CoinIcon"]
@@ -405,7 +423,7 @@ margin_top = 1.60752
 margin_right = 135.35
 margin_bottom = 33.6075
 rect_scale = Vector2( 1.38517, 1.18225 )
-texture = SubResource( 16 )
+texture = SubResource( 17 )
 expand = true
 
 [node name="Coin_Counter" type="RichTextLabel" parent="Game_UI"]
@@ -423,7 +441,7 @@ custom_colors/default_color = Color( 0.901961, 0.992157, 0.00784314, 1 )
 bbcode_text = "0"
 text = "0"
 scroll_active = false
-script = ExtResource( 16 )
+script = ExtResource( 17 )
 
 [node name="Market_Button" type="TextureButton" parent="Game_UI"]
 margin_left = 24.3086
@@ -431,9 +449,9 @@ margin_top = 25.2595
 margin_right = 25.3086
 margin_bottom = 26.2595
 rect_scale = Vector2( 0.391652, 0.376707 )
-texture_normal = SubResource( 17 )
-texture_pressed = SubResource( 18 )
-texture_disabled = SubResource( 19 )
+texture_normal = SubResource( 18 )
+texture_pressed = SubResource( 19 )
+texture_disabled = SubResource( 20 )
 
 [node name="CountDownTimer" type="RichTextLabel" parent="Game_UI"]
 margin_left = 767.0
@@ -458,16 +476,16 @@ position = Vector2( 854.57, 750 )
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2( 552.18, 325.053 )
 scale = Vector2( 1.02115, 1.20249 )
-texture = ExtResource( 18 )
+texture = ExtResource( 19 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Stage1Sound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 19 )
+stream = ExtResource( 20 )
 volume_db = -31.424
 autoplay = true
 
-[node name="Market" parent="." instance=ExtResource( 20 )]
+[node name="Market" parent="." instance=ExtResource( 21 )]
 offset = Vector2( -420, 0 )
 transform = Transform2D( 1, 0, 0, 1, -420, 0 )
 
@@ -477,8 +495,8 @@ margin_top = 677.609
 margin_right = 1286.11
 margin_bottom = 862.609
 rect_scale = Vector2( 0.411429, 0.445503 )
-texture_normal = SubResource( 20 )
-texture_pressed = SubResource( 21 )
+texture_normal = SubResource( 21 )
+texture_pressed = SubResource( 22 )
 
 [node name="RichTextLabel" type="Label" parent="Market/accept_button"]
 margin_left = 56.1044
@@ -486,7 +504,7 @@ margin_top = 62.1167
 margin_right = 182.105
 margin_bottom = 136.116
 rect_scale = Vector2( 2.59427, 1.25715 )
-custom_fonts/font = SubResource( 22 )
+custom_fonts/font = SubResource( 23 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "ACCEPT"
 __meta__ = {
@@ -498,57 +516,57 @@ position = Vector2( 2445.62, 507.812 )
 scale = Vector2( -324.135, -89.984 )
 zoom = Vector2( 2.35, 2.35 )
 
-[node name="Turret2" parent="." instance=ExtResource( 22 )]
+[node name="Turret2" parent="." instance=ExtResource( 23 )]
 position = Vector2( 2125.65, 1856.29 )
 scale = Vector2( -0.3, 0.3 )
 
-[node name="Turret12" parent="." instance=ExtResource( 22 )]
+[node name="Turret12" parent="." instance=ExtResource( 23 )]
 position = Vector2( 2125.65, 1856.29 )
 scale = Vector2( -0.3, 0.3 )
 
-[node name="Turret13" parent="." instance=ExtResource( 22 )]
+[node name="Turret13" parent="." instance=ExtResource( 23 )]
 position = Vector2( 2125.65, 1856.29 )
 scale = Vector2( -0.3, 0.3 )
 
-[node name="Turret14" parent="." instance=ExtResource( 22 )]
+[node name="Turret14" parent="." instance=ExtResource( 23 )]
 position = Vector2( 2125.65, 1856.29 )
 scale = Vector2( -0.3, 0.3 )
 
-[node name="Turret15" parent="." instance=ExtResource( 22 )]
+[node name="Turret15" parent="." instance=ExtResource( 23 )]
 position = Vector2( 2125.65, 1856.29 )
 scale = Vector2( -0.3, 0.3 )
 
-[node name="Turret16" parent="." instance=ExtResource( 22 )]
+[node name="Turret16" parent="." instance=ExtResource( 23 )]
 position = Vector2( 690.506, 581.374 )
 
-[node name="Turret" parent="." instance=ExtResource( 22 )]
+[node name="Turret" parent="." instance=ExtResource( 23 )]
 position = Vector2( 2097.5, 1847.18 )
 
-[node name="Turret3" parent="." instance=ExtResource( 22 )]
+[node name="Turret3" parent="." instance=ExtResource( 23 )]
 position = Vector2( 2101.09, 1848.62 )
 
-[node name="Turret4" parent="." instance=ExtResource( 22 )]
+[node name="Turret4" parent="." instance=ExtResource( 23 )]
 position = Vector2( 2108.25, 1845.75 )
 
-[node name="Turret5" parent="." instance=ExtResource( 22 )]
+[node name="Turret5" parent="." instance=ExtResource( 23 )]
 position = Vector2( 2108.25, 1845.75 )
 
-[node name="Turret6" parent="." instance=ExtResource( 22 )]
+[node name="Turret6" parent="." instance=ExtResource( 23 )]
 position = Vector2( 2105.92, 1845.75 )
 
-[node name="Turret7" parent="." instance=ExtResource( 22 )]
+[node name="Turret7" parent="." instance=ExtResource( 23 )]
 position = Vector2( 2083.98, 1854.45 )
 
-[node name="Turret8" parent="." instance=ExtResource( 22 )]
+[node name="Turret8" parent="." instance=ExtResource( 23 )]
 position = Vector2( 2093.31, 1853.28 )
 
-[node name="Turret9" parent="." instance=ExtResource( 22 )]
+[node name="Turret9" parent="." instance=ExtResource( 23 )]
 position = Vector2( 2102.64, 1856.78 )
 
-[node name="Turret10" parent="." instance=ExtResource( 22 )]
+[node name="Turret10" parent="." instance=ExtResource( 23 )]
 position = Vector2( 2096.81, 1848.62 )
 
-[node name="Turret11" parent="." instance=ExtResource( 22 )]
+[node name="Turret11" parent="." instance=ExtResource( 23 )]
 position = Vector2( 2103.8, 1856.78 )
 [connection signal="pressed" from="Game_UI/Market_Button" to="." method="_on_TouchScreenButton_pressed"]
 [connection signal="pressed" from="Market/accept_button" to="." method="_on_acceptbutton_pressed"]
