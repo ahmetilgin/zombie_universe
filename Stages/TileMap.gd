@@ -12,6 +12,8 @@ var init_pos = Vector2()
 var target_pos = Vector2()
 var connected_cells = []
 
+var founded_path = {}
+
 var max_x = 0
 var min_x = 0
 var max_y = 0
@@ -47,8 +49,8 @@ func find_any_tile_neighbors(point):
 
 func add_walkable_cells(obstacles := []) -> Array:
 	var points: = []
-	for x in range(min_x + 3,max_x):
-		for y in range(min_y + 3,max_y):
+	for x in range(min_x,max_x):
+		for y in range(min_y,max_y):
 			var point: = Vector2(x, y)
 			if point in obstacles:
 				continue
@@ -83,7 +85,7 @@ func connect_walkable_cells(points: Array) -> void:
 			if not astar.has_point(index_relative):
 				continue	
 			connected_cells.append(point_relative)
-
+			set_cellv(point_relative, 8)
 			astar.connect_points(index, index_relative, false)
 
 func _ready() -> void:
@@ -95,7 +97,7 @@ func _ready() -> void:
 #	for connectedPoint in connected_cells:
 #		set_cellv(connectedPoint,8)
 
-func _get_path(init_position: Vector2, target_position: Vector2) -> Array:
+func _get_path(init_position: Vector2, target_position: Vector2, name) -> Array:
 	init_pos = init_position
 	target_pos = target_position
 
@@ -106,23 +108,26 @@ func _get_path(init_position: Vector2, target_position: Vector2) -> Array:
 
 	if astar.has_point(start_index) and astar.has_point(end_index):
 		var path: = find_path(start_position, end_position)
+		founded_path[name] = []
 		world_path = []
 		for point in path:
 			var point_world: = map_to_world(Vector2(point.x, point.y))
 			world_path.append(point_world + _half_cell_size) 
+			founded_path[name].append(point_world + _half_cell_size)
 		update()
 		return world_path
 	else:
 		return []
 		
 
-
+	
 func _draw():
 	draw_circle(init_pos , 2, PLAYER_COLOR)
 	draw_circle(target_pos, 2, TARGET_COLOR)
-	if len(world_path) > 2:
-		for point_index in range(0,len(world_path) - 1):
-			draw_circle(world_path[point_index] , 1 , DRAW_COLOR)
+	if len(founded_path) > 2:
+		for name in founded_path:
+			for point_index in range(0,len(founded_path[name]) - 1):
+				draw_circle(founded_path[name][point_index] , 1 , DRAW_COLOR)
 
 func find_path(start_position: Vector2, end_position: Vector2) -> Array:
 	var map_path = []

@@ -14,6 +14,7 @@ var zombie_dead_timer = Timer.new()
 
 var can_zombie_attack = true
 var zombie_attack_timer = Timer.new()
+var attack_ray_cast = RayCast2D.new()
 
 var player_found_icon = TextureRect.new()
 
@@ -31,6 +32,14 @@ var path = []
 signal dead_counter_for_wave
 var body_scale = 0.45
 var body_rotation = 35.5
+
+func add_attack_ray_cast():
+#	attack_ray_cast.set_position(Vector2(64,64))
+	add_child(attack_ray_cast)
+	attack_ray_cast.set_cast_to(Vector2(50,0))
+	attack_ray_cast.set_position(Vector2(40,58))
+	attack_ray_cast.set_enabled(true)
+
 func create_zombie_follow_timer():
 	FollowPlayerTimer.connect("timeout",self,"_on_FollowPlayerTimer_timeout") 
 	add_child(FollowPlayerTimer) #to process
@@ -77,6 +86,7 @@ func _ready():
 	create_zombie_dead_timer()
 	create_zombie_follow_timer()
 	create_zombie_attack_timer()
+	add_attack_ray_cast()
 #	create_zombie_found_player_label()
 
 
@@ -141,9 +151,13 @@ func set_zombie_direction():
 	if len(path) > 2:
 		if sign(path[1].x - get_global_position().x) != 1:
 			$Zombie.scale.x = -body_scale
+			attack_ray_cast.scale.x = -1
+			attack_ray_cast.set_position(Vector2(-30,58))
 		
 		else:
 			$Zombie.scale.x = body_scale
+			attack_ray_cast.scale.x = 1
+			attack_ray_cast.set_position(Vector2(40,58))
 			 
 var is_zombie_action = false
 func follow_path():
@@ -153,7 +167,7 @@ func follow_path():
 	pass
 
 func _get_path():
-	path = get_parent().get_node('TileMap')._get_path($CollisionShape2D.get_global_position(), player.get_global_position())
+	path = get_parent().get_node('TileMap')._get_path($CollisionShape2D.get_global_position(), player.get_global_position(),get_name())
 	path.pop_front()
 	path.pop_front()
 	if len(path) > 2:
@@ -230,20 +244,20 @@ func dead_from_turrent(damage,whodead,dir):
 		$AnimationPlayer.play("Hurt")
 		
 func _jump_is_on_wall():
-	if is_on_wall() && is_on_floor():
-		for i in range(get_slide_count()):
-			var playerFound = false
-			is_zombie_action = false
-			if "player" in get_slide_collision(i).collider.name:
-				playerFound = true
-			if "Top" in get_slide_collision(i).collider.name:
-				$AnimationPlayer.play("Attack")
-				var colliding_turret = get_slide_collision(i).collider.get_parent().get_parent()
-				colliding_turret.change_turret_health(-20)
-				is_zombie_action = true
-				break
-			if !playerFound:
-				motion.y -= 200
+	if attack_ray_cast.is_colliding():
+		var playerFound = false
+		is_zombie_action = false
+
+		if "player" in attack_ray_cast.get_collider().name:
+			playerFound = true
+			_zombie_attack_to_player(25)
+		if "Top" in attack_ray_cast.get_collider().name:
+			$AnimationPlayer.play("Attack")
+			var colliding_turret = attack_ray_cast.attack_ray_cast.get_collider().get_parent().get_parent()
+			colliding_turret.change_turret_health(-20)
+			is_zombie_action = true
+		if !playerFound:
+			motion.y -= 200
 
 func move_like_basic_zombie():
 	if len(path) == 0:
@@ -253,13 +267,8 @@ func _physics_process(delta):
 	motion.y += gravity
 	if is_dead==false:
 		follow_path()
-		_jump_is_on_wall()
 		motion = move_and_slide(motion , UP)
 		_jump_is_on_wall()
-		if get_slide_count()>0:
-			for i in range(get_slide_count()):
-				if "player" in get_slide_collision(i).collider.name:
-					_zombie_attack_to_player(25)
  
 func _zombie_dead_timer_timeout():
 	create_extra_resources()

@@ -10,7 +10,7 @@ var finish_portal = 0
 signal stop_wave
 signal camera_zoom_out
 signal camera_zoom_in
-var start_portal = 3
+var start_portal = 1
 var portal_list = []
 var is_the_buy_button_clicked = false
 var left_right_select = false

@@ -29,6 +29,8 @@ func _on_VisibilityEnabler2D_screen_exited():
 
 func _on_TrackedBullet_body_shape_entered(body_id, body, body_shape, area_shape):
 	if "Zombie" in body.name:
+		
+		body.print_tree_pretty()
 		body.dead(1,"player") 
 	queue_free()
 	pass # Replace with function body.

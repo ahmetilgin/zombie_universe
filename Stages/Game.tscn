@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://Stages/Game.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/GraveyardTileSet/png/Tiles/Tile1.png" type="Texture" id=2]
@@ -22,7 +22,6 @@
 [ext_resource path="res://Resources/AudioFiles/Game/savymerchant.ogg" type="AudioStream" id=20]
 [ext_resource path="res://Scenes/StaticScenes/Market/Market.tscn" type="PackedScene" id=21]
 [ext_resource path="res://Resources/Fonts/coffin_stone/coffinstonecond.ttf" type="DynamicFontData" id=22]
-[ext_resource path="res://Scenes/KinematicScenes/Turrent/Turret.tscn" type="PackedScene" id=23]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
@@ -228,7 +227,7 @@ emission_shape = 2
 emission_box_extents = Vector3( 2000, 1, 1 )
 flag_disable_z = true
 gravity = Vector3( 30, 50, 0 )
-angular_velocity = 1.87276e-026
+angular_velocity = 1.87276e-26
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 1.2
@@ -474,7 +473,7 @@ text = "59"
 position = Vector2( 854.57, 750 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 552.18, 325.053 )
+position = Vector2( 3667.7, 215.004 )
 scale = Vector2( 1.02115, 1.20249 )
 texture = ExtResource( 19 )
 
@@ -515,58 +514,5 @@ __meta__ = {
 position = Vector2( 2445.62, 507.812 )
 scale = Vector2( -324.135, -89.984 )
 zoom = Vector2( 2.35, 2.35 )
-
-[node name="Turret2" parent="." instance=ExtResource( 23 )]
-position = Vector2( 2125.65, 1856.29 )
-scale = Vector2( -0.3, 0.3 )
-
-[node name="Turret12" parent="." instance=ExtResource( 23 )]
-position = Vector2( 2125.65, 1856.29 )
-scale = Vector2( -0.3, 0.3 )
-
-[node name="Turret13" parent="." instance=ExtResource( 23 )]
-position = Vector2( 2125.65, 1856.29 )
-scale = Vector2( -0.3, 0.3 )
-
-[node name="Turret14" parent="." instance=ExtResource( 23 )]
-position = Vector2( 2125.65, 1856.29 )
-scale = Vector2( -0.3, 0.3 )
-
-[node name="Turret15" parent="." instance=ExtResource( 23 )]
-position = Vector2( 2125.65, 1856.29 )
-scale = Vector2( -0.3, 0.3 )
-
-[node name="Turret16" parent="." instance=ExtResource( 23 )]
-position = Vector2( 690.506, 581.374 )
-
-[node name="Turret" parent="." instance=ExtResource( 23 )]
-position = Vector2( 2097.5, 1847.18 )
-
-[node name="Turret3" parent="." instance=ExtResource( 23 )]
-position = Vector2( 2101.09, 1848.62 )
-
-[node name="Turret4" parent="." instance=ExtResource( 23 )]
-position = Vector2( 2108.25, 1845.75 )
-
-[node name="Turret5" parent="." instance=ExtResource( 23 )]
-position = Vector2( 2108.25, 1845.75 )
-
-[node name="Turret6" parent="." instance=ExtResource( 23 )]
-position = Vector2( 2105.92, 1845.75 )
-
-[node name="Turret7" parent="." instance=ExtResource( 23 )]
-position = Vector2( 2083.98, 1854.45 )
-
-[node name="Turret8" parent="." instance=ExtResource( 23 )]
-position = Vector2( 2093.31, 1853.28 )
-
-[node name="Turret9" parent="." instance=ExtResource( 23 )]
-position = Vector2( 2102.64, 1856.78 )
-
-[node name="Turret10" parent="." instance=ExtResource( 23 )]
-position = Vector2( 2096.81, 1848.62 )
-
-[node name="Turret11" parent="." instance=ExtResource( 23 )]
-position = Vector2( 2103.8, 1856.78 )
 [connection signal="pressed" from="Game_UI/Market_Button" to="." method="_on_TouchScreenButton_pressed"]
 [connection signal="pressed" from="Market/accept_button" to="." method="_on_acceptbutton_pressed"]
