@@ -473,7 +473,7 @@ text = "59"
 position = Vector2( 854.57, 750 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 3667.7, 215.004 )
+position = Vector2( 546.952, 280.532 )
 scale = Vector2( 1.02115, 1.20249 )
 texture = ExtResource( 19 )
 

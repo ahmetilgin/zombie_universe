@@ -85,7 +85,6 @@ func connect_walkable_cells(points: Array) -> void:
 			if not astar.has_point(index_relative):
 				continue	
 			connected_cells.append(point_relative)
-			set_cellv(point_relative, 8)
 			astar.connect_points(index, index_relative, false)
 
 func _ready() -> void:
