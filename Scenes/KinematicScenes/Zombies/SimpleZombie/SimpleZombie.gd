@@ -40,8 +40,8 @@ var body_rotation = 35.5
 func add_attack_ray_cast():
 #	attack_ray_cast.set_position(Vector2(64,64))
 	add_child(attack_ray_cast)
-	attack_ray_cast.set_cast_to(Vector2(50,0))
-	attack_ray_cast.set_position(Vector2(40,58))
+	attack_ray_cast.set_cast_to(Vector2(20,0))
+	attack_ray_cast.set_position(Vector2(50,58))
 	attack_ray_cast.set_enabled(true)
 
 func create_zombie_follow_timer():
@@ -255,16 +255,16 @@ func _jump_is_on_wall():
 	if attack_ray_cast.is_colliding():
 		var playerFound = false
 		is_zombie_action = false
-
+		print(attack_ray_cast.get_collider().name)
 		if "player" in attack_ray_cast.get_collider().name:
 			playerFound = true
 			_zombie_attack_to_player(5)
-		if "Top" in attack_ray_cast.get_collider().name:
+		elif "Top" in attack_ray_cast.get_collider().name:
 			$AnimationPlayer.play("Attack")
-			var colliding_turret = attack_ray_cast.attack_ray_cast.get_collider().get_parent().get_parent()
+			var colliding_turret = attack_ray_cast.get_collider().get_parent().get_parent()
 			colliding_turret.change_turret_health(-20)
 			is_zombie_action = true
-		if !playerFound:
+		elif !playerFound:
 			motion.y -= 200
 
 func move_like_basic_zombie():

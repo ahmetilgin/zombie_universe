@@ -85,7 +85,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 14.8791, 47.5663 )
+extents = Vector2( 10.4947, 47.5663 )
 
 [sub_resource type="Animation" id=4]
 resource_name = "Attack"
@@ -2671,12 +2671,12 @@ position = Vector2( -7.88678, -29.4161 )
 scale = Vector2( 0.226092, 0.26536 )
 frames = SubResource( 2 )
 animation = "attack"
-frame = 5
+frame = 7
 playing = true
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 36.4784, 47.9075 )
+position = Vector2( 23.2431, 51.0587 )
 scale = Vector2( 2.61906, -1.2303 )
 z_index = -1
 shape = SubResource( 3 )

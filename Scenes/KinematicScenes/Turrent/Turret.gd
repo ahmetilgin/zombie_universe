@@ -21,8 +21,8 @@ func change_turret_health(health):
 	zombie_attack_power = health
 	if(zombie_attack_timer.is_stopped()):
 		zombie_attack_timer.start()
-	else :
-		zombie_attack_timer.start()
+	 
+		 
 	pass
 func flash_turret_tween():
 	add_child(flash_turret_tween)
@@ -32,7 +32,7 @@ func color_change_tween():
 
 func create_zombie_attack_timer():
 	zombie_attack_timer.set_one_shot(true)
-	zombie_attack_timer.set_wait_time(0.25)
+	zombie_attack_timer.set_wait_time(0.75)
 	add_child(zombie_attack_timer) #to process
 	zombie_attack_timer.connect("timeout",self, "_zombie_attack") 	
 
@@ -90,6 +90,7 @@ func fire_on_zombie():
 func _zombie_attack():
 	turret_health = turret_health + zombie_attack_power
 	$TurretHealth.set_value(turret_health)
+	flash_damage()
 	damage_healt_color_bg()
 	healt_color()
 	if(turret_health <= 0):
@@ -125,6 +126,7 @@ func  damage_healt_color_bg():
 	pass
 func flash_damage():
 	for i in range(N_FLASHES * 2):
-		var color = $base.modulate  if i % 2 == 1 else  flash_color
+		var color = $Base.modulate if i % 2 == 1 else  flash_color
 		var time = FLASH_RATE * i +FLASH_RATE
 		flash_turret_tween.interpolate_callback($Base,time, "set", "modulate", color)
+	flash_turret_tween.start()
