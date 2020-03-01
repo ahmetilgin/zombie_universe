@@ -65,8 +65,10 @@ func create_zombie_dead_timer():
 	zombie_dead_timer.set_wait_time(2)
 	add_child(zombie_dead_timer) #to process
 	zombie_dead_timer.connect("timeout",self, "_zombie_dead_timer_timeout") 
+	
 func flash_zombie_tween():
 	add_child(flash_zombie_tween)
+	
 func create_zombie_attack_timer():
 	zombie_attack_timer.set_one_shot(true)
 	zombie_attack_timer.set_wait_time(1)
@@ -255,7 +257,6 @@ func _jump_is_on_wall():
 	if attack_ray_cast.is_colliding():
 		var playerFound = false
 		is_zombie_action = false
-		print(attack_ray_cast.get_collider().name)
 		if "player" in attack_ray_cast.get_collider().name:
 			playerFound = true
 			_zombie_attack_to_player(5)
