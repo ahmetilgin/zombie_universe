@@ -34,20 +34,33 @@ var current_bullet_power = 3
 var is_attack = false
 var is_down = false
 var is_dead = false
-var is_hurt = false
+#var is_hurt = false
 var is_melee = false
 var is_shift_stop = false
 var bullet_size = 20
 var change_color_tween= Tween.new()
- 
-var healt_75 = null
-var healt_50 = null
-var healt_25 = null
+var pulse_tween= Tween.new()
+var healt_perfect = null
+var healt_caution = null
+var healt_little = null
+var healt_danger = null
+
+
+const FLASH_RATE =0.05
+const N_FLASHES = 4
+
+var healty_color = Color.green
+var caution_color = Color.yellow
+var danger_color = Color.red
+var pulse_color = Color.darkred
+var flash_color = Color.orangered
+
+
+var flash_tween= Tween.new()
 
 onready var bullet_number = get_node("../Game_UI/bullet_counter")
 onready var player_health = get_node("../Game_UI/Player_Health")
 onready var player_health_back = get_node("../Game_UI/Player_Health_Back")
-onready var updated_tween = get_node("../Game_UI/Updated_Tween")
 const basic_zombie = preload("res://Scenes/KinematicScenes/Zombies/SimpleZombie/SimpleZombie.tscn")
 #basic zombie nerede kullanıyor??
 var slow_shot_timer = Timer.new()
@@ -58,6 +71,11 @@ func _create_zombie_shot_slow_timer():
 
 func color_change_tween():
 	add_child(change_color_tween) #to process
+func pulse_tween():
+	add_child(pulse_tween) #to process
+	pulse_tween.set_repeat(true)
+func flash_tween():
+	add_child(flash_tween) #to process
 
 func increase_bullet_count(bullet_count):
 	bullet_size += bullet_count
@@ -65,11 +83,13 @@ func increase_bullet_count(bullet_count):
 	
 func _ready():
 	_create_zombie_shot_slow_timer()
- 
+	flash_tween()
+	pulse_tween()
 	color_change_tween()
-	healt_75 = true
-	healt_50 = true
-	healt_25 = true
+	healt_perfect = true
+	healt_caution= true
+	healt_little = true
+	healt_danger = true
 
 
 func _on_slow_motion_timer_start():
@@ -124,7 +144,7 @@ func _is_movable():
 	return !is_melee && !is_attack && !is_down
 
 func _is_idle():
-	return !is_down && !is_melee && !is_attack && !is_hurt
+	return !is_down && !is_melee && !is_attack# && !is_hurt
 
 func _play_animation(animation_state):
 	$AnimationPlayer.play(animation_state)
@@ -185,7 +205,7 @@ func _get_motion():
 func _clear_states():
 	is_attack=false
 	is_down=false
-	is_hurt=false
+	#is_hurt=false
 	is_melee=false
 	$CollisionShape2D.scale = Vector2 (1, 1)
 	$CollisionShape2D.position.y=11
@@ -211,7 +231,7 @@ func _physics_process(delta):
 				_set_shift_stop(true)
 				_play_idle_animation()							
 		if Input.is_action_just_pressed("ui_down") or touch_down:
-			if is_hurt==false && is_on_floor():
+			if  is_on_floor() : # && is_hurt==false :
 				if is_melee==false:
 					_set_is_down(true)
 					_play_slide_animation()
@@ -268,20 +288,20 @@ func _physics_process(delta):
 func dead(damage,whodead):
 	if !_is_dead():
 		hp -= damage
+		flash_damage()
 		damage_healt_color_change()
 		healt_color()
 		player_health.set_value(hp)
-		updated_tween.interpolate_property(player_health,"value",player_health.value,hp,0.4,Tween.TRANS_SINE,Tween.EASE_IN_OUT)
-		updated_tween.start()
+
 		if hp < 0:
 			_set_dead(true)
 			motion=Vector2(0,0)
 			$AnimationPlayer.play("deadAk47")
 			emit_signal("dead_signal")
 			$player_dead_timer.start()#karakter hareket etmeyince timerin içine girmiyor
-		else:
-			is_hurt=true
-			$AnimationPlayer.play("HurtAk47")
+#		else:
+#			is_hurt=true
+#			$AnimationPlayer.play("HurtAk47")
 
 func _on_AnimatedSprite_animation_finished():
 	_clear_states()
@@ -305,28 +325,47 @@ func tramboline_jump():
 		if tramb_count>6:
 			tramb_count=6
 		$jump_counter_time.start()
-func healt_color():
+func healt_color(): #?  sürekli iflere girmesin mi girsinmi
+	if  hp > 75  and healt_perfect :
+		change_color_tween.interpolate_property(player_health,'tint_progress',Color(0,1,0,1),
+								healty_color,0.5,Tween.TRANS_QUAD,Tween.EASE_IN_OUT)
 	
-	if  hp > 60  and healt_75 :
-		change_color_tween.interpolate_property(player_health,'modulate',Color(0,1,0,1),
-								Color(0,0.8,0,1),0.5,Tween.TRANS_QUAD,Tween.EASE_IN_OUT)
-		healt_75 = false
-	 
-	elif hp < 60 and hp > 35 and healt_50:
-		change_color_tween.interpolate_property(player_health,'modulate',Color(0,8,0,1),
-								Color(1,1,0,1),0.5,Tween.TRANS_QUAD,Tween.EASE_IN_OUT)
-		healt_50 = false
-	 
-	elif  hp < 35  and healt_25:
-		change_color_tween.interpolate_property(player_health,'modulate',Color(1,1,0,1),
-								Color(0.8,0,0,1),0.5,Tween.TRANS_QUAD,Tween.EASE_IN_OUT)
-		healt_25 = false
+		healt_perfect = false
+		pulse_tween.set_active(false)
+	elif hp < 75 and hp > 35 and healt_caution:
+		change_color_tween.interpolate_property(player_health,'tint_progress',healty_color,
+								caution_color,0.5,Tween.TRANS_QUAD,Tween.EASE_IN_OUT)
+		healt_caution = false
+		pulse_tween.set_active(false)
+
+	elif  hp < 35 and hp > 20 and healt_little:
+		change_color_tween.interpolate_property(player_health,'tint_progress',caution_color,
+								danger_color,0.5,Tween.TRANS_QUAD,Tween.EASE_IN_OUT)
+	
+		healt_little = false
+	
+	elif  hp < 20  and healt_danger:
+		pulse_tween.set_active(true)
+		
+		pulse_tween.interpolate_property(player_health,"tint_progress",pulse_color,danger_color,1.2,Tween.TRANS_SINE,Tween.EASE_IN_OUT)
+		
+		pulse_tween.start()
+		healt_danger = false
 	change_color_tween.start()
 	yield(change_color_tween, "tween_completed")
-	
+
+func flash_damage():
+	for i in range(N_FLASHES * 2):
+		var color = player_health.tint_progress  if i % 2 == 1 else  flash_color
+		var human_visible = true if i % 2 == 1 else  false
+		var time = FLASH_RATE * i +FLASH_RATE
+		flash_tween.interpolate_callback($human,time, "set", "visible", human_visible)
+		flash_tween.interpolate_callback(player_health,time, "set", "tint_progress", color)
+	flash_tween.start()
 func damage_healt_color_change():
+	change_color_tween.start()
 	change_color_tween.interpolate_property(player_health_back,'value',player_health_back.get_value(),
-								hp,0.3,Tween.TRANS_QUAD,Tween.EASE_IN_OUT)
+								hp,0.6,Tween.TRANS_QUAD,Tween.EASE_IN_OUT)
 	player_health_back.set_value(hp)
 	pass
 

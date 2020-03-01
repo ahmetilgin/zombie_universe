@@ -227,7 +227,7 @@ emission_shape = 2
 emission_box_extents = Vector3( 2000, 1, 1 )
 flag_disable_z = true
 gravity = Vector3( 30, 50, 0 )
-angular_velocity = 1.87276e-26
+angular_velocity = 1.87276e-026
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 1.2
@@ -337,8 +337,6 @@ texture_progress = SubResource( 13 )
 nine_patch_stretch = true
 
 [node name="Player_Health" type="TextureProgress" parent="Game_UI"]
-modulate = Color( 0.0392157, 0.576471, 0.0509804, 1 )
-self_modulate = Color( 0.909804, 0.85098, 0.85098, 1 )
 margin_left = 149.992
 margin_top = 39.245
 margin_right = 274.992
@@ -347,12 +345,15 @@ rect_scale = Vector2( 1.01, 0.4 )
 value = 100.0
 rounded = true
 texture_progress = SubResource( 14 )
+tint_progress = Color( 0, 1, 0, 1 )
 nine_patch_stretch = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Updated_Tween" type="Tween" parent="Game_UI"]
+repeat = true
+playback/repeat = true
 
 [node name="level_text" type="RichTextLabel" parent="Game_UI"]
 margin_left = 502.0

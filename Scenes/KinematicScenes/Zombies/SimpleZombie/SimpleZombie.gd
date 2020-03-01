@@ -20,6 +20,10 @@ var player_found_icon = TextureRect.new()
 
 const gravity=20
 
+const FLASH_RATE =0.05
+const N_FLASHES = 4
+var flash_zombie_tween = Tween.new()
+
 export (int) var hp=1
 export (int) var speed=200
 var motion=Vector2(0,0)
@@ -61,7 +65,8 @@ func create_zombie_dead_timer():
 	zombie_dead_timer.set_wait_time(2)
 	add_child(zombie_dead_timer) #to process
 	zombie_dead_timer.connect("timeout",self, "_zombie_dead_timer_timeout") 
-
+func flash_zombie_tween():
+	add_child(flash_zombie_tween)
 func create_zombie_attack_timer():
 	zombie_attack_timer.set_one_shot(true)
 	zombie_attack_timer.set_wait_time(1)
@@ -87,6 +92,7 @@ func _ready():
 	create_zombie_follow_timer()
 	create_zombie_attack_timer()
 	add_attack_ray_cast()
+	flash_zombie_tween()
 #	create_zombie_found_player_label()
 
 
@@ -133,7 +139,7 @@ func get_next_target_point():
 
 func check_zombie_found_player():
 	if get_zombie_and_player_distance() < 80:
-		_zombie_attack_to_player(15)
+		_zombie_attack_to_player(5)
 		motion.x= 0
 		if !FollowPlayerTimer.is_stopped():
 			FollowPlayerTimer.stop()
@@ -197,6 +203,7 @@ func create_extra_resources():
 
 func dead(damage,whodead):
 	hp-=damage
+	flash_damage()
 	if hp < 0 and !is_dead:
 		is_dead=true
 
@@ -211,8 +218,8 @@ func dead(damage,whodead):
 		$CollisionShape2D.set_deferred("disabled",true)
 		zombie_dead_timer.start()
 	else:
-		is_hurt=true
-		zombie_hurt_player.play()
+#		is_hurt=true
+#		zombie_hurt_player.play()
 		var back = 0;
 		if get_parent().get_node("player").get_global_position().x < get_global_position().x:
 			back = 400
@@ -223,6 +230,7 @@ func dead(damage,whodead):
 
 func dead_from_turrent(damage,whodead,dir):
 	hp-=damage
+	flash_damage()
 	if hp<0:
 		if whodead=="player":
 			get_parent().get_node("player").increase_dead_counter()
@@ -233,15 +241,15 @@ func dead_from_turrent(damage,whodead,dir):
 		$CollisionShape2D.set_deferred("disabled",true)
 		zombie_dead_timer.start()
 	else:
-		is_hurt=true
-		zombie_hurt_player.play()
+#		is_hurt=true
+#		zombie_hurt_player.play()
 		var back = 0;
 		if get_parent().get_node(whodead).get_global_position().x > get_global_position().x:
 			back = 400
 		else:
 			back = -400
 		motion = move_and_slide(Vector2(dir.x*(motion.x + back), dir.y*(motion.y + back) - gravity) , UP)
-		$AnimationPlayer.play("Hurt")
+		
 		
 func _jump_is_on_wall():
 	if attack_ray_cast.is_colliding():
@@ -250,7 +258,7 @@ func _jump_is_on_wall():
 
 		if "player" in attack_ray_cast.get_collider().name:
 			playerFound = true
-			_zombie_attack_to_player(25)
+			_zombie_attack_to_player(5)
 		if "Top" in attack_ray_cast.get_collider().name:
 			$AnimationPlayer.play("Attack")
 			var colliding_turret = attack_ray_cast.attack_ray_cast.get_collider().get_parent().get_parent()
@@ -291,3 +299,9 @@ func _zombie_attack_to_player(damage):
 
 func _on_AnimationPlayer_animation_finished(Hurt):
 	is_hurt=false
+func flash_damage():
+	for i in range(N_FLASHES * 2):
+		var zombie_visible = true if i % 2 == 1 else  false
+		var time = FLASH_RATE * i +FLASH_RATE
+		flash_zombie_tween.interpolate_callback($Zombie,time, "set", "visible", zombie_visible)
+	flash_zombie_tween.start()
