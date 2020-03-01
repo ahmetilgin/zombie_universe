@@ -9,7 +9,7 @@ var turret_health = 100
 var zombie_attack_timer = Timer.new()
 var zombie_attack_power = 0
 var change_color_tween= Tween.new()
-var damage_healt_color_timer= Timer.new()
+ 
 var healt_75 = null
 var healt_50 = null
 var healt_25 = null
@@ -24,12 +24,7 @@ func color_change_tween():
 	add_child(change_color_tween) #to process
  
 
-func damage_healt_color_timer():
-	damage_healt_color_timer.set_one_shot(true)
-	damage_healt_color_timer.set_wait_time(0.1)
-	add_child(damage_healt_color_timer) #to process
-	damage_healt_color_timer.connect("timeout",self, "on_damage_healt_color_timer") 	
-
+ 
  
 func create_zombie_attack_timer():
 	zombie_attack_timer.set_one_shot(true)
@@ -50,7 +45,7 @@ func _fire_bullet():
 func _ready():
 	create_turret_attack_timer()
 	create_zombie_attack_timer()
-	damage_healt_color_timer()
+ 
 	color_change_tween()
 	healt_75 = true
 	healt_50 = true
@@ -91,7 +86,7 @@ func fire_on_zombie():
 func _zombie_attack():
 	turret_health = turret_health + zombie_attack_power
 	$TurretHealth.set_value(turret_health)
-	damage_healt_color_timer.start()
+	damage_healt_color_bg()
 	healt_color()
 	if(turret_health <= 0):
 		queue_free()
@@ -119,6 +114,8 @@ func healt_color():
 	change_color_tween.start()
 	yield(change_color_tween, "tween_completed")
 	
-func on_damage_healt_color_timer():
+func  damage_healt_color_bg():
+	change_color_tween.interpolate_property($TurretHealthBack,'value',$TurretHealthBack.get_value(),
+								turret_health,0.3,Tween.TRANS_QUAD,Tween.EASE_IN_OUT)
 	$TurretHealthBack.set_value(turret_health)
 	pass

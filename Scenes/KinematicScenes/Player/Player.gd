@@ -39,7 +39,7 @@ var is_melee = false
 var is_shift_stop = false
 var bullet_size = 20
 var change_color_tween= Tween.new()
-var damage_healt_color_timer= Timer.new()
+ 
 var healt_75 = null
 var healt_50 = null
 var healt_25 = null
@@ -55,11 +55,7 @@ func _create_zombie_shot_slow_timer():
 	slow_shot_timer.connect("timeout",self,"_on_slow_motion_timer_start") 
 	add_child(slow_shot_timer) #to process
 	slow_shot_timer.set_wait_time(0.1)
-func damage_healt_color_timer():
-	damage_healt_color_timer.set_one_shot(true)
-	damage_healt_color_timer.set_wait_time(0.5)
-	add_child(damage_healt_color_timer) #to process
-	damage_healt_color_timer.connect("timeout",self, "on_damage_healt_color_timer") 	
+
 func color_change_tween():
 	add_child(change_color_tween) #to process
 
@@ -69,7 +65,7 @@ func increase_bullet_count(bullet_count):
 	
 func _ready():
 	_create_zombie_shot_slow_timer()
-	damage_healt_color_timer()
+ 
 	color_change_tween()
 	healt_75 = true
 	healt_50 = true
@@ -272,7 +268,7 @@ func _physics_process(delta):
 func dead(damage,whodead):
 	if !_is_dead():
 		hp -= damage
-		damage_healt_color_timer.start()
+		damage_healt_color_change()
 		healt_color()
 		player_health.set_value(hp)
 		updated_tween.interpolate_property(player_health,"value",player_health.value,hp,0.4,Tween.TRANS_SINE,Tween.EASE_IN_OUT)
@@ -328,7 +324,9 @@ func healt_color():
 	change_color_tween.start()
 	yield(change_color_tween, "tween_completed")
 	
-func on_damage_healt_color_timer():
+func damage_healt_color_change():
+	change_color_tween.interpolate_property(player_health_back,'value',player_health_back.get_value(),
+								hp,0.3,Tween.TRANS_QUAD,Tween.EASE_IN_OUT)
 	player_health_back.set_value(hp)
 	pass
 
