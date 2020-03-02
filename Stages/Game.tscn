@@ -492,6 +492,7 @@ volume_db = -31.424
 autoplay = true
 
 [node name="Market" parent="." instance=ExtResource( 21 )]
+layer = 128
 offset = Vector2( -420, 0 )
 transform = Transform2D( 1, 0, 0, 1, -420, 0 )
 
