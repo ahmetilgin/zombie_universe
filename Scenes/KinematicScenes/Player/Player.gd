@@ -316,7 +316,25 @@ func _on_Area2D_body_entered(body):
 func _on_mele_flip_h_true_body_entered(body):
 	if "Zombie" in body.name:
 		body.dead(1,"Zombie") 
+func healt_kit(healt):
+	hp += healt
+	change_color_tween.start()
+	change_color_tween.interpolate_property(player_health_back,'value',player_health_back.get_value(),
+								hp,0.6,Tween.TRANS_QUAD,Tween.EASE_IN_OUT)
+	player_health_back.set_value(hp)
+	if  hp > 75 :
+		healt_perfect = true
+	 
+	elif hp < 75 and hp > 35 :
+		healt_caution = true
+		 
 
+	elif  hp < 35 and hp > 20:
+		healt_little = true
+	
+	elif  hp < 20 :
+		healt_danger = true
+	healt_color()
 func tramboline_jump():
 
 		tramb_count+=1
@@ -343,7 +361,7 @@ func healt_color(): #?  sürekli iflere girmesin mi girsinmi
 								danger_color,0.5,Tween.TRANS_QUAD,Tween.EASE_IN_OUT)
 	
 		healt_little = false
-	
+		pulse_tween.set_active(false)
 	elif  hp < 20  and healt_danger:
 		pulse_tween.set_active(true)
 		

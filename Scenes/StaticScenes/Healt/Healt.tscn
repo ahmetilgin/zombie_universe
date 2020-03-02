@@ -1,0 +1,50 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Scenes/StaticScenes/Healt/Healt.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Sprites/Healt/heal1.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Sprites/Healt/heal2.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Sprites/Healt/heal3.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Sprites/Healt/heal4.png" type="Texture" id=5]
+[ext_resource path="res://Resources/Sprites/Healt/heal5.png" type="Texture" id=6]
+[ext_resource path="res://Resources/Sprites/Healt/heal6.png" type="Texture" id=7]
+[ext_resource path="res://Resources/Sprites/Healt/heal7.png" type="Texture" id=8]
+[ext_resource path="res://Resources/Sprites/Healt/heal8.png" type="Texture" id=9]
+[ext_resource path="res://Resources/Sprites/Healt/heal9.png" type="Texture" id=10]
+[ext_resource path="res://Resources/Sprites/Healt/heal10.png" type="Texture" id=11]
+[ext_resource path="res://Resources/Sprites/Healt/heal11.png" type="Texture" id=12]
+[ext_resource path="res://Resources/Sprites/Healt/heal12.png" type="Texture" id=13]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 20.065, 12.9805 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "Healt",
+"speed": 5.0
+} ]
+
+[node name="Healt" type="Area2D"]
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -0.702051, 0.624471 )
+scale = Vector2( 0.120222, 0.178328 )
+frames = SubResource( 2 )
+animation = "Healt"
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Ground" type="RayCast2D" parent="."]
+enabled = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+attenuation = 0.189465
+[connection signal="body_entered" from="." to="." method="_on_Healt_body_entered"]
