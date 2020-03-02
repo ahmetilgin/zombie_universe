@@ -90,6 +90,8 @@ func _ready():
 	healt_caution= true
 	healt_little = true
 	healt_danger = true
+	if OS.get_name() == "Windows" or OS.get_name() == "OSX" or OS.get_name() == "X11":
+		$Controller/Node2D.visible = false
 
 
 func _on_slow_motion_timer_start():
@@ -327,7 +329,6 @@ func healt_kit(healt):
 	 
 	elif hp < 75 and hp > 35 :
 		healt_caution = true
-		 
 
 	elif  hp < 35 and hp > 20:
 		healt_little = true
@@ -335,6 +336,7 @@ func healt_kit(healt):
 	elif  hp < 20 :
 		healt_danger = true
 	healt_color()
+	
 func tramboline_jump():
 
 		tramb_count+=1
@@ -344,7 +346,7 @@ func tramboline_jump():
 			tramb_count=6
 		$jump_counter_time.start()
 func healt_color(): #?  sürekli iflere girmesin mi girsinmi
-	if  hp > 75  and healt_perfect :
+	if  hp >= 75  and healt_perfect :
 		change_color_tween.interpolate_property(player_health,'tint_progress',Color(0,1,0,1),
 								healty_color,0.5,Tween.TRANS_QUAD,Tween.EASE_IN_OUT)
 	
@@ -356,13 +358,13 @@ func healt_color(): #?  sürekli iflere girmesin mi girsinmi
 		healt_caution = false
 		pulse_tween.set_active(false)
 
-	elif  hp < 35 and hp > 20 and healt_little:
+	elif  hp <= 35 and hp > 20 and healt_little:
 		change_color_tween.interpolate_property(player_health,'tint_progress',caution_color,
 								danger_color,0.5,Tween.TRANS_QUAD,Tween.EASE_IN_OUT)
 	
 		healt_little = false
 		pulse_tween.set_active(false)
-	elif  hp < 20  and healt_danger:
+	elif  hp <= 20  and healt_danger:
 		pulse_tween.set_active(true)
 		
 		pulse_tween.interpolate_property(player_health,"tint_progress",pulse_color,danger_color,1.2,Tween.TRANS_SINE,Tween.EASE_IN_OUT)
@@ -375,7 +377,7 @@ func healt_color(): #?  sürekli iflere girmesin mi girsinmi
 func flash_damage():
 	for i in range(N_FLASHES * 2):
 		var color = player_health.tint_progress  if i % 2 == 1 else  flash_color
-		var human_visible = true if i % 2 == 1 else  false
+		var human_visible = true if i % 2 == 1 else false
 		var time = FLASH_RATE * i +FLASH_RATE
 		flash_tween.interpolate_callback($human,time, "set", "visible", human_visible)
 		flash_tween.interpolate_callback(player_health,time, "set", "tint_progress", color)

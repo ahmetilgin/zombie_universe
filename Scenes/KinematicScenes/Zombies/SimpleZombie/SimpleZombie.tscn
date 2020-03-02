@@ -68,11 +68,6 @@ animations = [ {
 "name": "dead",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ) ],
-"loop": true,
-"name": "attack",
-"speed": 15.0
-}, {
 "frames": [ ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ) ],
 "loop": true,
 "name": "walk",
@@ -82,6 +77,11 @@ animations = [ {
 "loop": false,
 "name": "hurt",
 "speed": 10.0
+}, {
+"frames": [ ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ) ],
+"loop": true,
+"name": "attack",
+"speed": 15.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=3]
@@ -2295,7 +2295,7 @@ tracks/29/keys = {
 
 [sub_resource type="Animation" id=10]
 resource_name = "Run"
-length = 0.6
+length = 0.7
 loop = true
 step = 0.02
 tracks/0/type = "value"
@@ -2305,10 +2305,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.08, 0.2, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.08, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -0.162384, -110.2 ), Vector2( -16.8291, -109.089 ), Vector2( -24.6068, -110.2 ), Vector2( -9.05128, -114.645 ), Vector2( -0.162399, -107.978 ), Vector2( 17.6154, -107.978 ) ]
+"values": [ Vector2( -0.162384, -110.2 ), Vector2( -16.8291, -109.089 ), Vector2( -18.1254, -109.274 ), Vector2( -24.6068, -110.2 ), Vector2( -9.05128, -114.645 ), Vector2( -0.162399, -107.978 ), Vector2( 17.6154, -107.978 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Zombie/body:rotation_degrees")
@@ -2416,7 +2416,7 @@ tracks/9/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 29.2, -103.2, 14.0054, 65.8, 41.8311 ]
+"values": [ 29.2, -79.9723, 14.0054, 65.8, 41.8311 ]
 }
 tracks/10/type = "value"
 tracks/10/path = NodePath("Zombie/knees/knee1:position")
@@ -2440,7 +2440,7 @@ tracks/11/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 10.4472, -37.0776, -40.0395, -53.2122, -7.17052, -7.17052 ]
+"values": [ 10.4472, -22.2541, -40.0395, -53.2122, -7.17052, -7.17052 ]
 }
 tracks/12/type = "value"
 tracks/12/path = NodePath("Zombie/body/arm2/arm4/hand1:position")
@@ -2658,6 +2658,30 @@ tracks/29/keys = {
 "update": 0,
 "values": [ -16.2286, -11.5153, -14.9099, -14.9099, -7.90986, -11.2912 ]
 }
+tracks/30/type = "value"
+tracks/30/path = NodePath("Zombie:position")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 27.5298, 108.201 ) ]
+}
+tracks/31/type = "value"
+tracks/31/path = NodePath("Zombie:rotation_degrees")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
 
 [node name="Basic_Zombie" type="KinematicBody2D"]
 position = Vector2( 143.858, 80.457 )
@@ -2673,7 +2697,7 @@ position = Vector2( -7.88678, -29.4161 )
 scale = Vector2( 0.226092, 0.26536 )
 frames = SubResource( 2 )
 animation = "attack"
-frame = 5
+frame = 4
 playing = true
 centered = false
 
@@ -2684,7 +2708,6 @@ z_index = -1
 shape = SubResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Run"
 playback_speed = 1.5
 anims/Attack = SubResource( 4 )
 anims/Dead = SubResource( 5 )
@@ -2700,8 +2723,8 @@ scale = Vector2( 0.45, 0.45 )
 offset = Vector2( -197.291, -237.515 )
 
 [node name="body" type="Sprite" parent="Zombie"]
-position = Vector2( 17.6154, -107.978 )
-rotation = 0.320413
+position = Vector2( -0.162384, -110.2 )
+rotation = 0.198968
 scale = Vector2( 1, 0.822171 )
 texture = ExtResource( 47 )
 offset = Vector2( -2.10062, -42.884 )
@@ -2755,13 +2778,13 @@ texture = ExtResource( 50 )
 offset = Vector2( -0.808243, -54.8763 )
 
 [node name="knees" type="Sprite" parent="Zombie"]
-position = Vector2( 19.9232, -106.062 )
-rotation = -0.144187
+position = Vector2( 2.1454, -108.284 )
+rotation = -0.383972
 offset = Vector2( -157.399, -147.568 )
 
 [node name="knee1" type="Sprite" parent="Zombie/knees"]
 position = Vector2( 4.0397, 1.1409 )
-rotation = -0.647126
+rotation = 0.182338
 texture = ExtResource( 51 )
 offset = Vector2( 3.94447, 24.1033 )
 
@@ -2773,13 +2796,13 @@ offset = Vector2( 14.6099, 24.202 )
 
 [node name="foot" type="Sprite" parent="Zombie/knees/knee1/knee3"]
 position = Vector2( 21.8078, 44.2199 )
-rotation = -0.197069
+rotation = -0.283242
 texture = ExtResource( 53 )
 offset = Vector2( 13.0026, 4.88327 )
 
 [node name="knee2" type="Sprite" parent="Zombie/knees"]
 position = Vector2( -8.96851, 3.96829 )
-rotation = -1.80118
+rotation = 0.509636
 texture = ExtResource( 51 )
 offset = Vector2( 8.14999, 21.8527 )
 

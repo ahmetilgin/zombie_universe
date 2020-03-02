@@ -208,8 +208,6 @@ func dead(damage,whodead):
 	flash_damage()
 	if hp < 0 and !is_dead:
 		is_dead=true
-
-		emit_signal("dead_counter_for_wave")
 		if whodead=="player":
 			get_parent().get_node("player").increase_dead_counter()
 
@@ -228,7 +226,6 @@ func dead(damage,whodead):
 		else:
 			back = -400
 		motion = move_and_slide(Vector2(motion.x + back, motion.y) , UP)
-		$AnimationPlayer.play("Hurt")
 
 func dead_from_turrent(damage,whodead,dir):
 	hp-=damage

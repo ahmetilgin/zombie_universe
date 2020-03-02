@@ -24,7 +24,8 @@ atlas = ExtResource( 6 )
 region = Rect2( 930.725, 191.844, 390.48, 188.763 )
 
 [node name="Market" type="CanvasLayer"]
-layer = 10
+layer = 60
+follow_viewport_scale = 5.0
 script = ExtResource( 1 )
 
 [node name="MarketPalace" type="TextureRect" parent="."]
@@ -35,6 +36,9 @@ margin_right = 324.0
 margin_bottom = 799.0
 rect_scale = Vector2( 0.761802, 0.851395 )
 texture = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TurrenButton" type="TextureButton" parent="."]
 margin_left = 75.002
@@ -47,10 +51,10 @@ texture_normal = ExtResource( 3 )
 texture_focused = ExtResource( 4 )
 
 [node name="TurrenButton2" type="TextureButton" parent="."]
-margin_left = 73.6533
-margin_top = 373.0
-margin_right = 579.653
-margin_bottom = 504.0
+margin_left = 76.9113
+margin_top = 373.814
+margin_right = 582.911
+margin_bottom = 504.814
 rect_scale = Vector2( 0.41238, 0.450081 )
 action_mode = 0
 texture_normal = ExtResource( 3 )
@@ -76,10 +80,10 @@ text = "BUY
 "
 
 [node name="TurrentCoin" type="TextureRect" parent="."]
-margin_left = 290.501
-margin_top = 285.619
-margin_right = 2523.5
-margin_bottom = 2528.62
+margin_left = 296.203
+margin_top = 284.805
+margin_right = 2529.2
+margin_bottom = 2527.81
 rect_scale = Vector2( 0.0239306, 0.0231322 )
 texture = ExtResource( 7 )
 

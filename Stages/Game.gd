@@ -25,7 +25,7 @@ var is_create_instance = false
 var tile_grid 
 var countdown_timer = Timer.new()
 var is_countdown_pause_timer = false
-var pause_time = 59
+var pause_time = 19
 var counttimer
 var second_passed = true
 var portal_coordinates = [Vector2(9,2),Vector2(9,4),Vector2(9,6)]
@@ -76,7 +76,6 @@ func _ready():
 	get_node("CanvasLayer").add_child(gameover_scene.instance())
 	on_market_button_unvisible()
 	on_time_countdown_unvisible()
-		
 
 func on_time_countdown_visible():
 	$Game_UI/CountDownTimer.set_visible(true)

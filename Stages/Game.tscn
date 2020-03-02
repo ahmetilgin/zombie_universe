@@ -229,7 +229,7 @@ emission_shape = 2
 emission_box_extents = Vector3( 2000, 1, 1 )
 flag_disable_z = true
 gravity = Vector3( 30, 50, 0 )
-angular_velocity = 1.87276e-026
+angular_velocity = 1.87276e-26
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 1.2
@@ -468,7 +468,11 @@ margin_left = 76.0
 margin_right = 186.0
 margin_bottom = 40.0
 custom_fonts/normal_font = SubResource( 10 )
-text = "59"
+text = "20
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -514,7 +518,7 @@ __meta__ = {
 }
 
 [node name="GameAreaCam" type="Camera2D" parent="."]
-position = Vector2( 2445.62, 507.812 )
+position = Vector2( 1391.42, 1040.35 )
 scale = Vector2( -324.135, -89.984 )
 zoom = Vector2( 2.35, 2.35 )
 

@@ -64,7 +64,7 @@ func create_generate_wave_timer():
 
 func create_wave_paused_timer():
 	wave_paused_timer.set_one_shot(true)
-	wave_paused_timer.set_wait_time(60)
+	wave_paused_timer.set_wait_time(20)
 	add_child(wave_paused_timer) #to process
 	wave_paused_timer.connect("timeout",self, "_on_wave_paused_timer_timeout") 
 
@@ -89,8 +89,7 @@ func generate_Zombies():
 	
 func on_dead_counter_for_wave():
 	zombie_dead_counter += 1
-	print(get_global_position())
-	print(zombie_dead_counter)
+
 func _on_generate_zombie_timer_timeout():
 	zombie_generate_counter += 1
 	can_create_zombie = true

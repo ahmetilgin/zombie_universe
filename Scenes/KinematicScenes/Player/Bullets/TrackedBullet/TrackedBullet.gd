@@ -18,6 +18,8 @@ func set_bullet_direction(dir):
 		$Sprite.position.x+=45
 		$Sprite.play("shoots")
 		$CollisionShape2D.position.x+=45
+	else:
+		$Sprite.play("shoots")
 
 func _physics_process(delta):
 	motion.x=speed*delta*direction
