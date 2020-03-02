@@ -22,6 +22,7 @@ var tramb_count=1
 const jump = -900
 const gravity = 20
 # player options
+const max_hp = 100
 var hp = 100
 var speed = 150
 var max_speed = 300
@@ -40,11 +41,7 @@ var is_shift_stop = false
 var bullet_size = 20
 var change_color_tween= Tween.new()
 var pulse_tween= Tween.new()
-var healt_perfect = null
-var healt_caution = null
-var healt_little = null
-var healt_danger = null
-
+ 
 
 const FLASH_RATE =0.05
 const N_FLASHES = 4
@@ -55,8 +52,12 @@ var danger_color = Color.red
 var pulse_color = Color.darkred
 var flash_color = Color.orangered
 
+var healt_perfect_value = max_hp * 0.8
+var healt_caution_value = max_hp * 0.45
+var healt_danger_value = max_hp * 0.20
 
 var flash_tween= Tween.new()
+var flash_healtbar_tween= Tween.new() 
 
 onready var bullet_number = get_node("../Game_UI/bullet_counter")
 onready var player_health = get_node("../Game_UI/Player_Health")
@@ -76,7 +77,8 @@ func pulse_tween():
 	pulse_tween.set_repeat(true)
 func flash_tween():
 	add_child(flash_tween) #to process
-
+func flash_healtbar_tween():
+	add_child(flash_healtbar_tween) #to process
 func increase_bullet_count(bullet_count):
 	bullet_size += bullet_count
 	bullet_number.text=String(bullet_size)
@@ -86,10 +88,8 @@ func _ready():
 	flash_tween()
 	pulse_tween()
 	color_change_tween()
-	healt_perfect = true
-	healt_caution= true
-	healt_little = true
-	healt_danger = true
+	flash_healtbar_tween()
+ 
 	if OS.get_name() == "Windows" or OS.get_name() == "OSX" or OS.get_name() == "X11":
 		$Controller/Node2D.visible = false
 
@@ -320,6 +320,8 @@ func _on_mele_flip_h_true_body_entered(body):
 		body.dead(1,"Zombie") 
 func healt_kit(healt):
 	hp += healt
+	if hp > max_hp:
+		hp = max_hp
 	change_color_tween.start()
 	change_color_tween.interpolate_property(player_health_back,'value',player_health_back.get_value(),
 								hp,0.6,Tween.TRANS_QUAD,Tween.EASE_IN_OUT)
@@ -330,26 +332,21 @@ func healt_kit(healt):
 	healt_color_increase()
 	
 func healt_color_increase():
-	if  hp >= 80 :
-		healt_perfect = true
-		change_color_tween.interpolate_property(player_health,'tint_progress', healty_color, Color(0,1,0,1),
+	if  hp >= healt_perfect_value :
+		change_color_tween.interpolate_property(player_health,'tint_progress', caution_color,healty_color,
 								0.5,Tween.TRANS_QUAD,Tween.EASE_IN_OUT)
 		pulse_tween.set_active(false)
-	elif hp < 80 and hp > 45:
-		healt_caution = true
-		change_color_tween.interpolate_property(player_health,'tint_progress',caution_color, healty_color,
-								0.5,Tween.TRANS_QUAD,Tween.EASE_IN_OUT)
-		pulse_tween.set_active(false)
-	elif  hp <= 45 and hp > 25:
-		healt_little = true
+	elif hp < healt_perfect_value and hp > healt_caution_value:
 		change_color_tween.interpolate_property(player_health,'tint_progress',danger_color, caution_color,
 								0.5,Tween.TRANS_QUAD,Tween.EASE_IN_OUT)
 		pulse_tween.set_active(false)
-	elif  hp <= 25 :
-		healt_danger = true
-		pulse_tween.set_active(true)
-		pulse_tween.interpolate_property(player_health,"tint_progress",danger_color, pulse_color,1.2,Tween.TRANS_SINE,Tween.EASE_IN_OUT)
-		pulse_tween.start()
+	elif  hp <= healt_caution_value and hp > healt_danger_value:
+		change_color_tween.interpolate_property(player_health,'tint_progress',pulse_color, danger_color,
+								0.5,Tween.TRANS_QUAD,Tween.EASE_IN_OUT)
+		pulse_tween.set_active(false)
+	
+		
+
 		
 func tramboline_jump():
 
@@ -360,31 +357,26 @@ func tramboline_jump():
 			tramb_count=6
 		$jump_counter_time.start()
 func healt_color_decrease(): #?  sürekli iflere girmesin mi girsinmi
-	if  hp >= 80  and healt_perfect :
+	if  hp >= healt_perfect_value   :
 		change_color_tween.interpolate_property(player_health,'tint_progress',Color(0,1,0,1),
 								healty_color,0.5,Tween.TRANS_QUAD,Tween.EASE_IN_OUT)
 	
-		healt_perfect = false
+		 
 		pulse_tween.set_active(false)
-	elif hp < 80 and hp > 45 and healt_caution:
+	elif hp < healt_perfect_value and hp > healt_caution_value :
 		change_color_tween.interpolate_property(player_health,'tint_progress',healty_color,
 								caution_color,0.5,Tween.TRANS_QUAD,Tween.EASE_IN_OUT)
-		healt_caution = false
+		 
 		pulse_tween.set_active(false)
 
-	elif  hp <= 45 and hp > 25 and healt_little:
+	elif  hp <= healt_caution_value and hp > healt_danger_value :
 		change_color_tween.interpolate_property(player_health,'tint_progress',caution_color,
 								danger_color,0.5,Tween.TRANS_QUAD,Tween.EASE_IN_OUT)
-	
-		healt_little = false
 		pulse_tween.set_active(false)
-	elif  hp <= 25  and healt_danger:
+	elif  hp <= healt_danger_value  :
 		pulse_tween.set_active(true)
-		
 		pulse_tween.interpolate_property(player_health,"tint_progress",pulse_color,danger_color,1.2,Tween.TRANS_SINE,Tween.EASE_IN_OUT)
-		
 		pulse_tween.start()
-		healt_danger = false
 	change_color_tween.start()
 	yield(change_color_tween, "tween_completed")
 
@@ -394,8 +386,9 @@ func flash_damage():
 		var human_visible = true if i % 2 == 1 else false
 		var time = FLASH_RATE * i +FLASH_RATE
 		flash_tween.interpolate_callback($human,time, "set", "visible", human_visible)
-		flash_tween.interpolate_callback(player_health,time, "set", "tint_progress", color)
+		flash_healtbar_tween.interpolate_callback(player_health,time, "set", "tint_progress", color)
 	flash_tween.start()
+	flash_healtbar_tween.start()
 func damage_healt_color_change():
 	change_color_tween.start()
 	change_color_tween.interpolate_property(player_health_back,'value',player_health_back.get_value(),

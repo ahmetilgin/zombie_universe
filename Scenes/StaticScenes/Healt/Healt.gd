@@ -1,5 +1,6 @@
 extends Area2D
 var healt = 20
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimatedSprite.play("Healt")
@@ -19,7 +20,6 @@ var velocity = Vector2()  # the area's velocity
 func _on_Healt_body_entered(body):
 	if "player" in body.name:
 		body.healt_kit(healt)
-		 
 		set_deferred("monitoring",false)
 		$Tween.start()
 		$Timer.start()
