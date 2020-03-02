@@ -229,7 +229,7 @@ emission_shape = 2
 emission_box_extents = Vector3( 2000, 1, 1 )
 flag_disable_z = true
 gravity = Vector3( 30, 50, 0 )
-angular_velocity = 1.87276e-26
+angular_velocity = 1.87276e-026
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 1.2
@@ -528,5 +528,14 @@ position = Vector2( 458.862, 1872.39 )
 
 [node name="Healt" parent="." instance=ExtResource( 24 )]
 position = Vector2( 594.312, 954.096 )
+
+[node name="Healt2" parent="." instance=ExtResource( 24 )]
+position = Vector2( 2579, 1166.61 )
+
+[node name="Healt3" parent="." instance=ExtResource( 24 )]
+position = Vector2( 2332.18, 1157.17 )
+
+[node name="Healt4" parent="." instance=ExtResource( 24 )]
+position = Vector2( 2084.56, 291.762 )
 [connection signal="pressed" from="Game_UI/Market_Button" to="." method="_on_TouchScreenButton_pressed"]
 [connection signal="pressed" from="Market/accept_button" to="." method="_on_acceptbutton_pressed"]

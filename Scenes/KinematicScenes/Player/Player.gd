@@ -292,7 +292,7 @@ func dead(damage,whodead):
 		hp -= damage
 		flash_damage()
 		damage_healt_color_change()
-		healt_color()
+		healt_color_decrease()
 		player_health.set_value(hp)
 
 		if hp < 0:
@@ -323,20 +323,34 @@ func healt_kit(healt):
 	change_color_tween.start()
 	change_color_tween.interpolate_property(player_health_back,'value',player_health_back.get_value(),
 								hp,0.6,Tween.TRANS_QUAD,Tween.EASE_IN_OUT)
+	change_color_tween.interpolate_property(player_health,'value',player_health.get_value(),
+							hp,0.6,Tween.TRANS_QUAD,Tween.EASE_IN_OUT)
 	player_health_back.set_value(hp)
-	if  hp > 75 :
+	player_health.set_value(hp)
+	healt_color_increase()
+	
+func healt_color_increase():
+	if  hp >= 80 :
 		healt_perfect = true
-	 
-	elif hp < 75 and hp > 35 :
+		change_color_tween.interpolate_property(player_health,'tint_progress', healty_color, Color(0,1,0,1),
+								0.5,Tween.TRANS_QUAD,Tween.EASE_IN_OUT)
+		pulse_tween.set_active(false)
+	elif hp < 80 and hp > 45:
 		healt_caution = true
-
-	elif  hp < 35 and hp > 20:
+		change_color_tween.interpolate_property(player_health,'tint_progress',caution_color, healty_color,
+								0.5,Tween.TRANS_QUAD,Tween.EASE_IN_OUT)
+		pulse_tween.set_active(false)
+	elif  hp <= 45 and hp > 25:
 		healt_little = true
-	
-	elif  hp < 20 :
+		change_color_tween.interpolate_property(player_health,'tint_progress',danger_color, caution_color,
+								0.5,Tween.TRANS_QUAD,Tween.EASE_IN_OUT)
+		pulse_tween.set_active(false)
+	elif  hp <= 25 :
 		healt_danger = true
-	healt_color()
-	
+		pulse_tween.set_active(true)
+		pulse_tween.interpolate_property(player_health,"tint_progress",danger_color, pulse_color,1.2,Tween.TRANS_SINE,Tween.EASE_IN_OUT)
+		pulse_tween.start()
+		
 func tramboline_jump():
 
 		tramb_count+=1
@@ -345,26 +359,26 @@ func tramboline_jump():
 		if tramb_count>6:
 			tramb_count=6
 		$jump_counter_time.start()
-func healt_color(): #?  sürekli iflere girmesin mi girsinmi
-	if  hp >= 75  and healt_perfect :
+func healt_color_decrease(): #?  sürekli iflere girmesin mi girsinmi
+	if  hp >= 80  and healt_perfect :
 		change_color_tween.interpolate_property(player_health,'tint_progress',Color(0,1,0,1),
 								healty_color,0.5,Tween.TRANS_QUAD,Tween.EASE_IN_OUT)
 	
 		healt_perfect = false
 		pulse_tween.set_active(false)
-	elif hp < 75 and hp > 35 and healt_caution:
+	elif hp < 80 and hp > 45 and healt_caution:
 		change_color_tween.interpolate_property(player_health,'tint_progress',healty_color,
 								caution_color,0.5,Tween.TRANS_QUAD,Tween.EASE_IN_OUT)
 		healt_caution = false
 		pulse_tween.set_active(false)
 
-	elif  hp <= 35 and hp > 20 and healt_little:
+	elif  hp <= 45 and hp > 25 and healt_little:
 		change_color_tween.interpolate_property(player_health,'tint_progress',caution_color,
 								danger_color,0.5,Tween.TRANS_QUAD,Tween.EASE_IN_OUT)
 	
 		healt_little = false
 		pulse_tween.set_active(false)
-	elif  hp <= 20  and healt_danger:
+	elif  hp <= 25  and healt_danger:
 		pulse_tween.set_active(true)
 		
 		pulse_tween.interpolate_property(player_health,"tint_progress",pulse_color,danger_color,1.2,Tween.TRANS_SINE,Tween.EASE_IN_OUT)
