@@ -11,7 +11,7 @@
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 800.908, 912.725, 553.266, 806.717 )
+region = Rect2( 3575.07, 183.688, 724.365, 169.428 )
 
 [sub_resource type="AtlasTexture" id=2]
 flags = 4
@@ -31,40 +31,40 @@ script = ExtResource( 1 )
 modulate = Color( 1, 1, 1, 0.572549 )
 margin_left = 2.0
 margin_top = 107.0
-margin_right = 324.0
-margin_bottom = 799.0
-rect_scale = Vector2( 0.761802, 0.851395 )
+margin_right = 631.0
+margin_bottom = 913.0
+rect_scale = Vector2( 3.902, 0.771 )
 texture = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TurrenButton" type="TextureButton" parent="."]
-margin_left = 75.002
-margin_top = 284.953
-margin_right = 581.002
-margin_bottom = 415.953
-rect_scale = Vector2( 0.41238, 0.468576 )
+margin_left = 71.7485
+margin_top = 139.471
+margin_right = 577.748
+margin_bottom = 270.471
+rect_scale = Vector2( 0.252, 0.252 )
 action_mode = 0
 texture_normal = ExtResource( 3 )
 texture_focused = ExtResource( 4 )
 
 [node name="TurrenButton2" type="TextureButton" parent="."]
-margin_left = 76.9113
-margin_top = 373.814
-margin_right = 582.911
-margin_bottom = 504.814
-rect_scale = Vector2( 0.41238, 0.450081 )
+margin_left = 259.35
+margin_top = 142.358
+margin_right = 765.35
+margin_bottom = 273.358
+rect_scale = Vector2( 0.252, 0.252 )
 action_mode = 0
 texture_normal = ExtResource( 3 )
 texture_focused = ExtResource( 5 )
 
 [node name="BuyButton" type="TextureButton" parent="."]
-margin_left = 140.123
-margin_top = 636.189
-margin_right = 516.123
-margin_bottom = 814.189
-rect_scale = Vector2( 0.357216, 0.20382 )
+margin_left = 2510.81
+margin_top = 123.493
+margin_right = 2886.81
+margin_bottom = 301.493
+rect_scale = Vector2( 0.317, 0.204 )
 texture_normal = SubResource( 2 )
 texture_pressed = SubResource( 3 )
 
@@ -79,11 +79,11 @@ text = "BUY
 "
 
 [node name="TurrentCoin" type="TextureRect" parent="."]
-margin_left = 296.203
-margin_top = 284.805
-margin_right = 2529.2
-margin_bottom = 2527.81
-rect_scale = Vector2( 0.0239306, 0.0231322 )
+margin_left = 124.619
+margin_top = 185.037
+margin_right = 2357.62
+margin_bottom = 2428.04
+rect_scale = Vector2( 0.015, 0.015 )
 texture = ExtResource( 7 )
 
 [node name="Label" type="Label" parent="TurrentCoin"]
@@ -97,11 +97,11 @@ text = "20
 "
 
 [node name="TurrentCoin2" type="TextureRect" parent="."]
-margin_left = 295.942
-margin_top = 376.311
-margin_right = 2528.94
-margin_bottom = 2619.31
-rect_scale = Vector2( 0.0239306, 0.0231322 )
+margin_left = 331.871
+margin_top = 184.873
+margin_right = 2564.87
+margin_bottom = 2427.88
+rect_scale = Vector2( 0.015, 0.015 )
 texture = ExtResource( 7 )
 
 [node name="Label" type="Label" parent="TurrentCoin2"]

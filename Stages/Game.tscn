@@ -493,15 +493,15 @@ autoplay = true
 
 [node name="Market" parent="." instance=ExtResource( 21 )]
 layer = 128
-offset = Vector2( -420, 0 )
-transform = Transform2D( 1, 0, 0, 1, -420, 0 )
+offset = Vector2( 0, 1818 )
+transform = Transform2D( 1, 0, 0, 1, 0, 1818 )
 
 [node name="accept_button" type="TextureButton" parent="Market"]
-margin_left = 911.114
-margin_top = 677.609
-margin_right = 1286.11
-margin_bottom = 862.609
-rect_scale = Vector2( 0.411429, 0.445503 )
+margin_left = 2512.05
+margin_top = 175.449
+margin_right = 2887.05
+margin_bottom = 360.449
+rect_scale = Vector2( 0.316332, 0.219774 )
 texture_normal = SubResource( 21 )
 texture_pressed = SubResource( 22 )
 
@@ -519,9 +519,9 @@ __meta__ = {
 }
 
 [node name="GameAreaCam" type="Camera2D" parent="."]
-position = Vector2( 1391.42, 1040.35 )
+position = Vector2( 1406.14, 1023.68 )
 scale = Vector2( -324.135, -89.984 )
-zoom = Vector2( 2.35, 2.35 )
+zoom = Vector2( 2.34, 2.55 )
 
 [node name="Turret" parent="." instance=ExtResource( 23 )]
 position = Vector2( 458.862, 1872.39 )

@@ -88,11 +88,11 @@ func on_market_button_visible():
 	pass
 	
 func hide_market():
-	$Market.set_offset(Vector2(-420,0))
+	$Market.set_offset(Vector2(-2800,1818))
 	turret_cancelled()
 	
 func show_market():
-	$Market.set_offset(Vector2(-5,0))
+	$Market.set_offset(Vector2(0,1818))
 	
 func on_market_button_unvisible():
 	$Game_UI/Market_Button.disabled = true
