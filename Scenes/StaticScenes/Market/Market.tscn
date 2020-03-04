@@ -28,45 +28,94 @@ layer = 0
 script = ExtResource( 1 )
 
 [node name="MarketPalace" type="TextureRect" parent="."]
-modulate = Color( 1, 1, 1, 0.572549 )
-margin_left = 2.0
-margin_top = 107.0
-margin_right = 631.0
-margin_bottom = 913.0
-rect_scale = Vector2( 3.902, 0.771 )
+margin_left = -22.0
+margin_top = -8.0
+margin_right = 688.0
+margin_bottom = 235.0
+rect_scale = Vector2( 3.97094, 0.747473 )
 texture = SubResource( 1 )
+expand = true
+stretch_mode = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TurrenButton" type="TextureButton" parent="."]
-margin_left = 71.7485
-margin_top = 139.471
-margin_right = 577.748
-margin_bottom = 270.471
-rect_scale = Vector2( 0.252, 0.252 )
+[node name="TurrenButton" type="TextureButton" parent="MarketPalace"]
+margin_left = 23.5741
+margin_top = 64.9163
+margin_right = 529.574
+margin_bottom = 195.916
+rect_scale = Vector2( 0.0705403, 0.36017 )
 action_mode = 0
 texture_normal = ExtResource( 3 )
 texture_focused = ExtResource( 4 )
 
-[node name="TurrenButton2" type="TextureButton" parent="."]
-margin_left = 259.35
-margin_top = 142.358
-margin_right = 765.35
-margin_bottom = 273.358
-rect_scale = Vector2( 0.252, 0.252 )
+[node name="TurrenButton2" type="TextureButton" parent="MarketPalace"]
+margin_left = 70.0977
+margin_top = 58.4322
+margin_right = 576.098
+margin_bottom = 189.432
+rect_scale = Vector2( 0.0746434, 0.455041 )
 action_mode = 0
 texture_normal = ExtResource( 3 )
 texture_focused = ExtResource( 5 )
 
+[node name="TurrentCoin" type="TextureRect" parent="MarketPalace"]
+margin_left = 45.2214
+margin_top = 127.563
+margin_right = 2278.22
+margin_bottom = 2370.57
+rect_scale = Vector2( 0.00678926, 0.0319812 )
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MarketPalace/TurrentCoin"]
+margin_left = 890.302
+margin_top = 716.576
+margin_right = 930.302
+margin_bottom = 747.576
+rect_scale = Vector2( 48.3624, 70.4237 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "20
+"
+
+[node name="TurrentCoin2" type="TextureRect" parent="MarketPalace"]
+margin_left = 92.3262
+margin_top = 124.293
+margin_right = 2325.33
+margin_bottom = 2367.3
+rect_scale = Vector2( 0.00673848, 0.0333171 )
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MarketPalace/TurrentCoin2"]
+margin_left = 890.302
+margin_top = 716.576
+margin_right = 930.302
+margin_bottom = 747.576
+rect_scale = Vector2( 48.3624, 70.4237 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "20
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="BuyButton" type="TextureButton" parent="."]
-margin_left = 2510.81
-margin_top = 123.493
-margin_right = 2886.81
-margin_bottom = 301.493
-rect_scale = Vector2( 0.317, 0.204 )
+margin_left = 2405.66
+margin_top = 7.16402
+margin_right = 2781.66
+margin_bottom = 185.164
+rect_scale = Vector2( 0.507753, 0.281815 )
 texture_normal = SubResource( 2 )
 texture_pressed = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="BuyLabel" type="Label" parent="BuyButton"]
 margin_left = 116.228
@@ -77,42 +126,6 @@ rect_scale = Vector2( 5.40589, 9.92518 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "BUY
 "
-
-[node name="TurrentCoin" type="TextureRect" parent="."]
-margin_left = 124.619
-margin_top = 185.037
-margin_right = 2357.62
-margin_bottom = 2428.04
-rect_scale = Vector2( 0.015, 0.015 )
-texture = ExtResource( 7 )
-
-[node name="Label" type="Label" parent="TurrentCoin"]
-margin_left = 890.302
-margin_top = 716.576
-margin_right = 930.302
-margin_bottom = 747.576
-rect_scale = Vector2( 48.3624, 70.4237 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "20
-"
-
-[node name="TurrentCoin2" type="TextureRect" parent="."]
-margin_left = 331.871
-margin_top = 184.873
-margin_right = 2564.87
-margin_bottom = 2427.88
-rect_scale = Vector2( 0.015, 0.015 )
-texture = ExtResource( 7 )
-
-[node name="Label" type="Label" parent="TurrentCoin2"]
-margin_left = 890.302
-margin_top = 716.576
-margin_right = 930.302
-margin_bottom = 747.576
-rect_scale = Vector2( 48.3624, 70.4237 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "20
-"
-[connection signal="focus_entered" from="TurrenButton" to="." method="_on_TurrenButton_focus_entered"]
-[connection signal="focus_entered" from="TurrenButton2" to="." method="_on_TurrenButton2_focus_entered"]
+[connection signal="focus_entered" from="MarketPalace/TurrenButton" to="." method="_on_TurrenButton_focus_entered"]
+[connection signal="focus_entered" from="MarketPalace/TurrenButton2" to="." method="_on_TurrenButton2_focus_entered"]
 [connection signal="pressed" from="BuyButton" to="." method="_on_BuyButton_pressed"]
