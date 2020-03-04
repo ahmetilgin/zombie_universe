@@ -574,7 +574,7 @@ volume_db = -31.424
 autoplay = true
 
 [node name="GameAreaCam" type="Camera2D" parent="."]
-position = Vector2( 1461.25, 1090.58 )
+position = Vector2( 1476.99, 1425.04 )
 scale = Vector2( -324.135, -89.984 )
 zoom = Vector2( 2.34, 2.55 )
 
@@ -582,16 +582,16 @@ zoom = Vector2( 2.34, 2.55 )
 position = Vector2( 2042.6, 1798.37 )
 
 [node name="Healt" parent="." instance=ExtResource( 24 )]
-position = Vector2( 1406.96, 1090.58 )
+position = Vector2( 1422.7, 1425.04 )
 
 [node name="Healt2" parent="." instance=ExtResource( 24 )]
-position = Vector2( 1518.86, 1090.58 )
+position = Vector2( 1534.6, 1425.04 )
 
 [node name="Healt3" parent="." instance=ExtResource( 24 )]
-position = Vector2( 1444.73, 1090.58 )
+position = Vector2( 1460.47, 1425.04 )
 
 [node name="Healt4" parent="." instance=ExtResource( 24 )]
-position = Vector2( 1481.09, 1090.58 )
+position = Vector2( 1496.83, 1425.04 )
 [connection signal="pressed" from="Market/accept_button" to="." method="_on_acceptbutton_pressed"]
 [connection signal="pressed" from="Game_UI/Market_Button" to="." method="_on_TouchScreenButton_pressed"]
 
