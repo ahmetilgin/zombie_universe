@@ -15,7 +15,7 @@ var zombie_generate_time
 var zombie_generate_counter = 0
 var wave_is_contiune = false
 var wave_time = 10.0
-var first_wave_zombie_size = 3
+var first_wave_zombie_size = 1
 var zombie_types = { 0 : simple_zombie , 
 					 1 : stalker_zombie,
 					 2 : punk_zombie }

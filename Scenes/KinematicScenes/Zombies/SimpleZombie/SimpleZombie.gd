@@ -47,7 +47,7 @@ func add_attack_ray_cast():
 func create_zombie_follow_timer():
 	FollowPlayerTimer.connect("timeout",self,"_on_FollowPlayerTimer_timeout") 
 	add_child(FollowPlayerTimer) #to process
-	FollowPlayerTimer.set_wait_time(0.1)
+	FollowPlayerTimer.set_wait_time(0.01)
 	FollowPlayerTimer.start() #to start
 
 func add_zombie_sounds():
@@ -110,10 +110,11 @@ func find_zombie_x_movement(direction):
 func can_zombie_jump(direction,cross_index):
 	var target_distance = 0
 	if direction.y < 0 && is_on_floor():
-		var y_distance = player.get_global_position().y - get_global_position().y 
-		if  y_distance < 0 and abs(y_distance) > 10 and player.get_parent().is_on_floor():		
+		if  player.get_parent().is_on_floor():		
 			target_distance = round(get_global_position().distance_to(path[cross_index]) / tile_map.cell_size.y)
-			motion.y += max((-200 * target_distance) - gravity, -700)
+			motion.y += min((-20 * target_distance), -1000)
+			if motion.y < -2000:
+				motion.y = -1500
 
 func find_cross_index():
 	var cross_index = 0
@@ -262,8 +263,6 @@ func _jump_is_on_wall():
 			var colliding_turret = attack_ray_cast.get_collider().get_parent().get_parent()
 			colliding_turret.change_turret_health(-20)
 			is_zombie_action = true
-		elif !playerFound:
-			motion.y -= 200
 
 func move_like_basic_zombie():
 	if len(path) == 0:
