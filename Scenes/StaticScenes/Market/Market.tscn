@@ -28,11 +28,11 @@ layer = 0
 script = ExtResource( 1 )
 
 [node name="MarketPalace" type="TextureRect" parent="."]
-margin_left = -22.0
-margin_top = -8.0
-margin_right = 688.0
-margin_bottom = 235.0
-rect_scale = Vector2( 3.97094, 0.747473 )
+margin_left = 5.50778
+margin_top = 731.424
+margin_right = 715.508
+margin_bottom = 974.424
+rect_scale = Vector2( 1.68958, 0.257532 )
 texture = SubResource( 1 )
 expand = true
 stretch_mode = 1
@@ -106,11 +106,11 @@ __meta__ = {
 }
 
 [node name="BuyButton" type="TextureButton" parent="."]
-margin_left = 2405.66
-margin_top = 7.16402
-margin_right = 2781.66
-margin_bottom = 185.164
-rect_scale = Vector2( 0.507753, 0.281815 )
+margin_left = 1046.42
+margin_top = 741.626
+margin_right = 1422.42
+margin_bottom = 919.626
+rect_scale = Vector2( 0.192397, 0.117423 )
 texture_normal = SubResource( 2 )
 texture_pressed = SubResource( 3 )
 __meta__ = {

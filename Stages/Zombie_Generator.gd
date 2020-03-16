@@ -14,14 +14,14 @@ var min_y = 0
 func calculate_bounds():
 	var used_cells = tilemap.get_used_cells()
 	for pos in used_cells:
-        if pos.x < min_x:
-            min_x = int(pos.x)
-        elif pos.x > max_x:
-            max_x = int(pos.x)
-        if pos.y < min_y:
-            min_y = int(pos.y)
-        elif pos.y > max_y:
-            max_y = int(pos.y)
+		if pos.x < min_x:
+			min_x = int(pos.x)
+		elif pos.x > max_x:
+			max_x = int(pos.x)
+		if pos.y < min_y:
+			min_y = int(pos.y)
+		elif pos.y > max_y:
+			max_y = int(pos.y)
 
 		
 
