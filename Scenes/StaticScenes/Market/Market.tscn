@@ -1,12 +1,13 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/StaticScenes/Market/Market.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/UISprites/Windows.png" type="Texture" id=2]
 [ext_resource path="res://Resources/Sprites/Turret/Turret1Top.png" type="Texture" id=3]
 [ext_resource path="res://Resources/Sprites/Turret/turret1_focused.png" type="Texture" id=4]
 [ext_resource path="res://Resources/Sprites/Turret/turret1_focusedgreen.png" type="Texture" id=5]
-[ext_resource path="res://Resources/Sprites/UISprites/Button.png" type="Texture" id=6]
-[ext_resource path="res://Resources/Sprites/StarCoin/starcoinrotate1.png" type="Texture" id=7]
+[ext_resource path="res://Resources/Sprites/StarCoin/starcoinrotate1.png" type="Texture" id=6]
+[ext_resource path="res://Resources/Sprites/UISprites/Button.png" type="Texture" id=7]
+[ext_resource path="res://Resources/Fonts/bubble_soap/Bubble&Soap light_PersonalUseOnly.ttf" type="DynamicFontData" id=8]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -15,13 +16,17 @@ region = Rect2( 3575.07, 183.688, 724.365, 169.428 )
 
 [sub_resource type="AtlasTexture" id=2]
 flags = 4
-atlas = ExtResource( 6 )
+atlas = ExtResource( 7 )
 region = Rect2( 169.878, 192.777, 376.727, 178.089 )
 
 [sub_resource type="AtlasTexture" id=3]
 flags = 4
-atlas = ExtResource( 6 )
+atlas = ExtResource( 7 )
 region = Rect2( 930.725, 191.844, 390.48, 188.763 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 150
+font_data = ExtResource( 8 )
 
 [node name="Market" type="CanvasLayer"]
 layer = 0
@@ -66,7 +71,7 @@ margin_top = 127.563
 margin_right = 2278.22
 margin_bottom = 2370.57
 rect_scale = Vector2( 0.00678926, 0.0319812 )
-texture = ExtResource( 7 )
+texture = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -87,7 +92,7 @@ margin_top = 124.293
 margin_right = 2325.33
 margin_bottom = 2367.3
 rect_scale = Vector2( 0.00673848, 0.0333171 )
-texture = ExtResource( 7 )
+texture = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -107,9 +112,9 @@ __meta__ = {
 
 [node name="BuyButton" type="TextureButton" parent="."]
 margin_left = 1046.42
-margin_top = 741.626
+margin_top = 738.7
 margin_right = 1422.42
-margin_bottom = 919.626
+margin_bottom = 916.7
 rect_scale = Vector2( 0.192397, 0.117423 )
 texture_normal = SubResource( 2 )
 texture_pressed = SubResource( 3 )
@@ -118,12 +123,12 @@ __meta__ = {
 }
 
 [node name="BuyLabel" type="Label" parent="BuyButton"]
-margin_left = 116.228
-margin_top = 40.2678
-margin_right = 156.228
-margin_bottom = 71.2678
-rect_scale = Vector2( 5.40589, 9.92518 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+margin_left = 65.6665
+margin_top = 19.0649
+margin_right = 317.667
+margin_bottom = 320.065
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.764706, 0, 0, 1 )
 text = "BUY
 "
 [connection signal="focus_entered" from="MarketPalace/TurrenButton" to="." method="_on_TurrenButton_focus_entered"]
