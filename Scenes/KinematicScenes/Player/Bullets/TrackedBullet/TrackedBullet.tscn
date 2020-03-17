@@ -21,7 +21,7 @@ height = 6.271
 script = ExtResource( 1 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
-position = Vector2( 5.27042, -5.27043 )
+position = Vector2( 8.34399, -10.1881 )
 scale = Vector2( 1.94685, 3.94519 )
 frames = SubResource( 1 )
 animation = "shoots"
