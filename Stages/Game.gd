@@ -53,7 +53,7 @@ func item_solded(selected_item_price, selected_item):
 	$Game_UI/SelectPositionLabel.set_visible(true)
 	hide_market()
 	is_the_buy_button_clicked = true
-	$Market/accept_button.set_visible(true)
+	$Game_UI/accept_button.set_visible(true)
 	created_turret = selected_item
 	created_turret_price = selected_item_price
 	create_instance()
@@ -93,6 +93,8 @@ func hide_market():
 	
 func show_market():
 	$Market.set_offset(Vector2(0,0))
+	$Game_UI/accept_button.set_visible(true)
+	
 	
 func on_market_button_unvisible():
 	$Game_UI/Market_Button.disabled = true
@@ -161,8 +163,9 @@ func _draw():
 		hide_grid()
 		$player/Camera2D.current = true
 		is_not_accept_button_set_visible()
+		
 func is_not_accept_button_set_visible():
-	$Market/accept_button.set_visible(false)
+	$Game_UI/accept_button.set_visible(false)
 	is_the_buy_button_clicked = false
 	left_right_select = false
 	
@@ -240,7 +243,7 @@ func _on_acceptbutton_pressed():
 	if left_right_select :
 		left_right_select = false
 		sales_successful = true
-		turret_instance = created_turret.instance()
+		#turret_instance = created_turret.instance()
 	if is_the_buy_button_clicked :
 		is_the_buy_button_clicked = false
 		left_right_select = true
@@ -262,5 +265,3 @@ func _on_count_down_timer_timeout():
 		counttimer = pause_time
 	$Game_UI/CountDownTimer/Time.text = String(counttimer)
 	second_passed = true
-
-		

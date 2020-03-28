@@ -78,7 +78,10 @@ func connect_walkable_cells(points: Array) -> void:
 			var index_relative: = calculate_point_index(point_relative)
 			if is_outside_bounds(point_relative):
 				continue    
-		
+			
+			if !astar.has_point(index_relative):
+				continue
+			
 			astar.connect_points(index, index_relative, false)
 
 func _ready() -> void:

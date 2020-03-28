@@ -87,25 +87,25 @@ animations = [ {
 "name": "dead",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ) ],
-"loop": false,
-"name": "jump",
-"speed": 12.0
-}, {
 "frames": [ ExtResource( 16 ), ExtResource( 17 ) ],
 "loop": false,
 "name": "hurt",
 "speed": 50.0
 }, {
-"frames": [ ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ) ],
-"loop": true,
-"name": "run",
-"speed": 15.0
+"frames": [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ) ],
+"loop": false,
+"name": "jump",
+"speed": 12.0
 }, {
 "frames": [ ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ) ],
 "loop": false,
 "name": "attack",
 "speed": 35.0
+}, {
+"frames": [ ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ) ],
+"loop": true,
+"name": "run",
+"speed": 15.0
 }, {
 "frames": [ ExtResource( 47 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ) ],
 "loop": false,
@@ -4394,7 +4394,7 @@ anims/slideAk47 = SubResource( 28 )
 [connection signal="released" from="Controller/Node2D/gun_shoot" to="." method="_on_gun_shoot_released"]
 [connection signal="pressed" from="Controller/Node2D/melee_attack" to="." method="_on_melee_attack_pressed"]
 [connection signal="released" from="Controller/Node2D/melee_attack" to="." method="_on_melee_attack_released"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_shootAk47_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_meleeAk47_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_hurtAk47_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_slideAk47_finished"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_meleeAk47_finished"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_shootAk47_finished"]

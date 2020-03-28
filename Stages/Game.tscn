@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://Stages/Game.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/GraveyardTileSet/png/Tiles/Tile1.png" type="Texture" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://Stages/CoinCounter.gd" type="Script" id=20]
 [ext_resource path="res://Resources/AudioFiles/Game/savymerchant.ogg" type="AudioStream" id=21]
 [ext_resource path="res://Scenes/StaticScenes/Healt/Healt.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Resources/Sprites/GameBackgrounds/1gamebackground/1gamebackground.png" type="Texture" id=23]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
@@ -62,11 +63,6 @@ points = PoolVector2Array( 0, 0, 128, 0, 128, 96, 0, 96 )
 0/tile_mode = 0
 0/occluder_offset = Vector2( 0, 0 )
 0/navigation_offset = Vector2( 0, 0 )
-0/shape_offset = Vector2( 0, 0 )
-0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape = SubResource( 1 )
-0/shape_one_way = false
-0/shape_one_way_margin = 1.0
 0/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
@@ -83,11 +79,6 @@ points = PoolVector2Array( 0, 0, 128, 0, 128, 96, 0, 96 )
 1/tile_mode = 0
 1/occluder_offset = Vector2( 0, 0 )
 1/navigation_offset = Vector2( 0, 0 )
-1/shape_offset = Vector2( 0, 0 )
-1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-1/shape = SubResource( 2 )
-1/shape_one_way = false
-1/shape_one_way_margin = 1.0
 1/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
@@ -104,11 +95,6 @@ points = PoolVector2Array( 0, 0, 128, 0, 128, 96, 0, 96 )
 2/tile_mode = 0
 2/occluder_offset = Vector2( 0, 0 )
 2/navigation_offset = Vector2( 0, 0 )
-2/shape_offset = Vector2( 0, 0 )
-2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-2/shape = SubResource( 5 )
-2/shape_one_way = false
-2/shape_one_way_margin = 1.0
 2/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
@@ -125,11 +111,6 @@ points = PoolVector2Array( 0, 0, 128, 0, 128, 96, 0, 96 )
 3/tile_mode = 0
 3/occluder_offset = Vector2( 0, 0 )
 3/navigation_offset = Vector2( 0, 0 )
-3/shape_offset = Vector2( 0, 0 )
-3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-3/shape = SubResource( 6 )
-3/shape_one_way = false
-3/shape_one_way_margin = 1.0
 3/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
@@ -146,11 +127,6 @@ points = PoolVector2Array( 0, 0, 128, 0, 128, 96, 0, 96 )
 4/tile_mode = 0
 4/occluder_offset = Vector2( 0, 0 )
 4/navigation_offset = Vector2( 0, 0 )
-4/shape_offset = Vector2( 0, 0 )
-4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-4/shape = SubResource( 7 )
-4/shape_one_way = false
-4/shape_one_way_margin = 1.0
 4/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
@@ -167,11 +143,6 @@ points = PoolVector2Array( 0, 0, 128, 0, 128, 96, 0, 96 )
 5/tile_mode = 0
 5/occluder_offset = Vector2( 0, 0 )
 5/navigation_offset = Vector2( 0, 0 )
-5/shape_offset = Vector2( 0, 0 )
-5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-5/shape = SubResource( 8 )
-5/shape_one_way = false
-5/shape_one_way_margin = 1.0
 5/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
@@ -188,11 +159,6 @@ points = PoolVector2Array( 0, 0, 128, 0, 128, 96, 0, 96 )
 6/tile_mode = 0
 6/occluder_offset = Vector2( 0, 0 )
 6/navigation_offset = Vector2( 0, 0 )
-6/shape_offset = Vector2( 0, 0 )
-6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-6/shape = SubResource( 9 )
-6/shape_one_way = false
-6/shape_one_way_margin = 1.0
 6/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
@@ -209,11 +175,6 @@ points = PoolVector2Array( 0, 0, 128, 0, 128, 96, 0, 96 )
 7/tile_mode = 0
 7/occluder_offset = Vector2( 0, 0 )
 7/navigation_offset = Vector2( 0, 0 )
-7/shape_offset = Vector2( 0, 0 )
-7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-7/shape = SubResource( 10 )
-7/shape_one_way = false
-7/shape_one_way_margin = 1.0
 7/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
@@ -230,10 +191,6 @@ points = PoolVector2Array( 0, 0, 128, 0, 128, 96, 0, 96 )
 8/tile_mode = 0
 8/occluder_offset = Vector2( 0, 0 )
 8/navigation_offset = Vector2( 0, 0 )
-8/shape_offset = Vector2( 0, 0 )
-8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-8/shape_one_way = false
-8/shape_one_way_margin = 0.0
 8/shapes = [  ]
 8/z_index = 0
 11/name = "tiles.png 11"
@@ -244,11 +201,6 @@ points = PoolVector2Array( 0, 0, 128, 0, 128, 96, 0, 96 )
 11/tile_mode = 0
 11/occluder_offset = Vector2( 0, 0 )
 11/navigation_offset = Vector2( 0, 0 )
-11/shape_offset = Vector2( 0, 0 )
-11/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-11/shape = SubResource( 3 )
-11/shape_one_way = false
-11/shape_one_way_margin = 1.0
 11/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
@@ -265,11 +217,6 @@ points = PoolVector2Array( 0, 0, 128, 0, 128, 96, 0, 96 )
 12/tile_mode = 0
 12/occluder_offset = Vector2( 0, 0 )
 12/navigation_offset = Vector2( 0, 0 )
-12/shape_offset = Vector2( 0, 0 )
-12/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-12/shape = SubResource( 4 )
-12/shape_one_way = true
-12/shape_one_way_margin = 1.0
 12/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": true,
@@ -286,10 +233,6 @@ points = PoolVector2Array( 0, 0, 128, 0, 128, 96, 0, 96 )
 13/tile_mode = 0
 13/occluder_offset = Vector2( 0, 0 )
 13/navigation_offset = Vector2( 0, 0 )
-13/shape_offset = Vector2( 0, 0 )
-13/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-13/shape_one_way = false
-13/shape_one_way_margin = 0.0
 13/shapes = [  ]
 13/z_index = 0
 
@@ -385,19 +328,21 @@ layer = 128
 offset = Vector2( 0, 1938 )
 transform = Transform2D( 1, 0, 0, 1, 0, 1938 )
 
-[node name="accept_button" type="TextureButton" parent="Market"]
-margin_left = 1046.82
-margin_top = 767.117
-margin_right = 1421.82
-margin_bottom = 952.117
-rect_scale = Vector2( 0.192015, 0.10544 )
+[node name="Game_UI" type="CanvasLayer" parent="."]
+
+[node name="accept_button" type="TextureButton" parent="Game_UI"]
+margin_left = 502.0
+margin_top = 668.987
+margin_right = 886.0
+margin_bottom = 853.987
+rect_scale = Vector2( 0.506668, 0.338201 )
 texture_normal = SubResource( 12 )
 texture_pressed = SubResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="Label" parent="Market/accept_button"]
+[node name="RichTextLabel" type="Label" parent="Game_UI/accept_button"]
 margin_left = 40.9897
 margin_top = 50.7363
 margin_right = 324.99
@@ -409,13 +354,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Game_UI" type="CanvasLayer" parent="."]
-
 [node name="SelectPositionLabel" type="Label" parent="Game_UI"]
-margin_left = 439.356
-margin_top = 146.022
-margin_right = 647.356
-margin_bottom = 195.022
+margin_left = 384.044
+margin_top = 142.506
+margin_right = 592.044
+margin_bottom = 195.506
 rect_scale = Vector2( 2.01716, 2.7042 )
 custom_fonts/font = SubResource( 15 )
 custom_colors/font_color = Color( 0.72549, 1, 0.054902, 1 )
@@ -454,10 +397,14 @@ margin_top = 39.2454
 margin_right = 275.41
 margin_bottom = 99.2454
 rect_scale = Vector2( 1.01, 0.4 )
-value = 100.0
+max_value = 1000.0
+value = 1000.0
 rounded = true
 texture_progress = SubResource( 18 )
 nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Player_Health" type="TextureProgress" parent="Game_UI"]
 margin_left = 149.992
@@ -466,7 +413,7 @@ margin_right = 274.992
 margin_bottom = 99.2452
 rect_scale = Vector2( 1.01, 0.4 )
 max_value = 1000.0
-value = 100.0
+value = 1000.0
 rounded = true
 texture_progress = SubResource( 19 )
 tint_progress = Color( 0, 1, 0, 1 )
@@ -624,5 +571,11 @@ position = Vector2( 1206.92, 668.987 )
 
 [node name="Healt4" parent="." instance=ExtResource( 22 )]
 position = Vector2( 1243.28, 668.987 )
-[connection signal="pressed" from="Market/accept_button" to="." method="_on_acceptbutton_pressed"]
+
+[node name="1gamebackground" type="Sprite" parent="."]
+position = Vector2( 1421.45, 1030.26 )
+scale = Vector2( 1.515, 1.75813 )
+z_index = -500
+texture = ExtResource( 23 )
+[connection signal="pressed" from="Game_UI/accept_button" to="." method="_on_acceptbutton_pressed"]
 [connection signal="pressed" from="Game_UI/Market_Button" to="." method="_on_TouchScreenButton_pressed"]
