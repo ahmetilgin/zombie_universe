@@ -4133,7 +4133,7 @@ position = Vector2( 33.2543, 11.5777 )
 shape = SubResource( 3 )
 
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 150.302, 1.32026 )
+position = Vector2( 109.633, 2.74722 )
 
 [node name="player_dead_timer" type="Timer" parent="."]
 one_shot = true
@@ -4257,13 +4257,13 @@ offset = Vector2( 30.3028, -83.2066 )
 
 [node name="stickmanHead" type="Sprite" parent="human/body2"]
 position = Vector2( 30.3448, -117.962 )
-rotation = 0.0652128
+rotation = 0.0405183
 texture = ExtResource( 62 )
 offset = Vector2( 2.18057, -47.7772 )
 
 [node name="arm2" type="Sprite" parent="human/body2"]
-position = Vector2( 37.1645, -108.528 )
-rotation = 1.03953
+position = Vector2( 36.3641, -110.205 )
+rotation = 0.440322
 texture = ExtResource( 63 )
 offset = Vector2( 14.3284, -4.93674 )
 
@@ -4301,7 +4301,7 @@ offset = Vector2( 11.1143, 2.04172 )
 
 [node name="knee4" type="Sprite" parent="human/body2"]
 position = Vector2( 27.0223, -50.3219 )
-rotation = 0.659586
+rotation = 0.659584
 texture = ExtResource( 65 )
 offset = Vector2( 7.41452, 16.3922 )
 
@@ -4319,22 +4319,22 @@ texture = ExtResource( 66 )
 offset = Vector2( 8.51764, 3.12509 )
 
 [node name="ak47" type="Sprite" parent="human/body2"]
-position = Vector2( 34.8391, -99.5305 )
-rotation = 1.51599
+position = Vector2( 32.7982, -101.091 )
+rotation = -0.0202476
 scale = Vector2( 0.31243, 0.399524 )
 texture = ExtResource( 67 )
 offset = Vector2( 170.125, -47.8345 )
 
 [node name="foot3" type="Sprite" parent="human/body2/ak47"]
 visible = false
-position = Vector2( 94.8665, -140.818 )
-rotation = 0.122505
+position = Vector2( 220.621, -21.7892 )
+rotation = 0.0879293
 scale = Vector2( 1, 1.5589 )
 texture = ExtResource( 66 )
 
 [node name="arm3" type="Sprite" parent="human/body2"]
-position = Vector2( 26.7438, -109.912 )
-rotation = -0.676327
+position = Vector2( 25.6874, -111.175 )
+rotation = -1.94175
 scale = Vector2( 1.01995, 1.00193 )
 texture = ExtResource( 63 )
 offset = Vector2( -17.2367, 7.67561 )
@@ -4394,7 +4394,7 @@ anims/slideAk47 = SubResource( 28 )
 [connection signal="released" from="Controller/Node2D/gun_shoot" to="." method="_on_gun_shoot_released"]
 [connection signal="pressed" from="Controller/Node2D/melee_attack" to="." method="_on_melee_attack_pressed"]
 [connection signal="released" from="Controller/Node2D/melee_attack" to="." method="_on_melee_attack_released"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_shootAk47_finished"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_meleeAk47_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_hurtAk47_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_meleeAk47_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_shootAk47_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_slideAk47_finished"]
