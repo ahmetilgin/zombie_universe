@@ -263,6 +263,12 @@ func _physics_process(delta):
 					$Ak47Sound.play()
 					_set_current_bullet(tracked_bullet.instance())
 				get_parent().add_child(current_bullet)
+				var image = Image.new()
+				image.load("res://Resources/Sprites/Turret/Turret1Top.png")
+				image.flip_x()
+				var texture = ImageTexture.new()
+				texture.create_from_image(image, 7)
+				$human/body2/ak47.set_texture(texture)
 				_set_bullet_direction(sign($Position2D.position.x))
 				current_bullet.position = $Position2D.global_position
 		if is_on_floor():

@@ -2718,7 +2718,8 @@ anims/Jump = SubResource( 9 )
 anims/Run = SubResource( 10 )
 
 [node name="Zombie" type="Sprite" parent="."]
-position = Vector2( 27.5298, 108.201 )
+position = Vector2( 23.8391, 108.648 )
+rotation = 0.0641125
 scale = Vector2( -0.45, 0.45 )
 offset = Vector2( -197.291, -237.515 )
 __meta__ = {
@@ -2817,7 +2818,7 @@ __meta__ = {
 
 [node name="solbacak" type="Sprite" parent="Zombie/knees"]
 position = Vector2( 4.0397, 1.1409 )
-rotation = 1.04552
+rotation = 1.13409
 texture = ExtResource( 51 )
 offset = Vector2( 3.94447, 24.1033 )
 __meta__ = {
@@ -2827,7 +2828,7 @@ __meta__ = {
 
 [node name="knee3" type="Sprite" parent="Zombie/knees/solbacak"]
 position = Vector2( 6.79296, 45.7176 )
-rotation = 1.77215
+rotation = 1.48777
 texture = ExtResource( 52 )
 offset = Vector2( 14.6099, 24.202 )
 __meta__ = {
@@ -2845,7 +2846,7 @@ __meta__ = {
 
 [node name="sagbacak" type="Sprite" parent="Zombie/knees"]
 position = Vector2( -8.96851, 3.96829 )
-rotation = 0.0246423
+rotation = -0.0411005
 texture = ExtResource( 51 )
 offset = Vector2( 8.14999, 21.8527 )
 __meta__ = {
@@ -2855,7 +2856,7 @@ __meta__ = {
 
 [node name="knee4" type="Sprite" parent="Zombie/knees/sagbacak"]
 position = Vector2( 13.1141, 44.3155 )
-rotation = 0.069631
+rotation = 0.018932
 texture = ExtResource( 51 )
 offset = Vector2( 3.01462, 25.1296 )
 __meta__ = {
@@ -2864,7 +2865,7 @@ __meta__ = {
 
 [node name="foot2" type="Sprite" parent="Zombie/knees/sagbacak/knee4"]
 position = Vector2( 2.05339, 50.8209 )
-rotation = -0.178048
+rotation = 0.310308
 scale = Vector2( 1, 1 )
 texture = ExtResource( 53 )
 offset = Vector2( 15.7773, 1.93549 )
