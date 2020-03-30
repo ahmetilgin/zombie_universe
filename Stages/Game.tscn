@@ -18,7 +18,7 @@
 [ext_resource path="res://Resources/Fonts/bubble_soap/Bubble&Soap light_PersonalUseOnly.ttf" type="DynamicFontData" id=16]
 [ext_resource path="res://Resources/Sprites/UISprites/Window2s.png" type="Texture" id=17]
 [ext_resource path="res://Resources/Sprites/UISprites/Windows.png" type="Texture" id=18]
-[ext_resource path="res://Resources/Sprites/StarCoin/starcoinrotate1.png" type="Texture" id=19]
+[ext_resource path="res://Resources/Sprites/starcoinrotate1.png" type="Texture" id=19]
 [ext_resource path="res://Stages/CoinCounter.gd" type="Script" id=20]
 [ext_resource path="res://Resources/AudioFiles/Game/savymerchant.ogg" type="AudioStream" id=21]
 [ext_resource path="res://Scenes/StaticScenes/Healt/Healt.tscn" type="PackedScene" id=22]
@@ -573,7 +573,7 @@ position = Vector2( 1206.92, 668.987 )
 position = Vector2( 1243.28, 668.987 )
 
 [node name="1gamebackground" type="Sprite" parent="."]
-position = Vector2( 1421.45, 1030.26 )
+position = Vector2( 1455.7, 1016.56 )
 scale = Vector2( 1.515, 1.75813 )
 z_index = -500
 texture = ExtResource( 23 )

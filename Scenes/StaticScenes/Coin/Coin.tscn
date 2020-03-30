@@ -1,13 +1,14 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/StaticScenes/Coin/Coin.gd" type="Script" id=1]
-[ext_resource path="res://Resources/Sprites/StarCoin/starcoinrotate1.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Sprites/starcoinrotate1.png" type="Texture" id=2]
 [ext_resource path="res://Resources/Sprites/StarCoin/starcoinrotate2.png" type="Texture" id=3]
 [ext_resource path="res://Resources/Sprites/StarCoin/starcoinrotate3.png" type="Texture" id=4]
 [ext_resource path="res://Resources/Sprites/StarCoin/starcoinrotate4.png" type="Texture" id=5]
 [ext_resource path="res://Resources/Sprites/StarCoin/starcoinrotate5.png" type="Texture" id=6]
 [ext_resource path="res://Resources/Sprites/StarCoin/starcoinrotate6.png" type="Texture" id=7]
 [ext_resource path="res://Resources/AudioFiles/CoinSound/coinsound .wav" type="AudioStream" id=8]
+
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {

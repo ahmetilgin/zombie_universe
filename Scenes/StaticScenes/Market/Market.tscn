@@ -1,18 +1,17 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scenes/StaticScenes/Market/Market.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/UISprites/Windows.png" type="Texture" id=2]
-[ext_resource path="res://Resources/Sprites/Turret/Turret1Top.png" type="Texture" id=3]
-[ext_resource path="res://Resources/Sprites/Turret/turret1_focused.png" type="Texture" id=4]
-[ext_resource path="res://Resources/Sprites/Turret/turret1_focusedgreen.png" type="Texture" id=5]
-[ext_resource path="res://Resources/Sprites/StarCoin/starcoinrotate1.png" type="Texture" id=6]
+[ext_resource path="res://Resources/Sprites/backgroundbrick/background.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Sprites/pricearea.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Sprites/backgroundbrick/description.png" type="Texture" id=5]
 [ext_resource path="res://Resources/Sprites/UISprites/Button.png" type="Texture" id=7]
 [ext_resource path="res://Resources/Fonts/bubble_soap/Bubble&Soap light_PersonalUseOnly.ttf" type="DynamicFontData" id=8]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 3575.07, 183.688, 724.365, 169.428 )
+region = Rect2( 1488, 931, 548, 771 )
 
 [sub_resource type="AtlasTexture" id=2]
 flags = 4
@@ -33,10 +32,12 @@ layer = 0
 script = ExtResource( 1 )
 
 [node name="MarketPalace" type="TextureRect" parent="."]
-margin_left = 5.50778
-margin_top = 731.424
-margin_right = 715.508
-margin_bottom = 974.424
+margin_left = 19.3664
+margin_top = 84.0394
+margin_right = 256.366
+margin_bottom = 2495.04
+grow_horizontal = 0
+grow_vertical = 0
 rect_scale = Vector2( 1.68958, 0.257532 )
 texture = SubResource( 1 )
 expand = true
@@ -45,76 +46,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TurrenButton" type="TextureButton" parent="MarketPalace"]
-margin_left = 23.5741
-margin_top = 64.9163
-margin_right = 529.574
-margin_bottom = 195.916
-rect_scale = Vector2( 0.0705403, 0.36017 )
-action_mode = 0
-texture_normal = ExtResource( 3 )
-texture_focused = ExtResource( 4 )
-
-[node name="TurrenButton2" type="TextureButton" parent="MarketPalace"]
-margin_left = 70.0977
-margin_top = 58.4322
-margin_right = 576.098
-margin_bottom = 189.432
-rect_scale = Vector2( 0.0746434, 0.455041 )
-action_mode = 0
-texture_normal = ExtResource( 3 )
-texture_focused = ExtResource( 5 )
-
-[node name="TurrentCoin" type="TextureRect" parent="MarketPalace"]
-margin_left = 45.2214
-margin_top = 127.563
-margin_right = 2278.22
-margin_bottom = 2370.57
-rect_scale = Vector2( 0.00678926, 0.0319812 )
-texture = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="MarketPalace/TurrentCoin"]
-margin_left = 890.302
-margin_top = 716.576
-margin_right = 930.302
-margin_bottom = 747.576
-rect_scale = Vector2( 48.3624, 70.4237 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "20
-"
-
-[node name="TurrentCoin2" type="TextureRect" parent="MarketPalace"]
-margin_left = 92.3262
-margin_top = 124.293
-margin_right = 2325.33
-margin_bottom = 2367.3
-rect_scale = Vector2( 0.00673848, 0.0333171 )
-texture = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="MarketPalace/TurrentCoin2"]
-margin_left = 890.302
-margin_top = 716.576
-margin_right = 930.302
-margin_bottom = 747.576
-rect_scale = Vector2( 48.3624, 70.4237 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "20
-"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="BuyButton" type="TextureButton" parent="."]
-margin_left = 1046.42
-margin_top = 738.7
-margin_right = 1422.42
-margin_bottom = 916.7
+margin_left = 173.396
+margin_top = 588.599
+margin_right = 549.396
+margin_bottom = 766.599
 rect_scale = Vector2( 0.192397, 0.117423 )
 texture_normal = SubResource( 2 )
 texture_pressed = SubResource( 3 )
@@ -123,14 +59,276 @@ __meta__ = {
 }
 
 [node name="BuyLabel" type="Label" parent="BuyButton"]
-margin_left = 65.6665
-margin_top = 19.0649
-margin_right = 317.667
-margin_bottom = 320.065
+margin_left = 61.0404
+margin_top = 23.8281
+margin_right = 313.04
+margin_bottom = 324.828
 custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.764706, 0, 0, 1 )
 text = "BUY
 "
-[connection signal="focus_entered" from="MarketPalace/TurrenButton" to="." method="_on_TurrenButton_focus_entered"]
-[connection signal="focus_entered" from="MarketPalace/TurrenButton2" to="." method="_on_TurrenButton2_focus_entered"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="ScrollContainer" parent="."]
+margin_left = 94.75
+margin_top = 181.413
+margin_right = 335.75
+margin_bottom = 462.413
+rect_scale = Vector2( 1, 1.36 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer"]
+margin_right = 224.0
+margin_bottom = 356.0
+columns = 4
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/GridContainer"]
+margin_right = 53.0
+margin_bottom = 68.0
+texture = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="HBoxContainer/GridContainer/TextureRect"]
+position = Vector2( 26.3235, 6.23555 )
+texture = ExtResource( 4 )
+
+[node name="Sprite2" type="Sprite" parent="HBoxContainer/GridContainer/TextureRect"]
+position = Vector2( 27.7975, 64.7245 )
+texture = ExtResource( 5 )
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/GridContainer"]
+margin_left = 57.0
+margin_right = 110.0
+margin_bottom = 68.0
+texture = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="HBoxContainer/GridContainer/TextureRect2"]
+position = Vector2( 26.3235, 6.23555 )
+texture = ExtResource( 4 )
+
+[node name="Sprite2" type="Sprite" parent="HBoxContainer/GridContainer/TextureRect2"]
+position = Vector2( 27.7975, 64.7245 )
+texture = ExtResource( 5 )
+
+[node name="TextureRect3" type="TextureRect" parent="HBoxContainer/GridContainer"]
+margin_left = 114.0
+margin_right = 167.0
+margin_bottom = 68.0
+texture = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="HBoxContainer/GridContainer/TextureRect3"]
+position = Vector2( 26.3235, 6.23555 )
+texture = ExtResource( 4 )
+
+[node name="Sprite2" type="Sprite" parent="HBoxContainer/GridContainer/TextureRect3"]
+position = Vector2( 27.7975, 64.7245 )
+texture = ExtResource( 5 )
+
+[node name="TextureRect4" type="TextureRect" parent="HBoxContainer/GridContainer"]
+margin_left = 171.0
+margin_right = 224.0
+margin_bottom = 68.0
+texture = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="HBoxContainer/GridContainer/TextureRect4"]
+position = Vector2( 26.3235, 6.23555 )
+texture = ExtResource( 4 )
+
+[node name="Sprite2" type="Sprite" parent="HBoxContainer/GridContainer/TextureRect4"]
+position = Vector2( 27.7975, 64.7245 )
+texture = ExtResource( 5 )
+
+[node name="TextureRect5" type="TextureRect" parent="HBoxContainer/GridContainer"]
+margin_top = 72.0
+margin_right = 53.0
+margin_bottom = 140.0
+texture = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="HBoxContainer/GridContainer/TextureRect5"]
+position = Vector2( 26.3235, 6.23555 )
+texture = ExtResource( 4 )
+
+[node name="Sprite2" type="Sprite" parent="HBoxContainer/GridContainer/TextureRect5"]
+position = Vector2( 27.7975, 64.7245 )
+texture = ExtResource( 5 )
+
+[node name="TextureRect6" type="TextureRect" parent="HBoxContainer/GridContainer"]
+margin_left = 57.0
+margin_top = 72.0
+margin_right = 110.0
+margin_bottom = 140.0
+texture = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="HBoxContainer/GridContainer/TextureRect6"]
+position = Vector2( 26.3235, 6.23555 )
+texture = ExtResource( 4 )
+
+[node name="Sprite2" type="Sprite" parent="HBoxContainer/GridContainer/TextureRect6"]
+position = Vector2( 27.7975, 64.7245 )
+texture = ExtResource( 5 )
+
+[node name="TextureRect7" type="TextureRect" parent="HBoxContainer/GridContainer"]
+margin_left = 114.0
+margin_top = 72.0
+margin_right = 167.0
+margin_bottom = 140.0
+texture = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="HBoxContainer/GridContainer/TextureRect7"]
+position = Vector2( 26.3235, 6.23555 )
+texture = ExtResource( 4 )
+
+[node name="Sprite2" type="Sprite" parent="HBoxContainer/GridContainer/TextureRect7"]
+position = Vector2( 27.7975, 64.7245 )
+texture = ExtResource( 5 )
+
+[node name="TextureRect8" type="TextureRect" parent="HBoxContainer/GridContainer"]
+margin_left = 171.0
+margin_top = 72.0
+margin_right = 224.0
+margin_bottom = 140.0
+texture = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="HBoxContainer/GridContainer/TextureRect8"]
+position = Vector2( 26.3235, 6.23555 )
+texture = ExtResource( 4 )
+
+[node name="Sprite2" type="Sprite" parent="HBoxContainer/GridContainer/TextureRect8"]
+position = Vector2( 27.7975, 64.7245 )
+texture = ExtResource( 5 )
+
+[node name="TextureRect9" type="TextureRect" parent="HBoxContainer/GridContainer"]
+margin_top = 144.0
+margin_right = 53.0
+margin_bottom = 212.0
+texture = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="HBoxContainer/GridContainer/TextureRect9"]
+position = Vector2( 26.3235, 6.23555 )
+texture = ExtResource( 4 )
+
+[node name="Sprite2" type="Sprite" parent="HBoxContainer/GridContainer/TextureRect9"]
+position = Vector2( 27.7975, 64.7245 )
+texture = ExtResource( 5 )
+
+[node name="TextureRect10" type="TextureRect" parent="HBoxContainer/GridContainer"]
+margin_left = 57.0
+margin_top = 144.0
+margin_right = 110.0
+margin_bottom = 212.0
+texture = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="HBoxContainer/GridContainer/TextureRect10"]
+position = Vector2( 26.3235, 6.23555 )
+texture = ExtResource( 4 )
+
+[node name="Sprite2" type="Sprite" parent="HBoxContainer/GridContainer/TextureRect10"]
+position = Vector2( 27.7975, 64.7245 )
+texture = ExtResource( 5 )
+
+[node name="TextureRect11" type="TextureRect" parent="HBoxContainer/GridContainer"]
+margin_left = 114.0
+margin_top = 144.0
+margin_right = 167.0
+margin_bottom = 212.0
+texture = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="HBoxContainer/GridContainer/TextureRect11"]
+position = Vector2( 26.3235, 6.23555 )
+texture = ExtResource( 4 )
+
+[node name="Sprite2" type="Sprite" parent="HBoxContainer/GridContainer/TextureRect11"]
+position = Vector2( 27.7975, 64.7245 )
+texture = ExtResource( 5 )
+
+[node name="TextureRect12" type="TextureRect" parent="HBoxContainer/GridContainer"]
+margin_left = 171.0
+margin_top = 144.0
+margin_right = 224.0
+margin_bottom = 212.0
+texture = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="HBoxContainer/GridContainer/TextureRect12"]
+position = Vector2( 26.3235, 6.23555 )
+texture = ExtResource( 4 )
+
+[node name="Sprite2" type="Sprite" parent="HBoxContainer/GridContainer/TextureRect12"]
+position = Vector2( 27.7975, 64.7245 )
+texture = ExtResource( 5 )
+
+[node name="TextureRect13" type="TextureRect" parent="HBoxContainer/GridContainer"]
+margin_top = 216.0
+margin_right = 53.0
+margin_bottom = 284.0
+texture = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="HBoxContainer/GridContainer/TextureRect13"]
+position = Vector2( 26.3235, 6.23555 )
+texture = ExtResource( 4 )
+
+[node name="Sprite2" type="Sprite" parent="HBoxContainer/GridContainer/TextureRect13"]
+position = Vector2( 27.7975, 64.7245 )
+texture = ExtResource( 5 )
+
+[node name="TextureRect14" type="TextureRect" parent="HBoxContainer/GridContainer"]
+margin_left = 57.0
+margin_top = 216.0
+margin_right = 110.0
+margin_bottom = 284.0
+texture = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="HBoxContainer/GridContainer/TextureRect14"]
+position = Vector2( 26.3235, 6.23555 )
+texture = ExtResource( 4 )
+
+[node name="Sprite2" type="Sprite" parent="HBoxContainer/GridContainer/TextureRect14"]
+position = Vector2( 27.7975, 64.7245 )
+texture = ExtResource( 5 )
+
+[node name="TextureRect15" type="TextureRect" parent="HBoxContainer/GridContainer"]
+margin_left = 114.0
+margin_top = 216.0
+margin_right = 167.0
+margin_bottom = 284.0
+texture = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="HBoxContainer/GridContainer/TextureRect15"]
+position = Vector2( 26.3235, 6.23555 )
+texture = ExtResource( 4 )
+
+[node name="Sprite2" type="Sprite" parent="HBoxContainer/GridContainer/TextureRect15"]
+position = Vector2( 27.7975, 64.7245 )
+texture = ExtResource( 5 )
+
+[node name="TextureRect16" type="TextureRect" parent="HBoxContainer/GridContainer"]
+margin_left = 171.0
+margin_top = 216.0
+margin_right = 224.0
+margin_bottom = 284.0
+texture = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="HBoxContainer/GridContainer/TextureRect16"]
+position = Vector2( 26.3235, 6.23555 )
+texture = ExtResource( 4 )
+
+[node name="Sprite2" type="Sprite" parent="HBoxContainer/GridContainer/TextureRect16"]
+position = Vector2( 27.7975, 64.7245 )
+texture = ExtResource( 5 )
+
+[node name="TextureRect17" type="TextureRect" parent="HBoxContainer/GridContainer"]
+margin_top = 288.0
+margin_right = 53.0
+margin_bottom = 356.0
+texture = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="HBoxContainer/GridContainer/TextureRect17"]
+position = Vector2( 26.3235, 6.23555 )
+texture = ExtResource( 4 )
+
+[node name="Sprite2" type="Sprite" parent="HBoxContainer/GridContainer/TextureRect17"]
+position = Vector2( 27.7975, 64.7245 )
+texture = ExtResource( 5 )
 [connection signal="pressed" from="BuyButton" to="." method="_on_BuyButton_pressed"]
