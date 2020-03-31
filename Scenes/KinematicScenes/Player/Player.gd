@@ -1,9 +1,33 @@
 extends KinematicBody2D
 signal dead_signal
-const bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/SimpleBullet/SimpleBullet.tscn")
+
+const rasengan_bullet = preload("res://Scenes/KinematicScenes/Turrent/TurretBullet/TurretBullet.tscn")
 const upgrade_bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/UpgradedBullet/UpgratedBullet.tscn")
 const tracked_bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/TrackedBullet/TrackedBullet.tscn")
 #touch screen option
+
+
+var rasengan_bullet_sound = AudioStreamPlayer.new()
+var upgrade_bullet_sound = AudioStreamPlayer.new()
+var tracked_bullet_sound = AudioStreamPlayer.new()
+
+var tracked_bullet_file = load("res://Resources/AudioFiles/Ak47Bullet/163457__lemudcrab__ak47-shot.wav")
+var rasengan_bullet_file = load("res://Resources/AudioFiles/Shots/pistol.wav")
+var upgrade_bullet_file = load("res://Resources/AudioFiles/Shots/shotgun.wav")
+
+var bullet_type = {
+	101: rasengan_bullet,
+	102: upgrade_bullet,
+	103: tracked_bullet,
+}
+
+var bullet_sound = {
+	101: rasengan_bullet_sound,
+	102: upgrade_bullet_sound,
+	103: tracked_bullet_sound,
+}
+
+
 var touch_right=false
 var touch_left=false
 var touch_up=false
@@ -30,7 +54,7 @@ var motion = Vector2(0,0)
 var slide_speed = 500
 var killed_counter = 0
 var current_bullet = null
-var current_bullet_power = 3
+var current_bullet_power = 103
 # player motions
 var is_attack = false
 var is_down = false
@@ -83,12 +107,27 @@ func increase_bullet_count(bullet_count):
 	bullet_size += bullet_count
 	bullet_number.text=String(bullet_size)
 	
+func set_sounds():
+	rasengan_bullet_sound.set_stream(rasengan_bullet_file)
+	upgrade_bullet_sound.set_stream(upgrade_bullet_file)
+	tracked_bullet_sound.set_stream(tracked_bullet_file)
+	rasengan_bullet_sound.volume_db = 1
+	rasengan_bullet_sound.pitch_scale = 1	
+	upgrade_bullet_sound.volume_db = 1
+	upgrade_bullet_sound.pitch_scale = 1
+	tracked_bullet_sound.volume_db = 1
+	tracked_bullet_sound.pitch_scale = 1	
+	add_child(rasengan_bullet_sound)
+	add_child(upgrade_bullet_sound)
+	add_child(tracked_bullet_sound)
+	
 func _ready():
 	_create_zombie_shot_slow_timer()
 	flash_tween()
 	pulse_tween()
 	color_change_tween()
 	flash_healtbar_tween()
+	set_sounds()
  
 	if OS.get_name() == "Windows" or OS.get_name() == "OSX" or OS.get_name() == "X11":
 		$Controller/Node2D.visible = false
@@ -107,6 +146,9 @@ func _check_bullet_count():
 func _fire_bullet():
 	bullet_size-=1
 	bullet_number.text=String(bullet_size)
+	
+func set_current_bullet_power(bullet_power):
+	current_bullet_power = bullet_power
 	
 func _set_bullet_direction(direction):
 	current_bullet.set_bullet_direction(direction)
@@ -250,25 +292,17 @@ func _physics_process(delta):
 		if Input.is_action_pressed("ui_focus_next") or touch_fire:
 			if _is_movable() && _check_bullet_count():
 				_fire_bullet()
-				#get_node("Camera2D").shake(1,10,1)
 				_set_is_attack(true)		
 				_play_attack_animation()
-				if current_bullet_power == 1:
-					$ShotSound.play()
-					_set_current_bullet(bullet.instance())
-				elif current_bullet_power == 2:
-					$ShotGun.play()
-					_set_current_bullet(upgrade_bullet.instance())
-				elif  current_bullet_power == 3:
-					$Ak47Sound.play()
-					_set_current_bullet(tracked_bullet.instance())
+				bullet_sound[current_bullet_power].play()
+				_set_current_bullet(bullet_type[current_bullet_power].instance())
 				get_parent().add_child(current_bullet)
-				var image = Image.new()
-				image.load("res://Resources/Sprites/Turret/Turret1Top.png")
-				image.flip_x()
-				var texture = ImageTexture.new()
-				texture.create_from_image(image, 7)
-				$human/body2/ak47.set_texture(texture)
+#				var image = Image.new()
+#				image.load("res://Resources/Sprites/Turret/Turret1Top.png")
+#				image.flip_x()
+#				var texture = ImageTexture.new()
+#				texture.create_from_image(image, 7)
+#				$human/body2/ak47.set_texture(texture)
 				_set_bullet_direction(sign($Position2D.position.x))
 				current_bullet.position = $Position2D.global_position
 		if is_on_floor():

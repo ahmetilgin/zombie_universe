@@ -5,6 +5,8 @@ onready var level_text = get_node("Game_UI/level_text")
 var portal_scene = preload("res://Scenes/StaticScenes/ZombiePortal/ZombiePortal.tscn")
 var player_scene = preload("res://Scenes/KinematicScenes/Player/Player.tscn")
 var gameover_scene = preload("res://Scenes/Screens/GameOverScreen/GameoverScreen.tscn")
+var constants = preload("res://Stages/constants.gd").new()
+var player = null
 
 var finish_portal = 0
 signal stop_wave
@@ -48,15 +50,59 @@ func get_tile_borders():
 	max_border = get_node("TileMap").get_max_border()
 	min_border = get_node("TileMap").get_min_border()
 
-func item_solded(selected_item_price, selected_item):
-	$Game_UI/Coin_Counter.decrease_coins(selected_item_price)
-	$Game_UI/SelectPositionLabel.set_visible(true)
-	hide_market()
-	is_the_buy_button_clicked = true
-	$Game_UI/accept_button.set_visible(true)
-	created_turret = selected_item
-	created_turret_price = selected_item_price
-	create_instance()
+func buy_health():
+	pass
+
+func buy_sword():
+	pass
+	
+func buy_bullet(item_id):
+	player.set_current_bullet_power(item_id)
+
+func buy_player_item(item_id):
+	if item_id == 101 or item_id == 102 or item_id == 103 :
+		buy_bullet(item_id)
+		pass
+	elif item_id == 104:
+		buy_health()
+		pass
+	pass
+
+func buy_wall(item_id):
+	pass
+
+func buy_portal(item_id):
+	pass
+	
+func buy_turret(item_id):
+	pass
+
+
+func item_solded(item_id):
+	var item_type = int(item_id / 10) * 10
+	if item_type == 100:
+		buy_player_item(item_id)
+		pass
+	elif item_type == 400:
+		buy_wall(item_id)
+		pass
+	elif item_type == 500:
+		buy_portal(item_id)
+		pass
+	elif item_type == 800:
+		buy_turret(item_id)
+		pass
+	else:
+		print("Satın Alma Arızası")
+	
+#	$Game_UI/Coin_Counter.decrease_coins(selected_item_price)
+#	$Game_UI/SelectPositionLabel.set_visible(true)
+#	hide_market()
+#	is_the_buy_button_clicked = true
+#	$Game_UI/accept_button.set_visible(true)
+#	created_turret = selected_item
+#	created_turret_price = selected_item_price
+#	create_instance()
 
 func connect_market():
 	$Market.connect("item_sold",self, "item_solded")
@@ -67,12 +113,13 @@ func item_solded_failed():
 	sales_fail = true
 
 func _ready():
+	player = player_scene.instance()
 	create_portals(start_portal)
 	get_tile_borders()
 	connect_market()
 	countdown_timer()
 	$Game_UI/SelectPositionLabel.set_visible(false)
-	add_child(player_scene.instance())
+	add_child(player)
 	get_node("CanvasLayer").add_child(gameover_scene.instance())
 	on_market_button_unvisible()
 	on_time_countdown_unvisible()
