@@ -58,7 +58,7 @@ func buy_sword():
 	pass
 	
 func buy_bullet(item_id):
-	player.set_current_bullet_power(item_id)
+	player.set_current_weapon(item_id)
 
 func buy_player_item(item_id):
 	if item_id == 101 or item_id == 102 or item_id == 103 :

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/KinematicScenes/Player/Bullets/SimpleBullet/SimpleBullet.gd" type="Script" id=1]
-[ext_resource path="res://Resources/Sprites/Bullets/SimpleBullet/SimpleBullet.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Sprites/Bullets/TurretBullet/turret_bullet.png" type="Texture" id=2]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -21,8 +21,8 @@ scale = Vector2( 1.3, 1.3 )
 script = ExtResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( -4.10519, -4.39572 )
-scale = Vector2( 0.263008, 0.500555 )
+position = Vector2( -3.56728, -4.12675 )
+scale = Vector2( 0.205994, 0.197338 )
 frames = SubResource( 1 )
 animation = "shoot2"
 centered = false

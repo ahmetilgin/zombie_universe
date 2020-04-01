@@ -1,11 +1,10 @@
 extends KinematicBody2D
 signal dead_signal
 
-const rasengan_bullet = preload("res://Scenes/KinematicScenes/Turrent/TurretBullet/TurretBullet.tscn")
+const rasengan_bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/SimpleBullet/SimpleBullet.tscn")
 const upgrade_bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/UpgradedBullet/UpgratedBullet.tscn")
 const tracked_bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/TrackedBullet/TrackedBullet.tscn")
 #touch screen option
-
 
 var rasengan_bullet_sound = AudioStreamPlayer.new()
 var upgrade_bullet_sound = AudioStreamPlayer.new()
@@ -15,10 +14,22 @@ var tracked_bullet_file = load("res://Resources/AudioFiles/Ak47Bullet/163457__le
 var rasengan_bullet_file = load("res://Resources/AudioFiles/Shots/pistol.wav")
 var upgrade_bullet_file = load("res://Resources/AudioFiles/Shots/shotgun.wav")
 
+var rasengan_weapon = Image.new()
+var shotgun_weapon = Image.new()
+var ak47_weapon = Image.new()
+
+var weaponTexture = null
+
 var bullet_type = {
 	101: rasengan_bullet,
 	102: upgrade_bullet,
 	103: tracked_bullet,
+}
+
+var bullet_icons = {
+	101: rasengan_weapon,
+	102: shotgun_weapon,
+	103: ak47_weapon,
 }
 
 var bullet_sound = {
@@ -26,6 +37,7 @@ var bullet_sound = {
 	102: upgrade_bullet_sound,
 	103: tracked_bullet_sound,
 }
+
 
 
 var touch_right=false
@@ -93,7 +105,6 @@ func _create_zombie_shot_slow_timer():
 	slow_shot_timer.connect("timeout",self,"_on_slow_motion_timer_start") 
 	add_child(slow_shot_timer) #to process
 	slow_shot_timer.set_wait_time(0.1)
-
 func color_change_tween():
 	add_child(change_color_tween) #to process
 func pulse_tween():
@@ -121,6 +132,12 @@ func set_sounds():
 	add_child(upgrade_bullet_sound)
 	add_child(tracked_bullet_sound)
 	
+func load_images():
+
+	rasengan_weapon.load("res://Resources/Sprites/Guns/rasengan.png")
+	shotgun_weapon.load("res://Resources/Sprites/Guns/shotgun.png")
+	ak47_weapon.load("res://Resources/Sprites/stickman/ak47.png")
+	
 func _ready():
 	_create_zombie_shot_slow_timer()
 	flash_tween()
@@ -128,6 +145,7 @@ func _ready():
 	color_change_tween()
 	flash_healtbar_tween()
 	set_sounds()
+	load_images()
  
 	if OS.get_name() == "Windows" or OS.get_name() == "OSX" or OS.get_name() == "X11":
 		$Controller/Node2D.visible = false
@@ -147,8 +165,12 @@ func _fire_bullet():
 	bullet_size-=1
 	bullet_number.text=String(bullet_size)
 	
-func set_current_bullet_power(bullet_power):
+func set_current_weapon(bullet_power):
+	weaponTexture = ImageTexture.new()
 	current_bullet_power = bullet_power
+	weaponTexture.create_from_image(bullet_icons[bullet_power], 0)
+	$human/body2/ak47.set_texture(weaponTexture)
+	
 	
 func _set_bullet_direction(direction):
 	current_bullet.set_bullet_direction(direction)
@@ -297,12 +319,7 @@ func _physics_process(delta):
 				bullet_sound[current_bullet_power].play()
 				_set_current_bullet(bullet_type[current_bullet_power].instance())
 				get_parent().add_child(current_bullet)
-#				var image = Image.new()
-#				image.load("res://Resources/Sprites/Turret/Turret1Top.png")
-#				image.flip_x()
-#				var texture = ImageTexture.new()
-#				texture.create_from_image(image, 7)
-#				$human/body2/ak47.set_texture(texture)
+
 				_set_bullet_direction(sign($Position2D.position.x))
 				current_bullet.position = $Position2D.global_position
 		if is_on_floor():

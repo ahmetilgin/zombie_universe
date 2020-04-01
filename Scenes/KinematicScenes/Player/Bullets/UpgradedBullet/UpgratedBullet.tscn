@@ -11,7 +11,7 @@
 radius = 8.35491
 
 [sub_resource type="ParticlesMaterial" id=2]
-angular_velocity = 3.32403e+021
+angular_velocity = 3.32403e+21
 
 [sub_resource type="CanvasItemMaterial" id=3]
 render_priority = 4
