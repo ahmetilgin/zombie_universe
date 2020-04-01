@@ -1,5 +1,6 @@
 extends Node2D
 var turret_grid 
+
 onready var level_text_counter = get_node("Game_UI/level_text/level_counter")
 onready var level_text = get_node("Game_UI/level_text")
 var portal_scene = preload("res://Scenes/StaticScenes/ZombiePortal/ZombiePortal.tscn")
