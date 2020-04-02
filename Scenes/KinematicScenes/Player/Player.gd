@@ -26,10 +26,14 @@ var bullet_type = {
 	103: tracked_bullet,
 }
 
+#	rasengan_weapon.load("res://Resources/Sprites/Guns/rasengan.png")
+#	shotgun_weapon.load("res://Resources/Sprites/Guns/shotgun.png")
+#	ak47_weapon.load("res://Resources/Sprites/stickman/ak47.png")
+
 var bullet_icons = {
-	101: rasengan_weapon,
-	102: shotgun_weapon,
-	103: ak47_weapon,
+	101: "res://Resources/Sprites/Guns/rasengan.png",
+	102: "res://Resources/Sprites/Guns/shotgun.png",
+	103: "res://Resources/Sprites/stickman/ak47.png",
 }
 
 var bullet_sound = {
@@ -133,10 +137,10 @@ func set_sounds():
 	add_child(tracked_bullet_sound)
 	
 func load_images():
-
-	rasengan_weapon.load("res://Resources/Sprites/Guns/rasengan.png")
-	shotgun_weapon.load("res://Resources/Sprites/Guns/shotgun.png")
-	ak47_weapon.load("res://Resources/Sprites/stickman/ak47.png")
+	pass
+#	rasengan_weapon.load("res://Resources/Sprites/Guns/rasengan.png")
+#	shotgun_weapon.load("res://Resources/Sprites/Guns/shotgun.png")
+#	ak47_weapon.load("res://Resources/Sprites/stickman/ak47.png")
 	
 func _ready():
 	_create_zombie_shot_slow_timer()
@@ -166,10 +170,15 @@ func _fire_bullet():
 	bullet_number.text=String(bullet_size)
 	
 func set_current_weapon(bullet_power):
-	weaponTexture = ImageTexture.new()
+	var stream_texture = load(bullet_icons[bullet_power])
+	var image_texture = ImageTexture.new()
+	var image = stream_texture.get_data()
+	image.lock() # so i can modify pixel data
 	current_bullet_power = bullet_power
-	weaponTexture.create_from_image(bullet_icons[bullet_power], 0)
-	$human/body2/ak47.set_texture(weaponTexture)
+	image_texture.create_from_image(image, 0)
+
+	$human/body2/ak47.set_texture(image_texture)
+	image.unlock()
 	
 	
 func _set_bullet_direction(direction):
