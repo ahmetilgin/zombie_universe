@@ -355,7 +355,7 @@ func _physics_process(delta):
 			
 func dead(damage,whodead):
 	if !_is_dead():
-		hp -= damage
+		_decrease_health(damage)
 		flash_damage()
 		damage_healt_color_change()
 		healt_color_decrease()
@@ -384,8 +384,9 @@ func _on_Area2D_body_entered(body):
 func _on_mele_flip_h_true_body_entered(body):
 	if "Zombie" in body.name:
 		body.dead(1,"Zombie") 
+		
 func healt_kit(healt):
-	hp += healt
+	_increare_health(healt)
 	if hp > max_hp:
 		hp = max_hp
 	change_color_tween.start()
@@ -455,6 +456,7 @@ func flash_damage():
 		flash_healtbar_tween.interpolate_callback(player_health,time, "set", "tint_progress", color)
 	flash_tween.start()
 	flash_healtbar_tween.start()
+	
 func damage_healt_color_change():
 	change_color_tween.start()
 	change_color_tween.interpolate_property(player_health_back,'value',player_health_back.get_value(),

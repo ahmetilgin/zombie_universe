@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Scenes/KinematicScenes/Turrent/Turret.gd" type="Script" id=1]
-[ext_resource path="res://Resources/Sprites/Turret/Turret1Base.png" type="Texture" id=2]
-[ext_resource path="res://Resources/Sprites/Turret/Turret1Top.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/KinematicScenes/Taretler/BazukaTurret/BazukaTurret.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Sprites/Turret/Turret3Top.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Sprites/Turret/Turret3Base.png" type="Texture" id=3]
 [ext_resource path="res://Resources/Sprites/UISprites/Window2s.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -24,13 +24,13 @@ script = ExtResource( 1 )
 
 [node name="Base" type="Sprite" parent="."]
 position = Vector2( 33.3333, 100 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="Top" type="KinematicBody2D" parent="Base"]
 position = Vector2( -0.604538, -102.239 )
 
 [node name="Radar" type="RayCast2D" parent="Base/Top"]
-position = Vector2( -421.42, -57.1944 )
+position = Vector2( -151.047, -32.1599 )
 rotation = 1.5708
 scale = Vector2( 3, 1.5 )
 enabled = true
@@ -42,13 +42,13 @@ rotation = -1.5708
 scale = Vector2( 0.666667, 0.333333 )
 
 [node name="Sprite" type="Sprite" parent="Base/Top"]
-position = Vector2( 3.55359, 9.92339 )
-texture = ExtResource( 3 )
+position = Vector2( 144.581, 19.9372 )
+texture = ExtResource( 2 )
 offset = Vector2( -145, -41 )
 
 [node name="TopCollision" type="CollisionPolygon2D" parent="Base/Top"]
-position = Vector2( -144.785, -55.9908 )
-polygon = PoolVector2Array( -236.515, -3.55566, -197.501, -3.55566, -142.231, -1.93008, 64.2192, -3.55566, 114.612, -26.3139, 186.138, -26.3139, 202.394, -36.0674, 257.664, -26.3139, 251.162, 30.5817, 225.152, 64.719, 152.001, 71.2214, 52.8401, 61.4678, 51.2144, 33.8329, -93.4629, 27.3305, -230.012, 28.9561 )
+position = Vector2( -112.591, -45.9664 )
+polygon = PoolVector2Array( -10.3926, 1.88848, -10.3926, -3.95291, 33.835, -4.78739, 66.9349, -6.24011, 133.941, -8.92037, 186.138, -26.3139, 203.235, -13.9667, 240.787, -7.29085, 236.615, 41.1092, 199.063, 44.4472, 178.882, 64.0787, 153.166, 64.4748, 143.152, 53.6265, 126.463, 35.2678, -10.3285, 36.4523 )
 
 [node name="BaseCollision" type="CollisionShape2D" parent="."]
 position = Vector2( 32.6876, 111.157 )

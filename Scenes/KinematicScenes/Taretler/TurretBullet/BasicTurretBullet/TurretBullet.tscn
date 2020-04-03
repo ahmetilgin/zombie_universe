@@ -1,11 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Scenes/KinematicScenes/Turrent/TurretBullet/TurretBullet.gd" type="Script" id=1]
-[ext_resource path="res://Resources/Sprites/Bullets/TurretBullet/turret_bullet.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Sprites/Bullets/TurretBullet/turret_bullet.png" type="Texture" id=1]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 2 ) ],
+"frames": [ ExtResource( 1 ) ],
 "loop": true,
 "name": "bullet",
 "speed": 5.0
@@ -17,7 +16,7 @@ height = 0.0421829
 
 [node name="TurretBullet" type="Area2D"]
 scale = Vector2( 3, 3 )
-script = ExtResource( 1 )
+script = null
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -7.16076, -7.16076 )

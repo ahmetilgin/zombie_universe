@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const turret_bullet = preload("res://Scenes/KinematicScenes/Turrent/TurretBullet/TurretBullet.tscn")
+const turret_bullet = preload("res://Scenes/KinematicScenes/Taretler/TurretBullet/BazukaTurretBullet/TurretBullet.tscn")
 var zombie_has_spotted = false
 var zombie_position = Vector2()
 var bullet_timer = Timer.new()

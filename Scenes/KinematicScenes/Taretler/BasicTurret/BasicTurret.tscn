@@ -1,0 +1,78 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scenes/KinematicScenes/Taretler/BasicTurret/BasicTurret.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Sprites/Turret/Turret1Base.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Sprites/Turret/Turret1Top.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Sprites/UISprites/Window2s.png" type="Texture" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 112.221, 91.3389 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 1995, 1797, 338, 52 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 1995, 1796, 338, 54 )
+
+[node name="Turret" type="KinematicBody2D"]
+scale = Vector2( 0.3, 0.3 )
+script = ExtResource( 1 )
+
+[node name="Base" type="Sprite" parent="."]
+position = Vector2( 33.3333, 100 )
+texture = ExtResource( 2 )
+
+[node name="Top" type="KinematicBody2D" parent="Base"]
+position = Vector2( -0.604538, -102.239 )
+
+[node name="Radar" type="RayCast2D" parent="Base/Top"]
+position = Vector2( -421.42, -57.1944 )
+rotation = 1.5708
+scale = Vector2( 3, 1.5 )
+enabled = true
+cast_to = Vector2( 0, 1000 )
+
+[node name="Position2D" type="Position2D" parent="Base/Top/Radar"]
+position = Vector2( -0.705795, -2.98831 )
+rotation = -1.5708
+scale = Vector2( 0.666667, 0.333333 )
+
+[node name="Sprite" type="Sprite" parent="Base/Top"]
+position = Vector2( 3.55359, 9.92339 )
+texture = ExtResource( 3 )
+offset = Vector2( -145, -41 )
+
+[node name="TopCollision" type="CollisionPolygon2D" parent="Base/Top"]
+position = Vector2( -144.785, -55.9908 )
+polygon = PoolVector2Array( -236.515, -3.55566, -197.501, -3.55566, -142.231, -1.93008, 64.2192, -3.55566, 114.612, -26.3139, 186.138, -26.3139, 202.394, -36.0674, 257.664, -26.3139, 251.162, 30.5817, 225.152, 64.719, 152.001, 71.2214, 52.8401, 61.4678, 51.2144, 33.8329, -93.4629, 27.3305, -230.012, 28.9561 )
+
+[node name="BaseCollision" type="CollisionShape2D" parent="."]
+position = Vector2( 32.6876, 111.157 )
+shape = SubResource( 1 )
+
+[node name="TurretHealthBack" type="TextureProgress" parent="."]
+modulate = Color( 0.278431, 0.0117647, 0.0117647, 1 )
+margin_left = -121.236
+margin_top = -366.972
+margin_right = 1926.76
+margin_bottom = -304.972
+rect_scale = Vector2( 0.158, 0.631 )
+value = 100.0
+texture_progress = SubResource( 2 )
+nine_patch_stretch = true
+
+[node name="TurretHealth" type="TextureProgress" parent="."]
+modulate = Color( 0.00784314, 1, 0, 1 )
+margin_left = -121.236
+margin_top = -366.972
+margin_right = 1926.76
+margin_bottom = -304.972
+rect_scale = Vector2( 0.157843, 0.630786 )
+value = 100.0
+texture_progress = SubResource( 3 )
+tint_under = Color( 0.439216, 0, 0, 1 )
+nine_patch_stretch = true

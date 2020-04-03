@@ -6,6 +6,7 @@ var items = {
 	103:["Laser Bullet",30],
 	104:["Health",5],	
 	105:["Sword",5],
+	106:["Ammo",10],
 	401:["WoodWall",10],
 	402:["SteelWall",30],
 	403:["GoldWall",50],

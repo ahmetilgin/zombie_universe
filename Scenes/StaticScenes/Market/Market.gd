@@ -18,7 +18,6 @@ func _process(delta):
  
 	pass
 	
-
 func buy_item(item_id):
 	if item_id in constants.items:	
 		emit_signal("item_sold",item_id)
@@ -26,8 +25,6 @@ func buy_item(item_id):
 		print("Yanlış item id geldi.")
 	pass
 	
-
-
 func _on_RasenganButton_pressed():
 	if  market_calculator(101):
 		buy_item(101)
@@ -81,9 +78,7 @@ func _on_Sword_pressed():
 		buy_item(105)
 	pass # Replace with function body.
 	
-	
-	
-	
+
 func _on_Trambolin_pressed():
 	if market_calculator(404):
 		buy_item(404)
@@ -114,5 +109,7 @@ func _on_BazukaTurret_pressed():
 	
 	pass # Replace with function body.
 
-
-
+func _on_AmmoButton_pressed():
+	if market_calculator(106):
+		buy_item(106)
+	pass # Replace with function body.

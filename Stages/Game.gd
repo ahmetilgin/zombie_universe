@@ -32,6 +32,15 @@ var pause_time = 19
 var counttimer
 var second_passed = true
 var portal_coordinates = [Vector2(9,2),Vector2(9,4),Vector2(9,6)]
+
+var turret_paths = {
+	801: preload("res://Scenes/KinematicScenes/Taretler/BasicTurret/BasicTurret.tscn"),
+	802: preload("res://Scenes/KinematicScenes/Taretler/MachineTurret/MachineTurret.tscn"),
+	803: preload("res://Scenes/KinematicScenes/Taretler/LaserTurret/LaserTurret.tscn"),
+	804: preload("res://Scenes/KinematicScenes/Taretler/BazukaTurret/BazukaTurret.tscn")
+}
+
+
 func create_portals(portal_count):
 	for portal in portal_list:
 		portal.queue_free()
@@ -52,9 +61,14 @@ func get_tile_borders():
 	min_border = get_node("TileMap").get_min_border()
 
 func buy_health():
+	player.healt_kit(20)
 	pass
 
 func buy_sword():
+	pass
+	
+func buy_ammo():
+	player.increase_bullet_count(20)
 	pass
 	
 func buy_bullet(item_id):
@@ -67,6 +81,8 @@ func buy_player_item(item_id):
 	elif item_id == 104:
 		buy_health()
 		pass
+	elif item_id == 106:
+		buy_ammo()
 	pass
 
 func buy_wall(item_id):
@@ -75,11 +91,19 @@ func buy_wall(item_id):
 func buy_portal(item_id):
 	pass
 	
+func show_select_position(is_visible):
+	$Game_UI/SelectPositionLabel.set_visible(is_visible)
+	$Game_UI/accept_button.set_visible(is_visible)
+
 func buy_turret(item_id):
+	created_turret_price = constants.items[item_id][1]
+	hide_market()
+	show_select_position(true)
+	create_instance(item_id)
 	pass
-
-
+	
 func item_solded(item_id):
+	is_the_buy_button_clicked = true
 	var item_type = int(item_id / 10) * 10
 	if item_type == 100:
 		buy_player_item(item_id)
@@ -95,15 +119,7 @@ func item_solded(item_id):
 		pass
 	else:
 		print("Satın Alma Arızası")
-	
-#	$Game_UI/Coin_Counter.decrease_coins(selected_item_price)
-#	$Game_UI/SelectPositionLabel.set_visible(true)
-#	hide_market()
-#	is_the_buy_button_clicked = true
-#	$Game_UI/accept_button.set_visible(true)
-#	created_turret = selected_item
-#	created_turret_price = selected_item_price
-#	create_instance()
+
 
 func connect_market():
 	$Market.connect("item_sold",self, "item_solded")
@@ -268,7 +284,6 @@ func select_turret_position():
 				$Game_UI/Coin_Counter.increase_coins(created_turret_price)
 			else:
 				sales_successful = false
-			turret_instance.queue_free()
 			is_create_instance = false
 		if is_create_instance:
 			tile_pos =  get_node("TileMap").map_to_world(tile_grid)
@@ -282,9 +297,9 @@ func select_turret_direction():
 		else:
 			turret_instance.scale.x = 0.3
 			
-func create_instance():
+func create_instance(turret):
+	turret_instance = turret_paths[turret].instance()
 	is_create_instance = true
-	turret_instance = created_turret.instance()
 	add_child(turret_instance)
 
 func _on_acceptbutton_pressed():
