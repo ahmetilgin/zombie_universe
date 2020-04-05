@@ -1,9 +1,30 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/KinematicScenes/Taretler/BasicTurret/BasicTurret.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/Turret/Turret1Base.png" type="Texture" id=2]
 [ext_resource path="res://Resources/Sprites/Turret/Turret1Top.png" type="Texture" id=3]
 [ext_resource path="res://Resources/Sprites/UISprites/Window2s.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Sprites/UISprites/Button.png" type="Texture" id=5]
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( -14.317, 2017.02, 191.788, 174.664 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 191.383, 2019.12, 176.903, 174.328 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( -19.787, 2221.47, 207.213, 189.945 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 195.183, 2229.92, 178.945, 178.945 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 112.221, 91.3389 )
@@ -19,15 +40,40 @@ atlas = ExtResource( 4 )
 region = Rect2( 1995, 1796, 338, 54 )
 
 [node name="Turret" type="KinematicBody2D"]
+position = Vector2( -9.45377, 0 )
 scale = Vector2( 0.3, 0.3 )
 script = ExtResource( 1 )
+
+[node name="TurnRight" type="TextureButton" parent="."]
+margin_left = 581.954
+margin_top = -76.261
+margin_right = 788.954
+margin_bottom = 94.739
+rect_scale = Vector2( 1.5, 1.5 )
+texture_normal = SubResource( 4 )
+texture_pressed = SubResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TurnLeft" type="TextureButton" parent="."]
+margin_left = -1029.48
+margin_top = -96.2614
+margin_right = -822.476
+margin_bottom = 92.7386
+rect_scale = Vector2( 1.5, 1.5 )
+texture_normal = SubResource( 5 )
+texture_pressed = SubResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Base" type="Sprite" parent="."]
 position = Vector2( 33.3333, 100 )
 texture = ExtResource( 2 )
 
 [node name="Top" type="KinematicBody2D" parent="Base"]
-position = Vector2( -0.604538, -102.239 )
+position = Vector2( -5.3844, -104.629 )
 
 [node name="Radar" type="RayCast2D" parent="Base/Top"]
 position = Vector2( -421.42, -57.1944 )
@@ -64,6 +110,9 @@ rect_scale = Vector2( 0.158, 0.631 )
 value = 100.0
 texture_progress = SubResource( 2 )
 nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TurretHealth" type="TextureProgress" parent="."]
 modulate = Color( 0.00784314, 1, 0, 1 )
@@ -76,3 +125,8 @@ value = 100.0
 texture_progress = SubResource( 3 )
 tint_under = Color( 0.439216, 0, 0, 1 )
 nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="TurnRight" to="." method="_on_TurnRight_pressed"]
+[connection signal="pressed" from="TurnLeft" to="." method="_on_TurnLeft_pressed"]

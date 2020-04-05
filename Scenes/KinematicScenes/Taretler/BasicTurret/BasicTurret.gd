@@ -51,6 +51,7 @@ func _ready():
 	create_zombie_attack_timer()
 	flash_turret_tween()
 	color_change_tween()
+	hide_rotations()
 	healt_perfect= true
 	healt_caution = true
 	healt_danger = true
@@ -130,3 +131,22 @@ func flash_damage():
 		var time = FLASH_RATE * i +FLASH_RATE
 		flash_turret_tween.interpolate_callback($Base,time, "set", "modulate", color)
 	flash_turret_tween.start()
+
+func show_rotations():
+	$TurnLeft.set_visible(true)
+	$TurnRight.set_visible(true)
+
+func hide_rotations():
+	$TurnLeft.set_visible(false)
+	$TurnRight.set_visible(false)
+
+func _on_TurnRight_pressed():
+	if $Base.scale.x > 0:
+		$Base.scale.x = -$Base.scale.x
+	pass # Replace with function body.
+
+
+func _on_TurnLeft_pressed():
+	if $Base.scale.x < 0:
+		$Base.scale.x = -$Base.scale.x
+	pass # Replace with function body.

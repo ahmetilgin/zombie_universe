@@ -16,7 +16,6 @@ signal camera_zoom_in
 var start_portal = 1
 var portal_list = []
 var is_the_buy_button_clicked = false
-var left_right_select = false
 var sales_successful = false
 var created_turret 
 var turret_instance
@@ -126,7 +125,6 @@ func connect_market():
 
 func item_solded_failed():
 	is_the_buy_button_clicked = false
-	left_right_select = false
 	sales_fail = true
 
 func _ready():
@@ -208,14 +206,14 @@ func show_grid():
 	for i in range(min_border.x, max_border.x):
 		for j in range(min_border.y, max_border.y):
 			if get_node("TileMap").get_cell(i,j) == -1 and get_node("TileMap").get_cell(i,j+1) != -1: 				
-				get_node("TileMap").set_cellv(Vector2(i,j),9)
+				get_node("TileMap").set_cellv(Vector2(i,j),14)
 				
 			pass
 
 func hide_grid():
 	for i in range(min_border.x, max_border.x):
 		for j in range(min_border.y, max_border.y):
-			if get_node("TileMap").get_cell(i,j) == 9:				
+			if get_node("TileMap").get_cell(i,j) == 14:				
 				get_node("TileMap").set_cellv(Vector2(i,j),-1)
 			pass
 
@@ -231,7 +229,6 @@ func _draw():
 func is_not_accept_button_set_visible():
 	$Game_UI/accept_button.set_visible(false)
 	is_the_buy_button_clicked = false
-	left_right_select = false
 	
 func _on_TouchScreenButton_pressed():
 	if !is_opened_market:
@@ -265,18 +262,17 @@ func wave_started():
 		pass
 		
 func is_item_solded_failed():
-	return is_the_buy_button_clicked or left_right_select
+	return is_the_buy_button_clicked
 	
-func _input(event):
-	if event is InputEventMouseButton:
+func _unhandled_input(event):
+	if event is InputEventMouseButton :
 		if event.pressed:
 			var pos = get_global_mouse_position()
 			tile_grid = get_node("TileMap").world_to_map(pos)
-			select_turret_direction()
 			select_turret_position()
 			
 func select_turret_position():
-	if  get_node("TileMap").get_cell(tile_grid.x,tile_grid.y) == 9   and is_the_buy_button_clicked:
+	if  get_node("TileMap").get_cell(tile_grid.x,tile_grid.y) == 14   and is_the_buy_button_clicked:
 		turret_grid =tile_grid
 		if is_create_instance   and( sales_fail ):
 			sales_fail = false
@@ -289,27 +285,14 @@ func select_turret_position():
 			tile_pos =  get_node("TileMap").map_to_world(tile_grid)
 			turret_instance.set_global_position(Vector2(tile_pos.x + 64,tile_pos.y + 64) )
 			
-func select_turret_direction():
-	if left_right_select and get_node("TileMap").get_cell(tile_grid.x,tile_grid.y) == 9 :
-		
-		if turret_grid.x < tile_grid.x:
-			turret_instance.scale.x = -0.3
-		else:
-			turret_instance.scale.x = 0.3
-			
 func create_instance(turret):
 	turret_instance = turret_paths[turret].instance()
 	is_create_instance = true
 	add_child(turret_instance)
+	turret_instance.show_rotations()
 
 func _on_acceptbutton_pressed():
-	if left_right_select :
-		left_right_select = false
-		sales_successful = true
-		#turret_instance = created_turret.instance()
-	if is_the_buy_button_clicked :
-		is_the_buy_button_clicked = false
-		left_right_select = true
+	sales_successful = true
 	pass # Replace with function body.
 
 
