@@ -243,9 +243,10 @@ func turret_cancelled():
 	if is_create_instance :
 		if !sales_successful:
 			$Game_UI/Coin_Counter.increase_coins(created_turret_price)
+			turret_instance.queue_free()
 		else:
 			sales_successful = false
-		turret_instance.queue_free()
+		
 		is_create_instance = false
 
 var started_wave_count = 0
@@ -283,13 +284,14 @@ func select_turret_position():
 			is_create_instance = false
 		if is_create_instance:
 			tile_pos =  get_node("TileMap").map_to_world(tile_grid)
-			turret_instance.set_global_position(Vector2(tile_pos.x + 64,tile_pos.y + 64) )
+			turret_instance.set_global_position(Vector2(tile_pos.x + 32,tile_pos.y ) )
 			
 func create_instance(turret):
 	turret_instance = turret_paths[turret].instance()
 	is_create_instance = true
 	add_child(turret_instance)
 	turret_instance.show_rotations()
+	 
 
 func _on_acceptbutton_pressed():
 	sales_successful = true

@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const turret_bullet = preload("res://Scenes/KinematicScenes/Taretler/TurretBullet/BasicTurretBullet/TurretBullet.tscn")
+const turret_bullet = preload("res://Scenes/KinematicScenes/Taretler/TurretBullet/BasicTurretBullet/BasicTurretBullet.tscn")
 var zombie_has_spotted = false
 var zombie_position = Vector2()
 var bullet_timer = Timer.new()
@@ -133,20 +133,21 @@ func flash_damage():
 	flash_turret_tween.start()
 
 func show_rotations():
-	$TurnLeft.set_visible(true)
-	$TurnRight.set_visible(true)
+	$DirectionButton/TurnLeft.set_visible(true)
+	$DirectionButton/TurnRight.set_visible(true)
 
 func hide_rotations():
-	$TurnLeft.set_visible(false)
-	$TurnRight.set_visible(false)
+	$DirectionButton/TurnLeft.set_visible(false)
+	$DirectionButton/TurnRight.set_visible(false)
 
 func _on_TurnRight_pressed():
-	if $Base.scale.x > 0:
-		$Base.scale.x = -$Base.scale.x
+	if  scale.x > 0:
+		scale.x = -scale.x
+		$DirectionButton.scale.x = -$DirectionButton.scale.x
 	pass # Replace with function body.
 
-
 func _on_TurnLeft_pressed():
-	if $Base.scale.x < 0:
-		$Base.scale.x = -$Base.scale.x
+	if  scale.x < 0:
+		scale.x = -scale.x
+		$DirectionButton.scale.x = -$DirectionButton.scale.x
 	pass # Replace with function body.

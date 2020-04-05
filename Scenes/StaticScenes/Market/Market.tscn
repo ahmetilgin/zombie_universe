@@ -120,8 +120,8 @@ scale = Vector2( 1.20391, 1 )
 texture = ExtResource( 4 )
 
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/RasenganButton"]
-position = Vector2( 33.774, 33.611 )
-scale = Vector2( 0.275632, 0.225407 )
+position = Vector2( 30.9379, 32.6841 )
+scale = Vector2( 0.148, 0.118 )
 texture = ExtResource( 12 )
 
 [node name="Sprite2" type="Sprite" parent="HBoxContainer/GridContainer/RasenganButton"]
@@ -144,8 +144,8 @@ position = Vector2( 32.3479, 64.3063 )
 texture = ExtResource( 5 )
 
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/FireBulletButton"]
-position = Vector2( 35.119, 35.7428 )
-scale = Vector2( 0.265361, 0.199661 )
+position = Vector2( 31.9677, 32.4989 )
+scale = Vector2( 0.148, 0.118 )
 texture = ExtResource( 26 )
 
 [node name="LaserBullet" type="TextureButton" parent="HBoxContainer/GridContainer"]

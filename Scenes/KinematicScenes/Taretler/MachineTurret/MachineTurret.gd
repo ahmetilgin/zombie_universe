@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const turret_bullet = preload("res://Scenes/KinematicScenes/Taretler/TurretBullet/MachineTurretBullet/TurretBullet.tscn")
+const turret_bullet = preload("res://Scenes/KinematicScenes/Taretler/TurretBullet/MachineTurretBullet/MachineTurretBullet.tscn")
 var zombie_has_spotted = false
 var zombie_position = Vector2()
 var bullet_timer = Timer.new()
@@ -124,9 +124,30 @@ func  damage_healt_color_bg():
 								turret_health,0.3,Tween.TRANS_QUAD,Tween.EASE_IN_OUT)
 	$TurretHealthBack.set_value(turret_health)
 	pass
+	
 func flash_damage():
 	for i in range(N_FLASHES * 2):
 		var color = $Base.modulate if i % 2 == 1 else  flash_color
 		var time = FLASH_RATE * i +FLASH_RATE
 		flash_turret_tween.interpolate_callback($Base,time, "set", "modulate", color)
 	flash_turret_tween.start()
+	
+func show_rotations():
+	$DirectionButton/TurnLeft.set_visible(true)
+	$DirectionButton/TurnRight.set_visible(true)
+
+func hide_rotations():
+	$DirectionButton/TurnLeft.set_visible(false)
+	$DirectionButton/TurnRight.set_visible(false)
+
+func _on_TurnRight_pressed():
+	if  scale.x > 0:
+		scale.x = -scale.x
+		$DirectionButton.scale.x = -$DirectionButton.scale.x
+	pass # Replace with function body.
+
+func _on_TurnLeft_pressed():
+	if  scale.x < 0:
+		scale.x = -scale.x
+		$DirectionButton.scale.x = -$DirectionButton.scale.x
+	pass # Replace with function body.

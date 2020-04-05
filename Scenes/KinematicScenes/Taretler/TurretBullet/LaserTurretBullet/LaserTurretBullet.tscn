@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Resources/Sprites/Bullets/TurretBullet/turret_bullet.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/KinematicScenes/Taretler/TurretBullet/LaserTurretBullet/LaserTurretBullet.gd" type="Script" id=2]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -14,9 +15,9 @@ animations = [ {
 radius = 6.72351
 height = 0.0421829
 
-[node name="TurretBullet" type="Area2D"]
+[node name="LaserTurretBullet" type="Area2D"]
 scale = Vector2( 3, 3 )
-script = null
+script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -7.16076, -7.16076 )
