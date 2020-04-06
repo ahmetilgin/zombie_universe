@@ -33,8 +33,8 @@ var second_passed = true
 var portal_coordinates = [Vector2(9,2),Vector2(9,4),Vector2(9,6)]
 
 var walls = {
-	401: preload("res://Scenes/StaticScenes/Trambolin/Trambolin.tscn"),
-	402: preload("res://Scenes/StaticScenes/Trambolin/Trambolin.tscn"),
+	401: preload("res://Scenes/StaticScenes/fences/WoodFence/WoodFence.tscn"),
+	402: preload("res://Scenes/StaticScenes/fences/WoodFence/WoodFence.tscn"),
 	403: preload("res://Scenes/StaticScenes/Trambolin/Trambolin.tscn"),
 	404: preload("res://Scenes/StaticScenes/Trambolin/Trambolin.tscn")
 }
@@ -45,7 +45,7 @@ var turret_paths = {
 	803: preload("res://Scenes/KinematicScenes/Taretler/LaserTurret/LaserTurret.tscn"),
 	804: preload("res://Scenes/KinematicScenes/Taretler/BazukaTurret/BazukaTurret.tscn"),
 }
-
+var is_turret = false
 
 func create_portals(portal_count):
 	for portal in portal_list:
@@ -124,6 +124,7 @@ func item_solded(item_id):
 		buy_portal(item_id)
 		pass
 	elif item_type == 800:
+		is_turret = true
 		buy_turret(item_id)
 		pass
 	else:
@@ -309,7 +310,9 @@ func create_wall_instance(wall):
 
 func _on_acceptbutton_pressed():
 	sales_successful = true
-	turret_instance.hide_rotations()
+	if is_turret:
+		turret_instance.hide_rotations()
+		is_turret = false
 	pass # Replace with function body.
 
 

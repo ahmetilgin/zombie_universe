@@ -258,10 +258,15 @@ func _jump_is_on_wall():
 		if "player" in attack_ray_cast.get_collider().name:
 			playerFound = true
 			_zombie_attack_to_player(5)
-		elif "Top" in attack_ray_cast.get_collider().name:
+		elif "Top"  in attack_ray_cast.get_collider().name:
 			$AnimationPlayer.play("Attack")
 			var colliding_turret = attack_ray_cast.get_collider().get_parent().get_parent()
 			colliding_turret.change_turret_health(-20)
+			is_zombie_action = true
+		elif  "Fence"in attack_ray_cast.get_collider().name:
+			$AnimationPlayer.play("Attack")
+			var colliding_fence = attack_ray_cast.get_collider() 
+			colliding_fence .change_fence_health(-20)
 			is_zombie_action = true
 
 func move_like_basic_zombie():
