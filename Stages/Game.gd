@@ -32,11 +32,18 @@ var counttimer
 var second_passed = true
 var portal_coordinates = [Vector2(9,2),Vector2(9,4),Vector2(9,6)]
 
+var walls = {
+	401: preload("res://Scenes/StaticScenes/Trambolin/Trambolin.tscn"),
+	402: preload("res://Scenes/StaticScenes/Trambolin/Trambolin.tscn"),
+	403: preload("res://Scenes/StaticScenes/Trambolin/Trambolin.tscn"),
+	404: preload("res://Scenes/StaticScenes/Trambolin/Trambolin.tscn")
+}
+
 var turret_paths = {
 	801: preload("res://Scenes/KinematicScenes/Taretler/BasicTurret/BasicTurret.tscn"),
 	802: preload("res://Scenes/KinematicScenes/Taretler/MachineTurret/MachineTurret.tscn"),
 	803: preload("res://Scenes/KinematicScenes/Taretler/LaserTurret/LaserTurret.tscn"),
-	804: preload("res://Scenes/KinematicScenes/Taretler/BazukaTurret/BazukaTurret.tscn")
+	804: preload("res://Scenes/KinematicScenes/Taretler/BazukaTurret/BazukaTurret.tscn"),
 }
 
 
@@ -85,6 +92,7 @@ func buy_player_item(item_id):
 	pass
 
 func buy_wall(item_id):
+	create_wall_instance(item_id)
 	pass
 
 func buy_portal(item_id):
@@ -94,11 +102,13 @@ func show_select_position(is_visible):
 	$Game_UI/SelectPositionLabel.set_visible(is_visible)
 	$Game_UI/accept_button.set_visible(is_visible)
 
+
 func buy_turret(item_id):
 	created_turret_price = constants.items[item_id][1]
 	hide_market()
 	show_select_position(true)
 	create_instance(item_id)
+	turret_instance.show_rotations()
 	pass
 	
 func item_solded(item_id):
@@ -290,11 +300,16 @@ func create_instance(turret):
 	turret_instance = turret_paths[turret].instance()
 	is_create_instance = true
 	add_child(turret_instance)
-	turret_instance.show_rotations()
-	 
+	
+func create_wall_instance(wall):
+	turret_instance = walls[wall].instance()
+	is_create_instance = true
+	add_child(turret_instance)
+	
 
 func _on_acceptbutton_pressed():
 	sales_successful = true
+	turret_instance.hide_rotations()
 	pass # Replace with function body.
 
 

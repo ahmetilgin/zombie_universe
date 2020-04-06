@@ -15,7 +15,7 @@ var items = {
 	801:["BasicTurret",30],
 	802:["MachineTurret",40],
 	803:["LaserTurret",60],
-	804:["BazukaTurret",70]
+	804:["BazukaTurret",70],
 }
 
 # Declare member variables here. Examples:
