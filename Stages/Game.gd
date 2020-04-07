@@ -34,8 +34,8 @@ var portal_coordinates = [Vector2(9,2),Vector2(9,4),Vector2(9,6)]
 
 var walls = {
 	401: preload("res://Scenes/StaticScenes/fences/WoodFence/WoodFence.tscn"),
-	402: preload("res://Scenes/StaticScenes/fences/WoodFence/WoodFence.tscn"),
-	403: preload("res://Scenes/StaticScenes/Trambolin/Trambolin.tscn"),
+	402: preload("res://Scenes/StaticScenes/fences/IronFence/IronFence.tscn"),
+	403: preload("res://Scenes/StaticScenes/fences/GoldFence/GoldFence.tscn"),
 	404: preload("res://Scenes/StaticScenes/Trambolin/Trambolin.tscn")
 }
 

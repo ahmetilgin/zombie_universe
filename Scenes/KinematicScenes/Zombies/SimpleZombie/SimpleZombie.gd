@@ -161,7 +161,7 @@ func set_zombie_direction():
 		if sign(path[1].x - get_global_position().x) != 1:
 			$Zombie.scale.x = -body_scale
 			attack_ray_cast.scale.x = -1
-			attack_ray_cast.set_position(Vector2(-30,58))
+			attack_ray_cast.set_position(Vector2(10,58))
 		
 		else:
 			$Zombie.scale.x = body_scale

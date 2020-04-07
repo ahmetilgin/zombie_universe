@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Resources/Sprites/Fence/IronFence/IronFenceFrontCracket2.png" type="Texture" id=1]
+[ext_resource path="res://Resources/Sprites/Fence/IronFence/IronFenceFrontCracket1.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Sprites/Fence/IronFence/IronFenceFrontCracket3.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Sprites/Fence/IronFence/IronFenceFront.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/StaticScenes/fences/IronFence/IronFence.gd" type="Script" id=5]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "damage2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "damage1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "damage3",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "damage2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "damage1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "damage3",
+"speed": 5.0
+} ]
+
+[node name="Fence" type="KinematicBody2D"]
+position = Vector2( 16.5843, 268.749 )
+script = ExtResource( 5 )
+
+[node name="IronFenceBack" type="AnimatedSprite" parent="."]
+position = Vector2( -1.55803, -258.203 )
+z_index = -1
+frames = SubResource( 1 )
+animation = "idle"
+centered = false
+
+[node name="IronFenceFront" type="AnimatedSprite" parent="."]
+position = Vector2( -17.1476, -258.116 )
+frames = SubResource( 2 )
+animation = "idle"
+centered = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+position = Vector2( -0.902496, 2.70752 )
+polygon = PoolVector2Array( -5.68939, 112.785, -7.89468, -256.232, 0.191372, -184.928, 3.86683, -260.643, 7.54231, -188.603, 10.4827, 45.8918, 9.01359, 113.216 )

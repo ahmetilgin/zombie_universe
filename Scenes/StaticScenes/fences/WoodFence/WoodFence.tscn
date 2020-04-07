@@ -57,19 +57,20 @@ position = Vector2( 197.581, 271.064 )
 script = ExtResource( 1 )
 
 [node name="WoodFenceBack" type="AnimatedSprite" parent="."]
-position = Vector2( -3.91391, -269.641 )
+position = Vector2( -9.00223, -269.182 )
+z_index = -1
 frames = SubResource( 1 )
 animation = "damage2"
 centered = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2( -7.34558, -70.9546 )
+position = Vector2( -5.94396, -70.9546 )
+scale = Vector2( 0.83719, 1 )
 z_index = 1
-polygon = PoolVector2Array( -0.280993, 174.92, -9.80073, 174.481, -10.72, -137.17, -10.6412, -174.379, 0.136032, -115.703, 0.0844955, 164.467, 3.72849, 163.308, 2.76183, -117.11, 5.00481, -156.668, 15.2001, -106.099, 17.5856, 176.539, 2.35402, 174.885, 1.10786, 174.628 )
+polygon = PoolVector2Array( -0.485352, 176.659, -9.74059, 176.586, -10.72, -137.17, -10.6412, -174.379, 0.136032, -115.703, 0.0844955, 164.467, 3.72849, 163.308, 2.76183, -117.11, 5.00481, -156.668, 15.2001, -106.099, 17.5856, 176.539, 12.7863, 176.806, 1.08629, 176.659 )
 
 [node name="WoodFenceFront" type="AnimatedSprite" parent="."]
 position = Vector2( -25.2482, -269.237 )
-z_index = -1
 frames = SubResource( 2 )
 animation = "idle"
 centered = false

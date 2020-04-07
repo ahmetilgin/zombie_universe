@@ -209,11 +209,6 @@ func _set_is_melee(melee_state):
 func _set_is_attack(attack_state):
 	is_attack = attack_state
 
-func _change_collision_rotation():
-		if $AnimatedSprite.flip_h==false:
-			$Area2D/CollisionShape2D.disabled=false
-		else:
-			$mele_flip_h_true/CollisionPolygon2D.disabled=false
 
 func _is_movable():
 	return !is_melee && !is_attack && !is_down
@@ -291,8 +286,7 @@ func _physics_process(delta):
 	Engine.time_scale = 1.5
 	motion.y += gravity 
 	if !_is_dead():
-		$Area2D/CollisionShape2D.disabled=true
-		$mele_flip_h_true/CollisionPolygon2D.disabled=true
+		
 		_set_shift_stop(false)
 		if Input.is_action_pressed("ui_right") or touch_right:
 			if _is_movable():
@@ -319,7 +313,7 @@ func _physics_process(delta):
 			if _is_movable():
 					_set_is_melee(true)
 					_play_melee_animation()
-					_change_collision_rotation()
+
 		if Input.is_action_pressed("ui_focus_next") or touch_fire:
 			if _is_movable() && _check_bullet_count():
 				_fire_bullet()
@@ -381,10 +375,7 @@ func _on_Area2D_body_entered(body):
 	if "Zombie" in body.name:
 		body.dead(1,"Zombie") 
 
-func _on_mele_flip_h_true_body_entered(body):
-	if "Zombie" in body.name:
-		body.dead(1,"Zombie") 
-		
+
 func healt_kit(healt):
 	_increare_health(healt)
 	if hp > max_hp:
