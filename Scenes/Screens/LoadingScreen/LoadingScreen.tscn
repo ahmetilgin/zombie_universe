@@ -62,3 +62,6 @@ custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0.458824, 0.0196078, 0.0196078, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "LOADING..."
+__meta__ = {
+"_edit_use_anchors_": false
+}

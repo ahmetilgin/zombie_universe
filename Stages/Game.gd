@@ -24,7 +24,7 @@ var game_level = 1
 var tile_pos
 var sales_fail = false
 var is_create_instance = false
-var tile_grid 
+var tile_grid = null
 var countdown_timer = Timer.new()
 var is_countdown_pause_timer = false
 var pause_time = 19
@@ -93,6 +93,7 @@ func buy_player_item(item_id):
 
 func buy_wall(item_id):
 	create_wall_instance(item_id)
+	show_accept_button()
 	pass
 
 func buy_portal(item_id):
@@ -100,8 +101,6 @@ func buy_portal(item_id):
 	
 func show_select_position(is_visible):
 	$Game_UI/SelectPositionLabel.set_visible(is_visible)
-	$Game_UI/accept_button.set_visible(is_visible)
-
 
 func buy_turret(item_id):
 	created_turret_price = constants.items[item_id][1]
@@ -109,6 +108,7 @@ func buy_turret(item_id):
 	show_select_position(true)
 	create_instance(item_id)
 	turret_instance.show_rotations()
+	show_accept_button()
 	pass
 	
 func item_solded(item_id):
@@ -119,6 +119,7 @@ func item_solded(item_id):
 		pass
 	elif item_type == 400:
 		buy_wall(item_id)
+		update()
 		pass
 	elif item_type == 500:
 		buy_portal(item_id)
@@ -126,6 +127,7 @@ func item_solded(item_id):
 	elif item_type == 800:
 		is_turret = true
 		buy_turret(item_id)
+		update()
 		pass
 	else:
 		print("Satın Alma Arızası")
@@ -162,19 +164,18 @@ func on_market_button_visible():
 	
 func hide_market():
 	$Market.set_offset(Vector2(0,1000))
-	turret_cancelled()
-	
+		
 func show_market():
 	$Market.set_offset(Vector2(0,0))
-	$Game_UI/accept_button.set_visible(true)
 	
+func show_accept_button():
+	$Game_UI/accept_button.set_visible(true)
 	
 func on_market_button_unvisible():
 	$Game_UI/Market_Button.disabled = true
-	is_not_accept_button_set_visible()
+	hide_accept_button()
 	hide_market()
 	$player/Camera2D.current = true
-	
 	hide_grid()
 	is_opened_market = false
 	pass
@@ -217,8 +218,14 @@ func show_grid():
 	for i in range(min_border.x, max_border.x):
 		for j in range(min_border.y, max_border.y):
 			if get_node("TileMap").get_cell(i,j) == -1 and get_node("TileMap").get_cell(i,j+1) != -1: 				
-				get_node("TileMap").set_cellv(Vector2(i,j),14)
-				
+				get_node("TileMap").set_cellv(Vector2(i,j),14)			
+			pass
+
+func clear_grid():
+	for i in range(min_border.x, max_border.x):
+		for j in range(min_border.y, max_border.y):
+			if get_node("TileMap").get_cell(i,j) == 14 or get_node("TileMap").get_cell(i,j) == 15:				
+				get_node("TileMap").set_cellv(Vector2(i,j),-1)
 			pass
 
 func hide_grid():
@@ -229,15 +236,14 @@ func hide_grid():
 			pass
 
 func _draw():
+	clear_grid()
 	if is_opened_market:
 		show_grid()
 		$GameAreaCam.current = true
 	else:
-		hide_grid()
 		$player/Camera2D.current = true
-		is_not_accept_button_set_visible()
 		
-func is_not_accept_button_set_visible():
+func hide_accept_button():
 	$Game_UI/accept_button.set_visible(false)
 	is_the_buy_button_clicked = false
 	
@@ -257,8 +263,8 @@ func turret_cancelled():
 			turret_instance.queue_free()
 		else:
 			sales_successful = false
-		
 		is_create_instance = false
+	$Market.hide_question_panel()
 
 var started_wave_count = 0
 
@@ -278,24 +284,19 @@ func is_item_solded_failed():
 	
 func _unhandled_input(event):
 	if event is InputEventMouseButton :
-		if event.pressed:
+		if event.pressed and event.button_index == BUTTON_LEFT and is_the_buy_button_clicked:
 			var pos = get_global_mouse_position()
+			if tile_grid == null:
+				tile_grid = get_node("TileMap").world_to_map(pos)
+			else:
+				get_node("TileMap").set_cell(tile_grid.x,tile_grid.y,14)
+				pass
 			tile_grid = get_node("TileMap").world_to_map(pos)
 			select_turret_position()
-			
+
 func select_turret_position():
-	if  get_node("TileMap").get_cell(tile_grid.x,tile_grid.y) == 14   and is_the_buy_button_clicked:
-		turret_grid =tile_grid
-		if is_create_instance   and( sales_fail ):
-			sales_fail = false
-			if !sales_successful:
-				$Game_UI/Coin_Counter.increase_coins(created_turret_price)
-			else:
-				sales_successful = false
-			is_create_instance = false
-		if is_create_instance:
-			tile_pos =  get_node("TileMap").map_to_world(tile_grid)
-			turret_instance.set_global_position(Vector2(tile_pos.x + 32,tile_pos.y ) )
+	if  get_node("TileMap").get_cell(tile_grid.x,tile_grid.y) == 14:
+		get_node("TileMap").set_cell(tile_grid.x,tile_grid.y,15) 
 			
 func create_instance(turret):
 	turret_instance = turret_paths[turret].instance()
@@ -307,9 +308,25 @@ func create_wall_instance(wall):
 	is_create_instance = true
 	add_child(turret_instance)
 	
+func finish_turret_buy():
+	turret_grid = tile_grid	
+	if is_create_instance   and( sales_fail ):
+		sales_fail = false
+		if !sales_successful:
+			$Game_UI/Coin_Counter.increase_coins(created_turret_price)
+		else:
+			sales_successful = false
+		is_create_instance = false
+	if is_create_instance:
+		tile_pos =  get_node("TileMap").map_to_world(tile_grid)
+		turret_instance.set_global_position(Vector2(tile_pos.x + 32,tile_pos.y ) )
+	clear_grid()
+	show_market()
+	hide_accept_button()
 
 func _on_acceptbutton_pressed():
 	sales_successful = true
+	finish_turret_buy()
 	if is_turret:
 		turret_instance.hide_rotations()
 		is_turret = false
@@ -331,3 +348,4 @@ func _on_count_down_timer_timeout():
 		counttimer = pause_time
 	$Game_UI/CountDownTimer/Time.text = String(counttimer)
 	second_passed = true
+	

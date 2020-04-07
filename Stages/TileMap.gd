@@ -91,7 +91,8 @@ func _ready() -> void:
 	var cells = add_walkable_cells(obstacles)
 	connect_walkable_cells(cells)
 #	for connectedPoint in connected_cells:
-#		set_cellv(connectedPoint,13)
+#		if(get_cellv(connectedPoint) == -1):
+#			set_cellv(connectedPoint,13)
  
 func _get_path(init_position: Vector2, target_position: Vector2, name) -> Array:
 	init_pos = init_position

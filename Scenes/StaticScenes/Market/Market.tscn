@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Scenes/StaticScenes/Market/Market.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/UISprites/Windows.png" type="Texture" id=2]
@@ -35,16 +35,32 @@ region = Rect2( 1488, 931, 548, 771 )
 
 [sub_resource type="AtlasTexture" id=2]
 flags = 4
-atlas = ExtResource( 7 )
-region = Rect2( 169.878, 192.777, 376.727, 178.089 )
+atlas = ExtResource( 2 )
+region = Rect2( 3473.65, 930.013, 651.104, 515.291 )
 
 [sub_resource type="AtlasTexture" id=3]
 flags = 4
 atlas = ExtResource( 7 )
-region = Rect2( 930.725, 191.844, 390.48, 188.763 )
+region = Rect2( 1100.36, 2812.58, 184.157, 169.808 )
 
-[sub_resource type="DynamicFont" id=4]
-size = 150
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 1301.97, 2809.35, 174.591, 179.374 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 1105.14, 2614.07, 174.591, 179.374 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 1288.77, 2606.4, 196.103, 193.452 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 31
+outline_color = Color( 0.882353, 0.14902, 0.14902, 1 )
 font_data = ExtResource( 8 )
 
 [node name="Market" type="CanvasLayer"]
@@ -52,10 +68,10 @@ layer = 0
 script = ExtResource( 1 )
 
 [node name="MarketPalace" type="TextureRect" parent="."]
-margin_left = 19.3664
-margin_top = 84.0394
-margin_right = 256.366
-margin_bottom = 2495.04
+margin_left = 19.0
+margin_top = 84.0
+margin_right = 250.0
+margin_bottom = 2436.0
 grow_horizontal = 0
 grow_vertical = 0
 rect_scale = Vector2( 1.68958, 0.257532 )
@@ -66,36 +82,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BuyButton" type="TextureButton" parent="."]
-margin_left = 167.221
-margin_top = 574.488
-margin_right = 543.221
-margin_bottom = 752.488
-rect_scale = Vector2( 0.192397, 0.117423 )
-texture_normal = SubResource( 2 )
-texture_pressed = SubResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="BuyLabel" type="Label" parent="BuyButton"]
-margin_left = 61.0404
-margin_top = 23.8281
-margin_right = 313.04
-margin_bottom = 324.828
-custom_fonts/font = SubResource( 4 )
-custom_colors/font_color = Color( 0.764706, 0, 0, 1 )
-text = "BUY
-"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="HBoxContainer" type="ScrollContainer" parent="."]
-margin_left = 94.75
-margin_top = 181.413
-margin_right = 335.75
-margin_bottom = 462.413
+margin_left = 95.0
+margin_top = 181.0
+margin_right = 331.0
+margin_bottom = 467.0
+grow_horizontal = 0
+grow_vertical = 0
 rect_scale = Vector2( 1, 1.36 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -349,13 +342,13 @@ position = Vector2( 32.3479, 64.3063 )
 texture = ExtResource( 5 )
 
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/BasicTurret"]
-position = Vector2( 29.022, 22.8535 )
+position = Vector2( 29.5625, 29.6084 )
 scale = Vector2( 0.097, 0.079 )
 z_index = 1
 texture = ExtResource( 20 )
 
 [node name="Turret3Base" type="Sprite" parent="HBoxContainer/GridContainer/BasicTurret"]
-position = Vector2( 43.2015, 33.1216 )
+position = Vector2( 43.7419, 39.8765 )
 scale = Vector2( 0.097, 0.079 )
 texture = ExtResource( 16 )
 
@@ -441,7 +434,69 @@ texture = ExtResource( 25 )
 position = Vector2( 31.8599, 33.3911 )
 scale = Vector2( 0.097, 0.079 )
 texture = ExtResource( 17 )
-[connection signal="pressed" from="BuyButton" to="." method="_on_BuyButton_pressed"]
+
+[node name="BuyQuestion" type="TextureRect" parent="."]
+margin_left = 477.779
+margin_top = 274.774
+margin_right = 517.779
+margin_bottom = 314.774
+rect_scale = Vector2( 0.597264, 0.40445 )
+texture = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="YesButton" type="TextureButton" parent="BuyQuestion"]
+margin_left = 191.719
+margin_top = 425.523
+margin_right = 366.719
+margin_bottom = 606.523
+rect_scale = Vector2( 0.5, 0.7 )
+texture_normal = SubResource( 3 )
+texture_pressed = SubResource( 5 )
+
+[node name="NoButton" type="TextureButton" parent="BuyQuestion"]
+margin_left = 338.878
+margin_top = 425.584
+margin_right = 512.878
+margin_bottom = 604.584
+rect_scale = Vector2( 0.5, 0.7 )
+texture_normal = SubResource( 4 )
+texture_pressed = SubResource( 7 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BuyQuestion"]
+margin_left = 192.71
+margin_top = 228.635
+margin_right = 442.71
+margin_bottom = 328.635
+rect_scale = Vector2( 1.23685, 1.18602 )
+custom_fonts/normal_font = SubResource( 6 )
+custom_colors/default_color = Color( 0.603922, 0.215686, 0.215686, 1 )
+text = "Are you sure?"
+
+[node name="ItemInfo" type="RichTextLabel" parent="BuyQuestion"]
+margin_left = 164.485
+margin_top = 315.464
+margin_right = 464.485
+margin_bottom = 365.464
+rect_scale = Vector2( 1.212, 1.171 )
+custom_fonts/normal_font = SubResource( 6 )
+custom_colors/default_color = Color( 0.137255, 0.14902, 0.164706, 1 )
+text = "qqqqweqwewqewqe"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="INFO" type="RichTextLabel" parent="BuyQuestion"]
+margin_left = 270.845
+margin_top = 52.4815
+margin_right = 520.845
+margin_bottom = 152.482
+rect_scale = Vector2( 1.23685, 1.18602 )
+custom_fonts/normal_font = SubResource( 6 )
+custom_colors/default_color = Color( 0.85098, 0.231373, 0.231373, 1 )
+text = "INFO
+"
 [connection signal="pressed" from="HBoxContainer/GridContainer/RasenganButton" to="." method="_on_RasenganButton_pressed"]
 [connection signal="pressed" from="HBoxContainer/GridContainer/FireBulletButton" to="." method="_on_FireBulletButton_pressed"]
 [connection signal="pressed" from="HBoxContainer/GridContainer/LaserBullet" to="." method="_on_LaserBullet_pressed"]
@@ -457,3 +512,5 @@ texture = ExtResource( 17 )
 [connection signal="pressed" from="HBoxContainer/GridContainer/MachineTurret" to="." method="_on_MachineTurret_pressed"]
 [connection signal="pressed" from="HBoxContainer/GridContainer/LaserTurret" to="." method="_on_LaserTurret_pressed"]
 [connection signal="pressed" from="HBoxContainer/GridContainer/BazukaTurret" to="." method="_on_BazukaTurret_pressed"]
+[connection signal="pressed" from="BuyQuestion/YesButton" to="." method="_on_YesButton_pressed"]
+[connection signal="pressed" from="BuyQuestion/NoButton" to="." method="_on_NoButton_pressed"]
