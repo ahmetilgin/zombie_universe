@@ -1,7 +1,7 @@
 extends KinematicBody2D
 var target_point_world = Vector2()
 var FollowPlayerTimer = Timer.new()
-onready var player = get_parent().get_node('player/CollisionShape2D')
+onready var player = get_parent().get_node('player')
 onready var tile_map = get_parent().get_node('TileMap')
 var coin = preload("res://Scenes/StaticScenes/Coin/Coin.tscn")
 var extra_bullet = preload("res://Scenes/StaticScenes/ExtraBullet/ExtraBullet.tscn")
@@ -110,7 +110,7 @@ func find_zombie_x_movement(direction):
 func can_zombie_jump(direction,cross_index):
 	var target_distance = 0
 	if direction.y < 0 && is_on_floor():
-		if  player.get_parent().is_on_floor():		
+		if  player.is_on_floor():		
 			target_distance = round(get_global_position().distance_to(path[cross_index]) / tile_map.cell_size.y)
 			motion.y += min((-20 * target_distance), -1000)
 			if motion.y < -2000:
@@ -252,12 +252,13 @@ func dead_from_turrent(damage,whodead,dir):
 		
 		
 func _jump_is_on_wall():
+	is_zombie_action = false
 	if attack_ray_cast.is_colliding():
 		var playerFound = false
-		is_zombie_action = false
 		if "player" in attack_ray_cast.get_collider().name:
 			playerFound = true
 			_zombie_attack_to_player(5)
+			is_zombie_action = true
 		elif "Top"  in attack_ray_cast.get_collider().name:
 			$AnimationPlayer.play("Attack")
 			var colliding_turret = attack_ray_cast.get_collider().get_parent().get_parent()
@@ -268,6 +269,8 @@ func _jump_is_on_wall():
 			var colliding_fence = attack_ray_cast.get_collider() 
 			colliding_fence .change_fence_health(-20)
 			is_zombie_action = true
+
+		
 
 func move_like_basic_zombie():
 	if len(path) == 0:
@@ -295,7 +298,7 @@ func _zombie_attack_to_player(damage):
 	if can_zombie_attack:
 		zombie_attack_timer.start()
 		$AnimationPlayer.play("Attack")
-		player.get_parent().dead(damage,"zombie")
+		player.dead(damage,"zombie")
 		can_zombie_attack = false
 	
 
