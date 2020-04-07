@@ -110,11 +110,12 @@ func find_zombie_x_movement(direction):
 func can_zombie_jump(direction,cross_index):
 	var target_distance = 0
 	if direction.y < 0 && is_on_floor():
-		if  player.is_on_floor():		
-			target_distance = round(get_global_position().distance_to(path[cross_index]) / tile_map.cell_size.y)
-			motion.y += min((-20 * target_distance), -1000)
-			if motion.y < -2000:
-				motion.y = -1500
+		if  player.is_on_floor():
+			var player_pos = player.get_global_position()
+			var zombie_pos = get_global_position()
+			if player_pos.y < zombie_pos.y:
+				var diff = player_pos.y - zombie_pos.y
+				motion.y += max(diff * 3, -1000)
 
 func find_cross_index():
 	var cross_index = 0
