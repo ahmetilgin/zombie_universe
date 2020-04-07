@@ -153,9 +153,6 @@ func check_zombie_found_player():
 			FollowPlayerTimer.start()
 		get_next_target_point()
 
-
-		
-
 func set_zombie_direction():
 	if len(path) > 2:
 		if sign(path[1].x - get_global_position().x) != 1:
@@ -251,7 +248,7 @@ func dead_from_turrent(damage,whodead,dir):
 		motion = move_and_slide(Vector2(dir.x*(motion.x + back), dir.y*(motion.y + back) - gravity) , UP)
 		
 		
-func _jump_is_on_wall():
+func chech_zombie_colliding():
 	is_zombie_action = false
 	if attack_ray_cast.is_colliding():
 		var playerFound = false
@@ -270,8 +267,6 @@ func _jump_is_on_wall():
 			colliding_fence .change_fence_health(-20)
 			is_zombie_action = true
 
-		
-
 func move_like_basic_zombie():
 	if len(path) == 0:
 		pass
@@ -281,7 +276,7 @@ func _physics_process(delta):
 	if is_dead==false:
 		follow_path()
 		motion = move_and_slide(motion , UP)
-		_jump_is_on_wall()
+		chech_zombie_colliding()
  
 func _zombie_dead_timer_timeout():
 	create_extra_resources()
