@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://Scenes/StaticScenes/Market/Market.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/UISprites/Windows.png" type="Texture" id=2]
@@ -27,6 +27,7 @@
 [ext_resource path="res://Resources/Sprites/Turret/Turret3Top.png" type="Texture" id=25]
 [ext_resource path="res://Resources/Sprites/Guns/shotgun.png" type="Texture" id=26]
 [ext_resource path="res://Resources/Sprites/Ammo/wooden_crate_1.png" type="Texture" id=27]
+[ext_resource path="res://Resources/Sprites/starcoinrotate1.png" type="Texture" id=28]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -43,23 +44,23 @@ flags = 4
 atlas = ExtResource( 7 )
 region = Rect2( 1100.36, 2812.58, 184.157, 169.808 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=4]
 flags = 4
 atlas = ExtResource( 7 )
 region = Rect2( 1301.97, 2809.35, 174.591, 179.374 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=5]
 flags = 4
 atlas = ExtResource( 7 )
 region = Rect2( 1105.14, 2614.07, 174.591, 179.374 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=6]
 flags = 4
 atlas = ExtResource( 7 )
 region = Rect2( 1288.77, 2606.4, 196.103, 193.452 )
 
-[sub_resource type="DynamicFont" id=6]
-size = 31
+[sub_resource type="DynamicFont" id=7]
+size = 35
 outline_color = Color( 0.882353, 0.14902, 0.14902, 1 )
 font_data = ExtResource( 8 )
 
@@ -436,24 +437,24 @@ scale = Vector2( 0.097, 0.079 )
 texture = ExtResource( 17 )
 
 [node name="BuyQuestion" type="TextureRect" parent="."]
-margin_left = 477.779
-margin_top = 274.774
-margin_right = 517.779
-margin_bottom = 314.774
-rect_scale = Vector2( 0.597264, 0.40445 )
+margin_left = 469.614
+margin_top = 207.125
+margin_right = 1120.61
+margin_bottom = 722.125
+rect_scale = Vector2( 0.841197, 0.603764 )
 texture = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="YesButton" type="TextureButton" parent="BuyQuestion"]
-margin_left = 191.719
+margin_left = 190.97
 margin_top = 425.523
-margin_right = 366.719
+margin_right = 374.97
 margin_bottom = 606.523
 rect_scale = Vector2( 0.5, 0.7 )
 texture_normal = SubResource( 3 )
-texture_pressed = SubResource( 5 )
+texture_pressed = SubResource( 4 )
 
 [node name="NoButton" type="TextureButton" parent="BuyQuestion"]
 margin_left = 338.878
@@ -461,8 +462,8 @@ margin_top = 425.584
 margin_right = 512.878
 margin_bottom = 604.584
 rect_scale = Vector2( 0.5, 0.7 )
-texture_normal = SubResource( 4 )
-texture_pressed = SubResource( 7 )
+texture_normal = SubResource( 5 )
+texture_pressed = SubResource( 6 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="BuyQuestion"]
 margin_left = 192.71
@@ -470,19 +471,19 @@ margin_top = 228.635
 margin_right = 442.71
 margin_bottom = 328.635
 rect_scale = Vector2( 1.23685, 1.18602 )
-custom_fonts/normal_font = SubResource( 6 )
+custom_fonts/normal_font = SubResource( 7 )
 custom_colors/default_color = Color( 0.603922, 0.215686, 0.215686, 1 )
 text = "Are you sure?"
 
 [node name="ItemInfo" type="RichTextLabel" parent="BuyQuestion"]
-margin_left = 164.485
-margin_top = 315.464
-margin_right = 464.485
-margin_bottom = 365.464
+margin_left = 217.925
+margin_top = 296.886
+margin_right = 517.925
+margin_bottom = 346.886
 rect_scale = Vector2( 1.212, 1.171 )
-custom_fonts/normal_font = SubResource( 6 )
+custom_fonts/normal_font = SubResource( 7 )
 custom_colors/default_color = Color( 0.137255, 0.14902, 0.164706, 1 )
-text = "qqqqweqwewqewqe"
+text = "coin"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -493,10 +494,34 @@ margin_top = 52.4815
 margin_right = 520.845
 margin_bottom = 152.482
 rect_scale = Vector2( 1.23685, 1.18602 )
-custom_fonts/normal_font = SubResource( 6 )
+custom_fonts/normal_font = SubResource( 7 )
 custom_colors/default_color = Color( 0.85098, 0.231373, 0.231373, 1 )
 text = "INFO
 "
+
+[node name="Price" type="RichTextLabel" parent="BuyQuestion"]
+margin_left = 271.991
+margin_top = 362.119
+margin_right = 571.991
+margin_bottom = 462.119
+rect_scale = Vector2( 0.797679, 1.53425 )
+custom_fonts/normal_font = SubResource( 7 )
+custom_colors/default_color = Color( 0.137255, 0.14902, 0.164706, 1 )
+text = "30"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Coin" type="TextureRect" parent="BuyQuestion"]
+margin_left = 318.072
+margin_top = 363.539
+margin_right = 2551.07
+margin_bottom = 2606.54
+rect_scale = Vector2( 0.0159963, 0.0221091 )
+texture = ExtResource( 28 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="HBoxContainer/GridContainer/RasenganButton" to="." method="_on_RasenganButton_pressed"]
 [connection signal="pressed" from="HBoxContainer/GridContainer/FireBulletButton" to="." method="_on_FireBulletButton_pressed"]
 [connection signal="pressed" from="HBoxContainer/GridContainer/LaserBullet" to="." method="_on_LaserBullet_pressed"]

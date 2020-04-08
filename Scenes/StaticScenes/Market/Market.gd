@@ -11,10 +11,12 @@ func _ready():
 	pass
 
 func show_item_info(item_id):
-	var item_text = constants.items[item_id][0] + " : " +str(constants.items[item_id][1])  + "$"
+	var item_text = constants.items[item_id][0] 
+	$BuyQuestion/Price.add_text(str(constants.items[item_id][1]))
 	$BuyQuestion/ItemInfo.add_text(item_text)
 
 func show_question_panel(item_id):
+	$BuyQuestion/Price.clear()
 	$BuyQuestion/ItemInfo.clear()
 	$BuyQuestion.set_visible(true)
 	show_item_info(item_id)

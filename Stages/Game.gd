@@ -27,7 +27,7 @@ var is_create_instance = false
 var tile_grid = null
 var countdown_timer = Timer.new()
 var is_countdown_pause_timer = false
-var pause_time = 19
+var pause_time = 60
 var counttimer
 var second_passed = true
 var portal_coordinates = [Vector2(9,2),Vector2(9,4),Vector2(9,6)]
@@ -94,7 +94,9 @@ func buy_player_item(item_id):
 
 func buy_wall(item_id):
 	create_wall_instance(item_id)
+	hide_market()
 	show_accept_button()
+	show_select_position(true)
 	pass
 
 func buy_portal(item_id):
@@ -338,7 +340,7 @@ func _on_acceptbutton_pressed():
 
 func countdown_timer():
 	countdown_timer.set_one_shot(true)
-	countdown_timer.set_wait_time( 1 )
+	countdown_timer.set_wait_time(1)
 	add_child(countdown_timer) #to process
 	countdown_timer.connect("timeout",self, "_on_count_down_timer_timeout") 
 	
@@ -347,7 +349,7 @@ func _on_count_down_timer_timeout():
 		counttimer = pause_time
 		is_countdown_pause_timer = false
 	counttimer -= 1
-	if  (counttimer < 0):
+	if  (counttimer < 1):
 		counttimer = pause_time
 		for turret in turret_instance_list:
 			turret.hide_rotations()
