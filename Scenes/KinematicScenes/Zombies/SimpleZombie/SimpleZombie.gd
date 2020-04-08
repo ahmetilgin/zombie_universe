@@ -248,11 +248,16 @@ func dead_from_turrent(damage,whodead,dir):
 			back = -400
 		motion = move_and_slide(Vector2(dir.x*(motion.x + back), dir.y*(motion.y + back) - gravity) , UP)
 		
+
+func jump():
+	motion.y -= 1000
+
 		
 func chech_zombie_colliding():
 	is_zombie_action = false
 	if attack_ray_cast.is_colliding():
 		var playerFound = false
+		print(attack_ray_cast.get_collider().name)
 		if "player" in attack_ray_cast.get_collider().name:
 			playerFound = true
 			_zombie_attack_to_player(5)
@@ -262,11 +267,18 @@ func chech_zombie_colliding():
 			var colliding_turret = attack_ray_cast.get_collider().get_parent().get_parent()
 			colliding_turret.change_turret_health(-20)
 			is_zombie_action = true
+		elif "Turret"  in attack_ray_cast.get_collider().name:
+			$AnimationPlayer.play("Attack")
+			var colliding_turret = attack_ray_cast.get_collider()
+			colliding_turret.change_turret_health(-20)
+			is_zombie_action = true
 		elif  "Fence"in attack_ray_cast.get_collider().name:
 			$AnimationPlayer.play("Attack")
 			var colliding_fence = attack_ray_cast.get_collider() 
 			colliding_fence .change_fence_health(-20)
 			is_zombie_action = true
+#		elif "Zombie" in attack_ray_cast.get_collider().name and is_on_floor():
+#			jump()
 
 func move_like_basic_zombie():
 	if len(path) == 0:

@@ -89,7 +89,7 @@ offset = Vector2( -145, -41 )
 position = Vector2( -112.591, -45.9664 )
 polygon = PoolVector2Array( -10.3926, 1.88848, -10.3926, -3.95291, 33.835, -4.78739, 66.9349, -6.24011, 133.941, -8.92037, 186.138, -26.3139, 203.235, -13.9667, 240.787, -7.29085, 236.615, 41.1092, 199.063, 44.4472, 178.882, 64.0787, 153.166, 64.4748, 143.152, 53.6265, 126.463, 35.2678, -10.3285, 36.4523 )
 
-[node name="BaseCollision" type="CollisionShape2D" parent="."]
+[node name="TurretBody" type="CollisionShape2D" parent="."]
 position = Vector2( 32.6876, 111.157 )
 shape = SubResource( 5 )
 

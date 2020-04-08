@@ -466,20 +466,20 @@ texture_normal = SubResource( 5 )
 texture_pressed = SubResource( 6 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="BuyQuestion"]
-margin_left = 192.71
-margin_top = 228.635
-margin_right = 442.71
-margin_bottom = 328.635
+margin_left = 180.621
+margin_top = 229.468
+margin_right = 430.621
+margin_bottom = 329.468
 rect_scale = Vector2( 1.23685, 1.18602 )
 custom_fonts/normal_font = SubResource( 7 )
 custom_colors/default_color = Color( 0.603922, 0.215686, 0.215686, 1 )
 text = "Are you sure?"
 
 [node name="ItemInfo" type="RichTextLabel" parent="BuyQuestion"]
-margin_left = 217.925
-margin_top = 296.886
-margin_right = 517.925
-margin_bottom = 346.886
+margin_left = 204.37
+margin_top = 307.679
+margin_right = 504.37
+margin_bottom = 357.679
 rect_scale = Vector2( 1.212, 1.171 )
 custom_fonts/normal_font = SubResource( 7 )
 custom_colors/default_color = Color( 0.137255, 0.14902, 0.164706, 1 )
@@ -490,13 +490,13 @@ __meta__ = {
 
 [node name="INFO" type="RichTextLabel" parent="BuyQuestion"]
 margin_left = 270.845
-margin_top = 52.4815
+margin_top = 54.3167
 margin_right = 520.845
-margin_bottom = 152.482
+margin_bottom = 154.317
 rect_scale = Vector2( 1.23685, 1.18602 )
 custom_fonts/normal_font = SubResource( 7 )
 custom_colors/default_color = Color( 0.85098, 0.231373, 0.231373, 1 )
-text = "INFO
+text = "buy
 "
 
 [node name="Price" type="RichTextLabel" parent="BuyQuestion"]
