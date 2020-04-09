@@ -257,7 +257,6 @@ func chech_zombie_colliding():
 	is_zombie_action = false
 	if attack_ray_cast.is_colliding():
 		var playerFound = false
-		print(attack_ray_cast.get_collider().name)
 		if "player" in attack_ray_cast.get_collider().name:
 			playerFound = true
 			_zombie_attack_to_player(5)
