@@ -1,11 +1,8 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Scenes/StaticScenes/Market/Market.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/UISprites/Windows.png" type="Texture" id=2]
-[ext_resource path="res://Resources/Sprites/backgroundbrick/background.png" type="Texture" id=3]
-[ext_resource path="res://Resources/Sprites/backgroundbrick/pricearea.png" type="Texture" id=4]
-[ext_resource path="res://Resources/Sprites/backgroundbrick/description.png" type="Texture" id=5]
-[ext_resource path="res://Resources/Sprites/backgroundbrick/Adsız.png" type="Texture" id=6]
+[ext_resource path="res://Resources/Sprites/UISprites/MarketSegment.png" type="Texture" id=3]
 [ext_resource path="res://Resources/Sprites/UISprites/Button.png" type="Texture" id=7]
 [ext_resource path="res://Resources/Fonts/bubble_soap/Bubble&Soap light_PersonalUseOnly.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://Resources/Sprites/Portal/portalRings1.png" type="Texture" id=9]
@@ -28,6 +25,7 @@
 [ext_resource path="res://Resources/Sprites/Guns/shotgun.png" type="Texture" id=26]
 [ext_resource path="res://Resources/Sprites/Ammo/wooden_crate_1.png" type="Texture" id=27]
 [ext_resource path="res://Resources/Sprites/starcoinrotate1.png" type="Texture" id=28]
+[ext_resource path="res://Resources/Sprites/UISprites/MarketSegmentPush.png" type="Texture" id=29]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -96,46 +94,29 @@ __meta__ = {
 }
 
 [node name="GridContainer" type="GridContainer" parent="HBoxContainer"]
-margin_right = 214.0
-margin_bottom = 372.0
+margin_right = 217.0
+margin_bottom = 412.0
 custom_constants/vseparation = 13
 custom_constants/hseparation = 11
 columns = 3
 
 [node name="RasenganButton" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_right = 64.0
-margin_bottom = 64.0
-texture_normal = ExtResource( 6 )
-texture_pressed = ExtResource( 3 )
-
-[node name="Sprite" type="Sprite" parent="HBoxContainer/GridContainer/RasenganButton"]
-position = Vector2( 32.0345, 6.46155 )
-scale = Vector2( 1.20391, 1 )
-texture = ExtResource( 4 )
+margin_right = 65.0
+margin_bottom = 72.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 29 )
 
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/RasenganButton"]
 position = Vector2( 30.9379, 32.6841 )
 scale = Vector2( 0.148, 0.118 )
 texture = ExtResource( 12 )
 
-[node name="Sprite2" type="Sprite" parent="HBoxContainer/GridContainer/RasenganButton"]
-position = Vector2( 32.3479, 64.3063 )
-texture = ExtResource( 5 )
-
 [node name="FireBulletButton" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_left = 75.0
-margin_right = 139.0
-margin_bottom = 64.0
-texture_normal = ExtResource( 6 )
-
-[node name="Sprite" type="Sprite" parent="HBoxContainer/GridContainer/FireBulletButton"]
-position = Vector2( 31.7271, 6.23555 )
-scale = Vector2( 1.20391, 1 )
-texture = ExtResource( 4 )
-
-[node name="Sprite2" type="Sprite" parent="HBoxContainer/GridContainer/FireBulletButton"]
-position = Vector2( 32.3479, 64.3063 )
-texture = ExtResource( 5 )
+margin_left = 76.0
+margin_right = 141.0
+margin_bottom = 72.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 29 )
 
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/FireBulletButton"]
 position = Vector2( 31.9677, 32.4989 )
@@ -143,19 +124,11 @@ scale = Vector2( 0.148, 0.118 )
 texture = ExtResource( 26 )
 
 [node name="LaserBullet" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_left = 150.0
-margin_right = 214.0
-margin_bottom = 64.0
-texture_normal = ExtResource( 6 )
-
-[node name="Sprite" type="Sprite" parent="HBoxContainer/GridContainer/LaserBullet"]
-position = Vector2( 31.7271, 6.23555 )
-scale = Vector2( 1.20391, 1 )
-texture = ExtResource( 4 )
-
-[node name="Sprite2" type="Sprite" parent="HBoxContainer/GridContainer/LaserBullet"]
-position = Vector2( 32.3479, 64.3063 )
-texture = ExtResource( 5 )
+margin_left = 152.0
+margin_right = 217.0
+margin_bottom = 72.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 29 )
 
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/LaserBullet"]
 position = Vector2( 29.2657, 32.4393 )
@@ -163,19 +136,11 @@ scale = Vector2( 0.14802, 0.117505 )
 texture = ExtResource( 10 )
 
 [node name="HealthButton" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_top = 77.0
-margin_right = 64.0
-margin_bottom = 141.0
-texture_normal = ExtResource( 6 )
-
-[node name="Sprite" type="Sprite" parent="HBoxContainer/GridContainer/HealthButton"]
-position = Vector2( 31.7271, 6.23555 )
-scale = Vector2( 1.20391, 1 )
-texture = ExtResource( 4 )
-
-[node name="Sprite2" type="Sprite" parent="HBoxContainer/GridContainer/HealthButton"]
-position = Vector2( 32.3479, 64.3063 )
-texture = ExtResource( 5 )
+margin_top = 85.0
+margin_right = 65.0
+margin_bottom = 157.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 29 )
 
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/HealthButton"]
 position = Vector2( 32.1976, 36.452 )
@@ -183,20 +148,12 @@ scale = Vector2( 0.108405, 0.0972224 )
 texture = ExtResource( 13 )
 
 [node name="AmmoButton" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_left = 75.0
-margin_top = 77.0
-margin_right = 139.0
-margin_bottom = 141.0
-texture_normal = ExtResource( 6 )
-
-[node name="Sprite" type="Sprite" parent="HBoxContainer/GridContainer/AmmoButton"]
-position = Vector2( 31.7271, 6.23555 )
-scale = Vector2( 1.20391, 1 )
-texture = ExtResource( 4 )
-
-[node name="Sprite2" type="Sprite" parent="HBoxContainer/GridContainer/AmmoButton"]
-position = Vector2( 32.3479, 64.3063 )
-texture = ExtResource( 5 )
+margin_left = 76.0
+margin_top = 85.0
+margin_right = 141.0
+margin_bottom = 157.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 29 )
 
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/AmmoButton"]
 position = Vector2( 32.6984, 36.636 )
@@ -204,20 +161,12 @@ scale = Vector2( 0.180379, 0.165484 )
 texture = ExtResource( 27 )
 
 [node name="WoodWall" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_left = 150.0
-margin_top = 77.0
-margin_right = 214.0
-margin_bottom = 141.0
-texture_normal = ExtResource( 6 )
-
-[node name="Sprite" type="Sprite" parent="HBoxContainer/GridContainer/WoodWall"]
-position = Vector2( 31.7271, 6.23555 )
-scale = Vector2( 1.20391, 1 )
-texture = ExtResource( 4 )
-
-[node name="Sprite2" type="Sprite" parent="HBoxContainer/GridContainer/WoodWall"]
-position = Vector2( 32.3479, 64.3063 )
-texture = ExtResource( 5 )
+margin_left = 152.0
+margin_top = 85.0
+margin_right = 217.0
+margin_bottom = 157.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 29 )
 
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/WoodWall"]
 position = Vector2( 33.7787, 36.6458 )
@@ -225,19 +174,11 @@ scale = Vector2( 0.708141, 0.0972224 )
 texture = ExtResource( 19 )
 
 [node name="SteelWall" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_top = 154.0
-margin_right = 64.0
-margin_bottom = 218.0
-texture_normal = ExtResource( 6 )
-
-[node name="Sprite" type="Sprite" parent="HBoxContainer/GridContainer/SteelWall"]
-position = Vector2( 31.7271, 6.23555 )
-scale = Vector2( 1.20391, 1 )
-texture = ExtResource( 4 )
-
-[node name="Sprite2" type="Sprite" parent="HBoxContainer/GridContainer/SteelWall"]
-position = Vector2( 32.3479, 64.3063 )
-texture = ExtResource( 5 )
+margin_top = 170.0
+margin_right = 65.0
+margin_bottom = 242.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 29 )
 
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/SteelWall"]
 position = Vector2( 32.3479, 36.0159 )
@@ -245,20 +186,12 @@ scale = Vector2( 1.06552, 0.0839258 )
 texture = ExtResource( 18 )
 
 [node name="GoldWall" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_left = 75.0
-margin_top = 154.0
-margin_right = 139.0
-margin_bottom = 218.0
-texture_normal = ExtResource( 6 )
-
-[node name="Sprite" type="Sprite" parent="HBoxContainer/GridContainer/GoldWall"]
-position = Vector2( 31.7271, 5.87697 )
-scale = Vector2( 1.20391, 1 )
-texture = ExtResource( 4 )
-
-[node name="Sprite2" type="Sprite" parent="HBoxContainer/GridContainer/GoldWall"]
-position = Vector2( 32.3479, 64.3063 )
-texture = ExtResource( 5 )
+margin_left = 76.0
+margin_top = 170.0
+margin_right = 141.0
+margin_bottom = 242.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 29 )
 
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/GoldWall"]
 position = Vector2( 33.1585, 34.9042 )
@@ -266,60 +199,36 @@ scale = Vector2( 0.906834, 0.0895587 )
 texture = ExtResource( 15 )
 
 [node name="Portal" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_left = 150.0
-margin_top = 154.0
-margin_right = 214.0
-margin_bottom = 218.0
-texture_normal = ExtResource( 6 )
-
-[node name="Sprite" type="Sprite" parent="HBoxContainer/GridContainer/Portal"]
-position = Vector2( 31.7271, 6.23555 )
-scale = Vector2( 1.20391, 1 )
-texture = ExtResource( 4 )
-
-[node name="Sprite2" type="Sprite" parent="HBoxContainer/GridContainer/Portal"]
-position = Vector2( 32.3479, 64.3063 )
-texture = ExtResource( 5 )
+margin_left = 152.0
+margin_top = 170.0
+margin_right = 217.0
+margin_bottom = 242.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 29 )
 
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/Portal"]
 position = Vector2( 32.6885, 36.2599 )
 texture = ExtResource( 9 )
 
 [node name="Sword" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_top = 231.0
-margin_right = 64.0
-margin_bottom = 295.0
-texture_normal = ExtResource( 6 )
+margin_top = 255.0
+margin_right = 65.0
+margin_bottom = 327.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 29 )
 
 [node name="knife" type="Sprite" parent="HBoxContainer/GridContainer/Sword"]
 position = Vector2( 33.0737, 34.4194 )
 scale = Vector2( 0.0998392, 0.0467881 )
 texture = ExtResource( 11 )
 
-[node name="Sprite" type="Sprite" parent="HBoxContainer/GridContainer/Sword"]
-position = Vector2( 31.7271, 6.23555 )
-scale = Vector2( 1.20391, 1 )
-texture = ExtResource( 4 )
-
-[node name="Sprite2" type="Sprite" parent="HBoxContainer/GridContainer/Sword"]
-position = Vector2( 32.8883, 63.1143 )
-texture = ExtResource( 5 )
-
 [node name="Trambolin" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_left = 75.0
-margin_top = 231.0
-margin_right = 139.0
-margin_bottom = 295.0
-texture_normal = ExtResource( 6 )
-
-[node name="Sprite" type="Sprite" parent="HBoxContainer/GridContainer/Trambolin"]
-position = Vector2( 31.7271, 6.23555 )
-scale = Vector2( 1.20391, 1 )
-texture = ExtResource( 4 )
-
-[node name="Sprite2" type="Sprite" parent="HBoxContainer/GridContainer/Trambolin"]
-position = Vector2( 32.3479, 64.3063 )
-texture = ExtResource( 5 )
+margin_left = 76.0
+margin_top = 255.0
+margin_right = 141.0
+margin_bottom = 327.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 29 )
 
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/Trambolin"]
 position = Vector2( 32.3479, 29.9028 )
@@ -327,20 +236,12 @@ scale = Vector2( 0.318125, 0.294891 )
 texture = ExtResource( 14 )
 
 [node name="BasicTurret" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_left = 150.0
-margin_top = 231.0
-margin_right = 214.0
-margin_bottom = 295.0
-texture_normal = ExtResource( 6 )
-
-[node name="Sprite" type="Sprite" parent="HBoxContainer/GridContainer/BasicTurret"]
-position = Vector2( 31.0637, 6.23555 )
-scale = Vector2( 1.20391, 1 )
-texture = ExtResource( 4 )
-
-[node name="Sprite2" type="Sprite" parent="HBoxContainer/GridContainer/BasicTurret"]
-position = Vector2( 32.3479, 64.3063 )
-texture = ExtResource( 5 )
+margin_left = 152.0
+margin_top = 255.0
+margin_right = 217.0
+margin_bottom = 327.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 29 )
 
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/BasicTurret"]
 position = Vector2( 29.5625, 29.6084 )
@@ -354,19 +255,11 @@ scale = Vector2( 0.097, 0.079 )
 texture = ExtResource( 16 )
 
 [node name="MachineTurret" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_top = 308.0
-margin_right = 64.0
-margin_bottom = 372.0
-texture_normal = ExtResource( 6 )
-
-[node name="Sprite" type="Sprite" parent="HBoxContainer/GridContainer/MachineTurret"]
-position = Vector2( 31.0637, 6.23555 )
-scale = Vector2( 1.20391, 1 )
-texture = ExtResource( 4 )
-
-[node name="Sprite2" type="Sprite" parent="HBoxContainer/GridContainer/MachineTurret"]
-position = Vector2( 32.3479, 64.3063 )
-texture = ExtResource( 5 )
+margin_top = 340.0
+margin_right = 65.0
+margin_bottom = 412.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 29 )
 
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/MachineTurret"]
 position = Vector2( 26.3662, 23.6274 )
@@ -380,20 +273,12 @@ scale = Vector2( 0.097, 0.073 )
 texture = ExtResource( 24 )
 
 [node name="LaserTurret" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_left = 75.0
-margin_top = 308.0
-margin_right = 139.0
-margin_bottom = 372.0
-texture_normal = ExtResource( 6 )
-
-[node name="Sprite" type="Sprite" parent="HBoxContainer/GridContainer/LaserTurret"]
-position = Vector2( 31.0637, 6.23555 )
-scale = Vector2( 1.20391, 1 )
-texture = ExtResource( 4 )
-
-[node name="Sprite2" type="Sprite" parent="HBoxContainer/GridContainer/LaserTurret"]
-position = Vector2( 32.3479, 64.3063 )
-texture = ExtResource( 5 )
+margin_left = 76.0
+margin_top = 340.0
+margin_right = 141.0
+margin_bottom = 412.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 29 )
 
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/LaserTurret"]
 position = Vector2( 28.6047, 26.4077 )
@@ -407,23 +292,15 @@ scale = Vector2( 0.097, 0.079 )
 texture = ExtResource( 23 )
 
 [node name="BazukaTurret" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_left = 150.0
-margin_top = 308.0
-margin_right = 214.0
-margin_bottom = 372.0
-texture_normal = ExtResource( 6 )
+margin_left = 152.0
+margin_top = 340.0
+margin_right = 217.0
+margin_bottom = 412.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 29 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Sprite" type="Sprite" parent="HBoxContainer/GridContainer/BazukaTurret"]
-position = Vector2( 31.0637, 6.23555 )
-scale = Vector2( 1.20391, 1 )
-texture = ExtResource( 4 )
-
-[node name="Sprite2" type="Sprite" parent="HBoxContainer/GridContainer/BazukaTurret"]
-position = Vector2( 32.3479, 64.3063 )
-texture = ExtResource( 5 )
 
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/BazukaTurret"]
 position = Vector2( 31.8131, 24.0283 )
