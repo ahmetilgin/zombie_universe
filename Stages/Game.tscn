@@ -21,7 +21,6 @@
 [ext_resource path="res://Resources/Sprites/starcoinrotate1.png" type="Texture" id=19]
 [ext_resource path="res://Stages/CoinCounter.gd" type="Script" id=20]
 [ext_resource path="res://Resources/AudioFiles/Game/savymerchant.ogg" type="AudioStream" id=21]
-[ext_resource path="res://Scenes/StaticScenes/Healt/Healt.tscn" type="PackedScene" id=22]
 [ext_resource path="res://Resources/Sprites/GameBackgrounds/1gamebackground/1gamebackground.png" type="Texture" id=23]
 [ext_resource path="res://Resources/Sprites/Grids/select.png" type="Texture" id=24]
 [ext_resource path="res://Scenes/StaticScenes/fences/WoodFence/WoodFence.tscn" type="PackedScene" id=25]
@@ -335,6 +334,11 @@ flags = 4
 atlas = ExtResource( 15 )
 region = Rect2( 939, 196, 384, 185 )
 
+[sub_resource type="AtlasTexture" id=26]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 1331.37, 199.904, 363.859, 179.27 )
+
 [sub_resource type="DynamicFont" id=14]
 size = 85
 font_data = ExtResource( 16 )
@@ -427,6 +431,7 @@ margin_bottom = 853.987
 rect_scale = Vector2( 0.506668, 0.338201 )
 texture_normal = SubResource( 12 )
 texture_pressed = SubResource( 13 )
+texture_disabled = SubResource( 26 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -604,11 +609,11 @@ scroll_active = false
 script = ExtResource( 20 )
 
 [node name="Market_Button" type="TextureButton" parent="Game_UI"]
-margin_left = 24.3086
-margin_top = 25.2595
-margin_right = 25.3086
-margin_bottom = 26.2595
-rect_scale = Vector2( 0.391652, 0.376707 )
+margin_left = 15.8822
+margin_top = 31.122
+margin_right = 195.882
+margin_bottom = 211.122
+rect_scale = Vector2( 0.241441, 0.220569 )
 texture_normal = SubResource( 23 )
 texture_pressed = SubResource( 24 )
 texture_disabled = SubResource( 25 )
@@ -648,18 +653,6 @@ autoplay = true
 position = Vector2( 1461.43, 1052.26 )
 scale = Vector2( -324.135, -89.984 )
 zoom = Vector2( 2.34, 2.649 )
-
-[node name="Healt" parent="." instance=ExtResource( 22 )]
-position = Vector2( 1169.15, 668.987 )
-
-[node name="Healt2" parent="." instance=ExtResource( 22 )]
-position = Vector2( 1281.05, 668.987 )
-
-[node name="Healt3" parent="." instance=ExtResource( 22 )]
-position = Vector2( 1206.92, 668.987 )
-
-[node name="Healt4" parent="." instance=ExtResource( 22 )]
-position = Vector2( 1243.28, 668.987 )
 
 [node name="1gamebackground" type="Sprite" parent="."]
 position = Vector2( 1455.7, 1016.56 )

@@ -145,6 +145,7 @@ func item_solded_failed():
 
 func _ready():
 	player = player_scene.instance()
+	disable_accept_button()
 	create_portals(start_portal)
 	get_tile_borders()
 	connect_market()
@@ -153,6 +154,12 @@ func _ready():
 	get_node("CanvasLayer").add_child(gameover_scene.instance())
 	on_market_button_unvisible()
 	on_time_countdown_unvisible()
+	
+func enable_accept_button():
+	$Game_UI/accept_button.disabled = false
+	
+func disable_accept_button():
+	$Game_UI/accept_button.disabled = true 
 
 func on_time_countdown_visible():
 	$Game_UI/CountDownTimer.set_visible(true)
@@ -160,6 +167,8 @@ func on_time_countdown_visible():
 	
 func on_time_countdown_unvisible():
 	$Game_UI/CountDownTimer.set_visible(false)
+	
+	
 func on_market_button_visible():
 	$Game_UI/Market_Button.disabled = false
 	pass
@@ -293,13 +302,15 @@ func _unhandled_input(event):
 			if tile_grid == null:
 				tile_grid = get_node("TileMap").world_to_map(pos)
 			else:
-				get_node("TileMap").set_cell(tile_grid.x,tile_grid.y,14)
+				if get_node("TileMap").get_cell(tile_grid.x,tile_grid.y) == 15:
+					get_node("TileMap").set_cell(tile_grid.x,tile_grid.y,14)
 				pass
 			tile_grid = get_node("TileMap").world_to_map(pos)
 			select_turret_position()
 
 func select_turret_position():
 	if  get_node("TileMap").get_cell(tile_grid.x,tile_grid.y) == 14:
+		enable_accept_button()
 		get_node("TileMap").set_cell(tile_grid.x,tile_grid.y,15) 
 			
 func create_instance(turret):
@@ -331,6 +342,8 @@ func finish_turret_buy():
 	if is_turret:
 		turret_instance_list.push_back(instance)
 		is_turret = false
+	tile_grid = null
+	disable_accept_button()
 
 func _on_acceptbutton_pressed():
 	sales_successful = true
