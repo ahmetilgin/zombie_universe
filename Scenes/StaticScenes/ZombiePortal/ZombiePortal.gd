@@ -33,7 +33,7 @@ func _ready():
 
 
 func _process(delta):
-	$AnimatedSprite.play("move")
+	$AnimatedSprite.play("new")
 	if wave_is_coming:
 		wave_is_contiune = true
 		if can_create_zombie:
