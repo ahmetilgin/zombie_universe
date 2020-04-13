@@ -26,7 +26,7 @@ animations = [ {
 radius = 70.0
 
 [node name="Teleport" type="Area2D"]
-position = Vector2( 305.396, 354.083 )
+position = Vector2( 304.228, 357.879 )
 script = ExtResource( 13 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
@@ -34,7 +34,7 @@ position = Vector2( -81.3605, -76.3711 )
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 1 )
 animation = "Gate"
-frame = 10
+frame = 1
 playing = true
 centered = false
 

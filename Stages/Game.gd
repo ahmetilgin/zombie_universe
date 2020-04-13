@@ -337,6 +337,7 @@ func select_teleport_position():
 		teleport_locs.push_back(tile_grid)
 		if selected_teleport_location_count == 2:
 			enable_accept_button()
+			selected_teleport_location_count = 0
 	
 func finish_teleport_buy():
 	
