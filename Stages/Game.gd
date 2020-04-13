@@ -32,6 +32,10 @@ var counttimer
 var second_passed = true
 var portal_coordinates = [Vector2(9,2),Vector2(9,4),Vector2(9,6)]
 var turret_instance_list = []
+var is_teleport_buying = false
+var teleport_locs = []
+var teleport_pair = []
+var selected_teleport_location_count = 0
 
 var walls = {
 	401: preload("res://Scenes/StaticScenes/fences/WoodFence/WoodFence.tscn"),
@@ -103,7 +107,10 @@ func buy_wall(item_id):
 	pass
 
 func buy_teleportal(item_id):
-	create_teleport_instance(item_id)
+	is_teleport_buying = true
+	 
+	teleport_pair.push_back(create_teleport_instance(item_id))
+	teleport_pair.push_back(create_teleport_instance(item_id))
 	hide_market()
 	show_accept_button()
 	show_select_position(true)
@@ -309,16 +316,48 @@ func _unhandled_input(event):
 			if tile_grid == null:
 				tile_grid = get_node("TileMap").world_to_map(pos)
 			else:
-				if get_node("TileMap").get_cell(tile_grid.x,tile_grid.y) == 15:
+				if get_node("TileMap").get_cell(tile_grid.x,tile_grid.y) == 15 && !is_teleport_buying :
 					get_node("TileMap").set_cell(tile_grid.x,tile_grid.y,14)
 				pass
 			tile_grid = get_node("TileMap").world_to_map(pos)
-			select_turret_position()
+			if !is_teleport_buying:
+				select_turret_position()
+			else:
+				select_teleport_position()
 
 func select_turret_position():
 	if  get_node("TileMap").get_cell(tile_grid.x,tile_grid.y) == 14:
 		enable_accept_button()
 		get_node("TileMap").set_cell(tile_grid.x,tile_grid.y,15) 
+		
+func select_teleport_position():
+	if  get_node("TileMap").get_cell(tile_grid.x,tile_grid.y) == 14:
+		get_node("TileMap").set_cell(tile_grid.x,tile_grid.y, 15) 
+		selected_teleport_location_count += 1
+		teleport_locs.push_back(tile_grid)
+		if selected_teleport_location_count == 2:
+			enable_accept_button()
+	
+func finish_teleport_buy():
+	
+	if is_create_instance   and( sales_fail ):
+		sales_fail = false
+		if !sales_successful:
+			$Game_UI/Coin_Counter.increase_coins(created_turret_price)
+		else:
+			sales_successful = false
+		is_create_instance = false
+	
+	teleport_pair[0].set_global_position(get_node("TileMap").map_to_world(teleport_locs[0]))
+	teleport_pair[1].set_global_position(get_node("TileMap").map_to_world(teleport_locs[1]))
+	
+	teleport_pair[0].set_other_pos(get_node("TileMap").map_to_world(teleport_locs[1]))
+	teleport_pair[1].set_other_pos(get_node("TileMap").map_to_world(teleport_locs[0]))
+	
+	teleport_locs.clear()
+	is_teleport_buying = false
+	teleport_pair.clear()
+	pass
 
 func create_instance(turret):
 	instance = turret_paths[turret].instance()
@@ -334,6 +373,7 @@ func create_teleport_instance(teleport):
 	instance = teleports[teleport].instance()
 	is_create_instance = true
 	add_child(instance)
+	return instance
 
 func finish_turret_buy():
 	turret_grid = tile_grid	
@@ -359,7 +399,11 @@ func finish_turret_buy():
 
 func _on_acceptbutton_pressed():
 	sales_successful = true
-	finish_turret_buy()
+	
+	if !is_teleport_buying:
+		finish_turret_buy()
+	else:
+		finish_teleport_buy()
 	pass # Replace with function body.
 
 

@@ -34,11 +34,16 @@ position = Vector2( -81.3605, -76.3711 )
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 1 )
 animation = "Gate"
-frame = 1
+frame = 10
 playing = true
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.663391, -0.663422 )
 shape = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
 [connection signal="body_entered" from="." to="." method="_on_Teleport_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

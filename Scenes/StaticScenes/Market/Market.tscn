@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Scenes/StaticScenes/Market/Market.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/UISprites/Windows.png" type="Texture" id=2]
@@ -31,6 +31,10 @@
 flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 1488, 931, 548, 771 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 36
+font_data = ExtResource( 8 )
 
 [sub_resource type="AtlasTexture" id=2]
 flags = 4
@@ -111,12 +115,36 @@ position = Vector2( 30.9379, 32.6841 )
 scale = Vector2( 0.148, 0.118 )
 texture = ExtResource( 12 )
 
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/GridContainer/RasenganButton"]
+margin_left = 5.20236
+margin_top = 2.44232
+margin_right = 339.202
+margin_bottom = 53.4423
+rect_scale = Vector2( 0.175, 0.139 )
+custom_fonts/normal_font = SubResource( 8 )
+text = "GRANEDE LAUNCHER"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="FireBulletButton" type="TextureButton" parent="HBoxContainer/GridContainer"]
 margin_left = 76.0
 margin_right = 141.0
 margin_bottom = 72.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 29 )
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="HBoxContainer/GridContainer/FireBulletButton"]
+margin_left = 18.0
+margin_top = 2.0
+margin_right = 191.0
+margin_bottom = 53.0
+rect_scale = Vector2( 0.175, 0.139 )
+custom_fonts/normal_font = SubResource( 8 )
+text = "SHOT GUN"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/FireBulletButton"]
 position = Vector2( 31.9677, 32.4989 )
@@ -130,6 +158,18 @@ margin_bottom = 72.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 29 )
 
+[node name="RichTextLabel3" type="RichTextLabel" parent="HBoxContainer/GridContainer/LaserBullet"]
+margin_left = 21.9867
+margin_top = 2.13904
+margin_right = 194.987
+margin_bottom = 53.139
+rect_scale = Vector2( 0.175, 0.139 )
+custom_fonts/normal_font = SubResource( 8 )
+text = "AK-47"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/LaserBullet"]
 position = Vector2( 29.2657, 32.4393 )
 scale = Vector2( 0.14802, 0.117505 )
@@ -141,6 +181,18 @@ margin_right = 65.0
 margin_bottom = 157.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 29 )
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="HBoxContainer/GridContainer/HealthButton"]
+margin_left = 21.2777
+margin_top = 1.83765
+margin_right = 194.278
+margin_bottom = 52.8376
+rect_scale = Vector2( 0.237383, 0.12884 )
+custom_fonts/normal_font = SubResource( 8 )
+text = "HEALT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/HealthButton"]
 position = Vector2( 32.1976, 36.452 )
