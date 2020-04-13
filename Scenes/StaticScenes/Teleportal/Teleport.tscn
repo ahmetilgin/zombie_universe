@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Resources/Sprites/Portal/telep3.png" type="Texture" id=1]
 [ext_resource path="res://Resources/Sprites/Portal/telep4.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Resources/Sprites/Portal/telep12.png" type="Texture" id=10]
 [ext_resource path="res://Resources/Sprites/Portal/telep13.png" type="Texture" id=11]
 [ext_resource path="res://Resources/Sprites/Portal/telep14.png" type="Texture" id=12]
+[ext_resource path="res://Scenes/StaticScenes/Teleportal/Teleport.gd" type="Script" id=13]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -24,18 +25,20 @@ animations = [ {
 [sub_resource type="CircleShape2D" id=2]
 radius = 70.0
 
-[node name="Area2D" type="Area2D"]
+[node name="Teleport" type="Area2D"]
 position = Vector2( 305.396, 354.083 )
+script = ExtResource( 13 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -81.3605, -76.3711 )
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 1 )
 animation = "Gate"
-frame = 2
+frame = 1
 playing = true
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.663391, -0.663422 )
 shape = SubResource( 2 )
+[connection signal="body_entered" from="." to="." method="_on_Teleport_body_entered"]

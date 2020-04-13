@@ -40,6 +40,9 @@ var walls = {
 	404: preload("res://Scenes/StaticScenes/Trambolin/Trambolin.tscn")
 }
 
+var teleports = {
+	500 : preload("res://Scenes/StaticScenes/Teleportal/Teleport.tscn")
+}
 var turret_paths = {
 	801: preload("res://Scenes/KinematicScenes/Taretler/BasicTurret/BasicTurret.tscn"),
 	802: preload("res://Scenes/KinematicScenes/Taretler/MachineTurret/MachineTurret.tscn"),
@@ -99,7 +102,11 @@ func buy_wall(item_id):
 	show_select_position(true)
 	pass
 
-func buy_portal(item_id):
+func buy_teleportal(item_id):
+	create_teleport_instance(item_id)
+	hide_market()
+	show_accept_button()
+	show_select_position(true)
 	pass
 	
 func show_select_position(is_visible):
@@ -125,7 +132,7 @@ func item_solded(item_id):
 		update()
 		pass
 	elif item_type == 500:
-		buy_portal(item_id)
+		buy_teleportal(item_id)
 		pass
 	elif item_type == 800:
 		is_turret = true
@@ -312,7 +319,7 @@ func select_turret_position():
 	if  get_node("TileMap").get_cell(tile_grid.x,tile_grid.y) == 14:
 		enable_accept_button()
 		get_node("TileMap").set_cell(tile_grid.x,tile_grid.y,15) 
-			
+
 func create_instance(turret):
 	instance = turret_paths[turret].instance()
 	is_create_instance = true
@@ -323,6 +330,11 @@ func create_wall_instance(wall):
 	is_create_instance = true
 	add_child(instance)
 	
+func create_teleport_instance(teleport):
+	instance = teleports[teleport].instance()
+	is_create_instance = true
+	add_child(instance)
+
 func finish_turret_buy():
 	turret_grid = tile_grid	
 	if is_create_instance   and( sales_fail ):

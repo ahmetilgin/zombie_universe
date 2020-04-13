@@ -334,40 +334,40 @@ flags = 4
 atlas = ExtResource( 15 )
 region = Rect2( 939, 196, 384, 185 )
 
-[sub_resource type="AtlasTexture" id=26]
+[sub_resource type="AtlasTexture" id=14]
 flags = 4
 atlas = ExtResource( 15 )
 region = Rect2( 1331.37, 199.904, 363.859, 179.27 )
 
-[sub_resource type="DynamicFont" id=14]
+[sub_resource type="DynamicFont" id=15]
 size = 85
 font_data = ExtResource( 16 )
 
-[sub_resource type="DynamicFont" id=15]
+[sub_resource type="DynamicFont" id=16]
 size = 24
 font_data = ExtResource( 16 )
-
-[sub_resource type="AtlasTexture" id=16]
-flags = 4
-atlas = ExtResource( 17 )
-region = Rect2( 1894.66, 910.469, 119.713, 129.236 )
 
 [sub_resource type="AtlasTexture" id=17]
 flags = 4
 atlas = ExtResource( 17 )
-region = Rect2( 499, 1782, 535, 152 )
+region = Rect2( 1894.66, 910.469, 119.713, 129.236 )
 
 [sub_resource type="AtlasTexture" id=18]
+flags = 4
+atlas = ExtResource( 17 )
+region = Rect2( 499, 1782, 535, 152 )
+
+[sub_resource type="AtlasTexture" id=19]
 flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 4532, 3384, 336, 53 )
 
-[sub_resource type="AtlasTexture" id=19]
+[sub_resource type="AtlasTexture" id=20]
 flags = 4
 atlas = ExtResource( 17 )
 region = Rect2( 1997, 1796, 336, 53 )
 
-[sub_resource type="ParticlesMaterial" id=20]
+[sub_resource type="ParticlesMaterial" id=21]
 trail_divisor = 2
 emission_shape = 2
 emission_box_extents = Vector3( 2000, 1, 1 )
@@ -379,27 +379,27 @@ orbit_velocity_random = 0.0
 scale = 1.2
 scale_random = 0.32
 
-[sub_resource type="AtlasTexture" id=21]
+[sub_resource type="AtlasTexture" id=22]
 flags = 4
 atlas = ExtResource( 17 )
 region = Rect2( 1625.25, 1375.16, 343.527, 143.802 )
 
-[sub_resource type="AtlasTexture" id=22]
+[sub_resource type="AtlasTexture" id=23]
 flags = 4
 atlas = ExtResource( 19 )
 region = Rect2( -23, 16, 2281, 2410 )
 
-[sub_resource type="AtlasTexture" id=23]
+[sub_resource type="AtlasTexture" id=24]
 flags = 4
 atlas = ExtResource( 15 )
 region = Rect2( 1104, 1629, 180, 180 )
 
-[sub_resource type="AtlasTexture" id=24]
+[sub_resource type="AtlasTexture" id=25]
 flags = 4
 atlas = ExtResource( 15 )
 region = Rect2( 1490, 1629, 180, 180 )
 
-[sub_resource type="AtlasTexture" id=25]
+[sub_resource type="AtlasTexture" id=26]
 flags = 4
 atlas = ExtResource( 15 )
 region = Rect2( 1683, 1629, 180, 180 )
@@ -431,7 +431,7 @@ margin_bottom = 853.987
 rect_scale = Vector2( 0.506668, 0.338201 )
 texture_normal = SubResource( 12 )
 texture_pressed = SubResource( 13 )
-texture_disabled = SubResource( 26 )
+texture_disabled = SubResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -441,7 +441,7 @@ margin_left = 40.9897
 margin_top = 50.7363
 margin_right = 324.99
 margin_bottom = 135.736
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 15 )
 custom_colors/font_color = Color( 0.764706, 0, 0, 1 )
 text = "ACCEPT"
 __meta__ = {
@@ -454,7 +454,7 @@ margin_top = 142.506
 margin_right = 592.044
 margin_bottom = 195.506
 rect_scale = Vector2( 2.01716, 2.7042 )
-custom_fonts/font = SubResource( 15 )
+custom_fonts/font = SubResource( 16 )
 custom_colors/font_color = Color( 0.72549, 1, 0.054902, 1 )
 custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.890196, 0.160784, 0.160784, 1 )
@@ -471,7 +471,7 @@ margin_top = 36.5146
 margin_right = 766.188
 margin_bottom = 187.514
 rect_scale = Vector2( 0.190372, 0.192707 )
-texture = SubResource( 16 )
+texture = SubResource( 17 )
 
 [node name="Health_Background" type="TextureRect" parent="Game_UI"]
 margin_left = 110.914
@@ -479,7 +479,7 @@ margin_top = 23.5933
 margin_right = 616.914
 margin_bottom = 143.593
 rect_scale = Vector2( 0.34317, 0.341894 )
-texture = SubResource( 17 )
+texture = SubResource( 18 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -494,7 +494,7 @@ rect_scale = Vector2( 1.01, 0.4 )
 max_value = 1000.0
 value = 1000.0
 rounded = true
-texture_progress = SubResource( 18 )
+texture_progress = SubResource( 19 )
 nine_patch_stretch = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -509,7 +509,7 @@ rect_scale = Vector2( 1.01, 0.4 )
 max_value = 1000.0
 value = 1000.0
 rounded = true
-texture_progress = SubResource( 19 )
+texture_progress = SubResource( 20 )
 tint_progress = Color( 0, 1, 0, 1 )
 nine_patch_stretch = true
 __meta__ = {
@@ -525,7 +525,7 @@ margin_left = 502.0
 margin_top = 34.0
 margin_right = 755.35
 margin_bottom = 74.0
-custom_fonts/normal_font = SubResource( 15 )
+custom_fonts/normal_font = SubResource( 16 )
 custom_colors/default_color = Color( 0.403922, 0.0196078, 0.0196078, 1 )
 custom_colors/selection_color = Color( 0, 0, 0, 1 )
 text = "LEVEL :"
@@ -535,7 +535,7 @@ margin_left = 117.723
 margin_top = 1.47899
 margin_right = 253.723
 margin_bottom = 41.479
-custom_fonts/normal_font = SubResource( 15 )
+custom_fonts/normal_font = SubResource( 16 )
 custom_colors/default_color = Color( 0.403922, 0.0196078, 0.0196078, 1 )
 text = "1"
 
@@ -548,7 +548,7 @@ rect_scale = Vector2( 0.932722, 1.32486 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 size_flags_stretch_ratio = 0.0
-custom_fonts/normal_font = SubResource( 15 )
+custom_fonts/normal_font = SubResource( 16 )
 custom_constants/table_vseparation = 4
 bbcode_text = "30
 
@@ -571,7 +571,7 @@ preprocess = 5.0
 speed_scale = 2.0
 randomness = 0.5
 local_coords = false
-process_material = SubResource( 20 )
+process_material = SubResource( 21 )
 
 [node name="CoinIcon" type="TextureRect" parent="Game_UI"]
 margin_left = 979.067
@@ -579,7 +579,7 @@ margin_top = 21.3461
 margin_right = 1129.07
 margin_bottom = 71.3461
 rect_scale = Vector2( 1.03412, 1.21914 )
-texture = SubResource( 21 )
+texture = SubResource( 22 )
 expand = true
 
 [node name="CoinIcon2" type="TextureRect" parent="Game_UI/CoinIcon"]
@@ -588,7 +588,7 @@ margin_top = 1.60752
 margin_right = 135.35
 margin_bottom = 33.6075
 rect_scale = Vector2( 1.38517, 1.18225 )
-texture = SubResource( 22 )
+texture = SubResource( 23 )
 expand = true
 
 [node name="Coin_Counter" type="RichTextLabel" parent="Game_UI"]
@@ -601,7 +601,7 @@ margin_top = -367.346
 margin_right = 474.085
 margin_bottom = -317.346
 rect_scale = Vector2( 0.933228, 1.00751 )
-custom_fonts/normal_font = SubResource( 15 )
+custom_fonts/normal_font = SubResource( 16 )
 custom_colors/default_color = Color( 0.901961, 0.992157, 0.00784314, 1 )
 bbcode_text = "0"
 text = "0"
@@ -614,23 +614,23 @@ margin_top = 31.122
 margin_right = 195.882
 margin_bottom = 211.122
 rect_scale = Vector2( 0.241441, 0.220569 )
-texture_normal = SubResource( 23 )
-texture_pressed = SubResource( 24 )
-texture_disabled = SubResource( 25 )
+texture_normal = SubResource( 24 )
+texture_pressed = SubResource( 25 )
+texture_disabled = SubResource( 26 )
 
 [node name="CountDownTimer" type="RichTextLabel" parent="Game_UI"]
 margin_left = 767.0
 margin_top = 34.0
 margin_right = 975.0
 margin_bottom = 74.0
-custom_fonts/normal_font = SubResource( 15 )
+custom_fonts/normal_font = SubResource( 16 )
 text = "TIME:"
 
 [node name="Time" type="RichTextLabel" parent="Game_UI/CountDownTimer"]
 margin_left = 76.0
 margin_right = 186.0
 margin_bottom = 40.0
-custom_fonts/normal_font = SubResource( 15 )
+custom_fonts/normal_font = SubResource( 16 )
 text = "20
 "
 __meta__ = {
