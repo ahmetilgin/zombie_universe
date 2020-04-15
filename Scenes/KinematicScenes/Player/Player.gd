@@ -19,7 +19,7 @@ var shotgun_weapon = Image.new()
 var ak47_weapon = Image.new()
 
 var weaponTexture = null
-var teleport_position
+
 var bullet_type = {
 	101: rasengan_bullet,
 	102: upgrade_bullet,
@@ -105,7 +105,7 @@ onready var player_health_back = get_node("../Game_UI/Player_Health_Back")
 const basic_zombie = preload("res://Scenes/KinematicScenes/Zombies/SimpleZombie/SimpleZombie.tscn")
 #basic zombie nerede kullanıyor??
 var slow_shot_timer = Timer.new()
-var teleport_timer = Timer.new()
+
 func _create_zombie_shot_slow_timer():
 	slow_shot_timer.connect("timeout",self,"_on_slow_motion_timer_start") 
 	add_child(slow_shot_timer) #to process
@@ -144,7 +144,7 @@ func load_images():
 #	ak47_weapon.load("res://Resources/Sprites/stickman/ak47.png")
 	
 func _ready():
-	_teleport_timer()
+	
 	_create_zombie_shot_slow_timer()
 	flash_tween()
 	pulse_tween()
@@ -456,20 +456,7 @@ func damage_healt_color_change():
 								hp,0.6,Tween.TRANS_QUAD,Tween.EASE_IN_OUT)
 	player_health_back.set_value(hp)
 	pass
-func set_teleport(teleport_pos):
-	teleport_position = teleport_pos
-	teleport_timer.start()
-	pass
-func teleport_is_stoped():
-	teleport_timer.stop()
-	pass
-func _on_teleport_timer():
-	set_global_position(teleport_position)
-	pass
-func _teleport_timer():#teleport süresini ayarlarken teleport animated sprite gateactife fps inide ayarla.
-	teleport_timer.connect("timeout",self,"_on_teleport_timer") 
-	add_child(teleport_timer) #to process
-	teleport_timer.set_wait_time(5)
+
 func _on_jump_counter_time_timeout():
 	tramb_count=1
 	pass # Replace with function body.
