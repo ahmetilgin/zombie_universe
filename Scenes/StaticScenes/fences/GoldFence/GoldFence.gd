@@ -3,6 +3,7 @@ extends KinematicBody2D
 var zombie_has_spotted = false
 var is_shooting_free = true
 var fence_health = 400
+var max_healt = 400
 var zombie_attack_timer = Timer.new()
 var zombie_attack_power = 0
 var flash_fence_tween = Tween.new()
@@ -64,24 +65,24 @@ func _process(delta):
 	
 func healt_color():
 	
-	if  fence_health > 75  and healt_perfect :
-		$GoldFenceFront.play("idle")
-		$GoldFenceBack.play("idle")
+	if  fence_health >(( max_healt *3 )/ 4 ) and healt_perfect :
+		$GoldFenceFront.play("damage1")
+		$GoldFenceBack.play("damage1")
+ 
 		healt_perfect = false
 	 
-	elif fence_health < 75 and fence_health > 35 and healt_caution:
-		$GoldFenceFront.play("idle")
-		$GoldFenceBack.play("idle")
+	elif fence_health <(( max_healt *3 )/ 4 ) and fence_health > (( max_healt *2 ) / 5 )  and healt_caution:
+		$GoldFenceFront.play("damage2")
+		$GoldFenceBack.play("damage2")
  
 		healt_caution = false
 	 
-	elif  fence_health < 35   and healt_danger:
-		$GoldFenceFront.play("idle")
-		$GoldFenceBack.play("idle")
+	elif  fence_health < (( max_healt *2 ) / 5 )   and healt_danger:
+		$GoldFenceFront.play("damage3")
+		$GoldFenceBack.play("damage3")
  
 		healt_danger = false
  
-	
  
 func flash_damage():
 	for i in range(N_FLASHES * 2):

@@ -70,6 +70,5 @@ animation = "idle"
 centered = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-visible = false
 position = Vector2( -0.902496, 2.70752 )
 polygon = PoolVector2Array( -5.68939, 112.785, -7.89468, -256.232, 0.191372, -184.928, 3.86683, -260.643, 7.54231, -188.603, 10.4827, 45.8918, 9.01359, 113.216 )
