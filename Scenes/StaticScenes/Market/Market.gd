@@ -54,6 +54,35 @@ func _on_FireBulletButton_pressed():
 	
 func _on_LaserBullet_pressed():
 	market_calculator(103)
+	
+func _on_Crossbow_pressed():
+	market_calculator(107)
+	pass # Replace with function body.
+
+func _on_M1Garand_pressed():
+	market_calculator(108)
+	pass # Replace with function body.
+
+func _on_M4A1_pressed():
+	market_calculator(109)
+	pass # Replace with function body.
+
+func _on_M60E4_pressed():
+	market_calculator(110)
+	
+	pass # Replace with function body.
+
+func _on_MG42_pressed():
+	market_calculator(111)
+	pass # Replace with function body.
+
+func _on_PRD_pressed():
+	market_calculator(112)
+	pass # Replace with function body.
+
+func _on_RifleGun_pressed():
+	market_calculator(113)
+	pass # Replace with function body.
 
 func _on_HealthButton_pressed():
 	market_calculator(104)
@@ -100,3 +129,5 @@ func _on_YesButton_pressed():
 func _on_NoButton_pressed():
 	hide_question_panel()
 	pass # Replace with function body.
+
+

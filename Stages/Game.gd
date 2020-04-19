@@ -89,7 +89,7 @@ func buy_bullet(item_id):
 	player.set_current_weapon(item_id)
 
 func buy_player_item(item_id):
-	if item_id == 101 or item_id == 102 or item_id == 103 :
+	if item_id == 101 or item_id == 102 or item_id == 103  or item_id == 107 or item_id == 108 or item_id == 109 or item_id == 110 or item_id == 111  or item_id == 112  or item_id == 113 :
 		buy_bullet(item_id)
 		pass
 	elif item_id == 104:
@@ -130,7 +130,7 @@ func buy_turret(item_id):
 	
 func item_solded(item_id):
 	is_the_buy_button_clicked = true
-	var item_type = int(item_id / 10) * 10
+	var item_type = int(item_id / 100) * 100
 	if item_type == 100:
 		buy_player_item(item_id)
 		pass

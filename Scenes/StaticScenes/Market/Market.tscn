@@ -1,8 +1,11 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://Scenes/StaticScenes/Market/Market.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/UISprites/Windows.png" type="Texture" id=2]
 [ext_resource path="res://Resources/Sprites/UISprites/MarketSegment.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Sprites/Guns/MG42png.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Sprites/Guns/M1Garand.png" type="Texture" id=5]
+[ext_resource path="res://Resources/Sprites/Guns/m4a1.png" type="Texture" id=6]
 [ext_resource path="res://Resources/Sprites/UISprites/Button.png" type="Texture" id=7]
 [ext_resource path="res://Resources/Fonts/bubble_soap/Bubble&Soap light_PersonalUseOnly.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://Resources/Sprites/Portal/portalRings1.png" type="Texture" id=9]
@@ -26,42 +29,46 @@
 [ext_resource path="res://Resources/Sprites/Ammo/wooden_crate_1.png" type="Texture" id=27]
 [ext_resource path="res://Resources/Sprites/starcoinrotate1.png" type="Texture" id=28]
 [ext_resource path="res://Resources/Sprites/UISprites/MarketSegmentPush.png" type="Texture" id=29]
+[ext_resource path="res://Resources/Sprites/Guns/m604e.png" type="Texture" id=30]
+[ext_resource path="res://Resources/Sprites/Guns/PRD.png" type="Texture" id=31]
+[ext_resource path="res://Resources/Sprites/Guns/riflegun.png" type="Texture" id=32]
+[ext_resource path="res://Resources/Sprites/Guns/crossbow.png" type="Texture" id=33]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 1488, 931, 548, 771 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=2]
 size = 36
 font_data = ExtResource( 8 )
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=3]
 flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 3473.65, 930.013, 651.104, 515.291 )
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=4]
 flags = 4
 atlas = ExtResource( 7 )
 region = Rect2( 1100.36, 2812.58, 184.157, 169.808 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=5]
 flags = 4
 atlas = ExtResource( 7 )
 region = Rect2( 1301.97, 2809.35, 174.591, 179.374 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=6]
 flags = 4
 atlas = ExtResource( 7 )
 region = Rect2( 1105.14, 2614.07, 174.591, 179.374 )
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=7]
 flags = 4
 atlas = ExtResource( 7 )
 region = Rect2( 1288.77, 2606.4, 196.103, 193.452 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=8]
 size = 35
 outline_color = Color( 0.882353, 0.14902, 0.14902, 1 )
 font_data = ExtResource( 8 )
@@ -99,7 +106,7 @@ __meta__ = {
 
 [node name="GridContainer" type="GridContainer" parent="HBoxContainer"]
 margin_right = 217.0
-margin_bottom = 412.0
+margin_bottom = 667.0
 custom_constants/vseparation = 13
 custom_constants/hseparation = 11
 columns = 3
@@ -121,7 +128,7 @@ margin_top = 2.44232
 margin_right = 339.202
 margin_bottom = 53.4423
 rect_scale = Vector2( 0.175, 0.139 )
-custom_fonts/normal_font = SubResource( 8 )
+custom_fonts/normal_font = SubResource( 2 )
 text = "GRANEDE LAUNCHER"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -140,7 +147,7 @@ margin_top = 2.0
 margin_right = 191.0
 margin_bottom = 53.0
 rect_scale = Vector2( 0.175, 0.139 )
-custom_fonts/normal_font = SubResource( 8 )
+custom_fonts/normal_font = SubResource( 2 )
 text = "SHOT GUN"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -164,7 +171,7 @@ margin_top = 2.13904
 margin_right = 194.987
 margin_bottom = 53.139
 rect_scale = Vector2( 0.175, 0.139 )
-custom_fonts/normal_font = SubResource( 8 )
+custom_fonts/normal_font = SubResource( 2 )
 text = "AK-47"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -175,10 +182,176 @@ position = Vector2( 29.2657, 32.4393 )
 scale = Vector2( 0.14802, 0.117505 )
 texture = ExtResource( 10 )
 
-[node name="HealthButton" type="TextureButton" parent="HBoxContainer/GridContainer"]
+[node name="Crossbow" type="TextureButton" parent="HBoxContainer/GridContainer"]
 margin_top = 85.0
 margin_right = 65.0
 margin_bottom = 157.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 29 )
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="HBoxContainer/GridContainer/Crossbow"]
+margin_left = 21.9867
+margin_top = 2.13904
+margin_right = 194.987
+margin_bottom = 53.139
+rect_scale = Vector2( 0.175, 0.139 )
+custom_fonts/normal_font = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/Crossbow"]
+position = Vector2( 38.9922, 32.8367 )
+scale = Vector2( 0.14802, 0.117505 )
+texture = ExtResource( 33 )
+
+[node name="M1Garand" type="TextureButton" parent="HBoxContainer/GridContainer"]
+margin_left = 76.0
+margin_top = 85.0
+margin_right = 141.0
+margin_bottom = 157.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 29 )
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="HBoxContainer/GridContainer/M1Garand"]
+margin_left = 21.9867
+margin_top = 2.13904
+margin_right = 194.987
+margin_bottom = 53.139
+rect_scale = Vector2( 0.175, 0.139 )
+custom_fonts/normal_font = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/M1Garand"]
+position = Vector2( 29.2657, 32.4393 )
+scale = Vector2( 0.14802, 0.117505 )
+texture = ExtResource( 5 )
+
+[node name="M4A1" type="TextureButton" parent="HBoxContainer/GridContainer"]
+margin_left = 152.0
+margin_top = 85.0
+margin_right = 217.0
+margin_bottom = 157.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 29 )
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="HBoxContainer/GridContainer/M4A1"]
+margin_left = 21.9867
+margin_top = 2.13904
+margin_right = 194.987
+margin_bottom = 53.139
+rect_scale = Vector2( 0.175, 0.139 )
+custom_fonts/normal_font = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/M4A1"]
+position = Vector2( 29.2657, 32.4393 )
+scale = Vector2( 0.14802, 0.117505 )
+texture = ExtResource( 6 )
+
+[node name="M60E4" type="TextureButton" parent="HBoxContainer/GridContainer"]
+margin_top = 170.0
+margin_right = 65.0
+margin_bottom = 242.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 29 )
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="HBoxContainer/GridContainer/M60E4"]
+margin_left = 21.9867
+margin_top = 2.13904
+margin_right = 194.987
+margin_bottom = 53.139
+rect_scale = Vector2( 0.175, 0.139 )
+custom_fonts/normal_font = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/M60E4"]
+position = Vector2( 29.2657, 32.4393 )
+scale = Vector2( 0.14802, 0.117505 )
+texture = ExtResource( 30 )
+
+[node name="MG42" type="TextureButton" parent="HBoxContainer/GridContainer"]
+margin_left = 76.0
+margin_top = 170.0
+margin_right = 141.0
+margin_bottom = 242.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 29 )
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="HBoxContainer/GridContainer/MG42"]
+margin_left = 21.9867
+margin_top = 2.13904
+margin_right = 194.987
+margin_bottom = 53.139
+rect_scale = Vector2( 0.175, 0.139 )
+custom_fonts/normal_font = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/MG42"]
+position = Vector2( 29.2657, 32.4393 )
+scale = Vector2( 0.14802, 0.117505 )
+texture = ExtResource( 4 )
+
+[node name="PRD" type="TextureButton" parent="HBoxContainer/GridContainer"]
+margin_left = 152.0
+margin_top = 170.0
+margin_right = 217.0
+margin_bottom = 242.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 29 )
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="HBoxContainer/GridContainer/PRD"]
+margin_left = 21.9867
+margin_top = 2.13904
+margin_right = 194.987
+margin_bottom = 53.139
+rect_scale = Vector2( 0.175, 0.139 )
+custom_fonts/normal_font = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/PRD"]
+position = Vector2( 29.2657, 32.4393 )
+scale = Vector2( 0.14802, 0.117505 )
+texture = ExtResource( 31 )
+
+[node name="RifleGun" type="TextureButton" parent="HBoxContainer/GridContainer"]
+margin_top = 255.0
+margin_right = 65.0
+margin_bottom = 327.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 29 )
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="HBoxContainer/GridContainer/RifleGun"]
+margin_left = 21.9867
+margin_top = 2.13904
+margin_right = 194.987
+margin_bottom = 53.139
+rect_scale = Vector2( 0.175, 0.139 )
+custom_fonts/normal_font = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/RifleGun"]
+position = Vector2( 29.2657, 32.4393 )
+scale = Vector2( 0.14802, 0.117505 )
+texture = ExtResource( 32 )
+
+[node name="HealthButton" type="TextureButton" parent="HBoxContainer/GridContainer"]
+margin_left = 76.0
+margin_top = 255.0
+margin_right = 141.0
+margin_bottom = 327.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 29 )
 
@@ -188,7 +361,7 @@ margin_top = 1.83765
 margin_right = 194.278
 margin_bottom = 52.8376
 rect_scale = Vector2( 0.237383, 0.12884 )
-custom_fonts/normal_font = SubResource( 8 )
+custom_fonts/normal_font = SubResource( 2 )
 text = "HEALT"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -200,10 +373,10 @@ scale = Vector2( 0.108405, 0.0972224 )
 texture = ExtResource( 13 )
 
 [node name="AmmoButton" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_left = 76.0
-margin_top = 85.0
-margin_right = 141.0
-margin_bottom = 157.0
+margin_left = 152.0
+margin_top = 255.0
+margin_right = 217.0
+margin_bottom = 327.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 29 )
 
@@ -213,10 +386,9 @@ scale = Vector2( 0.180379, 0.165484 )
 texture = ExtResource( 27 )
 
 [node name="WoodWall" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_left = 152.0
-margin_top = 85.0
-margin_right = 217.0
-margin_bottom = 157.0
+margin_top = 340.0
+margin_right = 65.0
+margin_bottom = 412.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 29 )
 
@@ -226,9 +398,10 @@ scale = Vector2( 0.708141, 0.0972224 )
 texture = ExtResource( 19 )
 
 [node name="SteelWall" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_top = 170.0
-margin_right = 65.0
-margin_bottom = 242.0
+margin_left = 76.0
+margin_top = 340.0
+margin_right = 141.0
+margin_bottom = 412.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 29 )
 
@@ -238,10 +411,10 @@ scale = Vector2( 1.06552, 0.0839258 )
 texture = ExtResource( 18 )
 
 [node name="GoldWall" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_left = 76.0
-margin_top = 170.0
-margin_right = 141.0
-margin_bottom = 242.0
+margin_left = 152.0
+margin_top = 340.0
+margin_right = 217.0
+margin_bottom = 412.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 29 )
 
@@ -251,10 +424,9 @@ scale = Vector2( 0.906834, 0.0895587 )
 texture = ExtResource( 15 )
 
 [node name="Portal" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_left = 152.0
-margin_top = 170.0
-margin_right = 217.0
-margin_bottom = 242.0
+margin_top = 425.0
+margin_right = 65.0
+margin_bottom = 497.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 29 )
 
@@ -263,9 +435,10 @@ position = Vector2( 32.6885, 36.2599 )
 texture = ExtResource( 9 )
 
 [node name="Sword" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_top = 255.0
-margin_right = 65.0
-margin_bottom = 327.0
+margin_left = 76.0
+margin_top = 425.0
+margin_right = 141.0
+margin_bottom = 497.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 29 )
 
@@ -275,10 +448,10 @@ scale = Vector2( 0.0998392, 0.0467881 )
 texture = ExtResource( 11 )
 
 [node name="Trambolin" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_left = 76.0
-margin_top = 255.0
-margin_right = 141.0
-margin_bottom = 327.0
+margin_left = 152.0
+margin_top = 425.0
+margin_right = 217.0
+margin_bottom = 497.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 29 )
 
@@ -288,10 +461,9 @@ scale = Vector2( 0.318125, 0.294891 )
 texture = ExtResource( 14 )
 
 [node name="BasicTurret" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_left = 152.0
-margin_top = 255.0
-margin_right = 217.0
-margin_bottom = 327.0
+margin_top = 510.0
+margin_right = 65.0
+margin_bottom = 582.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 29 )
 
@@ -307,9 +479,10 @@ scale = Vector2( 0.097, 0.079 )
 texture = ExtResource( 16 )
 
 [node name="MachineTurret" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_top = 340.0
-margin_right = 65.0
-margin_bottom = 412.0
+margin_left = 76.0
+margin_top = 510.0
+margin_right = 141.0
+margin_bottom = 582.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 29 )
 
@@ -325,10 +498,10 @@ scale = Vector2( 0.097, 0.073 )
 texture = ExtResource( 24 )
 
 [node name="LaserTurret" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_left = 76.0
-margin_top = 340.0
-margin_right = 141.0
-margin_bottom = 412.0
+margin_left = 152.0
+margin_top = 510.0
+margin_right = 217.0
+margin_bottom = 582.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 29 )
 
@@ -344,10 +517,9 @@ scale = Vector2( 0.097, 0.079 )
 texture = ExtResource( 23 )
 
 [node name="BazukaTurret" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_left = 152.0
-margin_top = 340.0
-margin_right = 217.0
-margin_bottom = 412.0
+margin_top = 595.0
+margin_right = 65.0
+margin_bottom = 667.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 29 )
 __meta__ = {
@@ -371,7 +543,7 @@ margin_top = 207.125
 margin_right = 1120.61
 margin_bottom = 722.125
 rect_scale = Vector2( 0.841197, 0.603764 )
-texture = SubResource( 2 )
+texture = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -382,8 +554,8 @@ margin_top = 425.523
 margin_right = 374.97
 margin_bottom = 606.523
 rect_scale = Vector2( 0.5, 0.7 )
-texture_normal = SubResource( 3 )
-texture_pressed = SubResource( 4 )
+texture_normal = SubResource( 4 )
+texture_pressed = SubResource( 5 )
 
 [node name="NoButton" type="TextureButton" parent="BuyQuestion"]
 margin_left = 338.878
@@ -391,8 +563,8 @@ margin_top = 425.584
 margin_right = 512.878
 margin_bottom = 604.584
 rect_scale = Vector2( 0.5, 0.7 )
-texture_normal = SubResource( 5 )
-texture_pressed = SubResource( 6 )
+texture_normal = SubResource( 6 )
+texture_pressed = SubResource( 7 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="BuyQuestion"]
 margin_left = 180.621
@@ -400,7 +572,7 @@ margin_top = 229.468
 margin_right = 430.621
 margin_bottom = 329.468
 rect_scale = Vector2( 1.23685, 1.18602 )
-custom_fonts/normal_font = SubResource( 7 )
+custom_fonts/normal_font = SubResource( 8 )
 custom_colors/default_color = Color( 0.603922, 0.215686, 0.215686, 1 )
 text = "Are you sure?"
 
@@ -410,7 +582,7 @@ margin_top = 307.679
 margin_right = 504.37
 margin_bottom = 357.679
 rect_scale = Vector2( 1.212, 1.171 )
-custom_fonts/normal_font = SubResource( 7 )
+custom_fonts/normal_font = SubResource( 8 )
 custom_colors/default_color = Color( 0.137255, 0.14902, 0.164706, 1 )
 text = "coin"
 __meta__ = {
@@ -423,7 +595,7 @@ margin_top = 54.3167
 margin_right = 520.845
 margin_bottom = 154.317
 rect_scale = Vector2( 1.23685, 1.18602 )
-custom_fonts/normal_font = SubResource( 7 )
+custom_fonts/normal_font = SubResource( 8 )
 custom_colors/default_color = Color( 0.85098, 0.231373, 0.231373, 1 )
 text = "buy
 "
@@ -434,7 +606,7 @@ margin_top = 362.119
 margin_right = 571.991
 margin_bottom = 462.119
 rect_scale = Vector2( 0.797679, 1.53425 )
-custom_fonts/normal_font = SubResource( 7 )
+custom_fonts/normal_font = SubResource( 8 )
 custom_colors/default_color = Color( 0.137255, 0.14902, 0.164706, 1 )
 text = "30"
 __meta__ = {
@@ -454,6 +626,13 @@ __meta__ = {
 [connection signal="pressed" from="HBoxContainer/GridContainer/RasenganButton" to="." method="_on_RasenganButton_pressed"]
 [connection signal="pressed" from="HBoxContainer/GridContainer/FireBulletButton" to="." method="_on_FireBulletButton_pressed"]
 [connection signal="pressed" from="HBoxContainer/GridContainer/LaserBullet" to="." method="_on_LaserBullet_pressed"]
+[connection signal="pressed" from="HBoxContainer/GridContainer/Crossbow" to="." method="_on_Crossbow_pressed"]
+[connection signal="pressed" from="HBoxContainer/GridContainer/M1Garand" to="." method="_on_M1Garand_pressed"]
+[connection signal="pressed" from="HBoxContainer/GridContainer/M4A1" to="." method="_on_M4A1_pressed"]
+[connection signal="pressed" from="HBoxContainer/GridContainer/M60E4" to="." method="_on_M60E4_pressed"]
+[connection signal="pressed" from="HBoxContainer/GridContainer/MG42" to="." method="_on_MG42_pressed"]
+[connection signal="pressed" from="HBoxContainer/GridContainer/PRD" to="." method="_on_PRD_pressed"]
+[connection signal="pressed" from="HBoxContainer/GridContainer/RifleGun" to="." method="_on_RifleGun_pressed"]
 [connection signal="pressed" from="HBoxContainer/GridContainer/HealthButton" to="." method="_on_HealthButton_pressed"]
 [connection signal="pressed" from="HBoxContainer/GridContainer/AmmoButton" to="." method="_on_AmmoButton_pressed"]
 [connection signal="pressed" from="HBoxContainer/GridContainer/WoodWall" to="." method="_on_WoodWall_pressed"]

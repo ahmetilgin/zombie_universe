@@ -24,6 +24,13 @@ var bullet_type = {
 	101: rasengan_bullet,
 	102: upgrade_bullet,
 	103: tracked_bullet,
+	107: rasengan_bullet,
+	108: upgrade_bullet,
+	109: tracked_bullet,
+	110: rasengan_bullet,
+	111: upgrade_bullet,
+	112: tracked_bullet,
+	113: tracked_bullet,
 }
 
 #	rasengan_weapon.load("res://Resources/Sprites/Guns/rasengan.png")
@@ -34,12 +41,26 @@ var bullet_icons = {
 	101: "res://Resources/Sprites/Guns/rasengan.png",
 	102: "res://Resources/Sprites/Guns/shotgun.png",
 	103: "res://Resources/Sprites/stickman/ak47.png",
+	107: "res://Resources/Sprites/Guns/crossbow.png",
+	108: "res://Resources/Sprites/Guns/M1Garand.png",
+	109: "res://Resources/Sprites/Guns/m4a1.png",
+	110: "res://Resources/Sprites/Guns/m604e.png",
+	111: "res://Resources/Sprites/Guns/MG42png.png",
+	112: "res://Resources/Sprites/Guns/PRD.png",
+	113: "res://Resources/Sprites/Guns/riflegun.png",
 }
 
 var bullet_sound = {
 	101: rasengan_bullet_sound,
 	102: upgrade_bullet_sound,
 	103: tracked_bullet_sound,
+	107: tracked_bullet_sound,
+	108: tracked_bullet_sound,
+	109: tracked_bullet_sound,
+	110: tracked_bullet_sound,
+	111: tracked_bullet_sound,
+	112: tracked_bullet_sound,
+	113: tracked_bullet_sound,
 }
 
 
