@@ -9,10 +9,25 @@ const tracked_bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/Trac
 var rasengan_bullet_sound = AudioStreamPlayer.new()
 var upgrade_bullet_sound = AudioStreamPlayer.new()
 var tracked_bullet_sound = AudioStreamPlayer.new()
+var crossbow_bullet_sound = AudioStreamPlayer.new()
+var m4a1_bullet_sound= AudioStreamPlayer.new()
+var M1Garand_bullet_sound = AudioStreamPlayer.new()
+var m604e_bullet_sound = AudioStreamPlayer.new()
+var MG42_bullet_sound = AudioStreamPlayer.new()
+var PRD_bullet_sound = AudioStreamPlayer.new()
+var Riflegun_bullet_sound = AudioStreamPlayer.new()
+
 
 var tracked_bullet_file = load("res://Resources/AudioFiles/Ak47Bullet/163457__lemudcrab__ak47-shot.wav")
 var rasengan_bullet_file = load("res://Resources/AudioFiles/Shots/pistol.wav")
 var upgrade_bullet_file = load("res://Resources/AudioFiles/Shots/shotgun.wav")
+var crossbow_bullet_file = load("res://Resources/AudioFiles/GunShoot/Crossbow.wav")
+var m4a1_bullet_file = load("res://Resources/AudioFiles/GunShoot/M4A1.wav")
+var M1Garand_bullet_file = load("res://Resources/AudioFiles/GunShoot/M1Garand.wav")
+var m604e_bullet_file = load("res://Resources/AudioFiles/GunShoot/M60E4.wav")
+var MG42_bullet_file = load("res://Resources/AudioFiles/GunShoot/MG42.wav")
+var PRD_bullet_file = load("res://Resources/AudioFiles/GunShoot/PRD.wav")
+var Riflegun_bullet_file = load("res://Resources/AudioFiles/GunShoot/RifleGun.wav")
 
 var rasengan_weapon = Image.new()
 var shotgun_weapon = Image.new()
@@ -54,13 +69,13 @@ var bullet_sound = {
 	101: rasengan_bullet_sound,
 	102: upgrade_bullet_sound,
 	103: tracked_bullet_sound,
-	107: tracked_bullet_sound,
-	108: tracked_bullet_sound,
-	109: tracked_bullet_sound,
-	110: tracked_bullet_sound,
-	111: tracked_bullet_sound,
-	112: tracked_bullet_sound,
-	113: tracked_bullet_sound,
+	107: crossbow_bullet_sound,
+	108: m4a1_bullet_sound,
+	109: M1Garand_bullet_sound,
+	110: m604e_bullet_sound,
+	111: MG42_bullet_sound,
+	112: PRD_bullet_sound,
+	113: Riflegun_bullet_sound,
 }
 
 
@@ -143,20 +158,48 @@ func flash_healtbar_tween():
 func increase_bullet_count(bullet_count):
 	bullet_size += bullet_count
 	bullet_number.text=String(bullet_size)
-	
+
 func set_sounds():
 	rasengan_bullet_sound.set_stream(rasengan_bullet_file)
 	upgrade_bullet_sound.set_stream(upgrade_bullet_file)
 	tracked_bullet_sound.set_stream(tracked_bullet_file)
+	crossbow_bullet_sound.set_stream(crossbow_bullet_file)
+	m4a1_bullet_sound.set_stream(m4a1_bullet_file)
+	M1Garand_bullet_sound.set_stream(M1Garand_bullet_file)
+	m604e_bullet_sound.set_stream(m604e_bullet_file)
+	MG42_bullet_sound.set_stream(MG42_bullet_file)
+	PRD_bullet_sound.set_stream(PRD_bullet_file)
+	Riflegun_bullet_sound.set_stream(Riflegun_bullet_file)
 	rasengan_bullet_sound.volume_db = 1
 	rasengan_bullet_sound.pitch_scale = 1	
 	upgrade_bullet_sound.volume_db = 1
 	upgrade_bullet_sound.pitch_scale = 1
 	tracked_bullet_sound.volume_db = 1
 	tracked_bullet_sound.pitch_scale = 1	
+	crossbow_bullet_sound.volume_db = 1
+	crossbow_bullet_sound.pitch_scale = 1	
+	m4a1_bullet_sound.volume_db = 1
+	m4a1_bullet_sound.pitch_scale = 1
+	M1Garand_bullet_sound.volume_db = 1
+	M1Garand_bullet_sound.pitch_scale = 1	
+	m604e_bullet_sound.volume_db = 1
+	m604e_bullet_sound.pitch_scale = 1	
+	MG42_bullet_sound.volume_db = 1
+	MG42_bullet_sound.pitch_scale = 1
+	PRD_bullet_sound.volume_db = 1
+	PRD_bullet_sound.pitch_scale = 1	
+	Riflegun_bullet_sound.volume_db = 1
+	Riflegun_bullet_sound.pitch_scale = 1	
 	add_child(rasengan_bullet_sound)
 	add_child(upgrade_bullet_sound)
 	add_child(tracked_bullet_sound)
+	add_child(crossbow_bullet_sound)
+	add_child(m4a1_bullet_sound)
+	add_child(M1Garand_bullet_sound)
+	add_child(m604e_bullet_sound)
+	add_child(MG42_bullet_sound)
+	add_child(PRD_bullet_sound)
+	add_child(Riflegun_bullet_sound)
 	
 func load_images():
 	pass
