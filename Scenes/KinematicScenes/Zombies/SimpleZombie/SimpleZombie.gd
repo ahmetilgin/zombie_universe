@@ -132,7 +132,7 @@ func move_to():
 		var direction = get_global_position().direction_to(target_point_world)
 		find_zombie_x_movement(direction)
 		can_zombie_jump(direction,find_cross_index())
-		var ARRIVE_DISTANCE = 50
+		var ARRIVE_DISTANCE = 25
 		return get_global_position().distance_to(target_point_world) < ARRIVE_DISTANCE
 	
 func get_next_target_point():
@@ -175,7 +175,6 @@ func follow_path():
 
 func _get_path():
 	path = get_parent().get_node('TileMap')._get_path($CollisionShape2D.get_global_position(), player.get_global_position(),get_name())
-	path.pop_front()
 	path.pop_front()
 	if len(path) > 2:
 		target_point_world = path[1]
@@ -276,8 +275,14 @@ func chech_zombie_colliding():
 			var colliding_fence = attack_ray_cast.get_collider() 
 			colliding_fence .change_fence_health(-20)
 			is_zombie_action = true
-#		elif "Zombie" in attack_ray_cast.get_collider().name and is_on_floor():
-#			jump()
+		elif  "Zombie" in attack_ray_cast.get_collider().name:
+			var colliding_zombie = attack_ray_cast.get_collider()
+			var back = 0;
+			if colliding_zombie.get_global_position().x > get_global_position().x:
+				back = 15
+			else:
+				back = -15
+			colliding_zombie.motion += Vector2(back, 0)
 
 func move_like_basic_zombie():
 	if len(path) == 0:

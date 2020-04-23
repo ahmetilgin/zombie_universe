@@ -13,7 +13,7 @@ var finish_portal = 0
 signal stop_wave
 signal camera_zoom_out
 signal camera_zoom_in
-var start_portal = 1
+var start_portal = 2
 var portal_list = []
 var is_the_buy_button_clicked = false
 var sales_successful = false
@@ -30,7 +30,7 @@ var is_countdown_pause_timer = false
 var pause_time = 60
 var counttimer
 var second_passed = true
-var portal_coordinates = [Vector2(9,2),Vector2(9,4),Vector2(9,6)]
+var portal_coordinates = [Vector2(4,7),Vector2(41,7)]
 var turret_instance_list = []
 var is_teleport_buying = false
 var teleport_locs = []

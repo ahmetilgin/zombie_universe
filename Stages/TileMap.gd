@@ -5,7 +5,7 @@ var map_size: = Vector2()
 onready var _half_cell_size = cell_size / 2
 var world_path = []
 const BASE_LINE_WIDTH = 3.0
-const DRAW_COLOR = Color('#fff')
+const DRAW_COLOR = Color('#0F0')
 const PLAYER_COLOR = Color('#00f')
 const TARGET_COLOR = Color('#f00')
 var init_pos = Vector2()
@@ -50,13 +50,13 @@ func add_walkable_cells(obstacles := []) -> Array:
 	for x in range(min_x,max_x):
 		for y in range(min_y,max_y):
 			var point: = Vector2(x, y)
-			if get_cellv(point) != INVALID_CELL  &&  get_cellv(point) != 12:
+			if get_cellv(point) != INVALID_CELL or (get_cell(point.x - 1, point.y) != INVALID_CELL and get_cell(point.x - 1, point.y - 1) == INVALID_CELL and get_cell(point.x - 1, point.y + 1) == INVALID_CELL) :
 				continue
 #			if find_any_tile_neighbors(point):
 #				continue
 			points.append(point)
 			var index: = calculate_point_index(point)
-			connected_cells.append(point)
+			
 			astar.add_point(index, Vector3(point.x, point.y, 0))
 	return points
 
@@ -81,7 +81,7 @@ func connect_walkable_cells(points: Array) -> void:
 			
 			if !astar.has_point(index_relative):
 				continue
-			
+			connected_cells.append(point)
 			astar.connect_points(index, index_relative, false)
 
 func _ready() -> void:
@@ -109,9 +109,9 @@ func _get_path(init_position: Vector2, target_position: Vector2, name) -> Array:
 		world_path = []
 		for point in path:
 			var point_world: = map_to_world(Vector2(point.x, point.y))
-			world_path.append(point_world + _half_cell_size) 
-#			founded_path[name].append(point_world + _half_cell_size)
-#		update()
+			world_path.append(point_world) 
+			founded_path[name].append(point_world)
+		update()
 		return world_path
 	else:
 		return []
@@ -119,13 +119,12 @@ func _get_path(init_position: Vector2, target_position: Vector2, name) -> Array:
 
 	
 func _draw():
-	pass
-#	draw_circle(init_pos , 2, PLAYER_COLOR)
-#	draw_circle(target_pos, 2, TARGET_COLOR)
-#	if len(founded_path) > 2:
-#		for name in founded_path:
-#			for point_index in range(0,len(founded_path[name]) - 1):
-#				draw_circle(founded_path[name][point_index] , 2 , DRAW_COLOR)
+	draw_circle(init_pos , 2, PLAYER_COLOR)
+	draw_circle(target_pos, 2, TARGET_COLOR)
+	if len(founded_path) > 2:
+		for name in founded_path:
+			for point_index in range(0,len(founded_path[name]) - 1):
+				draw_line(founded_path[name][point_index],founded_path[name][point_index + 1], DRAW_COLOR, 2)
 
 func find_path(start_position: Vector2, end_position: Vector2) -> Array:
 	var map_path = []
