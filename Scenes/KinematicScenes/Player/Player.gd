@@ -4,6 +4,17 @@ signal dead_signal
 const rasengan_bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/SimpleBullet/SimpleBullet.tscn")
 const upgrade_bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/UpgradedBullet/UpgratedBullet.tscn")
 const tracked_bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/TrackedBullet/TrackedBullet.tscn")
+const crossbow_bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/SimpleBullet/SimpleBullet.tscn")
+const m4a1_bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/UpgradedBullet/UpgratedBullet.tscn")
+const M1Garand_bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/TrackedBullet/TrackedBullet.tscn")
+const m604e_bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/SimpleBullet/SimpleBullet.tscn")
+const MG42_bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/UpgradedBullet/UpgratedBullet.tscn")
+const PRD_bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/TrackedBullet/TrackedBullet.tscn")
+const Riflegun_bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/TrackedBullet/TrackedBullet.tscn")
+
+
+
+
 #touch screen option
 
 var rasengan_bullet_sound = AudioStreamPlayer.new()
@@ -29,23 +40,23 @@ var MG42_bullet_file = load("res://Resources/AudioFiles/GunShoot/MG42.wav")
 var PRD_bullet_file = load("res://Resources/AudioFiles/GunShoot/PRD.wav")
 var Riflegun_bullet_file = load("res://Resources/AudioFiles/GunShoot/RifleGun.wav")
 
-var rasengan_weapon = Image.new()
-var shotgun_weapon = Image.new()
-var ak47_weapon = Image.new()
-
-var weaponTexture = null
+#var rasengan_weapon = Image.new()
+#var shotgun_weapon = Image.new()
+#var ak47_weapon = Image.new()
+#
+#var weaponTexture = null
 
 var bullet_type = {
 	101: rasengan_bullet,
 	102: upgrade_bullet,
 	103: tracked_bullet,
-	107: rasengan_bullet,
-	108: upgrade_bullet,
-	109: tracked_bullet,
-	110: rasengan_bullet,
-	111: upgrade_bullet,
-	112: tracked_bullet,
-	113: tracked_bullet,
+	107: crossbow_bullet,
+	108: m4a1_bullet,
+	109: M1Garand_bullet,
+	110: m604e_bullet,
+	111: MG42_bullet,
+	112: PRD_bullet,
+	113: Riflegun_bullet,
 }
 
 #	rasengan_weapon.load("res://Resources/Sprites/Guns/rasengan.png")

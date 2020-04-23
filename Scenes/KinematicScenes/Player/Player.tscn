@@ -54,18 +54,18 @@
 [ext_resource path="res://Resources/Sprites/Player/Melee6.png" type="Texture" id=52]
 [ext_resource path="res://Resources/Sprites/Player/Melee7.png" type="Texture" id=53]
 [ext_resource path="res://Scenes/KinematicScenes/Player/CameraShake.gd" type="Script" id=54]
-[ext_resource path="res://Resources/Sprites/TouchIcons/touch_buttons.png" type="Texture" id=57]
-[ext_resource path="res://Resources/Sprites/TouchIcons/bullet1.png" type="Texture" id=58]
-[ext_resource path="res://Resources/Sprites/knife.png" type="Texture" id=59]
-[ext_resource path="res://Resources/Sprites/stickman/body2.png" type="Texture" id=61]
-[ext_resource path="res://Resources/Sprites/stickman/stickmanHead.png" type="Texture" id=62]
-[ext_resource path="res://Resources/Sprites/stickman/arm2.png" type="Texture" id=63]
-[ext_resource path="res://Resources/Sprites/stickman/knife.png" type="Texture" id=64]
-[ext_resource path="res://Resources/Sprites/stickman/knee2.png" type="Texture" id=65]
-[ext_resource path="res://Resources/Sprites/stickman/foot.png" type="Texture" id=66]
-[ext_resource path="res://Resources/Sprites/stickman/ak47.png" type="Texture" id=67]
-[ext_resource path="res://Resources/Sprites/stickman/meleewind.png" type="Texture" id=68]
-[ext_resource path="res://Resources/Sprites/stickman/fire.png" type="Texture" id=69]
+[ext_resource path="res://Resources/Sprites/TouchIcons/touch_buttons.png" type="Texture" id=55]
+[ext_resource path="res://Resources/Sprites/TouchIcons/bullet1.png" type="Texture" id=56]
+[ext_resource path="res://Resources/Sprites/knife.png" type="Texture" id=57]
+[ext_resource path="res://Resources/Sprites/stickman/body2.png" type="Texture" id=58]
+[ext_resource path="res://Resources/Sprites/stickman/stickmanHead.png" type="Texture" id=59]
+[ext_resource path="res://Resources/Sprites/stickman/arm2.png" type="Texture" id=60]
+[ext_resource path="res://Resources/Sprites/stickman/knife.png" type="Texture" id=61]
+[ext_resource path="res://Resources/Sprites/stickman/knee2.png" type="Texture" id=62]
+[ext_resource path="res://Resources/Sprites/stickman/foot.png" type="Texture" id=63]
+[ext_resource path="res://Resources/Sprites/stickman/ak47.png" type="Texture" id=64]
+[ext_resource path="res://Resources/Sprites/stickman/meleewind.png" type="Texture" id=65]
+[ext_resource path="res://Resources/Sprites/stickman/fire.png" type="Texture" id=66]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -104,15 +104,15 @@ animations = [ {
 "name": "run",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 47 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ) ],
-"loop": false,
-"name": "melee",
-"speed": 15.0
-}, {
 "frames": [ ExtResource( 31 ) ],
 "loop": false,
 "name": "fall",
 "speed": 12.0
+}, {
+"frames": [ ExtResource( 47 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ) ],
+"loop": false,
+"name": "melee",
+"speed": 15.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -123,12 +123,12 @@ extents = Vector2( 28.6588, 44.1096 )
 
 [sub_resource type="AtlasTexture" id=4]
 flags = 4
-atlas = ExtResource( 57 )
+atlas = ExtResource( 55 )
 region = Rect2( 230, 238, 120, 120 )
 
 [sub_resource type="AtlasTexture" id=5]
 flags = 4
-atlas = ExtResource( 57 )
+atlas = ExtResource( 55 )
 region = Rect2( 236, 246, 104, 104 )
 
 [sub_resource type="RectangleShape2D" id=6]
@@ -136,12 +136,12 @@ extents = Vector2( 52.12, 52.35 )
 
 [sub_resource type="AtlasTexture" id=7]
 flags = 4
-atlas = ExtResource( 57 )
+atlas = ExtResource( 55 )
 region = Rect2( 7, 244, 107, 107 )
 
 [sub_resource type="AtlasTexture" id=8]
 flags = 4
-atlas = ExtResource( 57 )
+atlas = ExtResource( 55 )
 region = Rect2( 9, 246, 104, 104 )
 
 [sub_resource type="RectangleShape2D" id=9]
@@ -149,12 +149,12 @@ extents = Vector2( 52, 52 )
 
 [sub_resource type="AtlasTexture" id=10]
 flags = 4
-atlas = ExtResource( 57 )
+atlas = ExtResource( 55 )
 region = Rect2( 118, 131, 107, 107 )
 
 [sub_resource type="AtlasTexture" id=11]
 flags = 4
-atlas = ExtResource( 57 )
+atlas = ExtResource( 55 )
 region = Rect2( 120, 132, 104, 104 )
 
 [sub_resource type="RectangleShape2D" id=12]
@@ -162,12 +162,12 @@ extents = Vector2( 52, 52 )
 
 [sub_resource type="AtlasTexture" id=13]
 flags = 4
-atlas = ExtResource( 57 )
+atlas = ExtResource( 55 )
 region = Rect2( 119, 359, 107, 107 )
 
 [sub_resource type="AtlasTexture" id=14]
 flags = 4
-atlas = ExtResource( 57 )
+atlas = ExtResource( 55 )
 region = Rect2( 122, 360, 104, 104 )
 
 [sub_resource type="RectangleShape2D" id=15]
@@ -175,7 +175,7 @@ extents = Vector2( 52, 52 )
 
 [sub_resource type="AtlasTexture" id=16]
 flags = 4
-atlas = ExtResource( 57 )
+atlas = ExtResource( 55 )
 region = Rect2( 487, 350, 107, 107 )
 
 [sub_resource type="RectangleShape2D" id=17]
@@ -2677,7 +2677,7 @@ tracks/10/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ -1.70755e-06, 18.531, 20.4573, 42.2441, 40.3295, 11.6913, 1.9312, 11.6717 ]
+"values": [ -1.70755e-006, 18.531, 20.4573, 42.2441, 40.3295, 11.6913, 1.9312, 11.6717 ]
 }
 tracks/11/type = "value"
 tracks/11/path = NodePath("human/body2/knee4/knee5/foot:position")
@@ -2725,7 +2725,7 @@ tracks/14/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ -3.11835e-06, -17.3453, -17.3453, -17.3453, -17.3453, -17.3453, -17.3453, -17.3453 ]
+"values": [ -3.11835e-006, -17.3453, -17.3453, -17.3453, -17.3453, -17.3453, -17.3453, -17.3453 ]
 }
 tracks/15/type = "value"
 tracks/15/path = NodePath("human/body2/arm3/arm5:position")
@@ -3391,7 +3391,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ -1.70755e-06, 18.531, 42.2441, 11.6913, 11.6717 ]
+"values": [ -1.70755e-006, 18.531, 42.2441, 11.6913, 11.6717 ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("human/body2/knee4/knee5/foot:position")
@@ -3439,7 +3439,7 @@ tracks/7/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ -3.11835e-06, -17.3453, -17.3453, -17.3453, -17.3453 ]
+"values": [ -3.11835e-006, -17.3453, -17.3453, -17.3453, -17.3453 ]
 }
 tracks/8/type = "value"
 tracks/8/path = NodePath("human/body2/arm3/arm5:position")
@@ -4226,7 +4226,7 @@ modulate = Color( 1, 1, 1, 0.317647 )
 position = Vector2( 58.5758, 52.0381 )
 rotation = -0.785398
 scale = Vector2( 0.1, 0.09 )
-texture = ExtResource( 58 )
+texture = ExtResource( 56 )
 
 [node name="melee_attack" type="TouchScreenButton" parent="Controller/Node2D"]
 position = Vector2( 536.001, 268.482 )
@@ -4241,7 +4241,7 @@ modulate = Color( 1, 1, 1, 0.392157 )
 position = Vector2( 57.1377, 52.1772 )
 rotation = 0.785398
 scale = Vector2( 0.199, 0.123 )
-texture = ExtResource( 59 )
+texture = ExtResource( 57 )
 
 [node name="human" type="Sprite" parent="."]
 position = Vector2( 43.3841, 14.5342 )
@@ -4250,7 +4250,7 @@ position = Vector2( 43.3841, 14.5342 )
 position = Vector2( -33.9303, 37.8275 )
 rotation = 0.0272146
 scale = Vector2( 0.732, 0.452 )
-texture = ExtResource( 61 )
+texture = ExtResource( 58 )
 offset = Vector2( 30.3028, -83.2066 )
 
 [node name="Area2D" type="Area2D" parent="human/body2"]
@@ -4266,19 +4266,19 @@ disabled = true
 [node name="stickmanHead" type="Sprite" parent="human/body2"]
 position = Vector2( 30.3448, -117.962 )
 rotation = 0.0652128
-texture = ExtResource( 62 )
+texture = ExtResource( 59 )
 offset = Vector2( 2.18057, -47.7772 )
 
 [node name="arm2" type="Sprite" parent="human/body2"]
 position = Vector2( 37.1645, -108.528 )
 rotation = 0.369639
-texture = ExtResource( 63 )
+texture = ExtResource( 60 )
 offset = Vector2( 14.3284, -4.93674 )
 
 [node name="arm4" type="Sprite" parent="human/body2/arm2"]
 position = Vector2( 27.5282, -13.2727 )
 rotation = -0.140154
-texture = ExtResource( 63 )
+texture = ExtResource( 60 )
 offset = Vector2( 17.1019, -4.87003 )
 
 [node name="knife" type="Sprite" parent="human/body2/arm2/arm4"]
@@ -4286,51 +4286,51 @@ visible = false
 position = Vector2( 51.0549, -20.871 )
 rotation = -2.0021
 scale = Vector2( 0.323421, 0.480536 )
-texture = ExtResource( 64 )
+texture = ExtResource( 61 )
 
 [node name="knee2" type="Sprite" parent="human/body2"]
 position = Vector2( 34.5045, -50.3219 )
 rotation = 0.18888
-texture = ExtResource( 65 )
+texture = ExtResource( 62 )
 offset = Vector2( 5.95731, 16.8168 )
 
 [node name="knee3" type="Sprite" parent="human/body2/knee2"]
 position = Vector2( 11.8834, 29.4885 )
 rotation = 0.156656
-texture = ExtResource( 65 )
+texture = ExtResource( 62 )
 offset = Vector2( 4.48117, 16.0438 )
 
 [node name="foot2" type="Sprite" parent="human/body2/knee2/knee3"]
 position = Vector2( 4.89971, 31.3274 )
 rotation = -0.408058
 scale = Vector2( 1.09516, 0.859398 )
-texture = ExtResource( 66 )
+texture = ExtResource( 63 )
 offset = Vector2( 11.1143, 2.04172 )
 
 [node name="knee4" type="Sprite" parent="human/body2"]
 position = Vector2( 27.0223, -50.3219 )
 rotation = 0.659586
-texture = ExtResource( 65 )
+texture = ExtResource( 62 )
 offset = Vector2( 7.41452, 16.3922 )
 
 [node name="knee5" type="Sprite" parent="human/body2/knee4"]
 position = Vector2( 14.0002, 31.296 )
 rotation = -0.0489809
-texture = ExtResource( 65 )
+texture = ExtResource( 62 )
 offset = Vector2( 5.63562, 14.9762 )
 
 [node name="foot" type="Sprite" parent="human/body2/knee4/knee5"]
 position = Vector2( 8.43644, 29.4046 )
 rotation = -0.515717
 scale = Vector2( 1.09516, 0.859398 )
-texture = ExtResource( 66 )
+texture = ExtResource( 63 )
 offset = Vector2( 8.51764, 3.12509 )
 
 [node name="ak47" type="Sprite" parent="human/body2"]
 position = Vector2( 34.8391, -99.5305 )
 rotation = 1.51599
 scale = Vector2( 0.31243, 0.399524 )
-texture = ExtResource( 67 )
+texture = ExtResource( 64 )
 offset = Vector2( 170.125, -47.8345 )
 
 [node name="foot3" type="Sprite" parent="human/body2/ak47"]
@@ -4338,26 +4338,26 @@ visible = false
 position = Vector2( -34.3575, -171.352 )
 rotation = 0.122505
 scale = Vector2( 1, 1.5589 )
-texture = ExtResource( 66 )
+texture = ExtResource( 63 )
 
 [node name="arm3" type="Sprite" parent="human/body2"]
 position = Vector2( 26.7438, -109.912 )
 rotation = -0.676327
 scale = Vector2( 1.01995, 1.00193 )
-texture = ExtResource( 63 )
+texture = ExtResource( 60 )
 offset = Vector2( -17.2367, 7.67561 )
 
 [node name="arm5" type="Sprite" parent="human/body2/arm3"]
 position = Vector2( -34.0482, 15.857 )
 rotation = -1.51353
-texture = ExtResource( 63 )
+texture = ExtResource( 60 )
 offset = Vector2( -14.2762, 6.8665 )
 
 [node name="foot4" type="Sprite" parent="human/body2/arm3/arm5"]
 position = Vector2( -30.3606, 14.0361 )
 rotation = 1.31008
 scale = Vector2( 0.37999, 1.18452 )
-texture = ExtResource( 66 )
+texture = ExtResource( 63 )
 
 [node name="meleewind" type="Sprite" parent="human/body2"]
 visible = false
@@ -4365,13 +4365,13 @@ modulate = Color( 1, 1, 1, 0.231373 )
 position = Vector2( 107.353, -96.8173 )
 rotation = -0.0440554
 scale = Vector2( 0.548749, 0.55907 )
-texture = ExtResource( 68 )
+texture = ExtResource( 65 )
 
 [node name="fire" type="Sprite" parent="human/body2"]
 visible = false
 position = Vector2( 165.325, -118.457 )
 scale = Vector2( 0.250122, 0.242203 )
-texture = ExtResource( 69 )
+texture = ExtResource( 66 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 3.0
@@ -4401,7 +4401,7 @@ anims/slideAk47 = SubResource( 28 )
 [connection signal="pressed" from="Controller/Node2D/melee_attack" to="." method="_on_melee_attack_pressed"]
 [connection signal="released" from="Controller/Node2D/melee_attack" to="." method="_on_melee_attack_released"]
 [connection signal="body_entered" from="human/body2/Area2D" to="." method="_on_Area2D_body_entered"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_hurtAk47_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_slideAk47_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_shootAk47_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_hurtAk47_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_meleeAk47_finished"]
