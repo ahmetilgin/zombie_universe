@@ -109,8 +109,8 @@ var tramb_count=1
 const jump = -900
 const gravity = 20
 # player options
-const max_hp = 1000
-var hp = 1000
+const max_hp = 100
+var hp = 100
 var speed = 150
 var max_speed = 300
 var motion = Vector2(0,0)

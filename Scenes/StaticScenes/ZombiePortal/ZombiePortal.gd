@@ -64,7 +64,7 @@ func create_generate_wave_timer():
 
 func create_wave_paused_timer():
 	wave_paused_timer.set_one_shot(true)
-	wave_paused_timer.set_wait_time(60)
+	wave_paused_timer.set_wait_time(10)
 	add_child(wave_paused_timer) #to process
 	wave_paused_timer.connect("timeout",self, "_on_wave_paused_timer_timeout") 
 

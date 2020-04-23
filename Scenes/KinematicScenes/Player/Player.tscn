@@ -79,30 +79,30 @@ animations = [ {
 "name": "idle",
 "speed": 12.0
 }, {
-"frames": [ ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ) ],
-"loop": false,
-"name": "dead",
-"speed": 15.0
-}, {
 "frames": [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ) ],
 "loop": false,
 "name": "jump",
 "speed": 12.0
+}, {
+"frames": [ ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ) ],
+"loop": false,
+"name": "dead",
+"speed": 15.0
 }, {
 "frames": [ ExtResource( 16 ), ExtResource( 17 ) ],
 "loop": false,
 "name": "hurt",
 "speed": 50.0
 }, {
-"frames": [ ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ) ],
-"loop": false,
-"name": "attack",
-"speed": 35.0
-}, {
 "frames": [ ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ) ],
 "loop": true,
 "name": "run",
 "speed": 15.0
+}, {
+"frames": [ ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ) ],
+"loop": false,
+"name": "attack",
+"speed": 35.0
 }, {
 "frames": [ ExtResource( 31 ) ],
 "loop": false,
@@ -2677,7 +2677,7 @@ tracks/10/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ -1.70755e-006, 18.531, 20.4573, 42.2441, 40.3295, 11.6913, 1.9312, 11.6717 ]
+"values": [ -1.70755e-06, 18.531, 20.4573, 42.2441, 40.3295, 11.6913, 1.9312, 11.6717 ]
 }
 tracks/11/type = "value"
 tracks/11/path = NodePath("human/body2/knee4/knee5/foot:position")
@@ -2725,7 +2725,7 @@ tracks/14/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ -3.11835e-006, -17.3453, -17.3453, -17.3453, -17.3453, -17.3453, -17.3453, -17.3453 ]
+"values": [ -3.11835e-06, -17.3453, -17.3453, -17.3453, -17.3453, -17.3453, -17.3453, -17.3453 ]
 }
 tracks/15/type = "value"
 tracks/15/path = NodePath("human/body2/arm3/arm5:position")
@@ -3391,7 +3391,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ -1.70755e-006, 18.531, 42.2441, 11.6913, 11.6717 ]
+"values": [ -1.70755e-06, 18.531, 42.2441, 11.6913, 11.6717 ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("human/body2/knee4/knee5/foot:position")
@@ -3439,7 +3439,7 @@ tracks/7/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ -3.11835e-006, -17.3453, -17.3453, -17.3453, -17.3453 ]
+"values": [ -3.11835e-06, -17.3453, -17.3453, -17.3453, -17.3453 ]
 }
 tracks/8/type = "value"
 tracks/8/path = NodePath("human/body2/arm3/arm5:position")
@@ -4401,7 +4401,7 @@ anims/slideAk47 = SubResource( 28 )
 [connection signal="pressed" from="Controller/Node2D/melee_attack" to="." method="_on_melee_attack_pressed"]
 [connection signal="released" from="Controller/Node2D/melee_attack" to="." method="_on_melee_attack_released"]
 [connection signal="body_entered" from="human/body2/Area2D" to="." method="_on_Area2D_body_entered"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_slideAk47_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_shootAk47_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_slideAk47_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_hurtAk47_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_meleeAk47_finished"]

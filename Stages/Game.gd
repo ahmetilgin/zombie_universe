@@ -6,6 +6,7 @@ onready var level_text = get_node("Game_UI/level_text")
 var portal_scene = preload("res://Scenes/StaticScenes/ZombiePortal/ZombiePortal.tscn")
 var player_scene = preload("res://Scenes/KinematicScenes/Player/Player.tscn")
 var gameover_scene = preload("res://Scenes/Screens/GameOverScreen/GameoverScreen.tscn")
+var market_scene = preload("res://Scenes/StaticScenes/Market/Market.tscn").instance()
 var constants = preload("res://Stages/constants.gd").new()
 var player = null
 
@@ -27,7 +28,7 @@ var is_create_instance = false
 var tile_grid = null
 var countdown_timer = Timer.new()
 var is_countdown_pause_timer = false
-var pause_time = 60
+var pause_time = 10
 var counttimer
 var second_passed = true
 var portal_coordinates = [Vector2(4,7),Vector2(41,7)]
@@ -159,7 +160,11 @@ func item_solded_failed():
 	is_the_buy_button_clicked = false
 	sales_fail = true
 
+func _create_market_scene():
+	add_child(market_scene)
+
 func _ready():
+	_create_market_scene()
 	player = player_scene.instance()
 	disable_accept_button()
 	create_portals(start_portal)
