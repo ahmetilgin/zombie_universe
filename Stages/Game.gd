@@ -104,16 +104,17 @@ func buy_wall(item_id):
 	hide_market()
 	show_accept_button()
 	show_select_position(true)
+	show_grid()
 	pass
 
 func buy_teleportal(item_id):
-	is_teleport_buying = true
-	 
+	is_teleport_buying = true 
 	teleport_pair.push_back(create_teleport_instance(item_id))
 	teleport_pair.push_back(create_teleport_instance(item_id))
 	hide_market()
 	show_accept_button()
 	show_select_position(true)
+	show_grid()
 	pass
 	
 func show_select_position(is_visible):
@@ -126,6 +127,7 @@ func buy_turret(item_id):
 	create_instance(item_id)
 	instance.show_rotations()
 	show_accept_button()
+	show_grid()
 	pass
 	
 func item_solded(item_id):
@@ -243,7 +245,7 @@ var is_opened_market = false
 func show_grid():
 	for i in range(min_border.x, max_border.x):
 		for j in range(min_border.y, max_border.y):
-			if get_node("TileMap").get_cell(i,j) == -1 and get_node("TileMap").get_cell(i,j+1) != -1: 				
+			if get_node("TileMap").get_cell(i,j) == -1 and get_node("TileMap").get_cell(i,j + 1) != 14  and get_node("TileMap").get_cell(i,j+1) != -1: 				
 				get_node("TileMap").set_cellv(Vector2(i,j),14)			
 			pass
 
@@ -262,9 +264,7 @@ func hide_grid():
 			pass
 
 func _draw():
-	clear_grid()
 	if is_opened_market:
-		show_grid()
 		$GameAreaCam.current = true
 	else:
 		$player/Camera2D.current = true
@@ -335,10 +335,12 @@ func select_teleport_position():
 		get_node("TileMap").set_cell(tile_grid.x,tile_grid.y, 15) 
 		selected_teleport_location_count += 1
 		teleport_locs.push_back(tile_grid)
-		if selected_teleport_location_count == 2:
+		if selected_teleport_location_count>= 2:
 			enable_accept_button()
-			selected_teleport_location_count = 0
-	
+			if selected_teleport_location_count > 2:
+				get_node("TileMap").set_cell(teleport_locs[0].x,teleport_locs[0].y, 14)
+				teleport_locs.remove(0) 
+				
 func finish_teleport_buy():
 	
 	if is_create_instance   and( sales_fail ):
@@ -354,10 +356,12 @@ func finish_teleport_buy():
 	
 	teleport_pair[0].set_other_pos(get_node("TileMap").map_to_world(teleport_locs[1]))
 	teleport_pair[1].set_other_pos(get_node("TileMap").map_to_world(teleport_locs[0]))
-	
+	selected_teleport_location_count = 0
 	teleport_locs.clear()
 	is_teleport_buying = false
 	teleport_pair.clear()
+	hide_accept_button()
+	clear_grid()
 	pass
 
 func create_instance(turret):

@@ -144,8 +144,8 @@ texture_pressed = ExtResource( 29 )
 [node name="RichTextLabel2" type="RichTextLabel" parent="HBoxContainer/GridContainer/FireBulletButton"]
 margin_left = 18.0
 margin_top = 2.0
-margin_right = 191.0
-margin_bottom = 53.0
+margin_right = 179.0
+margin_bottom = 51.0
 rect_scale = Vector2( 0.175, 0.139 )
 custom_fonts/normal_font = SubResource( 2 )
 text = "SHOT GUN"
