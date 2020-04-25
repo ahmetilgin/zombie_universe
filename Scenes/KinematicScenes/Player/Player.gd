@@ -106,7 +106,7 @@ enum bullet_power{
 }
 # environment options
 var tramb_count=1
-const jump = -900
+const jump = -700
 const gravity = 20
 # player options
 const max_hp = 100
@@ -125,6 +125,8 @@ var is_dead = false
 #var is_hurt = false
 var is_melee = false
 var is_shift_stop = false
+var is_first_jump = false
+var is_second_jump = false
 var bullet_size = 20
 var change_color_tween= Tween.new()
 var pulse_tween= Tween.new()
@@ -402,9 +404,18 @@ func _physics_process(delta):
 
 				_set_bullet_direction(sign($Position2D.position.x))
 				current_bullet.position = $Position2D.global_position
-		if is_on_floor():
-			if Input.is_action_just_pressed("ui_up") or touch_up:
+		if (Input.is_action_just_pressed("ui_up") or touch_up) and !is_first_jump:
 				motion.y = jump
+				is_first_jump = true
+				is_second_jump = false
+		if (Input.is_action_just_pressed("ui_up") or touch_up) and is_first_jump and !is_second_jump:
+			motion.y = jump
+			is_second_jump = true
+			
+			
+				
+		if is_on_floor():
+			is_first_jump = false
 			if _is_shift_stop():
 				motion.x = lerp(motion.x, 0, 0.2)
 		else:

@@ -84,7 +84,7 @@ speed_scale = 2.06
 process_material = SubResource( 12 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -1.50937, -5.66022 )
+position = Vector2( -2.12113, -4.02896 )
 shape = SubResource( 13 )
 
 [node name="Timer" type="Timer" parent="."]

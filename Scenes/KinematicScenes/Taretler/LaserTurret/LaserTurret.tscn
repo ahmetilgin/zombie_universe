@@ -90,7 +90,7 @@ position = Vector2( -115.233, -50.3631 )
 polygon = PoolVector2Array( -161.141, 13.1962, -123.613, 12.2012, -121.634, 2.74536, -65.7787, 2.30555, -56.3211, 9.04512, 35.2584, 6.89873, 144.009, 1.89047, 151.164, -15.2807, 232.478, -21.1279, 240.228, 29.8046, 206.491, 75.2522, 155.48, 77.1893, 43.7725, 78.4808, 18.2294, 57.4853, -150.069, 51.9491 )
 
 [node name="TurretBody" type="CollisionShape2D" parent="."]
-position = Vector2( 32.6178, 130.458 )
+position = Vector2( 30.29, 130.458 )
 shape = SubResource( 5 )
 
 [node name="TurretHealthBack" type="TextureProgress" parent="."]

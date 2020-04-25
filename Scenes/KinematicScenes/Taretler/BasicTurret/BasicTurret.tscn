@@ -27,7 +27,7 @@ atlas = ExtResource( 2 )
 region = Rect2( 186.252, 2214.56, 187.876, 194.303 )
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 112.221, 91.3389 )
+extents = Vector2( 252.023, 91.3389 )
 
 [sub_resource type="AtlasTexture" id=6]
 flags = 4
@@ -99,7 +99,7 @@ position = Vector2( -144.785, -55.9908 )
 polygon = PoolVector2Array( -236.515, -3.55566, -197.501, -3.55566, -142.231, -1.93008, 64.2192, -3.55566, 114.612, -26.3139, 186.138, -26.3139, 202.394, -36.0674, 257.664, -26.3139, 251.162, 30.5817, 225.152, 64.719, 152.001, 71.2214, 52.8401, 61.4678, 51.2144, 33.8329, -93.4629, 27.3305, -230.012, 28.9561 )
 
 [node name="TurretBody" type="CollisionShape2D" parent="."]
-position = Vector2( 32.6876, 111.157 )
+position = Vector2( -110.867, 112.551 )
 shape = SubResource( 5 )
 
 [node name="TurretHealthBack" type="TextureProgress" parent="."]
