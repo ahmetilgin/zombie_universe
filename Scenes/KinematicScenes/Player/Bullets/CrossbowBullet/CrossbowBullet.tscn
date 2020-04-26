@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/KinematicScenes/Player/Bullets/CrossbowBullet/CrossbowBullet.gd" type="Script" id=1]
-[ext_resource path="res://Resources/Sprites/Bullets/TurretBullet/turret_bullet.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Sprites/Bullets/bulletsnew/arrow.png" type="Texture" id=2]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -11,9 +11,8 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=2]
-radius = 6.72351
-height = 0.0421829
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 14.4498, 1.37682 )
 
 [node name="Crossbowbullet" type="Area2D"]
 position = Vector2( 50.9695, 69.806 )
@@ -22,17 +21,21 @@ script = ExtResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -3.56728, -4.12675 )
-scale = Vector2( 0.205994, 0.197338 )
+scale = Vector2( 0.0970666, 0.063481 )
 frames = SubResource( 1 )
 animation = "shoot2"
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 1.34468, 0.0662231 )
+position = Vector2( 12.899, 0.392612 )
 shape = SubResource( 2 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
-position = Vector2( 1.27369, 0.11305 )
-scale = Vector2( 0.755827, 0.73141 )
+position = Vector2( 12.9294, 0.31575 )
+scale = Vector2( 1.37409, 0.20437 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
 [connection signal="body_entered" from="." to="." method="_on_Crossbowbullet_body_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
