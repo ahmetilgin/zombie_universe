@@ -4,13 +4,13 @@ signal dead_signal
 const rasengan_bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/SimpleBullet/SimpleBullet.tscn")
 const upgrade_bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/UpgradedBullet/UpgratedBullet.tscn")
 const tracked_bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/TrackedBullet/TrackedBullet.tscn")
-const crossbow_bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/SimpleBullet/SimpleBullet.tscn")
-const m4a1_bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/UpgradedBullet/UpgratedBullet.tscn")
-const M1Garand_bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/TrackedBullet/TrackedBullet.tscn")
-const m604e_bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/SimpleBullet/SimpleBullet.tscn")
-const MG42_bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/UpgradedBullet/UpgratedBullet.tscn")
-const PRD_bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/TrackedBullet/TrackedBullet.tscn")
-const Riflegun_bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/TrackedBullet/TrackedBullet.tscn")
+const crossbow_bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/CrossbowBullet/CrossbowBullet.tscn")
+const m4a1_bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/M4A1Bullet/M4A1Bullet.tscn")
+const M1Garand_bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/M1GarandBullet/M1GarandBullet.tscn")
+const m604e_bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/M60E4Bullet/M60E4Bullet.tscn")
+const MG42_bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/MG42Bullet/MG42Bullet.tscn")
+const PRD_bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/PRDBullet/PRDBullet.tscn")
+const Riflegun_bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/RiflegunBullet/RiflegunBullet.tscn")
 
 
 
