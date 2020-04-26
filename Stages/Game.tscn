@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://Stages/Game.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/GraveyardTileSet/png/Tiles/Tile1.png" type="Texture" id=2]
@@ -22,7 +22,6 @@
 [ext_resource path="res://Resources/AudioFiles/Game/savymerchant.ogg" type="AudioStream" id=21]
 [ext_resource path="res://Resources/Sprites/GameBackgrounds/1gamebackground/1gamebackground.png" type="Texture" id=23]
 [ext_resource path="res://Resources/Sprites/Grids/select.png" type="Texture" id=24]
-[ext_resource path="res://Scenes/StaticScenes/fences/WoodFence/WoodFence.tscn" type="PackedScene" id=25]
 [ext_resource path="res://Resources/Sprites/Grids/selected.png" type="Texture" id=26]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
@@ -600,6 +599,9 @@ bbcode_text = "0"
 text = "0"
 scroll_active = false
 script = ExtResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Market_Button" type="TextureButton" parent="Game_UI"]
 margin_left = 15.8822
@@ -652,8 +654,5 @@ position = Vector2( 1455.7, 1016.56 )
 scale = Vector2( 1.515, 1.75813 )
 z_index = -500
 texture = ExtResource( 23 )
-
-[node name="Fence" parent="." instance=ExtResource( 25 )]
-position = Vector2( 1103.7, 1810.18 )
 [connection signal="pressed" from="Game_UI/accept_button" to="." method="_on_acceptbutton_pressed"]
 [connection signal="pressed" from="Game_UI/Market_Button" to="." method="_on_TouchScreenButton_pressed"]

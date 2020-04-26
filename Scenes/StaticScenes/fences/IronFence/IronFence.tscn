@@ -18,14 +18,14 @@ animations = [ {
 "name": "damage2",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "damage1",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
 "name": "damage3",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "damage1",
 "speed": 5.0
 } ]
 
@@ -41,14 +41,14 @@ animations = [ {
 "name": "damage2",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "damage1",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
 "name": "damage3",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "damage1",
 "speed": 5.0
 } ]
 
@@ -57,18 +57,18 @@ position = Vector2( 16.5843, 268.749 )
 script = ExtResource( 5 )
 
 [node name="IronFenceBack" type="AnimatedSprite" parent="."]
-position = Vector2( -1.55803, -258.203 )
+position = Vector2( -0.994728, -296.858 )
 z_index = -1
 frames = SubResource( 1 )
 animation = "idle"
 centered = false
 
 [node name="IronFenceFront" type="AnimatedSprite" parent="."]
-position = Vector2( -17.1476, -258.116 )
+position = Vector2( -16.5843, -296.771 )
 frames = SubResource( 2 )
 animation = "idle"
 centered = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2( -0.902496, 2.70752 )
+position = Vector2( -0.339195, -35.9483 )
 polygon = PoolVector2Array( -5.68939, 112.785, -7.89468, -256.232, 0.191372, -184.928, 3.86683, -260.643, 7.54231, -188.603, 10.4827, 45.8918, 9.01359, 113.216 )

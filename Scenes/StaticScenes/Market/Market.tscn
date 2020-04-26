@@ -128,6 +128,7 @@ margin_right = 388.0
 margin_bottom = 62.0
 rect_scale = Vector2( 0.175, 0.139 )
 custom_fonts/normal_font = SubResource( 2 )
+custom_colors/default_color = Color( 1, 0.0196078, 0.0196078, 1 )
 text = "GRANEDE LAUNCHER"
 __meta__ = {
 "_edit_use_anchors_": false
