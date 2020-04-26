@@ -14,11 +14,17 @@ var wave_zombie_limit
 var zombie_generate_time
 var zombie_generate_counter = 0
 var wave_is_contiune = false
-var wave_time = 10.0
+var wave_time = 5.0
 var first_wave_zombie_size = 1
 var zombie_types = { 0 : simple_zombie , 
 					 1 : stalker_zombie,
-					 2 : punk_zombie }
+					 2 : punk_zombie,
+						3 : punk_zombie,
+						4 : punk_zombie,
+						5 : punk_zombie,
+						6 : punk_zombie,
+						7 : punk_zombie
+					}
 					
 
 
@@ -64,13 +70,13 @@ func create_generate_wave_timer():
 
 func create_wave_paused_timer():
 	wave_paused_timer.set_one_shot(true)
-	wave_paused_timer.set_wait_time(60)
+	wave_paused_timer.set_wait_time(10)
 	add_child(wave_paused_timer) #to process
 	wave_paused_timer.connect("timeout",self, "_on_wave_paused_timer_timeout") 
 
 func select_zombie_for_level( _level):
 	var zombie_by_level = _level
-	return int( floor(randi( ) % ((zombie_by_level / 10) +1 ) ))
+	return int( floor(randi( ) % ((zombie_by_level / 3) +1 ) ))
 	
 func zombie_count_for_level(_level):
 	var zombie_size_by_level = _level + 1

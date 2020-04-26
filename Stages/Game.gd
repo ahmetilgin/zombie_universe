@@ -6,6 +6,7 @@ onready var level_text = get_node("Game_UI/level_text")
 var portal_scene = preload("res://Scenes/StaticScenes/ZombiePortal/ZombiePortal.tscn")
 var player_scene = preload("res://Scenes/KinematicScenes/Player/Player.tscn")
 var gameover_scene = preload("res://Scenes/Screens/GameOverScreen/GameoverScreen.tscn")
+var market_scene = preload("res://Scenes/StaticScenes/Market/Market.tscn").instance()
 var constants = preload("res://Stages/constants.gd").new()
 var player = null
 
@@ -27,7 +28,7 @@ var is_create_instance = false
 var tile_grid = null
 var countdown_timer = Timer.new()
 var is_countdown_pause_timer = false
-var pause_time = 60
+var pause_time = 10
 var counttimer
 var second_passed = true
 var portal_coordinates = [Vector2(4,7),Vector2(41,7)]
@@ -98,6 +99,8 @@ func buy_player_item(item_id):
 	elif item_id == 106:
 		buy_ammo()
 	pass
+	hide_market()
+	
 
 func buy_wall(item_id):
 	create_wall_instance(item_id)
@@ -142,10 +145,12 @@ func item_solded(item_id):
 		pass
 	elif item_type == 500:
 		buy_teleportal(item_id)
+		$GameAreaCam.current = true
 		pass
 	elif item_type == 800:
 		is_turret = true
 		buy_turret(item_id)
+		$GameAreaCam.current = true
 		update()
 		pass
 	else:
@@ -159,7 +164,11 @@ func item_solded_failed():
 	is_the_buy_button_clicked = false
 	sales_fail = true
 
+func _create_market_scene():
+	add_child(market_scene)
+
 func _ready():
+	_create_market_scene()
 	player = player_scene.instance()
 	disable_accept_button()
 	create_portals(start_portal)
@@ -168,8 +177,9 @@ func _ready():
 	countdown_timer()
 	add_child(player)
 	get_node("CanvasLayer").add_child(gameover_scene.instance())
-	on_market_button_unvisible()
 	on_time_countdown_unvisible()
+	hide_market()
+	hide_accept_button()
 	
 func enable_accept_button():
 	$Game_UI/accept_button.disabled = false
@@ -183,7 +193,6 @@ func on_time_countdown_visible():
 	
 func on_time_countdown_unvisible():
 	$Game_UI/CountDownTimer.set_visible(false)
-	
 	
 func on_market_button_visible():
 	$Game_UI/Market_Button.disabled = false
@@ -199,15 +208,7 @@ func show_accept_button():
 	$Game_UI/SelectPositionLabel.set_visible(true)
 	$Game_UI/accept_button.set_visible(true)
 	
-func on_market_button_unvisible():
-	$Game_UI/Market_Button.disabled = true
-	hide_accept_button()
-	hide_market()
-	$player/Camera2D.current = true
-	hide_grid()
-	is_opened_market = false
-	pass
-	
+
 func _process(delta):
 	if second_passed and $Game_UI/CountDownTimer.visible :
 		countdown_timer.start()
@@ -234,7 +235,7 @@ func wave_finish():
 			portal.wave_stop()
 			portal.set_zombie_level(game_level)
 		show_current_level()
-		on_market_button_visible()
+
 		on_time_countdown_visible()
 	pass
 
@@ -264,10 +265,7 @@ func hide_grid():
 			pass
 
 func _draw():
-	if is_opened_market:
-		$GameAreaCam.current = true
-	else:
-		$player/Camera2D.current = true
+	pass
 		
 func hide_accept_button():
 	$Game_UI/SelectPositionLabel.set_visible(false)
@@ -299,7 +297,6 @@ func wave_started():
 	started_wave_count += 1
 	if start_portal == started_wave_count:
 		started_wave_count = 0
-		on_market_button_unvisible()
 		on_time_countdown_unvisible()
 		show_current_start_level()
 		if is_item_solded_failed() :
@@ -362,6 +359,7 @@ func finish_teleport_buy():
 	teleport_pair.clear()
 	hide_accept_button()
 	clear_grid()
+	hide_market()
 	pass
 
 func create_instance(turret):
@@ -393,7 +391,7 @@ func finish_turret_buy():
 		tile_pos =  get_node("TileMap").map_to_world(tile_grid)
 		instance.set_global_position(Vector2(tile_pos.x + 32,tile_pos.y ) )
 	clear_grid()
-	show_market()
+	hide_market()
 	hide_accept_button()
 	is_the_buy_button_clicked = false
 	if is_turret:
@@ -402,6 +400,7 @@ func finish_turret_buy():
 	tile_grid = null
 	disable_accept_button()
 
+
 func _on_acceptbutton_pressed():
 	sales_successful = true
 	
@@ -409,7 +408,7 @@ func _on_acceptbutton_pressed():
 		finish_turret_buy()
 	else:
 		finish_teleport_buy()
-	pass # Replace with function body.
+	$player/Camera2D.current = true
 
 
 func countdown_timer():

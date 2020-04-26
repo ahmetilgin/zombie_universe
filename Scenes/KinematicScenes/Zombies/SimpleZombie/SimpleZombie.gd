@@ -24,7 +24,7 @@ const FLASH_RATE =0.05
 const N_FLASHES = 4
 var flash_zombie_tween = Tween.new()
 
-export (int) var hp=1
+export (int) var hp=20
 export (int) var speed=200
 var motion=Vector2(0,0)
 const UP=Vector2(0,-1)
@@ -40,8 +40,8 @@ var body_rotation = 35.5
 func add_attack_ray_cast():
 #	attack_ray_cast.set_position(Vector2(64,64))
 	add_child(attack_ray_cast)
-	attack_ray_cast.set_cast_to(Vector2(20,0))
-	attack_ray_cast.set_position(Vector2(50,58))
+	attack_ray_cast.set_cast_to(Vector2(30,0))
+	attack_ray_cast.set_position(Vector2(90,90))
 	attack_ray_cast.set_enabled(true)
 
 func create_zombie_follow_timer():
@@ -159,12 +159,12 @@ func set_zombie_direction():
 		if sign(path[1].x - get_global_position().x) != 1:
 			$Zombie.scale.x = -body_scale
 			attack_ray_cast.scale.x = -1
-			attack_ray_cast.set_position(Vector2(10,58))
+			attack_ray_cast.set_position(Vector2(10,90))
 		
 		else:
 			$Zombie.scale.x = body_scale
 			attack_ray_cast.scale.x = 1
-			attack_ray_cast.set_position(Vector2(40,58))
+			attack_ray_cast.set_position(Vector2(40,90))
 			 
 var is_zombie_action = false
 func follow_path():

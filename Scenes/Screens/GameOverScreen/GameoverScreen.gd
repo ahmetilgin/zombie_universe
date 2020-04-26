@@ -29,8 +29,7 @@ func _on_quit_pressed():
 func _on_start_pressed():
 	var instance_restart = restart_screen.instance()
 	get_tree().get_root().add_child(instance_restart)
-	instance_restart.on_start_loading()
-	get_tree().get_root().get_node("stage1").queue_free()
+
 	visible = false
 
 	pass # Replace with function body.

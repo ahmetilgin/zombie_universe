@@ -1,52 +1,6 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/KinematicScenes/Zombies/StalkerZombie/StalkerZombie.gd" type="Script" id=1]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Idle1.png" type="Texture" id=2]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Idle2.png" type="Texture" id=3]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Idle3.png" type="Texture" id=4]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Idle4.png" type="Texture" id=5]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Dead1.png" type="Texture" id=6]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Dead2.png" type="Texture" id=7]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Dead3.png" type="Texture" id=8]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Dead4.png" type="Texture" id=9]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Dead5.png" type="Texture" id=10]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Dead6.png" type="Texture" id=11]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Dead7.png" type="Texture" id=12]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Dead8.png" type="Texture" id=13]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Jump1.png" type="Texture" id=14]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Jump2.png" type="Texture" id=15]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Jump3.png" type="Texture" id=16]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Jump4.png" type="Texture" id=17]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Jump5.png" type="Texture" id=18]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Jump6.png" type="Texture" id=19]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Jump7.png" type="Texture" id=20]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Hurt1.png" type="Texture" id=21]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Hurt2.png" type="Texture" id=22]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Hurt3.png" type="Texture" id=23]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Hurt4.png" type="Texture" id=24]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Hurt5.png" type="Texture" id=25]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Walk1.png" type="Texture" id=26]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Walk2.png" type="Texture" id=27]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Walk3.png" type="Texture" id=28]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Walk4.png" type="Texture" id=29]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Walk5.png" type="Texture" id=30]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Walk6.png" type="Texture" id=31]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Run1.png" type="Texture" id=32]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Run2.png" type="Texture" id=33]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Run3.png" type="Texture" id=34]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Run4.png" type="Texture" id=35]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Run5.png" type="Texture" id=36]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Run6.png" type="Texture" id=37]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Run7.png" type="Texture" id=38]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Run8.png" type="Texture" id=39]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Run9.png" type="Texture" id=40]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Run10.png" type="Texture" id=41]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Attack1.png" type="Texture" id=42]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Attack2.png" type="Texture" id=43]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Attack3.png" type="Texture" id=44]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Attack4.png" type="Texture" id=45]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Attack5.png" type="Texture" id=46]
-[ext_resource path="res://Resources/Sprites/Zombies/StalkerZombie/Attack6.png" type="Texture" id=47]
 [ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/FatZombie/body.png" type="Texture" id=48]
 [ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/FatZombie/head.png" type="Texture" id=49]
 [ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/FatZombie/knee2.png" type="Texture" id=50]
@@ -59,48 +13,10 @@
 [sub_resource type="Animation" id=1]
 resource_name = "attack"
 
-[sub_resource type="SpriteFrames" id=2]
-animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
-"loop": true,
-"name": "idle",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
-"loop": false,
-"name": "dead",
-"speed": 12.0
-}, {
-"frames": [ ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 47 ) ],
-"loop": true,
-"name": "attack",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ) ],
-"loop": true,
-"name": "run",
-"speed": 15.0
-}, {
-"frames": [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ) ],
-"loop": true,
-"name": "walk",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ) ],
-"loop": false,
-"name": "hurt",
-"speed": 15.0
-}, {
-"frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ) ],
-"loop": false,
-"name": "jump",
-"speed": 15.0
-} ]
-
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 31.5216, 51.6078 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 2.91031, 28.5098 )
 
 [node name="Big_Zombie" type="KinematicBody2D"]
@@ -109,14 +25,6 @@ script = ExtResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 1 )
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-visible = false
-position = Vector2( -32.2041, -42.5131 )
-scale = Vector2( 0.314, 0.301 )
-frames = SubResource( 2 )
-animation = "attack"
-centered = false
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
@@ -128,16 +36,16 @@ enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -1.81436, 9.11723 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 36.7444, -9.18611 )
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 disabled = true
 
-[node name="zombie" type="Sprite" parent="."]
+[node name="Zombie" type="Sprite" parent="."]
 position = Vector2( 1.9541, 4.30884 )
 rotation = -35.0528
 scale = Vector2( 0.327113, 0.300117 )
@@ -146,7 +54,7 @@ __meta__ = {
 "_edit_ik_": true
 }
 
-[node name="body" type="Sprite" parent="zombie"]
+[node name="body" type="Sprite" parent="Zombie"]
 position = Vector2( -23.9719, 5.82373 )
 rotation = 2.90372
 texture = ExtResource( 48 )
@@ -154,7 +62,7 @@ __meta__ = {
 "_edit_bone_": true
 }
 
-[node name="head" type="Sprite" parent="zombie/body"]
+[node name="head" type="Sprite" parent="Zombie/body"]
 position = Vector2( 0.0740471, -61.6683 )
 rotation = 0.755483
 texture = ExtResource( 49 )
@@ -163,7 +71,7 @@ __meta__ = {
 "_edit_bone_": true
 }
 
-[node name="knee3" type="Sprite" parent="zombie/body"]
+[node name="knee3" type="Sprite" parent="Zombie/body"]
 position = Vector2( 27.4908, 75.8719 )
 rotation = 6.30808
 texture = ExtResource( 50 )
@@ -172,7 +80,7 @@ __meta__ = {
 "_edit_bone_": true
 }
 
-[node name="knee1" type="Sprite" parent="zombie/body/knee3"]
+[node name="knee1" type="Sprite" parent="Zombie/body/knee3"]
 position = Vector2( 18.6359, 51.3552 )
 rotation = -0.357179
 texture = ExtResource( 51 )
@@ -181,7 +89,7 @@ __meta__ = {
 "_edit_bone_": true
 }
 
-[node name="foot2" type="Sprite" parent="zombie/body/knee3/knee1"]
+[node name="foot2" type="Sprite" parent="Zombie/body/knee3/knee1"]
 position = Vector2( 9.18445, 73.5634 )
 rotation = 0.475407
 texture = ExtResource( 52 )
@@ -190,7 +98,7 @@ __meta__ = {
 "_edit_bone_": true
 }
 
-[node name="knee2" type="Sprite" parent="zombie/body"]
+[node name="knee2" type="Sprite" parent="Zombie/body"]
 position = Vector2( -13.3714, 78.869 )
 rotation = 0.679306
 texture = ExtResource( 50 )
@@ -199,7 +107,7 @@ __meta__ = {
 "_edit_bone_": true
 }
 
-[node name="knee4" type="Sprite" parent="zombie/body/knee2"]
+[node name="knee4" type="Sprite" parent="Zombie/body/knee2"]
 position = Vector2( 22.6837, 47.5603 )
 rotation = -1.19353
 texture = ExtResource( 51 )
@@ -208,7 +116,7 @@ __meta__ = {
 "_edit_bone_": true
 }
 
-[node name="foot" type="Sprite" parent="zombie/body/knee2/knee4"]
+[node name="foot" type="Sprite" parent="Zombie/body/knee2/knee4"]
 position = Vector2( 6.99812, 72.3138 )
 rotation = -0.310312
 texture = ExtResource( 52 )
@@ -217,7 +125,7 @@ __meta__ = {
 "_edit_bone_": true
 }
 
-[node name="arm3" type="Sprite" parent="zombie/body"]
+[node name="arm3" type="Sprite" parent="Zombie/body"]
 position = Vector2( -36.5451, -34.9835 )
 rotation = 1.59152
 texture = ExtResource( 53 )
@@ -226,7 +134,7 @@ __meta__ = {
 "_edit_bone_": true
 }
 
-[node name="arm1" type="Sprite" parent="zombie/body/arm3"]
+[node name="arm1" type="Sprite" parent="Zombie/body/arm3"]
 position = Vector2( -43.4247, 46.7651 )
 rotation = 0.978337
 texture = ExtResource( 53 )
@@ -235,7 +143,7 @@ __meta__ = {
 "_edit_bone_": true
 }
 
-[node name="hand2" type="Sprite" parent="zombie/body/arm3/arm1"]
+[node name="hand2" type="Sprite" parent="Zombie/body/arm3/arm1"]
 position = Vector2( -58.4565, 50.1055 )
 rotation = -2.13188
 texture = ExtResource( 54 )
@@ -244,7 +152,7 @@ __meta__ = {
 "_edit_bone_": true
 }
 
-[node name="arm4" type="Sprite" parent="zombie/body"]
+[node name="arm4" type="Sprite" parent="Zombie/body"]
 position = Vector2( 36.9169, -32.4103 )
 rotation = -1.83943
 texture = ExtResource( 55 )
@@ -253,7 +161,7 @@ __meta__ = {
 "_edit_bone_": true
 }
 
-[node name="arm2" type="Sprite" parent="zombie/body/arm4"]
+[node name="arm2" type="Sprite" parent="Zombie/body/arm4"]
 position = Vector2( 41.9698, 36.4746 )
 rotation = 1.81453
 texture = ExtResource( 55 )
@@ -262,7 +170,7 @@ __meta__ = {
 "_edit_bone_": true
 }
 
-[node name="hand" type="Sprite" parent="zombie/body/arm4/arm2"]
+[node name="hand" type="Sprite" parent="Zombie/body/arm4/arm2"]
 position = Vector2( 55.9849, 37.3232 )
 rotation = -0.595948
 texture = ExtResource( 54 )
@@ -270,6 +178,5 @@ offset = Vector2( 12.3242, 10.6867 )
 __meta__ = {
 "_edit_bone_": true
 }
-[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_enemy_attack_body_entered"]

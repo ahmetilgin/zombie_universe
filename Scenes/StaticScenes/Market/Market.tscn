@@ -93,23 +93,22 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="ScrollContainer" parent="."]
-margin_left = 95.0
-margin_top = 181.0
-margin_right = 331.0
-margin_bottom = 467.0
+margin_left = 87.0
+margin_top = 190.0
+margin_right = 241.0
+margin_bottom = 401.0
 grow_horizontal = 0
-grow_vertical = 0
-rect_scale = Vector2( 1, 1.36 )
+rect_scale = Vector2( 1.654, 1.911 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="GridContainer" type="GridContainer" parent="HBoxContainer"]
-margin_right = 217.0
-margin_bottom = 667.0
+margin_right = 141.0
+margin_bottom = 922.0
 custom_constants/vseparation = 13
 custom_constants/hseparation = 11
-columns = 3
+columns = 2
 
 [node name="RasenganButton" type="TextureButton" parent="HBoxContainer/GridContainer"]
 margin_right = 65.0
@@ -123,10 +122,10 @@ scale = Vector2( 0.148, 0.118 )
 texture = ExtResource( 12 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/GridContainer/RasenganButton"]
-margin_left = 5.20236
-margin_top = 2.44232
-margin_right = 339.202
-margin_bottom = 53.4423
+margin_left = 5.0
+margin_top = 2.0
+margin_right = 388.0
+margin_bottom = 62.0
 rect_scale = Vector2( 0.175, 0.139 )
 custom_fonts/normal_font = SubResource( 2 )
 text = "GRANEDE LAUNCHER"
@@ -148,9 +147,10 @@ margin_right = 179.0
 margin_bottom = 51.0
 rect_scale = Vector2( 0.175, 0.139 )
 custom_fonts/normal_font = SubResource( 2 )
-text = "SHOT GUN"
+text = "POMPALI"
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_editor_description_": ""
 }
 
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/FireBulletButton"]
@@ -159,9 +159,9 @@ scale = Vector2( 0.148, 0.118 )
 texture = ExtResource( 26 )
 
 [node name="LaserBullet" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_left = 152.0
-margin_right = 217.0
-margin_bottom = 72.0
+margin_top = 85.0
+margin_right = 65.0
+margin_bottom = 157.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 29 )
 
@@ -178,13 +178,14 @@ __meta__ = {
 }
 
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/LaserBullet"]
-position = Vector2( 29.2657, 32.4393 )
+position = Vector2( 32.5431, 32.728 )
 scale = Vector2( 0.14802, 0.117505 )
 texture = ExtResource( 10 )
 
 [node name="Crossbow" type="TextureButton" parent="HBoxContainer/GridContainer"]
+margin_left = 76.0
 margin_top = 85.0
-margin_right = 65.0
+margin_right = 141.0
 margin_bottom = 157.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 29 )
@@ -201,15 +202,14 @@ __meta__ = {
 }
 
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/Crossbow"]
-position = Vector2( 38.9922, 32.8367 )
+position = Vector2( 30.9426, 31.0137 )
 scale = Vector2( 0.14802, 0.117505 )
 texture = ExtResource( 33 )
 
 [node name="M1Garand" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_left = 76.0
-margin_top = 85.0
-margin_right = 141.0
-margin_bottom = 157.0
+margin_top = 170.0
+margin_right = 65.0
+margin_bottom = 242.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 29 )
 
@@ -225,15 +225,15 @@ __meta__ = {
 }
 
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/M1Garand"]
-position = Vector2( 29.2657, 32.4393 )
+position = Vector2( 31.6497, 34.1923 )
 scale = Vector2( 0.14802, 0.117505 )
 texture = ExtResource( 5 )
 
 [node name="M4A1" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_left = 152.0
-margin_top = 85.0
-margin_right = 217.0
-margin_bottom = 157.0
+margin_left = 76.0
+margin_top = 170.0
+margin_right = 141.0
+margin_bottom = 242.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 29 )
 
@@ -254,9 +254,9 @@ scale = Vector2( 0.14802, 0.117505 )
 texture = ExtResource( 6 )
 
 [node name="M60E4" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_top = 170.0
+margin_top = 255.0
 margin_right = 65.0
-margin_bottom = 242.0
+margin_bottom = 327.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 29 )
 
@@ -278,9 +278,9 @@ texture = ExtResource( 30 )
 
 [node name="MG42" type="TextureButton" parent="HBoxContainer/GridContainer"]
 margin_left = 76.0
-margin_top = 170.0
+margin_top = 255.0
 margin_right = 141.0
-margin_bottom = 242.0
+margin_bottom = 327.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 29 )
 
@@ -301,10 +301,9 @@ scale = Vector2( 0.14802, 0.117505 )
 texture = ExtResource( 4 )
 
 [node name="PRD" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_left = 152.0
-margin_top = 170.0
-margin_right = 217.0
-margin_bottom = 242.0
+margin_top = 340.0
+margin_right = 65.0
+margin_bottom = 412.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 29 )
 
@@ -325,9 +324,10 @@ scale = Vector2( 0.14802, 0.117505 )
 texture = ExtResource( 31 )
 
 [node name="RifleGun" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_top = 255.0
-margin_right = 65.0
-margin_bottom = 327.0
+margin_left = 76.0
+margin_top = 340.0
+margin_right = 141.0
+margin_bottom = 412.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 29 )
 
@@ -348,10 +348,9 @@ scale = Vector2( 0.14802, 0.117505 )
 texture = ExtResource( 32 )
 
 [node name="HealthButton" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_left = 76.0
-margin_top = 255.0
-margin_right = 141.0
-margin_bottom = 327.0
+margin_top = 425.0
+margin_right = 65.0
+margin_bottom = 497.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 29 )
 
@@ -373,10 +372,10 @@ scale = Vector2( 0.108405, 0.0972224 )
 texture = ExtResource( 13 )
 
 [node name="AmmoButton" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_left = 152.0
-margin_top = 255.0
-margin_right = 217.0
-margin_bottom = 327.0
+margin_left = 76.0
+margin_top = 425.0
+margin_right = 141.0
+margin_bottom = 497.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 29 )
 
@@ -386,9 +385,9 @@ scale = Vector2( 0.180379, 0.165484 )
 texture = ExtResource( 27 )
 
 [node name="WoodWall" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_top = 340.0
+margin_top = 510.0
 margin_right = 65.0
-margin_bottom = 412.0
+margin_bottom = 582.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 29 )
 
@@ -399,9 +398,9 @@ texture = ExtResource( 19 )
 
 [node name="SteelWall" type="TextureButton" parent="HBoxContainer/GridContainer"]
 margin_left = 76.0
-margin_top = 340.0
+margin_top = 510.0
 margin_right = 141.0
-margin_bottom = 412.0
+margin_bottom = 582.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 29 )
 
@@ -411,10 +410,9 @@ scale = Vector2( 1.06552, 0.0839258 )
 texture = ExtResource( 18 )
 
 [node name="GoldWall" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_left = 152.0
-margin_top = 340.0
-margin_right = 217.0
-margin_bottom = 412.0
+margin_top = 595.0
+margin_right = 65.0
+margin_bottom = 667.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 29 )
 
@@ -424,9 +422,10 @@ scale = Vector2( 0.906834, 0.0895587 )
 texture = ExtResource( 15 )
 
 [node name="Portal" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_top = 425.0
-margin_right = 65.0
-margin_bottom = 497.0
+margin_left = 76.0
+margin_top = 595.0
+margin_right = 141.0
+margin_bottom = 667.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 29 )
 
@@ -435,10 +434,9 @@ position = Vector2( 32.6885, 36.2599 )
 texture = ExtResource( 9 )
 
 [node name="Sword" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_left = 76.0
-margin_top = 425.0
-margin_right = 141.0
-margin_bottom = 497.0
+margin_top = 680.0
+margin_right = 65.0
+margin_bottom = 752.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 29 )
 
@@ -448,10 +446,10 @@ scale = Vector2( 0.0998392, 0.0467881 )
 texture = ExtResource( 11 )
 
 [node name="Trambolin" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_left = 152.0
-margin_top = 425.0
-margin_right = 217.0
-margin_bottom = 497.0
+margin_left = 76.0
+margin_top = 680.0
+margin_right = 141.0
+margin_bottom = 752.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 29 )
 
@@ -461,9 +459,9 @@ scale = Vector2( 0.318125, 0.294891 )
 texture = ExtResource( 14 )
 
 [node name="BasicTurret" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_top = 510.0
+margin_top = 765.0
 margin_right = 65.0
-margin_bottom = 582.0
+margin_bottom = 837.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 29 )
 
@@ -480,9 +478,9 @@ texture = ExtResource( 16 )
 
 [node name="MachineTurret" type="TextureButton" parent="HBoxContainer/GridContainer"]
 margin_left = 76.0
-margin_top = 510.0
+margin_top = 765.0
 margin_right = 141.0
-margin_bottom = 582.0
+margin_bottom = 837.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 29 )
 
@@ -498,10 +496,9 @@ scale = Vector2( 0.097, 0.073 )
 texture = ExtResource( 24 )
 
 [node name="LaserTurret" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_left = 152.0
-margin_top = 510.0
-margin_right = 217.0
-margin_bottom = 582.0
+margin_top = 850.0
+margin_right = 65.0
+margin_bottom = 922.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 29 )
 
@@ -517,9 +514,10 @@ scale = Vector2( 0.097, 0.079 )
 texture = ExtResource( 23 )
 
 [node name="BazukaTurret" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_top = 595.0
-margin_right = 65.0
-margin_bottom = 667.0
+margin_left = 76.0
+margin_top = 850.0
+margin_right = 141.0
+margin_bottom = 922.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 29 )
 __meta__ = {

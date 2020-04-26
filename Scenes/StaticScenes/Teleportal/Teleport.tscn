@@ -26,15 +26,15 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
-"loop": true,
-"name": "Gate",
-"speed": 10.0
-}, {
 "frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ) ],
 "loop": false,
 "name": "GateActive",
-"speed": 2.0
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "Gate",
+"speed": 20.0
 } ]
 
 [sub_resource type="CircleShape2D" id=2]
@@ -48,8 +48,8 @@ script = ExtResource( 1 )
 position = Vector2( -81.3605, -76.3711 )
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 1 )
-animation = "GateActive"
-frame = 9
+animation = "Gate"
+frame = 7
 playing = true
 centered = false
 
