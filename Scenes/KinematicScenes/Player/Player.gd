@@ -1,7 +1,7 @@
 extends KinematicBody2D
 signal dead_signal
 
-const rasengan_bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/SimpleBullet/SimpleBullet.tscn")
+const rasengan_bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/GrenadeLauncherBullet/GLBullet.tscn")
 const upgrade_bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/UpgradedBullet/UpgratedBullet.tscn")
 const tracked_bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/TrackedBullet/TrackedBullet.tscn")
 const crossbow_bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/CrossbowBullet/CrossbowBullet.tscn")
@@ -30,7 +30,7 @@ var Riflegun_bullet_sound = AudioStreamPlayer.new()
 
 
 var tracked_bullet_file = load("res://Resources/AudioFiles/Ak47Bullet/163457__lemudcrab__ak47-shot.wav")
-var rasengan_bullet_file = load("res://Resources/AudioFiles/Shots/pistol.wav")
+var rasengan_bullet_file = load("res://Resources/AudioFiles/GunShoot/GrenadeLauncher.wav")
 var upgrade_bullet_file = load("res://Resources/AudioFiles/Shots/shotgun.wav")
 var crossbow_bullet_file = load("res://Resources/AudioFiles/GunShoot/Crossbow.wav")
 var m4a1_bullet_file = load("res://Resources/AudioFiles/GunShoot/M4A1.wav")

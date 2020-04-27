@@ -11,7 +11,7 @@
 radius = 8.35491
 
 [sub_resource type="ParticlesMaterial" id=2]
-angular_velocity = 3.32403e+21
+angular_velocity = 3.32403e+021
 
 [sub_resource type="CanvasItemMaterial" id=3]
 render_priority = 4
@@ -46,7 +46,7 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 material = SubResource( 4 )
 position = Vector2( -0.100512, -1.53374 )
-scale = Vector2( 0.137547, 0.154048 )
+scale = Vector2( 0.0812731, 0.0895721 )
 frames = SubResource( 5 )
 animation = "shoot"
 centered = false
