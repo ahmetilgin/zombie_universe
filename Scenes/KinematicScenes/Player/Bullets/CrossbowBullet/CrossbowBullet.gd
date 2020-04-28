@@ -3,6 +3,8 @@ var no_hurt = false
 var  speed=1000
 var motion=Vector2()
 var direction=1
+var blood_anim = preload("res://Scenes/StaticScenes/BloodAnimation/BloodAnimation.tscn")
+
 func set_bullet_direction(dir):
 	direction=dir
 	if dir==-1:
@@ -29,7 +31,10 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 func _on_Crossbowbullet_body_entered(body):
 	if "Zombie" in body.name and !no_hurt:
-		body.dead(1,"player") 
+		body.dead(1,"player")
+		var blood_instance = blood_anim.instance()
+		body.add_child(blood_instance) 
+		blood_instance.set_global_position(get_global_position()) 
 		queue_free()
 	else:
 		no_hurt = true

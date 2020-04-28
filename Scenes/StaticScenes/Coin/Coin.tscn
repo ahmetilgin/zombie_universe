@@ -9,7 +9,6 @@
 [ext_resource path="res://Resources/Sprites/StarCoin/starcoinrotate6.png" type="Texture" id=7]
 [ext_resource path="res://Resources/AudioFiles/CoinSound/coinsound .wav" type="AudioStream" id=8]
 
-
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],

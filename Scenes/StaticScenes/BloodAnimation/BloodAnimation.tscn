@@ -1,0 +1,26 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Resources/Sprites/Blood/tile005.png" type="Texture" id=1]
+[ext_resource path="res://Resources/Sprites/Blood/tile001.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Sprites/Blood/tile000.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Sprites/Blood/tile004.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Sprites/Blood/tile003.png" type="Texture" id=5]
+[ext_resource path="res://Resources/Sprites/Blood/tile002.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/StaticScenes/BloodAnimation/BloodAnimation.gd" type="Script" id=7]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 1 ) ],
+"loop": false,
+"name": "blood",
+"speed": 10.0
+} ]
+
+[node name="BloodAnimation" type="AnimatedSprite"]
+rotation = 1.5708
+scale = Vector2( 0.15, 0.15 )
+frames = SubResource( 1 )
+animation = "blood"
+frame = 1
+script = ExtResource( 7 )
+[connection signal="animation_finished" from="." to="." method="_on_BloodAnimation_animation_finished"]

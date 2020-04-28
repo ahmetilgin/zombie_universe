@@ -1,7 +1,7 @@
 extends Area2D
 
 const speed=1000
-
+var blood_anim = preload("res://Scenes/StaticScenes/BloodAnimation/BloodAnimation.tscn")
 var motion=Vector2()
 var direction=1
 func set_bullet_direction(dir):
@@ -26,6 +26,9 @@ func _on_VisibilityNotifier2D_screen_exited():
 func _on_M60E4_body_entered(body):
 	if "Zombie" in body.name:
 		body.dead(1,"player") 
+		var blood_instance = blood_anim.instance()
+		body.add_child(blood_instance) 
+		blood_instance.set_global_position(get_global_position())
 	queue_free()
 
 	pass # Replace with function body.
