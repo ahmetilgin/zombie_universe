@@ -1,5 +1,6 @@
 extends Area2D
 
+var blood_anim = preload("res://Scenes/StaticScenes/BloodAnimation/BloodAnimation.tscn")
 const speed=1000
 var motion=Vector2()
 var direction=1
@@ -23,7 +24,10 @@ func _physics_process(delta):
 
 func _on_upgradebllet_body_entered(body):
 	if "Zombie" in body.name:
-		body.dead(2,"player") 
+		body.dead(2,"player")
+		var blood_instance = blood_anim.instance()
+		body.add_child(blood_instance)
+		blood_instance.set_global_position(get_global_position())
 	queue_free()
 
 
