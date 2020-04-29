@@ -484,7 +484,6 @@ margin_top = 39.2454
 margin_right = 275.41
 margin_bottom = 99.2454
 rect_scale = Vector2( 1.01, 0.4 )
-max_value = 100.0
 value = 100.0
 rounded = true
 texture_progress = SubResource( 19 )

@@ -35,7 +35,6 @@ func market_calculator(item_id):
 			return false
 			
 func _process(delta):
- 
 	pass
 	
 func buy_item(item_id):

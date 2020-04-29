@@ -28,7 +28,7 @@ var is_create_instance = false
 var tile_grid = null
 var countdown_timer = Timer.new()
 var is_countdown_pause_timer = false
-var pause_time = 10
+var pause_time = 20
 var counttimer
 var second_passed = true
 var portal_coordinates = [Vector2(4,7),Vector2(41,7)]
@@ -200,9 +200,11 @@ func on_market_button_visible():
 	
 func hide_market():
 	$Market.set_offset(Vector2(0,1000))
+	is_opened_market = false
 		
 func show_market():
 	$Market.set_offset(Vector2(0,0))
+	is_opened_market = true
 	
 func show_accept_button():
 	$Game_UI/SelectPositionLabel.set_visible(true)
@@ -276,7 +278,6 @@ func _on_TouchScreenButton_pressed():
 		show_market()
 	else:
 		hide_market()
-	is_opened_market = !is_opened_market
 	update()
 	pass # Replace with function body.
 	
@@ -425,7 +426,9 @@ func _on_count_down_timer_timeout():
 	if  (counttimer < 1):
 		counttimer = pause_time
 		for turret in turret_instance_list:
-			turret.hide_rotations()
+			var wr = weakref(turret);
+			if (!wr.get_ref()):
+				turret.hide_rotations()
 		turret_instance_list.clear()
 	$Game_UI/CountDownTimer/Time.text = String(counttimer)
 	second_passed = true

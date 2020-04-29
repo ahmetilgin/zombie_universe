@@ -1,5 +1,5 @@
 extends RichTextLabel
-var count = 10000
+var count = 0
 var coin_memory
 var count_size = 1
 

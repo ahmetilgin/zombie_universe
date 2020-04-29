@@ -24,7 +24,7 @@ const FLASH_RATE =0.05
 const N_FLASHES = 4
 var flash_zombie_tween = Tween.new()
 
-export (int) var hp=20
+export (int) var hp=5
 export (int) var speed=200
 var motion=Vector2(0,0)
 const UP=Vector2(0,-1)
