@@ -199,7 +199,7 @@ func create_extra_resources():
 		generate_coins()
 	elif power_up == 1:
 		generate_extra_bullet()
-		
+	
 
 func dead(damage,whodead):
 	hp-=damage

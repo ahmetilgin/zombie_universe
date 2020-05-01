@@ -89,6 +89,22 @@ var bullet_sound = {
 	113: Riflegun_bullet_sound,
 }
 
+var bullet_shoot_timer = Timer.new()
+var is_it_time_to_shoot = true
+
+var bullet_time = {
+	101: 1.0,
+	102: 1.0,
+	103: 0.15,
+	107: 1.0,
+	108: 0.2,
+	109: 0.7,
+	110: 0.1,
+	111: 0.09,
+	112: 0.1,
+	113: 1.0,
+}
+
 
 
 var touch_right=false
@@ -159,19 +175,35 @@ func _create_zombie_shot_slow_timer():
 	slow_shot_timer.connect("timeout",self,"_on_slow_motion_timer_start") 
 	add_child(slow_shot_timer) #to process
 	slow_shot_timer.set_wait_time(0.1)
+	
 func color_change_tween():
 	add_child(change_color_tween) #to process
+	
 func pulse_tween():
 	add_child(pulse_tween) #to process
 	pulse_tween.set_repeat(true)
+	
 func flash_tween():
 	add_child(flash_tween) #to process
 func flash_healtbar_tween():
 	add_child(flash_healtbar_tween) #to process
+	
 func increase_bullet_count(bullet_count):
 	bullet_size += bullet_count
 	bullet_number.text=String(bullet_size)
-
+	
+func _create_bullet_shoot_timer():
+	bullet_shoot_timer.set_one_shot(false)
+	bullet_shoot_timer.connect("timeout",self,"_on_bullet_shoot_timer") 
+	add_child(bullet_shoot_timer) #to process
+	bullet_shoot_timer.set_wait_time(bullet_time[current_bullet_power])
+	
+func _on_bullet_shoot_timer():
+	is_it_time_to_shoot = true
+	
+func set_shoot_timer(shoot_time):
+	bullet_shoot_timer.set_wait_time(shoot_time)
+	
 func set_sounds():
 	rasengan_bullet_sound.set_stream(rasengan_bullet_file)
 	upgrade_bullet_sound.set_stream(upgrade_bullet_file)
@@ -221,7 +253,7 @@ func load_images():
 #	ak47_weapon.load("res://Resources/Sprites/stickman/ak47.png")
 	
 func _ready():
-	
+	_create_bullet_shoot_timer()
 	_create_zombie_shot_slow_timer()
 	flash_tween()
 	pulse_tween()
@@ -240,6 +272,8 @@ func _on_slow_motion_timer_start():
 
 func _set_current_bullet(bullet):
 	current_bullet = bullet
+
+	
 
 func _check_bullet_count():
 	return bullet_size > 0
@@ -393,12 +427,15 @@ func _physics_process(delta):
 					_set_is_melee(true)
 					_play_melee_animation()
 
-		if Input.is_action_pressed("ui_focus_next") or touch_fire:
+		if (Input.is_action_pressed("ui_focus_next") or touch_fire ) and is_it_time_to_shoot:
 			if _is_movable() && _check_bullet_count():
+				is_it_time_to_shoot = false
+				bullet_shoot_timer.start()
 				_fire_bullet()
 				_set_is_attack(true)		
 				_play_attack_animation()
 				bullet_sound[current_bullet_power].play()
+				set_shoot_timer(bullet_time[current_bullet_power])
 				_set_current_bullet(bullet_type[current_bullet_power].instance())
 				get_parent().add_child(current_bullet)
 
