@@ -194,8 +194,8 @@ func generate_extra_bullet():
 	get_parent().call_deferred("add_child",extra_bullet_instance)
 
 func create_extra_resources():
-	var power_up = randi() % 3
-	if power_up == 0:
+	var power_up = randi() % 4 
+	if power_up == 0 or power_up == 2 or power_up == 3:
 		generate_coins()
 	elif power_up == 1:
 		generate_extra_bullet()

@@ -31,13 +31,14 @@ animation = "Ammo"
 frame = 1
 playing = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( 1.33042, -2.10256 )
-scale = Vector2( -2.69766, 2.21686 )
-shape = SubResource( 2 )
-
 [node name="Ground" type="RayCast2D" parent="."]
-position = Vector2( -0.214638, 28.9764 )
+position = Vector2( 0.560211, -17.7081 )
+scale = Vector2( -41.5349, 0.994082 )
 enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 1.33042, -2.10256 )
+rotation = -3.14159
+scale = Vector2( 2.69766, -2.21686 )
+shape = SubResource( 2 )
 [connection signal="body_shape_entered" from="." to="." method="_on_ExtraBullet_body_shape_entered"]

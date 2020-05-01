@@ -17,8 +17,8 @@ animations = [ {
 "speed": 6.0
 } ]
 
-[sub_resource type="CircleShape2D" id=2]
-radius = 15.9169
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10, 31.4784 )
 
 [node name="Coin" type="Area2D"]
 position = Vector2( 256, 241.253 )
@@ -32,7 +32,8 @@ frames = SubResource( 1 )
 animation = "coin"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.265076, -0.740707 )
+position = Vector2( -0.081055, 14.8628 )
+scale = Vector2( 1.65757, -1.00798 )
 shape = SubResource( 2 )
 
 [node name="Tween" type="Tween" parent="."]
@@ -45,10 +46,10 @@ stream = ExtResource( 8 )
 volume_db = 2.0
 
 [node name="Ground" type="RayCast2D" parent="."]
-position = Vector2( -0.00590515, 15.8801 )
-scale = Vector2( 0.0878503, 0.219497 )
+position = Vector2( -0.391357, 15.5128 )
+scale = Vector2( 1.88785, 0.562465 )
 enabled = true
 exclude_parent = false
-[connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="." to="." method="_on_Coin_body_entered"]
 [connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
