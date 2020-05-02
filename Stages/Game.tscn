@@ -16,7 +16,7 @@
 [ext_resource path="res://Resources/Sprites/GraveyardTileSet/png/Tiles/Tile5.png" type="Texture" id=14]
 [ext_resource path="res://Stages/TileMap.gd" type="Script" id=15]
 [ext_resource path="res://Resources/Sprites/UISprites/NormalButton.png" type="Texture" id=16]
-[ext_resource path="res://Resources/Fonts/bubble_soap/Bubble&Soap light_PersonalUseOnly.ttf" type="DynamicFontData" id=17]
+[ext_resource path="res://Resources/Fonts/Arial/arial.ttf" type="DynamicFontData" id=17]
 [ext_resource path="res://Resources/Sprites/UISprites/Window2s.png" type="Texture" id=18]
 [ext_resource path="res://Resources/Sprites/UISprites/Windows.png" type="Texture" id=19]
 [ext_resource path="res://Resources/Sprites/starcoinrotate1.png" type="Texture" id=20]
@@ -330,10 +330,16 @@ points = PoolVector2Array( 0, 0, 128, 0, 128, 96, 0, 96 )
 
 [sub_resource type="DynamicFont" id=12]
 size = 85
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
 font_data = ExtResource( 17 )
 
 [sub_resource type="DynamicFont" id=13]
-size = 24
+size = 23
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
 font_data = ExtResource( 17 )
 
 [sub_resource type="AtlasTexture" id=14]
@@ -405,12 +411,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="Label" parent="Game_UI"]
-margin_left = 508.457
-margin_top = 639.121
-margin_right = 792.458
-margin_bottom = 724.121
-rect_scale = Vector2( 0.641218, 0.623453 )
+[node name="RichTextLabel" type="Label" parent="Game_UI/accept_button"]
+margin_left = 70.671
+margin_top = 34.0542
+margin_right = 354.672
+margin_bottom = 119.054
+rect_scale = Vector2( 0.85465, 1.43414 )
 custom_fonts/font = SubResource( 12 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "ACCEPT"
@@ -425,9 +431,7 @@ margin_right = 592.044
 margin_bottom = 195.506
 rect_scale = Vector2( 2.01716, 2.7042 )
 custom_fonts/font = SubResource( 13 )
-custom_colors/font_color = Color( 0.72549, 1, 0.054902, 1 )
-custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
-custom_colors/font_color_shadow = Color( 0.890196, 0.160784, 0.160784, 1 )
+custom_colors/font_color = Color( 0.988235, 1, 0.956863, 1 )
 text = "SELECT POSITION
 "
 uppercase = true
@@ -494,7 +498,7 @@ margin_top = 34.0
 margin_right = 755.35
 margin_bottom = 74.0
 custom_fonts/normal_font = SubResource( 13 )
-custom_colors/default_color = Color( 0.403922, 0.0196078, 0.0196078, 1 )
+custom_colors/default_color = Color( 1, 0, 0, 1 )
 custom_colors/selection_color = Color( 0, 0, 0, 1 )
 text = "LEVEL :"
 __meta__ = {
@@ -583,11 +587,11 @@ __meta__ = {
 }
 
 [node name="Market_Button" type="TextureButton" parent="Game_UI"]
-margin_left = 13.9822
-margin_top = 3.57146
-margin_right = 390.982
-margin_bottom = 418.571
-rect_scale = Vector2( 0.241441, 0.220569 )
+margin_left = 22.4032
+margin_top = 19.3609
+margin_right = 399.403
+margin_bottom = 434.36
+rect_scale = Vector2( 0.308127, 0.290267 )
 texture_normal = ExtResource( 22 )
 texture_pressed = ExtResource( 23 )
 texture_disabled = ExtResource( 24 )

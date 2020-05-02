@@ -134,7 +134,6 @@ func _on_NoButton_pressed():
 
 func _on_CheckAvailableItems_timeout():
 	for	 button in $HBoxContainer/GridContainer.get_children():
-		print(button.get_name())
 		if int(button.get_node("price").get_text()) > coin.count:
 			button.disabled = true
 		else:
