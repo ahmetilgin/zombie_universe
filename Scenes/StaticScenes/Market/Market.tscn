@@ -42,13 +42,13 @@ outline_size = 1
 use_filter = true
 font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=2]
-
 [sub_resource type="DynamicFont" id=3]
 size = 36
 outline_size = 1
 use_filter = true
 font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=2]
 
 [node name="Market" type="CanvasLayer"]
 layer = 0
@@ -959,10 +959,10 @@ __meta__ = {
 }
 
 [node name="YesButton" type="TextureButton" parent="BuyQuestion"]
-margin_left = 172.854
-margin_top = 478.83
-margin_right = 844.854
-margin_bottom = 949.83
+margin_left = 172.211
+margin_top = 481.198
+margin_right = 598.211
+margin_bottom = 726.198
 rect_scale = Vector2( 0.477621, 0.443267 )
 texture_normal = ExtResource( 33 )
 texture_pressed = ExtResource( 34 )
@@ -970,20 +970,48 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ItemInfo2" type="RichTextLabel" parent="BuyQuestion/YesButton"]
+margin_left = 137.207
+margin_top = 63.8746
+margin_right = 210.207
+margin_bottom = 108.875
+rect_scale = Vector2( 2.03386, 2.73097 )
+mouse_filter = 2
+custom_fonts/normal_font = SubResource( 3 )
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+text = "YES"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="NoButton" type="TextureButton" parent="BuyQuestion"]
-margin_left = 421.155
-margin_top = 478.148
-margin_right = 1093.15
-margin_bottom = 949.148
+margin_left = 421.0
+margin_top = 478.0
+margin_right = 850.0
+margin_bottom = 731.0
 rect_scale = Vector2( 0.478, 0.443 )
 texture_normal = ExtResource( 33 )
 texture_pressed = ExtResource( 34 )
 
+[node name="ItemInfo3" type="RichTextLabel" parent="BuyQuestion/NoButton"]
+margin_left = 151.835
+margin_top = 60.9478
+margin_right = 208.835
+margin_bottom = 116.948
+rect_scale = Vector2( 2.41566, 2.85978 )
+mouse_filter = 2
+custom_fonts/normal_font = SubResource( 3 )
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+text = "NO"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="RichTextLabel" type="RichTextLabel" parent="BuyQuestion"]
-margin_left = 264.338
-margin_top = 205.724
-margin_right = 514.339
-margin_bottom = 305.724
+margin_left = 266.169
+margin_top = 207.424
+margin_right = 516.17
+margin_bottom = 307.424
 rect_scale = Vector2( 1.23685, 1.18602 )
 custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 1, 1, 1, 1 )
@@ -1005,37 +1033,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ItemInfo2" type="RichTextLabel" parent="BuyQuestion"]
-margin_left = 236.365
-margin_top = 508.562
-margin_right = 536.365
-margin_bottom = 558.562
-rect_scale = Vector2( 1.212, 1.171 )
-custom_fonts/normal_font = SubResource( 3 )
-custom_colors/default_color = Color( 1, 1, 1, 1 )
-text = "YES"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ItemInfo3" type="RichTextLabel" parent="BuyQuestion"]
-margin_left = 492.0
-margin_top = 505.0
-margin_right = 796.0
-margin_bottom = 561.0
-rect_scale = Vector2( 1.212, 1.171 )
-custom_fonts/normal_font = SubResource( 3 )
-custom_colors/default_color = Color( 1, 1, 1, 1 )
-text = "NO"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Price" type="RichTextLabel" parent="BuyQuestion"]
-margin_left = 248.165
-margin_top = 323.391
-margin_right = 548.165
-margin_bottom = 423.391
+margin_left = 240.011
+margin_top = 319.131
+margin_right = 540.011
+margin_bottom = 419.131
 rect_scale = Vector2( 0.797679, 1.53425 )
 custom_fonts/normal_font = SubResource( 3 )
 custom_colors/default_color = Color( 1, 1, 1, 1 )
@@ -1045,10 +1047,10 @@ __meta__ = {
 }
 
 [node name="Coin" type="TextureRect" parent="BuyQuestion"]
-margin_left = 294.246
-margin_top = 324.811
-margin_right = 2527.25
-margin_bottom = 2567.81
+margin_left = 293.227
+margin_top = 326.231
+margin_right = 2526.23
+margin_bottom = 2569.23
 rect_scale = Vector2( 0.0159963, 0.0221091 )
 texture = ExtResource( 35 )
 __meta__ = {

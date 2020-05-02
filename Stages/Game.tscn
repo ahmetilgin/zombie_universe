@@ -511,8 +511,11 @@ margin_top = 1.47899
 margin_right = 253.723
 margin_bottom = 41.479
 custom_fonts/normal_font = SubResource( 13 )
-custom_colors/default_color = Color( 0.403922, 0.0196078, 0.0196078, 1 )
+custom_colors/default_color = Color( 1, 0, 0, 1 )
 text = "1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="bullet_counter" type="RichTextLabel" parent="Game_UI"]
 margin_left = 327.734
@@ -579,7 +582,7 @@ rect_scale = Vector2( 0.933228, 1.00751 )
 custom_fonts/normal_font = SubResource( 13 )
 custom_colors/default_color = Color( 0.901961, 0.992157, 0.00784314, 1 )
 bbcode_text = "0"
-text = "100"
+text = "0"
 scroll_active = false
 script = ExtResource( 21 )
 __meta__ = {
