@@ -1,5 +1,4 @@
 extends CanvasLayer
-var coin_price = 0
 onready var coin = get_node("../Game_UI/Coin_Counter")
 signal item_sold(item)
 var constants = preload("res://Stages/constants.gd").new()
