@@ -536,7 +536,7 @@ texture_pressed = ExtResource( 23 )
 texture_disabled = ExtResource( 24 )
 
 [node name="shopingicon" type="Sprite" parent="Game_UI/Market_Button"]
-position = Vector2( 190.971, 226.165 )
+position = Vector2( 120.463, 120.92 )
 scale = Vector2( 0.167245, 0.182127 )
 texture = ExtResource( 25 )
 
