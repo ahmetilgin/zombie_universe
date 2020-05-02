@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://Stages/Game.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/GraveyardTileSet/png/Tiles/Tile1.png" type="Texture" id=2]
@@ -15,7 +15,7 @@
 [ext_resource path="res://Resources/Sprites/GraveyardTileSet/png/Tiles/Tile16.png" type="Texture" id=13]
 [ext_resource path="res://Resources/Sprites/GraveyardTileSet/png/Tiles/Tile5.png" type="Texture" id=14]
 [ext_resource path="res://Stages/TileMap.gd" type="Script" id=15]
-[ext_resource path="res://Resources/Sprites/UISprites/Button.png" type="Texture" id=16]
+[ext_resource path="res://Resources/Sprites/UISprites/NormalButton.png" type="Texture" id=16]
 [ext_resource path="res://Resources/Fonts/bubble_soap/Bubble&Soap light_PersonalUseOnly.ttf" type="DynamicFontData" id=17]
 [ext_resource path="res://Resources/Sprites/UISprites/Window2s.png" type="Texture" id=18]
 [ext_resource path="res://Resources/Sprites/UISprites/Windows.png" type="Texture" id=19]
@@ -27,6 +27,8 @@
 [ext_resource path="res://Resources/Sprites/UISprites/shopingicon.png" type="Texture" id=25]
 [ext_resource path="res://Resources/AudioFiles/Game/savymerchant.ogg" type="AudioStream" id=26]
 [ext_resource path="res://Resources/Sprites/GameBackgrounds/1gamebackground/1gamebackground.png" type="Texture" id=27]
+[ext_resource path="res://Resources/Sprites/UISprites/PressedButton.png" type="Texture" id=28]
+[ext_resource path="res://Resources/Sprites/UISprites/LockButton.png" type="Texture" id=29]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
@@ -326,21 +328,6 @@ points = PoolVector2Array( 0, 0, 128, 0, 128, 96, 0, 96 )
 15/shapes = [  ]
 15/z_index = 0
 
-[sub_resource type="AtlasTexture" id=12]
-flags = 4
-atlas = ExtResource( 16 )
-region = Rect2( 171, 196, 375, 185 )
-
-[sub_resource type="AtlasTexture" id=13]
-flags = 4
-atlas = ExtResource( 16 )
-region = Rect2( 939, 196, 384, 185 )
-
-[sub_resource type="AtlasTexture" id=14]
-flags = 4
-atlas = ExtResource( 16 )
-region = Rect2( 1331.37, 199.904, 363.859, 179.27 )
-
 [sub_resource type="DynamicFont" id=15]
 size = 85
 font_data = ExtResource( 17 )
@@ -406,25 +393,26 @@ script = ExtResource( 15 )
 [node name="Game_UI" type="CanvasLayer" parent="."]
 
 [node name="accept_button" type="TextureButton" parent="Game_UI"]
-margin_left = 502.0
-margin_top = 668.987
-margin_right = 886.0
-margin_bottom = 853.987
-rect_scale = Vector2( 0.506668, 0.338201 )
-texture_normal = SubResource( 12 )
-texture_pressed = SubResource( 13 )
-texture_disabled = SubResource( 14 )
+margin_left = 464.921
+margin_top = 629.575
+margin_right = 1136.92
+margin_bottom = 1100.57
+rect_scale = Vector2( 0.616032, 0.280316 )
+texture_normal = ExtResource( 16 )
+texture_pressed = ExtResource( 28 )
+texture_disabled = ExtResource( 29 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="Label" parent="Game_UI/accept_button"]
-margin_left = 40.9897
-margin_top = 50.7363
-margin_right = 324.99
-margin_bottom = 135.736
+[node name="RichTextLabel" type="Label" parent="Game_UI"]
+margin_left = 586.351
+margin_top = 672.805
+margin_right = 870.352
+margin_bottom = 757.805
+rect_scale = Vector2( 0.641218, 0.623453 )
 custom_fonts/font = SubResource( 15 )
-custom_colors/font_color = Color( 0.764706, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "ACCEPT"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -509,6 +497,9 @@ custom_fonts/normal_font = SubResource( 16 )
 custom_colors/default_color = Color( 0.403922, 0.0196078, 0.0196078, 1 )
 custom_colors/selection_color = Color( 0, 0, 0, 1 )
 text = "LEVEL :"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="level_counter" type="RichTextLabel" parent="Game_UI/level_text"]
 margin_left = 117.723
