@@ -27,7 +27,7 @@ var m604e_bullet_sound = AudioStreamPlayer.new()
 var MG42_bullet_sound = AudioStreamPlayer.new()
 var PRD_bullet_sound = AudioStreamPlayer.new()
 var Riflegun_bullet_sound = AudioStreamPlayer.new()
-
+var EmptyGun_sound = AudioStreamPlayer.new()
 
 var tracked_bullet_file = load("res://Resources/AudioFiles/Ak47Bullet/163457__lemudcrab__ak47-shot.wav")
 var rasengan_bullet_file = load("res://Resources/AudioFiles/GunShoot/GrenadeLauncher.wav")
@@ -39,7 +39,7 @@ var m604e_bullet_file = load("res://Resources/AudioFiles/GunShoot/M60E4.wav")
 var MG42_bullet_file = load("res://Resources/AudioFiles/GunShoot/MG42.wav")
 var PRD_bullet_file = load("res://Resources/AudioFiles/GunShoot/PRD.wav")
 var Riflegun_bullet_file = load("res://Resources/AudioFiles/GunShoot/RifleGun.wav")
-
+var EmptyGun_sound_file = load("res://Resources/AudioFiles/GunShoot/GunEmpty.wav")
 #var rasengan_weapon = Image.new()
 #var shotgun_weapon = Image.new()
 #var ak47_weapon = Image.new()
@@ -90,6 +90,8 @@ var bullet_sound = {
 }
 
 var bullet_shoot_timer = Timer.new()
+var empty_shoot_timer = Timer.new()
+var is_empty_gun_ready = false
 var is_it_time_to_shoot = true
 
 var bullet_time = {
@@ -103,6 +105,7 @@ var bullet_time = {
 	111: 0.09,
 	112: 0.1,
 	113: 1.0,
+	
 }
 
 
@@ -197,13 +200,13 @@ func _create_bullet_shoot_timer():
 	bullet_shoot_timer.connect("timeout",self,"_on_bullet_shoot_timer") 
 	add_child(bullet_shoot_timer) #to process
 	bullet_shoot_timer.set_wait_time(bullet_time[current_bullet_power])
-	
+
 func _on_bullet_shoot_timer():
 	is_it_time_to_shoot = true
 	
 func set_shoot_timer(shoot_time):
 	bullet_shoot_timer.set_wait_time(shoot_time)
-	
+
 func set_sounds():
 	rasengan_bullet_sound.set_stream(rasengan_bullet_file)
 	upgrade_bullet_sound.set_stream(upgrade_bullet_file)
@@ -215,6 +218,7 @@ func set_sounds():
 	MG42_bullet_sound.set_stream(MG42_bullet_file)
 	PRD_bullet_sound.set_stream(PRD_bullet_file)
 	Riflegun_bullet_sound.set_stream(Riflegun_bullet_file)
+	EmptyGun_sound.set_stream(EmptyGun_sound_file)
 	rasengan_bullet_sound.volume_db = 1
 	rasengan_bullet_sound.pitch_scale = 1	
 	upgrade_bullet_sound.volume_db = 1
@@ -235,6 +239,8 @@ func set_sounds():
 	PRD_bullet_sound.pitch_scale = 1	
 	Riflegun_bullet_sound.volume_db = 1
 	Riflegun_bullet_sound.pitch_scale = 1	
+	EmptyGun_sound.volume_db = 1
+	EmptyGun_sound.pitch_scale = 1	
 	add_child(rasengan_bullet_sound)
 	add_child(upgrade_bullet_sound)
 	add_child(tracked_bullet_sound)
@@ -245,14 +251,23 @@ func set_sounds():
 	add_child(MG42_bullet_sound)
 	add_child(PRD_bullet_sound)
 	add_child(Riflegun_bullet_sound)
-	
+	add_child(EmptyGun_sound)
 func load_images():
 	pass
 #	rasengan_weapon.load("res://Resources/Sprites/Guns/rasengan.png")
 #	shotgun_weapon.load("res://Resources/Sprites/Guns/shotgun.png")
 #	ak47_weapon.load("res://Resources/Sprites/stickman/ak47.png")
+
+func _create_empty_shoot_timer():
+	empty_shoot_timer.set_one_shot(false)
+	empty_shoot_timer.connect("timeout",self,"_on_empty_shoot_timer") 
+	add_child(empty_shoot_timer) #to process
+	empty_shoot_timer.set_wait_time(0.1)
+func _on_empty_shoot_timer():
+	is_empty_gun_ready = true
 	
 func _ready():
+	_create_empty_shoot_timer()
 	_create_bullet_shoot_timer()
 	_create_zombie_shot_slow_timer()
 	flash_tween()
@@ -274,7 +289,11 @@ func _set_current_bullet(bullet):
 	current_bullet = bullet
 
 	
-
+func empty_gun():
+	if is_empty_gun_ready:
+		EmptyGun_sound.play()
+	empty_shoot_timer.start()
+	pass
 func _check_bullet_count():
 	return bullet_size > 0
 
@@ -289,6 +308,7 @@ func set_current_weapon(bullet_power):
 	image.lock() # so i can modify pixel data
 	current_bullet_power = bullet_power
 	image_texture.create_from_image(image, 0)
+	set_shoot_timer(bullet_time[current_bullet_power])
 
 	$human/body2/ak47.set_texture(image_texture)
 	image.unlock()
@@ -435,12 +455,14 @@ func _physics_process(delta):
 				_set_is_attack(true)		
 				_play_attack_animation()
 				bullet_sound[current_bullet_power].play()
-				set_shoot_timer(bullet_time[current_bullet_power])
 				_set_current_bullet(bullet_type[current_bullet_power].instance())
 				get_parent().add_child(current_bullet)
 
 				_set_bullet_direction(sign($Position2D.position.x))
 				current_bullet.position = $Position2D.global_position
+			else:
+				empty_gun()
+				is_empty_gun_ready = false
 		if (Input.is_action_just_pressed("ui_up") or touch_up) and !is_first_jump:
 				motion.y = jump
 				is_first_jump = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/StaticScenes/ExtraBullet/ExtraBullet.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/Ammo/wooden_crate_1.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Resources/Sprites/Ammo/wooden_crate_5.png" type="Texture" id=6]
 [ext_resource path="res://Resources/Sprites/Ammo/wooden_crate_6.png" type="Texture" id=7]
 [ext_resource path="res://Resources/Sprites/Ammo/wooden_crate_7.png" type="Texture" id=8]
+[ext_resource path="res://Resources/AudioFiles/GunShoot/Reloaded.wav" type="AudioStream" id=9]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -18,27 +19,43 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 15.4565, 7.50384 )
+extents = Vector2( 7.263, 11.0228 )
 
-[node name="ExtraBullet" type="Area2D"]
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 49.3863, 25.3722 )
+
+[node name="ExtraBullet" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 2
+mode = 2
 script = ExtResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
 
 [node name="Ammo" type="AnimatedSprite" parent="."]
 position = Vector2( 0.450064, -1.49083 )
 scale = Vector2( 0.325516, 0.550491 )
 frames = SubResource( 1 )
 animation = "Ammo"
-frame = 1
+frame = 6
 playing = true
 
-[node name="Ground" type="RayCast2D" parent="."]
-position = Vector2( 0.560211, -17.7081 )
-scale = Vector2( -41.5349, 0.994082 )
-enabled = true
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 1.33042, -2.10256 )
-rotation = -3.14159
+position = Vector2( -4.50134, 21.2245 )
+rotation = 3.14159
 scale = Vector2( 2.69766, -2.21686 )
 shape = SubResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 3 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 9 )
+volume_db = 2.0
 [connection signal="body_shape_entered" from="." to="." method="_on_ExtraBullet_body_shape_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

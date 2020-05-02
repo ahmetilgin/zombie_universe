@@ -1,4 +1,4 @@
-extends Area2D
+extends RigidBody2D
 
 onready var coin_number =get_node("../Game_UI/Coin_Counter")
 # Declare member variables here. Examples:
@@ -30,14 +30,11 @@ func _on_Tween_tween_completed(object, key):
 func _on_Timer_timeout():
 	queue_free()
 	pass # Replace with function body.
-func _physics_process(delta):
-	if not $Ground.is_colliding():
-		set_global_position(get_global_position() + gravity_force)
 
 
 
 
-func _on_Coin_body_entered(body):
+func _on_area_body_entered(body):
 	if "player" in body.name:
 		coin_number.counting()
 		$Sound.play()

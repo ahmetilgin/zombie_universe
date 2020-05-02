@@ -42,13 +42,13 @@ outline_size = 1
 use_filter = true
 font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 36
 outline_size = 1
 use_filter = true
 font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 
 [node name="Market" type="CanvasLayer"]
 layer = 0
@@ -977,7 +977,7 @@ margin_right = 210.207
 margin_bottom = 108.875
 rect_scale = Vector2( 2.03386, 2.73097 )
 mouse_filter = 2
-custom_fonts/normal_font = SubResource( 3 )
+custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 1, 1, 1, 1 )
 text = "YES"
 __meta__ = {
@@ -1000,7 +1000,7 @@ margin_right = 208.835
 margin_bottom = 116.948
 rect_scale = Vector2( 2.41566, 2.85978 )
 mouse_filter = 2
-custom_fonts/normal_font = SubResource( 3 )
+custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 1, 1, 1, 1 )
 text = "NO"
 __meta__ = {
@@ -1013,7 +1013,7 @@ margin_top = 207.424
 margin_right = 516.17
 margin_bottom = 307.424
 rect_scale = Vector2( 1.23685, 1.18602 )
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 3 )
 custom_colors/default_color = Color( 1, 1, 1, 1 )
 text = "Are you sure?"
 __meta__ = {
@@ -1026,7 +1026,7 @@ margin_top = 269.0
 margin_right = 481.0
 margin_bottom = 323.0
 rect_scale = Vector2( 1.212, 1.171 )
-custom_fonts/normal_font = SubResource( 3 )
+custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 1, 1, 1, 1 )
 text = "Coin"
 __meta__ = {
@@ -1039,7 +1039,7 @@ margin_top = 319.131
 margin_right = 540.011
 margin_bottom = 419.131
 rect_scale = Vector2( 0.797679, 1.53425 )
-custom_fonts/normal_font = SubResource( 3 )
+custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 1, 1, 1, 1 )
 text = "30"
 __meta__ = {
