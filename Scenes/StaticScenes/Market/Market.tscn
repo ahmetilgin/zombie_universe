@@ -1,73 +1,68 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://Scenes/StaticScenes/Market/Market.gd" type="Script" id=1]
-[ext_resource path="res://Resources/Sprites/UISprites/Windows.png" type="Texture" id=2]
-[ext_resource path="res://Resources/Sprites/UISprites/bitmap.png" type="Texture" id=3]
-[ext_resource path="res://Resources/Sprites/Guns/MG42png.png" type="Texture" id=4]
-[ext_resource path="res://Resources/Sprites/Guns/M1Garand.png" type="Texture" id=5]
-[ext_resource path="res://Resources/Sprites/Guns/m4a1.png" type="Texture" id=6]
-[ext_resource path="res://Resources/Sprites/UISprites/Button.png" type="Texture" id=7]
-[ext_resource path="res://Resources/Fonts/bubble_soap/Bubble&Soap light_PersonalUseOnly.ttf" type="DynamicFontData" id=8]
-[ext_resource path="res://Resources/Sprites/Portal/portalRings1.png" type="Texture" id=9]
-[ext_resource path="res://Resources/Sprites/stickman/ak47.png" type="Texture" id=10]
-[ext_resource path="res://Resources/Sprites/knife.png" type="Texture" id=11]
-[ext_resource path="res://Resources/Sprites/Guns/rasengan.png" type="Texture" id=12]
-[ext_resource path="res://Resources/Sprites/Healt/heal1.png" type="Texture" id=13]
-[ext_resource path="res://Resources/Sprites/Trambolin/sprung.png" type="Texture" id=14]
-[ext_resource path="res://Resources/Sprites/Fence/GoldFence/GoldFenceBack.png" type="Texture" id=15]
-[ext_resource path="res://Resources/Sprites/Turret/Turret1Base.png" type="Texture" id=16]
-[ext_resource path="res://Resources/Sprites/Turret/Turret3Base.png" type="Texture" id=17]
-[ext_resource path="res://Resources/Sprites/Fence/IronFence/IronFenceBack.png" type="Texture" id=18]
-[ext_resource path="res://Resources/Sprites/Fence/WoodFence/WoodFenceBack.png" type="Texture" id=19]
-[ext_resource path="res://Resources/Sprites/Turret/Turret1Top.png" type="Texture" id=20]
-[ext_resource path="res://Resources/Sprites/Turret/Turret4Top.png" type="Texture" id=21]
-[ext_resource path="res://Resources/Sprites/Turret/Turret5Top.png" type="Texture" id=22]
-[ext_resource path="res://Resources/Sprites/Turret/Turret4Base.png" type="Texture" id=23]
-[ext_resource path="res://Resources/Sprites/Turret/Turret5Base.png" type="Texture" id=24]
-[ext_resource path="res://Resources/Sprites/Turret/Turret3Top.png" type="Texture" id=25]
-[ext_resource path="res://Resources/Sprites/Guns/shotgun.png" type="Texture" id=26]
-[ext_resource path="res://Resources/Sprites/Ammo/wooden_crate_1.png" type="Texture" id=27]
-[ext_resource path="res://Resources/Sprites/starcoinrotate1.png" type="Texture" id=28]
-[ext_resource path="res://Resources/Sprites/UISprites/MarketSegmentPush.png" type="Texture" id=29]
-[ext_resource path="res://Resources/Sprites/Guns/m604e.png" type="Texture" id=30]
-[ext_resource path="res://Resources/Sprites/Guns/PRD.png" type="Texture" id=31]
-[ext_resource path="res://Resources/Sprites/Guns/riflegun.png" type="Texture" id=32]
-[ext_resource path="res://Resources/Sprites/Guns/crossbow.png" type="Texture" id=33]
-[ext_resource path="res://Resources/Sprites/UISprites/rect10.png" type="Texture" id=34]
+[ext_resource path="res://Resources/Sprites/UISprites/bitmap.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Sprites/UISprites/rect10.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Sprites/UISprites/MarketSegmentPush.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Sprites/Guns/rasengan.png" type="Texture" id=5]
+[ext_resource path="res://Resources/Fonts/bubble_soap/Bubble&Soap light_PersonalUseOnly.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Resources/Sprites/Guns/shotgun.png" type="Texture" id=7]
+[ext_resource path="res://Resources/Sprites/stickman/ak47.png" type="Texture" id=8]
+[ext_resource path="res://Resources/Sprites/Guns/crossbow.png" type="Texture" id=9]
+[ext_resource path="res://Resources/Sprites/Guns/M1Garand.png" type="Texture" id=10]
+[ext_resource path="res://Resources/Sprites/Guns/m4a1.png" type="Texture" id=11]
+[ext_resource path="res://Resources/Sprites/Guns/m604e.png" type="Texture" id=12]
+[ext_resource path="res://Resources/Sprites/Guns/MG42png.png" type="Texture" id=13]
+[ext_resource path="res://Resources/Sprites/Guns/PRD.png" type="Texture" id=14]
+[ext_resource path="res://Resources/Sprites/Guns/riflegun.png" type="Texture" id=15]
+[ext_resource path="res://Resources/Sprites/Healt/heal1.png" type="Texture" id=16]
+[ext_resource path="res://Resources/Sprites/Ammo/wooden_crate_1.png" type="Texture" id=17]
+[ext_resource path="res://Resources/Sprites/Fence/WoodFence/WoodFenceBack.png" type="Texture" id=18]
+[ext_resource path="res://Resources/Sprites/Fence/IronFence/IronFenceBack.png" type="Texture" id=19]
+[ext_resource path="res://Resources/Sprites/Fence/GoldFence/GoldFenceBack.png" type="Texture" id=20]
+[ext_resource path="res://Resources/Sprites/Portal/portalRings1.png" type="Texture" id=21]
+[ext_resource path="res://Resources/Sprites/knife.png" type="Texture" id=22]
+[ext_resource path="res://Resources/Sprites/Trambolin/sprung.png" type="Texture" id=23]
+[ext_resource path="res://Resources/Sprites/Turret/Turret1Top.png" type="Texture" id=24]
+[ext_resource path="res://Resources/Sprites/Turret/Turret1Base.png" type="Texture" id=25]
+[ext_resource path="res://Resources/Sprites/Turret/Turret5Top.png" type="Texture" id=26]
+[ext_resource path="res://Resources/Sprites/Turret/Turret5Base.png" type="Texture" id=27]
+[ext_resource path="res://Resources/Sprites/Turret/Turret4Top.png" type="Texture" id=28]
+[ext_resource path="res://Resources/Sprites/Turret/Turret4Base.png" type="Texture" id=29]
+[ext_resource path="res://Resources/Sprites/Turret/Turret3Top.png" type="Texture" id=30]
+[ext_resource path="res://Resources/Sprites/Turret/Turret3Base.png" type="Texture" id=31]
+[ext_resource path="res://Resources/Sprites/UISprites/BuyUI.png" type="Texture" id=32]
+[ext_resource path="res://Resources/Sprites/UISprites/Button.png" type="Texture" id=33]
+[ext_resource path="res://Resources/Sprites/starcoinrotate1.png" type="Texture" id=34]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 36
-font_data = ExtResource( 8 )
+font_data = ExtResource( 6 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 33 )
+region = Rect2( 1100.36, 2812.58, 184.157, 169.808 )
 
 [sub_resource type="AtlasTexture" id=3]
 flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 3473.65, 930.013, 651.104, 515.291 )
+atlas = ExtResource( 33 )
+region = Rect2( 1301.97, 2809.35, 174.591, 179.374 )
 
 [sub_resource type="AtlasTexture" id=4]
 flags = 4
-atlas = ExtResource( 7 )
-region = Rect2( 1100.36, 2812.58, 184.157, 169.808 )
+atlas = ExtResource( 33 )
+region = Rect2( 1105.14, 2614.07, 174.591, 179.374 )
 
 [sub_resource type="AtlasTexture" id=5]
 flags = 4
-atlas = ExtResource( 7 )
-region = Rect2( 1301.97, 2809.35, 174.591, 179.374 )
-
-[sub_resource type="AtlasTexture" id=6]
-flags = 4
-atlas = ExtResource( 7 )
-region = Rect2( 1105.14, 2614.07, 174.591, 179.374 )
-
-[sub_resource type="AtlasTexture" id=7]
-flags = 4
-atlas = ExtResource( 7 )
+atlas = ExtResource( 33 )
 region = Rect2( 1288.77, 2606.4, 196.103, 193.452 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=6]
 size = 35
 outline_color = Color( 0.882353, 0.14902, 0.14902, 1 )
-font_data = ExtResource( 8 )
+font_data = ExtResource( 6 )
 
 [node name="Market" type="CanvasLayer"]
 layer = 0
@@ -81,7 +76,7 @@ margin_bottom = 2446.76
 grow_horizontal = 0
 grow_vertical = 0
 rect_scale = Vector2( 2.18014, 0.283016 )
-texture = ExtResource( 3 )
+texture = ExtResource( 2 )
 expand = true
 stretch_mode = 1
 __meta__ = {
@@ -110,14 +105,14 @@ columns = 2
 margin_right = 65.0
 margin_bottom = 72.0
 rect_min_size = Vector2( 65, 72 )
-texture_normal = ExtResource( 34 )
-texture_pressed = ExtResource( 29 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
 expand = true
 
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/RasenganButton"]
 position = Vector2( 30.9379, 32.6841 )
 scale = Vector2( 0.148, 0.118 )
-texture = ExtResource( 12 )
+texture = ExtResource( 5 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/GridContainer/RasenganButton"]
 margin_left = 5.0
@@ -125,7 +120,7 @@ margin_top = 2.0
 margin_right = 388.0
 margin_bottom = 62.0
 rect_scale = Vector2( 0.175, 0.139 )
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 1, 1, 1, 1 )
 text = "GRANEDE LAUNCHER"
 __meta__ = {
@@ -137,8 +132,8 @@ margin_left = 69.0
 margin_right = 134.0
 margin_bottom = 72.0
 rect_min_size = Vector2( 65, 72 )
-texture_normal = ExtResource( 34 )
-texture_pressed = ExtResource( 29 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
 expand = true
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="HBoxContainer/GridContainer/FireBulletButton"]
@@ -147,7 +142,7 @@ margin_top = 2.0
 margin_right = 179.0
 margin_bottom = 51.0
 rect_scale = Vector2( 0.175, 0.139 )
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 1 )
 text = "POMPALI"
 __meta__ = {
 "_edit_use_anchors_": false,
@@ -157,7 +152,7 @@ __meta__ = {
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/FireBulletButton"]
 position = Vector2( 31.9677, 32.4989 )
 scale = Vector2( 0.148, 0.118 )
-texture = ExtResource( 26 )
+texture = ExtResource( 7 )
 
 [node name="LaserBullet" type="TextureButton" parent="HBoxContainer/GridContainer"]
 margin_top = 76.0
@@ -166,8 +161,8 @@ margin_bottom = 148.0
 rect_min_size = Vector2( 65, 72 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
-texture_normal = ExtResource( 34 )
-texture_pressed = ExtResource( 29 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
 expand = true
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="HBoxContainer/GridContainer/LaserBullet"]
@@ -176,7 +171,7 @@ margin_top = 2.13904
 margin_right = 194.987
 margin_bottom = 53.139
 rect_scale = Vector2( 0.175, 0.139 )
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 1 )
 text = "AK-47"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -185,7 +180,7 @@ __meta__ = {
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/LaserBullet"]
 position = Vector2( 32.5431, 32.728 )
 scale = Vector2( 0.14802, 0.117505 )
-texture = ExtResource( 10 )
+texture = ExtResource( 8 )
 
 [node name="Crossbow" type="TextureButton" parent="HBoxContainer/GridContainer"]
 margin_left = 69.0
@@ -193,8 +188,8 @@ margin_top = 76.0
 margin_right = 134.0
 margin_bottom = 148.0
 rect_min_size = Vector2( 65, 72 )
-texture_normal = ExtResource( 34 )
-texture_pressed = ExtResource( 29 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
 expand = true
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="HBoxContainer/GridContainer/Crossbow"]
@@ -203,7 +198,7 @@ margin_top = 2.13904
 margin_right = 194.987
 margin_bottom = 53.139
 rect_scale = Vector2( 0.175, 0.139 )
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -211,15 +206,15 @@ __meta__ = {
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/Crossbow"]
 position = Vector2( 30.9426, 31.0137 )
 scale = Vector2( 0.14802, 0.117505 )
-texture = ExtResource( 33 )
+texture = ExtResource( 9 )
 
 [node name="M1Garand" type="TextureButton" parent="HBoxContainer/GridContainer"]
 margin_top = 152.0
 margin_right = 65.0
 margin_bottom = 224.0
 rect_min_size = Vector2( 65, 72 )
-texture_normal = ExtResource( 34 )
-texture_pressed = ExtResource( 29 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
 expand = true
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="HBoxContainer/GridContainer/M1Garand"]
@@ -228,7 +223,7 @@ margin_top = 2.13904
 margin_right = 194.987
 margin_bottom = 53.139
 rect_scale = Vector2( 0.175, 0.139 )
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -236,7 +231,7 @@ __meta__ = {
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/M1Garand"]
 position = Vector2( 31.6497, 34.1923 )
 scale = Vector2( 0.14802, 0.117505 )
-texture = ExtResource( 5 )
+texture = ExtResource( 10 )
 
 [node name="M4A1" type="TextureButton" parent="HBoxContainer/GridContainer"]
 margin_left = 69.0
@@ -244,8 +239,8 @@ margin_top = 152.0
 margin_right = 134.0
 margin_bottom = 224.0
 rect_min_size = Vector2( 65, 72 )
-texture_normal = ExtResource( 34 )
-texture_pressed = ExtResource( 29 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
 expand = true
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="HBoxContainer/GridContainer/M4A1"]
@@ -254,7 +249,7 @@ margin_top = 2.13904
 margin_right = 194.987
 margin_bottom = 53.139
 rect_scale = Vector2( 0.175, 0.139 )
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -262,15 +257,15 @@ __meta__ = {
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/M4A1"]
 position = Vector2( 29.2657, 32.4393 )
 scale = Vector2( 0.14802, 0.117505 )
-texture = ExtResource( 6 )
+texture = ExtResource( 11 )
 
 [node name="M60E4" type="TextureButton" parent="HBoxContainer/GridContainer"]
 margin_top = 228.0
 margin_right = 65.0
 margin_bottom = 300.0
 rect_min_size = Vector2( 65, 70 )
-texture_normal = ExtResource( 34 )
-texture_pressed = ExtResource( 29 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
 expand = true
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="HBoxContainer/GridContainer/M60E4"]
@@ -279,7 +274,7 @@ margin_top = 2.13904
 margin_right = 194.987
 margin_bottom = 53.139
 rect_scale = Vector2( 0.175, 0.139 )
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -287,7 +282,7 @@ __meta__ = {
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/M60E4"]
 position = Vector2( 29.2657, 32.4393 )
 scale = Vector2( 0.14802, 0.117505 )
-texture = ExtResource( 30 )
+texture = ExtResource( 12 )
 
 [node name="MG42" type="TextureButton" parent="HBoxContainer/GridContainer"]
 margin_left = 69.0
@@ -295,8 +290,8 @@ margin_top = 228.0
 margin_right = 134.0
 margin_bottom = 300.0
 rect_min_size = Vector2( 65, 72 )
-texture_normal = ExtResource( 34 )
-texture_pressed = ExtResource( 29 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
 expand = true
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="HBoxContainer/GridContainer/MG42"]
@@ -305,7 +300,7 @@ margin_top = 2.13904
 margin_right = 194.987
 margin_bottom = 53.139
 rect_scale = Vector2( 0.175, 0.139 )
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -313,15 +308,15 @@ __meta__ = {
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/MG42"]
 position = Vector2( 29.2657, 32.4393 )
 scale = Vector2( 0.14802, 0.117505 )
-texture = ExtResource( 4 )
+texture = ExtResource( 13 )
 
 [node name="PRD" type="TextureButton" parent="HBoxContainer/GridContainer"]
 margin_top = 304.0
 margin_right = 65.0
 margin_bottom = 376.0
 rect_min_size = Vector2( 65, 72 )
-texture_normal = ExtResource( 34 )
-texture_pressed = ExtResource( 29 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
 expand = true
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="HBoxContainer/GridContainer/PRD"]
@@ -330,7 +325,7 @@ margin_top = 2.13904
 margin_right = 194.987
 margin_bottom = 53.139
 rect_scale = Vector2( 0.175, 0.139 )
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -338,7 +333,7 @@ __meta__ = {
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/PRD"]
 position = Vector2( 29.2657, 32.4393 )
 scale = Vector2( 0.14802, 0.117505 )
-texture = ExtResource( 31 )
+texture = ExtResource( 14 )
 
 [node name="RifleGun" type="TextureButton" parent="HBoxContainer/GridContainer"]
 margin_left = 69.0
@@ -346,8 +341,8 @@ margin_top = 304.0
 margin_right = 134.0
 margin_bottom = 376.0
 rect_min_size = Vector2( 65, 72 )
-texture_normal = ExtResource( 34 )
-texture_pressed = ExtResource( 29 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
 expand = true
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="HBoxContainer/GridContainer/RifleGun"]
@@ -356,7 +351,7 @@ margin_top = 2.13904
 margin_right = 194.987
 margin_bottom = 53.139
 rect_scale = Vector2( 0.175, 0.139 )
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -364,15 +359,15 @@ __meta__ = {
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/RifleGun"]
 position = Vector2( 29.2657, 32.4393 )
 scale = Vector2( 0.14802, 0.117505 )
-texture = ExtResource( 32 )
+texture = ExtResource( 15 )
 
 [node name="HealthButton" type="TextureButton" parent="HBoxContainer/GridContainer"]
 margin_top = 380.0
 margin_right = 65.0
 margin_bottom = 452.0
 rect_min_size = Vector2( 65, 72 )
-texture_normal = ExtResource( 34 )
-texture_pressed = ExtResource( 29 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
 expand = true
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="HBoxContainer/GridContainer/HealthButton"]
@@ -381,7 +376,7 @@ margin_top = 1.83765
 margin_right = 194.278
 margin_bottom = 52.8376
 rect_scale = Vector2( 0.237383, 0.12884 )
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 1 )
 text = "HEALT"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -390,7 +385,7 @@ __meta__ = {
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/HealthButton"]
 position = Vector2( 32.1976, 36.452 )
 scale = Vector2( 0.108405, 0.0972224 )
-texture = ExtResource( 13 )
+texture = ExtResource( 16 )
 
 [node name="AmmoButton" type="TextureButton" parent="HBoxContainer/GridContainer"]
 margin_left = 69.0
@@ -398,28 +393,28 @@ margin_top = 380.0
 margin_right = 134.0
 margin_bottom = 452.0
 rect_min_size = Vector2( 65, 72 )
-texture_normal = ExtResource( 34 )
-texture_pressed = ExtResource( 29 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
 expand = true
 
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/AmmoButton"]
 position = Vector2( 32.6984, 36.636 )
 scale = Vector2( 0.180379, 0.165484 )
-texture = ExtResource( 27 )
+texture = ExtResource( 17 )
 
 [node name="WoodWall" type="TextureButton" parent="HBoxContainer/GridContainer"]
 margin_top = 456.0
 margin_right = 65.0
 margin_bottom = 528.0
 rect_min_size = Vector2( 65, 72 )
-texture_normal = ExtResource( 34 )
-texture_pressed = ExtResource( 29 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
 expand = true
 
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/WoodWall"]
 position = Vector2( 33.7787, 36.6458 )
 scale = Vector2( 0.708141, 0.0972224 )
-texture = ExtResource( 19 )
+texture = ExtResource( 18 )
 
 [node name="SteelWall" type="TextureButton" parent="HBoxContainer/GridContainer"]
 margin_left = 69.0
@@ -427,28 +422,28 @@ margin_top = 456.0
 margin_right = 134.0
 margin_bottom = 528.0
 rect_min_size = Vector2( 65, 72 )
-texture_normal = ExtResource( 34 )
-texture_pressed = ExtResource( 29 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
 expand = true
 
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/SteelWall"]
 position = Vector2( 32.3479, 36.0159 )
 scale = Vector2( 1.06552, 0.0839258 )
-texture = ExtResource( 18 )
+texture = ExtResource( 19 )
 
 [node name="GoldWall" type="TextureButton" parent="HBoxContainer/GridContainer"]
 margin_top = 532.0
 margin_right = 65.0
 margin_bottom = 604.0
 rect_min_size = Vector2( 65, 72 )
-texture_normal = ExtResource( 34 )
-texture_pressed = ExtResource( 29 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
 expand = true
 
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/GoldWall"]
 position = Vector2( 33.1585, 34.9042 )
 scale = Vector2( 0.906834, 0.0895587 )
-texture = ExtResource( 15 )
+texture = ExtResource( 20 )
 
 [node name="Portal" type="TextureButton" parent="HBoxContainer/GridContainer"]
 margin_left = 69.0
@@ -456,27 +451,27 @@ margin_top = 532.0
 margin_right = 134.0
 margin_bottom = 604.0
 rect_min_size = Vector2( 65, 72 )
-texture_normal = ExtResource( 34 )
-texture_pressed = ExtResource( 29 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
 expand = true
 
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/Portal"]
 position = Vector2( 32.6885, 36.2599 )
-texture = ExtResource( 9 )
+texture = ExtResource( 21 )
 
 [node name="Sword" type="TextureButton" parent="HBoxContainer/GridContainer"]
 margin_top = 608.0
 margin_right = 65.0
 margin_bottom = 680.0
 rect_min_size = Vector2( 65, 72 )
-texture_normal = ExtResource( 34 )
-texture_pressed = ExtResource( 29 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
 expand = true
 
 [node name="knife" type="Sprite" parent="HBoxContainer/GridContainer/Sword"]
 position = Vector2( 33.0737, 34.4194 )
 scale = Vector2( 0.0998392, 0.0467881 )
-texture = ExtResource( 11 )
+texture = ExtResource( 22 )
 
 [node name="Trambolin" type="TextureButton" parent="HBoxContainer/GridContainer"]
 margin_left = 69.0
@@ -484,73 +479,73 @@ margin_top = 608.0
 margin_right = 134.0
 margin_bottom = 680.0
 rect_min_size = Vector2( 65, 72 )
-texture_normal = ExtResource( 34 )
-texture_pressed = ExtResource( 29 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
 expand = true
 
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/Trambolin"]
 position = Vector2( 32.3479, 29.9028 )
 scale = Vector2( 0.318125, 0.294891 )
-texture = ExtResource( 14 )
+texture = ExtResource( 23 )
 
 [node name="BasicTurret" type="TextureButton" parent="HBoxContainer/GridContainer"]
 margin_top = 684.0
 margin_right = 65.0
 margin_bottom = 756.0
 rect_min_size = Vector2( 65, 72 )
-texture_normal = ExtResource( 34 )
-texture_pressed = ExtResource( 29 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
 expand = true
 
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/BasicTurret"]
 position = Vector2( 29.5625, 29.6084 )
 scale = Vector2( 0.097, 0.079 )
 z_index = 1
-texture = ExtResource( 20 )
+texture = ExtResource( 24 )
 
 [node name="Turret3Base" type="Sprite" parent="HBoxContainer/GridContainer/BasicTurret"]
 position = Vector2( 43.7419, 39.8765 )
 scale = Vector2( 0.097, 0.079 )
-texture = ExtResource( 16 )
+texture = ExtResource( 25 )
 
 [node name="MachineTurret" type="TextureButton" parent="HBoxContainer/GridContainer"]
 margin_left = 69.0
 margin_top = 684.0
 margin_right = 134.0
 margin_bottom = 756.0
-texture_normal = ExtResource( 34 )
-texture_pressed = ExtResource( 29 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
 expand = true
 
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/MachineTurret"]
 position = Vector2( 26.3662, 23.6274 )
 scale = Vector2( 0.124, 0.079 )
 z_index = 1
-texture = ExtResource( 22 )
+texture = ExtResource( 26 )
 
 [node name="Turret3Base" type="Sprite" parent="HBoxContainer/GridContainer/MachineTurret"]
 position = Vector2( 32.1072, 33.5986 )
 scale = Vector2( 0.097, 0.073 )
-texture = ExtResource( 24 )
+texture = ExtResource( 27 )
 
 [node name="LaserTurret" type="TextureButton" parent="HBoxContainer/GridContainer"]
 margin_top = 760.0
 margin_right = 65.0
 margin_bottom = 832.0
-texture_normal = ExtResource( 34 )
-texture_pressed = ExtResource( 29 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
 expand = true
 
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/LaserTurret"]
 position = Vector2( 28.6047, 26.4077 )
 scale = Vector2( 0.097, 0.079 )
 z_index = 1
-texture = ExtResource( 21 )
+texture = ExtResource( 28 )
 
 [node name="Turret3Base" type="Sprite" parent="HBoxContainer/GridContainer/LaserTurret"]
 position = Vector2( 36.1223, 33.6992 )
 scale = Vector2( 0.097, 0.079 )
-texture = ExtResource( 23 )
+texture = ExtResource( 29 )
 
 [node name="BazukaTurret" type="TextureButton" parent="HBoxContainer/GridContainer"]
 margin_left = 69.0
@@ -558,8 +553,8 @@ margin_top = 760.0
 margin_right = 134.0
 margin_bottom = 832.0
 rect_min_size = Vector2( 65, 72 )
-texture_normal = ExtResource( 34 )
-texture_pressed = ExtResource( 29 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -569,83 +564,75 @@ __meta__ = {
 position = Vector2( 31.8131, 24.0283 )
 scale = Vector2( 0.097, 0.079 )
 z_index = 1
-texture = ExtResource( 25 )
+texture = ExtResource( 30 )
 
 [node name="Turret3Base" type="Sprite" parent="HBoxContainer/GridContainer/BazukaTurret"]
 position = Vector2( 31.8599, 33.3911 )
 scale = Vector2( 0.097, 0.079 )
-texture = ExtResource( 17 )
+texture = ExtResource( 31 )
 
 [node name="BuyQuestion" type="TextureRect" parent="."]
-margin_left = 469.614
-margin_top = 207.125
-margin_right = 1120.61
-margin_bottom = 722.125
+margin_left = 470.0
+margin_top = 207.0
+margin_right = 1514.0
+margin_bottom = 986.0
 rect_scale = Vector2( 0.841197, 0.603764 )
-texture = SubResource( 3 )
+texture = ExtResource( 32 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="YesButton" type="TextureButton" parent="BuyQuestion"]
-margin_left = 190.97
-margin_top = 425.523
-margin_right = 374.97
-margin_bottom = 606.523
+margin_left = 190.233
+margin_top = 393.628
+margin_right = 374.233
+margin_bottom = 574.628
+rect_scale = Vector2( 0.5, 0.7 )
+texture_normal = SubResource( 2 )
+texture_pressed = SubResource( 3 )
+
+[node name="NoButton" type="TextureButton" parent="BuyQuestion"]
+margin_left = 471.905
+margin_top = 395.155
+margin_right = 645.905
+margin_bottom = 574.155
 rect_scale = Vector2( 0.5, 0.7 )
 texture_normal = SubResource( 4 )
 texture_pressed = SubResource( 5 )
 
-[node name="NoButton" type="TextureButton" parent="BuyQuestion"]
-margin_left = 338.878
-margin_top = 425.584
-margin_right = 512.878
-margin_bottom = 604.584
-rect_scale = Vector2( 0.5, 0.7 )
-texture_normal = SubResource( 6 )
-texture_pressed = SubResource( 7 )
-
 [node name="RichTextLabel" type="RichTextLabel" parent="BuyQuestion"]
-margin_left = 180.621
-margin_top = 229.468
-margin_right = 430.621
-margin_bottom = 329.468
+margin_left = 156.795
+margin_top = 190.74
+margin_right = 406.795
+margin_bottom = 290.74
 rect_scale = Vector2( 1.23685, 1.18602 )
-custom_fonts/normal_font = SubResource( 8 )
+custom_fonts/normal_font = SubResource( 6 )
 custom_colors/default_color = Color( 0.603922, 0.215686, 0.215686, 1 )
 text = "Are you sure?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ItemInfo" type="RichTextLabel" parent="BuyQuestion"]
-margin_left = 204.37
-margin_top = 307.679
-margin_right = 504.37
-margin_bottom = 357.679
+margin_left = 180.544
+margin_top = 268.951
+margin_right = 480.544
+margin_bottom = 318.951
 rect_scale = Vector2( 1.212, 1.171 )
-custom_fonts/normal_font = SubResource( 8 )
+custom_fonts/normal_font = SubResource( 6 )
 custom_colors/default_color = Color( 0.137255, 0.14902, 0.164706, 1 )
 text = "coin"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="INFO" type="RichTextLabel" parent="BuyQuestion"]
-margin_left = 270.845
-margin_top = 54.3167
-margin_right = 520.845
-margin_bottom = 154.317
-rect_scale = Vector2( 1.23685, 1.18602 )
-custom_fonts/normal_font = SubResource( 8 )
-custom_colors/default_color = Color( 0.85098, 0.231373, 0.231373, 1 )
-text = "buy
-"
-
 [node name="Price" type="RichTextLabel" parent="BuyQuestion"]
-margin_left = 271.991
-margin_top = 362.119
-margin_right = 571.991
-margin_bottom = 462.119
+margin_left = 248.165
+margin_top = 323.391
+margin_right = 548.165
+margin_bottom = 423.391
 rect_scale = Vector2( 0.797679, 1.53425 )
-custom_fonts/normal_font = SubResource( 8 )
+custom_fonts/normal_font = SubResource( 6 )
 custom_colors/default_color = Color( 0.137255, 0.14902, 0.164706, 1 )
 text = "30"
 __meta__ = {
@@ -653,12 +640,12 @@ __meta__ = {
 }
 
 [node name="Coin" type="TextureRect" parent="BuyQuestion"]
-margin_left = 318.072
-margin_top = 363.539
-margin_right = 2551.07
-margin_bottom = 2606.54
+margin_left = 294.246
+margin_top = 324.811
+margin_right = 2527.25
+margin_bottom = 2567.81
 rect_scale = Vector2( 0.0159963, 0.0221091 )
-texture = ExtResource( 28 )
+texture = ExtResource( 34 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
