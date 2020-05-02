@@ -596,13 +596,8 @@ __meta__ = {
 }
 
 [node name="shopingicon" type="Sprite" parent="Game_UI/Market_Button"]
-<<<<<<< HEAD
-position = Vector2( 120.463, 120.92 )
-scale = Vector2( 0.167245, 0.182127 )
-=======
 position = Vector2( 187.197, 212.312 )
 scale = Vector2( 0.291256, 0.282605 )
->>>>>>> e31028a5755caf4d9d43d2506055bd34f6d72fa3
 texture = ExtResource( 25 )
 
 [node name="CountDownTimer" type="RichTextLabel" parent="Game_UI"]
