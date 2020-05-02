@@ -21,7 +21,6 @@
 [ext_resource path="res://Resources/Sprites/Fence/IronFence/IronFenceBack.png" type="Texture" id=19]
 [ext_resource path="res://Resources/Sprites/Fence/GoldFence/GoldFenceBack.png" type="Texture" id=20]
 [ext_resource path="res://Resources/Sprites/Portal/portalRings1.png" type="Texture" id=21]
-[ext_resource path="res://Resources/Sprites/knife.png" type="Texture" id=22]
 [ext_resource path="res://Resources/Sprites/Trambolin/sprung.png" type="Texture" id=23]
 [ext_resource path="res://Resources/Sprites/Turret/Turret1Top.png" type="Texture" id=24]
 [ext_resource path="res://Resources/Sprites/Turret/Turret1Base.png" type="Texture" id=25]
@@ -35,6 +34,7 @@
 [ext_resource path="res://Resources/Sprites/UISprites/NormalButton.png" type="Texture" id=33]
 [ext_resource path="res://Resources/Sprites/UISprites/PressedButton.png" type="Texture" id=34]
 [ext_resource path="res://Resources/Sprites/starcoinrotate1.png" type="Texture" id=35]
+[ext_resource path="res://Resources/Sprites/UISprites/rect10_disable.png" type="Texture" id=36]
 
 [sub_resource type="DynamicFont" id=1]
 size = 36
@@ -73,7 +73,7 @@ __meta__ = {
 margin_left = 56.2589
 margin_top = 184.162
 margin_right = 201.173
-margin_bottom = 331.648
+margin_bottom = 335.0
 grow_horizontal = 0
 rect_scale = Vector2( 2.55798, 3.49353 )
 __meta__ = {
@@ -87,12 +87,91 @@ size_flags_horizontal = 6
 size_flags_vertical = 2
 columns = 2
 
-[node name="RasenganButton" type="TextureButton" parent="HBoxContainer/GridContainer"]
+[node name="HealthButton" type="TextureButton" parent="HBoxContainer/GridContainer"]
 margin_right = 65.0
 margin_bottom = 72.0
 rect_min_size = Vector2( 65, 72 )
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 4 )
+texture_disabled = ExtResource( 36 )
+expand = true
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="HBoxContainer/GridContainer/HealthButton"]
+margin_left = 21.2777
+margin_top = 1.83765
+margin_right = 194.278
+margin_bottom = 52.8376
+rect_scale = Vector2( 0.237383, 0.12884 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "Health"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="price" type="RichTextLabel" parent="HBoxContainer/GridContainer/HealthButton"]
+margin_left = 20.8868
+margin_top = 64.5254
+margin_right = 193.887
+margin_bottom = 115.525
+rect_scale = Vector2( 0.237383, 0.12884 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "5"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/HealthButton"]
+position = Vector2( 32.1976, 36.452 )
+scale = Vector2( 0.108405, 0.0972224 )
+texture = ExtResource( 16 )
+
+[node name="AmmoButton" type="TextureButton" parent="HBoxContainer/GridContainer"]
+margin_left = 69.0
+margin_right = 134.0
+margin_bottom = 72.0
+rect_min_size = Vector2( 65, 72 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+texture_disabled = ExtResource( 36 )
+expand = true
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="HBoxContainer/GridContainer/AmmoButton"]
+margin_left = 15.6091
+margin_top = 0.979004
+margin_right = 188.609
+margin_bottom = 51.979
+rect_scale = Vector2( 0.237383, 0.12884 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "Ammo"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="price" type="RichTextLabel" parent="HBoxContainer/GridContainer/AmmoButton"]
+margin_left = 18.7366
+margin_top = 63.9529
+margin_right = 191.737
+margin_bottom = 114.953
+rect_scale = Vector2( 0.237383, 0.12884 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "5"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/AmmoButton"]
+position = Vector2( 32.6984, 36.636 )
+scale = Vector2( 0.180379, 0.165484 )
+texture = ExtResource( 17 )
+
+[node name="RasenganButton" type="TextureButton" parent="HBoxContainer/GridContainer"]
+margin_top = 76.0
+margin_right = 65.0
+margin_bottom = 148.0
+rect_min_size = Vector2( 65, 72 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+texture_disabled = ExtResource( 36 )
 expand = true
 
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/RasenganButton"]
@@ -113,7 +192,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="HBoxContainer/GridContainer/RasenganButton"]
+[node name="price" type="RichTextLabel" parent="HBoxContainer/GridContainer/RasenganButton"]
 margin_left = 21.1417
 margin_top = 63.9952
 margin_right = 451.142
@@ -121,18 +200,20 @@ margin_bottom = 139.995
 rect_scale = Vector2( 0.175, 0.139 )
 custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 1, 1, 1, 1 )
-text = "100"
+text = "40"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="FireBulletButton" type="TextureButton" parent="HBoxContainer/GridContainer"]
 margin_left = 69.0
+margin_top = 76.0
 margin_right = 134.0
-margin_bottom = 72.0
+margin_bottom = 148.0
 rect_min_size = Vector2( 65, 72 )
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 4 )
+texture_disabled = ExtResource( 36 )
 expand = true
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="HBoxContainer/GridContainer/FireBulletButton"]
@@ -142,7 +223,21 @@ margin_right = 179.0
 margin_bottom = 51.0
 rect_scale = Vector2( 0.175, 0.139 )
 custom_fonts/normal_font = SubResource( 1 )
-text = "POMPALI"
+text = "Shotgun
+"
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="price" type="RichTextLabel" parent="HBoxContainer/GridContainer/FireBulletButton"]
+margin_left = 20.2559
+margin_top = 63.8873
+margin_right = 181.256
+margin_bottom = 112.887
+rect_scale = Vector2( 0.175, 0.139 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "30"
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
@@ -154,14 +249,15 @@ scale = Vector2( 0.148, 0.118 )
 texture = ExtResource( 7 )
 
 [node name="LaserBullet" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_top = 76.0
+margin_top = 152.0
 margin_right = 65.0
-margin_bottom = 148.0
+margin_bottom = 224.0
 rect_min_size = Vector2( 65, 72 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 4 )
+texture_disabled = ExtResource( 36 )
 expand = true
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="HBoxContainer/GridContainer/LaserBullet"]
@@ -176,6 +272,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="price" type="RichTextLabel" parent="HBoxContainer/GridContainer/LaserBullet"]
+margin_left = 17.2003
+margin_top = 63.6642
+margin_right = 190.201
+margin_bottom = 114.664
+rect_scale = Vector2( 0.175, 0.139 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "30"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/LaserBullet"]
 position = Vector2( 32.5431, 32.728 )
 scale = Vector2( 0.14802, 0.117505 )
@@ -183,21 +291,36 @@ texture = ExtResource( 8 )
 
 [node name="Crossbow" type="TextureButton" parent="HBoxContainer/GridContainer"]
 margin_left = 69.0
-margin_top = 76.0
+margin_top = 152.0
 margin_right = 134.0
-margin_bottom = 148.0
+margin_bottom = 224.0
 rect_min_size = Vector2( 65, 72 )
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 4 )
+texture_disabled = ExtResource( 36 )
 expand = true
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="HBoxContainer/GridContainer/Crossbow"]
-margin_left = 21.9867
-margin_top = 2.13904
-margin_right = 194.987
-margin_bottom = 53.139
+margin_left = 19.8594
+margin_top = 1.36023
+margin_right = 192.86
+margin_bottom = 52.3602
 rect_scale = Vector2( 0.175, 0.139 )
 custom_fonts/normal_font = SubResource( 1 )
+text = "Crossbow
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="price" type="RichTextLabel" parent="HBoxContainer/GridContainer/Crossbow"]
+margin_left = 19.8594
+margin_top = 64.0536
+margin_right = 192.86
+margin_bottom = 115.054
+rect_scale = Vector2( 0.175, 0.139 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "40"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -208,21 +331,35 @@ scale = Vector2( 0.14802, 0.117505 )
 texture = ExtResource( 9 )
 
 [node name="M1Garand" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_top = 152.0
+margin_top = 228.0
 margin_right = 65.0
-margin_bottom = 224.0
+margin_bottom = 300.0
 rect_min_size = Vector2( 65, 72 )
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 4 )
+texture_disabled = ExtResource( 36 )
 expand = true
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="HBoxContainer/GridContainer/M1Garand"]
-margin_left = 21.9867
-margin_top = 2.13904
-margin_right = 194.987
-margin_bottom = 53.139
+margin_left = 12.4114
+margin_top = 0.135864
+margin_right = 185.412
+margin_bottom = 51.1358
 rect_scale = Vector2( 0.175, 0.139 )
 custom_fonts/normal_font = SubResource( 1 )
+text = "M1Garand"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="price" type="RichTextLabel" parent="HBoxContainer/GridContainer/M1Garand"]
+margin_left = 19.2509
+margin_top = 63.9033
+margin_right = 192.251
+margin_bottom = 114.903
+rect_scale = Vector2( 0.175, 0.139 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "30"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -234,12 +371,13 @@ texture = ExtResource( 10 )
 
 [node name="M4A1" type="TextureButton" parent="HBoxContainer/GridContainer"]
 margin_left = 69.0
-margin_top = 152.0
+margin_top = 228.0
 margin_right = 134.0
-margin_bottom = 224.0
+margin_bottom = 300.0
 rect_min_size = Vector2( 65, 72 )
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 4 )
+texture_disabled = ExtResource( 36 )
 expand = true
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="HBoxContainer/GridContainer/M4A1"]
@@ -249,6 +387,19 @@ margin_right = 194.987
 margin_bottom = 53.139
 rect_scale = Vector2( 0.175, 0.139 )
 custom_fonts/normal_font = SubResource( 1 )
+text = "M4A1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="price" type="RichTextLabel" parent="HBoxContainer/GridContainer/M4A1"]
+margin_left = 18.4511
+margin_top = 63.8389
+margin_right = 191.451
+margin_bottom = 114.839
+rect_scale = Vector2( 0.175, 0.139 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "30"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -259,12 +410,13 @@ scale = Vector2( 0.14802, 0.117505 )
 texture = ExtResource( 11 )
 
 [node name="M60E4" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_top = 228.0
+margin_top = 304.0
 margin_right = 65.0
-margin_bottom = 300.0
+margin_bottom = 376.0
 rect_min_size = Vector2( 65, 70 )
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 4 )
+texture_disabled = ExtResource( 36 )
 expand = true
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="HBoxContainer/GridContainer/M60E4"]
@@ -274,6 +426,19 @@ margin_right = 194.987
 margin_bottom = 53.139
 rect_scale = Vector2( 0.175, 0.139 )
 custom_fonts/normal_font = SubResource( 1 )
+text = "M60E4"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="price" type="RichTextLabel" parent="HBoxContainer/GridContainer/M60E4"]
+margin_left = 19.0403
+margin_top = 63.8389
+margin_right = 192.041
+margin_bottom = 114.839
+rect_scale = Vector2( 0.175, 0.139 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "50"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -285,12 +450,13 @@ texture = ExtResource( 12 )
 
 [node name="MG42" type="TextureButton" parent="HBoxContainer/GridContainer"]
 margin_left = 69.0
-margin_top = 228.0
+margin_top = 304.0
 margin_right = 134.0
-margin_bottom = 300.0
+margin_bottom = 376.0
 rect_min_size = Vector2( 65, 72 )
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 4 )
+texture_disabled = ExtResource( 36 )
 expand = true
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="HBoxContainer/GridContainer/MG42"]
@@ -300,6 +466,19 @@ margin_right = 194.987
 margin_bottom = 53.139
 rect_scale = Vector2( 0.175, 0.139 )
 custom_fonts/normal_font = SubResource( 1 )
+text = "MG42"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="price" type="RichTextLabel" parent="HBoxContainer/GridContainer/MG42"]
+margin_left = 19.0404
+margin_top = 64.2704
+margin_right = 192.041
+margin_bottom = 115.27
+rect_scale = Vector2( 0.175, 0.139 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "50"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -310,12 +489,13 @@ scale = Vector2( 0.14802, 0.117505 )
 texture = ExtResource( 13 )
 
 [node name="PRD" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_top = 304.0
+margin_top = 380.0
 margin_right = 65.0
-margin_bottom = 376.0
+margin_bottom = 452.0
 rect_min_size = Vector2( 65, 72 )
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 4 )
+texture_disabled = ExtResource( 36 )
 expand = true
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="HBoxContainer/GridContainer/PRD"]
@@ -325,6 +505,19 @@ margin_right = 194.987
 margin_bottom = 53.139
 rect_scale = Vector2( 0.175, 0.139 )
 custom_fonts/normal_font = SubResource( 1 )
+text = "PRD"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="price" type="RichTextLabel" parent="HBoxContainer/GridContainer/PRD"]
+margin_left = 17.8618
+margin_top = 64.2705
+margin_right = 190.862
+margin_bottom = 115.27
+rect_scale = Vector2( 0.175, 0.139 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "40"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -336,21 +529,35 @@ texture = ExtResource( 14 )
 
 [node name="RifleGun" type="TextureButton" parent="HBoxContainer/GridContainer"]
 margin_left = 69.0
-margin_top = 304.0
+margin_top = 380.0
 margin_right = 134.0
-margin_bottom = 376.0
+margin_bottom = 452.0
 rect_min_size = Vector2( 65, 72 )
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 4 )
+texture_disabled = ExtResource( 36 )
 expand = true
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="HBoxContainer/GridContainer/RifleGun"]
-margin_left = 21.9867
-margin_top = 2.13904
-margin_right = 194.987
-margin_bottom = 53.139
+margin_left = 17.128
+margin_top = 1.043
+margin_right = 192.752
+margin_bottom = 52.772
 rect_scale = Vector2( 0.175, 0.139 )
 custom_fonts/normal_font = SubResource( 1 )
+text = "Riflegun"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="price" type="RichTextLabel" parent="HBoxContainer/GridContainer/RifleGun"]
+margin_left = 18.6442
+margin_top = 63.5959
+margin_right = 191.645
+margin_bottom = 114.596
+rect_scale = Vector2( 0.175, 0.139 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "30"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -360,47 +567,6 @@ position = Vector2( 29.2657, 32.4393 )
 scale = Vector2( 0.14802, 0.117505 )
 texture = ExtResource( 15 )
 
-[node name="HealthButton" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_top = 380.0
-margin_right = 65.0
-margin_bottom = 452.0
-rect_min_size = Vector2( 65, 72 )
-texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 4 )
-expand = true
-
-[node name="RichTextLabel3" type="RichTextLabel" parent="HBoxContainer/GridContainer/HealthButton"]
-margin_left = 21.2777
-margin_top = 1.83765
-margin_right = 194.278
-margin_bottom = 52.8376
-rect_scale = Vector2( 0.237383, 0.12884 )
-custom_fonts/normal_font = SubResource( 1 )
-text = "HEALT"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/HealthButton"]
-position = Vector2( 32.1976, 36.452 )
-scale = Vector2( 0.108405, 0.0972224 )
-texture = ExtResource( 16 )
-
-[node name="AmmoButton" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_left = 69.0
-margin_top = 380.0
-margin_right = 134.0
-margin_bottom = 452.0
-rect_min_size = Vector2( 65, 72 )
-texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 4 )
-expand = true
-
-[node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/AmmoButton"]
-position = Vector2( 32.6984, 36.636 )
-scale = Vector2( 0.180379, 0.165484 )
-texture = ExtResource( 17 )
-
 [node name="WoodWall" type="TextureButton" parent="HBoxContainer/GridContainer"]
 margin_top = 456.0
 margin_right = 65.0
@@ -408,7 +574,32 @@ margin_bottom = 528.0
 rect_min_size = Vector2( 65, 72 )
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 4 )
+texture_disabled = ExtResource( 36 )
 expand = true
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="HBoxContainer/GridContainer/WoodWall"]
+margin_left = 16.152
+margin_top = 1.28345
+margin_right = 191.776
+margin_bottom = 53.0125
+rect_scale = Vector2( 0.175, 0.139 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "Wood wall"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="price" type="RichTextLabel" parent="HBoxContainer/GridContainer/WoodWall"]
+margin_left = 20.0707
+margin_top = 64.4072
+margin_right = 195.695
+margin_bottom = 116.136
+rect_scale = Vector2( 0.175, 0.139 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "10"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/WoodWall"]
 position = Vector2( 33.7787, 36.6458 )
@@ -423,7 +614,32 @@ margin_bottom = 528.0
 rect_min_size = Vector2( 65, 72 )
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 4 )
+texture_disabled = ExtResource( 36 )
 expand = true
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="HBoxContainer/GridContainer/SteelWall"]
+margin_left = 18.8074
+margin_top = 1.28345
+margin_right = 194.431
+margin_bottom = 53.0125
+rect_scale = Vector2( 0.175, 0.139 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "Steel Wall"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="price" type="RichTextLabel" parent="HBoxContainer/GridContainer/SteelWall"]
+margin_left = 18.8074
+margin_top = 63.9976
+margin_right = 194.431
+margin_bottom = 115.727
+rect_scale = Vector2( 0.175, 0.139 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "30"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/SteelWall"]
 position = Vector2( 32.3479, 36.0159 )
@@ -437,7 +653,32 @@ margin_bottom = 604.0
 rect_min_size = Vector2( 65, 72 )
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 4 )
+texture_disabled = ExtResource( 36 )
 expand = true
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="HBoxContainer/GridContainer/GoldWall"]
+margin_left = 18.3912
+margin_top = 0.704102
+margin_right = 194.015
+margin_bottom = 52.4331
+rect_scale = Vector2( 0.175, 0.139 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "Gold Wall"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="price" type="RichTextLabel" parent="HBoxContainer/GridContainer/GoldWall"]
+margin_left = 19.5109
+margin_top = 63.6899
+margin_right = 195.135
+margin_bottom = 115.419
+rect_scale = Vector2( 0.175, 0.139 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "50"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/GoldWall"]
 position = Vector2( 33.1585, 34.9042 )
@@ -452,35 +693,70 @@ margin_bottom = 604.0
 rect_min_size = Vector2( 65, 72 )
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 4 )
+texture_disabled = ExtResource( 36 )
 expand = true
+
+[node name="RichTextLabel6" type="RichTextLabel" parent="HBoxContainer/GridContainer/Portal"]
+margin_left = 16.9838
+margin_top = 0.97583
+margin_right = 192.608
+margin_bottom = 52.7048
+rect_scale = Vector2( 0.175, 0.139 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "Portal"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="price" type="RichTextLabel" parent="HBoxContainer/GridContainer/Portal"]
+margin_left = 17.7321
+margin_top = 63.9617
+margin_right = 193.356
+margin_bottom = 115.691
+rect_scale = Vector2( 0.175, 0.139 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "100"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/Portal"]
 position = Vector2( 32.6885, 36.2599 )
 texture = ExtResource( 21 )
 
-[node name="Sword" type="TextureButton" parent="HBoxContainer/GridContainer"]
+[node name="Trambolin" type="TextureButton" parent="HBoxContainer/GridContainer"]
 margin_top = 608.0
 margin_right = 65.0
 margin_bottom = 680.0
 rect_min_size = Vector2( 65, 72 )
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 4 )
+texture_disabled = ExtResource( 36 )
 expand = true
 
-[node name="knife" type="Sprite" parent="HBoxContainer/GridContainer/Sword"]
-position = Vector2( 33.0737, 34.4194 )
-scale = Vector2( 0.0998392, 0.0467881 )
-texture = ExtResource( 22 )
+[node name="RichTextLabel7" type="RichTextLabel" parent="HBoxContainer/GridContainer/Trambolin"]
+margin_left = 15.9089
+margin_top = 1.23682
+margin_right = 191.533
+margin_bottom = 52.9658
+rect_scale = Vector2( 0.175, 0.139 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "Trambolin"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Trambolin" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_left = 69.0
-margin_top = 608.0
-margin_right = 134.0
-margin_bottom = 680.0
-rect_min_size = Vector2( 65, 72 )
-texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 4 )
-expand = true
+[node name="price" type="RichTextLabel" parent="HBoxContainer/GridContainer/Trambolin"]
+margin_left = 18.577
+margin_top = 63.1685
+margin_right = 194.201
+margin_bottom = 114.897
+rect_scale = Vector2( 0.175, 0.139 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "40"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/Trambolin"]
 position = Vector2( 32.3479, 29.9028 )
@@ -488,13 +764,39 @@ scale = Vector2( 0.318125, 0.294891 )
 texture = ExtResource( 23 )
 
 [node name="BasicTurret" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_top = 684.0
-margin_right = 65.0
-margin_bottom = 756.0
+margin_left = 69.0
+margin_top = 608.0
+margin_right = 134.0
+margin_bottom = 680.0
 rect_min_size = Vector2( 65, 72 )
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 4 )
+texture_disabled = ExtResource( 36 )
 expand = true
+
+[node name="RichTextLabel8" type="RichTextLabel" parent="HBoxContainer/GridContainer/BasicTurret"]
+margin_left = 13.6241
+margin_top = 1.93945
+margin_right = 263.624
+margin_bottom = 53.8805
+rect_scale = Vector2( 0.175, 0.139 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "Simple Turret"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="price" type="RichTextLabel" parent="HBoxContainer/GridContainer/BasicTurret"]
+margin_left = 17.7321
+margin_top = 63.8711
+margin_right = 193.356
+margin_bottom = 115.6
+rect_scale = Vector2( 0.175, 0.139 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "30"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/BasicTurret"]
 position = Vector2( 29.5625, 29.6084 )
@@ -508,13 +810,38 @@ scale = Vector2( 0.097, 0.079 )
 texture = ExtResource( 25 )
 
 [node name="MachineTurret" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_left = 69.0
 margin_top = 684.0
-margin_right = 134.0
+margin_right = 65.0
 margin_bottom = 756.0
+rect_min_size = Vector2( 65, 72 )
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 4 )
+texture_disabled = ExtResource( 36 )
 expand = true
+
+[node name="RichTextLabel9" type="RichTextLabel" parent="HBoxContainer/GridContainer/MachineTurret"]
+margin_left = 13.0291
+margin_top = 0.443359
+margin_right = 263.029
+margin_bottom = 52.3844
+rect_scale = Vector2( 0.175, 0.139 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "Machine Turret"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="price" type="RichTextLabel" parent="HBoxContainer/GridContainer/MachineTurret"]
+margin_left = 18.577
+margin_top = 63.7808
+margin_right = 194.201
+margin_bottom = 115.51
+rect_scale = Vector2( 0.175, 0.139 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "40"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/MachineTurret"]
 position = Vector2( 26.3662, 23.6274 )
@@ -528,12 +855,38 @@ scale = Vector2( 0.097, 0.073 )
 texture = ExtResource( 27 )
 
 [node name="LaserTurret" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_top = 760.0
-margin_right = 65.0
-margin_bottom = 832.0
+margin_left = 69.0
+margin_top = 684.0
+margin_right = 134.0
+margin_bottom = 756.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 4 )
+texture_disabled = ExtResource( 36 )
 expand = true
+
+[node name="RichTextLabel10" type="RichTextLabel" parent="HBoxContainer/GridContainer/LaserTurret"]
+margin_left = 14.104
+margin_top = 1.146
+margin_right = 264.104
+margin_bottom = 53.087
+rect_scale = Vector2( 0.175, 0.139 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "Laser Turret"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="price" type="RichTextLabel" parent="HBoxContainer/GridContainer/LaserTurret"]
+margin_left = 18.2121
+margin_top = 64.1323
+margin_right = 193.836
+margin_bottom = 115.861
+rect_scale = Vector2( 0.175, 0.139 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "60"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Sprite3" type="Sprite" parent="HBoxContainer/GridContainer/LaserTurret"]
 position = Vector2( 28.6047, 26.4077 )
@@ -547,14 +900,38 @@ scale = Vector2( 0.097, 0.079 )
 texture = ExtResource( 29 )
 
 [node name="BazukaTurret" type="TextureButton" parent="HBoxContainer/GridContainer"]
-margin_left = 69.0
 margin_top = 760.0
-margin_right = 134.0
+margin_right = 65.0
 margin_bottom = 832.0
 rect_min_size = Vector2( 65, 72 )
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 4 )
+texture_disabled = ExtResource( 36 )
 expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel11" type="RichTextLabel" parent="HBoxContainer/GridContainer/BazukaTurret"]
+margin_left = 13.0291
+margin_top = 1.05566
+margin_right = 263.029
+margin_bottom = 52.9967
+rect_scale = Vector2( 0.175, 0.139 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "Bazooka Turret"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="price" type="RichTextLabel" parent="HBoxContainer/GridContainer/BazukaTurret"]
+margin_left = 18.0971
+margin_top = 64.3926
+margin_right = 193.721
+margin_bottom = 116.122
+rect_scale = Vector2( 0.175, 0.139 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "70"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -589,6 +966,9 @@ margin_bottom = 949.83
 rect_scale = Vector2( 0.477621, 0.443267 )
 texture_normal = ExtResource( 33 )
 texture_pressed = ExtResource( 34 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="NoButton" type="TextureButton" parent="BuyQuestion"]
 margin_left = 421.155
@@ -674,6 +1054,11 @@ texture = ExtResource( 35 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="CheckAvailableItems" type="Timer" parent="."]
+autostart = true
+[connection signal="pressed" from="HBoxContainer/GridContainer/HealthButton" to="." method="_on_HealthButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/GridContainer/AmmoButton" to="." method="_on_AmmoButton_pressed"]
 [connection signal="pressed" from="HBoxContainer/GridContainer/RasenganButton" to="." method="_on_RasenganButton_pressed"]
 [connection signal="pressed" from="HBoxContainer/GridContainer/FireBulletButton" to="." method="_on_FireBulletButton_pressed"]
 [connection signal="pressed" from="HBoxContainer/GridContainer/LaserBullet" to="." method="_on_LaserBullet_pressed"]
@@ -684,13 +1069,10 @@ __meta__ = {
 [connection signal="pressed" from="HBoxContainer/GridContainer/MG42" to="." method="_on_MG42_pressed"]
 [connection signal="pressed" from="HBoxContainer/GridContainer/PRD" to="." method="_on_PRD_pressed"]
 [connection signal="pressed" from="HBoxContainer/GridContainer/RifleGun" to="." method="_on_RifleGun_pressed"]
-[connection signal="pressed" from="HBoxContainer/GridContainer/HealthButton" to="." method="_on_HealthButton_pressed"]
-[connection signal="pressed" from="HBoxContainer/GridContainer/AmmoButton" to="." method="_on_AmmoButton_pressed"]
 [connection signal="pressed" from="HBoxContainer/GridContainer/WoodWall" to="." method="_on_WoodWall_pressed"]
 [connection signal="pressed" from="HBoxContainer/GridContainer/SteelWall" to="." method="_on_SteelWall_pressed"]
 [connection signal="pressed" from="HBoxContainer/GridContainer/GoldWall" to="." method="_on_GoldWall_pressed"]
 [connection signal="pressed" from="HBoxContainer/GridContainer/Portal" to="." method="_on_Portal_pressed"]
-[connection signal="pressed" from="HBoxContainer/GridContainer/Sword" to="." method="_on_Sword_pressed"]
 [connection signal="pressed" from="HBoxContainer/GridContainer/Trambolin" to="." method="_on_Trambolin_pressed"]
 [connection signal="pressed" from="HBoxContainer/GridContainer/BasicTurret" to="." method="_on_Turret_pressed"]
 [connection signal="pressed" from="HBoxContainer/GridContainer/MachineTurret" to="." method="_on_MachineTurret_pressed"]
@@ -698,3 +1080,4 @@ __meta__ = {
 [connection signal="pressed" from="HBoxContainer/GridContainer/BazukaTurret" to="." method="_on_BazukaTurret_pressed"]
 [connection signal="pressed" from="BuyQuestion/YesButton" to="." method="_on_YesButton_pressed"]
 [connection signal="pressed" from="BuyQuestion/NoButton" to="." method="_on_NoButton_pressed"]
+[connection signal="timeout" from="CheckAvailableItems" to="." method="_on_CheckAvailableItems_timeout"]
