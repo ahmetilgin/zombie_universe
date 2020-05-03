@@ -2,10 +2,18 @@ extends CanvasLayer
 onready var coin = get_node("../Game_UI/Coin_Counter")
 signal item_sold(item)
 var constants = preload("res://Stages/constants.gd").new()
-
+var no_money_sound = AudioStreamPlayer.new()
+var no_money_sound_file = load("res://Resources/AudioFiles/GunShoot/emptyselect.wav")
 var selected_item_id = 0
 
+func set_sounds():
+	no_money_sound.set_stream(no_money_sound_file)
+	no_money_sound.volume_db = 1
+	no_money_sound.pitch_scale = 1
+	add_child(no_money_sound)
+	
 func _ready():
+	set_sounds()
 	hide_question_panel()
 	pass
 
@@ -31,6 +39,7 @@ func market_calculator(item_id):
 			show_question_panel(item_id)
 			return true
 		else:
+			no_money_sound.play()
 			return false
 			
 func _process(delta):
@@ -134,8 +143,8 @@ func _on_NoButton_pressed():
 func _on_CheckAvailableItems_timeout():
 	for	 button in $HBoxContainer/GridContainer.get_children():
 		if int(button.get_node("price").get_text()) > coin.count:
-			button.disabled = true
+			button.modulate = Color(0.239216, 0.239216, 0.239216)
 		else:
-			button.disabled = false
+			button.modulate = Color(1, 1, 1)
 		
 	pass # Replace with function body.
