@@ -22,24 +22,20 @@ func _ready():
 var gravity_force = Vector2(0, 3)  # gravity force
 var velocity = Vector2()  # the area's velocity
 
-func _on_Tween_tween_completed(object, key):
-	queue_free()
-	pass # Replace with function body.
 
-
-func _on_Timer_timeout():
-	queue_free()
-	pass # Replace with function body.
-
-
-
-
+var is_entered = false
 func _on_area_body_entered(body):
-	if "player" in body.name:
+	if "player" in body.name and !is_entered :
+		is_entered = true
 		coin_number.counting()
 		$Sound.play()
-		set_deferred("monitoring",false)
+		set_deferred("monitoring",true)
 		$Tween.start()
-		$Timer.start()
 
+
+	pass # Replace with function body.
+
+
+func _on_Sound_finished():
+	queue_free()
 	pass # Replace with function body.
