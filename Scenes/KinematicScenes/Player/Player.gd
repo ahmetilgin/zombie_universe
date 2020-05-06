@@ -14,7 +14,7 @@ const Riflegun_bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/Rif
 
 
 
-
+var blood_anim = preload("res://Scenes/StaticScenes/BloodAnimation/BloodAnimation.tscn")
 #touch screen option
 
 var rasengan_bullet_sound = AudioStreamPlayer.new()
@@ -28,6 +28,7 @@ var MG42_bullet_sound = AudioStreamPlayer.new()
 var PRD_bullet_sound = AudioStreamPlayer.new()
 var Riflegun_bullet_sound = AudioStreamPlayer.new()
 var EmptyGun_sound = AudioStreamPlayer.new()
+var SwordSlide_Sound = AudioStreamPlayer.new()
 
 var tracked_bullet_file = load("res://Resources/AudioFiles/Ak47Bullet/163457__lemudcrab__ak47-shot.wav")
 var rasengan_bullet_file = load("res://Resources/AudioFiles/GunShoot/GrenadeLauncher.wav")
@@ -40,6 +41,7 @@ var MG42_bullet_file = load("res://Resources/AudioFiles/GunShoot/MG42.wav")
 var PRD_bullet_file = load("res://Resources/AudioFiles/GunShoot/PRD.wav")
 var Riflegun_bullet_file = load("res://Resources/AudioFiles/GunShoot/RifleGun.wav")
 var EmptyGun_sound_file = load("res://Resources/AudioFiles/GunShoot/GunEmpty.wav")
+var SwordSlide_Sound_file = load("res://Resources/AudioFiles/GunShoot/swordslash.wav")
 #var rasengan_weapon = Image.new()
 #var shotgun_weapon = Image.new()
 #var ak47_weapon = Image.new()
@@ -208,6 +210,7 @@ func set_shoot_timer(shoot_time):
 	bullet_shoot_timer.set_wait_time(shoot_time)
 
 func set_sounds():
+	SwordSlide_Sound.set_stream(SwordSlide_Sound_file)
 	rasengan_bullet_sound.set_stream(rasengan_bullet_file)
 	upgrade_bullet_sound.set_stream(upgrade_bullet_file)
 	tracked_bullet_sound.set_stream(tracked_bullet_file)
@@ -219,6 +222,8 @@ func set_sounds():
 	PRD_bullet_sound.set_stream(PRD_bullet_file)
 	Riflegun_bullet_sound.set_stream(Riflegun_bullet_file)
 	EmptyGun_sound.set_stream(EmptyGun_sound_file)
+	SwordSlide_Sound.volume_db = 1
+	SwordSlide_Sound.pitch_scale = 1	
 	rasengan_bullet_sound.volume_db = 1
 	rasengan_bullet_sound.pitch_scale = 1	
 	upgrade_bullet_sound.volume_db = 1
@@ -240,7 +245,8 @@ func set_sounds():
 	Riflegun_bullet_sound.volume_db = 1
 	Riflegun_bullet_sound.pitch_scale = 1	
 	EmptyGun_sound.volume_db = 1
-	EmptyGun_sound.pitch_scale = 1	
+	EmptyGun_sound.pitch_scale = 1
+	add_child(SwordSlide_Sound)
 	add_child(rasengan_bullet_sound)
 	add_child(upgrade_bullet_sound)
 	add_child(tracked_bullet_sound)
@@ -293,6 +299,7 @@ func empty_gun():
 	if is_empty_gun_ready:
 		EmptyGun_sound.play()
 	empty_shoot_timer.start()
+	is_empty_gun_ready = false
 	pass
 func _check_bullet_count():
 	return bullet_size > 0
@@ -348,7 +355,9 @@ func _is_movable():
 
 func _is_idle():
 	return !is_down && !is_melee && !is_attack# && !is_hurt
-
+func _play_melee_sound():
+	SwordSlide_Sound.play()
+	
 func _play_animation(animation_state):
 	$AnimationPlayer.play(animation_state)
 	
@@ -445,6 +454,7 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("ui_focus_prev") or touch_melee:
 			if _is_movable():
 					_set_is_melee(true)
+					_play_melee_sound()
 					_play_melee_animation()
 
 		if (Input.is_action_pressed("ui_focus_next") or touch_fire ) and is_it_time_to_shoot:
@@ -460,9 +470,9 @@ func _physics_process(delta):
 
 				_set_bullet_direction(sign($Position2D.position.x))
 				current_bullet.position = $Position2D.global_position
-			else:
-				empty_gun()
-				is_empty_gun_ready = false
+			elif !_check_bullet_count():
+					empty_gun()
+
 		if (Input.is_action_just_pressed("ui_up") or touch_up) and !is_first_jump:
 				motion.y = jump
 				is_first_jump = true
@@ -517,10 +527,13 @@ func _on_AnimatedSprite_animation_finished():
 
 func upgrade_power_up():
 	current_bullet_power = 2
-
+var blood_position_calibration = Vector2(10,30) #kanın zombi üzerinde ince kalibrasyonu
 func _on_Area2D_body_entered(body):
 	if "Zombie" in body.name:
 		body.dead(1,"Zombie") 
+		var blood_instance = blood_anim.instance()
+		body.add_child(blood_instance)
+		blood_instance.set_global_position(body.get_global_position() + blood_position_calibration)
 
 
 func healt_kit(healt):

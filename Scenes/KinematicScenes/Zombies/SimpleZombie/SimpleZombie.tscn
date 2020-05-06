@@ -2641,8 +2641,8 @@ __meta__ = {
 }
 
 [node name="body" type="Sprite" parent="Zombie"]
-position = Vector2( -32.8126, -92.7734 )
-rotation = 0.300197
+position = Vector2( 163.54, 144.54 )
+rotation = 0.142561
 scale = Vector2( 1, 0.822171 )
 texture = ExtResource( 47 )
 offset = Vector2( -2.10062, -42.884 )
@@ -2653,7 +2653,7 @@ __meta__ = {
 
 [node name="arm1" type="Sprite" parent="Zombie/body"]
 position = Vector2( -12.1829, -67.8104 )
-rotation = -2.21737
+rotation = 0.112754
 scale = Vector2( 0.86, 0.86 )
 texture = ExtResource( 48 )
 offset = Vector2( -6.28186, 23.8096 )
@@ -2682,7 +2682,7 @@ __meta__ = {
 
 [node name="arm2" type="Sprite" parent="Zombie/body"]
 position = Vector2( -8.56604, -62.9152 )
-rotation = -1.82759
+rotation = -1.19542
 scale = Vector2( 0.86, 0.86 )
 z_index = -1
 texture = ExtResource( 48 )
@@ -2694,7 +2694,7 @@ __meta__ = {
 
 [node name="arm4" type="Sprite" parent="Zombie/body/arm2"]
 position = Vector2( -15.488, 49.2564 )
-rotation = -0.446302
+rotation = 0.219224
 texture = ExtResource( 48 )
 offset = Vector2( -9.65631, 25.1559 )
 __meta__ = {
@@ -2712,7 +2712,7 @@ __meta__ = {
 
 [node name="head" type="Sprite" parent="Zombie/body"]
 position = Vector2( -1.11824, -83.1501 )
-rotation = -0.00744421
+rotation = -0.0420014
 scale = Vector2( 1.00001, 1.21629 )
 texture = ExtResource( 50 )
 offset = Vector2( -0.808243, -54.8763 )
@@ -2722,7 +2722,7 @@ __meta__ = {
 }
 
 [node name="knees" type="Sprite" parent="Zombie"]
-position = Vector2( -32.4695, -93.5497 )
+position = Vector2( 163.576, 143.45 )
 offset = Vector2( -157.399, -147.568 )
 __meta__ = {
 "_edit_bone_": true,
