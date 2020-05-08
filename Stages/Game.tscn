@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://Stages/Game.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/GraveyardTileSet/png/Tiles/Tile1.png" type="Texture" id=2]
@@ -23,10 +23,9 @@
 [ext_resource path="res://Resources/Sprites/UISprites/Windows.png" type="Texture" id=21]
 [ext_resource path="res://Resources/Sprites/starcoinrotate1.png" type="Texture" id=22]
 [ext_resource path="res://Stages/CoinCounter.gd" type="Script" id=23]
-[ext_resource path="res://Resources/Sprites/UISprites/squarebuttonnormal.png" type="Texture" id=24]
-[ext_resource path="res://Resources/Sprites/UISprites/squarebuttonpressed.png" type="Texture" id=25]
+[ext_resource path="res://Resources/Sprites/UISprites/squaremarket.png" type="Texture" id=24]
+[ext_resource path="res://Resources/Sprites/UISprites/squarebuttoncancel.png" type="Texture" id=25]
 [ext_resource path="res://Resources/Sprites/UISprites/squarebuttondisable.png" type="Texture" id=26]
-[ext_resource path="res://Resources/Sprites/UISprites/shopingicon.png" type="Texture" id=27]
 [ext_resource path="res://Resources/AudioFiles/Game/savymerchant.ogg" type="AudioStream" id=28]
 [ext_resource path="res://Resources/Sprites/GameBackgrounds/1gamebackground/1gamebackground.png" type="Texture" id=29]
 
@@ -592,22 +591,18 @@ __meta__ = {
 }
 
 [node name="Market_Button" type="TextureButton" parent="Game_UI"]
-margin_left = 22.4032
-margin_top = 19.3609
-margin_right = 399.403
-margin_bottom = 434.36
-rect_scale = Vector2( 0.308127, 0.290267 )
+margin_left = 22.0
+margin_top = 19.0
+margin_right = 534.0
+margin_bottom = 531.0
+rect_scale = Vector2( 0.299559, 0.292191 )
+toggle_mode = true
 texture_normal = ExtResource( 24 )
 texture_pressed = ExtResource( 25 )
 texture_disabled = ExtResource( 26 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="shopingicon" type="Sprite" parent="Game_UI/Market_Button"]
-position = Vector2( 126.829, 119.022 )
-scale = Vector2( 0.291256, 0.282605 )
-texture = ExtResource( 27 )
 
 [node name="CountDownTimer" type="RichTextLabel" parent="Game_UI"]
 margin_left = 767.0
@@ -616,6 +611,9 @@ margin_right = 975.0
 margin_bottom = 74.0
 custom_fonts/normal_font = SubResource( 13 )
 text = "TIME:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Time" type="RichTextLabel" parent="Game_UI/CountDownTimer"]
 margin_left = 76.0

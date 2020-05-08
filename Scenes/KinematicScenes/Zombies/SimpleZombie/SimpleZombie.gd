@@ -256,6 +256,7 @@ func chech_zombie_colliding():
 	is_zombie_action = false
 	if attack_ray_cast.is_colliding():
 		var playerFound = false
+
 		if "player" in attack_ray_cast.get_collider().name:
 			playerFound = true
 			_zombie_attack_to_player(5)
@@ -283,6 +284,8 @@ func chech_zombie_colliding():
 			else:
 				back = -15
 			colliding_zombie.motion += Vector2(back, 0)
+		elif "Trambolin" in attack_ray_cast.get_collider().name:
+			motion.y -= 100
 
 func move_like_basic_zombie():
 	if len(path) == 0:
