@@ -400,10 +400,10 @@ script = ExtResource( 15 )
 [node name="Game_UI" type="CanvasLayer" parent="."]
 
 [node name="accept_button" type="TextureButton" parent="Game_UI"]
-margin_left = 464.921
-margin_top = 629.575
-margin_right = 1136.92
-margin_bottom = 1100.57
+margin_left = 465.0
+margin_top = 630.0
+margin_right = 889.0
+margin_bottom = 870.0
 rect_scale = Vector2( 0.616032, 0.280316 )
 texture_normal = ExtResource( 16 )
 texture_pressed = ExtResource( 17 )
@@ -519,10 +519,10 @@ __meta__ = {
 }
 
 [node name="bullet_counter" type="RichTextLabel" parent="Game_UI"]
-margin_left = 327.734
-margin_top = 34.197
-margin_right = 367.734
-margin_bottom = 74.197
+margin_left = 328.0
+margin_top = 34.0
+margin_right = 444.0
+margin_bottom = 74.0
 rect_scale = Vector2( 0.932722, 1.32486 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -575,10 +575,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 424.085
-margin_top = -367.346
-margin_right = 474.085
-margin_bottom = -317.346
+margin_left = 418.0
+margin_top = -367.0
+margin_right = 494.0
+margin_bottom = -317.0
 rect_scale = Vector2( 0.933228, 1.00751 )
 custom_fonts/normal_font = SubResource( 13 )
 custom_colors/default_color = Color( 0.901961, 0.992157, 0.00784314, 1 )
@@ -617,11 +617,10 @@ __meta__ = {
 
 [node name="Time" type="RichTextLabel" parent="Game_UI/CountDownTimer"]
 margin_left = 76.0
-margin_right = 186.0
-margin_bottom = 40.0
+margin_right = 194.0
+margin_bottom = 29.0
 custom_fonts/normal_font = SubResource( 13 )
-text = "20
-"
+text = "20"
 __meta__ = {
 "_edit_use_anchors_": false
 }

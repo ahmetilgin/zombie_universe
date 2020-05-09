@@ -28,5 +28,5 @@ func _on_Riflegun_body_entered(body):
 		var blood_instance = blood_anim.instance()
 		body.add_child(blood_instance)
 		blood_instance.set_global_position(get_global_position())
-	queue_free()
+	
 	pass # Replace with function body.

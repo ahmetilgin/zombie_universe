@@ -28,7 +28,7 @@ func _on_upgradebllet_body_entered(body):
 		var blood_instance = blood_anim.instance()
 		body.add_child(blood_instance)
 		blood_instance.set_global_position(get_global_position())
-	queue_free()
+	
 
 
 
@@ -37,3 +37,8 @@ func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
 	pass
 
+
+
+func _on_Timer_timeout():
+	queue_free()
+	pass # Replace with function body.

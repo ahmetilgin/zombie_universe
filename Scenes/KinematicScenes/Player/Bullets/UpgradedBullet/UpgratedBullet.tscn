@@ -11,7 +11,7 @@
 radius = 8.35491
 
 [sub_resource type="ParticlesMaterial" id=2]
-angular_velocity = 3.32403e+021
+angular_velocity = 3.32403e+21
 
 [sub_resource type="CanvasItemMaterial" id=3]
 render_priority = 4
@@ -54,5 +54,11 @@ centered = false
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 position = Vector2( 7.45113, 5.04313 )
 scale = Vector2( 0.796659, 0.761863 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+autostart = true
 [connection signal="body_entered" from="." to="." method="_on_upgradebllet_body_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

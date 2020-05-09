@@ -28,7 +28,6 @@ var pause_time = 100
 var counttimer
 var second_passed = true
 var portal_coordinates = [Vector2(4,7),Vector2(41,7)]
-var turret_instance_list = []
 var is_teleport_buying = false
 var teleport_locs = []
 var teleport_pair = []
@@ -50,7 +49,6 @@ var turret_paths = {
 	803: preload("res://Scenes/KinematicScenes/Taretler/LaserTurret/LaserTurret.tscn"),
 	804: preload("res://Scenes/KinematicScenes/Taretler/BazukaTurret/BazukaTurret.tscn"),
 }
-var is_turret = false
 
 func create_portals(portal_count):
 	for portal in portal_list:
@@ -148,7 +146,6 @@ func item_solded(item_id):
 		$GameAreaCam.current = true
 		pass
 	elif item_type == 800:
-		is_turret = true
 		buy_turret(item_id)
 		$GameAreaCam.current = true
 		update()
@@ -289,10 +286,18 @@ func buy_cancel():
 	hide_accept_button()
 	if is_teleport_buying:
 		for teleport in teleport_pair:
-			teleport.queue_free()
+			var wr = weakref(teleport);
+			if (!wr.get_ref()):
+				teleport.queue_free()
+		teleport_pair.clear()
+		selected_teleport_location_count = 0
+		teleport_locs.clear()
+		is_teleport_buying = false
 	else:
 		instance.queue_free()
-
+	is_create_instance = false
+	disable_accept_button()
+	
 var started_wave_count = 0
 
 func wave_started():
@@ -385,9 +390,6 @@ func finish_turret_buy():
 	hide_market()
 	hide_accept_button()
 	is_the_buy_button_clicked = false
-	if is_turret:
-		turret_instance_list.push_back(instance)
-		is_turret = false
 	tile_grid = null
 	disable_accept_button()
 
@@ -400,7 +402,8 @@ func _on_acceptbutton_pressed():
 	$player/Camera2D.current = true
 	$Game_UI/Market_Button.pressed = false
 	is_opened_market = false
-	
+	is_create_instance = false
+	disable_accept_button()	
 
 
 
@@ -417,11 +420,6 @@ func _on_count_down_timer_timeout():
 	counttimer -= 1
 	if  (counttimer < 1):
 		counttimer = pause_time
-		for turret in turret_instance_list:
-			var wr = weakref(turret);
-			if (!wr.get_ref()):
-				turret.hide_rotations()
-		turret_instance_list.clear()
 	$Game_UI/CountDownTimer/Time.text = String(counttimer)
 	second_passed = true
 	

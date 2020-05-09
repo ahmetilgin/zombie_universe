@@ -130,5 +130,11 @@ nine_patch_stretch = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="CloseRotationTimer" type="Timer" parent="."]
+wait_time = 20.0
+one_shot = true
+autostart = true
 [connection signal="pressed" from="DirectionButton/TurnRight" to="." method="_on_TurnRight_pressed"]
 [connection signal="pressed" from="DirectionButton/TurnLeft" to="." method="_on_TurnLeft_pressed"]
+[connection signal="timeout" from="CloseRotationTimer" to="." method="_on_Timer_timeout"]

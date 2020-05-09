@@ -151,3 +151,8 @@ func _on_TurnLeft_pressed():
 		scale.x = -scale.x
 		$DirectionButton.scale.x = -$DirectionButton.scale.x
 	pass # Replace with function body.
+
+
+func _on_CloseRotationsTimer_timeout():
+	hide_rotations()
+	pass # Replace with function body.
