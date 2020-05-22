@@ -1,13 +1,13 @@
 [gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/StaticScenes/ExtraBullet/ExtraBullet.gd" type="Script" id=1]
-[ext_resource path="res://Resources/Sprites/Ammo/wooden_crate_1.png" type="Texture" id=2]
-[ext_resource path="res://Resources/Sprites/Ammo/wooden_crate_2.png" type="Texture" id=3]
-[ext_resource path="res://Resources/Sprites/Ammo/wooden_crate_3.png" type="Texture" id=4]
-[ext_resource path="res://Resources/Sprites/Ammo/wooden_crate_4.png" type="Texture" id=5]
-[ext_resource path="res://Resources/Sprites/Ammo/wooden_crate_5.png" type="Texture" id=6]
-[ext_resource path="res://Resources/Sprites/Ammo/wooden_crate_6.png" type="Texture" id=7]
-[ext_resource path="res://Resources/Sprites/Ammo/wooden_crate_7.png" type="Texture" id=8]
+[ext_resource path="res://Resources/Sprites/Ammo/woodencrate1.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Sprites/Ammo/woodencrate2.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Sprites/Ammo/woodencrate3.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Sprites/Ammo/woodencrate4.png" type="Texture" id=5]
+[ext_resource path="res://Resources/Sprites/Ammo/woodencrate5.png" type="Texture" id=6]
+[ext_resource path="res://Resources/Sprites/Ammo/woodencrate6.png" type="Texture" id=7]
+[ext_resource path="res://Resources/Sprites/Ammo/woodencrate7.png" type="Texture" id=8]
 [ext_resource path="res://Resources/AudioFiles/GunShoot/Reloaded.wav" type="AudioStream" id=9]
 
 [sub_resource type="SpriteFrames" id=1]
@@ -35,7 +35,7 @@ position = Vector2( 0.450064, -1.49083 )
 scale = Vector2( 0.325516, 0.550491 )
 frames = SubResource( 1 )
 animation = "Ammo"
-frame = 1
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

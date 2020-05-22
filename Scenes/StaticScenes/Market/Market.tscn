@@ -16,7 +16,7 @@
 [ext_resource path="res://Resources/Sprites/Guns/PRD.png" type="Texture" id=14]
 [ext_resource path="res://Resources/Sprites/Guns/riflegun.png" type="Texture" id=15]
 [ext_resource path="res://Resources/Sprites/Healt/heal1.png" type="Texture" id=16]
-[ext_resource path="res://Resources/Sprites/Ammo/wooden_crate_1.png" type="Texture" id=17]
+[ext_resource path="res://Resources/Sprites/Ammo/woodencrate1.png" type="Texture" id=17]
 [ext_resource path="res://Resources/Sprites/Fence/WoodFence/WoodFenceBack.png" type="Texture" id=18]
 [ext_resource path="res://Resources/Sprites/Fence/IronFence/IronFenceBack.png" type="Texture" id=19]
 [ext_resource path="res://Resources/Sprites/Fence/GoldFence/GoldFenceBack.png" type="Texture" id=20]
@@ -35,6 +35,7 @@
 [ext_resource path="res://Resources/Sprites/UISprites/PressedButton.png" type="Texture" id=34]
 [ext_resource path="res://Resources/Sprites/starcoinrotate1.png" type="Texture" id=35]
 [ext_resource path="res://Resources/Sprites/UISprites/rect10_disable.png" type="Texture" id=36]
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 36
