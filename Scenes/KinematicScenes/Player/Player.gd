@@ -30,7 +30,7 @@ var Riflegun_bullet_sound = AudioStreamPlayer.new()
 var EmptyGun_sound = AudioStreamPlayer.new()
 var SwordSlide_Sound = AudioStreamPlayer.new()
 
-var tracked_bullet_file = load("res://Resources/AudioFiles/Ak47Bullet/163457__lemudcrab__ak47-shot.wav")
+var tracked_bullet_file = load("res://Resources/AudioFiles/Ak47Bullet/ak47shot.wav")
 var rasengan_bullet_file = load("res://Resources/AudioFiles/GunShoot/GrenadeLauncher.wav")
 var upgrade_bullet_file = load("res://Resources/AudioFiles/Shots/shotgun.wav")
 var crossbow_bullet_file = load("res://Resources/AudioFiles/GunShoot/Crossbow.wav")

@@ -4,7 +4,8 @@
 [ext_resource path="res://Resources/Sprites/GameBackgrounds/3gamebackground/3gamebackground.png" type="Texture" id=2]
 [ext_resource path="res://Resources/Sprites/HealthBar/decrease.png" type="Texture" id=3]
 [ext_resource path="res://Resources/Sprites/UISprites/Window2s.png" type="Texture" id=4]
-[ext_resource path="res://Resources/Fonts/bubble_soap/Bubble&Soap light_PersonalUseOnly.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Resources/Fonts/bubble_soap/BubbleSoaplightPersonalUseOnly.ttf" type="DynamicFontData" id=5]
+
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
