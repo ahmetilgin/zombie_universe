@@ -12,7 +12,7 @@ var player = null
 
 var finish_portal = 0
 signal stop_wave
-var start_portal = 2
+var start_portal = 1
 var portal_list = []
 var is_the_buy_button_clicked = false
 var created_turret 
@@ -172,7 +172,7 @@ func _ready():
 	connect_market()
 	countdown_timer()
 	add_child(player)
-	get_node("CanvasLayer").add_child(gameover_scene.instance())
+	get_node("Game_UI").add_child(gameover_scene.instance())
 	on_time_countdown_unvisible()
 	hide_market()
 	hide_accept_button()

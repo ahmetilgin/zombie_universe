@@ -43,7 +43,7 @@ __meta__ = {
 margin_left = 20.0
 margin_top = 20.0
 margin_right = 1420.0
-margin_bottom = 690.0
+margin_bottom = 691.0
 size_flags_horizontal = 5
 custom_constants/separation = 32
 

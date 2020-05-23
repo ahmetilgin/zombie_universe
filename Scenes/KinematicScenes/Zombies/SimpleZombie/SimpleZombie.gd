@@ -114,8 +114,7 @@ func can_zombie_jump(direction,cross_index):
 			var player_pos = player.get_global_position()
 			var zombie_pos = get_global_position()
 			if player_pos.y < zombie_pos.y:
-				var diff = player_pos.y - zombie_pos.y
-				motion.y += max(diff * 3, -1000)
+				motion.y += max(cross_index * -400, -1000)
 
 func find_cross_index():
 	var cross_index = 0
@@ -174,7 +173,7 @@ func follow_path():
 	pass
 
 func _get_path():
-	path = get_parent().get_node('TileMap')._get_path($CollisionShape2D.get_global_position(), player.get_global_position(),get_name())
+	path = get_parent().get_node('TileMap')._get_path(get_global_position(), player.get_global_position(),get_name())
 	path.pop_front()
 	if len(path) > 2:
 		target_point_world = path[1]

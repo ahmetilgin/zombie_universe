@@ -94,16 +94,6 @@ animations = [ {
 "name": "hurt",
 "speed": 50.0
 }, {
-"frames": [ ExtResource( 31 ) ],
-"loop": false,
-"name": "fall",
-"speed": 12.0
-}, {
-"frames": [ ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ) ],
-"loop": true,
-"name": "run",
-"speed": 15.0
-}, {
 "frames": [ ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ) ],
 "loop": false,
 "name": "attack",
@@ -113,6 +103,16 @@ animations = [ {
 "loop": false,
 "name": "melee",
 "speed": 15.0
+}, {
+"frames": [ ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ) ],
+"loop": true,
+"name": "run",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 31 ) ],
+"loop": false,
+"name": "fall",
+"speed": 12.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -4244,11 +4244,11 @@ scale = Vector2( 0.199, 0.123 )
 texture = ExtResource( 57 )
 
 [node name="human" type="Sprite" parent="."]
-position = Vector2( 43.3841, 14.5342 )
+position = Vector2( 38.5427, 25.9775 )
 
 [node name="body2" type="Sprite" parent="human"]
 position = Vector2( -33.9303, 37.8275 )
-rotation = 0.0272146
+rotation = 0.318186
 scale = Vector2( 0.732, 0.452 )
 texture = ExtResource( 58 )
 offset = Vector2( 30.3028, -83.2066 )
@@ -4264,13 +4264,13 @@ disabled = true
 
 [node name="stickmanHead" type="Sprite" parent="human/body2"]
 position = Vector2( 30.3448, -117.962 )
-rotation = 0.0652128
+rotation = 0.0405183
 texture = ExtResource( 59 )
 offset = Vector2( 2.18057, -47.7772 )
 
 [node name="arm2" type="Sprite" parent="human/body2"]
-position = Vector2( 37.1645, -108.528 )
-rotation = 0.369639
+position = Vector2( 36.3641, -110.205 )
+rotation = 0.585568
 texture = ExtResource( 60 )
 offset = Vector2( 14.3284, -4.93674 )
 
@@ -4289,7 +4289,7 @@ texture = ExtResource( 61 )
 
 [node name="knee2" type="Sprite" parent="human/body2"]
 position = Vector2( 34.5045, -50.3219 )
-rotation = 0.18888
+rotation = -0.145898
 texture = ExtResource( 62 )
 offset = Vector2( 5.95731, 16.8168 )
 
@@ -4308,7 +4308,7 @@ offset = Vector2( 11.1143, 2.04172 )
 
 [node name="knee4" type="Sprite" parent="human/body2"]
 position = Vector2( 27.0223, -50.3219 )
-rotation = 0.659586
+rotation = 0.320027
 texture = ExtResource( 62 )
 offset = Vector2( 7.41452, 16.3922 )
 
@@ -4326,22 +4326,22 @@ texture = ExtResource( 63 )
 offset = Vector2( 8.51764, 3.12509 )
 
 [node name="ak47" type="Sprite" parent="human/body2"]
-position = Vector2( 34.8391, -99.5305 )
-rotation = 1.51599
+position = Vector2( 31.6587, -101.279 )
+rotation = 0.176854
 scale = Vector2( 0.31243, 0.399524 )
 texture = ExtResource( 64 )
 offset = Vector2( 170.125, -47.8345 )
 
 [node name="foot3" type="Sprite" parent="human/body2/ak47"]
 visible = false
-position = Vector2( -34.3575, -171.352 )
-rotation = 0.122505
+position = Vector2( 220.621, -21.7892 )
+rotation = 0.0879293
 scale = Vector2( 1, 1.5589 )
 texture = ExtResource( 63 )
 
 [node name="arm3" type="Sprite" parent="human/body2"]
-position = Vector2( 26.7438, -109.912 )
-rotation = -0.676327
+position = Vector2( 25.3058, -110.955 )
+rotation = -1.7398
 scale = Vector2( 1.01995, 1.00193 )
 texture = ExtResource( 60 )
 offset = Vector2( -17.2367, 7.67561 )
@@ -4400,7 +4400,7 @@ anims/slideAk47 = SubResource( 28 )
 [connection signal="pressed" from="Controller/Node2D/melee_attack" to="." method="_on_melee_attack_pressed"]
 [connection signal="released" from="Controller/Node2D/melee_attack" to="." method="_on_melee_attack_released"]
 [connection signal="body_entered" from="human/body2/Area2D" to="." method="_on_Area2D_body_entered"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_shootAk47_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_meleeAk47_finished"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_slideAk47_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_shootAk47_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_hurtAk47_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_slideAk47_finished"]

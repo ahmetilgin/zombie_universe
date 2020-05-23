@@ -50,7 +50,7 @@ func add_walkable_cells(obstacles := []) -> Array:
 	for x in range(min_x,max_x):
 		for y in range(min_y,max_y):
 			var point: = Vector2(x, y)
-			if get_cellv(point) != INVALID_CELL or (get_cell(point.x - 1, point.y) != INVALID_CELL and get_cell(point.x - 1, point.y - 1) == INVALID_CELL and get_cell(point.x - 1, point.y + 1) == INVALID_CELL) :
+			if get_cellv(point) != INVALID_CELL:
 				continue
 #			if find_any_tile_neighbors(point):
 #				continue
@@ -73,7 +73,9 @@ func connect_walkable_cells(points: Array) -> void:
 			Vector2(point.x, point.y + 1),
 			Vector2(point.x, point.y - 1),
 		])
-
+		if(get_cellv(points_relative[3]) != -1):
+			 continue
+		
 		for point_relative in points_relative:
 			var index_relative: = calculate_point_index(point_relative)
 			if is_outside_bounds(point_relative):
@@ -91,8 +93,9 @@ func _ready() -> void:
 	var cells = add_walkable_cells(obstacles)
 	connect_walkable_cells(cells)
 #	for connectedPoint in connected_cells:
-#		if(get_cellv(connectedPoint) == -1):
-#			set_cellv(connectedPoint,13)
+#		if(get_cellv(connectedPoint) == -1):	
+#			print(tile_set.find_tile_by_name("177"))
+#			set_cellv(connectedPoint,tile_set.find_tile_by_name("177"))
  
 func _get_path(init_position: Vector2, target_position: Vector2, name) -> Array:
 	init_pos = init_position
@@ -102,16 +105,16 @@ func _get_path(init_position: Vector2, target_position: Vector2, name) -> Array:
 	var end_position = world_to_map(target_position)
 	var start_index: = calculate_point_index(start_position)
 	var end_index: = calculate_point_index(end_position)
-
+	update()
 	if astar.has_point(start_index) and astar.has_point(end_index):
 		var path: = find_path(start_position, end_position)
 		founded_path[name] = []
 		world_path = []
 		for point in path:
 			var point_world: = map_to_world(Vector2(point.x, point.y))
-			world_path.append(point_world) 
-			founded_path[name].append(point_world)
-		update()
+			world_path.append(point_world + _half_cell_size) 
+			founded_path[name].append(point_world  + _half_cell_size)
+
 		return world_path
 	else:
 		return []
@@ -119,8 +122,8 @@ func _get_path(init_position: Vector2, target_position: Vector2, name) -> Array:
 
 	
 func _draw():
-	draw_circle(init_pos , 2, PLAYER_COLOR)
-	draw_circle(target_pos, 2, TARGET_COLOR)
+	draw_circle(init_pos , 64, PLAYER_COLOR)
+	draw_circle(target_pos, 64, TARGET_COLOR)
 	if len(founded_path) > 2:
 		for name in founded_path:
 			for point_index in range(0,len(founded_path[name]) - 1):
