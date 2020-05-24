@@ -81,29 +81,92 @@ func connect_walkable_cells(points: Array) -> void:
 				continue
 			connected_cells.append([map_to_world(point),map_to_world(point_relative)])
 			astar.connect_points(index, index_relative, false)
+			
+var corners = []
+var left_corners = []
+var right_corners = []
+
+func check_corner(point):
+	var is_corner = false
+	for corner in corners:
+		if corner.x == point.x and corner.y == point.y:
+			is_corner = true
+	return is_corner
+
+func check_left_corner(point):
+	var is_corner = false
+	for corner in left_corners:
+		if corner.x == point.x and corner.y == point.y:
+			is_corner = true
+	return is_corner
+
+func check_right_corner(point):
+	var is_corner = false
+	for corner in right_corners:
+		if corner.x == point.x and corner.y == point.y:
+			is_corner = true
+	return is_corner
+
+func get_corners(cells):
+	for cell in cells:
+		var right = cell - Vector2(1,0)
+		var left = cell - Vector2(-1,0)
+		var bottom = cell - Vector2(0,1)
+		if(astar.has_point(calculate_point_index(right)) and !astar.has_point(calculate_point_index(left))) and get_cellv(left) == INVALID_CELL:
+			left_corners.append(cell)
+			
+		if(astar.has_point(calculate_point_index(left)) and !astar.has_point(calculate_point_index(right))) and get_cellv(right) == INVALID_CELL:
+			right_corners.append(cell)
+		
+		if(!astar.has_point(calculate_point_index(left)) and !astar.has_point(calculate_point_index(right))):
+			right_corners.append(cell)
+			left_corners.append(cell)
+
+var detect_offset = 5
+var direct_offset = 7
+func connect_corners(cells):		
+	for cell in left_corners:
+		var start_cell = cell + Vector2(1,0)		
+		for direct_connection in range(start_cell.y, start_cell.y + direct_offset):
+			if(get_cellv(Vector2(start_cell.x,direct_connection)) != INVALID_CELL):
+				break
+			if(astar.has_point(calculate_point_index(Vector2(start_cell.x,direct_connection)))):
+				lines.append([cell,Vector2(start_cell.x,direct_connection)])
+				astar.connect_points(calculate_point_index(cell),calculate_point_index(Vector2(start_cell.x,direct_connection)), true)
+				break
+
+		for j in range(start_cell.y - detect_offset, start_cell.y + detect_offset):
+			for i in range(start_cell.x,start_cell.x + detect_offset, 1):
+				if !check_right_corner(Vector2(i,j)):
+					continue
+				lines.append([cell,Vector2(i,j)])
+				astar.connect_points(calculate_point_index(cell),calculate_point_index(Vector2(i,j)), true)
+	for cell in right_corners:
+		var start_cell = cell + Vector2(-1,0)
+		for direct_connection in range(start_cell.y, start_cell.y + direct_offset):
+			if(get_cellv(Vector2(start_cell.x,direct_connection)) != INVALID_CELL):
+				break
+			if(astar.has_point(calculate_point_index(Vector2(start_cell.x,direct_connection)))):
+				lines.append([cell,Vector2(start_cell.x,direct_connection)])
+				astar.connect_points(calculate_point_index(cell),calculate_point_index(Vector2(start_cell.x,direct_connection)), true)
+				break
+		
+		for j in range(start_cell.y - detect_offset, start_cell.y + detect_offset):
+			for i in range(start_cell.x,start_cell.x - detect_offset, -1):
+				if !check_left_corner(Vector2(i,j)):
+					continue
+				lines.append([cell,Vector2(i,j)])
+				astar.connect_points(calculate_point_index(cell),calculate_point_index(Vector2(i,j)), true)
 
 var lines = []
+
 func _ready() -> void:
 	var obstacles: = get_used_cells()
 	calculate_bounds(obstacles)
 	map_size = Vector2(max_x, max_y)
 	var cells = add_walkable_cells(obstacles)
-	for cell in cells:
-		for offset in range(0,8):
-			var left_point = cell - Vector2(1,offset)
-			var right_point = cell - Vector2(-1,offset)
-			var current_point = cell - Vector2(0, offset)
-			if(get_cellv(current_point) != INVALID_CELL):
-				break
-			
-			
-			if(astar.has_point(calculate_point_index(left_point))):
-				lines.append([cell,left_point])
-				astar.connect_points(calculate_point_index(cell),calculate_point_index(left_point), true)
-			if(astar.has_point(calculate_point_index(right_point))):
-				lines.append([cell,right_point])
-				astar.connect_points(calculate_point_index(cell),calculate_point_index(right_point), true)
-	
+	get_corners(cells)
+	connect_corners(cells)
 	connect_walkable_cells(cells)
 #	for connectedPoint in connected_cells:
 #		if(get_cellv(connectedPoint) == -1):	
@@ -151,7 +214,16 @@ func _draw():
 	
 	for connection in lines:
 		draw_line(map_to_world(connection[0]) + _half_cell_size,map_to_world(connection[1])+_half_cell_size, DRAW_COLOR, 3)
-	
+		
+	for corner in corners:
+		draw_circle(map_to_world(corner) + _half_cell_size, 30,Color("FFF") )
+
+	for corner in left_corners:
+		draw_circle(map_to_world(corner) + _half_cell_size, 30,Color("000") )
+
+	for corner in right_corners:
+		draw_circle(map_to_world(corner) + _half_cell_size, 30,Color("F00") )
+		
 	for name in founded_path:
 		for point_index in range(0,len(founded_path[name]) - 1):
 				if len(founded_path[name]) > 2:
