@@ -1,58 +1,6 @@
-[gd_scene load_steps=95 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://Scenes/KinematicScenes/Player/Player.gd" type="Script" id=1]
-[ext_resource path="res://Resources/Sprites/Player/Slide1.png" type="Texture" id=2]
-[ext_resource path="res://Resources/Sprites/Player/Slide2.png" type="Texture" id=3]
-[ext_resource path="res://Resources/Sprites/Player/Slide3.png" type="Texture" id=4]
-[ext_resource path="res://Resources/Sprites/Player/Slide4.png" type="Texture" id=5]
-[ext_resource path="res://Resources/Sprites/Player/Slide5.png" type="Texture" id=6]
-[ext_resource path="res://Resources/Sprites/Player/Idle1.png" type="Texture" id=7]
-[ext_resource path="res://Resources/Sprites/Player/Idle3.png" type="Texture" id=8]
-[ext_resource path="res://Resources/Sprites/Player/Idle4.png" type="Texture" id=9]
-[ext_resource path="res://Resources/Sprites/Player/Idle5.png" type="Texture" id=10]
-[ext_resource path="res://Resources/Sprites/Player/Idle6.png" type="Texture" id=11]
-[ext_resource path="res://Resources/Sprites/Player/Idle7.png" type="Texture" id=12]
-[ext_resource path="res://Resources/Sprites/Player/Idle8.png" type="Texture" id=13]
-[ext_resource path="res://Resources/Sprites/Player/Idle9.png" type="Texture" id=14]
-[ext_resource path="res://Resources/Sprites/Player/Idle10.png" type="Texture" id=15]
-[ext_resource path="res://Resources/Sprites/Player/Dead.png" type="Texture" id=16]
-[ext_resource path="res://Resources/Sprites/Player/Dead2.png" type="Texture" id=17]
-[ext_resource path="res://Resources/Sprites/Player/Dead3.png" type="Texture" id=18]
-[ext_resource path="res://Resources/Sprites/Player/Dead4.png" type="Texture" id=19]
-[ext_resource path="res://Resources/Sprites/Player/Dead5.png" type="Texture" id=20]
-[ext_resource path="res://Resources/Sprites/Player/Dead6.png" type="Texture" id=21]
-[ext_resource path="res://Resources/Sprites/Player/Dead7.png" type="Texture" id=22]
-[ext_resource path="res://Resources/Sprites/Player/Dead8.png" type="Texture" id=23]
-[ext_resource path="res://Resources/Sprites/Player/Dead9.png" type="Texture" id=24]
-[ext_resource path="res://Resources/Sprites/Player/Dead10.png" type="Texture" id=25]
-[ext_resource path="res://Resources/Sprites/Player/Jump1.png" type="Texture" id=26]
-[ext_resource path="res://Resources/Sprites/Player/Jump2.png" type="Texture" id=27]
-[ext_resource path="res://Resources/Sprites/Player/Jump3.png" type="Texture" id=28]
-[ext_resource path="res://Resources/Sprites/Player/Jump4.png" type="Texture" id=29]
-[ext_resource path="res://Resources/Sprites/Player/Jump5.png" type="Texture" id=30]
-[ext_resource path="res://Resources/Sprites/Player/Jump6.png" type="Texture" id=31]
-[ext_resource path="res://Resources/Sprites/Player/Jump7.png" type="Texture" id=32]
-[ext_resource path="res://Resources/Sprites/Player/Jump8.png" type="Texture" id=33]
-[ext_resource path="res://Resources/Sprites/Player/Jump9.png" type="Texture" id=34]
-[ext_resource path="res://Resources/Sprites/Player/Jump10.png" type="Texture" id=35]
-[ext_resource path="res://Resources/Sprites/Player/ShootKeles1.png" type="Texture" id=36]
-[ext_resource path="res://Resources/Sprites/Player/ShootKeles2.png" type="Texture" id=37]
-[ext_resource path="res://Resources/Sprites/Player/ShootKeles3.png" type="Texture" id=38]
-[ext_resource path="res://Resources/Sprites/Player/Run1.png" type="Texture" id=39]
-[ext_resource path="res://Resources/Sprites/Player/Run2.png" type="Texture" id=40]
-[ext_resource path="res://Resources/Sprites/Player/Run8.png" type="Texture" id=41]
-[ext_resource path="res://Resources/Sprites/Player/Run3.png" type="Texture" id=42]
-[ext_resource path="res://Resources/Sprites/Player/Run4.png" type="Texture" id=43]
-[ext_resource path="res://Resources/Sprites/Player/Run5.png" type="Texture" id=44]
-[ext_resource path="res://Resources/Sprites/Player/Run6.png" type="Texture" id=45]
-[ext_resource path="res://Resources/Sprites/Player/Run7.png" type="Texture" id=46]
-[ext_resource path="res://Resources/Sprites/Player/Melee1.png" type="Texture" id=47]
-[ext_resource path="res://Resources/Sprites/Player/Melee2.png" type="Texture" id=48]
-[ext_resource path="res://Resources/Sprites/Player/Melee3.png" type="Texture" id=49]
-[ext_resource path="res://Resources/Sprites/Player/Melee4.png" type="Texture" id=50]
-[ext_resource path="res://Resources/Sprites/Player/Melee5.png" type="Texture" id=51]
-[ext_resource path="res://Resources/Sprites/Player/Melee6.png" type="Texture" id=52]
-[ext_resource path="res://Resources/Sprites/Player/Melee7.png" type="Texture" id=53]
 [ext_resource path="res://Scenes/KinematicScenes/Player/CameraShake.gd" type="Script" id=54]
 [ext_resource path="res://Resources/Sprites/TouchIcons/touch_buttons.png" type="Texture" id=55]
 [ext_resource path="res://Resources/Sprites/TouchIcons/bullet1.png" type="Texture" id=56]
@@ -67,124 +15,76 @@
 [ext_resource path="res://Resources/Sprites/stickman/meleewind.png" type="Texture" id=65]
 [ext_resource path="res://Resources/Sprites/stickman/fire.png" type="Texture" id=66]
 
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
-"loop": false,
-"name": "slide",
-"speed": 15.0
-}, {
-"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
-"loop": true,
-"name": "idle",
-"speed": 12.0
-}, {
-"frames": [ ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ) ],
-"loop": false,
-"name": "dead",
-"speed": 15.0
-}, {
-"frames": [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ) ],
-"loop": false,
-"name": "jump",
-"speed": 12.0
-}, {
-"frames": [ ExtResource( 16 ), ExtResource( 17 ) ],
-"loop": false,
-"name": "hurt",
-"speed": 50.0
-}, {
-"frames": [ ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ) ],
-"loop": false,
-"name": "attack",
-"speed": 35.0
-}, {
-"frames": [ ExtResource( 47 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ) ],
-"loop": false,
-"name": "melee",
-"speed": 15.0
-}, {
-"frames": [ ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ) ],
-"loop": true,
-"name": "run",
-"speed": 15.0
-}, {
-"frames": [ ExtResource( 31 ) ],
-"loop": false,
-"name": "fall",
-"speed": 12.0
-} ]
-
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 28.6555, 2.25755 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 28.6588, 44.1096 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=3]
 flags = 4
 atlas = ExtResource( 55 )
 region = Rect2( 230, 238, 120, 120 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=4]
 flags = 4
 atlas = ExtResource( 55 )
 region = Rect2( 236, 246, 104, 104 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 52.12, 52.35 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=6]
 flags = 4
 atlas = ExtResource( 55 )
 region = Rect2( 7, 244, 107, 107 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=7]
 flags = 4
 atlas = ExtResource( 55 )
 region = Rect2( 9, 246, 104, 104 )
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 52, 52 )
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=9]
 flags = 4
 atlas = ExtResource( 55 )
 region = Rect2( 118, 131, 107, 107 )
 
-[sub_resource type="AtlasTexture" id=11]
+[sub_resource type="AtlasTexture" id=10]
 flags = 4
 atlas = ExtResource( 55 )
 region = Rect2( 120, 132, 104, 104 )
 
-[sub_resource type="RectangleShape2D" id=12]
+[sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 52, 52 )
 
-[sub_resource type="AtlasTexture" id=13]
+[sub_resource type="AtlasTexture" id=12]
 flags = 4
 atlas = ExtResource( 55 )
 region = Rect2( 119, 359, 107, 107 )
 
-[sub_resource type="AtlasTexture" id=14]
+[sub_resource type="AtlasTexture" id=13]
 flags = 4
 atlas = ExtResource( 55 )
 region = Rect2( 122, 360, 104, 104 )
 
-[sub_resource type="RectangleShape2D" id=15]
+[sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 52, 52 )
 
-[sub_resource type="AtlasTexture" id=16]
+[sub_resource type="AtlasTexture" id=15]
 flags = 4
 atlas = ExtResource( 55 )
 region = Rect2( 487, 350, 107, 107 )
 
+[sub_resource type="RectangleShape2D" id=16]
+extents = Vector2( 52, 52 )
+
 [sub_resource type="RectangleShape2D" id=17]
 extents = Vector2( 52, 52 )
 
-[sub_resource type="RectangleShape2D" id=18]
-extents = Vector2( 52, 52 )
-
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=18]
 resource_name = "HurtAk47"
 length = 0.4
 tracks/0/type = "value"
@@ -560,7 +460,7 @@ tracks/30/keys = {
 "values": [ Vector2( 38.5427, 25.9775 ), Vector2( 37.6961, 17.3782 ) ]
 }
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=19]
 resource_name = "deadAk47"
 tracks/0/type = "value"
 tracks/0/path = NodePath("human/body2/knee4/knee5:position")
@@ -959,7 +859,7 @@ tracks/32/keys = {
 "values": [ Vector2( 45.5847, 13.6539 ), Vector2( 42.5038, -3.51101 ) ]
 }
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=20]
 resource_name = "fallAk47"
 length = 0.6
 tracks/0/type = "value"
@@ -1323,7 +1223,7 @@ tracks/29/keys = {
 "values": [ -6.4609, -6.4609, -1.00669, -1.00669, -1.00669, -1.00669 ]
 }
 
-[sub_resource type="Animation" id=22]
+[sub_resource type="Animation" id=21]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("human/body2/knee4:position")
@@ -1698,7 +1598,7 @@ tracks/30/keys = {
 "values": [ Vector2( 43.3841, 14.5342 ) ]
 }
 
-[sub_resource type="Animation" id=23]
+[sub_resource type="Animation" id=22]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("human/body2/knee4/knee5:position")
@@ -2073,7 +1973,7 @@ tracks/30/keys = {
 "values": [ Vector2( 37.9677, 8.6372 ) ]
 }
 
-[sub_resource type="Animation" id=24]
+[sub_resource type="Animation" id=23]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("human/body2:position")
@@ -2544,7 +2444,7 @@ tracks/38/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=25]
+[sub_resource type="Animation" id=24]
 length = 1.6
 loop = true
 tracks/0/type = "value"
@@ -2932,7 +2832,7 @@ tracks/31/keys = {
 "values": [ Vector2( 37.9677, 8.6372 ) ]
 }
 
-[sub_resource type="Animation" id=26]
+[sub_resource type="Animation" id=25]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("human/body2/arm2:position")
@@ -3343,7 +3243,7 @@ tracks/33/keys = {
 "values": [ Vector2( 43.3841, 14.5342 ) ]
 }
 
-[sub_resource type="Animation" id=27]
+[sub_resource type="Animation" id=26]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("human/body2/knee2/knee3:position")
@@ -3754,7 +3654,7 @@ tracks/33/keys = {
 "values": [ -13.9538 ]
 }
 
-[sub_resource type="Animation" id=28]
+[sub_resource type="Animation" id=27]
 tracks/0/type = "value"
 tracks/0/path = NodePath("human/body2/knee4/knee5:position")
 tracks/0/interp = 1
@@ -4136,22 +4036,13 @@ __meta__ = {
 "_edit_vertical_guides_": [ 166.871, 188.08 ]
 }
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-visible = false
-position = Vector2( -34.8774, -44.5992 )
-scale = Vector2( 0.193461, 0.213479 )
-frames = SubResource( 1 )
-animation = "melee"
-frame = 3
-centered = false
-
 [node name="collision_2" type="CollisionShape2D" parent="."]
 position = Vector2( 32.7234, 58.5418 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 33.2543, 11.5777 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 109.633, 2.74722 )
@@ -4184,41 +4075,41 @@ z_index = 8
 [node name="right" type="TouchScreenButton" parent="Controller/Node2D"]
 position = Vector2( 136.001, 308.482 )
 scale = Vector2( 0.7, 0.7 )
-normal = SubResource( 4 )
-pressed = SubResource( 5 )
-shape = SubResource( 6 )
+normal = SubResource( 3 )
+pressed = SubResource( 4 )
+shape = SubResource( 5 )
 shape_visible = false
 
 [node name="left" type="TouchScreenButton" parent="Controller/Node2D"]
 position = Vector2( 36.0007, 313.482 )
 scale = Vector2( 0.7, 0.7 )
-normal = SubResource( 7 )
-pressed = SubResource( 8 )
-shape = SubResource( 9 )
+normal = SubResource( 6 )
+pressed = SubResource( 7 )
+shape = SubResource( 8 )
 shape_visible = false
 
 [node name="up" type="TouchScreenButton" parent="Controller/Node2D"]
 position = Vector2( 471.001, 273.482 )
 scale = Vector2( 0.4, 0.4 )
-normal = SubResource( 10 )
-pressed = SubResource( 11 )
-shape = SubResource( 12 )
+normal = SubResource( 9 )
+pressed = SubResource( 10 )
+shape = SubResource( 11 )
 shape_visible = false
 
 [node name="down" type="TouchScreenButton" parent="Controller/Node2D"]
 position = Vector2( 451.001, 338.482 )
 scale = Vector2( 0.4, 0.4 )
-normal = SubResource( 13 )
-pressed = SubResource( 14 )
-shape = SubResource( 15 )
+normal = SubResource( 12 )
+pressed = SubResource( 13 )
+shape = SubResource( 14 )
 shape_visible = false
 
 [node name="gun_shoot" type="TouchScreenButton" parent="Controller/Node2D"]
 position = Vector2( 521.001, 323.482 )
 scale = Vector2( 0.582902, 0.552194 )
-normal = SubResource( 16 )
-pressed = SubResource( 16 )
-shape = SubResource( 17 )
+normal = SubResource( 15 )
+pressed = SubResource( 15 )
+shape = SubResource( 16 )
 shape_visible = false
 
 [node name="bullet1" type="Sprite" parent="Controller/Node2D/gun_shoot"]
@@ -4231,9 +4122,9 @@ texture = ExtResource( 56 )
 [node name="melee_attack" type="TouchScreenButton" parent="Controller/Node2D"]
 position = Vector2( 536.001, 268.482 )
 scale = Vector2( 0.4, 0.4 )
-normal = SubResource( 16 )
-pressed = SubResource( 16 )
-shape = SubResource( 18 )
+normal = SubResource( 15 )
+pressed = SubResource( 15 )
+shape = SubResource( 17 )
 shape_visible = false
 
 [node name="knife" type="Sprite" parent="Controller/Node2D/melee_attack"]
@@ -4244,16 +4135,17 @@ scale = Vector2( 0.199, 0.123 )
 texture = ExtResource( 57 )
 
 [node name="human" type="Sprite" parent="."]
-position = Vector2( 38.5427, 25.9775 )
+position = Vector2( 37.9677, 8.6372 )
 
 [node name="body2" type="Sprite" parent="human"]
 position = Vector2( -33.9303, 37.8275 )
-rotation = 0.318186
+rotation = 0.165601
 scale = Vector2( 0.732, 0.452 )
 texture = ExtResource( 58 )
 offset = Vector2( 30.3028, -83.2066 )
 
 [node name="Area2D" type="Area2D" parent="human/body2"]
+visible = false
 position = Vector2( 29.5519, -89.5517 )
 rotation = -0.758794
 scale = Vector2( 1.62461, 2.03017 )
@@ -4264,13 +4156,12 @@ disabled = true
 
 [node name="stickmanHead" type="Sprite" parent="human/body2"]
 position = Vector2( 30.3448, -117.962 )
-rotation = 0.0405183
 texture = ExtResource( 59 )
 offset = Vector2( 2.18057, -47.7772 )
 
 [node name="arm2" type="Sprite" parent="human/body2"]
 position = Vector2( 36.3641, -110.205 )
-rotation = 0.585568
+rotation = 0.473052
 texture = ExtResource( 60 )
 offset = Vector2( 14.3284, -4.93674 )
 
@@ -4289,45 +4180,44 @@ texture = ExtResource( 61 )
 
 [node name="knee2" type="Sprite" parent="human/body2"]
 position = Vector2( 34.5045, -50.3219 )
-rotation = -0.145898
+rotation = 0.233234
 texture = ExtResource( 62 )
 offset = Vector2( 5.95731, 16.8168 )
 
 [node name="knee3" type="Sprite" parent="human/body2/knee2"]
 position = Vector2( 11.8834, 29.4885 )
-rotation = 0.156656
+rotation = 1.37059
 texture = ExtResource( 62 )
 offset = Vector2( 4.48117, 16.0438 )
 
 [node name="foot2" type="Sprite" parent="human/body2/knee2/knee3"]
-position = Vector2( 4.89971, 31.3274 )
-rotation = -0.408058
+position = Vector2( 6.74388, 32.225 )
+rotation = -5.44255e-08
 scale = Vector2( 1.09516, 0.859398 )
 texture = ExtResource( 63 )
 offset = Vector2( 11.1143, 2.04172 )
 
 [node name="knee4" type="Sprite" parent="human/body2"]
 position = Vector2( 27.0223, -50.3219 )
-rotation = 0.320027
+rotation = 0.562228
 texture = ExtResource( 62 )
 offset = Vector2( 7.41452, 16.3922 )
 
 [node name="knee5" type="Sprite" parent="human/body2/knee4"]
 position = Vector2( 14.0002, 31.296 )
-rotation = -0.0489809
+rotation = -2.98024e-08
 texture = ExtResource( 62 )
 offset = Vector2( 5.63562, 14.9762 )
 
 [node name="foot" type="Sprite" parent="human/body2/knee4/knee5"]
-position = Vector2( 8.43644, 29.4046 )
-rotation = -0.515717
+position = Vector2( 10.3179, 28.1855 )
+rotation = -0.353466
 scale = Vector2( 1.09516, 0.859398 )
 texture = ExtResource( 63 )
 offset = Vector2( 8.51764, 3.12509 )
 
 [node name="ak47" type="Sprite" parent="human/body2"]
-position = Vector2( 31.6587, -101.279 )
-rotation = 0.176854
+position = Vector2( 31.1938, -98.8848 )
 scale = Vector2( 0.31243, 0.399524 )
 texture = ExtResource( 64 )
 offset = Vector2( 170.125, -47.8345 )
@@ -4335,20 +4225,19 @@ offset = Vector2( 170.125, -47.8345 )
 [node name="foot3" type="Sprite" parent="human/body2/ak47"]
 visible = false
 position = Vector2( 220.621, -21.7892 )
-rotation = 0.0879293
 scale = Vector2( 1, 1.5589 )
 texture = ExtResource( 63 )
 
 [node name="arm3" type="Sprite" parent="human/body2"]
-position = Vector2( 25.3058, -110.955 )
-rotation = -1.7398
+position = Vector2( 25.6874, -111.175 )
+rotation = -1.75739
 scale = Vector2( 1.01995, 1.00193 )
 texture = ExtResource( 60 )
 offset = Vector2( -17.2367, 7.67561 )
 
 [node name="arm5" type="Sprite" parent="human/body2/arm3"]
 position = Vector2( -34.0482, 15.857 )
-rotation = -1.51353
+rotation = -1.61908
 texture = ExtResource( 60 )
 offset = Vector2( -14.2762, 6.8665 )
 
@@ -4368,23 +4257,26 @@ texture = ExtResource( 65 )
 
 [node name="fire" type="Sprite" parent="human/body2"]
 visible = false
-position = Vector2( 165.325, -118.457 )
+position = Vector2( 161.095, -147.889 )
+rotation = -0.24354
 scale = Vector2( 0.250122, 0.242203 )
 texture = ExtResource( 66 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 3.0
-anims/HurtAk47 = SubResource( 19 )
-anims/deadAk47 = SubResource( 20 )
-anims/fallAk47 = SubResource( 21 )
-anims/idleAk47 = SubResource( 22 )
-anims/jumpAk47 = SubResource( 23 )
-anims/meleeAk47 = SubResource( 24 )
-anims/runAk47 = SubResource( 25 )
-anims/shootAk47 = SubResource( 26 )
-anims/shootWalkAk47 = SubResource( 27 )
-anims/slideAk47 = SubResource( 28 )
-[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
+anims/HurtAk47 = SubResource( 18 )
+anims/deadAk47 = SubResource( 19 )
+anims/fallAk47 = SubResource( 20 )
+anims/idleAk47 = SubResource( 21 )
+anims/jumpAk47 = SubResource( 22 )
+anims/meleeAk47 = SubResource( 23 )
+anims/runAk47 = SubResource( 24 )
+anims/shootAk47 = SubResource( 25 )
+anims/shootWalkAk47 = SubResource( 26 )
+anims/slideAk47 = SubResource( 27 )
+
+[node name="CenterPos" type="Position2D" parent="."]
+position = Vector2( 32.4549, 12.3639 )
 [connection signal="timeout" from="player_dead_timer" to="." method="_on_player_dead_timer_timeout"]
 [connection signal="timeout" from="jump_counter_time" to="." method="_on_jump_counter_time_timeout"]
 [connection signal="pressed" from="Controller/Node2D/right" to="." method="_on_right_pressed"]
@@ -4400,7 +4292,7 @@ anims/slideAk47 = SubResource( 28 )
 [connection signal="pressed" from="Controller/Node2D/melee_attack" to="." method="_on_melee_attack_pressed"]
 [connection signal="released" from="Controller/Node2D/melee_attack" to="." method="_on_melee_attack_released"]
 [connection signal="body_entered" from="human/body2/Area2D" to="." method="_on_Area2D_body_entered"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_meleeAk47_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_shootAk47_finished"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_hurtAk47_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_slideAk47_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_hurtAk47_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_meleeAk47_finished"]

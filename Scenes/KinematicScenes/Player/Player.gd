@@ -373,19 +373,18 @@ func _play_slide_animation():
 func _play_attack_animation():
 	_play_animation("shootAk47")	
 
-func _move_slide():
-	$CollisionShape2D.scale = Vector2 (1, 0.7)
-	$CollisionShape2D.position.y=25
-	if $AnimatedSprite.flip_h==false:
-		motion.x = slide_speed
-	else:
-		motion.x = -slide_speed
+#func _move_slide():
+#	$CollisionShape2D.scale = Vector2 (1, 0.7)
+#	$CollisionShape2D.position.y=25
+#	if $AnimatedSprite.flip_h==false:
+#		motion.x = slide_speed
+#	else:
+#		motion.x = -slide_speed
 
 func _move_right():
 	motion.x=min(motion.x + speed,max_speed)
 	$AnimationPlayer.play("runAk47")
 	animation_flip_h(false)
-	$AnimatedSprite.flip_h=false
 	if sign($Position2D.position.x)==-1:
 		$Position2D.position.x*=-1
 		
@@ -393,7 +392,6 @@ func _move_left():
 	motion.x = max(motion.x-speed,-max_speed)
 	$AnimationPlayer.play("runAk47")
 	animation_flip_h(true)
-	$AnimatedSprite.flip_h = true
 	if sign($Position2D.position.x)==1:
 		$Position2D.position.x*=-1
 
@@ -446,7 +444,6 @@ func _physics_process(delta):
 				if is_melee==false:
 					_set_is_down(true)
 					_play_slide_animation()
-					_move_slide()
 					touch_down = false
 		if Input.is_key_pressed(KEY_SPACE):
 			Engine.time_scale = 0.1
@@ -522,8 +519,8 @@ func dead(damage,whodead):
 #			is_hurt=true
 #			$AnimationPlayer.play("HurtAk47")
 
-func _on_AnimatedSprite_animation_finished():
-	_clear_states()
+#func _on_AnimatedSprite_animation_finished():
+#	_clear_states()
 
 func upgrade_power_up():
 	current_bullet_power = 2

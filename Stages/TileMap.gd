@@ -53,6 +53,33 @@ func add_walkable_cells(obstacles := []) -> Array:
 			if (get_cell(point.x, point.y + 1) == INVALID_CELL) or get_cellv(point) != INVALID_CELL:
 				continue
 				
+			var right_corner = get_cell(point.x + 1, point.y + 1) == INVALID_CELL
+			var left_corner = get_cell(point.x - 1, point.y + 1) == INVALID_CELL
+			var offset = 1
+			if right_corner or left_corner:
+				for i in range(y - 1, y - 5, -1):
+					var up = Vector2(x,i)
+					var left = Vector2(x - offset,y)
+					var right = Vector2(x+ offset,y)
+					offset = offset + 1
+					if get_cellv(up) == INVALID_CELL:
+						var index: = calculate_point_index(up)
+						if !astar.has_point(index):
+							points.append(up)
+							astar.add_point(index, Vector3(up.x, up.y, 0))
+					if left_corner:
+						if(get_cellv(left) == INVALID_CELL):
+							var index: = calculate_point_index(left)
+							points.append(left)
+							astar.add_point(index, Vector3(left.x, left.y, 0))
+					if right_corner:
+						if(get_cellv(right) == INVALID_CELL):
+							var index: = calculate_point_index(right)
+							points.append(right)
+							astar.add_point(index, Vector3(right.x, right.y, 0))
+						
+							
+				
 			var found_direction = false
 			var left_approach = false
 			var right_approach = false
@@ -60,25 +87,16 @@ func add_walkable_cells(obstacles := []) -> Array:
 			for down_to_top in range(y,min_y, -1):
 				if get_cell(x,down_to_top) != INVALID_CELL:
 					break
-				left_approach = get_cell(x - 2,down_to_top) != INVALID_CELL and get_cell(x - 1,down_to_top) == INVALID_CELL
-				right_approach = get_cell(x + 2,down_to_top) != INVALID_CELL and get_cell(x + 1,down_to_top) == INVALID_CELL
+				left_approach = get_cell(x - 1,down_to_top) != INVALID_CELL and get_cell(x,down_to_top) == INVALID_CELL
+				right_approach = get_cell(x + 1,down_to_top) != INVALID_CELL and get_cell(x,down_to_top) == INVALID_CELL
 				if left_approach or right_approach:			
 					found_direction = true	
-					if(left_approach):
-						last_point = Vector2(x - 1,down_to_top - 1)
-					if(right_approach):
-						last_point = Vector2(x + 1,down_to_top - 1)
-					if(left_approach or right_approach):
-						var index: = calculate_point_index(last_point)
-						if(!astar.has_point(index)):
-							points.append(last_point)
-							astar.add_point(index, Vector3(last_point.x, last_point.y, 0))
-							
+
 			if found_direction:
-				for down_to_top in range(y,last_point.y - 1, -1):
+				for down_to_top in range(y,y - 6, -1):		
 					var direction_point = Vector2(x,down_to_top)
 					var index: = calculate_point_index(direction_point)
-					if(!astar.has_point(index)):
+					if(!astar.has_point(index) && get_cellv(direction_point) == INVALID_CELL):
 						points.append(direction_point)
 						astar.add_point(index, Vector3(direction_point.x, direction_point.y, 0))
 			var index: = calculate_point_index(point)

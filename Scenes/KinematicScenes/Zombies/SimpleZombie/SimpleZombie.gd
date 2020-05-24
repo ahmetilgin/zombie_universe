@@ -25,12 +25,12 @@ const N_FLASHES = 4
 var flash_zombie_tween = Tween.new()
 
 export (int) var hp=5
-export (int) var speed=200
+export (int) var speed=300
 var motion=Vector2(0,0)
 const UP=Vector2(0,-1)
 var is_dead=false
 var is_hurt=false
-var acceleration = 15
+var acceleration = 25
 var is_follow = false
 var path = []
 signal dead_counter_for_wave
@@ -47,7 +47,7 @@ func add_attack_ray_cast():
 func create_zombie_follow_timer():
 	FollowPlayerTimer.connect("timeout",self,"_on_FollowPlayerTimer_timeout") 
 	add_child(FollowPlayerTimer) #to process
-	FollowPlayerTimer.set_wait_time(0.01)
+	FollowPlayerTimer.set_wait_time(0.1)
 	FollowPlayerTimer.start() #to start
 
 func add_zombie_sounds():
@@ -107,15 +107,14 @@ func find_zombie_x_movement(direction):
 	else:
 		motion.x = max(motion.x - acceleration, -speed)
 			
-func can_zombie_jump(direction,cross_index):
+func can_zombie_jump(direction):
 	var target_distance = 0
-	if direction.y < 0 && is_on_floor():
-		if  player.is_on_floor():
-			var player_pos = player.get_global_position()
-			var zombie_pos = get_global_position()
-			if player_pos.y < zombie_pos.y:
-				motion.y += max(cross_index * -400, -1000)
-
+	if is_on_floor():
+		var jump = max((10 *(target_point_world.y - $CenterPos.get_global_position().y)), -850)
+		if jump < 0:
+			motion.y = motion.y + jump 
+			motion.x = lerp(motion.x, 0, 0.5)
+		
 func find_cross_index():
 	var cross_index = 0
 	if len(path) > 2:
@@ -132,8 +131,8 @@ func move_to():
 		get_parent().get_node('TileMap').set_target_point(target_point_world)
 		var direction = get_global_position().direction_to(target_point_world)
 		find_zombie_x_movement(direction)
-		can_zombie_jump(direction,find_cross_index())
-		var ARRIVE_DISTANCE = 64
+		can_zombie_jump(direction)
+		var ARRIVE_DISTANCE = 5
 		return get_global_position().distance_to(target_point_world) < ARRIVE_DISTANCE
 	
 func get_next_target_point():
@@ -160,8 +159,7 @@ func set_zombie_direction():
 		if sign(path[2].x - get_global_position().x) != 1:
 			$Zombie.scale.x = -body_scale
 			attack_ray_cast.scale.x = -1
-			attack_ray_cast.set_position(Vector2(10,90))
-		
+			attack_ray_cast.set_position(Vector2(10,90))	
 		else:
 			$Zombie.scale.x = body_scale
 			attack_ray_cast.scale.x = 1
@@ -175,10 +173,9 @@ func follow_path():
 	pass
 
 func _get_path():
-	path = get_parent().get_node('TileMap')._get_path($Zombie/body.get_global_position(), player.get_global_position(),get_name())
-	path.pop_front()
+	path = get_parent().get_node('TileMap')._get_path($CenterPos.get_global_position(), player.get_node("CenterPos").get_global_position(),get_name())
 	if len(path) > 2:
-		target_point_world = path[1]
+		target_point_world = path[2]
 		
 		
 func _set_is_follow(follow):

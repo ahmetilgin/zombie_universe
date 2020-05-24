@@ -10,7 +10,7 @@
 [ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleZombie/foot.png" type="Texture" id=53]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10.4947, 47.5663 )
+extents = Vector2( 6.00726, 47.5663 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "Attack"
@@ -2609,15 +2609,14 @@ tracks/31/keys = {
 }
 
 [node name="Basic_Zombie" type="KinematicBody2D"]
-position = Vector2( 143.858, 80.457 )
+position = Vector2( 153.312, 84.8687 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_vertical_guides_": [ -15.622, 46.2812 ]
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( 23.2431, 51.0587 )
+position = Vector2( 25.4745, 45.4088 )
 scale = Vector2( 2.61906, -1.2303 )
 z_index = -1
 shape = SubResource( 1 )
@@ -2633,7 +2632,7 @@ anims/Run = SubResource( 8 )
 
 [node name="Zombie" type="Sprite" parent="."]
 position = Vector2( 23.8391, 108.648 )
-rotation = 0.0641125
+rotation = 0.0641124
 scale = Vector2( -0.45, 0.45 )
 offset = Vector2( -197.291, -237.515 )
 __meta__ = {
@@ -2641,8 +2640,8 @@ __meta__ = {
 }
 
 [node name="body" type="Sprite" parent="Zombie"]
-position = Vector2( -32.8126, -92.7734 )
-rotation = 0.300197
+position = Vector2( -0.162384, -110.2 )
+rotation = 0.198968
 scale = Vector2( 1, 0.822171 )
 texture = ExtResource( 47 )
 offset = Vector2( -2.10062, -42.884 )
@@ -2653,7 +2652,7 @@ __meta__ = {
 
 [node name="arm1" type="Sprite" parent="Zombie/body"]
 position = Vector2( -12.1829, -67.8104 )
-rotation = -2.21737
+rotation = -1.48915
 scale = Vector2( 0.86, 0.86 )
 texture = ExtResource( 48 )
 offset = Vector2( -6.28186, 23.8096 )
@@ -2664,7 +2663,7 @@ __meta__ = {
 
 [node name="arm2" type="Sprite" parent="Zombie/body/arm1"]
 position = Vector2( -15.488, 49.2564 )
-rotation = -0.446302
+rotation = -0.302832
 texture = ExtResource( 48 )
 offset = Vector2( -9.65631, 25.1559 )
 __meta__ = {
@@ -2682,7 +2681,7 @@ __meta__ = {
 
 [node name="arm2" type="Sprite" parent="Zombie/body"]
 position = Vector2( -8.56604, -62.9152 )
-rotation = -1.82759
+rotation = -2.06378
 scale = Vector2( 0.86, 0.86 )
 z_index = -1
 texture = ExtResource( 48 )
@@ -2694,7 +2693,7 @@ __meta__ = {
 
 [node name="arm4" type="Sprite" parent="Zombie/body/arm2"]
 position = Vector2( -15.488, 49.2564 )
-rotation = -0.446302
+rotation = -0.187724
 texture = ExtResource( 48 )
 offset = Vector2( -9.65631, 25.1559 )
 __meta__ = {
@@ -2712,7 +2711,7 @@ __meta__ = {
 
 [node name="head" type="Sprite" parent="Zombie/body"]
 position = Vector2( -1.11824, -83.1501 )
-rotation = -0.00744421
+rotation = -0.192051
 scale = Vector2( 1.00001, 1.21629 )
 texture = ExtResource( 50 )
 offset = Vector2( -0.808243, -54.8763 )
@@ -2722,7 +2721,8 @@ __meta__ = {
 }
 
 [node name="knees" type="Sprite" parent="Zombie"]
-position = Vector2( -32.4695, -93.5497 )
+position = Vector2( 2.1454, -108.284 )
+rotation = -0.383972
 offset = Vector2( -157.399, -147.568 )
 __meta__ = {
 "_edit_bone_": true,
@@ -2731,7 +2731,7 @@ __meta__ = {
 
 [node name="solbacak" type="Sprite" parent="Zombie/knees"]
 position = Vector2( 4.0397, 1.1409 )
-rotation = -0.294231
+rotation = 1.13409
 texture = ExtResource( 51 )
 offset = Vector2( 3.94447, 24.1033 )
 __meta__ = {
@@ -2741,7 +2741,7 @@ __meta__ = {
 
 [node name="knee3" type="Sprite" parent="Zombie/knees/solbacak"]
 position = Vector2( 6.79296, 45.7176 )
-rotation = 0.854127
+rotation = 1.48777
 texture = ExtResource( 52 )
 offset = Vector2( 14.6099, 24.202 )
 __meta__ = {
@@ -2750,7 +2750,7 @@ __meta__ = {
 
 [node name="foot" type="Sprite" parent="Zombie/knees/solbacak/knee3"]
 position = Vector2( 21.8078, 44.2199 )
-rotation = -0.551252
+rotation = -0.283242
 texture = ExtResource( 53 )
 offset = Vector2( 13.0026, 4.88327 )
 __meta__ = {
@@ -2759,7 +2759,7 @@ __meta__ = {
 
 [node name="sagbacak" type="Sprite" parent="Zombie/knees"]
 position = Vector2( -8.96851, 3.96829 )
-rotation = 0.173769
+rotation = -0.0411006
 texture = ExtResource( 51 )
 offset = Vector2( 8.14999, 21.8527 )
 __meta__ = {
@@ -2769,7 +2769,7 @@ __meta__ = {
 
 [node name="knee4" type="Sprite" parent="Zombie/knees/sagbacak"]
 position = Vector2( 13.1141, 44.3155 )
-rotation = 0.333847
+rotation = 0.0189319
 texture = ExtResource( 51 )
 offset = Vector2( 3.01462, 25.1296 )
 __meta__ = {
@@ -2778,10 +2778,13 @@ __meta__ = {
 
 [node name="foot2" type="Sprite" parent="Zombie/knees/sagbacak/knee4"]
 position = Vector2( 2.05339, 50.8209 )
-rotation = -0.387234
+rotation = 0.310307
 texture = ExtResource( 53 )
 offset = Vector2( 15.7773, 1.93549 )
 __meta__ = {
 "_edit_bone_": true
 }
+
+[node name="CenterPos" type="Position2D" parent="."]
+position = Vector2( 25.8827, 47.5594 )
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
