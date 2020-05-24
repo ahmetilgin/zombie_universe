@@ -101,8 +101,8 @@ func _ready():
 func get_zombie_and_player_distance():
 	return player.get_global_position().distance_to(get_global_position())
 
-func find_zombie_x_movement(direction):
-	if direction.x > 0:
+func find_zombie_x_movement():
+	if get_global_position().direction_to(target_point_world).x > 0:
 		motion.x = min(motion.x + acceleration, speed)
 	else:
 		motion.x = max(motion.x - acceleration, -speed)
@@ -110,10 +110,9 @@ func find_zombie_x_movement(direction):
 func can_zombie_jump(direction):
 	var target_distance = 0
 	if is_on_floor():
-		var jump = max((10 *(target_point_world.y - $CenterPos.get_global_position().y)), -850)
+		var jump = max(15 * (target_point_world.y - $CenterPos.get_global_position().y), -900)
 		if jump < 0:
 			motion.y = motion.y + jump 
-			motion.x = lerp(motion.x, 0, 0.5)
 		
 func find_cross_index():
 	var cross_index = 0
@@ -130,7 +129,6 @@ func move_to():
 	if len(path) > 1:
 		get_parent().get_node('TileMap').set_target_point(target_point_world)
 		var direction = get_global_position().direction_to(target_point_world)
-		find_zombie_x_movement(direction)
 		can_zombie_jump(direction)
 		var ARRIVE_DISTANCE = 5
 		return get_global_position().distance_to(target_point_world) < ARRIVE_DISTANCE
@@ -139,7 +137,9 @@ func get_next_target_point():
 	if move_to():
 		path.pop_front()
 		if len(path) > 0:
-			target_point_world = path[0]	
+			target_point_world = path[0]
+	else:
+		find_zombie_x_movement()
 
 func check_zombie_found_player():
 	if get_zombie_and_player_distance() < 80:

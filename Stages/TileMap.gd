@@ -52,53 +52,6 @@ func add_walkable_cells(obstacles := []) -> Array:
 			var point: = Vector2(x, y)
 			if (get_cell(point.x, point.y + 1) == INVALID_CELL) or get_cellv(point) != INVALID_CELL:
 				continue
-				
-			var right_corner = get_cell(point.x + 1, point.y + 1) == INVALID_CELL
-			var left_corner = get_cell(point.x - 1, point.y + 1) == INVALID_CELL
-			var offset = 1
-			if right_corner or left_corner:
-				for i in range(y - 1, y - 5, -1):
-					var up = Vector2(x,i)
-					var left = Vector2(x - offset,y)
-					var right = Vector2(x+ offset,y)
-					offset = offset + 1
-					if get_cellv(up) == INVALID_CELL:
-						var index: = calculate_point_index(up)
-						if !astar.has_point(index):
-							points.append(up)
-							astar.add_point(index, Vector3(up.x, up.y, 0))
-					if left_corner:
-						if(get_cellv(left) == INVALID_CELL):
-							var index: = calculate_point_index(left)
-							points.append(left)
-							astar.add_point(index, Vector3(left.x, left.y, 0))
-					if right_corner:
-						if(get_cellv(right) == INVALID_CELL):
-							var index: = calculate_point_index(right)
-							points.append(right)
-							astar.add_point(index, Vector3(right.x, right.y, 0))
-						
-							
-				
-			var found_direction = false
-			var left_approach = false
-			var right_approach = false
-			var last_point = Vector2(0,0)
-			for down_to_top in range(y,min_y, -1):
-				if get_cell(x,down_to_top) != INVALID_CELL:
-					break
-				left_approach = get_cell(x - 1,down_to_top) != INVALID_CELL and get_cell(x,down_to_top) == INVALID_CELL
-				right_approach = get_cell(x + 1,down_to_top) != INVALID_CELL and get_cell(x,down_to_top) == INVALID_CELL
-				if left_approach or right_approach:			
-					found_direction = true	
-
-			if found_direction:
-				for down_to_top in range(y,y - 6, -1):		
-					var direction_point = Vector2(x,down_to_top)
-					var index: = calculate_point_index(direction_point)
-					if(!astar.has_point(index) && get_cellv(direction_point) == INVALID_CELL):
-						points.append(direction_point)
-						astar.add_point(index, Vector3(direction_point.x, direction_point.y, 0))
 			var index: = calculate_point_index(point)
 			if(!astar.has_point(index)):
 				points.append(point)
@@ -129,11 +82,28 @@ func connect_walkable_cells(points: Array) -> void:
 			connected_cells.append([map_to_world(point),map_to_world(point_relative)])
 			astar.connect_points(index, index_relative, false)
 
+var lines = []
 func _ready() -> void:
 	var obstacles: = get_used_cells()
 	calculate_bounds(obstacles)
 	map_size = Vector2(max_x, max_y)
 	var cells = add_walkable_cells(obstacles)
+	for cell in cells:
+		for offset in range(0,8):
+			var left_point = cell - Vector2(1,offset)
+			var right_point = cell - Vector2(-1,offset)
+			var current_point = cell - Vector2(0, offset)
+			if(get_cellv(current_point) != INVALID_CELL):
+				break
+			
+			
+			if(astar.has_point(calculate_point_index(left_point))):
+				lines.append([cell,left_point])
+				astar.connect_points(calculate_point_index(cell),calculate_point_index(left_point), true)
+			if(astar.has_point(calculate_point_index(right_point))):
+				lines.append([cell,right_point])
+				astar.connect_points(calculate_point_index(cell),calculate_point_index(right_point), true)
+	
 	connect_walkable_cells(cells)
 #	for connectedPoint in connected_cells:
 #		if(get_cellv(connectedPoint) == -1):	
@@ -178,7 +148,10 @@ func _draw():
 		draw_circle(cnt[0] + _half_cell_size, 25, Color("#f0f"))
 		draw_circle(cnt[1] + _half_cell_size , 20, Color("#ff0"))
 		draw_line(cnt[0] + _half_cell_size,cnt[1] + _half_cell_size, DRAW_COLOR, 3)
-		
+	
+	for connection in lines:
+		draw_line(map_to_world(connection[0]) + _half_cell_size,map_to_world(connection[1])+_half_cell_size, DRAW_COLOR, 3)
+	
 	for name in founded_path:
 		for point_index in range(0,len(founded_path[name]) - 1):
 				if len(founded_path[name]) > 2:
