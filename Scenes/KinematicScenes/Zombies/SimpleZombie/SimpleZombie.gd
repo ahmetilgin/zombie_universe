@@ -30,7 +30,7 @@ var motion=Vector2(0,0)
 const UP=Vector2(0,-1)
 var is_dead=false
 var is_hurt=false
-var acceleration = 10
+var acceleration = 15
 var is_follow = false
 var path = []
 signal dead_counter_for_wave
@@ -126,12 +126,14 @@ func find_cross_index():
 				break
 	return cross_index
 	
+
 func move_to():
 	if len(path) > 1:
+		get_parent().get_node('TileMap').set_target_point(target_point_world)
 		var direction = get_global_position().direction_to(target_point_world)
 		find_zombie_x_movement(direction)
 		can_zombie_jump(direction,find_cross_index())
-		var ARRIVE_DISTANCE = 25
+		var ARRIVE_DISTANCE = 64
 		return get_global_position().distance_to(target_point_world) < ARRIVE_DISTANCE
 	
 func get_next_target_point():
@@ -155,7 +157,7 @@ func check_zombie_found_player():
 
 func set_zombie_direction():
 	if len(path) > 2:
-		if sign(path[1].x - get_global_position().x) != 1:
+		if sign(path[2].x - get_global_position().x) != 1:
 			$Zombie.scale.x = -body_scale
 			attack_ray_cast.scale.x = -1
 			attack_ray_cast.set_position(Vector2(10,90))
@@ -173,7 +175,7 @@ func follow_path():
 	pass
 
 func _get_path():
-	path = get_parent().get_node('TileMap')._get_path(get_global_position(), player.get_global_position(),get_name())
+	path = get_parent().get_node('TileMap')._get_path($Zombie/body.get_global_position(), player.get_global_position(),get_name())
 	path.pop_front()
 	if len(path) > 2:
 		target_point_world = path[1]

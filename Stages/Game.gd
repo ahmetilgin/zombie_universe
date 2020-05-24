@@ -164,14 +164,14 @@ func _create_market_scene():
 	add_child(market_scene)
 
 func _ready():
-	_create_market_scene()
 	player = player_scene.instance()
+	add_child(player)
+	_create_market_scene()
 	disable_accept_button()
 	create_portals(start_portal)
 	get_tile_borders()
 	connect_market()
 	countdown_timer()
-	add_child(player)
 	get_node("Game_UI").add_child(gameover_scene.instance())
 	on_time_countdown_unvisible()
 	hide_market()

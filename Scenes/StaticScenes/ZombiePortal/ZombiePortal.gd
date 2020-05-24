@@ -3,7 +3,7 @@ var can_create_zombie=true
 var punk_zombie = preload("res://Scenes/KinematicScenes/Zombies/PunkZombie/PunkZombie.tscn")
 var simple_zombie = preload("res://Scenes/KinematicScenes/Zombies/SimpleZombie/SimpleZombie.tscn")
 var stalker_zombie = preload("res://Scenes/KinematicScenes/Zombies/StalkerZombie/StalkerZombie.tscn")
-var zombie_level = 1
+var zombie_level = 0
 var generate_zombie_timer = Timer.new()
 var generate_wave_timer = Timer.new()
 var wave_paused_timer = Timer.new()
@@ -79,7 +79,7 @@ func select_zombie_for_level( _level):
 	return int( floor(randi( ) % ((zombie_by_level / 3) +1 ) ))
 	
 func zombie_count_for_level(_level):
-	var zombie_size_by_level = _level + 1
+	var zombie_size_by_level = _level 
 	wave_zombie_limit = first_wave_zombie_size + zombie_size_by_level
 	zombie_generate_time = wave_time / wave_zombie_limit 
 	generate_zombie_timer.set_wait_time( zombie_generate_time)

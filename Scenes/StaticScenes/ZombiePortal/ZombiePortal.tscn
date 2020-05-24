@@ -11,6 +11,8 @@
 [ext_resource path="res://Resources/Sprites/Portal/portalRings4.png" type="Texture" id=9]
 [ext_resource path="res://Resources/Sprites/Portal/portalRings5.png" type="Texture" id=10]
 
+
+
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
