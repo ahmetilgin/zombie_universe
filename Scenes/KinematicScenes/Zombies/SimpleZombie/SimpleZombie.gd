@@ -112,19 +112,23 @@ func find_zombie_x_movement():
 			motion.x = max(motion.x - acceleration, -speed)
 			print("left")
 	else:
-		
 		print("distance",abs(get_global_position().x - target_point_world.x))
-		motion.x = lerp(motion.x, 0, 0.2)
+		motion.x = 0
 			
 func can_zombie_jump():
 	var y_distance = target_point_world.y - $CenterPos.get_global_position().y 
-	motion.y = motion.y +  15 * (y_distance)
-	if ( motion.y < -10):
-		$Timer.start()
-		motion.x /= 5 
+
+	print("y de zıplama", motion.y)
+	if  y_distance < -10 and is_on_floor():
+		motion.y = motion.y +  15 * (y_distance)
 		motion.y = max(motion.y, -900)
+		motion.x /= 5 
 	else:
 		find_zombie_x_movement()
+
+	if motion.y > 0:
+		_on_Timer_timeout()
+
 
 
 	
@@ -154,7 +158,7 @@ func check_zombie_found_player():
 
 func set_zombie_direction():
 	if len(path) > 2:
-		if sign(path[2].x - get_global_position().x) != 1:
+		if sign(target_point_world.x - $CenterPos.get_global_position().x) != 1:
 			$Zombie.scale.x = -body_scale
 			attack_ray_cast.scale.x = -1
 			attack_ray_cast.set_position(Vector2(10,90))	
@@ -174,12 +178,10 @@ func _get_path():
 	if len(new_path) > 0:
 		path = new_path
 		path.pop_front()
-
-	if len(path) > 0:
+	if(len(path) > 0):
 		target_point_world = path[0]
-		get_parent().get_node('TileMap').set_target_point(target_point_world)
-		can_zombie_jump()
-		set_zombie_direction()
+	get_parent().get_node('TileMap').set_target_point(target_point_world)
+	print("girdi")
 		
 func _set_is_follow(follow):
 	is_follow = follow
@@ -307,6 +309,9 @@ func _zombie_dead_timer_timeout():
 func _on_FollowPlayerTimer_timeout():
 	if is_on_floor():
 		_get_path()
+	if( len(path) > 0):
+		can_zombie_jump()
+	set_zombie_direction()
 
 func _zombie_attack_timer_timeout():
 	can_zombie_attack = true
