@@ -478,8 +478,6 @@ func _physics_process(delta):
 			motion.y = jump
 			is_second_jump = true
 			
-			
-				
 		if is_on_floor():
 			is_first_jump = false
 			if _is_shift_stop():
