@@ -48,7 +48,7 @@ func add_attack_ray_cast():
 func create_zombie_follow_timer():
 	FollowPlayerTimer.connect("timeout",self,"_on_FollowPlayerTimer_timeout") 
 	add_child(FollowPlayerTimer) #to process
-	FollowPlayerTimer.set_wait_time(0.1)
+	FollowPlayerTimer.set_wait_time(0.001)
 	FollowPlayerTimer.start() #to start
 
 func add_zombie_sounds():
@@ -119,15 +119,16 @@ func can_zombie_jump():
 	var y_distance = target_point_world.y - $CenterPos.get_global_position().y 
 
 	print("y de zıplama", motion.y)
-	if  y_distance < -10 and is_on_floor():
+	if motion.y > 0:
+		motion.x /= 10
+	elif  y_distance < -10 and is_on_floor():
 		motion.y = motion.y +  15 * (y_distance)
 		motion.y = max(motion.y, -900)
-		motion.x /= 5 
+		
 	else:
 		find_zombie_x_movement()
 
-	if motion.y > 0:
-		_on_Timer_timeout()
+	
 
 
 
@@ -295,6 +296,7 @@ func move_like_basic_zombie():
 		pass
 
 func _physics_process(delta):
+	set_zombie_direction()
 	motion.y += gravity
 	if is_dead==false:
 		follow_path()
@@ -311,7 +313,7 @@ func _on_FollowPlayerTimer_timeout():
 		_get_path()
 	if( len(path) > 0):
 		can_zombie_jump()
-	set_zombie_direction()
+
 
 func _zombie_attack_timer_timeout():
 	can_zombie_attack = true
