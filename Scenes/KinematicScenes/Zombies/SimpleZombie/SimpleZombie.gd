@@ -159,7 +159,7 @@ func check_zombie_found_player():
 
 func set_zombie_direction():
 	if len(path) > 2:
-		if sign(target_point_world.x - $CenterPos.get_global_position().x) != 1:
+		if sign(motion.x) != 1:
 			$Zombie.scale.x = -body_scale
 			attack_ray_cast.scale.x = -1
 			attack_ray_cast.set_position(Vector2(10,90))	
@@ -214,7 +214,7 @@ func dead(damage,whodead):
 			get_parent().get_node("player").increase_dead_counter()
 
 		zombie_dead_player.play()
-		motion=Vector2(0,0)
+		motion=Vector2(0,gravity)
 	
 		$AnimationPlayer.play("Dead")
 		$CollisionShape2D.set_deferred("disabled",true)
