@@ -373,13 +373,13 @@ func _play_slide_animation():
 func _play_attack_animation():
 	_play_animation("shootAk47")	
 
-#func _move_slide():
-#	$CollisionShape2D.scale = Vector2 (1, 0.7)
-#	$CollisionShape2D.position.y=25
-#	if $AnimatedSprite.flip_h==false:
-#		motion.x = slide_speed
-#	else:
-#		motion.x = -slide_speed
+func _move_slide():
+	$CollisionShape2D.scale = Vector2 (1, 0.7)
+	$CollisionShape2D.position.y=25
+	if $human.scale.x > 0:
+		motion.x = slide_speed
+	else:
+		motion.x = -slide_speed
 
 func _move_right():
 	motion.x=min(motion.x + speed,max_speed)
@@ -443,6 +443,7 @@ func _physics_process(delta):
 			if  is_on_floor() : # && is_hurt==false :
 				if is_melee==false:
 					_set_is_down(true)
+					_move_slide()
 					_play_slide_animation()
 					touch_down = false
 		if Input.is_key_pressed(KEY_SPACE):

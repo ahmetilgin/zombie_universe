@@ -118,14 +118,15 @@ func find_zombie_x_movement():
 			
 func can_zombie_jump():
 	var y_distance = target_point_world.y - $CenterPos.get_global_position().y 
-	motion.y = motion.y + 15* (y_distance)
+	motion.y = motion.y +  15 * (y_distance)
 	if ( motion.y < -10):
 		$Timer.start()
+		motion.x /= 5 
+		motion.y = max(motion.y, -900)
 	else:
 		find_zombie_x_movement()
-		
-	
-	motion.y = max(motion.y, -900)
+
+
 	
 		
 func find_cross_index():
@@ -169,12 +170,11 @@ func follow_path():
 	pass
 
 func _get_path():
-	path = get_parent().get_node('TileMap')._get_path($CenterPos.get_global_position(), player.get_node("CenterPos").get_global_position(),get_name())
-	path.pop_front()
-	path.pop_front()
-	if len(path) == 0:
-		target_point_world = get_parent().get_node('TileMap').get_closest_point(get_global_position())
-		
+	var new_path = get_parent().get_node('TileMap')._get_path($CenterPos.get_global_position(), player.get_node("CenterPos").get_global_position(),get_name())
+	if len(new_path) > 0:
+		path = new_path
+		path.pop_front()
+
 	if len(path) > 0:
 		target_point_world = path[0]
 		get_parent().get_node('TileMap').set_target_point(target_point_world)
@@ -305,7 +305,8 @@ func _zombie_dead_timer_timeout():
 	emit_signal("dead_counter_for_wave")
 
 func _on_FollowPlayerTimer_timeout():
-	_get_path()
+	if is_on_floor():
+		_get_path()
 
 func _zombie_attack_timer_timeout():
 	can_zombie_attack = true

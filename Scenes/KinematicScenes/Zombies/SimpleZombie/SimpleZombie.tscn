@@ -2789,7 +2789,7 @@ __meta__ = {
 position = Vector2( 25.8827, 47.5594 )
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.8
+wait_time = 0.5
 one_shot = true
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

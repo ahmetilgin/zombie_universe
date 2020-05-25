@@ -40,7 +40,7 @@ func calculate_bounds(obstacles):
 func get_closest_point(point):
 	var word_to_map = Vector3(world_to_map(point).x,world_to_map(point).y,0)
 	var closest_point = astar.get_point_position(astar.get_closest_point(word_to_map))
-	return map_to_world(Vector2(closest_point.x,closest_point.y)+ _half_cell_size)
+	return map_to_world(Vector2(closest_point.x,closest_point.y)) + _half_cell_size
 			
 func calculate_point_index(point: Vector2) -> float:
 	return point.x + map_size.x * point.y
@@ -181,9 +181,10 @@ func _ready() -> void:
 
  
 func _get_path(init_position: Vector2, target_position: Vector2, name) -> Array:
+	init_position = get_closest_point(init_position)
+	target_position = get_closest_point(target_position)
 	init_pos = init_position
 	target_pos = target_position
-
 	var start_position = world_to_map(init_pos)
 	var end_position = world_to_map(target_pos)
 	var start_index: = calculate_point_index(start_position)
