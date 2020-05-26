@@ -131,7 +131,7 @@ const jump = -700
 const gravity = 20
 # player options
 const max_hp = 1000
-var hp = 1000
+var hp = 100
 var speed = 150
 var max_speed = 300
 var motion = Vector2(0,0)
@@ -148,7 +148,7 @@ var is_melee = false
 var is_shift_stop = false
 var is_first_jump = false
 var is_second_jump = false
-var bullet_size = 20
+var bullet_size = 9999
 var change_color_tween= Tween.new()
 var pulse_tween= Tween.new()
  

@@ -25,12 +25,12 @@ const N_FLASHES = 4
 var flash_zombie_tween = Tween.new()
 
 export (int) var hp=5
-export (int) var speed=400
+export (int) var speed=350
 var motion=Vector2(0,0)
 const UP=Vector2(0,-1)
 var is_dead=false
 var is_hurt=false
-var acceleration = 150
+var acceleration = 20
 var is_follow = false
 var path = []
 signal dead_counter_for_wave
@@ -41,14 +41,14 @@ var body_rotation = 35.5
 func add_attack_ray_cast():
 #	attack_ray_cast.set_position(Vector2(64,64))
 	add_child(attack_ray_cast)
-	attack_ray_cast.set_cast_to(Vector2(30,0))
-	attack_ray_cast.set_position(Vector2(90,90))
+	attack_ray_cast.set_cast_to(Vector2(200,0))
+	attack_ray_cast.set_position(Vector2(0,50))
 	attack_ray_cast.set_enabled(true)
 
 func create_zombie_follow_timer():
 	FollowPlayerTimer.connect("timeout",self,"_on_FollowPlayerTimer_timeout") 
 	add_child(FollowPlayerTimer) #to process
-	FollowPlayerTimer.set_wait_time(0.001)
+	FollowPlayerTimer.set_wait_time(0.01)
 	FollowPlayerTimer.start() #to start
 
 func add_zombie_sounds():
@@ -103,37 +103,21 @@ func get_zombie_and_player_distance():
 	return player.get_global_position().distance_to(get_global_position())
 
 func find_zombie_x_movement():
-	if abs(get_global_position().distance_to(target_point_world)) > 64:
-		print("diff",abs(get_global_position().x - target_point_world.x))
-		if target_point_world.x > get_global_position().x :
-			motion.x = min(motion.x + acceleration, speed)
-			print("right")
-		else:
-			motion.x = max(motion.x - acceleration, -speed)
-			print("left")
-	else:
-		print("distance",abs(get_global_position().x - target_point_world.x))
-		motion.x = 0
+	$AnimatedSprite.play("run")
+	var diff = (target_point_world.x - get_parent().get_node('TileMap').get_closest_point($CenterPos.get_global_position()).x)
+	if diff > 0 :
+		motion.x = min(motion.x + acceleration, speed)
+	elif diff < 0:
+		motion.x = max(motion.x - acceleration, -speed)
+
 			
-func can_zombie_jump():
-	var y_distance = target_point_world.y - $CenterPos.get_global_position().y 
-
-	print("y de zıplama", motion.y)
-	if motion.y > 0:
-		motion.x /= 10
-	elif  y_distance < -10 and is_on_floor():
-		motion.y = motion.y +  15 * (y_distance)
+func can_zombie_jump(diff):
+	$AnimatedSprite.play("jump")
+	if is_on_floor():
+		motion.y = motion.y + 4 * (diff.y)
 		motion.y = max(motion.y, -900)
-		
-	else:
-		find_zombie_x_movement()
+	motion.x = 0
 
-	
-
-
-
-	
-		
 func find_cross_index():
 	var cross_index = 0
 	if len(path) > 2:
@@ -147,26 +131,21 @@ func find_cross_index():
 
 func check_zombie_found_player():
 	if get_zombie_and_player_distance() < 80:
-		_zombie_attack_to_player(5)
-		motion.x= 0
 		if !FollowPlayerTimer.is_stopped():
 			FollowPlayerTimer.stop()
 			path = []
 	else:
-		$AnimationPlayer.play("Run")
 		if FollowPlayerTimer.is_stopped():
 			FollowPlayerTimer.start()
 
 func set_zombie_direction():
-	if len(path) > 2:
-		if sign(motion.x) != 1:
-			$Zombie.scale.x = -body_scale
-			attack_ray_cast.scale.x = -1
-			attack_ray_cast.set_position(Vector2(10,90))	
-		else:
-			$Zombie.scale.x = body_scale
-			attack_ray_cast.scale.x = 1
-			attack_ray_cast.set_position(Vector2(40,90))
+	if sign(motion.x) < 0:
+		$AnimatedSprite.flip_h = true
+		attack_ray_cast.set_cast_to(Vector2(-200,0))
+	elif sign(motion.x) > 0:
+		$AnimatedSprite.flip_h = false
+		attack_ray_cast.set_cast_to(Vector2(200,0))
+		
 			 
 var is_zombie_action = false
 func follow_path():
@@ -174,15 +153,33 @@ func follow_path():
 		check_zombie_found_player()
 	pass
 
+var init = false
 func _get_path():
-	var new_path = get_parent().get_node('TileMap')._get_path($CenterPos.get_global_position(), player.get_node("CenterPos").get_global_position(),get_name())
+	var new_path = get_parent().get_node('TileMap')._get_path(get_global_position(), player.get_node("CenterPos").get_global_position(),get_name())
 	if len(new_path) > 0:
 		path = new_path
-		path.pop_front()
-	if(len(path) > 0):
-		target_point_world = path[0]
+	
+	var closest_point = get_parent().get_node('TileMap').get_closest_point(get_global_position())
+	var diff = (target_point_world - closest_point)
+	
+	if(len(path) > 1):
+		target_point_world = path[1]
 	get_parent().get_node('TileMap').set_target_point(target_point_world)
-	print("girdi")
+
+	if(diff.y >= 0):
+		if !$RayCast2D.is_colliding():
+			motion.y = -2 * abs(motion.y + (diff.x))
+			motion.y = max(motion.y, -900)
+			print(motion.y,"-",diff)
+		find_zombie_x_movement()
+	else:
+		set_global_position(Vector2(closest_point.x,get_global_position().y))
+		motion.x = 0
+		if($Timer.is_stopped()):
+			$Timer.start()
+
+
+		
 		
 func _set_is_follow(follow):
 	is_follow = follow
@@ -214,9 +211,9 @@ func dead(damage,whodead):
 			get_parent().get_node("player").increase_dead_counter()
 
 		zombie_dead_player.play()
-		motion=Vector2(0,gravity)
+		motion=Vector2(0,0)
 	
-		$AnimationPlayer.play("Dead")
+		$AnimatedSprite.play("dead")
 		$CollisionShape2D.set_deferred("disabled",true)
 		zombie_dead_timer.start()
 	else:
@@ -228,6 +225,7 @@ func dead(damage,whodead):
 		else:
 			back = -400
 		motion = move_and_slide(Vector2(motion.x + back, motion.y) , UP)
+		
 
 func dead_from_turrent(damage,whodead,dir):
 	hp-=damage
@@ -238,7 +236,7 @@ func dead_from_turrent(damage,whodead,dir):
 		is_dead=true
 		zombie_dead_player.play()
 		motion=Vector2(0,0)
-		$AnimationPlayer.play("Dead")
+		$AnimatedSprite.play("Dead")
 		$CollisionShape2D.set_deferred("disabled",true)
 		zombie_dead_timer.start()
 	else:
@@ -266,17 +264,17 @@ func chech_zombie_colliding():
 			_zombie_attack_to_player(5)
 			is_zombie_action = true
 		elif "Top"  in attack_ray_cast.get_collider().name:
-			$AnimationPlayer.play("Attack")
+			$AnimatedSprite.play("attack")
 			var colliding_turret = attack_ray_cast.get_collider().get_parent().get_parent()
 			colliding_turret.change_turret_health(-20)
 			is_zombie_action = true
 		elif "Turret"  in attack_ray_cast.get_collider().name:
-			$AnimationPlayer.play("Attack")
+			$AnimatedSprite.play("attack")
 			var colliding_turret = attack_ray_cast.get_collider()
 			colliding_turret.change_turret_health(-20)
 			is_zombie_action = true
 		elif  "Fence"in attack_ray_cast.get_collider().name:
-			$AnimationPlayer.play("Attack")
+			$AnimatedSprite.play("attack")
 			var colliding_fence = attack_ray_cast.get_collider() 
 			colliding_fence .change_fence_health(-20)
 			is_zombie_action = true
@@ -294,12 +292,44 @@ func chech_zombie_colliding():
 func move_like_basic_zombie():
 	if len(path) == 0:
 		pass
+		
+var jumping_started = false
+var jumping_peak = false
+var started_heigth = Vector2()
+var diff = Vector2()
+func find_zombie_jump_on_peak():
+	if  diff.x > 0:
+		motion.x = diff.x
+	else:
+		motion.x = diff.x
+
 
 func _physics_process(delta):
 	set_zombie_direction()
 	motion.y += gravity
 	if is_dead==false:
+		
+		print(motion.x)
 		follow_path()
+		#print(motion.y)
+		if !is_on_floor() and !jumping_started and motion.y < 0:
+			jumping_started = true
+			started_heigth = motion.y
+			diff = (target_point_world - get_global_position())
+		if jumping_started:
+			find_zombie_jump_on_peak()
+		
+		if !jumping_peak and jumping_started and motion.y >= 0:
+			jumping_peak = true
+			print("peak")
+			find_zombie_jump_on_peak()
+		
+		if jumping_started and jumping_peak and is_on_floor():
+	
+			
+			jumping_started = false
+			jumping_peak = false
+		print(motion.x)
 		motion = move_and_slide(motion , UP)
 		chech_zombie_colliding()
  
@@ -309,10 +339,8 @@ func _zombie_dead_timer_timeout():
 	emit_signal("dead_counter_for_wave")
 
 func _on_FollowPlayerTimer_timeout():
-	if is_on_floor():
+	if is_on_floor() and !is_zombie_action:
 		_get_path()
-	if( len(path) > 0):
-		can_zombie_jump()
 
 
 func _zombie_attack_timer_timeout():
@@ -321,7 +349,7 @@ func _zombie_attack_timer_timeout():
 func _zombie_attack_to_player(damage):
 	if can_zombie_attack:
 		zombie_attack_timer.start()
-		$AnimationPlayer.play("Attack")
+		$AnimatedSprite.play("attack")
 		player.dead(damage,"zombie")
 		can_zombie_attack = false
 	
@@ -337,11 +365,5 @@ func flash_damage():
 
 
 func _on_Timer_timeout():
-	print($CenterPos.get_global_position() + Vector2(),target_point_world)
-	if $CenterPos.get_global_position().x < target_point_world.x :
-		motion.x = min(motion.x + acceleration, speed)
-		print("havada sag")
-	else:
-		motion.x = max(motion.x - acceleration, -speed)
-		print("havada sol")
-	pass # Replace with function body.
+	var diff = (target_point_world - get_parent().get_node('TileMap').get_closest_point($CenterPos.get_global_position()))
+	can_zombie_jump(diff)

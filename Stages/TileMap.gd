@@ -122,14 +122,43 @@ func get_corners(cells):
 			right_corners.append(cell)
 		
 		if(!astar.has_point(calculate_point_index(left)) and !astar.has_point(calculate_point_index(right))):
-			right_corners.append(cell)
-			left_corners.append(cell)
+			corners.append(cell)
+			pass
 
 var detect_offset = 5
-var direct_offset = 7
-func connect_corners(cells):		
+var direct_offset = 8
+
+func do_top_to_down_detect(start_cell,cell):
+	for direct_connection in range(start_cell.y, start_cell.y + direct_offset):
+		if(get_cellv(Vector2(start_cell.x,direct_connection)) != INVALID_CELL):
+			break
+		if(astar.has_point(calculate_point_index(Vector2(start_cell.x,direct_connection)))):
+			lines.append([cell,Vector2(start_cell.x,direct_connection)])
+			astar.connect_points(calculate_point_index(cell),calculate_point_index(Vector2(start_cell.x,direct_connection)), true)
+			break
+func connect_corners(cells):	
+	
+	for cell in corners:
+		var start_cell = Vector2()
+		if get_cellv(cell+ Vector2(1,0)) != INVALID_CELL and get_cellv(cell+ Vector2(-1,0)) == INVALID_CELL:
+			start_cell = cell + Vector2(-2,0)
+			do_top_to_down_detect(start_cell, cell)
+		if get_cellv(cell+ Vector2(-1,0)) != INVALID_CELL and get_cellv(cell+ Vector2(1,0)) == INVALID_CELL:
+			start_cell = cell + Vector2(2,0)
+			do_top_to_down_detect(start_cell, cell)	
+		if	get_cellv(cell+ Vector2(-1,0)) == INVALID_CELL and get_cellv(cell+ Vector2(1,0)) == INVALID_CELL:
+			start_cell = cell + Vector2(2,0)
+			do_top_to_down_detect(start_cell, cell)
+			start_cell = cell + Vector2(-2,0)
+			do_top_to_down_detect(start_cell, cell)
+			pass
+			
+
+
+	
+		
 	for cell in left_corners:
-		var start_cell = cell + Vector2(1,0)		
+		var start_cell = cell + Vector2(2,0)		
 		for direct_connection in range(start_cell.y, start_cell.y + direct_offset):
 			if(get_cellv(Vector2(start_cell.x,direct_connection)) != INVALID_CELL):
 				break
@@ -145,7 +174,7 @@ func connect_corners(cells):
 				lines.append([cell,Vector2(i,j)])
 				astar.connect_points(calculate_point_index(cell),calculate_point_index(Vector2(i,j)), true)
 	for cell in right_corners:
-		var start_cell = cell + Vector2(-1,0)
+		var start_cell = cell + Vector2(-2,0)
 		for direct_connection in range(start_cell.y, start_cell.y + direct_offset):
 			if(get_cellv(Vector2(start_cell.x,direct_connection)) != INVALID_CELL):
 				break
@@ -219,14 +248,14 @@ func _draw():
 	for connection in lines:
 		draw_line(map_to_world(connection[0]) + _half_cell_size,map_to_world(connection[1])+_half_cell_size, DRAW_COLOR, 3)
 		
-	for corner in corners:
-		draw_circle(map_to_world(corner) + _half_cell_size, 30,Color("FFF") )
-
-	for corner in left_corners:
-		draw_circle(map_to_world(corner) + _half_cell_size, 30,Color("000") )
-
-	for corner in right_corners:
-		draw_circle(map_to_world(corner) + _half_cell_size, 30,Color("F00") )
+#	for corner in corners:
+#		draw_circle(map_to_world(corner) + _half_cell_size, 30,Color("FFF") )
+#
+#	for corner in left_corners:
+#		draw_circle(map_to_world(corner) + _half_cell_size, 30,Color("000") )
+#
+#	for corner in right_corners:
+#		draw_circle(map_to_world(corner) + _half_cell_size, 30,Color("F00") )
 		
 	for name in founded_path:
 		for point_index in range(0,len(founded_path[name]) - 1):
