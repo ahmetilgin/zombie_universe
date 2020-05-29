@@ -360,7 +360,7 @@ func flash_damage():
 	for i in range(N_FLASHES * 2):
 		var zombie_visible = true if i % 2 == 1 else  false
 		var time = FLASH_RATE * i +FLASH_RATE
-		flash_zombie_tween.interpolate_callback($Zombie,time, "set", "visible", zombie_visible)
+		flash_zombie_tween.interpolate_callback($AnimatedSprite,time, "set", "visible", zombie_visible)
 	flash_zombie_tween.start()
 
 
