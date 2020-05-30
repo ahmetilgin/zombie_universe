@@ -366,19 +366,19 @@ func create_instance(turret):
 	instance = turret_paths[turret].instance()
 	is_create_instance = true
 	instance.set_global_position(Vector2(-500,-500))
-	add_child(instance)
+	$Background.add_child(instance)
 	
 func create_wall_instance(wall):
 	instance = walls[wall].instance()
 	instance.set_global_position(Vector2(-500,-500))
 	is_create_instance = true
-	add_child(instance)
+	$Background.add_child(instance)
 	
 func create_teleport_instance(teleport):
 	instance = teleports[teleport].instance()
 	instance.set_global_position(Vector2(-500,-500))
 	is_create_instance = true
-	add_child(instance)
+	$Background.add_child(instance)
 	return instance
 
 func finish_turret_buy():
