@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://Scenes/KinematicScenes/Zombies/SimpleZombie/SimpleZombie.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Attack_03.png" type="Texture" id=2]
@@ -65,9 +65,6 @@ animations = [ {
 "speed": 15.0
 } ]
 
-[sub_resource type="OccluderPolygon2D" id=3]
-polygon = PoolVector2Array( -125.671, 185.374, 139.564, 192.882, 74.0208, 20.8193, -90.7557, 15.8138 )
-
 [node name="Basic_Zombie" type="KinematicBody2D"]
 scale = Vector2( 0.225063, 0.252597 )
 script = ExtResource( 1 )
@@ -93,10 +90,6 @@ frames = SubResource( 2 )
 animation = "run"
 frame = 5
 flip_h = true
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="AnimatedSprite"]
-position = Vector2( 5.66787, 32.4211 )
-occluder = SubResource( 3 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1

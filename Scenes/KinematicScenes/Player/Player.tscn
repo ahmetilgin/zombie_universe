@@ -1,8 +1,7 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://Scenes/KinematicScenes/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/Light/WhiteLight.png" type="Texture" id=2]
-[ext_resource path="res://Scenes/KinematicScenes/Player/CameraShake.gd" type="Script" id=54]
 [ext_resource path="res://Resources/Sprites/TouchIcons/touch_buttons.png" type="Texture" id=55]
 [ext_resource path="res://Resources/Sprites/TouchIcons/bullet1.png" type="Texture" id=56]
 [ext_resource path="res://Resources/Sprites/knife.png" type="Texture" id=57]
@@ -4059,7 +4058,6 @@ limit_top = 0
 limit_right = 3840
 limit_bottom = 2025
 smoothing_enabled = true
-script = ExtResource( 54 )
 
 [node name="jump_counter_time" type="Timer" parent="."]
 wait_time = 11.81
@@ -4284,7 +4282,6 @@ modulate = Color( 0.976471, 0.458824, 0.00392157, 1 )
 position = Vector2( -8.51245, 0 )
 texture = ExtResource( 2 )
 texture_scale = 0.5
-color = Color( 0.639216, 0.745098, 0.301961, 1 )
 range_height = -2048.0
 range_z_min = 0
 shadow_enabled = true
@@ -4309,7 +4306,7 @@ __meta__ = {
 [connection signal="pressed" from="Controller/Node2D/melee_attack" to="." method="_on_melee_attack_pressed"]
 [connection signal="released" from="Controller/Node2D/melee_attack" to="." method="_on_melee_attack_released"]
 [connection signal="body_entered" from="human/body2/Area2D" to="." method="_on_Area2D_body_entered"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_slideAk47_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_meleeAk47_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_hurtAk47_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_shootAk47_finished"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_meleeAk47_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_slideAk47_finished"]

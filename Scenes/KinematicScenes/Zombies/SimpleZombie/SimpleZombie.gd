@@ -173,7 +173,6 @@ func _get_path():
 		if !$RayCast2D.is_colliding():
 			motion.y = -2 * abs(motion.y + (diff.x))
 			motion.y = max(motion.y, -900)
-			print(motion.y,"-",diff)
 		find_zombie_x_movement()
 	else:
 		set_global_position(Vector2(closest_point.x,get_global_position().y))
@@ -311,10 +310,8 @@ func _physics_process(delta):
 	set_zombie_direction()
 	motion.y += gravity
 	if is_dead==false:
-		
-		print(motion.x)
+	
 		follow_path()
-		#print(motion.y)
 		if !is_on_floor() and !jumping_started and motion.y < 0:
 			jumping_started = true
 			started_heigth = motion.y
@@ -324,7 +321,6 @@ func _physics_process(delta):
 		
 		if !jumping_peak and jumping_started and motion.y >= 0:
 			jumping_peak = true
-			print("peak")
 			find_zombie_jump_on_peak()
 		
 		if jumping_started and jumping_peak and is_on_floor():
@@ -332,7 +328,6 @@ func _physics_process(delta):
 			
 			jumping_started = false
 			jumping_peak = false
-		print(motion.x)
 		motion = move_and_slide(motion , UP)
 		chech_zombie_colliding()
  

@@ -15,41 +15,41 @@
 [ext_resource path="res://Resources/Sprites/UISprites/squarebuttondisable.png" type="Texture" id=26]
 [ext_resource path="res://Resources/AudioFiles/Game/savymerchant.ogg" type="AudioStream" id=28]
 
-[sub_resource type="DynamicFont" id=114]
+[sub_resource type="DynamicFont" id=1]
 size = 85
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 19 )
 
-[sub_resource type="DynamicFont" id=115]
+[sub_resource type="DynamicFont" id=2]
 size = 23
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 19 )
 
-[sub_resource type="AtlasTexture" id=116]
+[sub_resource type="AtlasTexture" id=3]
 flags = 4
 atlas = ExtResource( 20 )
 region = Rect2( 1894.66, 910.469, 119.713, 129.236 )
 
-[sub_resource type="AtlasTexture" id=117]
+[sub_resource type="AtlasTexture" id=4]
 flags = 4
 atlas = ExtResource( 20 )
 region = Rect2( 499, 1782, 535, 152 )
 
-[sub_resource type="AtlasTexture" id=118]
+[sub_resource type="AtlasTexture" id=5]
 flags = 4
 atlas = ExtResource( 21 )
 region = Rect2( 4532, 3384, 336, 53 )
 
-[sub_resource type="AtlasTexture" id=119]
+[sub_resource type="AtlasTexture" id=6]
 flags = 4
 atlas = ExtResource( 20 )
 region = Rect2( 1997, 1796, 336, 53 )
 
-[sub_resource type="ParticlesMaterial" id=120]
+[sub_resource type="ParticlesMaterial" id=7]
 trail_divisor = 2
 emission_shape = 2
 emission_box_extents = Vector3( 2000, 1, 1 )
@@ -61,12 +61,12 @@ orbit_velocity_random = 0.0
 scale = 1.2
 scale_random = 0.32
 
-[sub_resource type="AtlasTexture" id=121]
+[sub_resource type="AtlasTexture" id=8]
 flags = 4
 atlas = ExtResource( 20 )
 region = Rect2( 1625.25, 1375.16, 343.527, 143.802 )
 
-[sub_resource type="AtlasTexture" id=122]
+[sub_resource type="AtlasTexture" id=9]
 flags = 4
 atlas = ExtResource( 22 )
 region = Rect2( -23, 16, 2281, 2410 )
@@ -102,7 +102,7 @@ margin_top = 34.0542
 margin_right = 354.672
 margin_bottom = 119.054
 rect_scale = Vector2( 0.85465, 1.43414 )
-custom_fonts/font = SubResource( 114 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "ACCEPT"
 __meta__ = {
@@ -115,7 +115,7 @@ margin_top = 142.506
 margin_right = 592.044
 margin_bottom = 195.506
 rect_scale = Vector2( 2.01716, 2.7042 )
-custom_fonts/font = SubResource( 115 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.988235, 1, 0.956863, 1 )
 text = "SELECT POSITION
 "
@@ -130,7 +130,7 @@ margin_top = 36.5146
 margin_right = 766.188
 margin_bottom = 187.514
 rect_scale = Vector2( 0.190372, 0.192707 )
-texture = SubResource( 116 )
+texture = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -141,7 +141,7 @@ margin_top = 23.5933
 margin_right = 616.914
 margin_bottom = 143.593
 rect_scale = Vector2( 0.34317, 0.341894 )
-texture = SubResource( 117 )
+texture = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -155,7 +155,7 @@ margin_bottom = 99.2454
 rect_scale = Vector2( 1.01, 0.4 )
 value = 100.0
 rounded = true
-texture_progress = SubResource( 118 )
+texture_progress = SubResource( 5 )
 nine_patch_stretch = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -169,7 +169,7 @@ margin_bottom = 99.2452
 rect_scale = Vector2( 1.01, 0.4 )
 value = 100.0
 rounded = true
-texture_progress = SubResource( 119 )
+texture_progress = SubResource( 6 )
 tint_progress = Color( 0, 1, 0, 1 )
 nine_patch_stretch = true
 __meta__ = {
@@ -185,7 +185,7 @@ margin_left = 502.0
 margin_top = 34.0
 margin_right = 755.35
 margin_bottom = 74.0
-custom_fonts/normal_font = SubResource( 115 )
+custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 1, 0, 0, 1 )
 custom_colors/selection_color = Color( 0, 0, 0, 1 )
 text = "LEVEL :"
@@ -198,7 +198,7 @@ margin_left = 117.723
 margin_top = 1.47899
 margin_right = 253.723
 margin_bottom = 41.479
-custom_fonts/normal_font = SubResource( 115 )
+custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 1, 0, 0, 1 )
 text = "1"
 __meta__ = {
@@ -214,7 +214,7 @@ rect_scale = Vector2( 0.932722, 1.32486 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 size_flags_stretch_ratio = 0.0
-custom_fonts/normal_font = SubResource( 115 )
+custom_fonts/normal_font = SubResource( 2 )
 custom_constants/table_vseparation = 4
 bbcode_text = "30
 
@@ -237,7 +237,7 @@ preprocess = 5.0
 speed_scale = 2.0
 randomness = 0.5
 local_coords = false
-process_material = SubResource( 120 )
+process_material = SubResource( 7 )
 
 [node name="CoinIcon" type="TextureRect" parent="Game_UI"]
 margin_left = 979.067
@@ -245,7 +245,7 @@ margin_top = 21.3461
 margin_right = 1129.07
 margin_bottom = 71.3461
 rect_scale = Vector2( 1.03412, 1.21914 )
-texture = SubResource( 121 )
+texture = SubResource( 8 )
 expand = true
 
 [node name="CoinIcon2" type="TextureRect" parent="Game_UI/CoinIcon"]
@@ -254,7 +254,7 @@ margin_top = 1.60752
 margin_right = 135.35
 margin_bottom = 33.6075
 rect_scale = Vector2( 1.38517, 1.18225 )
-texture = SubResource( 122 )
+texture = SubResource( 9 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -270,7 +270,7 @@ margin_top = -367.0
 margin_right = 494.0
 margin_bottom = -317.0
 rect_scale = Vector2( 0.933228, 1.00751 )
-custom_fonts/normal_font = SubResource( 115 )
+custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0.901961, 0.992157, 0.00784314, 1 )
 bbcode_text = "0"
 text = "0"
@@ -299,7 +299,7 @@ margin_left = 767.0
 margin_top = 34.0
 margin_right = 975.0
 margin_bottom = 74.0
-custom_fonts/normal_font = SubResource( 115 )
+custom_fonts/normal_font = SubResource( 2 )
 text = "TIME:"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -309,7 +309,7 @@ __meta__ = {
 margin_left = 76.0
 margin_right = 194.0
 margin_bottom = 29.0
-custom_fonts/normal_font = SubResource( 115 )
+custom_fonts/normal_font = SubResource( 2 )
 text = "20"
 __meta__ = {
 "_edit_use_anchors_": false

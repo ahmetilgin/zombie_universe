@@ -1,13 +1,13 @@
 extends RigidBody2D
 
-onready var coin_number = get_tree().get_root().get_node("Game/Game_UI/Coin_Counter")
+var coin_number = null 
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	get_tree().get_root().print_tree_pretty()
+	coin_number = get_parent().get_parent().get_node("Game_UI").get_node("Coin_Counter")
 	set_physics_process(true)
 	$AnimatedSprite.play("coin")
 	$Tween.interpolate_property($AnimatedSprite,'scale',$AnimatedSprite.scale,
