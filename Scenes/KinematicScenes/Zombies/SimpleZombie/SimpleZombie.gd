@@ -1,8 +1,8 @@
 extends KinematicBody2D
 var target_point_world = Vector2()
 var FollowPlayerTimer = Timer.new()
-onready var player = get_parent().get_node('player')
-onready var tile_map = get_parent().get_node('TileMap')
+var player = null
+var tile_map = null
 var coin = preload("res://Scenes/StaticScenes/Coin/Coin.tscn")
 var extra_bullet = preload("res://Scenes/StaticScenes/ExtraBullet/ExtraBullet.tscn")
 
@@ -90,6 +90,9 @@ func create_zombie_found_player_label():
 #	add_child(textureRect)
 
 func _ready():
+	var tile_map_root = get_parent()
+	tile_map = tile_map_root.get_node("TileMap")
+	player = tile_map_root.get_parent().get_node("player")
 	add_zombie_sounds()
 	create_zombie_dead_timer()
 	create_zombie_follow_timer()
@@ -104,7 +107,7 @@ func get_zombie_and_player_distance():
 
 func find_zombie_x_movement():
 	$AnimatedSprite.play("run")
-	var diff = (target_point_world.x - get_parent().get_node('TileMap').get_closest_point($CenterPos.get_global_position()).x)
+	var diff = (target_point_world.x - tile_map.get_closest_point($CenterPos.get_global_position()).x)
 	if diff > 0 :
 		motion.x = min(motion.x + acceleration, speed)
 	elif diff < 0:
@@ -155,16 +158,16 @@ func follow_path():
 
 var init = false
 func _get_path():
-	var new_path = get_parent().get_node('TileMap')._get_path(get_global_position(), player.get_node("CenterPos").get_global_position(),get_name())
+	var new_path = tile_map._get_path(get_global_position(), player.get_node("CenterPos").get_global_position(),get_name())
 	if len(new_path) > 0:
 		path = new_path
 	
-	var closest_point = get_parent().get_node('TileMap').get_closest_point(get_global_position())
+	var closest_point = tile_map.get_closest_point(get_global_position())
 	var diff = (target_point_world - closest_point)
 	
 	if(len(path) > 1):
 		target_point_world = path[1]
-	get_parent().get_node('TileMap').set_target_point(target_point_world)
+	tile_map.set_target_point(target_point_world)
 
 	if(diff.y >= 0):
 		if !$RayCast2D.is_colliding():
@@ -208,7 +211,7 @@ func dead(damage,whodead):
 	if hp < 0 and !is_dead:
 		is_dead=true
 		if whodead=="player":
-			get_parent().get_node("player").increase_dead_counter()
+			player.increase_dead_counter()
 
 		zombie_dead_player.play()
 		motion=Vector2(0,0)
@@ -220,7 +223,7 @@ func dead(damage,whodead):
 #		is_hurt=true
 #		zombie_hurt_player.play()
 		var back = 0;
-		if get_parent().get_node("player").get_global_position().x < get_global_position().x:
+		if player.get_global_position().x < get_global_position().x:
 			back = 400
 		else:
 			back = -400
@@ -232,11 +235,11 @@ func dead_from_turrent(damage,whodead,dir):
 	flash_damage()
 	if hp<0:
 		if whodead=="player":
-			get_parent().get_node("player").increase_dead_counter()
+			player.increase_dead_counter()
 		is_dead=true
 		zombie_dead_player.play()
 		motion=Vector2(0,0)
-		$AnimatedSprite.play("Dead")
+		$AnimatedSprite.play("dead")
 		$CollisionShape2D.set_deferred("disabled",true)
 		zombie_dead_timer.start()
 	else:
@@ -365,5 +368,5 @@ func flash_damage():
 
 
 func _on_Timer_timeout():
-	var diff = (target_point_world - get_parent().get_node('TileMap').get_closest_point($CenterPos.get_global_position()))
+	var diff = (target_point_world - tile_map.get_closest_point($CenterPos.get_global_position()))
 	can_zombie_jump(diff)

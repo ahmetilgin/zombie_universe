@@ -27,7 +27,7 @@ var is_countdown_pause_timer = false
 var pause_time = 100
 var counttimer
 var second_passed = true
-var portal_coordinates = [Vector2(4,7),Vector2(41,7)]
+var portal_coordinates = [Vector2(1,5),Vector2(34,5)]
 var is_teleport_buying = false
 var teleport_locs = []
 var teleport_pair = []
@@ -55,19 +55,19 @@ func create_portals(portal_count):
 		portal.queue_free()
 	for i in range(0,portal_count):
 		var portal = portal_scene.instance()
-		add_child(portal)
+		$Background.add_child(portal)
 		portal.connect("wave_finished",self, "wave_finish")
 		portal.connect("wave_started",self, "wave_started")
 		var portal_coordinate = randi() % portal_coordinates.size()
-		var pixel_coordinate = $TileMap.map_to_world(portal_coordinates[portal_coordinate])
-		portal.set_global_position(pixel_coordinate + $TileMap.cell_size / 2)
+		var pixel_coordinate = $Background/TileMap.map_to_world(portal_coordinates[portal_coordinate])
+		portal.set_global_position(pixel_coordinate + $Background/TileMap.cell_size / 2)
 		portal_coordinates.erase(portal_coordinates[portal_coordinate])
 		portal_list.push_back(portal)
 	pass # Replace with function body.
 	
 func get_tile_borders():
-	max_border = get_node("TileMap").get_max_border()
-	min_border = get_node("TileMap").get_min_border()
+	max_border = $Background/TileMap.get_max_border()
+	min_border = $Background/TileMap.get_min_border()
 
 func buy_health():
 	player.healt_kit(20)
@@ -243,22 +243,22 @@ var is_opened_market = false
 func show_grid():
 	for i in range(min_border.x, max_border.x):
 		for j in range(min_border.y, max_border.y):
-			if get_node("TileMap").get_cell(i,j) == -1 and get_node("TileMap").get_cell(i,j + 1) != 14  and get_node("TileMap").get_cell(i,j+1) != -1: 				
-				get_node("TileMap").set_cellv(Vector2(i,j),14)			
+			if $Background/TileMap.get_cell(i,j) == -1 and $Background/TileMap.get_cell(i,j + 1) != 14  and $Background/TileMap.get_cell(i,j+1) != -1: 				
+				$Background/TileMap.set_cellv(Vector2(i,j),14)			
 			pass
 
 func clear_grid():
 	for i in range(min_border.x, max_border.x):
 		for j in range(min_border.y, max_border.y):
-			if get_node("TileMap").get_cell(i,j) == 14 or get_node("TileMap").get_cell(i,j) == 15:				
-				get_node("TileMap").set_cellv(Vector2(i,j),-1)
+			if $Background/TileMap.get_cell(i,j) == 14 or $Background/TileMap.get_cell(i,j) == 15:				
+				$Background/TileMap.set_cellv(Vector2(i,j),-1)
 			pass
 
 func hide_grid():
 	for i in range(min_border.x, max_border.x):
 		for j in range(min_border.y, max_border.y):
-			if get_node("TileMap").get_cell(i,j) == 14:				
-				get_node("TileMap").set_cellv(Vector2(i,j),-1)
+			if $Background/TileMap.get_cell(i,j) == 14:				
+				$Background/TileMap.set_cellv(Vector2(i,j),-1)
 			pass
 
 func _draw():
@@ -314,15 +314,15 @@ func _unhandled_input(event):
 		if event.pressed and event.button_index == BUTTON_LEFT and is_the_buy_button_clicked:
 			var pos = get_global_mouse_position()
 			if tile_grid == null:
-				var grid = get_node("TileMap").world_to_map(pos)
-				if (get_node("TileMap").get_cellv(grid) ==14):
+				var grid = $Background/TileMap.world_to_map(pos)
+				if ($Background/TileMap.get_cellv(grid) ==14):
 					tile_grid = grid
 			else:
-				if get_node("TileMap").get_cell(tile_grid.x,tile_grid.y) == 15 && !is_teleport_buying :
-					get_node("TileMap").set_cell(tile_grid.x,tile_grid.y,14)
+				if $Background/TileMap.get_cell(tile_grid.x,tile_grid.y) == 15 && !is_teleport_buying :
+					$Background/TileMap.set_cell(tile_grid.x,tile_grid.y,14)
 				pass
-			var grid = get_node("TileMap").world_to_map(pos)
-			if (get_node("TileMap").get_cellv(grid) ==14):
+			var grid = $Background/TileMap.world_to_map(pos)
+			if ($Background/TileMap.get_cellv(grid) ==14):
 				tile_grid = grid
 			if !is_teleport_buying:
 				select_turret_position()
@@ -331,28 +331,28 @@ func _unhandled_input(event):
 
 func select_turret_position():
 	if(tile_grid != null):
-		if  get_node("TileMap").get_cell(tile_grid.x,tile_grid.y) == 14:
+		if  $Background/TileMap.get_cell(tile_grid.x,tile_grid.y) == 14:
 			enable_accept_button()
-			get_node("TileMap").set_cell(tile_grid.x,tile_grid.y,15) 
+			$Background/TileMap.set_cell(tile_grid.x,tile_grid.y,15) 
 		
 func select_teleport_position():
 	if(tile_grid != null):
-		if  get_node("TileMap").get_cell(tile_grid.x,tile_grid.y) == 14:
-			get_node("TileMap").set_cell(tile_grid.x,tile_grid.y, 15) 
+		if  $Background/TileMap.get_cell(tile_grid.x,tile_grid.y) == 14:
+			$Background/TileMap.set_cell(tile_grid.x,tile_grid.y, 15) 
 			selected_teleport_location_count += 1
 			teleport_locs.push_back(tile_grid)
 			if selected_teleport_location_count>= 2:
 				enable_accept_button()
 				if selected_teleport_location_count > 2:
-					get_node("TileMap").set_cell(teleport_locs[0].x,teleport_locs[0].y, 14)
+					$Background/TileMap.set_cell(teleport_locs[0].x,teleport_locs[0].y, 14)
 					teleport_locs.remove(0) 
 				
 func finish_teleport_buy():
-	teleport_pair[0].set_global_position(get_node("TileMap").map_to_world(teleport_locs[0]))
-	teleport_pair[1].set_global_position(get_node("TileMap").map_to_world(teleport_locs[1]))
+	teleport_pair[0].set_global_position($Background/TileMap.map_to_world(teleport_locs[0]))
+	teleport_pair[1].set_global_position($Background/TileMap.map_to_world(teleport_locs[1]))
 	
-	teleport_pair[0].set_other_pos(get_node("TileMap").map_to_world(teleport_locs[1]))
-	teleport_pair[1].set_other_pos(get_node("TileMap").map_to_world(teleport_locs[0]))
+	teleport_pair[0].set_other_pos($Background/TileMap.map_to_world(teleport_locs[1]))
+	teleport_pair[1].set_other_pos($Background/TileMap.map_to_world(teleport_locs[0]))
 	selected_teleport_location_count = 0
 	teleport_locs.clear()
 	is_teleport_buying = false
@@ -384,7 +384,7 @@ func create_teleport_instance(teleport):
 func finish_turret_buy():
 	turret_grid = tile_grid	
 	if is_create_instance:
-		tile_pos =  get_node("TileMap").map_to_world(tile_grid)
+		tile_pos =  $Background/TileMap.map_to_world(tile_grid)
 		instance.set_global_position(Vector2(tile_pos.x + 32,tile_pos.y ) )
 	clear_grid()
 	hide_market()

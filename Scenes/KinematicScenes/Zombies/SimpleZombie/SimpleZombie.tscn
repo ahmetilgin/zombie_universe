@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://Scenes/KinematicScenes/Zombies/SimpleZombie/SimpleZombie.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Attack_03.png" type="Texture" id=2]
@@ -26,16 +26,8 @@
 [ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Run_06.png" type="Texture" id=24]
 [ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Dead_5.png" type="Texture" id=25]
 [ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Run_07.png" type="Texture" id=26]
-[ext_resource path="res://Resources/Sprites/Player/Jump1.png" type="Texture" id=27]
-[ext_resource path="res://Resources/Sprites/Player/Jump2.png" type="Texture" id=28]
-[ext_resource path="res://Resources/Sprites/Player/Jump3.png" type="Texture" id=29]
-[ext_resource path="res://Resources/Sprites/Player/Jump4.png" type="Texture" id=30]
-[ext_resource path="res://Resources/Sprites/Player/Jump5.png" type="Texture" id=31]
-[ext_resource path="res://Resources/Sprites/Player/Jump10.png" type="Texture" id=32]
-[ext_resource path="res://Resources/Sprites/Player/Jump6.png" type="Texture" id=33]
-[ext_resource path="res://Resources/Sprites/Player/Jump8.png" type="Texture" id=34]
-[ext_resource path="res://Resources/Sprites/Player/Jump7.png" type="Texture" id=35]
-[ext_resource path="res://Resources/Sprites/Player/Jump9.png" type="Texture" id=36]
+[ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_walk_6.png" type="Texture" id=27]
+[ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_walk_7.png" type="Texture" id=28]
 [ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Run_05.png" type="Texture" id=37]
 [ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Run_09.png" type="Texture" id=38]
 [ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Run_10.png" type="Texture" id=39]
@@ -48,10 +40,20 @@
 [ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Run_13.png" type="Texture" id=53]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 48.4067, 183.577 )
+extents = Vector2( 55.5029, 197.95 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
+"frames": [ ExtResource( 17 ), ExtResource( 42 ), ExtResource( 40 ), ExtResource( 19 ), ExtResource( 21 ), ExtResource( 25 ), ExtResource( 20 ) ],
+"loop": false,
+"name": "dead",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 27 ), ExtResource( 28 ) ],
+"loop": true,
+"name": "jump",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 23 ), ExtResource( 22 ), ExtResource( 15 ), ExtResource( 43 ), ExtResource( 16 ), ExtResource( 37 ), ExtResource( 24 ), ExtResource( 26 ), ExtResource( 41 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 18 ), ExtResource( 45 ), ExtResource( 53 ), ExtResource( 51 ) ],
 "loop": true,
 "name": "run",
@@ -61,17 +63,10 @@ animations = [ {
 "loop": true,
 "name": "attack",
 "speed": 15.0
-}, {
-"frames": [ ExtResource( 17 ), ExtResource( 42 ), ExtResource( 40 ), ExtResource( 19 ), ExtResource( 21 ), ExtResource( 25 ), ExtResource( 20 ) ],
-"loop": false,
-"name": "dead",
-"speed": 20.0
-}, {
-"frames": [ ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 33 ), ExtResource( 35 ), ExtResource( 34 ), ExtResource( 36 ), ExtResource( 32 ) ],
-"loop": true,
-"name": "jump",
-"speed": 5.0
 } ]
+
+[sub_resource type="OccluderPolygon2D" id=3]
+polygon = PoolVector2Array( -125.671, 185.374, 139.564, 192.882, 74.0208, 20.8193, -90.7557, 15.8138 )
 
 [node name="Basic_Zombie" type="KinematicBody2D"]
 scale = Vector2( 0.225063, 0.252597 )
@@ -81,6 +76,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -46.4449, -33.1057 )
 scale = Vector2( 2.61906, -1.2303 )
 z_index = 1
 shape = SubResource( 1 )
@@ -91,12 +87,16 @@ enabled = true
 cast_to = Vector2( 0, 150 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( -40.8785, -5.83214 )
-scale = Vector2( 0.23, 0.23 )
+position = Vector2( -39.9496, -9.97035 )
+scale = Vector2( 1.14447, 0.998319 )
 frames = SubResource( 2 )
 animation = "run"
 frame = 5
 flip_h = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="AnimatedSprite"]
+position = Vector2( 5.66787, 32.4211 )
+occluder = SubResource( 3 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
