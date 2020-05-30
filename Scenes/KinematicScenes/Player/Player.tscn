@@ -1,6 +1,7 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://Scenes/KinematicScenes/Player/Player.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Sprites/Light/WhiteLight.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/KinematicScenes/Player/CameraShake.gd" type="Script" id=54]
 [ext_resource path="res://Resources/Sprites/TouchIcons/touch_buttons.png" type="Texture" id=55]
 [ext_resource path="res://Resources/Sprites/TouchIcons/bullet1.png" type="Texture" id=56]
@@ -4277,6 +4278,22 @@ anims/slideAk47 = SubResource( 27 )
 
 [node name="CenterPos" type="Position2D" parent="."]
 position = Vector2( 32.4549, 12.3639 )
+
+[node name="Light2D" type="Light2D" parent="."]
+modulate = Color( 0.976471, 0.458824, 0.00392157, 1 )
+position = Vector2( -8.51245, 0 )
+texture = ExtResource( 2 )
+texture_scale = 0.5
+color = Color( 0.639216, 0.745098, 0.301961, 1 )
+range_height = -2048.0
+range_z_min = 0
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 0.964706 )
+shadow_buffer_size = 4022
+shadow_filter = 3
+__meta__ = {
+"_editor_description_": ""
+}
 [connection signal="timeout" from="player_dead_timer" to="." method="_on_player_dead_timer_timeout"]
 [connection signal="timeout" from="jump_counter_time" to="." method="_on_jump_counter_time_timeout"]
 [connection signal="pressed" from="Controller/Node2D/right" to="." method="_on_right_pressed"]
