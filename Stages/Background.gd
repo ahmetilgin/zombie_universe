@@ -11,7 +11,7 @@ func _ready():
 	print("mdoulate çağrıldı.")
 	var shadow_module = CanvasModulate.new()
 	shadow_module.set_color(Color( 0, 0, 0, 1 ))
-	shadow_module.set_name("modulets")
+	shadow_module.set_name("overlay")
 	get_tree().get_root().add_child(shadow_module)
 	print(shadow_module.get_global_position(),shadow_module)
 	shadow_module.set_z_index(1)
