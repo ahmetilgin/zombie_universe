@@ -15,6 +15,8 @@ var zombie_generate_time
 var zombie_generate_counter = 0
 var wave_is_contiune = false
 var wave_time = 5.0
+var tile_map
+var available_cells = []
 var first_wave_zombie_size = 2
 var zombie_types = { 0 : simple_zombie , 
 					 1 : stalker_zombie,
@@ -26,16 +28,25 @@ var zombie_types = { 0 : simple_zombie ,
 						7 : punk_zombie
 					}
 					
-
-
 signal wave_finished
 signal wave_started
+func get_used_cells():
+	tile_map = get_parent().get_node("TileMap")
+	var max_border = tile_map.get_max_border()
+	var min_border = tile_map.get_min_border()
+	for i in range(min_border.x + 1, max_border.x - 1) :
+		for j in range(min_border.y + 1, max_border.y - 1):
+			if(tile_map.get_cell(i,j + 1) != -1 and tile_map.get_cell(i,j) == -1):
+				available_cells.append(Vector2(i,j))
+
+
 func _ready():
 	randomize()
 	zombie_count_for_level(zombie_level)
 	create_generate_wave_timer()
 	create_generate_zombie_timer()
 	create_wave_paused_timer()#bütün zombieler ölünce yeni dalga gelene kadar bekleme süresi oluşturuldu.
+	get_used_cells()
 
 
 func _process(delta):
@@ -90,7 +101,8 @@ func set_zombie_level(level):
 func generate_Zombies():
 	var zombie_instance =zombie_types.get( select_zombie_for_level(zombie_level)).instance()
 	get_parent().call_deferred("add_child",zombie_instance)
-	zombie_instance.set_global_position(Vector2(get_global_position().x,get_global_position().y))
+	var new_pos = tile_map.map_to_world(available_cells[randi() % len(available_cells)]) + tile_map._half_cell_size
+	zombie_instance.set_global_position(new_pos)
 	zombie_instance.connect("dead_counter_for_wave",self,"on_dead_counter_for_wave")
 	
 func on_dead_counter_for_wave():
