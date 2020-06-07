@@ -66,7 +66,7 @@ animations = [ {
 } ]
 
 [node name="Basic_Zombie" type="KinematicBody2D"]
-scale = Vector2( 0.225063, 0.252597 )
+scale = Vector2( 0.35, 0.35 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_vertical_guides_": [ -15.622, 46.2812 ]
