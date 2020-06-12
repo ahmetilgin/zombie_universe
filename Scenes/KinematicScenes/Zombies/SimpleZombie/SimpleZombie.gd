@@ -36,7 +36,7 @@ var path = []
 signal dead_counter_for_wave
 var body_scale = 0.45
 var body_rotation = 35.5
-
+var is_borned = false
 
 func add_attack_ray_cast():
 #	attack_ray_cast.set_position(Vector2(64,64))
@@ -93,12 +93,14 @@ func _ready():
 	var tile_map_root = get_parent()
 	tile_map = tile_map_root.get_node("TileMap")
 	player = tile_map_root.get_parent().get_node("player")
+	$AnimatedSprite.play("default")
 	add_zombie_sounds()
 	create_zombie_dead_timer()
 	create_zombie_follow_timer()
 	create_zombie_attack_timer()
 	add_attack_ray_cast()
 	flash_zombie_tween()
+
 #	create_zombie_found_player_label()
 
 
@@ -307,10 +309,12 @@ func find_zombie_jump_on_peak():
 
 
 func _physics_process(delta):
+	if !is_borned:
+		return
 	set_zombie_direction()
 	motion.y += gravity
 	if is_dead==false:
-	
+		
 		follow_path()
 		if !is_on_floor() and !jumping_started and motion.y < 0:
 			jumping_started = true
@@ -337,7 +341,7 @@ func _zombie_dead_timer_timeout():
 	emit_signal("dead_counter_for_wave")
 
 func _on_FollowPlayerTimer_timeout():
-	if is_on_floor() and !is_zombie_action:
+	if is_borned and is_on_floor() and !is_zombie_action:
 		_get_path()
 
 
@@ -350,10 +354,7 @@ func _zombie_attack_to_player(damage):
 		$AnimatedSprite.play("attack")
 		player.dead(damage,"zombie")
 		can_zombie_attack = false
-	
-
-func _on_AnimationPlayer_animation_finished(Hurt):
-	is_hurt=false
+		
 func flash_damage():
 	for i in range(N_FLASHES * 2):
 		var zombie_visible = true if i % 2 == 1 else  false
@@ -365,3 +366,15 @@ func flash_damage():
 func _on_Timer_timeout():
 	var diff = (target_point_world - tile_map.get_closest_point($CenterPos.get_global_position()))
 	can_zombie_jump(diff)
+
+
+func _on_AnimatedSprite_animation_finished():
+	is_hurt=false
+	is_borned = true
+	pass # Replace with function body.
+
+
+func _on_BornTimer_timeout():
+	is_borned = false
+	$AnimatedSprite.play("born")
+	pass # Replace with function body.

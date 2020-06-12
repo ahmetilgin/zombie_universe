@@ -1,68 +1,92 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://Scenes/KinematicScenes/Zombies/SimpleZombie/SimpleZombie.gd" type="Script" id=1]
-[ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Attack_03.png" type="Texture" id=2]
-[ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Attack_11.png" type="Texture" id=3]
-[ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Attack_00.png" type="Texture" id=4]
-[ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Attack_07.png" type="Texture" id=5]
-[ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Attack_10.png" type="Texture" id=6]
-[ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Attack_06.png" type="Texture" id=7]
-[ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Attack_12.png" type="Texture" id=8]
-[ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Attack_05.png" type="Texture" id=9]
-[ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Attack_01.png" type="Texture" id=10]
-[ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Attack_02.png" type="Texture" id=11]
-[ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Attack_08.png" type="Texture" id=12]
-[ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Attack_04.png" type="Texture" id=13]
-[ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Attack_09.png" type="Texture" id=14]
-[ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Run_02.png" type="Texture" id=15]
-[ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Run_04.png" type="Texture" id=16]
-[ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Dead_0.png" type="Texture" id=17]
-[ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Run_11.png" type="Texture" id=18]
-[ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Dead_3.png" type="Texture" id=19]
-[ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Dead_6.png" type="Texture" id=20]
-[ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Dead_4.png" type="Texture" id=21]
-[ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Run_01.png" type="Texture" id=22]
-[ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Run_00.png" type="Texture" id=23]
-[ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Run_06.png" type="Texture" id=24]
-[ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Dead_5.png" type="Texture" id=25]
-[ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Run_07.png" type="Texture" id=26]
-[ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_walk_6.png" type="Texture" id=27]
-[ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_walk_7.png" type="Texture" id=28]
-[ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Run_05.png" type="Texture" id=37]
-[ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Run_09.png" type="Texture" id=38]
-[ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Run_10.png" type="Texture" id=39]
-[ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Dead_2.png" type="Texture" id=40]
-[ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Run_08.png" type="Texture" id=41]
-[ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Dead_1.png" type="Texture" id=42]
-[ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Run_03.png" type="Texture" id=43]
-[ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Run_12.png" type="Texture" id=45]
-[ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Run_14.png" type="Texture" id=51]
-[ext_resource path="res://Resources/Sprites/Zombies/StickmanZombie/SimpleSkeleton/Armature_Run_13.png" type="Texture" id=53]
+[ext_resource path="res://Resources/dragon/walk/Armature_Run_07.png" type="Texture" id=2]
+[ext_resource path="res://Resources/dragon/walk/Armature_Dead_7.png" type="Texture" id=3]
+[ext_resource path="res://Resources/dragon/walk/Armature_Dead_2.png" type="Texture" id=4]
+[ext_resource path="res://Resources/dragon/walk/Armature_Run_08.png" type="Texture" id=5]
+[ext_resource path="res://Resources/dragon/walk/Armature_Dead_3.png" type="Texture" id=6]
+[ext_resource path="res://Resources/dragon/walk/Armature_Run_09.png" type="Texture" id=7]
+[ext_resource path="res://Resources/dragon/walk/Armature_Run_06.png" type="Texture" id=8]
+[ext_resource path="res://Resources/dragon/walk/Armature_Dead_5.png" type="Texture" id=9]
+[ext_resource path="res://Resources/dragon/walk/Armature_walk_6.png" type="Texture" id=10]
+[ext_resource path="res://Resources/dragon/walk/Armature_Dead_0.png" type="Texture" id=11]
+[ext_resource path="res://Resources/dragon/walk/Armature_Run_02.png" type="Texture" id=12]
+[ext_resource path="res://Resources/dragon/walk/Armature_Dead_6.png" type="Texture" id=13]
+[ext_resource path="res://Resources/dragon/walk/Armature_Run_01.png" type="Texture" id=14]
+[ext_resource path="res://Resources/dragon/walk/Armature_Dead_1.png" type="Texture" id=15]
+[ext_resource path="res://Resources/dragon/walk/Armature_Dead_4.png" type="Texture" id=16]
+[ext_resource path="res://Resources/dragon/walk/Armature_Run_00.png" type="Texture" id=17]
+[ext_resource path="res://Resources/dragon/walk/Armature_Born_12.png" type="Texture" id=18]
+[ext_resource path="res://Resources/dragon/walk/Armature_Run_03.png" type="Texture" id=19]
+[ext_resource path="res://Resources/dragon/walk/Armature_walk_2.png" type="Texture" id=20]
+[ext_resource path="res://Resources/dragon/walk/Armature_Run_04.png" type="Texture" id=21]
+[ext_resource path="res://Resources/dragon/walk/Armature_Run_05.png" type="Texture" id=22]
+[ext_resource path="res://Resources/dragon/walk/Armature_Born_05.png" type="Texture" id=23]
+[ext_resource path="res://Resources/dragon/walk/Armature_Born_02.png" type="Texture" id=24]
+[ext_resource path="res://Resources/dragon/walk/Armature_Born_03.png" type="Texture" id=25]
+[ext_resource path="res://Resources/dragon/walk/Armature_Born_06.png" type="Texture" id=26]
+[ext_resource path="res://Resources/dragon/walk/Armature_Born_08.png" type="Texture" id=27]
+[ext_resource path="res://Resources/dragon/walk/Armature_Born_00.png" type="Texture" id=28]
+[ext_resource path="res://Resources/dragon/walk/Armature_Born_04.png" type="Texture" id=29]
+[ext_resource path="res://Resources/dragon/walk/Armature_Born_10.png" type="Texture" id=30]
+[ext_resource path="res://Resources/dragon/walk/Armature_Born_09.png" type="Texture" id=31]
+[ext_resource path="res://Resources/dragon/walk/Armature_Born_07.png" type="Texture" id=32]
+[ext_resource path="res://Resources/dragon/walk/Armature_Born_11.png" type="Texture" id=33]
+[ext_resource path="res://Resources/dragon/walk/Armature_Born_01.png" type="Texture" id=34]
+[ext_resource path="res://Resources/dragon/walk/Armature_Attack_09.png" type="Texture" id=35]
+[ext_resource path="res://Resources/dragon/walk/Armature_Attack_11.png" type="Texture" id=36]
+[ext_resource path="res://Resources/dragon/walk/Armature_Attack_10.png" type="Texture" id=37]
+[ext_resource path="res://Resources/dragon/walk/Armature_Attack_12.png" type="Texture" id=38]
+[ext_resource path="res://Resources/dragon/walk/Armature_Run_14.png" type="Texture" id=39]
+[ext_resource path="res://Resources/dragon/walk/Armature_Run_13.png" type="Texture" id=40]
+[ext_resource path="res://Resources/dragon/walk/Armature_Run_12.png" type="Texture" id=41]
+[ext_resource path="res://Resources/dragon/walk/Armature_Run_10.png" type="Texture" id=42]
+[ext_resource path="res://Resources/dragon/walk/Armature_Run_11.png" type="Texture" id=43]
+[ext_resource path="res://Resources/dragon/walk/Armature_Attack_07.png" type="Texture" id=44]
+[ext_resource path="res://Resources/dragon/walk/Armature_Attack_08.png" type="Texture" id=45]
+[ext_resource path="res://Resources/dragon/walk/Armature_Attack_02.png" type="Texture" id=46]
+[ext_resource path="res://Resources/dragon/walk/Armature_Attack_03.png" type="Texture" id=47]
+[ext_resource path="res://Resources/dragon/walk/Armature_Attack_04.png" type="Texture" id=48]
+[ext_resource path="res://Resources/dragon/walk/Armature_Attack_05.png" type="Texture" id=49]
+[ext_resource path="res://Resources/dragon/walk/Armature_Attack_06.png" type="Texture" id=50]
+[ext_resource path="res://Resources/dragon/walk/Armature_Attack_00.png" type="Texture" id=51]
+[ext_resource path="res://Resources/dragon/walk/Armature_Attack_01.png" type="Texture" id=52]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 55.5029, 197.95 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 17 ), ExtResource( 42 ), ExtResource( 40 ), ExtResource( 19 ), ExtResource( 21 ), ExtResource( 25 ), ExtResource( 20 ) ],
-"loop": false,
-"name": "dead",
-"speed": 20.0
-}, {
-"frames": [ ExtResource( 27 ), ExtResource( 28 ) ],
+"frames": [  ],
 "loop": true,
-"name": "jump",
-"speed": 5.0
+"name": "default",
+"speed": 1.0
 }, {
-"frames": [ ExtResource( 23 ), ExtResource( 22 ), ExtResource( 15 ), ExtResource( 43 ), ExtResource( 16 ), ExtResource( 37 ), ExtResource( 24 ), ExtResource( 26 ), ExtResource( 41 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 18 ), ExtResource( 45 ), ExtResource( 53 ), ExtResource( 51 ) ],
+"frames": [ ExtResource( 17 ), ExtResource( 14 ), ExtResource( 12 ), ExtResource( 19 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 8 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 41 ), ExtResource( 40 ), ExtResource( 39 ) ],
 "loop": true,
 "name": "run",
 "speed": 24.0
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 2 ), ExtResource( 13 ), ExtResource( 9 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 12 ), ExtResource( 14 ), ExtResource( 6 ), ExtResource( 3 ), ExtResource( 8 ) ],
+"frames": [ ExtResource( 11 ), ExtResource( 15 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 16 ), ExtResource( 9 ), ExtResource( 13 ), ExtResource( 3 ) ],
+"loop": false,
+"name": "dead",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 20 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "jump",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 28 ), ExtResource( 34 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 29 ), ExtResource( 23 ), ExtResource( 26 ), ExtResource( 32 ), ExtResource( 27 ), ExtResource( 31 ), ExtResource( 30 ), ExtResource( 33 ), ExtResource( 18 ) ],
+"loop": false,
+"name": "born",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 51 ), ExtResource( 52 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 35 ), ExtResource( 37 ), ExtResource( 36 ), ExtResource( 38 ) ],
 "loop": true,
 "name": "attack",
-"speed": 15.0
+"speed": 5.0
 } ]
 
 [node name="Basic_Zombie" type="KinematicBody2D"]
@@ -84,11 +108,11 @@ enabled = true
 cast_to = Vector2( 0, 150 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( -39.9496, -9.97035 )
-scale = Vector2( 1.14447, 0.998319 )
+position = Vector2( -85.5514, -94.1583 )
 frames = SubResource( 2 )
-animation = "run"
-frame = 5
+animation = "born"
+frame = 12
+playing = true
 flip_h = true
 
 [node name="Timer" type="Timer" parent="."]
@@ -96,4 +120,10 @@ wait_time = 0.1
 one_shot = true
 
 [node name="CenterPos" type="Position2D" parent="."]
+
+[node name="BornTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="BornTimer" to="." method="_on_BornTimer_timeout"]
