@@ -54,7 +54,7 @@
 [ext_resource path="res://Resources/dragon/walk/Armature_Attack_01.png" type="Texture" id=52]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 55.5029, 197.95 )
+extents = Vector2( 83.953, 264.734 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -63,57 +63,55 @@ animations = [ {
 "name": "default",
 "speed": 1.0
 }, {
-"frames": [ ExtResource( 17 ), ExtResource( 14 ), ExtResource( 12 ), ExtResource( 19 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 8 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 41 ), ExtResource( 40 ), ExtResource( 39 ) ],
-"loop": true,
-"name": "run",
-"speed": 24.0
-}, {
 "frames": [ ExtResource( 11 ), ExtResource( 15 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 16 ), ExtResource( 9 ), ExtResource( 13 ), ExtResource( 3 ) ],
 "loop": false,
 "name": "dead",
-"speed": 20.0
+"speed": 7.0
 }, {
 "frames": [ ExtResource( 20 ), ExtResource( 10 ) ],
 "loop": true,
 "name": "jump",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 28 ), ExtResource( 34 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 29 ), ExtResource( 23 ), ExtResource( 26 ), ExtResource( 32 ), ExtResource( 27 ), ExtResource( 31 ), ExtResource( 30 ), ExtResource( 33 ), ExtResource( 18 ) ],
-"loop": false,
-"name": "born",
-"speed": 5.0
+"frames": [ ExtResource( 17 ), ExtResource( 14 ), ExtResource( 12 ), ExtResource( 19 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 8 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 41 ), ExtResource( 40 ), ExtResource( 39 ) ],
+"loop": true,
+"name": "run",
+"speed": 24.0
 }, {
 "frames": [ ExtResource( 51 ), ExtResource( 52 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 35 ), ExtResource( 37 ), ExtResource( 36 ), ExtResource( 38 ) ],
 "loop": true,
 "name": "attack",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 28 ), ExtResource( 34 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 29 ), ExtResource( 23 ), ExtResource( 26 ), ExtResource( 32 ), ExtResource( 27 ), ExtResource( 31 ), ExtResource( 30 ), ExtResource( 33 ), ExtResource( 18 ) ],
+"loop": false,
+"name": "born",
+"speed": 5.0
 } ]
 
 [node name="Basic_Zombie" type="KinematicBody2D"]
-scale = Vector2( 0.35, 0.35 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_vertical_guides_": [ -15.622, 46.2812 ]
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -46.4449, -33.1057 )
-scale = Vector2( 2.61906, -1.2303 )
+scale = Vector2( 0.4, 0.4 )
 z_index = 1
 shape = SubResource( 1 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2( 8.19612, 132.492 )
+position = Vector2( -15.1301, -38.3657 )
 enabled = true
 cast_to = Vector2( 0, 150 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( -85.5514, -94.1583 )
+position = Vector2( 0.334078, 0.110169 )
+scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 2 )
 animation = "born"
 frame = 12
 playing = true
-flip_h = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1

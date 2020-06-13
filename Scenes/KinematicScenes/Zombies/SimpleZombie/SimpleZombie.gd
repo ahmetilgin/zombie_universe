@@ -39,8 +39,8 @@ var is_borned = false
 func add_attack_ray_cast():
 #	attack_ray_cast.set_position(Vector2(64,64))
 	add_child(attack_ray_cast)
-	attack_ray_cast.set_cast_to(Vector2(200,0))
-	attack_ray_cast.set_position(Vector2(0,50))
+	attack_ray_cast.set_cast_to(Vector2(65,0))
+	attack_ray_cast.set_position(Vector2(0,0))
 	attack_ray_cast.set_enabled(true)
 
 func create_zombie_follow_timer():
@@ -144,10 +144,10 @@ func check_zombie_found_player():
 func set_zombie_direction():
 	if sign(motion.x) < 0:
 		$AnimatedSprite.flip_h = true
-		attack_ray_cast.set_cast_to(Vector2(-200,0))
+		attack_ray_cast.set_cast_to(Vector2(-65,0))
 	elif sign(motion.x) > 0:
 		$AnimatedSprite.flip_h = false
-		attack_ray_cast.set_cast_to(Vector2(200,0))
+		attack_ray_cast.set_cast_to(Vector2(65,0))
 		
 			 
 var is_zombie_action = false
@@ -339,7 +339,7 @@ func _zombie_dead_timer_timeout():
 	emit_signal("dead_counter_for_wave")
 
 func _on_FollowPlayerTimer_timeout():
-	if is_borned and is_on_floor() and !is_zombie_action:
+	if is_borned and is_on_floor() and !is_zombie_action and !is_dead:
 		_get_path()
 
 

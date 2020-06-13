@@ -13,14 +13,17 @@ func _ready():
 #	pass
 func set_bullet_direction(dir):
 	direction=dir
-	if dir==-1:
-		$Sprite.flip_h=true
-		$Sprite.position.x+=45
+	if dir == -1:
+		$Sprite.flip_h = true
+		$Sprite.position.x += 20
 		$Sprite.play("shoots")
-		$CollisionShape2D.position.x+=45
+		$CollisionShape2D.position.x += 20
 	else:
 		$Sprite.play("shoots")
-
+		$Sprite.flip_h = false
+		$Sprite.position.x += 40
+		$Sprite.play("shoots")
+		$CollisionShape2D.position.x += 40
 func _physics_process(delta):
 	motion.x=speed*delta*direction
 	translate(motion)

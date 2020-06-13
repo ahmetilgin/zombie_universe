@@ -101,7 +101,7 @@ func set_zombie_level(level):
 func generate_Zombies():
 	var zombie_instance =zombie_types.get( select_zombie_for_level(zombie_level)).instance()
 	get_parent().call_deferred("add_child",zombie_instance)
-	var new_pos = tile_map.map_to_world(available_cells[randi() % len(available_cells)]) + tile_map._half_cell_size
+	var new_pos = tile_map.map_to_world(available_cells[randi() % len(available_cells)] - Vector2(0,1)) + tile_map._half_cell_size
 	zombie_instance.set_global_position(new_pos)
 	zombie_instance.connect("dead_counter_for_wave",self,"on_dead_counter_for_wave")
 	

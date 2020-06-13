@@ -61,6 +61,19 @@ var bullet_type = {
 	113: Riflegun_bullet,
 }
 
+var gun_speed = {
+	101: 0.5,
+	102: 0.7,
+	103: 0.7,
+	107: 1,
+	108: 1,
+	109: 1,
+	110: 0.5,
+	111: 0.5,
+	112: 0.5,
+	113: 0.5,
+}
+
 #	rasengan_weapon.load("res://Resources/Sprites/Guns/rasengan.png")
 #	shotgun_weapon.load("res://Resources/Sprites/Guns/shotgun.png")
 #	ak47_weapon.load("res://Resources/Sprites/stickman/ak47.png")
@@ -151,7 +164,7 @@ var is_second_jump = false
 var bullet_size = 9999
 var change_color_tween= Tween.new()
 var pulse_tween= Tween.new()
- 
+var is_in_time_start_weapon_fire = false 
 
 const FLASH_RATE =0.05
 const N_FLASHES = 4
@@ -204,7 +217,7 @@ func _create_bullet_shoot_timer():
 	bullet_shoot_timer.set_wait_time(bullet_time[current_bullet_power])
 
 func _on_bullet_shoot_timer():
-	is_attack = false
+	is_in_time_start_weapon_fire = false
 	
 func set_shoot_timer(shoot_time):
 	bullet_shoot_timer.set_wait_time(shoot_time)
@@ -283,8 +296,8 @@ func _ready():
 	set_sounds()
 	load_images()
  
-	if OS.get_name() == "Windows" or OS.get_name() == "OSX" or OS.get_name() == "X11":
-		$Controller/Node2D.visible = false
+#	if OS.get_name() == "Windows" or OS.get_name() == "OSX" or OS.get_name() == "X11":
+#		$Controller/Node2D.visible = false
 
 
 func _on_slow_motion_timer_start():
@@ -360,47 +373,52 @@ func _play_melee_sound():
 	SwordSlide_Sound.play()
 	
 func _play_animation(animation_state):
-	print(animation_state)
-	$AnimatedSprite.play(animation_state)
+	var anim = animation_state + "_" + str(current_bullet_power) 
+	if animation_state == "run" or animation_state == "attack":
+		$AnimatedSprite.set_speed_scale(gun_speed[current_bullet_power])
+	$AnimatedSprite.play(anim)
 	
 func _play_idle_animation():
-	_play_animation("idle_ak47")
+	_play_animation("idle")
 
 func _play_jump_animation():
-	_play_animation("jump_ak47")
+	_play_animation("jump")
 
 func _play_melee_animation():
-	_play_animation("melee_ak47")
+	_play_animation("melee")
 
 func _play_slide_animation():
-	_play_animation("slide_ak47")	
+	_play_animation("slide")	
 	
 func _play_attack_animation():
-	_play_animation("attack_ak47")	
+	if !is_attack:
+		_play_animation("attack")	
 
 func _move_slide():
-#	$CollisionShape2D.scale = Vector2 (1, 0.7)
-#	$CollisionShape2D.position.y=25
 	if !$AnimatedSprite.is_flipped_h():
-		motion.x = slide_speed
+		motion.x = slide_speed  *gun_speed[current_bullet_power]
 	else:
-		motion.x = -slide_speed
+		motion.x = -slide_speed * gun_speed[current_bullet_power]
 
 func _move_right():
 	is_move = true
-	motion.x=min(motion.x + speed,max_speed)
-	_play_animation("run_ak47")
+	motion.x=min(motion.x + speed, max_speed *  gun_speed[current_bullet_power])
+	_play_animation("run")
 	animation_flip_h(false)
 	if sign($Position2D.position.x)==-1:
 		$Position2D.position.x*=-1
+
+
 		
 func _move_left():
 	is_move = true
-	motion.x = max(motion.x-speed,-max_speed)
-	_play_animation("run_ak47")
+	motion.x = max(motion.x-speed ,-max_speed *  gun_speed[current_bullet_power])
+	_play_animation("run")
 	animation_flip_h(true)
 	if sign($Position2D.position.x)==1:
 		$Position2D.position.x*=-1
+
+		
 
 func animation_flip_h(choice):
 	$AnimatedSprite.flip_h = choice	
@@ -416,7 +434,6 @@ func _get_motion():
 	
 func _clear_states():
 	is_down=false
-	#is_hurt=false
 	is_melee=false
 	is_move = false
 #	$CollisionShape2D.scale = Vector2 (1, 1)
@@ -428,19 +445,22 @@ func check_left_pressed():
 	if Input.is_action_pressed("ui_left") or touch_left:
 		if _is_movable():
 			_move_left()
+	if Input.is_action_just_released("ui_left"):
+		is_move = false
 
 func check_right_pressed():
 	if Input.is_action_pressed("ui_right") or touch_right:
 			if _is_movable():
 				_move_right()
+	if Input.is_action_just_released("ui_right"):
+		is_move = false
 
 func check_down_pressed():
 	if Input.is_action_just_pressed("ui_down") or touch_down:
-				if  is_on_floor() : # && is_hurt==false :
-					_set_is_down(true)
-					_move_slide()
-					_play_slide_animation()
-					touch_down = false
+		_set_is_down(true)
+		_move_slide()
+		_play_slide_animation()
+		touch_down = false
 					
 func check_space_pressed():
 	if Input.is_key_pressed(KEY_SPACE):
@@ -456,11 +476,12 @@ func check_melee_pressed():
 
 func check_fire_pressed():
 	if (Input.is_action_pressed("ui_focus_next") or touch_fire ):
-		if  _check_bullet_count() and !is_attack:
+		if  _check_bullet_count() and !is_in_time_start_weapon_fire:
 			bullet_shoot_timer.start()
 			_fire_bullet()
-			_set_is_attack(true)		
+			is_in_time_start_weapon_fire = true
 			_play_attack_animation()
+			_set_is_attack(true)		
 			bullet_sound[current_bullet_power].play()
 			_set_current_bullet(bullet_type[current_bullet_power].instance())
 			get_parent().add_child(current_bullet)
@@ -468,19 +489,22 @@ func check_fire_pressed():
 			current_bullet.position = $Position2D.global_position
 		elif !_check_bullet_count():
 				empty_gun()
+	if Input.is_action_just_released("ui_focus_next"):
+		is_attack = false
 
 func check_first_and_second_jump():
-	if (Input.is_action_just_pressed("ui_up") or touch_up) and !is_first_jump:
-		print("jump1")
-		motion.y = jump
-		is_first_jump = true
-		is_second_jump = false
-		_play_jump_animation()
-	if (Input.is_action_just_pressed("ui_up") or touch_up) and is_first_jump and !is_second_jump:
-		_play_jump_animation()
-		motion.y = jump
-		is_second_jump = true
-		is_first_jump = false
+		if (Input.is_action_just_pressed("ui_up") or touch_up) and is_first_jump and !is_second_jump:
+			print("jump2")
+			_play_jump_animation()
+			motion.y = jump
+			is_second_jump = true
+			is_first_jump = false
+		if is_on_floor():
+			if (Input.is_action_just_pressed("ui_up") or touch_up) and !is_first_jump:
+				motion.y = jump
+				is_first_jump = true
+				is_second_jump = false
+				_play_jump_animation()
 
 func _physics_process(delta):
 	Engine.time_scale = 1.5
@@ -514,7 +538,7 @@ func dead(damage,whodead):
 		if hp < 0:
 			_set_dead(true)
 			motion=Vector2(0,0)
-			_play_animation("dead_ak47")
+			_play_animation("dead")
 			emit_signal("dead_signal")
 			$player_dead_timer.start()#karakter hareket etmeyince timerin içine girmiyor
 #		else:
@@ -685,5 +709,6 @@ func _on_melee_attack_released():
 
 
 func _on_AnimatedSprite_animation_finished():
+	print($AnimatedSprite.get_animation())
 	_clear_states()
 	pass # Replace with function body.

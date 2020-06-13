@@ -60,52 +60,52 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 37 ), ExtResource( 35 ), ExtResource( 36 ) ],
+"frames": [ ExtResource( 47 ), ExtResource( 38 ), ExtResource( 46 ), ExtResource( 45 ), ExtResource( 42 ), ExtResource( 41 ), ExtResource( 40 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 48 ), ExtResource( 39 ) ],
 "loop": false,
-"name": "slide_ak47",
-"speed": 5.0
+"name": "dead_103",
+"speed": 20.0
 }, {
-"frames": [ ExtResource( 23 ), ExtResource( 17 ), ExtResource( 24 ), ExtResource( 18 ) ],
+"frames": [ ExtResource( 31 ), ExtResource( 33 ), ExtResource( 32 ), ExtResource( 34 ) ],
+"loop": true,
+"name": "fall_103",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 27 ), ExtResource( 28 ), ExtResource( 30 ), ExtResource( 26 ), ExtResource( 25 ), ExtResource( 29 ), ExtResource( 2 ) ],
 "loop": false,
-"name": "attack_ak47",
+"name": "jump_103",
 "speed": 10.0
 }, {
 "frames": [ ExtResource( 19 ), ExtResource( 15 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 20 ), ExtResource( 16 ) ],
 "loop": true,
-"name": "idle_ak47",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 27 ), ExtResource( 28 ), ExtResource( 30 ), ExtResource( 26 ), ExtResource( 25 ), ExtResource( 29 ), ExtResource( 2 ) ],
-"loop": false,
-"name": "jump_ak47",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 53 ), ExtResource( 54 ), ExtResource( 52 ), ExtResource( 50 ), ExtResource( 49 ), ExtResource( 51 ) ],
-"loop": true,
-"name": "melee_ak47",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 31 ), ExtResource( 33 ), ExtResource( 32 ), ExtResource( 34 ) ],
-"loop": true,
-"name": "fall_ak47",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 47 ), ExtResource( 38 ), ExtResource( 46 ), ExtResource( 45 ), ExtResource( 42 ), ExtResource( 41 ), ExtResource( 40 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 48 ), ExtResource( 39 ) ],
-"loop": false,
-"name": "dead_ak47",
-"speed": 5.0
+"name": "idle_103",
+"speed": 8.0
 }, {
 "frames": [ ExtResource( 3 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 14 ), ExtResource( 13 ), ExtResource( 11 ), ExtResource( 12 ) ],
 "loop": true,
-"name": "run_ak47",
+"name": "run_103",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 53 ), ExtResource( 54 ), ExtResource( 52 ), ExtResource( 50 ), ExtResource( 49 ), ExtResource( 51 ) ],
+"loop": true,
+"name": "melee_103",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 37 ), ExtResource( 35 ), ExtResource( 36 ) ],
+"loop": false,
+"name": "slide_103",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 23 ), ExtResource( 17 ), ExtResource( 24 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "attack_103",
 "speed": 10.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 92.6042, 2.25755 )
+extents = Vector2( 30.1401, 3.0473 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 29.188, 65.5899 )
+extents = Vector2( 16.2322, 60.9579 )
 
 [sub_resource type="AtlasTexture" id=4]
 flags = 4
@@ -172,7 +172,6 @@ extents = Vector2( 52, 52 )
 
 [node name="player" type="KinematicBody2D"]
 position = Vector2( 238.902, 145.127 )
-scale = Vector2( 0.6, 0.6 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 97.752 ],
@@ -181,24 +180,26 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 36.7499, 39.1204 )
-scale = Vector2( 0.5, 0.5 )
+scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 1 )
-animation = "melee_ak47"
+animation = "attack_103"
+frame = 3
 playing = true
 
 [node name="collision_2" type="CollisionShape2D" parent="."]
-position = Vector2( 24.953, 199.663 )
+position = Vector2( 8.04113, 140.779 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 23.4151, 33.1729 )
-scale = Vector2( 3.16, 2.48 )
+position = Vector2( 6.47827, 36.1733 )
+scale = Vector2( 2.5, 1.7 )
 skew = 4.37114e-08
 shape = SubResource( 3 )
 
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 193.46, -44.2819 )
+position = Vector2( 106.348, -6.28261 )
 scale = Vector2( 0.455083, 1.08333 )
+skew = 4.37114e-08
 
 [node name="player_dead_timer" type="Timer" parent="."]
 one_shot = true

@@ -13,7 +13,7 @@ var items = {
 	110:["M60E4",50],	
 	111:["MG42",50],
 	112:["PRD",10],
-	113:["RifleGun",30],
+	113:["RifleGun"	,30],
 	401:["WoodWall",10],
 	402:["SteelWall",30],
 	403:["GoldWall",50],
