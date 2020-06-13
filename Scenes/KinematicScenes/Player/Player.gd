@@ -94,7 +94,7 @@ var bullet_sound = {
 var bullet_shoot_timer = Timer.new()
 var empty_shoot_timer = Timer.new()
 var is_empty_gun_ready = false
-var is_it_time_to_shoot = true
+
 
 var bullet_time = {
 	101: 1.0,
@@ -131,7 +131,7 @@ const gravity = 20
 # player options
 const max_hp = 1000
 var hp = 100
-var speed = 150
+var speed = 50
 var max_speed = 300
 var motion = Vector2(0,0)
 var slide_speed = 500
@@ -198,13 +198,13 @@ func increase_bullet_count(bullet_count):
 	bullet_number.text=String(bullet_size)
 	
 func _create_bullet_shoot_timer():
-	bullet_shoot_timer.set_one_shot(false)
+	bullet_shoot_timer.set_one_shot(true)
 	bullet_shoot_timer.connect("timeout",self,"_on_bullet_shoot_timer") 
 	add_child(bullet_shoot_timer) #to process
 	bullet_shoot_timer.set_wait_time(bullet_time[current_bullet_power])
 
 func _on_bullet_shoot_timer():
-	is_it_time_to_shoot = true
+	is_attack = false
 	
 func set_shoot_timer(shoot_time):
 	bullet_shoot_timer.set_wait_time(shoot_time)
@@ -355,10 +355,12 @@ func _is_movable():
 
 func _is_idle():
 	return !is_down && !is_melee && !is_attack && !is_move
+	
 func _play_melee_sound():
 	SwordSlide_Sound.play()
 	
 func _play_animation(animation_state):
+	print(animation_state)
 	$AnimatedSprite.play(animation_state)
 	
 func _play_idle_animation():
@@ -384,7 +386,7 @@ func _move_slide():
 func _move_right():
 	is_move = true
 	motion.x=min(motion.x + speed,max_speed)
-	$AnimatedSprite.play("run_ak47")
+	_play_animation("run_ak47")
 	animation_flip_h(false)
 	if sign($Position2D.position.x)==-1:
 		$Position2D.position.x*=-1
@@ -392,17 +394,13 @@ func _move_right():
 func _move_left():
 	is_move = true
 	motion.x = max(motion.x-speed,-max_speed)
-	$AnimatedSprite.play("run_ak47")
+	_play_animation("run_ak47")
 	animation_flip_h(true)
 	if sign($Position2D.position.x)==1:
 		$Position2D.position.x*=-1
 
 func animation_flip_h(choice):
-	if choice == true:
-		$AnimatedSprite.flip_h = true
-		
-	elif choice == false:
-		$AnimatedSprite.flip_h = false
+	$AnimatedSprite.flip_h = choice	
 
 func _set_shift_stop(shift_stop_state):
 	is_shift_stop = shift_stop_state
@@ -414,7 +412,6 @@ func _get_motion():
 	return motion
 	
 func _clear_states():
-	is_attack=false
 	is_down=false
 	#is_hurt=false
 	is_melee=false
@@ -424,81 +421,80 @@ func _clear_states():
 	
 var UP = Vector2(0,-1)
 
-func _physics_process(delta):
-	Engine.time_scale = 1.5
-	motion.y += gravity 
-	if !_is_dead():
-		
-		_set_shift_stop(false)
-		if Input.is_action_pressed("ui_right") or touch_right:
+func check_left_pressed():
+	if Input.is_action_pressed("ui_left") or touch_left:
+		if _is_movable():
+			_move_left()
+
+func check_right_pressed():
+	if Input.is_action_pressed("ui_right") or touch_right:
 			if _is_movable():
 				_move_right()
-		if Input.is_action_pressed("ui_left") or touch_left:
-			if _is_movable():
-				_move_left()
-		if Input.is_action_just_pressed("ui_down") or touch_down:
-			if  is_on_floor() : # && is_hurt==false :
-				if is_melee==false:
+
+func check_down_pressed():
+	if Input.is_action_just_pressed("ui_down") or touch_down:
+				if  is_on_floor() : # && is_hurt==false :
 					_set_is_down(true)
 					_move_slide()
 					_play_slide_animation()
 					touch_down = false
-		if Input.is_key_pressed(KEY_SPACE):
+					
+func check_space_pressed():
+	if Input.is_key_pressed(KEY_SPACE):
 			Engine.time_scale = 0.1
 			slow_shot_timer.start()
-		if Input.is_action_just_pressed("ui_focus_prev") or touch_melee:
-			if _is_movable():
-					_set_is_melee(true)
-					_play_melee_sound()
-					_play_melee_animation()
-									
-		if _is_idle():
-				_set_shift_stop(true)
-				_play_idle_animation()	
-		if (Input.is_action_pressed("ui_focus_next") or touch_fire ) and is_it_time_to_shoot:
-			if _is_movable() && _check_bullet_count():
-				is_it_time_to_shoot = false
-				bullet_shoot_timer.start()
-				_fire_bullet()
-				_set_is_attack(true)		
-				_play_attack_animation()
-				bullet_sound[current_bullet_power].play()
-				_set_current_bullet(bullet_type[current_bullet_power].instance())
-				get_parent().add_child(current_bullet)
+					
+func check_melee_pressed():
+	if Input.is_action_just_pressed("ui_focus_prev") or touch_melee:
+		if _is_movable():
+				_set_is_melee(true)
+				_play_melee_sound()
+				_play_melee_animation()
 
-				_set_bullet_direction(sign($Position2D.position.x))
-				current_bullet.position = $Position2D.global_position
-			elif !_check_bullet_count():
-					empty_gun()
+func check_fire_pressed():
+	if (Input.is_action_pressed("ui_focus_next") or touch_fire ):
+		if  _check_bullet_count() and !is_attack:
+			bullet_shoot_timer.start()
+			_fire_bullet()
+			_set_is_attack(true)		
+			_play_attack_animation()
+			bullet_sound[current_bullet_power].play()
+			_set_current_bullet(bullet_type[current_bullet_power].instance())
+			get_parent().add_child(current_bullet)
+			_set_bullet_direction(sign($Position2D.position.x))
+			current_bullet.position = $Position2D.global_position
+		elif !_check_bullet_count():
+				empty_gun()
 
-		if (Input.is_action_just_pressed("ui_up") or touch_up) and !is_first_jump:
-				motion.y = jump
-				is_first_jump = true
-				is_second_jump = false
-		if (Input.is_action_just_pressed("ui_up") or touch_up) and is_first_jump and !is_second_jump:
-			motion.y = jump
-			is_second_jump = true
-			
+func check_first_and_second_jump():
+	if (Input.is_action_just_pressed("ui_up") or touch_up) and !is_first_jump:
+		motion.y = jump
+		is_first_jump = true
+		is_second_jump = false
+	if (Input.is_action_just_pressed("ui_up") or touch_up) and is_first_jump and !is_second_jump:
+		motion.y = jump
+		is_second_jump = true
+
+func _physics_process(delta):
+	Engine.time_scale = 1.5
+	motion.y += gravity 
+	if !_is_dead():
+		_set_shift_stop(false)
+		check_right_pressed()
+		check_left_pressed()
+		check_down_pressed()
+		check_space_pressed()
+		check_melee_pressed()
+		check_fire_pressed()
+		check_first_and_second_jump();
 		if is_on_floor():
 			is_first_jump = false
 			if _is_shift_stop():
-				motion.x = lerp(motion.x, 0, 0.2)
-		else:
-				if _is_movable():
-					if motion.y < 0:
-						$AnimatedSprite.play("fall_ak47")
-					else:
-						$AnimatedSprite.play("jump_ak47")
-					if _is_shift_stop():
-						motion.x=lerp(motion.x,0,0.5)						
-		motion = move_and_slide(motion,UP)
-		
+				motion.x = lerp(motion.x, 0, 0.2)	
 	else:
 		if is_on_floor():
 			$CollisionShape2D.set_deferred("disabled",true)
-		else:
-			motion.y += gravity
-			motion = move_and_slide(motion,UP)
+	motion = move_and_slide(motion,UP)
 			
 func dead(damage,whodead):
 	if !_is_dead():
@@ -511,12 +507,12 @@ func dead(damage,whodead):
 		if hp < 0:
 			_set_dead(true)
 			motion=Vector2(0,0)
-			$AnimatedSprite.play("dead_ak47")
+			_play_animation("dead_ak47")
 			emit_signal("dead_signal")
 			$player_dead_timer.start()#karakter hareket etmeyince timerin içine girmiyor
 #		else:
 #			is_hurt=true
-#			$AnimatedSprite.play("hurt_ak47")
+#			_play_animation("hurt_ak47")
 
 #func _on_AnimatedSprite_animation_finished():
 #	_clear_states()

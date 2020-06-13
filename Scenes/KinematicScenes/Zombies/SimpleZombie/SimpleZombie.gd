@@ -25,7 +25,7 @@ const N_FLASHES = 4
 var flash_zombie_tween = Tween.new()
 
 export (int) var hp=5
-export (int) var speed=350
+export (int) var speed=150
 var motion=Vector2(0,0)
 const UP=Vector2(0,-1)
 var is_dead=false
@@ -34,8 +34,6 @@ var acceleration = 20
 var is_follow = false
 var path = []
 signal dead_counter_for_wave
-var body_scale = 0.45
-var body_rotation = 35.5
 var is_borned = false
 
 func add_attack_ray_cast():

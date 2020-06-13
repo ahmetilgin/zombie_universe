@@ -58,27 +58,17 @@
 [ext_resource path="res://Resources/Sprites/TouchIcons/bullet1.png" type="Texture" id=56]
 [ext_resource path="res://Resources/Sprites/knife.png" type="Texture" id=57]
 
-[sub_resource type="SpriteFrames" id=18]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 37 ), ExtResource( 35 ), ExtResource( 36 ) ],
-"loop": true,
-"name": "slide_ak47",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 47 ), ExtResource( 38 ), ExtResource( 46 ), ExtResource( 45 ), ExtResource( 42 ), ExtResource( 41 ), ExtResource( 40 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 48 ), ExtResource( 39 ) ],
 "loop": false,
-"name": "dead_ak47",
+"name": "slide_ak47",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 23 ), ExtResource( 17 ), ExtResource( 24 ), ExtResource( 18 ) ],
 "loop": false,
 "name": "attack_ak47",
-"speed": 20.0
-}, {
-"frames": [ ExtResource( 3 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 14 ), ExtResource( 13 ), ExtResource( 11 ), ExtResource( 12 ) ],
-"loop": true,
-"name": "run_ak47",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ ExtResource( 19 ), ExtResource( 15 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 20 ), ExtResource( 16 ) ],
 "loop": false,
@@ -99,75 +89,85 @@ animations = [ {
 "loop": true,
 "name": "fall_ak47",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 47 ), ExtResource( 38 ), ExtResource( 46 ), ExtResource( 45 ), ExtResource( 42 ), ExtResource( 41 ), ExtResource( 40 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 48 ), ExtResource( 39 ) ],
+"loop": false,
+"name": "dead_ak47",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 14 ), ExtResource( 13 ), ExtResource( 11 ), ExtResource( 12 ) ],
+"loop": false,
+"name": "run_ak47",
+"speed": 10.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 92.6042, 2.25755 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 29.188, 65.5899 )
-
-[sub_resource type="AtlasTexture" id=3]
-flags = 4
-atlas = ExtResource( 55 )
-region = Rect2( 230, 238, 120, 120 )
 
 [sub_resource type="AtlasTexture" id=4]
 flags = 4
 atlas = ExtResource( 55 )
-region = Rect2( 236, 246, 104, 104 )
+region = Rect2( 230, 238, 120, 120 )
 
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 52.12, 52.35 )
-
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=5]
 flags = 4
 atlas = ExtResource( 55 )
-region = Rect2( 7, 244, 107, 107 )
+region = Rect2( 236, 246, 104, 104 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 52.12, 52.35 )
 
 [sub_resource type="AtlasTexture" id=7]
 flags = 4
 atlas = ExtResource( 55 )
-region = Rect2( 9, 246, 104, 104 )
+region = Rect2( 7, 244, 107, 107 )
 
-[sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 52, 52 )
-
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=8]
 flags = 4
 atlas = ExtResource( 55 )
-region = Rect2( 118, 131, 107, 107 )
+region = Rect2( 9, 246, 104, 104 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 52, 52 )
 
 [sub_resource type="AtlasTexture" id=10]
 flags = 4
 atlas = ExtResource( 55 )
-region = Rect2( 120, 132, 104, 104 )
+region = Rect2( 118, 131, 107, 107 )
 
-[sub_resource type="RectangleShape2D" id=11]
-extents = Vector2( 52, 52 )
-
-[sub_resource type="AtlasTexture" id=12]
+[sub_resource type="AtlasTexture" id=11]
 flags = 4
 atlas = ExtResource( 55 )
-region = Rect2( 119, 359, 107, 107 )
+region = Rect2( 120, 132, 104, 104 )
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 52, 52 )
 
 [sub_resource type="AtlasTexture" id=13]
 flags = 4
 atlas = ExtResource( 55 )
+region = Rect2( 119, 359, 107, 107 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 4
+atlas = ExtResource( 55 )
 region = Rect2( 122, 360, 104, 104 )
 
-[sub_resource type="RectangleShape2D" id=14]
+[sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 52, 52 )
 
-[sub_resource type="AtlasTexture" id=15]
+[sub_resource type="AtlasTexture" id=16]
 flags = 4
 atlas = ExtResource( 55 )
 region = Rect2( 487, 350, 107, 107 )
 
-[sub_resource type="RectangleShape2D" id=16]
+[sub_resource type="RectangleShape2D" id=17]
 extents = Vector2( 52, 52 )
 
-[sub_resource type="RectangleShape2D" id=17]
+[sub_resource type="RectangleShape2D" id=18]
 extents = Vector2( 52, 52 )
 
 [node name="player" type="KinematicBody2D"]
@@ -180,21 +180,19 @@ __meta__ = {
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 36.7499, 34.1204 )
+position = Vector2( 36.7499, 39.1204 )
 scale = Vector2( 0.5, 0.5 )
-frames = SubResource( 18 )
-animation = "melee_ak47"
-frame = 1
-playing = true
+frames = SubResource( 1 )
+animation = "idle_ak47"
 
 [node name="collision_2" type="CollisionShape2D" parent="."]
 position = Vector2( 24.953, 199.663 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 23.4151, 33.1729 )
 scale = Vector2( 3.16, 2.48 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 193.46, -44.2819 )
@@ -227,41 +225,41 @@ z_index = 8
 [node name="right" type="TouchScreenButton" parent="Controller/Node2D"]
 position = Vector2( 136.001, 308.482 )
 scale = Vector2( 0.7, 0.7 )
-normal = SubResource( 3 )
-pressed = SubResource( 4 )
-shape = SubResource( 5 )
+normal = SubResource( 4 )
+pressed = SubResource( 5 )
+shape = SubResource( 6 )
 shape_visible = false
 
 [node name="left" type="TouchScreenButton" parent="Controller/Node2D"]
 position = Vector2( 36.0007, 313.482 )
 scale = Vector2( 0.7, 0.7 )
-normal = SubResource( 6 )
-pressed = SubResource( 7 )
-shape = SubResource( 8 )
+normal = SubResource( 7 )
+pressed = SubResource( 8 )
+shape = SubResource( 9 )
 shape_visible = false
 
 [node name="up" type="TouchScreenButton" parent="Controller/Node2D"]
 position = Vector2( 471.001, 273.482 )
 scale = Vector2( 0.4, 0.4 )
-normal = SubResource( 9 )
-pressed = SubResource( 10 )
-shape = SubResource( 11 )
+normal = SubResource( 10 )
+pressed = SubResource( 11 )
+shape = SubResource( 12 )
 shape_visible = false
 
 [node name="down" type="TouchScreenButton" parent="Controller/Node2D"]
 position = Vector2( 451.001, 338.482 )
 scale = Vector2( 0.4, 0.4 )
-normal = SubResource( 12 )
-pressed = SubResource( 13 )
-shape = SubResource( 14 )
+normal = SubResource( 13 )
+pressed = SubResource( 14 )
+shape = SubResource( 15 )
 shape_visible = false
 
 [node name="gun_shoot" type="TouchScreenButton" parent="Controller/Node2D"]
 position = Vector2( 521.001, 323.482 )
 scale = Vector2( 0.582902, 0.552194 )
-normal = SubResource( 15 )
-pressed = SubResource( 15 )
-shape = SubResource( 16 )
+normal = SubResource( 16 )
+pressed = SubResource( 16 )
+shape = SubResource( 17 )
 shape_visible = false
 
 [node name="bullet1" type="Sprite" parent="Controller/Node2D/gun_shoot"]
@@ -274,9 +272,9 @@ texture = ExtResource( 56 )
 [node name="melee_attack" type="TouchScreenButton" parent="Controller/Node2D"]
 position = Vector2( 536.001, 268.482 )
 scale = Vector2( 0.4, 0.4 )
-normal = SubResource( 15 )
-pressed = SubResource( 15 )
-shape = SubResource( 17 )
+normal = SubResource( 16 )
+pressed = SubResource( 16 )
+shape = SubResource( 18 )
 shape_visible = false
 
 [node name="knife" type="Sprite" parent="Controller/Node2D/melee_attack"]
