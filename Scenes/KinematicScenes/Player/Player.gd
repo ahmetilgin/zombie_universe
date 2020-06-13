@@ -366,6 +366,9 @@ func _play_animation(animation_state):
 func _play_idle_animation():
 	_play_animation("idle_ak47")
 
+func _play_jump_animation():
+	_play_animation("jump_ak47")
+
 func _play_melee_animation():
 	_play_animation("melee_ak47")
 
@@ -376,8 +379,8 @@ func _play_attack_animation():
 	_play_animation("attack_ak47")	
 
 func _move_slide():
-	$CollisionShape2D.scale = Vector2 (1, 0.7)
-	$CollisionShape2D.position.y=25
+#	$CollisionShape2D.scale = Vector2 (1, 0.7)
+#	$CollisionShape2D.position.y=25
 	if !$AnimatedSprite.is_flipped_h():
 		motion.x = slide_speed
 	else:
@@ -416,8 +419,8 @@ func _clear_states():
 	#is_hurt=false
 	is_melee=false
 	is_move = false
-	$CollisionShape2D.scale = Vector2 (1, 1)
-	$CollisionShape2D.position.y=11
+#	$CollisionShape2D.scale = Vector2 (1, 1)
+#	$CollisionShape2D.position.y=11
 	
 var UP = Vector2(0,-1)
 
@@ -468,12 +471,16 @@ func check_fire_pressed():
 
 func check_first_and_second_jump():
 	if (Input.is_action_just_pressed("ui_up") or touch_up) and !is_first_jump:
+		print("jump1")
 		motion.y = jump
 		is_first_jump = true
 		is_second_jump = false
+		_play_jump_animation()
 	if (Input.is_action_just_pressed("ui_up") or touch_up) and is_first_jump and !is_second_jump:
+		_play_jump_animation()
 		motion.y = jump
 		is_second_jump = true
+		is_first_jump = false
 
 func _physics_process(delta):
 	Engine.time_scale = 1.5
@@ -493,6 +500,7 @@ func _physics_process(delta):
 	else:
 		if is_on_floor():
 			$CollisionShape2D.set_deferred("disabled",true)
+
 	motion = move_and_slide(motion,UP)
 			
 func dead(damage,whodead):
