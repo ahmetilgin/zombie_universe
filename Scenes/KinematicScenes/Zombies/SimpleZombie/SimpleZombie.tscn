@@ -78,14 +78,14 @@ animations = [ {
 "name": "run",
 "speed": 24.0
 }, {
-"frames": [ ExtResource( 51 ), ExtResource( 52 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 35 ), ExtResource( 37 ), ExtResource( 36 ), ExtResource( 38 ) ],
-"loop": true,
-"name": "attack",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 28 ), ExtResource( 34 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 29 ), ExtResource( 23 ), ExtResource( 26 ), ExtResource( 32 ), ExtResource( 27 ), ExtResource( 31 ), ExtResource( 30 ), ExtResource( 33 ), ExtResource( 18 ) ],
 "loop": false,
 "name": "born",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 51 ), ExtResource( 52 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 35 ), ExtResource( 37 ), ExtResource( 36 ), ExtResource( 38 ) ],
+"loop": true,
+"name": "attack",
 "speed": 5.0
 } ]
 
@@ -106,11 +106,11 @@ enabled = true
 cast_to = Vector2( 0, 150 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 0.334078, 0.110169 )
+position = Vector2( 3.94406, 2.81769 )
 scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 2 )
-animation = "born"
-frame = 12
+animation = "run"
+frame = 10
 playing = true
 
 [node name="Timer" type="Timer" parent="."]

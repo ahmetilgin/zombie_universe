@@ -125,8 +125,8 @@ func get_corners(cells):
 			corners.append(cell)
 			pass
 
-var detect_offset = 5
-var direct_offset = 8
+var detect_offset = 12
+var direct_offset = 10
 
 func do_top_to_down_detect(start_cell,cell):
 	for direct_connection in range(start_cell.y, start_cell.y + direct_offset):

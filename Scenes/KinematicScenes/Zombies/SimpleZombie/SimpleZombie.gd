@@ -101,17 +101,17 @@ func get_zombie_and_player_distance():
 
 func find_zombie_x_movement():
 	$AnimatedSprite.play("run")
-	var diff = (target_point_world.x - tile_map.get_closest_point($CenterPos.get_global_position()).x)
-	if diff > 0 :
+	var diffx = (target_point_world.x - tile_map.get_closest_point($CenterPos.get_global_position()).x)
+	if diffx > 0 :
 		motion.x = min(motion.x + acceleration, speed)
-	elif diff < 0:
+	elif diffx < 0:
 		motion.x = max(motion.x - acceleration, -speed)
 
-func can_zombie_jump(diff):
+func can_zombie_jump(jump_diff):
 	$AnimatedSprite.play("jump")
-	if is_on_floor():
-		motion.y = motion.y + 4 * (diff.y)
-		motion.y = max(motion.y, -900)
+	if is_on_floor() and jump_diff.y < 0:
+		motion.y = motion.y + 3*(jump_diff.y)
+		motion.y = max(motion.y, -20 * (tile_map._half_cell_size.y) + (gravity * (jump_diff.y / tile_map._half_cell_size.y)) )
 	motion.x = 0
 
 func find_cross_index():
@@ -153,20 +153,20 @@ func _get_path():
 		path = new_path
 			
 	var closest_point = tile_map.get_closest_point(get_global_position())
-	var diff = (target_point_world - closest_point)
+	var targetDiff = (target_point_world - closest_point)
 	if(len(path) > 1):
 		target_point_world = path[1]
 	tile_map.set_target_point(target_point_world)
 	
-	if(diff.y >= 0):
+	if(targetDiff.y >= 0):
 		if !$RayCast2D.is_colliding():
-			motion.y = -2 * abs(motion.y + (diff.x))
+			motion.y = -2 * abs(motion.y)
 			motion.y = max(motion.y, -900)
 		find_zombie_x_movement()
 	else:
 		set_global_position(Vector2(closest_point.x,get_global_position().y))
 		motion.x = 0
-		if($Timer.is_stopped()):
+		if($Timer.is_stopped()) and is_on_floor():
 			$Timer.start()
 
 func _set_is_follow(follow):
@@ -298,6 +298,7 @@ func _physics_process(delta):
 		if jumping_started and jumping_peak and is_on_floor():
 			jumping_started = false
 			jumping_peak = false
+		print(motion)
 		motion = move_and_slide(motion , UP)
 		chech_zombie_colliding()
  
