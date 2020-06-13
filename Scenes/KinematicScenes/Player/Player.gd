@@ -487,10 +487,9 @@ func _physics_process(delta):
 		check_melee_pressed()
 		check_fire_pressed()
 		check_first_and_second_jump();
-		if is_on_floor():
-			is_first_jump = false
-			if _is_shift_stop():
-				motion.x = lerp(motion.x, 0, 0.2)	
+		if is_on_floor() and _is_idle():
+			_play_idle_animation()
+			motion.x = lerp(motion.x, 0, 0.2)	
 	else:
 		if is_on_floor():
 			$CollisionShape2D.set_deferred("disabled",true)
