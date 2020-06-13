@@ -71,9 +71,9 @@ animations = [ {
 "speed": 10.0
 }, {
 "frames": [ ExtResource( 19 ), ExtResource( 15 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 20 ), ExtResource( 16 ) ],
-"loop": false,
+"loop": true,
 "name": "idle_ak47",
-"speed": 20.0
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 27 ), ExtResource( 28 ), ExtResource( 30 ), ExtResource( 26 ), ExtResource( 25 ), ExtResource( 29 ), ExtResource( 2 ) ],
 "loop": false,
