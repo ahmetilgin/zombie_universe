@@ -15,14 +15,8 @@ func _physics_process(delta):
 func _ready():
 	pass # Replace with function body.
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-
 func _on_AnimatedSprite_animation_finished():
 	is_jump=false
-
 
 func _on_Area2D_body_shape_entered(body_id, body, body_shape, area_shape):
 	if"player" in body.name and body_shape==0:

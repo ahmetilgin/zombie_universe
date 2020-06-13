@@ -156,7 +156,8 @@ var is_attack = false
 var is_down = false
 var is_dead = false
 var is_move = false
-#var is_hurt = false
+var is_hurt = false
+var is_jump = false
 var is_melee = false
 var is_shift_stop = false
 var is_first_jump = false
@@ -295,9 +296,11 @@ func _ready():
 	flash_healtbar_tween()
 	set_sounds()
 	load_images()
- 
-#	if OS.get_name() == "Windows" or OS.get_name() == "OSX" or OS.get_name() == "X11":
-#		$Controller/Node2D.visible = false
+
+	if OS.get_name() == "Windows" or OS.get_name() == "OSX" or OS.get_name() == "X11":
+		$Controller/Node2D.visible = false
+	
+
 
 
 func _on_slow_motion_timer_start():
@@ -307,7 +310,6 @@ func _on_slow_motion_timer_start():
 func _set_current_bullet(bullet):
 	current_bullet = bullet
 
-	
 func empty_gun():
 	if is_empty_gun_ready:
 		EmptyGun_sound.play()
@@ -383,6 +385,7 @@ func _play_idle_animation():
 
 func _play_jump_animation():
 	_play_animation("jump")
+	is_jump = true
 
 func _play_melee_animation():
 	_play_animation("melee")
@@ -394,6 +397,13 @@ func _play_attack_animation():
 	if !is_attack:
 		_play_animation("attack")	
 
+func _play_run_animation():
+	if !is_jump:
+		_play_animation("run")
+		
+func _play_fall_animation():
+	_play_animation("fall")
+	
 func _move_slide():
 	if !$AnimatedSprite.is_flipped_h():
 		motion.x = slide_speed  *gun_speed[current_bullet_power]
@@ -403,17 +413,15 @@ func _move_slide():
 func _move_right():
 	is_move = true
 	motion.x=min(motion.x + speed, max_speed *  gun_speed[current_bullet_power])
-	_play_animation("run")
 	animation_flip_h(false)
+	_play_run_animation()
 	if sign($Position2D.position.x)==-1:
 		$Position2D.position.x*=-1
 
-
-		
 func _move_left():
 	is_move = true
 	motion.x = max(motion.x-speed ,-max_speed *  gun_speed[current_bullet_power])
-	_play_animation("run")
+	_play_run_animation()
 	animation_flip_h(true)
 	if sign($Position2D.position.x)==1:
 		$Position2D.position.x*=-1
@@ -433,14 +441,14 @@ func _get_motion():
 	return motion
 	
 func _clear_states():
-	is_down=false
-	is_melee=false
+	is_down = false
+	is_melee = false
 	is_move = false
-#	$CollisionShape2D.scale = Vector2 (1, 1)
-#	$CollisionShape2D.position.y=11
+	is_hurt = false
+	is_jump = false
 	
-var UP = Vector2(0,-1)
 
+var UP = Vector2(0,-1)
 func check_left_pressed():
 	if Input.is_action_pressed("ui_left") or touch_left:
 		if _is_movable():
@@ -494,7 +502,6 @@ func check_fire_pressed():
 
 func check_first_and_second_jump():
 		if (Input.is_action_just_pressed("ui_up") or touch_up) and is_first_jump and !is_second_jump:
-			print("jump2")
 			_play_jump_animation()
 			motion.y = jump
 			is_second_jump = true
@@ -505,6 +512,12 @@ func check_first_and_second_jump():
 				is_first_jump = true
 				is_second_jump = false
 				_play_jump_animation()
+				
+var jumping_started = false
+var jumping_peak = false
+func check_falling():
+	if !is_on_floor()  and motion.y > 0:
+		_play_fall_animation()
 
 func _physics_process(delta):
 	Engine.time_scale = 1.5
@@ -518,6 +531,7 @@ func _physics_process(delta):
 		check_melee_pressed()
 		check_fire_pressed()
 		check_first_and_second_jump();
+		check_falling()
 		if is_on_floor() and _is_idle():
 			_play_idle_animation()
 			motion.x = lerp(motion.x, 0, 0.2)	
@@ -541,9 +555,9 @@ func dead(damage,whodead):
 			_play_animation("dead")
 			emit_signal("dead_signal")
 			$player_dead_timer.start()#karakter hareket etmeyince timerin içine girmiyor
-#		else:
-#			is_hurt=true
-#			_play_animation("hurt_ak47")
+		else:
+			is_hurt=true
+			_play_animation("hurt")
 
 #func _on_AnimatedSprite_animation_finished():
 #	_clear_states()
@@ -621,7 +635,7 @@ func healt_color_decrease(): #?  sürekli iflere girmesin mi girsinmi
 	change_color_tween.start()
 	yield(change_color_tween, "tween_completed")
 
-func flash_damage():
+func flash_damage():	
 	pass
 #	for i in range(N_FLASHES * 2):
 #		var color = player_health.tint_progress  if i % 2 == 1 else  flash_color
@@ -709,6 +723,5 @@ func _on_melee_attack_released():
 
 
 func _on_AnimatedSprite_animation_finished():
-	print($AnimatedSprite.get_animation())
 	_clear_states()
 	pass # Replace with function body.

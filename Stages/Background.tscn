@@ -29,6 +29,9 @@ scale = Vector2( 2, 1.244 )
 position = Vector2( 0.000361443, 16.0578 )
 shadow_color = Color( 0, 0, 0, 0 )
 
+[node name="AnimatedSprite" parent="wall/flametorch" index="3"]
+frame = 1
+
 [node name="flametorch3" parent="wall" instance=ExtResource( 4 )]
 position = Vector2( 838.043, 222.226 )
 scale = Vector2( 2, 1.244 )
@@ -54,7 +57,6 @@ shadow_buffer_size = 4022
 
 [node name="AnimatedSprite" parent="wall/flametorch2" index="3"]
 position = Vector2( -6.9502, 5.34058e-05 )
-frame = 4
 
 [node name="wall2" type="Sprite" parent="."]
 position = Vector2( 64, 509.882 )

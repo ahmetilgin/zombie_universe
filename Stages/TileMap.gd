@@ -227,7 +227,6 @@ func _get_path(init_position: Vector2, target_position: Vector2, name) -> Array:
 			var point_world: = map_to_world(Vector2(point.x, point.y))
 			world_path.append(point_world + _half_cell_size) 
 			founded_path[name].append(point_world + _half_cell_size)
-
 		return world_path
 	else:
 		return []

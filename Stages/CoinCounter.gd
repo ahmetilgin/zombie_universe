@@ -8,8 +8,8 @@ func _ready():
 	
 func on_purchase():
 	pass
-func _process(delta):
 	
+func _process(delta):
 	pass
 	
 func counting():

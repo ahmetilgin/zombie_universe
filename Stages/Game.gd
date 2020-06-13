@@ -43,6 +43,7 @@ var walls = {
 var teleports = {
 	500 : preload("res://Scenes/StaticScenes/Teleportal/Teleport.tscn")
 }
+
 var turret_paths = {
 	801: preload("res://Scenes/KinematicScenes/Taretler/BasicTurret/BasicTurret.tscn"),
 	802: preload("res://Scenes/KinematicScenes/Taretler/MachineTurret/MachineTurret.tscn"),
@@ -63,8 +64,7 @@ func create_portals(portal_count):
 		portal.set_global_position(pixel_coordinate + $Background/TileMap.cell_size / 2)
 		portal_coordinates.erase(portal_coordinates[portal_coordinate])
 		portal_list.push_back(portal)
-	pass # Replace with function body.
-	
+
 func get_tile_borders():
 	max_border = $Background/TileMap.get_max_border()
 	min_border = $Background/TileMap.get_min_border()
@@ -96,7 +96,6 @@ func buy_player_item(item_id):
 	hide_market()
 	$Game_UI/Market_Button.pressed = false
 	is_opened_market = false
-	
 
 func buy_wall(item_id):
 	created_instance_price = constants.items[item_id][1]
@@ -105,7 +104,6 @@ func buy_wall(item_id):
 	show_accept_button()
 	show_select_position(true)
 	show_grid()
-	pass
 
 func buy_teleportal(item_id):
 	created_instance_price = constants.items[item_id][1]
@@ -116,7 +114,6 @@ func buy_teleportal(item_id):
 	show_accept_button()
 	show_select_position(true)
 	show_grid()
-	pass
 	
 func show_select_position(is_visible):
 	$Game_UI/SelectPositionLabel.set_visible(is_visible)
@@ -129,7 +126,6 @@ func buy_turret(item_id):
 	instance.show_rotations()
 	show_accept_button()
 	show_grid()
-	pass
 	
 func item_solded(item_id):
 	is_the_buy_button_clicked = true
@@ -152,7 +148,6 @@ func item_solded(item_id):
 		pass
 	else:
 		print("Satın Alma Arızası")
-
 
 func connect_market():
 	$Market.connect("item_sold",self, "item_solded")
@@ -204,18 +199,15 @@ func show_market():
 func show_accept_button():
 	$Game_UI/SelectPositionLabel.set_visible(true)
 	$Game_UI/accept_button.set_visible(true)
-	
 
 func _process(delta):
 	if second_passed and $Game_UI/CountDownTimer.visible :
 		countdown_timer.start()
 		second_passed = false
-	pass
 
 func show_current_level():
 	level_text_counter.add_color_override("default_color", Color(1,1,1))
 	level_text.add_color_override("default_color", Color(1,1,1))
-
 
 func show_current_start_level():
 	level_text_counter.add_color_override("default_color", Color(0.47,0.05127, 0.05127))
@@ -232,9 +224,7 @@ func wave_finish():
 			portal.wave_stop()
 			portal.set_zombie_level(game_level)
 		show_current_level()
-
 		on_time_countdown_visible()
-	pass
 
 var max_border = Vector2()
 var min_border = Vector2()
@@ -259,7 +249,6 @@ func hide_grid():
 		for j in range(min_border.y, max_border.y):
 			if $Background/TileMap.get_cell(i,j) == 14:				
 				$Background/TileMap.set_cellv(Vector2(i,j),-1)
-			pass
 
 func _draw():
 	pass
@@ -299,16 +288,13 @@ func buy_cancel():
 	disable_accept_button()
 	
 var started_wave_count = 0
-
 func wave_started():
 	started_wave_count += 1
 	if start_portal == started_wave_count:
 		started_wave_count = 0
 		on_time_countdown_unvisible()
 		show_current_start_level()
-		pass
 		
-	
 func _unhandled_input(event):
 	if event is InputEventMouseButton :
 		if event.pressed and event.button_index == BUTTON_LEFT and is_the_buy_button_clicked:
@@ -328,13 +314,13 @@ func _unhandled_input(event):
 				select_turret_position()
 			else:
 				select_teleport_position()
-
+				
 func select_turret_position():
 	if(tile_grid != null):
 		if  $Background/TileMap.get_cell(tile_grid.x,tile_grid.y) == 14:
 			enable_accept_button()
 			$Background/TileMap.set_cell(tile_grid.x,tile_grid.y,15) 
-		
+			
 func select_teleport_position():
 	if(tile_grid != null):
 		if  $Background/TileMap.get_cell(tile_grid.x,tile_grid.y) == 14:
@@ -346,7 +332,8 @@ func select_teleport_position():
 				if selected_teleport_location_count > 2:
 					$Background/TileMap.set_cell(teleport_locs[0].x,teleport_locs[0].y, 14)
 					teleport_locs.remove(0) 
-				
+
+
 func finish_teleport_buy():
 	teleport_pair[0].set_global_position($Background/TileMap.map_to_world(teleport_locs[0]))
 	teleport_pair[1].set_global_position($Background/TileMap.map_to_world(teleport_locs[1]))
@@ -360,7 +347,6 @@ func finish_teleport_buy():
 	hide_accept_button()
 	clear_grid()
 	hide_market()
-	pass
 
 func create_instance(turret):
 	instance = turret_paths[turret].instance()
@@ -393,7 +379,6 @@ func finish_turret_buy():
 	tile_grid = null
 	disable_accept_button()
 
-
 func _on_acceptbutton_pressed():	
 	if !is_teleport_buying:
 		finish_turret_buy()
@@ -404,8 +389,6 @@ func _on_acceptbutton_pressed():
 	is_opened_market = false
 	is_create_instance = false
 	disable_accept_button()	
-
-
 
 func countdown_timer():
 	countdown_timer.set_one_shot(true)

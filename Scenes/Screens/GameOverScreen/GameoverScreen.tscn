@@ -44,6 +44,9 @@ margin_bottom = 652.923
 custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 0.254902, 0.0117647, 0.0117647, 1 )
 text = "Game Over"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 margin_left = 159.78
@@ -81,12 +84,16 @@ margin_left = 419.78
 margin_top = 239.923
 margin_right = 938.78
 margin_bottom = 292.923
+rect_scale = Vector2( 1.00246, 1 )
 custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_colors/selection_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_selected = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0.615686, 0, 0, 1 )
 text = "dead zombi :"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="dead_zombie_counter" type="RichTextLabel" parent="dead_zombie_text"]
 margin_left = 176.0
@@ -108,11 +115,15 @@ custom_colors/default_color = Color( 1, 0.843137, 0, 1 )
 custom_colors/selection_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0.458824, 0, 0, 1 )
 text = "Gold :"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Coin_count" type="RichTextLabel" parent="Coin"]
 margin_left = 87.0
 margin_right = 545.0
 margin_bottom = 33.0
+rect_scale = Vector2( 0.961595, 1 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_fonts/normal_font = SubResource( 2 )

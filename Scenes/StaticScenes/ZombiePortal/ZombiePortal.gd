@@ -27,7 +27,7 @@ var zombie_types = { 0 : simple_zombie ,
 						6 : punk_zombie,
 						7 : punk_zombie
 					}
-					
+									
 signal wave_finished
 signal wave_started
 func get_used_cells():
@@ -39,7 +39,6 @@ func get_used_cells():
 			if(tile_map.get_cell(i,j + 1) != -1 and tile_map.get_cell(i,j) == -1):
 				available_cells.append(Vector2(i,j))
 
-
 func _ready():
 	randomize()
 	zombie_count_for_level(zombie_level)
@@ -47,7 +46,6 @@ func _ready():
 	create_generate_zombie_timer()
 	create_wave_paused_timer()#bütün zombieler ölünce yeni dalga gelene kadar bekleme süresi oluşturuldu.
 	get_used_cells()
-
 
 func _process(delta):
 	$AnimatedSprite.play("new")
@@ -64,8 +62,6 @@ func _process(delta):
 		wave_is_contiune = true
 		zombie_dead_counter = 0
 		zombie_generate_counter = 0
-
-	pass
 
 func create_generate_zombie_timer():
 	generate_zombie_timer.set_one_shot(true)

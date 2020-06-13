@@ -11,7 +11,6 @@ func on_dead_signal():
 	visible=true
 	$dead_zombie_text/dead_zombie_counter.text=String(get_parent().get_parent().get_node("player").killed_counter)
 	$Coin/Coin_count.text=String( coin_count.count)
-	pass # Replace with function body.
 
 func _physics_process(delta):
 	if $MarginContainer/CenterContainer/VBoxContainer/start.is_hovered():
@@ -19,17 +18,11 @@ func _physics_process(delta):
 	if  $MarginContainer/CenterContainer/VBoxContainer/quit.is_hovered():
 		 $MarginContainer/CenterContainer/VBoxContainer/quit.grab_focus()
 
-
-
 func _on_quit_pressed():
 	get_tree().quit()
-	pass # Replace with function body.
-
 
 func _on_start_pressed():
 	var instance_restart = restart_screen.instance()
 	get_tree().get_root().add_child(instance_restart)
 	get_tree().get_root().get_node("overlay").queue_free()
 	visible = false
-
-	pass # Replace with function body.

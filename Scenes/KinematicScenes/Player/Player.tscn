@@ -99,13 +99,18 @@ animations = [ {
 "loop": true,
 "name": "attack_103",
 "speed": 10.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "hurt_103",
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 30.1401, 3.0473 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 16.2322, 60.9579 )
+extents = Vector2( 18.3739, 60.9579 )
 
 [sub_resource type="AtlasTexture" id=4]
 flags = 4
@@ -179,19 +184,19 @@ __meta__ = {
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 36.7499, 39.1204 )
+position = Vector2( 57.3347, 46.22 )
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 1 )
-animation = "attack_103"
-frame = 3
-playing = true
+animation = "run_103"
+offset = Vector2( -34.3934, -32.6715 )
+flip_h = true
 
 [node name="collision_2" type="CollisionShape2D" parent="."]
-position = Vector2( 8.04113, 140.779 )
+position = Vector2( 39.3818, 139.25 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 6.47827, 36.1733 )
+position = Vector2( 41.2985, 38.2586 )
 scale = Vector2( 2.5, 1.7 )
 skew = 4.37114e-08
 shape = SubResource( 3 )

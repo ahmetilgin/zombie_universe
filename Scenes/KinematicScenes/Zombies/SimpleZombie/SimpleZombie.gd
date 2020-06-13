@@ -11,13 +11,10 @@ var zombie_dead_player = AudioStreamPlayer.new()
 var zombie_hurt_sound = load("res://Resources/AudioFiles/Zombies/zombies/zombie2.wav")
 var zombie_dead_sound = load("res://Resources/AudioFiles/Zombies/zombies/zombie21.wav")
 var zombie_dead_timer = Timer.new()
-
 var can_zombie_attack = true
 var zombie_attack_timer = Timer.new()
 var attack_ray_cast = RayCast2D.new()
-
 var player_found_icon = TextureRect.new()
-
 const gravity=20
 
 const FLASH_RATE =0.05
@@ -99,9 +96,6 @@ func _ready():
 	add_attack_ray_cast()
 	flash_zombie_tween()
 
-#	create_zombie_found_player_label()
-
-
 func get_zombie_and_player_distance():
 	return player.get_global_position().distance_to(get_global_position())
 
@@ -113,7 +107,6 @@ func find_zombie_x_movement():
 	elif diff < 0:
 		motion.x = max(motion.x - acceleration, -speed)
 
-			
 func can_zombie_jump(diff):
 	$AnimatedSprite.play("jump")
 	if is_on_floor():
@@ -130,7 +123,6 @@ func find_cross_index():
 			else:
 				break
 	return cross_index
-	
 
 func check_zombie_found_player():
 	if get_zombie_and_player_distance() < 80:
@@ -148,27 +140,24 @@ func set_zombie_direction():
 	elif sign(motion.x) > 0:
 		$AnimatedSprite.flip_h = false
 		attack_ray_cast.set_cast_to(Vector2(65,0))
-		
-			 
+				 
 var is_zombie_action = false
 func follow_path():
 	if !is_zombie_action:
 		check_zombie_found_player()
-	pass
 
 var init = false
 func _get_path():
 	var new_path = tile_map._get_path(get_global_position(), player.get_node("CenterPos").get_global_position(),get_name())
 	if len(new_path) > 0:
 		path = new_path
-	
+			
 	var closest_point = tile_map.get_closest_point(get_global_position())
 	var diff = (target_point_world - closest_point)
-	
 	if(len(path) > 1):
 		target_point_world = path[1]
 	tile_map.set_target_point(target_point_world)
-
+	
 	if(diff.y >= 0):
 		if !$RayCast2D.is_colliding():
 			motion.y = -2 * abs(motion.y + (diff.x))
@@ -180,9 +169,6 @@ func _get_path():
 		if($Timer.is_stopped()):
 			$Timer.start()
 
-
-		
-		
 func _set_is_follow(follow):
 	is_follow = follow
 	
@@ -202,8 +188,7 @@ func create_extra_resources():
 		generate_coins()
 	elif power_up == 1:
 		generate_extra_bullet()
-	
-
+		
 func dead(damage,whodead):
 	hp-=damage
 	flash_damage()
@@ -211,16 +196,12 @@ func dead(damage,whodead):
 		is_dead=true
 		if whodead=="player":
 			player.increase_dead_counter()
-
 		zombie_dead_player.play()
 		motion=Vector2(0,0)
-	
 		$AnimatedSprite.play("dead")
 		$CollisionShape2D.set_deferred("disabled",true)
 		zombie_dead_timer.start()
 	else:
-#		is_hurt=true
-#		zombie_hurt_player.play()
 		var back = 0;
 		if player.get_global_position().x < get_global_position().x:
 			back = 400
@@ -228,7 +209,6 @@ func dead(damage,whodead):
 			back = -400
 		motion = move_and_slide(Vector2(motion.x + back, motion.y) , UP)
 		
-
 func dead_from_turrent(damage,whodead,dir):
 	hp-=damage
 	flash_damage()
@@ -249,18 +229,15 @@ func dead_from_turrent(damage,whodead,dir):
 			back = 400
 		else:
 			back = -400
-		motion = move_and_slide(Vector2(dir.x*(motion.x + back), dir.y*(motion.y + back) - gravity) , UP)
-		
+		motion = move_and_slide(Vector2(dir.x*(motion.x + back), dir.y*(motion.y + back) - gravity) , UP)	
 
 func jump():
 	motion.y -= 1000
-
 		
 func chech_zombie_colliding():
 	is_zombie_action = false
 	if attack_ray_cast.is_colliding():
 		var playerFound = false
-
 		if "player" in attack_ray_cast.get_collider().name:
 			playerFound = true
 			_zombie_attack_to_player(5)
@@ -291,10 +268,7 @@ func chech_zombie_colliding():
 		elif "Trambolin" in attack_ray_cast.get_collider().name:
 			motion.y -= 100
 
-func move_like_basic_zombie():
-	if len(path) == 0:
-		pass
-		
+
 var jumping_started = false
 var jumping_peak = false
 var started_heigth = Vector2()
@@ -305,14 +279,12 @@ func find_zombie_jump_on_peak():
 	else:
 		motion.x = diff.x
 
-
 func _physics_process(delta):
 	if !is_borned:
 		return
 	set_zombie_direction()
 	motion.y += gravity
 	if is_dead==false:
-		
 		follow_path()
 		if !is_on_floor() and !jumping_started and motion.y < 0:
 			jumping_started = true
@@ -320,14 +292,10 @@ func _physics_process(delta):
 			diff = (target_point_world - get_global_position())
 		if jumping_started:
 			find_zombie_jump_on_peak()
-		
 		if !jumping_peak and jumping_started and motion.y >= 0:
 			jumping_peak = true
 			find_zombie_jump_on_peak()
-		
 		if jumping_started and jumping_peak and is_on_floor():
-	
-			
 			jumping_started = false
 			jumping_peak = false
 		motion = move_and_slide(motion , UP)
@@ -341,7 +309,6 @@ func _zombie_dead_timer_timeout():
 func _on_FollowPlayerTimer_timeout():
 	if is_borned and is_on_floor() and !is_zombie_action and !is_dead:
 		_get_path()
-
 
 func _zombie_attack_timer_timeout():
 	can_zombie_attack = true
