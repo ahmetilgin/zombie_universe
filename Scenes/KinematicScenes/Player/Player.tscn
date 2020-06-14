@@ -65,35 +65,20 @@ animations = [ {
 "name": "dead_103",
 "speed": 20.0
 }, {
-"frames": [ ExtResource( 31 ), ExtResource( 33 ), ExtResource( 32 ), ExtResource( 34 ) ],
-"loop": true,
-"name": "fall_103",
-"speed": 10.0
-}, {
 "frames": [ ExtResource( 27 ), ExtResource( 28 ), ExtResource( 30 ), ExtResource( 26 ), ExtResource( 25 ), ExtResource( 29 ), ExtResource( 2 ) ],
 "loop": false,
 "name": "jump_103",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 3 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 14 ), ExtResource( 13 ), ExtResource( 11 ), ExtResource( 12 ) ],
+"frames": [ ExtResource( 31 ), ExtResource( 33 ), ExtResource( 32 ), ExtResource( 34 ) ],
 "loop": true,
-"name": "run_103",
-"speed": 15.0
-}, {
-"frames": [ ExtResource( 19 ), ExtResource( 15 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 20 ), ExtResource( 16 ) ],
-"loop": true,
-"name": "idle_103",
-"speed": 8.0
+"name": "fall_103",
+"speed": 10.0
 }, {
 "frames": [ ExtResource( 23 ), ExtResource( 17 ), ExtResource( 24 ), ExtResource( 18 ) ],
 "loop": true,
 "name": "attack_103",
 "speed": 10.0
-}, {
-"frames": [ ExtResource( 13 ), ExtResource( 11 ) ],
-"loop": true,
-"name": "hurt_103",
-"speed": 5.0
 }, {
 "frames": [ ExtResource( 37 ), ExtResource( 35 ), ExtResource( 36 ) ],
 "loop": false,
@@ -104,6 +89,21 @@ animations = [ {
 "loop": true,
 "name": "melee_103",
 "speed": 10.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 15 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 20 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "idle_103",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "hurt_103",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 14 ), ExtResource( 13 ), ExtResource( 11 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "run_103",
+"speed": 15.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -212,6 +212,7 @@ one_shot = true
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 30.5919, 12.325 )
 current = true
+zoom = Vector2( 2, 2 )
 limit_left = 0
 limit_top = 0
 limit_right = 10240

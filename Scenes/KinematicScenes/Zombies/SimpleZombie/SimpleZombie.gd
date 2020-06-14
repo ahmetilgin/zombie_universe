@@ -16,7 +16,8 @@ var zombie_attack_timer = Timer.new()
 var attack_ray_cast = RayCast2D.new()
 var player_found_icon = TextureRect.new()
 const gravity=20
-
+var jumping_started = false
+var jumping_peak = false
 const FLASH_RATE =0.05
 const N_FLASHES = 4
 var flash_zombie_tween = Tween.new()
@@ -101,7 +102,7 @@ func get_zombie_and_player_distance():
 
 func find_zombie_x_movement():
 	$AnimatedSprite.play("run")
-	var diffx = (target_point_world.x - tile_map.get_closest_point($CenterPos.get_global_position()).x)
+	var diffx = (target_point_world.x - tile_map.get_closest_point(get_global_position()).x)
 	if diffx > 0 :
 		motion.x = min(motion.x + acceleration, speed)
 	elif diffx < 0:
@@ -112,7 +113,6 @@ func can_zombie_jump(jump_diff):
 	if is_on_floor() and jump_diff.y < 0:
 		motion.y = motion.y + 3*(jump_diff.y)	
 		motion.y = max(motion.y, -2 * 15 * (tile_map._half_cell_size.y) + (gravity * (jump_diff.y /(2 * tile_map._half_cell_size.y))))
-		print(motion.y)
 	motion.x = 0
 
 func find_cross_index():
@@ -135,12 +135,13 @@ func check_zombie_found_player():
 			FollowPlayerTimer.start()
 
 func set_zombie_direction():
-	if sign(motion.x) < 0:
-		$AnimatedSprite.flip_h = true
-		attack_ray_cast.set_cast_to(Vector2(-65,0))
-	elif sign(motion.x) > 0:
-		$AnimatedSprite.flip_h = false
-		attack_ray_cast.set_cast_to(Vector2(65,0))
+	if !jumping_peak:
+		if sign(motion.x) < 0:
+			$AnimatedSprite.flip_h = true
+			attack_ray_cast.set_cast_to(Vector2(-65,0))
+		elif sign(motion.x) > 0:
+			$AnimatedSprite.flip_h = false
+			attack_ray_cast.set_cast_to(Vector2(65,0))
 				 
 var is_zombie_action = false
 func follow_path():
@@ -153,21 +154,22 @@ func _get_path():
 	if len(new_path) > 0:
 		path = new_path
 			
-	var closest_point = tile_map.get_closest_point(get_global_position())
+	var closest_point = tile_map.get_closest_point($CenterPos.get_global_position())
 	var targetDiff = (target_point_world - closest_point)
 	if(len(path) > 1):
 		target_point_world = path[1]
+
 	tile_map.set_target_point(target_point_world)
 	
 	if(targetDiff.y >= 0):
 		if !$RayCast2D.is_colliding():
-			motion.y = -2 * abs(motion.y)
-			motion.y = max(motion.y, -1100)
+			motion.y = -900
+			print("zıplaması lazım",motion.y )
 		find_zombie_x_movement()
 	else:
-		set_global_position(Vector2(closest_point.x,get_global_position().y))
 		motion.x = 0
 		if($Timer.is_stopped()) and is_on_floor():
+
 			$Timer.start()
 
 func _set_is_follow(follow):
@@ -232,9 +234,6 @@ func dead_from_turrent(damage,whodead,dir):
 			back = -400
 		motion = move_and_slide(Vector2(dir.x*(motion.x + back), dir.y*(motion.y + back) - gravity) , UP)	
 
-func jump():
-	motion.y -= 1000
-		
 func chech_zombie_colliding():
 	is_zombie_action = false
 	if attack_ray_cast.is_colliding():
@@ -270,16 +269,16 @@ func chech_zombie_colliding():
 			motion.y -= 100
 
 
-var jumping_started = false
-var jumping_peak = false
-var started_heigth = Vector2()
-func find_zombie_jump_on_peak():
-	var diff = (target_point_world - get_global_position()) 
-	if  diff.x > 0:
-		motion.x = diff.x + 65
-	else:
-		motion.x = diff.x - 65
 
+func find_zombie_jump_on_peak():
+	if !is_on_floor(): 
+		pass
+	var diff = (target_point_world - get_global_position())
+	motion.x =  diff.x 
+	if motion.x > 0:
+		motion.x = motion.x + 128
+	else:
+		motion.x = motion.x - 128
 func _physics_process(delta):
 	if !is_borned:
 		return
@@ -289,12 +288,14 @@ func _physics_process(delta):
 		follow_path()
 		if !is_on_floor() and !jumping_started and motion.y < 0:
 			jumping_started = true
-			started_heigth = motion.y
+			
 		if jumping_started:
 			find_zombie_jump_on_peak()
+
 		if !jumping_peak and jumping_started and motion.y >= 0:
 			jumping_peak = true
 			find_zombie_jump_on_peak()
+			print("jump_peak")
 		if jumping_started and jumping_peak and is_on_floor():
 			jumping_started = false
 			jumping_peak = false
@@ -330,7 +331,7 @@ func flash_damage():
 
 
 func _on_Timer_timeout():
-	var diff = (target_point_world - tile_map.get_closest_point($CenterPos.get_global_position()))
+	var diff = (target_point_world - tile_map.get_closest_point(get_global_position()))
 	can_zombie_jump(diff)
 
 

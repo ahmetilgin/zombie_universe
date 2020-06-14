@@ -75,14 +75,14 @@ animations = [ {
 "name": "run",
 "speed": 24.0
 }, {
-"frames": [ ExtResource( 28 ), ExtResource( 34 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 29 ), ExtResource( 23 ), ExtResource( 26 ), ExtResource( 32 ), ExtResource( 27 ), ExtResource( 31 ), ExtResource( 30 ), ExtResource( 33 ), ExtResource( 18 ) ],
-"loop": false,
-"name": "born",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 51 ), ExtResource( 52 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 35 ), ExtResource( 37 ), ExtResource( 36 ), ExtResource( 38 ) ],
 "loop": true,
 "name": "attack",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 28 ), ExtResource( 34 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 29 ), ExtResource( 23 ), ExtResource( 26 ), ExtResource( 32 ), ExtResource( 27 ), ExtResource( 31 ), ExtResource( 30 ), ExtResource( 33 ), ExtResource( 18 ) ],
+"loop": false,
+"name": "born",
 "speed": 5.0
 } ]
 
@@ -95,30 +95,35 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 scale = Vector2( 0.4, 0.4 )
 z_index = 1
-polygon = PoolVector2Array( 5.25635, -270.553, -59.0644, -145.587, -64.5776, 65.7524, -56.4877, 269.41, 67.904, 261.117, 71.4148, 52.8882, 84.2789, -143.749 )
-
-[node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2( -15.1301, -38.3657 )
-enabled = true
-cast_to = Vector2( 0, 150 )
+polygon = PoolVector2Array( 4.22333, -318.837, -52.7463, -215.925, -47.233, 61.5724, -54.584, 274.749, 20.7629, 278.425, 67.904, 261.117, 66.7062, 54.2215, 66.7062, -236.14 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 3.94406, 2.81769 )
 scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 1 )
 animation = "run"
-frame = 3
+frame = 4
 playing = true
+flip_h = true
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 5.0
 one_shot = true
-
-[node name="CenterPos" type="Position2D" parent="."]
 
 [node name="BornTimer" type="Timer" parent="."]
 one_shot = true
 autostart = true
+
+[node name="CenterPos" type="Position2D" parent="."]
+position = Vector2( -44.0218, -102.656 )
+scale = Vector2( 1, 1 )
+skew = 4.37114e-08
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( -3.05176e-05, 0.773773 )
+skew = 4.37114e-08
+enabled = true
+cast_to = Vector2( 0, 150 )
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="BornTimer" to="." method="_on_BornTimer_timeout"]
