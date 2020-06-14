@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://Scenes/KinematicScenes/Zombies/SimpleZombie/SimpleZombie.gd" type="Script" id=1]
 [ext_resource path="res://Resources/dragon/walk/Armature_Run_07.png" type="Texture" id=2]
@@ -53,10 +53,7 @@
 [ext_resource path="res://Resources/dragon/walk/Armature_Attack_00.png" type="Texture" id=51]
 [ext_resource path="res://Resources/dragon/walk/Armature_Attack_01.png" type="Texture" id=52]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 83.953, 264.734 )
-
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [  ],
 "loop": true,
@@ -95,10 +92,10 @@ __meta__ = {
 "_edit_vertical_guides_": [ -15.622, 46.2812 ]
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 scale = Vector2( 0.4, 0.4 )
 z_index = 1
-shape = SubResource( 1 )
+polygon = PoolVector2Array( 5.25635, -270.553, -59.0644, -145.587, -64.5776, 65.7524, -56.4877, 269.41, 67.904, 261.117, 71.4148, 52.8882, 84.2789, -143.749 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2( -15.1301, -38.3657 )
@@ -108,9 +105,9 @@ cast_to = Vector2( 0, 150 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 3.94406, 2.81769 )
 scale = Vector2( 0.4, 0.4 )
-frames = SubResource( 2 )
+frames = SubResource( 1 )
 animation = "run"
-frame = 10
+frame = 3
 playing = true
 
 [node name="Timer" type="Timer" parent="."]

@@ -110,8 +110,9 @@ func find_zombie_x_movement():
 func can_zombie_jump(jump_diff):
 	$AnimatedSprite.play("jump")
 	if is_on_floor() and jump_diff.y < 0:
-		motion.y = motion.y + 3*(jump_diff.y)
-		motion.y = max(motion.y, -20 * (tile_map._half_cell_size.y) + (gravity * (jump_diff.y / tile_map._half_cell_size.y)) )
+		motion.y = motion.y + 3*(jump_diff.y)	
+		motion.y = max(motion.y, -2 * 15 * (tile_map._half_cell_size.y) + (gravity * (jump_diff.y /(2 * tile_map._half_cell_size.y))))
+		print(motion.y)
 	motion.x = 0
 
 func find_cross_index():
@@ -161,7 +162,7 @@ func _get_path():
 	if(targetDiff.y >= 0):
 		if !$RayCast2D.is_colliding():
 			motion.y = -2 * abs(motion.y)
-			motion.y = max(motion.y, -900)
+			motion.y = max(motion.y, -1100)
 		find_zombie_x_movement()
 	else:
 		set_global_position(Vector2(closest_point.x,get_global_position().y))
@@ -272,12 +273,12 @@ func chech_zombie_colliding():
 var jumping_started = false
 var jumping_peak = false
 var started_heigth = Vector2()
-var diff = Vector2()
 func find_zombie_jump_on_peak():
+	var diff = (target_point_world - get_global_position()) 
 	if  diff.x > 0:
-		motion.x = diff.x
+		motion.x = diff.x + 65
 	else:
-		motion.x = diff.x
+		motion.x = diff.x - 65
 
 func _physics_process(delta):
 	if !is_borned:
@@ -289,7 +290,6 @@ func _physics_process(delta):
 		if !is_on_floor() and !jumping_started and motion.y < 0:
 			jumping_started = true
 			started_heigth = motion.y
-			diff = (target_point_world - get_global_position())
 		if jumping_started:
 			find_zombie_jump_on_peak()
 		if !jumping_peak and jumping_started and motion.y >= 0:
@@ -298,7 +298,7 @@ func _physics_process(delta):
 		if jumping_started and jumping_peak and is_on_floor():
 			jumping_started = false
 			jumping_peak = false
-		print(motion)
+		
 		motion = move_and_slide(motion , UP)
 		chech_zombie_colliding()
  

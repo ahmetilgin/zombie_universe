@@ -114,14 +114,15 @@ func get_corners(cells):
 	for cell in cells:
 		var right = cell - Vector2(1,0)
 		var left = cell - Vector2(-1,0)
-		var bottom = cell - Vector2(0,1)
-		if(astar.has_point(calculate_point_index(right)) and !astar.has_point(calculate_point_index(left))) and get_cellv(left) == INVALID_CELL:
+		var up = cell - Vector2(0,1)
+		var up_two = up - Vector2(0,1)
+		if(astar.has_point(calculate_point_index(right)) and !astar.has_point(calculate_point_index(left))) and get_cellv(left) == INVALID_CELL and get_cellv(up) == INVALID_CELL and get_cellv(up_two) == INVALID_CELL:
 			left_corners.append(cell)
 			
-		if(astar.has_point(calculate_point_index(left)) and !astar.has_point(calculate_point_index(right))) and get_cellv(right) == INVALID_CELL:
+		if(astar.has_point(calculate_point_index(left)) and !astar.has_point(calculate_point_index(right))) and get_cellv(right) == INVALID_CELL and get_cellv(up) == INVALID_CELL and get_cellv(up_two) == INVALID_CELL:
 			right_corners.append(cell)
 		
-		if(!astar.has_point(calculate_point_index(left)) and !astar.has_point(calculate_point_index(right))):
+		if(!astar.has_point(calculate_point_index(left)) and !astar.has_point(calculate_point_index(right))) and get_cellv(up) == INVALID_CELL and get_cellv(up_two) == INVALID_CELL:
 			corners.append(cell)
 			pass
 
@@ -236,31 +237,30 @@ func set_target_point(target):
 	current_target = target
 
 func _draw():
-	pass
-#	draw_circle(init_pos , 64, PLAYER_COLOR)
-#	draw_circle(target_pos, 64, TARGET_COLOR)
-#	draw_circle(current_target, 32, Color("#fff"))
-#	for  cnt in connected_cells:
-#		draw_circle(cnt[0] + _half_cell_size, 25, Color("#f0f"))
-#		draw_circle(cnt[1] + _half_cell_size , 20, Color("#ff0"))
-#		draw_line(cnt[0] + _half_cell_size,cnt[1] + _half_cell_size, DRAW_COLOR, 3)
-#
-#	for connection in lines:
-#		draw_line(map_to_world(connection[0]) + _half_cell_size,map_to_world(connection[1])+_half_cell_size, DRAW_COLOR, 3)
-#
-#	for corner in corners:
-#		draw_circle(map_to_world(corner) + _half_cell_size, 30,Color("FFF") )
-#
-#	for corner in left_corners:
-#		draw_circle(map_to_world(corner) + _half_cell_size, 30,Color("000") )
-#
-#	for corner in right_corners:
-#		draw_circle(map_to_world(corner) + _half_cell_size, 30,Color("F00") )
-#	for name in founded_path:
-#		for point_index in range(0,len(founded_path[name]) - 1):
-#				if len(founded_path[name]) > 2:
-#					draw_circle(founded_path[name][point_index], 10, TARGET_COLOR)
-#					draw_line(founded_path[name][point_index],founded_path[name][point_index + 1], DRAW_COLOR, 10)
+	draw_circle(init_pos , 64, PLAYER_COLOR)
+	draw_circle(target_pos, 64, TARGET_COLOR)
+	draw_circle(current_target, 32, Color("#fff"))
+	for  cnt in connected_cells:
+		draw_circle(cnt[0] + _half_cell_size, 25, Color("#f0f"))
+		draw_circle(cnt[1] + _half_cell_size , 20, Color("#ff0"))
+		draw_line(cnt[0] + _half_cell_size,cnt[1] + _half_cell_size, DRAW_COLOR, 3)
+
+	for connection in lines:
+		draw_line(map_to_world(connection[0]) + _half_cell_size,map_to_world(connection[1])+_half_cell_size, DRAW_COLOR, 3)
+
+	for corner in corners:
+		draw_circle(map_to_world(corner) + _half_cell_size, 30,Color("FFF") )
+
+	for corner in left_corners:
+		draw_circle(map_to_world(corner) + _half_cell_size, 30,Color("000") )
+
+	for corner in right_corners:
+		draw_circle(map_to_world(corner) + _half_cell_size, 30,Color("F00") )
+	for name in founded_path:
+		for point_index in range(0,len(founded_path[name]) - 1):
+				if len(founded_path[name]) > 2:
+					draw_circle(founded_path[name][point_index], 10, TARGET_COLOR)
+					draw_line(founded_path[name][point_index],founded_path[name][point_index + 1], DRAW_COLOR, 10)
 ##
 
 func find_path(start_position: Vector2, end_position: Vector2) -> Array:
