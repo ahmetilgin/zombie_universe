@@ -53,7 +53,7 @@ func add_walkable_cells(obstacles := []) -> Array:
 	for x in range(max_x,min_x, -1):
 		for y in range(max_y,min_y, -1):				
 			var point: = Vector2(x, y)
-			if (get_cell(point.x, point.y + 1) == INVALID_CELL) or get_cellv(point) != INVALID_CELL:
+			if !((get_cell(point.x, point.y + 2) != INVALID_CELL) and get_cell(point.x, point.y + 1) == INVALID_CELL):
 				continue
 			var index: = calculate_point_index(point)
 			if(!astar.has_point(index)):
@@ -138,19 +138,18 @@ func do_top_to_down_detect(start_cell,cell):
 			astar.connect_points(calculate_point_index(cell),calculate_point_index(Vector2(start_cell.x,direct_connection)), true)
 			break
 func connect_corners(cells):	
-	
 	for cell in corners:
 		var start_cell = Vector2()
 		if get_cellv(cell+ Vector2(1,0)) != INVALID_CELL and get_cellv(cell+ Vector2(-1,0)) == INVALID_CELL:
-			start_cell = cell + Vector2(-2,0)
+			start_cell = cell + Vector2(-3,0)
 			do_top_to_down_detect(start_cell, cell)
 		if get_cellv(cell+ Vector2(-1,0)) != INVALID_CELL and get_cellv(cell+ Vector2(1,0)) == INVALID_CELL:
-			start_cell = cell + Vector2(2,0)
+			start_cell = cell + Vector2(3,0)
 			do_top_to_down_detect(start_cell, cell)	
 		if	get_cellv(cell+ Vector2(-1,0)) == INVALID_CELL and get_cellv(cell+ Vector2(1,0)) == INVALID_CELL:
-			start_cell = cell + Vector2(2,0)
+			start_cell = cell + Vector2(3,0)
 			do_top_to_down_detect(start_cell, cell)
-			start_cell = cell + Vector2(-2,0)
+			start_cell = cell + Vector2(-3,0)
 			do_top_to_down_detect(start_cell, cell)
 			pass
 			
@@ -237,32 +236,30 @@ func set_target_point(target):
 	current_target = target
 
 func _draw():
-#	draw_circle(init_pos , 64, PLAYER_COLOR)
-#	draw_circle(target_pos, 64, TARGET_COLOR)
-#	draw_circle(current_target, 32, Color("#fff"))
-#	for  cnt in connected_cells:
-#		draw_circle(cnt[0] + _half_cell_size, 25, Color("#f0f"))
-#		draw_circle(cnt[1] + _half_cell_size , 20, Color("#ff0"))
-#		draw_line(cnt[0] + _half_cell_size,cnt[1] + _half_cell_size, DRAW_COLOR, 3)
-#
-#	for connection in lines:
-#		draw_line(map_to_world(connection[0]) + _half_cell_size,map_to_world(connection[1])+_half_cell_size, DRAW_COLOR, 3)
-#
-#	for corner in corners:
-#		draw_circle(map_to_world(corner) + _half_cell_size, 30,Color("FFF") )
-#
-#	for corner in left_corners:
-#		draw_circle(map_to_world(corner) + _half_cell_size, 30,Color("000") )
-#
-#	for corner in right_corners:
-#		draw_circle(map_to_world(corner) + _half_cell_size, 30,Color("F00") )
-#	for name in founded_path:
-#		for point_index in range(0,len(founded_path[name]) - 1):
-#				if len(founded_path[name]) > 2:
-#					draw_circle(founded_path[name][point_index], 10, TARGET_COLOR)
-#					draw_line(founded_path[name][point_index],founded_path[name][point_index + 1], DRAW_COLOR, 10)
-###
-	pass
+	draw_circle(init_pos , 64, PLAYER_COLOR)
+	draw_circle(target_pos, 64, TARGET_COLOR)
+	draw_circle(current_target, 84, Color("#fff"))
+	for  cnt in connected_cells:
+		draw_circle(cnt[0] + _half_cell_size, 25, Color("#f0f"))
+		draw_circle(cnt[1] + _half_cell_size , 20, Color("#ff0"))
+		draw_line(cnt[0] + _half_cell_size,cnt[1] + _half_cell_size, DRAW_COLOR, 3)
+
+	for connection in lines:
+		draw_line(map_to_world(connection[0]) + _half_cell_size,map_to_world(connection[1])+_half_cell_size, DRAW_COLOR, 3)
+
+	for corner in corners:
+		draw_circle(map_to_world(corner) + _half_cell_size, 30,Color("FFF") )
+
+	for corner in left_corners:
+		draw_circle(map_to_world(corner) + _half_cell_size, 30,Color("000") )
+
+	for corner in right_corners:
+		draw_circle(map_to_world(corner) + _half_cell_size, 30,Color("F00") )
+	for name in founded_path:
+		for point_index in range(0,len(founded_path[name]) - 1):
+				if len(founded_path[name]) > 2:
+					draw_circle(founded_path[name][point_index], 10, TARGET_COLOR)
+					draw_line(founded_path[name][point_index],founded_path[name][point_index + 1], DRAW_COLOR, 10)
 
 func find_path(start_position: Vector2, end_position: Vector2) -> Array:
 	var map_path = []
