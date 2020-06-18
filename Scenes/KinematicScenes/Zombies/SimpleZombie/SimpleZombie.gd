@@ -173,6 +173,7 @@ func _get_path():
 			print("zıplaması lazım",motion.y )
 		find_zombie_x_movement()
 	else:
+		global_position.x = tile_map.init_pos.x
 		motion.x = 0
 		if($Timer.is_stopped()) and is_on_floor():
 

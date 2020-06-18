@@ -60,6 +60,16 @@ animations = [ {
 "name": "default",
 "speed": 1.0
 }, {
+"frames": [ ExtResource( 28 ), ExtResource( 34 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 29 ), ExtResource( 23 ), ExtResource( 26 ), ExtResource( 32 ), ExtResource( 27 ), ExtResource( 31 ), ExtResource( 30 ), ExtResource( 33 ), ExtResource( 18 ) ],
+"loop": false,
+"name": "born",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 51 ), ExtResource( 52 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 35 ), ExtResource( 37 ), ExtResource( 36 ), ExtResource( 38 ) ],
+"loop": true,
+"name": "attack",
+"speed": 15.0
+}, {
 "frames": [ ExtResource( 11 ), ExtResource( 15 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 16 ), ExtResource( 9 ), ExtResource( 13 ), ExtResource( 3 ) ],
 "loop": false,
 "name": "dead",
@@ -74,16 +84,6 @@ animations = [ {
 "loop": true,
 "name": "run",
 "speed": 24.0
-}, {
-"frames": [ ExtResource( 28 ), ExtResource( 34 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 29 ), ExtResource( 23 ), ExtResource( 26 ), ExtResource( 32 ), ExtResource( 27 ), ExtResource( 31 ), ExtResource( 30 ), ExtResource( 33 ), ExtResource( 18 ) ],
-"loop": false,
-"name": "born",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 51 ), ExtResource( 52 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 35 ), ExtResource( 37 ), ExtResource( 36 ), ExtResource( 38 ) ],
-"loop": true,
-"name": "attack",
-"speed": 15.0
 } ]
 
 [node name="Basic_Zombie" type="KinematicBody2D"]
@@ -102,6 +102,7 @@ position = Vector2( 3.94406, 2.81769 )
 scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 1 )
 animation = "jump"
+frame = 1
 playing = true
 flip_h = true
 
@@ -114,7 +115,7 @@ one_shot = true
 autostart = true
 
 [node name="CenterPos" type="Position2D" parent="."]
-position = Vector2( -44.0218, -102.656 )
+position = Vector2( 1.41967, 7.36025 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2( -3.05176e-05, 0.773773 )
