@@ -16,6 +16,7 @@ var zombie_attack_timer = Timer.new()
 var attack_ray_cast = RayCast2D.new()
 var player_found_icon = TextureRect.new()
 const gravity=20
+const one_grid_jump_value = -462
 var jumping_started = false
 var jumping_peak = false
 const FLASH_RATE =0.05
@@ -111,9 +112,14 @@ func find_zombie_x_movement():
 func can_zombie_jump(jump_diff):
 	$AnimatedSprite.play("jump")
 	if is_on_floor() and jump_diff.y < 0:
-		motion.y = motion.y + 3*(jump_diff.y)	
-		motion.y = max(motion.y, -2 * 15 * (tile_map._half_cell_size.y) + (gravity * (jump_diff.y /(2 * tile_map._half_cell_size.y))))
+		motion.y = jump_grid_calculator(jump_diff.y)
 	motion.x = 0
+	
+func jump_grid_calculator(_jump_diff):
+	var how_much_grid = -_jump_diff / (tile_map._half_cell_size.y * 2)
+	var delta_sqrt = 1 - (4 * one_grid_jump_value * how_much_grid)
+	var square_root = (-1 + sqrt(delta_sqrt)) / 2
+	return -(square_root * gravity)
 
 func find_cross_index():
 	var cross_index = 0
