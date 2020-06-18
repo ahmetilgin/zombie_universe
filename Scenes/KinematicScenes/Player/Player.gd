@@ -139,7 +139,7 @@ enum bullet_power{
 }
 # environment options
 var tramb_count=1
-const jump = -700
+const jump = -60.98*20
 const gravity = 20
 # player options
 const max_hp = 1000
@@ -297,8 +297,8 @@ func _ready():
 	set_sounds()
 	load_images()
 
-	if OS.get_name() == "Windows" or OS.get_name() == "OSX" or OS.get_name() == "X11":
-		$Controller/Node2D.visible = false
+#	if OS.get_name() == "Windows" or OS.get_name() == "OSX" or OS.get_name() == "X11":
+#		$Controller/Node2D.visible = false
 	
 
 
@@ -367,6 +367,7 @@ func _set_is_attack(attack_state):
 
 func _is_movable():
 	return !is_melee && !is_attack && !is_down
+	
 
 func _is_idle():
 	return !is_down && !is_melee && !is_attack && !is_move
@@ -520,7 +521,7 @@ func check_falling():
 		_play_fall_animation()
 
 func _physics_process(delta):
-	Engine.time_scale = 1.5
+	Engine.time_scale = 1.0
 	motion.y += gravity 
 	if !_is_dead():
 		_set_shift_stop(false)

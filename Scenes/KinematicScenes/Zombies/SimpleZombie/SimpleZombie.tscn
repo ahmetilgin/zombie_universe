@@ -60,16 +60,6 @@ animations = [ {
 "name": "default",
 "speed": 1.0
 }, {
-"frames": [ ExtResource( 11 ), ExtResource( 15 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 16 ), ExtResource( 9 ), ExtResource( 13 ), ExtResource( 3 ) ],
-"loop": false,
-"name": "dead",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 20 ), ExtResource( 10 ) ],
-"loop": true,
-"name": "jump",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 17 ), ExtResource( 14 ), ExtResource( 12 ), ExtResource( 19 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 8 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 41 ), ExtResource( 40 ), ExtResource( 39 ) ],
 "loop": true,
 "name": "run",
@@ -78,11 +68,21 @@ animations = [ {
 "frames": [ ExtResource( 28 ), ExtResource( 34 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 29 ), ExtResource( 23 ), ExtResource( 26 ), ExtResource( 32 ), ExtResource( 27 ), ExtResource( 31 ), ExtResource( 30 ), ExtResource( 33 ), ExtResource( 18 ) ],
 "loop": false,
 "name": "born",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [ ExtResource( 51 ), ExtResource( 52 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 35 ), ExtResource( 37 ), ExtResource( 36 ), ExtResource( 38 ) ],
 "loop": true,
 "name": "attack",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 15 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 16 ), ExtResource( 9 ), ExtResource( 13 ), ExtResource( 3 ) ],
+"loop": false,
+"name": "dead",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 20 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "jump",
 "speed": 5.0
 } ]
 
@@ -106,8 +106,7 @@ cast_to = Vector2( 0, 150 )
 position = Vector2( 3.94406, 2.81769 )
 scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 1 )
-animation = "run"
-frame = 3
+animation = "jump"
 playing = true
 
 [node name="Timer" type="Timer" parent="."]

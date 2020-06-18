@@ -1,116 +1,124 @@
-[gd_scene load_steps=76 format=2]
+[gd_scene load_steps=84 format=2]
 
 [ext_resource path="res://Scenes/KinematicScenes/Player/Player.gd" type="Script" id=1]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_jump_6.png" type="Texture" id=2]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_Run_00.png" type="Texture" id=3]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_Run_03.png" type="Texture" id=4]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_Run_04.png" type="Texture" id=5]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_Run_05.png" type="Texture" id=6]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_Run_06.png" type="Texture" id=7]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_Run_02.png" type="Texture" id=8]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_Run_07.png" type="Texture" id=9]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_Run_01.png" type="Texture" id=10]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_Run_10.png" type="Texture" id=11]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_Run_11.png" type="Texture" id=12]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_Run_09.png" type="Texture" id=13]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_Run_08.png" type="Texture" id=14]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_idle_1.png" type="Texture" id=15]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_idle_5.png" type="Texture" id=16]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_attack_1.png" type="Texture" id=17]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_attack_3.png" type="Texture" id=18]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_idle_0.png" type="Texture" id=19]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_idle_4.png" type="Texture" id=20]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_idle_2.png" type="Texture" id=21]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_idle_3.png" type="Texture" id=22]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_attack_0.png" type="Texture" id=23]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_attack_2.png" type="Texture" id=24]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_jump_4.png" type="Texture" id=25]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_jump_3.png" type="Texture" id=26]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_jump_0.png" type="Texture" id=27]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_jump_1.png" type="Texture" id=28]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_jump_5.png" type="Texture" id=29]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_jump_2.png" type="Texture" id=30]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_fall_0.png" type="Texture" id=31]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_fall_2.png" type="Texture" id=32]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_fall_1.png" type="Texture" id=33]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_fall_3.png" type="Texture" id=34]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_yenidenkayma_1.png" type="Texture" id=35]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_yenidenkayma_2.png" type="Texture" id=36]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_yenidenkayma_0.png" type="Texture" id=37]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_dead_01.png" type="Texture" id=38]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_dead_10.png" type="Texture" id=39]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_dead_06.png" type="Texture" id=40]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_dead_05.png" type="Texture" id=41]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_dead_04.png" type="Texture" id=42]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_dead_07.png" type="Texture" id=43]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_dead_08.png" type="Texture" id=44]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_dead_03.png" type="Texture" id=45]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_dead_02.png" type="Texture" id=46]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_dead_00.png" type="Texture" id=47]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_dead_09.png" type="Texture" id=48]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_ittirme_4.png" type="Texture" id=49]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_ittirme_3.png" type="Texture" id=50]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_ittirme_5.png" type="Texture" id=51]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_ittirme_2.png" type="Texture" id=52]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_ittirme_0.png" type="Texture" id=53]
-[ext_resource path="res://Resources/characters/animation_ak47/Armature_ittirme_1.png" type="Texture" id=54]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_dead_00.png" type="Texture" id=2]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_dead_01.png" type="Texture" id=3]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_dead_02.png" type="Texture" id=4]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_dead_03.png" type="Texture" id=5]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_dead_04.png" type="Texture" id=6]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_dead_05.png" type="Texture" id=7]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_dead_06.png" type="Texture" id=8]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_dead_07.png" type="Texture" id=9]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_dead_08.png" type="Texture" id=10]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_dead_09.png" type="Texture" id=11]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_dead_10.png" type="Texture" id=12]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_fall_0.png" type="Texture" id=13]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_fall_1.png" type="Texture" id=14]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_fall_2.png" type="Texture" id=15]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_fall_3.png" type="Texture" id=16]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_jump_0.png" type="Texture" id=17]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_jump_1.png" type="Texture" id=18]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_jump_2.png" type="Texture" id=19]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_jump_3.png" type="Texture" id=20]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_jump_4.png" type="Texture" id=21]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_jump_5.png" type="Texture" id=22]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_jump_6.png" type="Texture" id=23]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_Run_00.png" type="Texture" id=24]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_Run_01.png" type="Texture" id=25]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_Run_02.png" type="Texture" id=26]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_Run_03.png" type="Texture" id=27]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_Run_04.png" type="Texture" id=28]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_Run_05.png" type="Texture" id=29]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_Run_06.png" type="Texture" id=30]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_Run_07.png" type="Texture" id=31]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_Run_08.png" type="Texture" id=32]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_Run_09.png" type="Texture" id=33]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_Run_10.png" type="Texture" id=34]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_Run_11.png" type="Texture" id=35]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_attack_0.png" type="Texture" id=36]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_attack_1.png" type="Texture" id=37]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_attack_2.png" type="Texture" id=38]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_attack_3.png" type="Texture" id=39]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_yenidenkayma_00.png" type="Texture" id=40]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_yenidenkayma_03.png" type="Texture" id=41]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_idle_0.png" type="Texture" id=43]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_idle_1.png" type="Texture" id=44]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_idle_2.png" type="Texture" id=45]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_idle_3.png" type="Texture" id=46]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_idle_4.png" type="Texture" id=47]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_idle_5.png" type="Texture" id=48]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_ittirme_0.png" type="Texture" id=49]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_ittirme_1.png" type="Texture" id=50]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_ittirme_2.png" type="Texture" id=51]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_ittirme_3.png" type="Texture" id=52]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_ittirme_4.png" type="Texture" id=53]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_ittirme_5.png" type="Texture" id=54]
 [ext_resource path="res://Resources/Sprites/TouchIcons/touch_buttons.png" type="Texture" id=55]
 [ext_resource path="res://Resources/Sprites/TouchIcons/bullet1.png" type="Texture" id=56]
 [ext_resource path="res://Resources/Sprites/knife.png" type="Texture" id=57]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_yenidenkayma_04.png" type="Texture" id=59]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_yenidenkayma_05.png" type="Texture" id=60]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_yenidenkayma_07.png" type="Texture" id=61]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_yenidenkayma_06.png" type="Texture" id=62]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_yenidenkayma_10.png" type="Texture" id=63]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_yenidenkayma_09.png" type="Texture" id=64]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_yenidenkayma_08.png" type="Texture" id=65]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_yenidenkayma_11.png" type="Texture" id=66]
+[ext_resource path="res://Resources/characters/animation_ak47/Armature_yenidenkayma_12.png" type="Texture" id=67]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 47 ), ExtResource( 38 ), ExtResource( 46 ), ExtResource( 45 ), ExtResource( 42 ), ExtResource( 41 ), ExtResource( 40 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 48 ), ExtResource( 39 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
 "loop": false,
 "name": "dead_103",
 "speed": 20.0
 }, {
-"frames": [ ExtResource( 31 ), ExtResource( 33 ), ExtResource( 32 ), ExtResource( 34 ) ],
-"loop": true,
-"name": "fall_103",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 27 ), ExtResource( 28 ), ExtResource( 30 ), ExtResource( 26 ), ExtResource( 25 ), ExtResource( 29 ), ExtResource( 2 ) ],
+"frames": [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ) ],
 "loop": false,
 "name": "jump_103",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 3 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 14 ), ExtResource( 13 ), ExtResource( 11 ), ExtResource( 12 ) ],
-"loop": true,
-"name": "run_103",
-"speed": 15.0
+"frames": [ ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 54 ) ],
+"loop": false,
+"name": "melee_103",
+"speed": 10.0
 }, {
-"frames": [ ExtResource( 19 ), ExtResource( 15 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 20 ), ExtResource( 16 ) ],
+"frames": [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
 "loop": true,
-"name": "idle_103",
-"speed": 8.0
+"name": "fall_103",
+"speed": 10.0
 }, {
-"frames": [ ExtResource( 23 ), ExtResource( 17 ), ExtResource( 24 ), ExtResource( 18 ) ],
+"frames": [ ExtResource( 40 ), ExtResource( 41 ), ExtResource( 59 ), ExtResource( 60 ), ExtResource( 62 ), ExtResource( 61 ), ExtResource( 65 ), ExtResource( 64 ), ExtResource( 63 ), ExtResource( 63 ), ExtResource( 63 ), ExtResource( 63 ), ExtResource( 63 ), ExtResource( 63 ), ExtResource( 63 ), ExtResource( 63 ), ExtResource( 63 ), ExtResource( 66 ), ExtResource( 67 ) ],
+"loop": true,
+"name": "slide_103",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ) ],
 "loop": true,
 "name": "attack_103",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 13 ), ExtResource( 11 ) ],
+"frames": [ ExtResource( 33 ), ExtResource( 34 ) ],
 "loop": true,
 "name": "hurt_103",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 37 ), ExtResource( 35 ), ExtResource( 36 ) ],
-"loop": false,
-"name": "slide_103",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 53 ), ExtResource( 54 ), ExtResource( 52 ), ExtResource( 50 ), ExtResource( 49 ), ExtResource( 51 ) ],
+"frames": [ ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ) ],
 "loop": true,
-"name": "melee_103",
-"speed": 10.0
+"name": "run_103",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 48 ) ],
+"loop": true,
+"name": "idle_103",
+"speed": 8.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 30.1401, 3.0473 )
+extents = Vector2( 45.8276, 3.0473 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 18.3739, 60.9579 )
+extents = Vector2( 18.3739, 59.4936 )
 
 [sub_resource type="AtlasTexture" id=4]
 flags = 4
@@ -187,24 +195,24 @@ __meta__ = {
 position = Vector2( 57.3347, 46.22 )
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 1 )
-animation = "run_103"
+animation = "slide_103"
+frame = 8
+playing = true
 offset = Vector2( -34.3934, -32.6715 )
 flip_h = true
 
 [node name="collision_2" type="CollisionShape2D" parent="."]
-position = Vector2( 39.3818, 139.25 )
+position = Vector2( 41.0739, 136.276 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 41.2985, 38.2586 )
+position = Vector2( 41.1048, 33.4158 )
 scale = Vector2( 2.5, 1.7 )
-skew = 4.37114e-08
 shape = SubResource( 3 )
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 106.348, -6.28261 )
 scale = Vector2( 0.455083, 1.08333 )
-skew = 4.37114e-08
 
 [node name="player_dead_timer" type="Timer" parent="."]
 one_shot = true
