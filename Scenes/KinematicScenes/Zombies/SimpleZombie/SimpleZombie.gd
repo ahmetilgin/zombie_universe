@@ -113,8 +113,7 @@ func can_zombie_jump(jump_diff):
 	$AnimatedSprite.play("jump")
 	if is_on_floor() and jump_diff.y < 0:
 		motion.y = jump_grid_calculator(jump_diff.y)
-	motion.x = 0
-	
+
 func jump_grid_calculator(_jump_diff):
 	var how_much_grid = -_jump_diff / (tile_map._half_cell_size.y * 2)
 	var delta_sqrt = 1 - (4 * one_grid_jump_value * how_much_grid)
@@ -160,20 +159,20 @@ func _get_path():
 	if len(new_path) > 0:
 		path = new_path
 			
-	var closest_point = tile_map.get_closest_point($CenterPos.get_global_position())
+	var closest_point = tile_map.get_closest_point(get_global_position())
 	var targetDiff = (target_point_world - closest_point)
 	if(len(path) > 1):
 		target_point_world = path[1]
 
 	tile_map.set_target_point(target_point_world)
 	
-	if(targetDiff.y >= 0):
-		if !$RayCast2D.is_colliding():
-			motion.y = -900
+	if(targetDiff.y >= 0) and !jumping_peak:
+		if !$RayCast2D.is_colliding() and !jumping_started and !jumping_peak:
+			motion.y = -700
 			print("zıplaması lazım",motion.y )
 		find_zombie_x_movement()
+		pass
 	else:
-		global_position.x = tile_map.init_pos.x
 		motion.x = 0
 		if($Timer.is_stopped()) and is_on_floor():
 
@@ -278,34 +277,36 @@ func chech_zombie_colliding():
 
 
 func find_zombie_jump_on_peak():
+
 	if !is_on_floor(): 
 		pass
 	var diff = (target_point_world - get_global_position())
-	motion.x =  diff.x 
-	if motion.x > 0:
-		motion.x = motion.x + 128
-	else:
-		motion.x = motion.x - 128
+	if jumping_started and !jumping_peak:
+		motion.x =lerp(0,diff.x + ((diff.x / abs(diff.x) * speed)),1)
+		
 func _physics_process(delta):
 	if !is_borned:
 		return
 	set_zombie_direction()
 	motion.y += gravity
-	if is_dead==false:
+	if is_dead == false:
 		follow_path()
 		if !is_on_floor() and !jumping_started and motion.y < 0:
 			jumping_started = true
 			
-		if jumping_started:
+		if jumping_started and motion.y < 0:
 			find_zombie_jump_on_peak()
+			print("jump_started")
+			
 
-		if !jumping_peak and jumping_started and motion.y >= 0:
+		if jumping_started and motion.y >= 0:
 			jumping_peak = true
 			find_zombie_jump_on_peak()
 			print("jump_peak")
 		if jumping_started and jumping_peak and is_on_floor():
 			jumping_started = false
 			jumping_peak = false
+
 		
 		motion = move_and_slide(motion , UP)
 		chech_zombie_colliding()

@@ -79,7 +79,6 @@ __meta__ = {
 
 [node name="Background" parent="." instance=ExtResource( 5 )]
 position = Vector2( -7.25523, -48.2399 )
-scale = Vector2( 1.00924, 1.03239 )
 
 [node name="Game_UI" type="CanvasLayer" parent="."]
 

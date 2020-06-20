@@ -139,7 +139,7 @@ enum bullet_power{
 }
 # environment options
 var tramb_count=1
-const jump = -60.98*20
+const jump = -45 * 20
 const gravity = 20
 # player options
 const max_hp = 1000
@@ -297,8 +297,8 @@ func _ready():
 	set_sounds()
 	load_images()
 
-#	if OS.get_name() == "Windows" or OS.get_name() == "OSX" or OS.get_name() == "X11":
-#		$Controller/Node2D.visible = false
+	if OS.get_name() == "Windows" or OS.get_name() == "OSX" or OS.get_name() == "X11":
+		$Controller/Node2D.visible = false
 	
 
 
