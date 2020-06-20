@@ -15,7 +15,7 @@ const Riflegun_bullet = preload("res://Scenes/KinematicScenes/Player/Bullets/Rif
 
 
 var blood_anim = preload("res://Scenes/StaticScenes/BloodAnimation/BloodAnimation.tscn")
-#touch screen option
+
 
 var rasengan_bullet_sound = AudioStreamPlayer.new()
 var upgrade_bullet_sound = AudioStreamPlayer.new()
@@ -124,12 +124,7 @@ var bullet_time = {
 
 
 
-var touch_right=false
-var touch_left=false
-var touch_up=false
-var touch_down=false
-var touch_fire=false
-var touch_melee=false
+
 var body_scale = 1
 
 
@@ -145,9 +140,9 @@ const gravity = 20
 const max_hp = 1000
 var hp = 100
 var speed = 50
-var max_speed = 300
+var max_speed = 450
 var motion = Vector2(0,0)
-var slide_speed = 500
+var slide_speed = 700
 var killed_counter = 0
 var current_bullet = null
 var current_bullet_power = 103
@@ -297,9 +292,9 @@ func _ready():
 	set_sounds()
 	load_images()
 
-	if OS.get_name() == "Windows" or OS.get_name() == "OSX" or OS.get_name() == "X11":
-		$Controller/Node2D.visible = false
-	
+#	if OS.get_name() == "Windows" or OS.get_name() == "OSX" or OS.get_name() == "X11":
+#		$Controller/Node2D.visible = false
+#
 
 
 
@@ -451,25 +446,25 @@ func _clear_states():
 
 var UP = Vector2(0,-1)
 func check_left_pressed():
-	if Input.is_action_pressed("ui_left") or touch_left:
+	if Input.is_action_pressed("ui_left"):
 		if _is_movable():
 			_move_left()
-	if Input.is_action_just_released("ui_left"):
+	if Input.is_action_just_released("ui_left") : 
 		is_move = false
 
 func check_right_pressed():
-	if Input.is_action_pressed("ui_right") or touch_right:
+	if Input.is_action_pressed("ui_right") :
 			if _is_movable():
 				_move_right()
 	if Input.is_action_just_released("ui_right"):
 		is_move = false
 
 func check_down_pressed():
-	if Input.is_action_just_pressed("ui_down") or touch_down:
+	if Input.is_action_just_pressed("ui_down") :
 		_set_is_down(true)
 		_move_slide()
 		_play_slide_animation()
-		touch_down = false
+
 					
 func check_space_pressed():
 	if Input.is_key_pressed(KEY_SPACE):
@@ -477,14 +472,14 @@ func check_space_pressed():
 			slow_shot_timer.start()
 					
 func check_melee_pressed():
-	if Input.is_action_just_pressed("ui_focus_prev") or touch_melee:
+	if Input.is_action_just_pressed("ui_focus_prev") :
 		if _is_movable():
 				_set_is_melee(true)
 				_play_melee_sound()
 				_play_melee_animation()
 
 func check_fire_pressed():
-	if (Input.is_action_pressed("ui_focus_next") or touch_fire ):
+	if Input.is_action_just_pressed("ui_focus_next") :
 		if  _check_bullet_count() and !is_in_time_start_weapon_fire:
 			bullet_shoot_timer.start()
 			_fire_bullet()
@@ -498,17 +493,17 @@ func check_fire_pressed():
 			current_bullet.position = $Position2D.global_position
 		elif !_check_bullet_count():
 				empty_gun()
-	if Input.is_action_just_released("ui_focus_next"):
+	if Input.is_action_just_released("ui_focus_next") :
 		is_attack = false
 
 func check_first_and_second_jump():
-		if (Input.is_action_just_pressed("ui_up") or touch_up) and is_first_jump and !is_second_jump:
+		if (Input.is_action_just_pressed("ui_up") ) and is_first_jump and !is_second_jump:
 			_play_jump_animation()
 			motion.y = jump
 			is_second_jump = true
 			is_first_jump = false
 		if is_on_floor():
-			if (Input.is_action_just_pressed("ui_up") or touch_up) and !is_first_jump:
+			if (Input.is_action_just_pressed("ui_up") ) and !is_first_jump:
 				motion.y = jump
 				is_first_jump = true
 				is_second_jump = false
@@ -521,6 +516,7 @@ func check_falling():
 		_play_fall_animation()
 
 func _physics_process(delta):
+	print(_on_right_released())
 	Engine.time_scale = 1.0
 	motion.y += gravity 
 	if !_is_dead():
@@ -669,60 +665,50 @@ func increase_dead_counter():
 	pass
 
 func _on_right_pressed():
-	touch_right=true
 	$Controller/Node2D/right.modulate=Color(0.341176, 0.341176, 0.341176)
 
 func _on_left_pressed():
-	touch_left=true
 	$Controller/Node2D/left.modulate=Color(0.341176, 0.341176, 0.341176)
 
 func _on_up_pressed():
-	touch_up=true
 	$Controller/Node2D/up.modulate=Color(0.341176, 0.341176, 0.341176)
 
 func _on_down_pressed():
-	touch_down=true
 	$Controller/Node2D/down.modulate=Color(0.341176, 0.341176, 0.341176)
 
 func _on_gun_shoot_pressed():
-	touch_fire=true
 	$Controller/Node2D/gun_shoot.modulate = Color(1, 1, 1)
 
 func _on_melee_attack_pressed():
-	touch_melee=true
 	$Controller/Node2D/melee_attack.modulate = Color(1, 1, 1)
 
 func _on_right_released():
 	$Controller/Node2D/right.modulate = Color(1, 1, 1)
-	touch_right = false
 	pass # Replace with function body.
 
 func _on_left_released():
 	$Controller/Node2D/left.modulate = Color(1, 1, 1)
-	touch_left = false
 	pass # Replace with function body.
 
 func _on_up_released():
 	$Controller/Node2D/up.modulate=Color(1, 1, 1)
-	touch_up = false
 	pass # Replace with function body.
 
 func _on_down_released():
 	$Controller/Node2D/down.modulate=Color(1, 1, 1)
-	touch_down = false
 	pass # Replace with function body.
 
 func _on_gun_shoot_released():
 	$Controller/Node2D/gun_shoot.modulate=Color(1, 1, 1)
-	touch_fire = false
 	pass # Replace with function body.
 
 func _on_melee_attack_released():
 	$Controller/Node2D/melee_attack.modulate=Color(1, 1, 1)
-	touch_melee = false
 	pass # Replace with function body.
 
 
 func _on_AnimatedSprite_animation_finished():
 	_clear_states()
 	pass # Replace with function body.
+
+
