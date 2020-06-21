@@ -479,7 +479,7 @@ func check_melee_pressed():
 				_play_melee_animation()
 
 func check_fire_pressed():
-	if Input.is_action_just_pressed("ui_focus_next") :
+	if Input.is_action_pressed("ui_focus_next") :
 		if  _check_bullet_count() and !is_in_time_start_weapon_fire:
 			bullet_shoot_timer.start()
 			_fire_bullet()

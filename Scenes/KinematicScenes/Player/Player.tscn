@@ -73,24 +73,34 @@ animations = [ {
 "name": "dead_103",
 "speed": 20.0
 }, {
-"frames": [ ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ) ],
+"frames": [ ExtResource( 40 ), ExtResource( 41 ), ExtResource( 59 ), ExtResource( 60 ), ExtResource( 62 ), ExtResource( 61 ), ExtResource( 65 ), ExtResource( 64 ), ExtResource( 63 ), ExtResource( 63 ), ExtResource( 63 ), ExtResource( 63 ), ExtResource( 63 ), ExtResource( 63 ), ExtResource( 63 ), ExtResource( 63 ), ExtResource( 63 ), ExtResource( 66 ), ExtResource( 67 ) ],
 "loop": false,
-"name": "attack_103",
+"name": "slide_103",
 "speed": 24.0
 }, {
-"frames": [ ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ) ],
+"frames": [ ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 48 ) ],
 "loop": true,
-"name": "run_103",
-"speed": 24.0
+"name": "idle_103",
+"speed": 8.0
 }, {
 "frames": [ ExtResource( 33 ), ExtResource( 34 ) ],
 "loop": true,
 "name": "hurt_103",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 40 ), ExtResource( 41 ), ExtResource( 59 ), ExtResource( 60 ), ExtResource( 62 ), ExtResource( 61 ), ExtResource( 65 ), ExtResource( 64 ), ExtResource( 63 ), ExtResource( 63 ), ExtResource( 63 ), ExtResource( 63 ), ExtResource( 63 ), ExtResource( 63 ), ExtResource( 63 ), ExtResource( 63 ), ExtResource( 63 ), ExtResource( 66 ), ExtResource( 67 ) ],
+"frames": [ ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 54 ) ],
 "loop": false,
-"name": "slide_103",
+"name": "melee_103",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ) ],
+"loop": true,
+"name": "run_103",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ) ],
+"loop": true,
+"name": "attack_103",
 "speed": 24.0
 }, {
 "frames": [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
@@ -98,27 +108,17 @@ animations = [ {
 "name": "fall_103",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 54 ) ],
-"loop": false,
-"name": "melee_103",
-"speed": 24.0
-}, {
 "frames": [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ) ],
 "loop": false,
 "name": "jump_103",
 "speed": 10.0
-}, {
-"frames": [ ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 48 ) ],
-"loop": true,
-"name": "idle_103",
-"speed": 8.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 26.4521, 0.695938 )
+extents = Vector2( 42.6131, 1.82544 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 10.7735, 30.0118 )
+extents = Vector2( 17.0078, 60.127 )
 
 [sub_resource type="AtlasTexture" id=4]
 flags = 4
@@ -195,18 +195,18 @@ __meta__ = {
 position = Vector2( 57.3347, 46.22 )
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 1 )
-animation = "slide_103"
-frame = 18
+animation = "idle_103"
+frame = 2
 playing = true
 offset = Vector2( -34.3934, -32.6715 )
 flip_h = true
 
 [node name="collision_2" type="CollisionShape2D" parent="."]
-position = Vector2( 41.0739, 136.276 )
+position = Vector2( 49.1702, 138.075 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 41.1048, 33.4158 )
+position = Vector2( 49.2498, 34.1413 )
 scale = Vector2( 2.5, 1.7 )
 shape = SubResource( 3 )
 
