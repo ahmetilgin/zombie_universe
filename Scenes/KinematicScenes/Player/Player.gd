@@ -516,7 +516,6 @@ func check_falling():
 		_play_fall_animation()
 
 func _physics_process(delta):
-	print(_on_right_released())
 	Engine.time_scale = 1.0
 	motion.y += gravity 
 	if !_is_dead():

@@ -73,6 +73,21 @@ animations = [ {
 "name": "dead_103",
 "speed": 20.0
 }, {
+"frames": [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "fall_103",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ) ],
+"loop": false,
+"name": "jump_103",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 33 ), ExtResource( 34 ) ],
+"loop": true,
+"name": "hurt_103",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 40 ), ExtResource( 41 ), ExtResource( 59 ), ExtResource( 60 ), ExtResource( 62 ), ExtResource( 61 ), ExtResource( 65 ), ExtResource( 64 ), ExtResource( 63 ), ExtResource( 63 ), ExtResource( 63 ), ExtResource( 63 ), ExtResource( 63 ), ExtResource( 63 ), ExtResource( 63 ), ExtResource( 63 ), ExtResource( 63 ), ExtResource( 66 ), ExtResource( 67 ) ],
 "loop": false,
 "name": "slide_103",
@@ -82,11 +97,6 @@ animations = [ {
 "loop": true,
 "name": "idle_103",
 "speed": 8.0
-}, {
-"frames": [ ExtResource( 33 ), ExtResource( 34 ) ],
-"loop": true,
-"name": "hurt_103",
-"speed": 5.0
 }, {
 "frames": [ ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 54 ) ],
 "loop": false,
@@ -102,16 +112,6 @@ animations = [ {
 "loop": true,
 "name": "attack_103",
 "speed": 24.0
-}, {
-"frames": [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
-"loop": true,
-"name": "fall_103",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ) ],
-"loop": false,
-"name": "jump_103",
-"speed": 10.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -196,7 +196,6 @@ position = Vector2( 57.3347, 46.22 )
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 1 )
 animation = "idle_103"
-frame = 2
 playing = true
 offset = Vector2( -34.3934, -32.6715 )
 flip_h = true
@@ -220,6 +219,7 @@ one_shot = true
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 30.5919, 12.325 )
 current = true
+zoom = Vector2( 8, 8 )
 limit_left = 0
 limit_top = 0
 limit_right = 10240

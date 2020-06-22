@@ -12,7 +12,7 @@ var player = null
 
 var finish_portal = 0
 signal stop_wave
-var start_portal = 1 
+var start_portal = 2 
 var portal_list = []
 var is_the_buy_button_clicked = false
 var created_turret 
@@ -159,12 +159,17 @@ func _create_market_scene():
 	add_child(market_scene)
 
 func _ready():
+	get_tile_borders()
 	player = player_scene.instance()
+	var center_x = (max_border.x - min_border.x) / 2
+	var center_y = (max_border.y - min_border.y) / 2
 	add_child(player)
+	var player_pos = $Background/TileMap.map_to_world(Vector2(center_x,center_y))
+	print(player_pos)
+	player.set_global_position(player_pos)
 	_create_market_scene()
 	disable_accept_button()
 	create_portals(start_portal)
-	get_tile_borders()
 	connect_market()
 	countdown_timer()
 	get_node("Game_UI").add_child(gameover_scene.instance())

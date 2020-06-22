@@ -166,16 +166,15 @@ func _get_path():
 
 	tile_map.set_target_point(target_point_world)
 	
-	if(targetDiff.y >= 0) and !jumping_peak:
-		if !$RayCast2D.is_colliding() and !jumping_started and !jumping_peak:
+	if (targetDiff.y >= 0) and !jumping_peak:
+		if !$RayCast2D.is_colliding() and targetDiff.y == 0 and !jumping_started:
 			motion.y = -700
-			print("zıplaması lazım",motion.y )
+			print("asdasds")
 		find_zombie_x_movement()
 		pass
 	else:
 		motion.x = 0
 		if($Timer.is_stopped()) and is_on_floor():
-
 			$Timer.start()
 
 func _set_is_follow(follow):
@@ -296,13 +295,11 @@ func _physics_process(delta):
 			
 		if jumping_started and motion.y < 0:
 			find_zombie_jump_on_peak()
-			print("jump_started")
-			
 
 		if jumping_started and motion.y >= 0:
 			jumping_peak = true
 			find_zombie_jump_on_peak()
-			print("jump_peak")
+			
 		if jumping_started and jumping_peak and is_on_floor():
 			jumping_started = false
 			jumping_peak = false
