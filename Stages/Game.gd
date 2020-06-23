@@ -12,7 +12,7 @@ var player = null
 
 var finish_portal = 0
 signal stop_wave
-var start_portal = 2 
+var start_portal = 1
 var portal_list = []
 var is_the_buy_button_clicked = false
 var created_turret 
@@ -313,6 +313,7 @@ func _unhandled_input(event):
 					$Background/TileMap.set_cell(tile_grid.x,tile_grid.y,14)
 				pass
 			var grid = $Background/TileMap.world_to_map(pos)
+			print(grid)
 			if ($Background/TileMap.get_cellv(grid) ==14):
 				tile_grid = grid
 			if !is_teleport_buying:

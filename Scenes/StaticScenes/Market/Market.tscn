@@ -36,7 +36,6 @@
 [ext_resource path="res://Resources/Sprites/starcoinrotate1.png" type="Texture" id=35]
 [ext_resource path="res://Resources/Sprites/UISprites/rect10_disable.png" type="Texture" id=36]
 
-
 [sub_resource type="DynamicFont" id=1]
 size = 36
 outline_size = 1
@@ -71,12 +70,14 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="ScrollContainer" parent="."]
-margin_left = 56.2589
-margin_top = 184.162
-margin_right = 201.173
-margin_bottom = 335.0
+margin_left = 56.0
+margin_top = 184.0
+margin_right = 202.0
+margin_bottom = 337.0
 grow_horizontal = 0
 rect_scale = Vector2( 2.55798, 3.49353 )
+follow_focus = true
+scroll_deadzone = -91
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -224,8 +225,7 @@ margin_right = 179.0
 margin_bottom = 51.0
 rect_scale = Vector2( 0.175, 0.139 )
 custom_fonts/normal_font = SubResource( 1 )
-text = "Shotgun
-"
+text = "Shotgun"
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
@@ -308,8 +308,7 @@ margin_right = 192.86
 margin_bottom = 52.3602
 rect_scale = Vector2( 0.175, 0.139 )
 custom_fonts/normal_font = SubResource( 1 )
-text = "Crossbow
-"
+text = "Crossbow"
 __meta__ = {
 "_edit_use_anchors_": false
 }

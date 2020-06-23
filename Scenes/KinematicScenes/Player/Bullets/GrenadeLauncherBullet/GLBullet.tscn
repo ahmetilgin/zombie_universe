@@ -45,7 +45,6 @@ radius = 13.1885
 radius = 133.323
 
 [node name="bullet" type="RigidBody2D"]
-position = Vector2( 50.9695, 69.806 )
 linear_velocity = Vector2( 500, 0 )
 script = ExtResource( 1 )
 
