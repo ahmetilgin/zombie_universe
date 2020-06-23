@@ -24,7 +24,7 @@ const N_FLASHES = 4
 var flash_zombie_tween = Tween.new()
 
 export (int) var hp=5
-export (int) var speed=150
+export (int) var speed=520
 var motion=Vector2(0,0)
 const UP=Vector2(0,-1)
 var is_dead=false
@@ -276,12 +276,11 @@ func chech_zombie_colliding():
 
 
 func find_zombie_jump_on_peak():
-
 	if !is_on_floor(): 
 		pass
 	var diff = (target_point_world - get_global_position())
 	if jumping_started and !jumping_peak:
-		motion.x =lerp(0,diff.x + ((diff.x / abs(diff.x) * speed)),1)
+		motion.x =lerp(0,diff.x + ((diff.x / abs(diff.x) * 150)),1)
 		
 func _physics_process(delta):
 	if !is_borned:
@@ -314,7 +313,7 @@ func _zombie_dead_timer_timeout():
 	emit_signal("dead_counter_for_wave")
 
 func _on_FollowPlayerTimer_timeout():
-	if is_borned and is_on_floor() and !is_zombie_action and !is_dead:
+	if is_borned and is_on_floor() and !is_zombie_action and !is_dead and player.is_on_floor():
 		_get_path()
 
 func _zombie_attack_timer_timeout():

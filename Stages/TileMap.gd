@@ -221,12 +221,8 @@ func find_random_target_position(target_position,init_position, name):
 	
 	
 	var closest_points = []
-	for point in connected_points:
-		var distance = target_position.distance_to(point)
-		print(distance, target_position, point)
-		if (distance > 20 and distance < 25 ):
-			closest_points.append(point)
-
+	closest_points.append(astar.get_point_position(astar.get_closest_point(target_position + Vector2(randi() % 10,  0 ))))
+	closest_points.append(astar.get_point_position(astar.get_closest_point(target_position + Vector2(-(randi() % 10),  0 ))))
 	if closest_points.size() == 0:
 		return target_position
 	founded_zombie_target_path[name] = map_to_world(closest_points[randi() % closest_points.size()]) + _half_cell_size
@@ -287,13 +283,13 @@ func _draw():
 #
 #	for corner in right_corners:
 #		draw_circle(map_to_world(corner) + _half_cell_size, 30,Color("F00") )
-	for name in founded_path:
-		for point_index in range(0,len(founded_path[name]) - 1):
-				if len(founded_path[name]) > 2:
-#					draw_circle(founded_path[name][point_index], 10, TARGET_COLOR)
-					draw_line(founded_path[name][point_index],founded_path[name][point_index + 1], DRAW_COLOR, 10)
-	for target in founded_zombie_target_path:
-		draw_circle(founded_zombie_target_path[target], 100, TARGET_COLOR)
+#	for name in founded_path:
+#		for point_index in range(0,len(founded_path[name]) - 1):
+#				if len(founded_path[name]) > 2:
+##					draw_circle(founded_path[name][point_index], 10, TARGET_COLOR)
+#					draw_line(founded_path[name][point_index],founded_path[name][point_index + 1], DRAW_COLOR, 10)
+#	for target in founded_zombie_target_path:
+#		draw_circle(founded_zombie_target_path[target], 100, TARGET_COLOR)
 	pass
 
 	

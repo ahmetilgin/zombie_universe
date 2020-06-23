@@ -11,9 +11,9 @@ func _ready():
 	
 	
 func _physics_process(delta):
-		if time < ($TextureProgress.max_value * 85 / 100):
-			time=time + randi() % 30
-			$TextureProgress.set_value(time)
+	if time < ($TextureProgress.max_value * 85 / 100):
+		time=time + randi() % 30
+		$TextureProgress.set_value(time)
 
 func on_start_loading():
 	parallel_load_stage = Thread.new()
