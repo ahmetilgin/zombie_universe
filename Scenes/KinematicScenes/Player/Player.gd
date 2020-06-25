@@ -292,8 +292,8 @@ func _ready():
 	set_sounds()
 	load_images()
 
-	if OS.get_name() == "Windows" or OS.get_name() == "OSX" or OS.get_name() == "X11":
-		$Controller/Node2D.visible = false
+#	if OS.get_name() == "Windows" or OS.get_name() == "OSX" or OS.get_name() == "X11":
+#		$Controller/Node2D.visible = false
 
 
 #

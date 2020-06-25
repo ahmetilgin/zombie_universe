@@ -176,7 +176,7 @@ func _ready():
 	on_time_countdown_unvisible()
 	hide_market()
 	hide_accept_button()
-	
+
 func enable_accept_button():
 	$Game_UI/accept_button.disabled = false
 	
