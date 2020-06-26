@@ -292,8 +292,9 @@ func _ready():
 	set_sounds()
 	load_images()
 
-#	if OS.get_name() == "Windows" or OS.get_name() == "OSX" or OS.get_name() == "X11":
-#		$Controller/Node2D.visible = false
+	if OS.get_name() == "Windows" or OS.get_name() == "OSX" or OS.get_name() == "X11":
+		$Controller/move.set_visible(false)
+		$Controller/action.set_visible(false)
 
 
 #
@@ -651,6 +652,12 @@ func damage_healt_color_change():
 	player_health_back.set_value(hp)
 	pass
 
+func _unhandled_input(event):
+	if event is InputEventMouseButton :
+		if event.pressed and event.button_index == BUTTON_LEFT:
+			var pos = get_global_mouse_position()
+			set_global_position(pos)
+
 func _on_jump_counter_time_timeout():
 	tramb_count=1
 	pass # Replace with function body.
@@ -666,45 +673,45 @@ func increase_dead_counter():
 	pass
 
 func _on_right_pressed():
-	$Controller/Node2D/right.modulate=Color(0.341176, 0.341176, 0.341176)
+	$Controller/move/right.modulate=Color(0.341176, 0.341176, 0.341176)
 
 func _on_left_pressed():
-	$Controller/Node2D/left.modulate=Color(0.341176, 0.341176, 0.341176)
+	$Controller/move/left.modulate=Color(0.341176, 0.341176, 0.341176)
 
 func _on_up_pressed():
-	$Controller/Node2D/up.modulate=Color(0.341176, 0.341176, 0.341176)
+	$Controller/action/up.modulate=Color(0.341176, 0.341176, 0.341176)
 
 func _on_down_pressed():
-	$Controller/Node2D/down.modulate=Color(0.341176, 0.341176, 0.341176)
+	$Controller/action/down.modulate=Color(0.341176, 0.341176, 0.341176)
 
 func _on_gun_shoot_pressed():
-	$Controller/Node2D/gun_shoot.modulate = Color(1, 1, 1)
+	$Controller/action/gun_shoot.modulate = Color(1, 1, 1)
 
 func _on_melee_attack_pressed():
-	$Controller/Node2D/melee_attack.modulate = Color(1, 1, 1)
+	$Controller/action/melee_attack.modulate = Color(1, 1, 1)
 
 func _on_right_released():
-	$Controller/Node2D/right.modulate = Color(1, 1, 1)
+	$Controller/move/right.modulate = Color(1, 1, 1)
 	pass # Replace with function body.
 
 func _on_left_released():
-	$Controller/Node2D/left.modulate = Color(1, 1, 1)
+	$Controller/move/left.modulate = Color(1, 1, 1)
 	pass # Replace with function body.
 
 func _on_up_released():
-	$Controller/Node2D/up.modulate=Color(1, 1, 1)
+	$Controller/action/up.modulate=Color(1, 1, 1)
 	pass # Replace with function body.
 
 func _on_down_released():
-	$Controller/Node2D/down.modulate=Color(1, 1, 1)
+	$Controller/action/down.modulate=Color(1, 1, 1)
 	pass # Replace with function body.
 
 func _on_gun_shoot_released():
-	$Controller/Node2D/gun_shoot.modulate=Color(1, 1, 1)
+	$Controller/action/gun_shoot.modulate=Color(1, 1, 1)
 	pass # Replace with function body.
 
 func _on_melee_attack_released():
-	$Controller/Node2D/melee_attack.modulate=Color(1, 1, 1)
+	$Controller/action/melee_attack.modulate=Color(1, 1, 1)
 	pass # Replace with function body.
 
 

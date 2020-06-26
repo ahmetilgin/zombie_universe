@@ -58,7 +58,7 @@ func add_walkable_cells(obstacles := []) -> Array:
 			var index: = calculate_point_index(point)
 			if(!astar.has_point(index)):
 				points.append(point)
-				astar.add_point(index, Vector2(point.x, point.y))
+				astar.add_point(index, Vector2(point.x, point.y), 1)
 	return points
 
 func is_outside_bounds(point: Vector2) -> bool:
@@ -158,37 +158,40 @@ func connect_corners(cells):
 	
 		
 	for cell in left_corners:
-		var start_cell = cell + Vector2(3,0)		
-		for direct_connection in range(start_cell.y, start_cell.y + direct_offset):
-			if(get_cellv(Vector2(start_cell.x,direct_connection)) != INVALID_CELL):
-				break
-			if(astar.has_point(calculate_point_index(Vector2(start_cell.x,direct_connection)))):
-				lines.append([cell,Vector2(start_cell.x,direct_connection)])
-				astar.connect_points(calculate_point_index(cell),calculate_point_index(Vector2(start_cell.x,direct_connection)), true)
-				break
-
-		for j in range(start_cell.y - detect_offset, start_cell.y + detect_offset):
-			for i in range(start_cell.x,start_cell.x + detect_offset, 1):
-				if !check_right_corner(Vector2(i,j)):
-					continue
-				lines.append([cell,Vector2(i,j)])
-				astar.connect_points(calculate_point_index(cell),calculate_point_index(Vector2(i,j)), true)
-	for cell in right_corners:
-		var start_cell = cell + Vector2(-3,0)
-		for direct_connection in range(start_cell.y, start_cell.y + direct_offset):
-			if(get_cellv(Vector2(start_cell.x,direct_connection)) != INVALID_CELL):
-				break
-			if(astar.has_point(calculate_point_index(Vector2(start_cell.x,direct_connection)))):
-				lines.append([cell,Vector2(start_cell.x,direct_connection)])
-				astar.connect_points(calculate_point_index(cell),calculate_point_index(Vector2(start_cell.x,direct_connection)), true)
-				break
-		
-		for j in range(start_cell.y - detect_offset, start_cell.y + detect_offset):
-			for i in range(start_cell.x,start_cell.x - detect_offset, -1):
-				if !check_left_corner(Vector2(i,j)):
-					continue
-				lines.append([cell,Vector2(i,j)])
-				astar.connect_points(calculate_point_index(cell),calculate_point_index(Vector2(i,j)), true)
+		for connection_offset in range(2,5):
+			var start_cell = cell + Vector2(connection_offset,0)		
+			for direct_connection in range(start_cell.y, start_cell.y + direct_offset):
+				if(get_cellv(Vector2(start_cell.x,direct_connection)) != INVALID_CELL):
+					break
+				if(astar.has_point(calculate_point_index(Vector2(start_cell.x,direct_connection)))):
+					lines.append([cell,Vector2(start_cell.x,direct_connection)])
+					astar.connect_points(calculate_point_index(cell),calculate_point_index(Vector2(start_cell.x,direct_connection)), true)
+					break
+	
+			for j in range(start_cell.y - detect_offset, start_cell.y + detect_offset):
+				for i in range(start_cell.x,start_cell.x + detect_offset, 1):
+					if !check_right_corner(Vector2(i,j)):
+						continue
+					lines.append([cell,Vector2(i,j)])
+					astar.connect_points(calculate_point_index(cell),calculate_point_index(Vector2(i,j)), true)
+					
+	for connection_offset in range(2,5):
+		for cell in right_corners:
+			var start_cell = cell + Vector2(-connection_offset,0)
+			for direct_connection in range(start_cell.y, start_cell.y + direct_offset):
+				if(get_cellv(Vector2(start_cell.x,direct_connection)) != INVALID_CELL):
+					break
+				if(astar.has_point(calculate_point_index(Vector2(start_cell.x,direct_connection)))):
+					lines.append([cell,Vector2(start_cell.x,direct_connection)])
+					astar.connect_points(calculate_point_index(cell),calculate_point_index(Vector2(start_cell.x,direct_connection)), true)
+					break
+			
+			for j in range(start_cell.y - detect_offset, start_cell.y + detect_offset):
+				for i in range(start_cell.x,start_cell.x - detect_offset, -1):
+					if !check_left_corner(Vector2(i,j)):
+						continue
+					lines.append([cell,Vector2(i,j)])
+					astar.connect_points(calculate_point_index(cell),calculate_point_index(Vector2(i,j)), true)
 
 var lines = []
 var connected_points = []
@@ -232,13 +235,13 @@ func find_random_target_position(target_position,init_position, name):
 var old_player_pos = Vector2(0,0) 
 
 func _get_path(init_position: Vector2, target_position: Vector2, name) -> Array:
-	if abs(old_player_pos.distance_to(target_position)) > 500:
-		founded_zombie_target_path.clear()
-		old_player_pos = target_position
+#	if abs(old_player_pos.distance_to(target_position)) > 500:
+#		founded_zombie_target_path.clear()
+#		old_player_pos = target_position
 	init_position = get_closest_point(init_position)
 	target_position = get_closest_point(target_position)
-	if init_position.distance_to(target_position) > 1000:
-		target_position = find_random_target_position(world_to_map(target_position),world_to_map(init_position),name)
+#	if init_position.distance_to(target_position) > 1000:
+#		target_position = find_random_target_position(world_to_map(target_position),world_to_map(init_position),name)
 	
 	init_pos = init_position
 	target_pos = target_position
@@ -246,12 +249,18 @@ func _get_path(init_position: Vector2, target_position: Vector2, name) -> Array:
 	var end_position = world_to_map(target_pos)
 	var start_index: = calculate_point_index(start_position)
 	var end_index: = calculate_point_index(end_position)
+	
 	update()
 	if astar.has_point(start_index) and astar.has_point(end_index):
-		var path: = find_path(start_position, end_position)
+		var path: = find_path(start_position, end_position)		
 		founded_path[name] = []
 		world_path = []
 		for point in path:
+			var id = calculate_point_index(point)
+			if astar.get_point_weight_scale(id) > 10000:
+				print(id, ": sifirlandi")
+				astar.set_point_weight_scale(id, 1)
+			astar.set_point_weight_scale(id, astar.get_point_weight_scale(id) + 1)
 			var point_world: = map_to_world(Vector2(point.x, point.y))
 			world_path.append(point_world + _half_cell_size) 
 			founded_path[name].append(point_world + _half_cell_size)
@@ -283,13 +292,12 @@ func _draw():
 #
 #	for corner in right_corners:
 #		draw_circle(map_to_world(corner) + _half_cell_size, 30,Color("F00") )
-#	for name in founded_path:
-#		for point_index in range(0,len(founded_path[name]) - 1):
-#				if len(founded_path[name]) > 2:
-##					draw_circle(founded_path[name][point_index], 10, TARGET_COLOR)
-#					draw_line(founded_path[name][point_index],founded_path[name][point_index + 1], DRAW_COLOR, 10)
-#	for target in founded_zombie_target_path:
-#		draw_circle(founded_zombie_target_path[target], 100, TARGET_COLOR)
+	for name in founded_path:
+		for point_index in range(0,len(founded_path[name]) - 1):
+				if len(founded_path[name]) > 2:
+					draw_line(founded_path[name][point_index],founded_path[name][point_index + 1], DRAW_COLOR, 10)
+	for target in founded_zombie_target_path:
+		draw_circle(founded_zombie_target_path[target], 100, TARGET_COLOR)
 	pass
 
 	

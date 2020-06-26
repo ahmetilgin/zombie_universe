@@ -24,7 +24,8 @@ const N_FLASHES = 4
 var flash_zombie_tween = Tween.new()
 
 export (int) var hp=5
-export (int) var speed=520
+export (int) var speed=400
+export (int) var jump_speed=150
 var motion=Vector2(0,0)
 const UP=Vector2(0,-1)
 var is_dead=false
@@ -38,7 +39,7 @@ var is_borned = false
 func add_attack_ray_cast():
 #	attack_ray_cast.set_position(Vector2(64,64))
 	add_child(attack_ray_cast)
-	attack_ray_cast.set_cast_to(Vector2(65,0))
+	attack_ray_cast.set_cast_to(Vector2(50,0))
 	attack_ray_cast.set_position(Vector2(0,0))
 	attack_ray_cast.set_enabled(true)
 
@@ -109,6 +110,7 @@ func find_zombie_x_movement():
 	elif diffx < 0:
 		motion.x = max(motion.x - acceleration, -speed)
 
+
 func can_zombie_jump(jump_diff):
 	$AnimatedSprite.play("jump")
 	if is_on_floor() and jump_diff.y < 0:
@@ -143,10 +145,10 @@ func set_zombie_direction():
 	if !jumping_peak:
 		if sign(motion.x) < 0:
 			$AnimatedSprite.flip_h = true
-			attack_ray_cast.set_cast_to(Vector2(-65,0))
+			attack_ray_cast.set_cast_to(Vector2(-50,0))
 		elif sign(motion.x) > 0:
 			$AnimatedSprite.flip_h = false
-			attack_ray_cast.set_cast_to(Vector2(65,0))
+			attack_ray_cast.set_cast_to(Vector2(50,0))
 				 
 var is_zombie_action = false
 func follow_path():
@@ -158,7 +160,6 @@ func _get_path():
 	var new_path = tile_map._get_path(get_global_position(), player.get_node("CenterPos").get_global_position(),get_name())
 	if len(new_path) > 0:
 		path = new_path
-			
 	var closest_point = tile_map.get_closest_point(get_global_position())
 	var targetDiff = (target_point_world - closest_point)
 	if(len(path) > 1):
@@ -167,7 +168,7 @@ func _get_path():
 	tile_map.set_target_point(target_point_world)
 	
 	if (targetDiff.y >= 0) and !jumping_peak:
-		if !$RayCast2D.is_colliding() and targetDiff.y == 0 and !jumping_started:
+		if (!$RayCast2D.is_colliding() or "Zombie" in $RayCast2D.get_collider().name) and targetDiff.y == 0 and !jumping_started:
 			motion.y = -700
 			print("asdasds")
 		find_zombie_x_movement()
@@ -278,9 +279,11 @@ func chech_zombie_colliding():
 func find_zombie_jump_on_peak():
 	if !is_on_floor(): 
 		pass
-	var diff = (target_point_world - get_global_position())
+	var diff = target_point_world - get_global_position()
+	
 	if jumping_started and !jumping_peak:
-		motion.x =lerp(0,diff.x + ((diff.x / abs(diff.x) * 150)),1)
+		motion.x = diff.x * 2
+
 		
 func _physics_process(delta):
 	if !is_borned:
@@ -313,7 +316,7 @@ func _zombie_dead_timer_timeout():
 	emit_signal("dead_counter_for_wave")
 
 func _on_FollowPlayerTimer_timeout():
-	if is_borned and is_on_floor() and !is_zombie_action and !is_dead and player.is_on_floor():
+	if is_borned and is_on_floor() and !is_zombie_action and !is_dead:
 		_get_path()
 
 func _zombie_attack_timer_timeout():

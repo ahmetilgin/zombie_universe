@@ -35,7 +35,6 @@ func load_scene(interactive_ldr):
 func _on_load_level():
 	var level_res = parallel_load_stage.wait_to_finish()
 	$TextureProgress.set_value(1000)
-	
 	for node in get_tree().get_nodes_in_group("game_group"):
 		node.queue_free()
 	var scene = level_res.instance();

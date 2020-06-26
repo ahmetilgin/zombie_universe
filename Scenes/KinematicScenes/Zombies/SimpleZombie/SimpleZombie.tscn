@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://Scenes/KinematicScenes/Zombies/SimpleZombie/SimpleZombie.gd" type="Script" id=1]
 [ext_resource path="res://Resources/dragon/walk/Armature_Dead_0.png" type="Texture" id=2]
@@ -53,6 +53,10 @@
 [ext_resource path="res://Resources/dragon/walk/Armature_walk_2.png" type="Texture" id=51]
 [ext_resource path="res://Resources/dragon/walk/Armature_walk_6.png" type="Texture" id=52]
 
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 26.9599
+height = 160.0
+
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [  ],
@@ -92,10 +96,10 @@ __meta__ = {
 "_edit_vertical_guides_": [ -15.622, 46.2812 ]
 }
 
-[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
-scale = Vector2( 0.4, 0.4 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 9.47624, -2.60902 )
 z_index = 1
-polygon = PoolVector2Array( -4.91016, -285.985, -52.7463, -215.925, -47.233, 61.5724, -51.1967, 261.263, 14.8894, 261.263, 67.904, 261.117, 66.7062, 54.2215, 66.7062, -236.14 )
+shape = SubResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 3.94406, 2.81769 )
@@ -106,7 +110,7 @@ frame = 9
 flip_h = true
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.01
 one_shot = true
 
 [node name="BornTimer" type="Timer" parent="."]
@@ -117,7 +121,7 @@ autostart = true
 position = Vector2( 1.41967, 7.36025 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2( -3.05176e-05, 0.773773 )
+position = Vector2( 12.4526, -4.88652 )
 enabled = true
 cast_to = Vector2( 0, 150 )
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
