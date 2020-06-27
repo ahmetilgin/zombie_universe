@@ -161,7 +161,8 @@ var bullet_size = 9999
 var change_color_tween= Tween.new()
 var pulse_tween= Tween.new()
 var is_in_time_start_weapon_fire = false 
-
+var player_peak_height = Vector2()
+var is_set_player_peak_height = false
 const FLASH_RATE =0.05
 const N_FLASHES = 4
 
@@ -295,11 +296,6 @@ func _ready():
 	if OS.get_name() == "Windows" or OS.get_name() == "OSX" or OS.get_name() == "X11":
 		$Controller/move.set_visible(false)
 		$Controller/action.set_visible(false)
-
-
-#
-
-
 
 func _on_slow_motion_timer_start():
 	Engine.time_scale = 1
@@ -512,11 +508,15 @@ func check_first_and_second_jump():
 				is_second_jump = false
 				_play_jump_animation()
 				
-var jumping_started = false
-var jumping_peak = false
+
 func check_falling():
 	if !is_on_floor()  and motion.y > 0:
+		if(!is_set_player_peak_height):
+			is_set_player_peak_height = true
+			player_peak_height = get_global_position()
+			print("Zıplama yüksekliği",player_peak_height)
 		_play_fall_animation()
+		
 
 func _physics_process(delta):
 	Engine.time_scale = 1.0
@@ -601,15 +601,16 @@ func healt_color_increase():
 	
 		
 
-		
-func tramboline_jump():
 
-		tramb_count+=1
-		
-		motion.y=jump-50*tramb_count
-		if tramb_count>6:
-			tramb_count=6
-		$jump_counter_time.start()
+func tramboline_jump(tramboline_position):
+	is_set_player_peak_height = false
+	motion.y = -1.5 * (tramboline_position - player_peak_height).y - 300;
+	motion.y = max(motion.y,-1800)
+
+	pass
+
+	
+	
 func healt_color_decrease(): #?  sürekli iflere girmesin mi girsinmi
 	if  hp >= healt_perfect_value   :
 		change_color_tween.interpolate_property(player_health,'tint_progress',Color(0,1,0,1),

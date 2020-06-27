@@ -20,7 +20,7 @@ func _on_AnimatedSprite_animation_finished():
 
 func _on_Area2D_body_shape_entered(body_id, body, body_shape, area_shape):
 	if"player" in body.name and body_shape==0:
-		body.tramboline_jump()
+		body.tramboline_jump(get_global_position())
 		is_jump=true
 	pass # Replace with function body.
 
