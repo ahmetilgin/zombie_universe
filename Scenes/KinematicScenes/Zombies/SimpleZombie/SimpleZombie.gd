@@ -142,7 +142,7 @@ func check_zombie_found_player():
 			FollowPlayerTimer.start()
 
 func set_zombie_direction():
-	if !jumping_peak:
+	if !jumping_peak && !is_hurt:
 		if sign(motion.x) < 0:
 			$AnimatedSprite.flip_h = true
 			attack_ray_cast.set_cast_to(Vector2(-50,0))
@@ -211,6 +211,7 @@ func dead(damage,whodead):
 		zombie_dead_timer.start()
 	else:
 		var back = 0;
+		is_hurt = true
 		if player.get_global_position().x < get_global_position().x:
 			back = 400
 		else:

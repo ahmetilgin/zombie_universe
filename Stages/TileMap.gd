@@ -158,7 +158,7 @@ func connect_corners(cells):
 	
 		
 	for cell in left_corners:
-		for connection_offset in range(2,5):
+		for connection_offset in range(2,3):
 			var start_cell = cell + Vector2(connection_offset,0)		
 			for direct_connection in range(start_cell.y, start_cell.y + direct_offset):
 				if(get_cellv(Vector2(start_cell.x,direct_connection)) != INVALID_CELL):
@@ -175,7 +175,7 @@ func connect_corners(cells):
 					lines.append([cell,Vector2(i,j)])
 					astar.connect_points(calculate_point_index(cell),calculate_point_index(Vector2(i,j)), true)
 					
-	for connection_offset in range(2,5):
+	for connection_offset in range(2,3):
 		for cell in right_corners:
 			var start_cell = cell + Vector2(-connection_offset,0)
 			for direct_connection in range(start_cell.y, start_cell.y + direct_offset):
