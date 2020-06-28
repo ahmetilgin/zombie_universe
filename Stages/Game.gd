@@ -341,11 +341,11 @@ func select_teleport_position():
 
 
 func finish_teleport_buy():
-	teleport_pair[0].set_global_position($Background/TileMap.map_to_world(teleport_locs[0]))
-	teleport_pair[1].set_global_position($Background/TileMap.map_to_world(teleport_locs[1]))
+	teleport_pair[0].set_global_position($Background/TileMap.map_to_world(teleport_locs[0])- 2 * $Background/TileMap._half_cell_size)
+	teleport_pair[1].set_global_position($Background/TileMap.map_to_world(teleport_locs[1])- 2 * $Background/TileMap._half_cell_size)
 	
-	teleport_pair[0].set_other_pos($Background/TileMap.map_to_world(teleport_locs[1]))
-	teleport_pair[1].set_other_pos($Background/TileMap.map_to_world(teleport_locs[0]))
+	teleport_pair[0].set_other_pos($Background/TileMap.map_to_world(teleport_locs[1]) -  2 * $Background/TileMap._half_cell_size)
+	teleport_pair[1].set_other_pos($Background/TileMap.map_to_world(teleport_locs[0]) -  2 * $Background/TileMap._half_cell_size)
 	selected_teleport_location_count = 0
 	teleport_locs.clear()
 	is_teleport_buying = false

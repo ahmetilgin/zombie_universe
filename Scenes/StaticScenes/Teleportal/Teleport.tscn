@@ -41,7 +41,7 @@ animations = [ {
 radius = 70.0
 
 [node name="Teleport" type="Area2D"]
-position = Vector2( 88.8893, 82.1909 )
+scale = Vector2( 2, 2 )
 script = ExtResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]

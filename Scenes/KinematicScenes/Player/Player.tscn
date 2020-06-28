@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=2]
+[gd_scene load_steps=85 format=2]
 
 [ext_resource path="res://Scenes/KinematicScenes/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Resources/characters/animation_ak47/Armature_dead_00.png" type="Texture" id=2]
@@ -119,6 +119,9 @@ animations = [ {
 radius = 25.0
 height = 160.0
 
+[sub_resource type="CapsuleShape2D" id=18]
+height = 61.7737
+
 [sub_resource type="AtlasTexture" id=3]
 flags = 4
 atlas = ExtResource( 55 )
@@ -183,7 +186,6 @@ extents = Vector2( 52, 52 )
 extents = Vector2( 52, 52 )
 
 [node name="player" type="KinematicBody2D"]
-position = Vector2( 238.902, 145.127 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 97.752 ],
@@ -191,27 +193,33 @@ __meta__ = {
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 57.3347, 46.22 )
+position = Vector2( 27.9968, 31.8504 )
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 1 )
-animation = "idle_103"
-frame = 2
+animation = "melee_103"
+frame = 5
 playing = true
 offset = Vector2( -34.3934, -32.6715 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 34.8763, 39.788 )
+position = Vector2( 5.53842, 25.4184 )
 shape = SubResource( 2 )
 
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 95.6285, -10.1196 )
-scale = Vector2( 0.455083, 1.08333 )
+position = Vector2( 80.6659, -24.2696 )
+
+[node name="Area2D" type="Area2D" parent="Position2D"]
+scale = Vector2( 2.1974, 0.92308 )
+skew = 4.37114e-08
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Position2D/Area2D"]
+shape = SubResource( 18 )
 
 [node name="player_dead_timer" type="Timer" parent="."]
 one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 30.5919, 12.325 )
+position = Vector2( 1.25403, -2.04459 )
 current = true
 limit_left = 0
 limit_top = 0
@@ -227,6 +235,7 @@ one_shot = true
 script = ExtResource( 42 )
 
 [node name="move" type="Node2D" parent="Controller"]
+position = Vector2( -29.3379, -14.3696 )
 z_index = 8
 
 [node name="right" type="TouchScreenButton" parent="Controller/move"]
@@ -248,7 +257,7 @@ shape_visible = false
 action = "ui_left"
 
 [node name="action" type="Node2D" parent="Controller"]
-position = Vector2( 1007.01, 630.428 )
+position = Vector2( 977.672, 616.058 )
 
 [node name="up" type="TouchScreenButton" parent="Controller/action"]
 position = Vector2( -115.841, -83.5621 )
@@ -301,12 +310,13 @@ scale = Vector2( 0.199, 0.123 )
 texture = ExtResource( 57 )
 
 [node name="CenterPos" type="Position2D" parent="."]
-position = Vector2( 32.4549, 12.3639 )
+position = Vector2( 3.117, -2.00568 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2( 34.3296, 115.752 )
+position = Vector2( 4.99176, 101.383 )
 enabled = true
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="body_entered" from="Position2D/Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="timeout" from="player_dead_timer" to="." method="_on_player_dead_timer_timeout"]
 [connection signal="timeout" from="jump_counter_time" to="." method="_on_jump_counter_time_timeout"]
 [connection signal="pressed" from="Controller/move/right" to="." method="_on_right_pressed"]

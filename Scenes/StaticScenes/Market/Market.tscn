@@ -76,7 +76,6 @@ margin_right = 202.0
 margin_bottom = 337.0
 grow_horizontal = 0
 rect_scale = Vector2( 2.55798, 3.49353 )
-follow_focus = true
 scroll_deadzone = -91
 __meta__ = {
 "_edit_use_anchors_": false
@@ -85,7 +84,9 @@ __meta__ = {
 [node name="GridContainer" type="GridContainer" parent="HBoxContainer"]
 margin_right = 134.0
 margin_bottom = 832.0
-size_flags_horizontal = 6
+mouse_filter = 0
+mouse_default_cursor_shape = 13
+size_flags_horizontal = 2
 size_flags_vertical = 2
 columns = 2
 

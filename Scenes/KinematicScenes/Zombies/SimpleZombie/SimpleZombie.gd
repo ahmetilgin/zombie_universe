@@ -40,7 +40,7 @@ func add_attack_ray_cast():
 #	attack_ray_cast.set_position(Vector2(64,64))
 	add_child(attack_ray_cast)
 	attack_ray_cast.set_cast_to(Vector2(50,0))
-	attack_ray_cast.set_position(Vector2(0,0))
+	attack_ray_cast.set_position(Vector2(0,70))
 	attack_ray_cast.set_enabled(true)
 
 func create_zombie_follow_timer():
@@ -272,6 +272,7 @@ func chech_zombie_colliding():
 			colliding_zombie.motion += Vector2(back, 0)
 		elif "Trambolin" in attack_ray_cast.get_collider().name:
 			motion.y -= 100
+		print(attack_ray_cast.get_collider().name)
 
 
 

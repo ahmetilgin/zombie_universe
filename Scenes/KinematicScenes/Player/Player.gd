@@ -412,6 +412,7 @@ func _move_right():
 	_play_run_animation()
 	if sign($Position2D.position.x)==-1:
 		$Position2D.position.x*=-1
+		print("right",$Position2D.position.x)
 
 func _move_left():
 	is_move = true
@@ -420,6 +421,7 @@ func _move_left():
 	animation_flip_h(true)
 	if sign($Position2D.position.x)==1:
 		$Position2D.position.x*=-1
+		print("left",$Position2D.position.x)
 
 		
 
@@ -479,7 +481,7 @@ func check_melee_pressed():
 
 func check_fire_pressed():
 	if Input.is_action_pressed("ui_focus_next") :
-		if  _check_bullet_count() and !is_in_time_start_weapon_fire:
+		if  _check_bullet_count() and !is_in_time_start_weapon_fire && !is_melee:
 			bullet_shoot_timer.start()
 			_fire_bullet()
 			is_in_time_start_weapon_fire = true
@@ -557,17 +559,19 @@ func dead(damage,whodead):
 			emit_signal("dead_signal")
 			$player_dead_timer.start()#karakter hareket etmeyince timerin içine girmiyor
 		else:
-			is_hurt=true
-			_play_animation("hurt")
+			if !is_melee:
+				is_hurt=true
+				_play_animation("hurt")
 
 #func _on_AnimatedSprite_animation_finished():
 #	_clear_states()
 
 func upgrade_power_up():
 	current_bullet_power = 2
+	
 var blood_position_calibration = Vector2(10,30) #kanın zombi üzerinde ince kalibrasyonu
 func _on_Area2D_body_entered(body):
-	if "Zombie" in body.name:
+	if "Zombie" in body.name and is_melee:
 		body.dead(1,"Zombie") 
 		var blood_instance = blood_anim.instance()
 		body.add_child(blood_instance)
