@@ -14,6 +14,7 @@ func _ready():
 func set_bullet_direction(dir):
 	direction=dir
 	$Sprite.play("shoots")
+	
 func _physics_process(delta):
 	motion.x=speed*delta*direction
 	translate(motion)

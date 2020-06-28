@@ -216,7 +216,7 @@ func dead(damage,whodead):
 			back = 400
 		else:
 			back = -400
-		motion = move_and_slide(Vector2(motion.x + back, motion.y) , UP)
+		motion = move_and_slide(Vector2(back, motion.y) , UP)
 		
 func dead_from_turrent(damage,whodead,dir):
 	hp-=damage

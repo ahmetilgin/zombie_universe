@@ -8,11 +8,9 @@ var blood_anim = preload("res://Scenes/StaticScenes/BloodAnimation/BloodAnimatio
 func set_bullet_direction(dir):
 	direction=dir
 	if dir==-1:
-		$AnimatedSprite.flip_h = false
-		$AnimatedSprite.position.x+=45
-		$CollisionShape2D.position.x+=45
+		$AnimatedSprite.flip_h=true
 	else:
-		$AnimatedSprite.flip_h = true
+		$AnimatedSprite.flip_h=false
 	
 
 func _physics_process(delta):

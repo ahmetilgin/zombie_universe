@@ -8,8 +8,8 @@ func set_bullet_direction(dir):
 	direction=dir
 	if dir==-1:
 		$AnimatedSprite.flip_h=true
-		$AnimatedSprite.position.x+=45
-		$CollisionShape2D.position.x+=45
+	else:
+		$AnimatedSprite.flip_h=false
 	
 
 func _physics_process(delta):

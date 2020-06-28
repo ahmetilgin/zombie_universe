@@ -364,7 +364,7 @@ func _is_movable():
 	
 
 func _is_idle():
-	return !is_down && !is_melee && !is_attack && !is_move
+	return !is_down && !is_melee && !is_move
 	
 func _play_melee_sound():
 	SwordSlide_Sound.play()
