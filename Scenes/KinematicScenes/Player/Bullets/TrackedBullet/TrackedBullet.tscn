@@ -14,22 +14,21 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 11.2821
-height = 6.271
+radius = 5.8257
+height = 45.6661
 
 [node name="TrackedBullet" type="Area2D"]
 script = ExtResource( 1 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
-position = Vector2( 8.34399, -10.1881 )
-scale = Vector2( 1.94685, 3.94519 )
+position = Vector2( -18.7526, -9.71523 )
+scale = Vector2( 2.55435, 3.54336 )
 frames = SubResource( 1 )
 animation = "shoots"
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.263519, 0 )
 rotation = 1.5708
-scale = Vector2( 0.5, 2 )
 shape = SubResource( 2 )
 
 [node name="VisibilityEnabler2D" type="VisibilityNotifier2D" parent="."]

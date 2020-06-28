@@ -412,6 +412,8 @@ func _move_right():
 	_play_run_animation()
 	if sign($Position2D.position.x)==-1:
 		$Position2D.position.x*=-1
+		$Position2D.set_position(Vector2(70,-22))
+		$CollisionShape2D.set_position(Vector2(5,25))
 		print("right",$Position2D.position.x)
 
 func _move_left():
@@ -421,6 +423,8 @@ func _move_left():
 	animation_flip_h(true)
 	if sign($Position2D.position.x)==1:
 		$Position2D.position.x*=-1
+		$CollisionShape2D.set_position(Vector2(35,25))
+		$Position2D.set_position(Vector2(-40,-22))
 		print("left",$Position2D.position.x)
 
 		
@@ -512,7 +516,7 @@ func check_first_and_second_jump():
 				
 
 func check_falling():	
-	if($RayCast2D.is_colliding() and "TileMap" in $RayCast2D.get_collider().name ):
+	if($CollisionShape2D/RayCast2D.is_colliding() and "TileMap" in $CollisionShape2D/RayCast2D.get_collider().name ):
 			is_set_player_peak_height = false
 	if !is_on_floor()  and motion.y > 0:
 		if(!is_set_player_peak_height):

@@ -272,7 +272,7 @@ func chech_zombie_colliding():
 			colliding_zombie.motion += Vector2(back, 0)
 		elif "Trambolin" in attack_ray_cast.get_collider().name:
 			motion.y -= 100
-		print(attack_ray_cast.get_collider().name)
+
 
 
 

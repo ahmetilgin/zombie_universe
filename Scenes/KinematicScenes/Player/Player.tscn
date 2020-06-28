@@ -196,8 +196,8 @@ __meta__ = {
 position = Vector2( 27.9968, 31.8504 )
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 1 )
-animation = "melee_103"
-frame = 5
+animation = "attack_103"
+frame = 3
 playing = true
 offset = Vector2( -34.3934, -32.6715 )
 
@@ -205,11 +205,15 @@ offset = Vector2( -34.3934, -32.6715 )
 position = Vector2( 5.53842, 25.4184 )
 shape = SubResource( 2 )
 
+[node name="RayCast2D" type="RayCast2D" parent="CollisionShape2D"]
+position = Vector2( -0.546661, 75.9645 )
+skew = 4.37114e-08
+enabled = true
+
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 80.6659, -24.2696 )
+position = Vector2( 70, -22.379 )
 
 [node name="Area2D" type="Area2D" parent="Position2D"]
-scale = Vector2( 2.1974, 0.92308 )
 skew = 4.37114e-08
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Position2D/Area2D"]
@@ -311,10 +315,7 @@ texture = ExtResource( 57 )
 
 [node name="CenterPos" type="Position2D" parent="."]
 position = Vector2( 3.117, -2.00568 )
-
-[node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2( 4.99176, 101.383 )
-enabled = true
+skew = 4.37114e-08
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="body_entered" from="Position2D/Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="timeout" from="player_dead_timer" to="." method="_on_player_dead_timer_timeout"]
