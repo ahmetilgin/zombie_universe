@@ -509,7 +509,9 @@ func check_first_and_second_jump():
 				_play_jump_animation()
 				
 
-func check_falling():
+func check_falling():	
+	if($RayCast2D.is_colliding() and "TileMap" in $RayCast2D.get_collider().name ):
+			is_set_player_peak_height = false
 	if !is_on_floor()  and motion.y > 0:
 		if(!is_set_player_peak_height):
 			is_set_player_peak_height = true
@@ -604,7 +606,7 @@ func healt_color_increase():
 
 func tramboline_jump(tramboline_position):
 	is_set_player_peak_height = false
-	motion.y = -1.5 * (tramboline_position - player_peak_height).y - 300;
+	motion.y = -1.5 * (tramboline_position - player_peak_height).y - 500;
 	motion.y = max(motion.y,-1800)
 
 	pass
@@ -653,11 +655,11 @@ func damage_healt_color_change():
 	player_health_back.set_value(hp)
 	pass
 
-func _unhandled_input(event):
-	if event is InputEventMouseButton :
-		if event.pressed and event.button_index == BUTTON_LEFT:
-			var pos = get_global_mouse_position()
-			set_global_position(pos)
+#func _unhandled_input(event):
+#	if event is InputEventMouseButton :
+#		if event.pressed and event.button_index == BUTTON_LEFT:
+#			var pos = get_global_mouse_position()
+#			set_global_position(pos)
 
 func _on_jump_counter_time_timeout():
 	tramb_count=1

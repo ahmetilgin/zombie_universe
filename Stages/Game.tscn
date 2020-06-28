@@ -326,11 +326,6 @@ stream = ExtResource( 28 )
 volume_db = -31.424
 autoplay = true
 
-[node name="GameAreaCam" type="Camera2D" parent="."]
-position = Vector2( 1203.94, 631.641 )
-scale = Vector2( -324.135, -89.984 )
-zoom = Vector2( 1.862, 1.512 )
-
 [node name="trambolin" parent="." instance=ExtResource( 3 )]
 position = Vector2( 4292.84, 3447.86 )
 [connection signal="pressed" from="Game_UI/accept_button" to="." method="_on_acceptbutton_pressed"]

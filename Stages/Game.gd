@@ -32,7 +32,7 @@ var is_teleport_buying = false
 var teleport_locs = []
 var teleport_pair = []
 var selected_teleport_location_count = 0
-
+var wide_camera_zoom = Vector2(3,3)
 var walls = {
 	401: preload("res://Scenes/StaticScenes/fences/WoodFence/WoodFence.tscn"),
 	402: preload("res://Scenes/StaticScenes/fences/IronFence/IronFence.tscn"),
@@ -139,11 +139,11 @@ func item_solded(item_id):
 		pass
 	elif item_type == 500:
 		buy_teleportal(item_id)
-		$GameAreaCam.current = true
+		player.get_node("Camera2D").set_zoom(wide_camera_zoom)
 		pass
 	elif item_type == 800:
 		buy_turret(item_id)
-		$GameAreaCam.current = true
+		player.get_node("Camera2D").set_zoom(wide_camera_zoom)
 		update()
 		pass
 	else:
@@ -276,7 +276,7 @@ func _on_TouchScreenButton_pressed():
 func buy_cancel():
 	clear_grid()
 	$Game_UI/Coin_Counter.increase_coins(created_instance_price)
-	$player/Camera2D.current = true
+	player.get_node("Camera2D").set_zoom(Vector2(1,1))
 	hide_accept_button()
 	if is_teleport_buying:
 		for teleport in teleport_pair:
@@ -390,7 +390,7 @@ func _on_acceptbutton_pressed():
 		finish_turret_buy()
 	else:
 		finish_teleport_buy()
-	$player/Camera2D.current = true
+	player.get_node("Camera2D").set_zoom(Vector2(1,1))
 	$Game_UI/Market_Button.pressed = false
 	is_opened_market = false
 	is_create_instance = false

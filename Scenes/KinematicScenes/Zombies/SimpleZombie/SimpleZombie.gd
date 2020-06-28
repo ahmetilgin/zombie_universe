@@ -170,7 +170,6 @@ func _get_path():
 	if (targetDiff.y >= 0) and !jumping_peak:
 		if (!$RayCast2D.is_colliding() or "Zombie" in $RayCast2D.get_collider().name) and targetDiff.y == 0 and !jumping_started:
 			motion.y = -700
-			print("asdasds")
 		find_zombie_x_movement()
 		pass
 	else:
