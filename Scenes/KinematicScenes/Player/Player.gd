@@ -412,9 +412,6 @@ func _move_right():
 	_play_run_animation()
 	if sign($Position2D.position.x)==-1:
 		$Position2D.position.x*=-1
-		$Position2D.set_position(Vector2(70,-22))
-		$CollisionShape2D.set_position(Vector2(5,25))
-		print("right",$Position2D.position.x)
 
 func _move_left():
 	is_move = true
@@ -423,9 +420,6 @@ func _move_left():
 	animation_flip_h(true)
 	if sign($Position2D.position.x)==1:
 		$Position2D.position.x*=-1
-		$CollisionShape2D.set_position(Vector2(35,25))
-		$Position2D.set_position(Vector2(-40,-22))
-		print("left",$Position2D.position.x)
 
 		
 
@@ -447,6 +441,7 @@ func _clear_states():
 	is_move = false
 	is_hurt = false
 	is_jump = false
+	$Position2D/Area2D/CollisionShape2D.set_disabled(true)
 	
 
 var UP = Vector2(0,-1)
@@ -479,6 +474,7 @@ func check_space_pressed():
 func check_melee_pressed():
 	if Input.is_action_just_pressed("ui_focus_prev") :
 		if _is_movable():
+				$Position2D/Area2D/CollisionShape2D.set_disabled(false)
 				_set_is_melee(true)
 				_play_melee_sound()
 				_play_melee_animation()
@@ -575,11 +571,12 @@ func upgrade_power_up():
 	
 var blood_position_calibration = Vector2(10,30) #kanın zombi üzerinde ince kalibrasyonu
 func _on_Area2D_body_entered(body):
-	if "Zombie" in body.name and is_melee:
+	if "Zombie" in body.name:
 		body.dead(1,"Zombie") 
 		var blood_instance = blood_anim.instance()
 		body.add_child(blood_instance)
 		blood_instance.set_global_position(body.get_global_position() + blood_position_calibration)
+	
 
 
 func healt_kit(healt):

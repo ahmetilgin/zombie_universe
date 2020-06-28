@@ -74,30 +74,10 @@ animations = [ {
 "name": "dead_103",
 "speed": 20.0
 }, {
-"frames": [ ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ) ],
-"loop": true,
-"name": "attack_103",
-"speed": 24.0
-}, {
-"frames": [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ) ],
-"loop": false,
-"name": "jump_103",
-"speed": 10.0
-}, {
 "frames": [ ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ) ],
 "loop": true,
 "name": "run_103",
 "speed": 24.0
-}, {
-"frames": [ ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 54 ) ],
-"loop": false,
-"name": "melee_103",
-"speed": 15.0
-}, {
-"frames": [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
-"loop": true,
-"name": "fall_103",
-"speed": 10.0
 }, {
 "frames": [ ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 48 ) ],
 "loop": true,
@@ -109,80 +89,100 @@ animations = [ {
 "name": "hurt_103",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "fall_103",
+"speed": 10.0
+}, {
 "frames": [ ExtResource( 40 ), ExtResource( 41 ), ExtResource( 59 ), ExtResource( 60 ), ExtResource( 62 ), ExtResource( 61 ), ExtResource( 65 ), ExtResource( 64 ), ExtResource( 63 ), ExtResource( 63 ), ExtResource( 63 ), ExtResource( 63 ), ExtResource( 63 ), ExtResource( 63 ), ExtResource( 63 ), ExtResource( 63 ), ExtResource( 63 ), ExtResource( 66 ), ExtResource( 67 ) ],
 "loop": false,
 "name": "slide_103",
 "speed": 24.0
+}, {
+"frames": [ ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ) ],
+"loop": true,
+"name": "attack_103",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ) ],
+"loop": false,
+"name": "jump_103",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 54 ) ],
+"loop": false,
+"name": "melee_103",
+"speed": 15.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 25.0
 height = 160.0
 
-[sub_resource type="CapsuleShape2D" id=18]
+[sub_resource type="CapsuleShape2D" id=3]
 height = 61.7737
-
-[sub_resource type="AtlasTexture" id=3]
-flags = 4
-atlas = ExtResource( 55 )
-region = Rect2( 230, 238, 120, 120 )
 
 [sub_resource type="AtlasTexture" id=4]
 flags = 4
 atlas = ExtResource( 55 )
-region = Rect2( 236, 246, 104, 104 )
+region = Rect2( 230, 238, 120, 120 )
 
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 52.12, 52.35 )
-
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=5]
 flags = 4
 atlas = ExtResource( 55 )
-region = Rect2( 7, 244, 107, 107 )
+region = Rect2( 236, 246, 104, 104 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 52.12, 52.35 )
 
 [sub_resource type="AtlasTexture" id=7]
 flags = 4
 atlas = ExtResource( 55 )
-region = Rect2( 9, 246, 104, 104 )
+region = Rect2( 7, 244, 107, 107 )
 
-[sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 52, 52 )
-
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=8]
 flags = 4
 atlas = ExtResource( 55 )
-region = Rect2( 118, 131, 107, 107 )
+region = Rect2( 9, 246, 104, 104 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 52, 52 )
 
 [sub_resource type="AtlasTexture" id=10]
 flags = 4
 atlas = ExtResource( 55 )
-region = Rect2( 120, 132, 104, 104 )
+region = Rect2( 118, 131, 107, 107 )
 
-[sub_resource type="RectangleShape2D" id=11]
-extents = Vector2( 52, 52 )
-
-[sub_resource type="AtlasTexture" id=12]
+[sub_resource type="AtlasTexture" id=11]
 flags = 4
 atlas = ExtResource( 55 )
-region = Rect2( 119, 359, 107, 107 )
+region = Rect2( 120, 132, 104, 104 )
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 52, 52 )
 
 [sub_resource type="AtlasTexture" id=13]
 flags = 4
 atlas = ExtResource( 55 )
+region = Rect2( 119, 359, 107, 107 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 4
+atlas = ExtResource( 55 )
 region = Rect2( 122, 360, 104, 104 )
 
-[sub_resource type="RectangleShape2D" id=14]
+[sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 52, 52 )
 
-[sub_resource type="AtlasTexture" id=15]
+[sub_resource type="AtlasTexture" id=16]
 flags = 4
 atlas = ExtResource( 55 )
 region = Rect2( 487, 350, 107, 107 )
 
-[sub_resource type="RectangleShape2D" id=16]
+[sub_resource type="RectangleShape2D" id=17]
 extents = Vector2( 52, 52 )
 
-[sub_resource type="RectangleShape2D" id=17]
+[sub_resource type="RectangleShape2D" id=18]
 extents = Vector2( 52, 52 )
 
 [node name="player" type="KinematicBody2D"]
@@ -193,7 +193,7 @@ __meta__ = {
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 27.9968, 31.8504 )
+position = Vector2( 4.22377, 6.94531 )
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 1 )
 animation = "attack_103"
@@ -202,7 +202,7 @@ playing = true
 offset = Vector2( -34.3934, -32.6715 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 5.53842, 25.4184 )
+position = Vector2( 0.997665, 0.135956 )
 shape = SubResource( 2 )
 
 [node name="RayCast2D" type="RayCast2D" parent="CollisionShape2D"]
@@ -211,19 +211,20 @@ skew = 4.37114e-08
 enabled = true
 
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 70, -22.379 )
+position = Vector2( 59.1178, -42.5423 )
 
 [node name="Area2D" type="Area2D" parent="Position2D"]
 skew = 4.37114e-08
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Position2D/Area2D"]
-shape = SubResource( 18 )
+shape = SubResource( 3 )
+disabled = true
 
 [node name="player_dead_timer" type="Timer" parent="."]
 one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 1.25403, -2.04459 )
+position = Vector2( -0.632721, 0.219498 )
 current = true
 limit_left = 0
 limit_top = 0
@@ -239,54 +240,54 @@ one_shot = true
 script = ExtResource( 42 )
 
 [node name="move" type="Node2D" parent="Controller"]
-position = Vector2( -29.3379, -14.3696 )
+position = Vector2( 0.850067, -0.0303268 )
 z_index = 8
 
 [node name="right" type="TouchScreenButton" parent="Controller/move"]
 position = Vector2( 300, 587.524 )
 scale = Vector2( 1.5, 1.5 )
-normal = SubResource( 3 )
-pressed = SubResource( 4 )
-shape = SubResource( 5 )
+normal = SubResource( 4 )
+pressed = SubResource( 5 )
+shape = SubResource( 6 )
 shape_visible = false
 action = "ui_right"
 
 [node name="left" type="TouchScreenButton" parent="Controller/move"]
 position = Vector2( 60, 597.02 )
 scale = Vector2( 1.5, 1.5 )
-normal = SubResource( 6 )
-pressed = SubResource( 7 )
-shape = SubResource( 8 )
+normal = SubResource( 7 )
+pressed = SubResource( 8 )
+shape = SubResource( 9 )
 shape_visible = false
 action = "ui_left"
 
 [node name="action" type="Node2D" parent="Controller"]
-position = Vector2( 977.672, 616.058 )
+position = Vector2( 954.276, 590.776 )
 
 [node name="up" type="TouchScreenButton" parent="Controller/action"]
 position = Vector2( -115.841, -83.5621 )
 scale = Vector2( 0.8, 0.8 )
-normal = SubResource( 9 )
-pressed = SubResource( 10 )
-shape = SubResource( 11 )
+normal = SubResource( 10 )
+pressed = SubResource( 11 )
+shape = SubResource( 12 )
 shape_visible = false
 action = "ui_up"
 
 [node name="down" type="TouchScreenButton" parent="Controller/action"]
 position = Vector2( -115.841, 49.8708 )
 scale = Vector2( 0.8, 0.8 )
-normal = SubResource( 12 )
-pressed = SubResource( 13 )
-shape = SubResource( 14 )
+normal = SubResource( 13 )
+pressed = SubResource( 14 )
+shape = SubResource( 15 )
 shape_visible = false
 action = "ui_down"
 
 [node name="gun_shoot" type="TouchScreenButton" parent="Controller/action"]
 position = Vector2( 21.1945, -3.00122 )
 scale = Vector2( 1.2, 1.2 )
-normal = SubResource( 15 )
-pressed = SubResource( 15 )
-shape = SubResource( 16 )
+normal = SubResource( 16 )
+pressed = SubResource( 16 )
+shape = SubResource( 17 )
 shape_visible = false
 action = "ui_focus_next"
 
@@ -300,9 +301,9 @@ texture = ExtResource( 56 )
 [node name="melee_attack" type="TouchScreenButton" parent="Controller/action"]
 position = Vector2( 57.0945, -121.329 )
 scale = Vector2( 0.8, 0.8 )
-normal = SubResource( 15 )
-pressed = SubResource( 15 )
-shape = SubResource( 17 )
+normal = SubResource( 16 )
+pressed = SubResource( 16 )
+shape = SubResource( 18 )
 shape_visible = false
 action = "ui_focus_prev"
 
@@ -314,7 +315,7 @@ scale = Vector2( 0.199, 0.123 )
 texture = ExtResource( 57 )
 
 [node name="CenterPos" type="Position2D" parent="."]
-position = Vector2( 3.117, -2.00568 )
+position = Vector2( 0.0982056, -0.118942 )
 skew = 4.37114e-08
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="body_entered" from="Position2D/Area2D" to="." method="_on_Area2D_body_entered"]
