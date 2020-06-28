@@ -519,7 +519,8 @@ func check_falling():
 			is_set_player_peak_height = true
 			player_peak_height = get_global_position()
 			print("Zıplama yüksekliği",player_peak_height)
-		_play_fall_animation()
+		if !is_attack:
+			_play_fall_animation()
 		
 
 func _physics_process(delta):
@@ -538,9 +539,8 @@ func _physics_process(delta):
 		if is_on_floor() and _is_idle():
 			_play_idle_animation()
 			motion.x = lerp(motion.x, 0, 0.2)	
-	else:
-		if is_on_floor():
-			$CollisionShape2D.set_deferred("disabled",true)
+	
+		
 
 	motion = move_and_slide(motion,UP)
 			
