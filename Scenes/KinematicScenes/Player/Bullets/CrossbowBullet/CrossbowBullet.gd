@@ -3,9 +3,11 @@ var no_hurt = false
 var  speed=1000
 var motion=Vector2()
 var direction=1
+var grv = 0
 var blood_anim = preload("res://Scenes/StaticScenes/BloodAnimation/BloodAnimation.tscn")
 
 func set_bullet_direction(dir):
+	$SuzulmeTimer.start()
 	direction=dir
 	if dir==-1:
 		$AnimatedSprite.flip_h=true
@@ -14,6 +16,7 @@ func set_bullet_direction(dir):
 	
 
 func _physics_process(delta):
+	motion.y += grv
 	motion.x=speed*delta*direction
 	translate(motion)
 	$AnimatedSprite.play("shoot2")
@@ -37,10 +40,17 @@ func _on_Crossbowbullet_body_entered(body):
 	else:
 		no_hurt = true
 		speed = 0
+		grv = 0
+		motion.y = 0
 		$Timer.start()
 	pass # Replace with function body.
 
 
 func _on_Timer_timeout():
 	queue_free()
+	pass # Replace with function body.
+
+
+func _on_SuzulmeTimer_timeout():
+	grv = 0.01
 	pass # Replace with function body.
