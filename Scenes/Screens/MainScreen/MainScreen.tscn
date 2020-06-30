@@ -58,7 +58,7 @@ texture = ExtResource( 3 )
 margin_left = 556.0
 margin_top = 231.0
 margin_right = 907.0
-margin_bottom = 464.0
+margin_bottom = 541.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
@@ -79,11 +79,20 @@ size_flags_vertical = 4
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )
 
+[node name="Multiplayer" type="TextureButton" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+margin_top = 154.0
+margin_right = 351.0
+margin_bottom = 227.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+
 [node name="Quit_Button" type="TextureButton" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 margin_left = 95.0
-margin_top = 154.0
+margin_top = 231.0
 margin_right = 256.0
-margin_bottom = 233.0
+margin_bottom = 310.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource( 8 )

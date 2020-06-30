@@ -134,7 +134,7 @@ enum bullet_power{
 }
 # environment options
 var tramb_count=1
-const jump = -45 * 20
+const jump = -50 * 20
 const gravity = 20
 # player options
 const max_hp = 1000
@@ -524,7 +524,7 @@ func check_falling():
 		
 
 func _physics_process(delta):
-	Engine.time_scale = 1.0
+	
 	motion.y += gravity 
 	if !_is_dead():
 		_set_shift_stop(false)

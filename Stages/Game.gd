@@ -159,6 +159,7 @@ func _create_market_scene():
 	add_child(market_scene)
 
 func _ready():
+	Engine.time_scale = 1.5
 	get_tile_borders()
 	player = player_scene.instance()
 	var center_x = (max_border.x - min_border.x) / 2
