@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Scenes/StaticScenes/Market/Market.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/UISprites/bitmap.png" type="Texture" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://Resources/Sprites/Fence/IronFence/IronFenceBack.png" type="Texture" id=19]
 [ext_resource path="res://Resources/Sprites/Fence/GoldFence/GoldFenceBack.png" type="Texture" id=20]
 [ext_resource path="res://Resources/Sprites/Portal/portalRings1.png" type="Texture" id=21]
+[ext_resource path="res://Scenes/StaticScenes/Market/HBoxContainer.gd" type="Script" id=22]
 [ext_resource path="res://Resources/Sprites/Trambolin/sprung.png" type="Texture" id=23]
 [ext_resource path="res://Resources/Sprites/Turret/Turret1Top.png" type="Texture" id=24]
 [ext_resource path="res://Resources/Sprites/Turret/Turret1Base.png" type="Texture" id=25]
@@ -76,7 +77,9 @@ margin_right = 202.0
 margin_bottom = 337.0
 grow_horizontal = 0
 rect_scale = Vector2( 2.55798, 3.49353 )
+mouse_default_cursor_shape = 2
 scroll_deadzone = -91
+script = ExtResource( 22 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
