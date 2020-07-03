@@ -727,4 +727,12 @@ func _on_AnimatedSprite_animation_finished():
 	_clear_states()
 	pass # Replace with function body.
 
+func save():
+	var dict = {
+		"filename" : get_filename(),
+		"parent" : get_parent().get_path(),
+		"position_x": get_global_position().x,
+		"position_y": get_global_position().y,
+	}
+	return dict
 

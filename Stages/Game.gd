@@ -33,6 +33,8 @@ var teleport_locs = []
 var teleport_pair = []
 var selected_teleport_location_count = 0
 var wide_camera_zoom = Vector2(3,3)
+var game_over_instance
+var is_continue = false
 var walls = {
 	401: preload("res://Scenes/StaticScenes/fences/WoodFence/WoodFence.tscn"),
 	402: preload("res://Scenes/StaticScenes/fences/IronFence/IronFence.tscn"),
@@ -158,22 +160,39 @@ func item_solded_failed():
 func _create_market_scene():
 	add_child(market_scene)
 
+
+func init():
+	get_parent().print_tree_pretty()
+	player = get_node("player")
+	game_over_instance = gameover_scene.instance()
+	gameover_scene.set_name("game_over_screen")
+	get_node("Game_UI").add_child(gameover_scene.instance())
+
 func _ready():
 	Engine.time_scale = 1.5
 	get_tile_borders()
-	player = player_scene.instance()
+	if (!is_continue):
+		player = player_scene.instance()
+		player.add_to_group("Persist")
+	else:
+		player = get_node("player")
+	
 	var center_x = (max_border.x - min_border.x) / 2
 	var center_y = (max_border.y - min_border.y) / 2
-	add_child(player)
-	var player_pos = $Background/TileMap.map_to_world(Vector2(center_x,center_y))
-	print(player_pos)
-	player.set_global_position(player_pos)
+	if (!is_continue):	
+		add_child(player)
+		var player_pos = $Background/TileMap.map_to_world(Vector2(center_x,center_y))
+		player.set_global_position(player_pos)
 	_create_market_scene()
 	disable_accept_button()
 	create_portals(start_portal)
 	connect_market()
 	countdown_timer()
-	get_node("Game_UI").add_child(gameover_scene.instance())
+
+	if (!is_continue):	
+		game_over_instance = gameover_scene.instance()
+		gameover_scene.set_name("game_over_screen")
+		get_node("Game_UI").add_child(gameover_scene.instance())
 	on_time_countdown_unvisible()
 	hide_market()
 	hide_accept_button()
@@ -357,18 +376,21 @@ func finish_teleport_buy():
 
 func create_instance(turret):
 	instance = turret_paths[turret].instance()
+	instance.add_to_group("Persist")
 	is_create_instance = true
 	instance.set_global_position(Vector2(-500,-500))
 	$Background.add_child(instance)
 	
 func create_wall_instance(wall):
 	instance = walls[wall].instance()
+	instance.add_to_group("Persist")
 	instance.set_global_position(Vector2(-500,-500))
 	is_create_instance = true
 	$Background.add_child(instance)
 	
 func create_teleport_instance(teleport):
 	instance = teleports[teleport].instance()
+	instance.add_to_group("Persist")
 	instance.set_global_position(Vector2(-500,-500))
 	is_create_instance = true
 	$Background.add_child(instance)
@@ -413,3 +435,8 @@ func _on_count_down_timer_timeout():
 	$Game_UI/CountDownTimer/Time.text = String(counttimer)
 	second_passed = true
 	
+
+
+func _on_OptionsButton_pressed():
+	$Game_UI.get_node("Gameover_Screen").set_visible(true)
+	pass # Replace with function body.

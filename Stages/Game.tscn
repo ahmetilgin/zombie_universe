@@ -1,8 +1,9 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Stages/Game.gd" type="Script" id=1]
 [ext_resource path="res://Stages/Game_UI.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/StaticScenes/Trambolin/Trambolin.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Resources/Sprites/TouchIcons/optionsbutton.png" type="Texture" id=4]
 [ext_resource path="res://Stages/Background.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Resources/Sprites/UISprites/NormalButton.png" type="Texture" id=16]
 [ext_resource path="res://Resources/Sprites/UISprites/PressedButton.png" type="Texture" id=17]
@@ -243,10 +244,10 @@ local_coords = false
 process_material = SubResource( 7 )
 
 [node name="CoinIcon" type="TextureRect" parent="Game_UI"]
-margin_left = 979.067
-margin_top = 21.3461
-margin_right = 1129.07
-margin_bottom = 71.3461
+margin_left = 933.04
+margin_top = 26.7611
+margin_right = 1083.04
+margin_bottom = 76.7611
 rect_scale = Vector2( 1.03412, 1.21914 )
 texture = SubResource( 8 )
 expand = true
@@ -264,10 +265,10 @@ __meta__ = {
 }
 
 [node name="Coin_Counter" type="RichTextLabel" parent="Game_UI"]
-margin_left = 1020.0
-margin_top = 34.0
-margin_right = 1095.0
-margin_bottom = 61.0
+margin_left = 973.973
+margin_top = 39.415
+margin_right = 1048.97
+margin_bottom = 66.415
 custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0.901961, 0.992157, 0.00784314, 1 )
 bbcode_text = "0"
@@ -288,6 +289,21 @@ toggle_mode = true
 texture_normal = ExtResource( 24 )
 texture_pressed = ExtResource( 25 )
 texture_disabled = ExtResource( 26 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionsButton" type="TextureButton" parent="Game_UI"]
+margin_left = 1122.11
+margin_top = 25.415
+margin_right = 1361.11
+margin_bottom = 270.415
+rect_scale = Vector2( 0.2468, 0.234145 )
+toggle_mode = true
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 25 )
+texture_disabled = ExtResource( 26 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -330,3 +346,4 @@ autoplay = true
 position = Vector2( 4292.84, 3447.86 )
 [connection signal="pressed" from="Game_UI/accept_button" to="." method="_on_acceptbutton_pressed"]
 [connection signal="pressed" from="Game_UI/Market_Button" to="." method="_on_TouchScreenButton_pressed"]
+[connection signal="pressed" from="Game_UI/OptionsButton" to="." method="_on_OptionsButton_pressed"]

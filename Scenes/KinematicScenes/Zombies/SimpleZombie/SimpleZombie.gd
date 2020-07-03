@@ -22,7 +22,7 @@ var jumping_peak = false
 const FLASH_RATE =0.05
 const N_FLASHES = 4
 var flash_zombie_tween = Tween.new()
-
+var is_continue = false
 export (int) var hp=5
 export (int) var speed=400
 export (int) var jump_speed=150
@@ -86,6 +86,9 @@ func create_zombie_found_player_label():
 #	image.resize (20,20)
 #	textureRect.set_size(Vector2(20,20))
 #	add_child(textureRect)
+
+func set_is_continue(is_clicked):
+	is_continue = is_clicked
 
 func _ready():
 	var tile_map_root = get_parent()
@@ -353,3 +356,12 @@ func _on_BornTimer_timeout():
 	is_borned = false
 	$AnimatedSprite.play("born")
 	pass # Replace with function body.
+	
+func save():
+	var dict = {
+		"filename" : get_filename(),
+		"parent" : get_parent().get_path(),
+		"position_x": get_global_position().x,
+		"position_y": get_global_position().y,
+	}
+	return dict

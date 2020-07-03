@@ -96,6 +96,7 @@ func set_zombie_level(level):
 
 func generate_Zombies():
 	var zombie_instance =zombie_types.get( select_zombie_for_level(zombie_level)).instance()
+	zombie_instance.add_to_group("Persist");
 	get_parent().call_deferred("add_child",zombie_instance)
 	var new_pos = tile_map.map_to_world(available_cells[randi() % len(available_cells)] - Vector2(0,2)) + tile_map._half_cell_size
 	zombie_instance.set_global_position(new_pos)
