@@ -14,6 +14,7 @@ var zombie_dead_timer = Timer.new()
 var can_zombie_attack = true
 var zombie_attack_timer = Timer.new()
 var attack_ray_cast = RayCast2D.new()
+var ground_ray_cast = RayCast2D.new()
 var player_found_icon = TextureRect.new()
 const gravity=20
 const one_grid_jump_value = -347
@@ -42,6 +43,13 @@ func add_attack_ray_cast():
 	attack_ray_cast.set_cast_to(Vector2(50,0))
 	attack_ray_cast.set_position(Vector2(0,70))
 	attack_ray_cast.set_enabled(true)
+	
+func add_ground_ray_cast():
+	add_child(ground_ray_cast)
+	ground_ray_cast.set_cast_to(Vector2(0,150))
+	ground_ray_cast.set_position(Vector2(35,0))
+	ground_ray_cast.set_enabled(true)
+
 
 func create_zombie_follow_timer():
 	FollowPlayerTimer.connect("timeout",self,"_on_FollowPlayerTimer_timeout") 
@@ -100,6 +108,7 @@ func _ready():
 	create_zombie_follow_timer()
 	create_zombie_attack_timer()
 	add_attack_ray_cast()
+	add_ground_ray_cast()
 	flash_zombie_tween()
 
 func get_zombie_and_player_distance():
@@ -149,9 +158,11 @@ func set_zombie_direction():
 		if sign(motion.x) < 0:
 			$AnimatedSprite.flip_h = true
 			attack_ray_cast.set_cast_to(Vector2(-50,0))
+			ground_ray_cast.set_position(Vector2(-16,0))
 		elif sign(motion.x) > 0:
 			$AnimatedSprite.flip_h = false
 			attack_ray_cast.set_cast_to(Vector2(50,0))
+			ground_ray_cast.set_position(Vector2(35,0))
 				 
 var is_zombie_action = false
 func follow_path():
@@ -171,14 +182,14 @@ func _get_path():
 	tile_map.set_target_point(target_point_world)
 	
 	if (targetDiff.y >= 0) and !jumping_peak:
-		if (!$RayCast2D.is_colliding() or "Zombie" in $RayCast2D.get_collider().name) and targetDiff.y == 0 and !jumping_started:
+		if (!ground_ray_cast.is_colliding() or "Zombie" in ground_ray_cast.get_collider().name) and targetDiff.y == 0 and !jumping_started:
 			motion.y = -700
 		find_zombie_x_movement()
 		pass
 	else:
 		motion.x = 0
-		if($Timer.is_stopped()) and is_on_floor():
-			$Timer.start()
+		if is_on_floor():
+			_on_Timer_timeout()
 
 func _set_is_follow(follow):
 	is_follow = follow

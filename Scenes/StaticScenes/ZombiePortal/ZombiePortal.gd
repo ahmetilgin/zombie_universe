@@ -15,7 +15,7 @@ var pause_time = 20
 var counttimer 
 var countdown_timer = Timer.new()
 var available_cells = []
-var first_wave_zombie_size = 5
+var first_wave_zombie_size = 1
 var zombie_types = { 0 : simple_zombie , 
 					 1 : stalker_zombie,
 					 2 : punk_zombie,
