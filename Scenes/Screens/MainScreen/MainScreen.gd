@@ -28,4 +28,5 @@ func _on_Continue_Button_pressed():
 	loading_screen_instance = loading_screen.instance()
 	loading_screen_instance.set_continue_clicked(true)
 	get_tree().get_root().add_child(loading_screen_instance)
+	queue_free()
 	pass # Replace with function body.

@@ -512,7 +512,8 @@ func check_first_and_second_jump():
 				
 
 func check_falling():	
-	if($CollisionShape2D/RayCast2D.is_colliding() and "TileMap" in $CollisionShape2D/RayCast2D.get_collider().name ):
+
+	if($RayCast2D.is_colliding() and "TileMap" in $RayCast2D.get_collider().name ):
 			is_set_player_peak_height = false
 	if !is_on_floor()  and motion.y > 0:
 		if(!is_set_player_peak_height):
@@ -733,6 +734,14 @@ func save():
 		"parent" : get_parent().get_path(),
 		"position_x": get_global_position().x,
 		"position_y": get_global_position().y,
+		"bullet_power": current_bullet_power,
+		"health": hp
 	}
 	return dict
+
+func load_data(node_data):
+	set_global_position(Vector2(node_data["position_x"], node_data["position_y"]))
+	current_bullet_power = int(node_data["bullet_power"])
+	hp = int(node_data["health"])
+	pass
 

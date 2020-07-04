@@ -95,3 +95,16 @@ func flash_damage():
 	flash_fence_tween.start()
 	
  
+func save():
+	var data = {
+		"filename" : get_filename(),
+		"parent" : get_parent().get_path(),
+		"position_x":get_global_position().x,
+		"position_y":get_global_position().y
+	}
+	return data
+
+
+func load_data(node_data):
+	set_global_position(Vector2(node_data["position_x"], node_data["position_y"]))
+	pass

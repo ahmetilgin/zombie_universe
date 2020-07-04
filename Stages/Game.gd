@@ -1,15 +1,13 @@
 extends Node2D
 var turret_grid 
 
-onready var level_text_counter = get_node("Game_UI/level_text/level_counter")
-onready var level_text = get_node("Game_UI/level_text")
+
 var portal_scene = preload("res://Scenes/StaticScenes/ZombiePortal/ZombiePortal.tscn")
 var player_scene = preload("res://Scenes/KinematicScenes/Player/Player.tscn")
 var gameover_scene = preload("res://Scenes/Screens/GameOverScreen/GameoverScreen.tscn")
 var market_scene = preload("res://Scenes/StaticScenes/Market/Market.tscn").instance()
 var constants = preload("res://Stages/constants.gd").new()
 var player = null
-
 var finish_portal = 0
 signal stop_wave
 var start_portal = 1
@@ -22,10 +20,6 @@ var game_level = 1
 var tile_pos
 var is_create_instance = false
 var tile_grid = null
-var countdown_timer = Timer.new()
-var is_countdown_pause_timer = false
-var pause_time = 100
-var counttimer
 var second_passed = true
 var portal_coordinates = [Vector2(1,5),Vector2(34,5)]
 var is_teleport_buying = false
@@ -35,6 +29,7 @@ var selected_teleport_location_count = 0
 var wide_camera_zoom = Vector2(3,3)
 var game_over_instance
 var is_continue = false
+
 var walls = {
 	401: preload("res://Scenes/StaticScenes/fences/WoodFence/WoodFence.tscn"),
 	402: preload("res://Scenes/StaticScenes/fences/IronFence/IronFence.tscn"),
@@ -58,9 +53,8 @@ func create_portals(portal_count):
 		portal.queue_free()
 	for i in range(0,portal_count):
 		var portal = portal_scene.instance()
+		portal.add_to_group("Persist")
 		$Background.add_child(portal)
-		portal.connect("wave_finished",self, "wave_finish")
-		portal.connect("wave_started",self, "wave_started")
 		var portal_coordinate = randi() % portal_coordinates.size()
 		var pixel_coordinate = $Background/TileMap.map_to_world(portal_coordinates[portal_coordinate])
 		portal.set_global_position(pixel_coordinate + $Background/TileMap.cell_size / 2)
@@ -162,7 +156,6 @@ func _create_market_scene():
 
 
 func init():
-	get_parent().print_tree_pretty()
 	player = get_node("player")
 	game_over_instance = gameover_scene.instance()
 	gameover_scene.set_name("game_over_screen")
@@ -183,17 +176,16 @@ func _ready():
 		add_child(player)
 		var player_pos = $Background/TileMap.map_to_world(Vector2(center_x,center_y))
 		player.set_global_position(player_pos)
+		create_portals(start_portal)
 	_create_market_scene()
 	disable_accept_button()
-	create_portals(start_portal)
 	connect_market()
-	countdown_timer()
+	
 
 	if (!is_continue):	
 		game_over_instance = gameover_scene.instance()
 		gameover_scene.set_name("game_over_screen")
 		get_node("Game_UI").add_child(gameover_scene.instance())
-	on_time_countdown_unvisible()
 	hide_market()
 	hide_accept_button()
 
@@ -202,13 +194,6 @@ func enable_accept_button():
 	
 func disable_accept_button():
 	$Game_UI/accept_button.disabled = true 
-
-func on_time_countdown_visible():
-	$Game_UI/CountDownTimer.set_visible(true)
-	is_countdown_pause_timer = true
-	
-func on_time_countdown_unvisible():
-	$Game_UI/CountDownTimer.set_visible(false)
 	
 func on_market_button_visible():
 	$Game_UI/Market_Button.disabled = false
@@ -226,30 +211,11 @@ func show_accept_button():
 	$Game_UI/accept_button.set_visible(true)
 
 func _process(delta):
+	pass
 	if second_passed and $Game_UI/CountDownTimer.visible :
-		countdown_timer.start()
+		
 		second_passed = false
 
-func show_current_level():
-	level_text_counter.add_color_override("default_color", Color(1,1,1))
-	level_text.add_color_override("default_color", Color(1,1,1))
-
-func show_current_start_level():
-	level_text_counter.add_color_override("default_color", Color(0.47,0.05127, 0.05127))
-	level_text.add_color_override("default_color", Color(0.47,0.05127, 0.05127))
-	level_text_counter.text = String(game_level)
-
-
-func wave_finish():
-	finish_portal += 1
-	if start_portal == finish_portal:
-		finish_portal = 0
-		game_level += 1  
-		for portal in portal_list:
-			portal.wave_stop()
-			portal.set_zombie_level(game_level)
-		show_current_level()
-		on_time_countdown_visible()
 
 var max_border = Vector2()
 var min_border = Vector2()
@@ -317,8 +283,6 @@ func wave_started():
 	started_wave_count += 1
 	if start_portal == started_wave_count:
 		started_wave_count = 0
-		on_time_countdown_unvisible()
-		show_current_start_level()
 		
 func _unhandled_input(event):
 	if event is InputEventMouseButton :
@@ -408,7 +372,7 @@ func finish_turret_buy():
 	tile_grid = null
 	disable_accept_button()
 
-func _on_acceptbutton_pressed():	
+func _on_acceptbutton_pressed():
 	if !is_teleport_buying:
 		finish_turret_buy()
 	else:
@@ -418,24 +382,6 @@ func _on_acceptbutton_pressed():
 	is_opened_market = false
 	is_create_instance = false
 	disable_accept_button()	
-
-func countdown_timer():
-	countdown_timer.set_one_shot(true)
-	countdown_timer.set_wait_time(1)
-	add_child(countdown_timer) #to process
-	countdown_timer.connect("timeout",self, "_on_count_down_timer_timeout") 
-	
-func _on_count_down_timer_timeout():
-	if is_countdown_pause_timer :
-		counttimer = pause_time
-		is_countdown_pause_timer = false
-	counttimer -= 1
-	if  (counttimer < 1):
-		counttimer = pause_time
-	$Game_UI/CountDownTimer/Time.text = String(counttimer)
-	second_passed = true
-	
-
 
 func _on_OptionsButton_pressed():
 	$Game_UI.get_node("Gameover_Screen").set_visible(true)

@@ -74,11 +74,6 @@ animations = [ {
 "name": "attack",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 50 ) ],
-"loop": true,
-"name": "run",
-"speed": 24.0
-}, {
 "frames": [ ExtResource( 51 ), ExtResource( 52 ) ],
 "loop": true,
 "name": "jump",
@@ -88,6 +83,11 @@ animations = [ {
 "loop": false,
 "name": "born",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 50 ) ],
+"loop": true,
+"name": "run",
+"speed": 24.0
 } ]
 
 [node name="Basic_Zombie" type="KinematicBody2D"]

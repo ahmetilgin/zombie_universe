@@ -94,7 +94,7 @@ func _ready():
 	var tile_map_root = get_parent()
 	tile_map = tile_map_root.get_node("TileMap")
 	player = tile_map_root.get_parent().get_node("player")
-	$AnimatedSprite.play("default")
+	set_visible(false)
 	add_zombie_sounds()
 	create_zombie_dead_timer()
 	create_zombie_follow_timer()
@@ -246,9 +246,7 @@ func dead_from_turrent(damage,whodead,dir):
 func chech_zombie_colliding():
 	is_zombie_action = false
 	if attack_ray_cast.is_colliding():
-		var playerFound = false
 		if "player" in attack_ray_cast.get_collider().name:
-			playerFound = true
 			_zombie_attack_to_player(5)
 			is_zombie_action = true
 		elif "Top"  in attack_ray_cast.get_collider().name:
@@ -354,6 +352,7 @@ func _on_AnimatedSprite_animation_finished():
 
 func _on_BornTimer_timeout():
 	is_borned = false
+	set_visible(true)
 	$AnimatedSprite.play("born")
 	pass # Replace with function body.
 	
@@ -365,3 +364,10 @@ func save():
 		"position_y": get_global_position().y,
 	}
 	return dict
+	
+	
+func load_data(node_data):
+	set_global_position(Vector2(node_data["position_x"], node_data["position_y"]))
+	pass
+
+
