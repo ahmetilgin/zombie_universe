@@ -140,7 +140,7 @@ const gravity = 20
 const max_hp = 1000
 var hp = 100
 var speed = 50
-var max_speed = 450
+var max_speed = 600
 var motion = Vector2(0,0)
 var slide_speed = 700
 var killed_counter = 0
@@ -497,14 +497,14 @@ func check_fire_pressed():
 	if Input.is_action_just_released("ui_focus_next") :
 		is_attack = false
 
-func check_first_and_second_jump():
-		if (Input.is_action_just_pressed("ui_up") ) and is_first_jump and !is_second_jump:
-			_play_jump_animation()
-			motion.y = jump
-			is_second_jump = true
-			is_first_jump = false
+func check_jump():
+		
+
+		if(Input.is_action_just_released("ui_up")) and motion.y < 0:
+
+			motion.y = jump / 3
 		if is_on_floor():
-			if (Input.is_action_just_pressed("ui_up") ) and !is_first_jump:
+			if (Input.is_action_just_pressed("ui_up") ) :
 				motion.y = jump
 				is_first_jump = true
 				is_second_jump = false
@@ -535,7 +535,7 @@ func _physics_process(delta):
 		check_space_pressed()
 		check_melee_pressed()
 		check_fire_pressed()
-		check_first_and_second_jump();
+		check_jump()
 		check_falling()
 		if is_on_floor() and _is_idle():
 			_play_idle_animation()
