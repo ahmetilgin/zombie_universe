@@ -23,6 +23,7 @@ script = ExtResource( 1 )
 [node name="Sprite" type="AnimatedSprite" parent="."]
 position = Vector2( -18.7526, -9.71523 )
 scale = Vector2( 2.55435, 3.54336 )
+z_index = -2
 frames = SubResource( 1 )
 animation = "shoots"
 flip_h = true

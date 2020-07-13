@@ -155,8 +155,6 @@ var is_hurt = false
 var is_jump = false
 var is_melee = false
 var is_shift_stop = false
-var is_first_jump = false
-var is_second_jump = false
 var bullet_size = 9999
 var change_color_tween= Tween.new()
 var pulse_tween= Tween.new()
@@ -358,28 +356,28 @@ func _set_is_melee(melee_state):
 func _set_is_attack(attack_state):
 	is_attack = attack_state
 
-
 func _is_movable():
-	return !is_melee && !is_attack && !is_down
+	return !is_melee && !is_down
 	
-
 func _is_idle():
 	return !is_down && !is_melee && !is_move
 	
 func _play_melee_sound():
 	SwordSlide_Sound.play()
 	
-func _play_animation(animation_state):
+func _play_animation(animation_state, backward = false):
 	var anim = animation_state + "_" + str(current_bullet_power) 
 	if animation_state == "run" or animation_state == "attack":
 		$AnimatedSprite.set_speed_scale(gun_speed[current_bullet_power])
-	$AnimatedSprite.play(anim)
+	$AnimatedSprite.play(anim, backward)
 	
 func _play_idle_animation():
-	_play_animation("idle")
+	if !is_attack:
+		_play_animation("idle")
 
 func _play_jump_animation():
-	_play_animation("jump")
+	if !is_attack:
+		_play_animation("jump")
 	is_jump = true
 
 func _play_melee_animation():
@@ -389,12 +387,20 @@ func _play_slide_animation():
 	_play_animation("slide")	
 	
 func _play_attack_animation():
-	if !is_attack:
+	if !is_attack and !is_down and !is_move:
 		_play_animation("attack")	
 
 func _play_run_animation():
 	if !is_jump:
-		_play_animation("run")
+		if !is_attack:
+			_play_animation("run")
+		else:
+			var is_backward = false
+			if $AnimatedSprite.flip_h and motion.x > 0:
+				is_backward = true
+			if !$AnimatedSprite.flip_h and motion.x < 0:
+				is_backward = true
+			_play_animation("walk", is_backward)
 		
 func _play_fall_animation():
 	_play_animation("fall")
@@ -407,24 +413,33 @@ func _move_slide():
 
 func _move_right():
 	is_move = true
-	motion.x=min(motion.x + speed, max_speed *  gun_speed[current_bullet_power])
+	if !is_attack:
+		motion.x=min(motion.x + speed, max_speed *  gun_speed[current_bullet_power])
+	else:
+		motion.x = min(motion.x + speed, max_speed / 4 *  gun_speed[current_bullet_power])
 	animation_flip_h(false)
 	_play_run_animation()
-	if sign($Position2D.position.x)==-1:
-		$Position2D.position.x*=-1
+	if !is_attack:
+		if sign($Position2D.position.x)==-1:
+			$Position2D.position.x*=-1
 
 func _move_left():
 	is_move = true
-	motion.x = max(motion.x-speed ,-max_speed *  gun_speed[current_bullet_power])
+	if !is_attack:
+		motion.x = max(motion.x-speed ,-max_speed *  gun_speed[current_bullet_power])
+	else:
+		motion.x = max(motion.x-speed ,-max_speed /  4 *  gun_speed[current_bullet_power])
 	_play_run_animation()
 	animation_flip_h(true)
-	if sign($Position2D.position.x)==1:
-		$Position2D.position.x*=-1
+	if !is_attack:
+		if sign($Position2D.position.x)==1:
+			$Position2D.position.x*=-1
 
 		
 
 func animation_flip_h(choice):
-	$AnimatedSprite.flip_h = choice	
+	if !is_attack:
+		$AnimatedSprite.flip_h = choice	
 
 func _set_shift_stop(shift_stop_state):
 	is_shift_stop = shift_stop_state
@@ -460,7 +475,7 @@ func check_right_pressed():
 		is_move = false
 
 func check_down_pressed():
-	if Input.is_action_just_pressed("ui_down") :
+	if Input.is_action_just_pressed("ui_down") and !is_attack:
 		_set_is_down(true)
 		_move_slide()
 		_play_slide_animation()
@@ -481,12 +496,13 @@ func check_melee_pressed():
 
 func check_fire_pressed():
 	if Input.is_action_pressed("ui_focus_next") :
-		if  _check_bullet_count() and !is_in_time_start_weapon_fire && !is_melee:
+		if  _check_bullet_count() and !is_in_time_start_weapon_fire && !is_melee && !is_down:
 			bullet_shoot_timer.start()
 			_fire_bullet()
 			is_in_time_start_weapon_fire = true
 			_play_attack_animation()
-			_set_is_attack(true)		
+			_set_is_attack(true)
+					
 			bullet_sound[current_bullet_power].play()
 			_set_current_bullet(bullet_type[current_bullet_power].instance())
 			get_parent().add_child(current_bullet)
@@ -498,21 +514,15 @@ func check_fire_pressed():
 		is_attack = false
 
 func check_jump():
-		
-
-		if(Input.is_action_just_released("ui_up")) and motion.y < 0:
-
-			motion.y = jump / 3
-		if is_on_floor():
-			if (Input.is_action_just_pressed("ui_up") ) :
-				motion.y = jump
-				is_first_jump = true
-				is_second_jump = false
-				_play_jump_animation()
+	if(Input.is_action_just_released("ui_up")) and motion.y < 0:
+		motion.y = jump / 2
+	if is_on_floor():
+		if (Input.is_action_pressed("ui_up") ) :		
+			motion.y = jump
+			_play_jump_animation()
 				
 
 func check_falling():	
-
 	if($RayCast2D.is_colliding() and "TileMap" in $RayCast2D.get_collider().name ):
 			is_set_player_peak_height = false
 	if !is_on_floor()  and motion.y > 0:
