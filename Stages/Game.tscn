@@ -80,8 +80,6 @@ __meta__ = {
 "_edit_horizontal_guides_": [  ]
 }
 
-[node name="Background" parent="." instance=ExtResource( 5 )]
-
 [node name="Game_UI" type="CanvasLayer" parent="."]
 script = ExtResource( 2 )
 
@@ -329,14 +327,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-layer = -1
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2( 854.57, 750 )
-z_as_relative = false
-motion_mirroring = Vector2( 1, 1 )
-
 [node name="Stage1Sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 28 )
 volume_db = -31.424
@@ -344,6 +334,8 @@ autoplay = true
 
 [node name="trambolin" parent="." instance=ExtResource( 3 )]
 position = Vector2( 4292.84, 3447.86 )
+
+[node name="Background" parent="." instance=ExtResource( 5 )]
 [connection signal="pressed" from="Game_UI/accept_button" to="." method="_on_acceptbutton_pressed"]
 [connection signal="pressed" from="Game_UI/Market_Button" to="." method="_on_TouchScreenButton_pressed"]
 [connection signal="pressed" from="Game_UI/OptionsButton" to="." method="_on_OptionsButton_pressed"]
