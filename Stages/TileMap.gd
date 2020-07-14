@@ -233,7 +233,7 @@ func find_random_target_position(target_position,init_position, name):
 	
 	
 var old_player_pos = Vector2(0,0) 
-
+var point_map = {}
 func _get_path(init_position: Vector2, target_position: Vector2, name) -> Array:
 #	if abs(old_player_pos.distance_to(target_position)) > 500:
 #		founded_zombie_target_path.clear()
@@ -257,10 +257,17 @@ func _get_path(init_position: Vector2, target_position: Vector2, name) -> Array:
 		world_path = []
 		for point in path:
 			var id = calculate_point_index(point)
-			if astar.get_point_weight_scale(id) > 10000:
+			if astar.get_point_weight_scale(id) > 2000:
 				print(id, ": sifirlandi")
 				astar.set_point_weight_scale(id, 1)
-			astar.set_point_weight_scale(id, astar.get_point_weight_scale(id) + 1)
+				point_map[id] = 1
+				
+			if !point_map.has(id):
+				point_map[id] = 1
+			point_map[id] = point_map[id] + 1
+			if point_map[id] > 3:
+				astar.set_point_weight_scale(id, point_map[id] / 3)
+				
 			var point_world: = map_to_world(Vector2(point.x, point.y))
 			world_path.append(point_world + _half_cell_size) 
 			founded_path[name].append(point_world + _half_cell_size)
