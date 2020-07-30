@@ -529,7 +529,7 @@ func check_falling():
 		if(!is_set_player_peak_height):
 			is_set_player_peak_height = true
 			player_peak_height = get_global_position()
-			print("Zıplama yüksekliği",player_peak_height)
+#			print("Zıplama yüksekliği",player_peak_height)
 		if !is_attack:
 			_play_fall_animation()
 		

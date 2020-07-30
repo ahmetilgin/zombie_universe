@@ -46,7 +46,7 @@ func save_game():
 
 		# Call the node's save function
 		var node_data = node.call("save")
-		print(node_data)
+#		print(node_data)
 		# Store the save dictionary as a new line in the save file
 		save_game.store_line(to_json(node_data))
 	save_game.close()

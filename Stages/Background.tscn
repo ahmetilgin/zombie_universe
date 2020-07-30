@@ -1,13 +1,31 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Stages/Background.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/backgndbrick/ColorfulBrick.jpg" type="Texture" id=2]
-[ext_resource path="res://Resources/Sprites/BackGroundObject/shadow/door1.png" type="Texture" id=3]
-[ext_resource path="res://Resources/Sprites/BackGroundObject/shadow/door4.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Sprites/BackGroundObject/shadow/pencere1.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Sprites/BackGroundObject/shadow/door9.png" type="Texture" id=4]
 [ext_resource path="res://Stages/TileMap.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Resources/Sprites/BackGroundObject/shadow/door7.png" type="Texture" id=6]
-[ext_resource path="res://Resources/Sprites/BackGroundObject/shadow/door10.png" type="Texture" id=7]
-[ext_resource path="res://Resources/Sprites/BackGroundObject/shadow/door12.png" type="Texture" id=8]
+[ext_resource path="res://Resources/Sprites/BackGroundObject/shadow/fici.png" type="Texture" id=6]
+[ext_resource path="res://Resources/Sprites/BackGroundObject/shadow/kafes.png" type="Texture" id=7]
+[ext_resource path="res://Resources/Sprites/BackGroundObject/shadow/iskenc2.png" type="Texture" id=8]
+[ext_resource path="res://Resources/Sprites/BackGroundObject/shadow/door11.png" type="Texture" id=9]
+[ext_resource path="res://Resources/Sprites/BackGroundObject/shadow/bone1.png" type="Texture" id=10]
+[ext_resource path="res://Resources/Sprites/BackGroundObject/shadow/column1.png" type="Texture" id=11]
+[ext_resource path="res://Resources/Sprites/BackGroundObject/shadow/ayaktafare.png" type="Texture" id=12]
+[ext_resource path="res://Resources/Sprites/BackGroundObject/shadow/door10.png" type="Texture" id=13]
+[ext_resource path="res://Resources/Sprites/BackGroundObject/shadow/bones.png" type="Texture" id=14]
+[ext_resource path="res://Resources/Sprites/BackGroundObject/shadow/iskence.png" type="Texture" id=15]
+[ext_resource path="res://Resources/Sprites/BackGroundObject/shadow/bone2.png" type="Texture" id=16]
+[ext_resource path="res://Resources/Sprites/BackGroundObject/shadow/door1.png" type="Texture" id=17]
+[ext_resource path="res://Resources/Sprites/BackGroundObject/shadow/door12.png" type="Texture" id=18]
+[ext_resource path="res://Resources/Sprites/BackGroundObject/shadow/door6.png" type="Texture" id=19]
+[ext_resource path="res://Resources/Sprites/BackGroundObject/shadow/door7.png" type="Texture" id=20]
+[ext_resource path="res://Resources/Sprites/BackGroundObject/shadow/pencere3.png" type="Texture" id=21]
+[ext_resource path="res://Resources/Sprites/BackGroundObject/shadow/door2.png" type="Texture" id=22]
+[ext_resource path="res://Resources/Sprites/BackGroundObject/shadow/door3.png" type="Texture" id=23]
+[ext_resource path="res://Resources/Sprites/BackGroundObject/shadow/pencere2.png" type="Texture" id=24]
+[ext_resource path="res://Resources/Sprites/BackGroundObject/shadow/door8.png" type="Texture" id=25]
+[ext_resource path="res://Resources/Sprites/BackGroundObject/shadow/door4.png" type="Texture" id=26]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -44,7 +62,7 @@ shader = SubResource( 1 )
 [node name="Background" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="Control" type="Control" parent="."]
+[node name="floor0" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
 rect_scale = Vector2( 0.3, 0.3 )
@@ -52,24 +70,1595 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="door1" type="Sprite" parent="Control"]
-position = Vector2( 2809.55, 5410.19 )
+[node name="bone1" type="Sprite" parent="floor0"]
+position = Vector2( 9372.39, 22549.4 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 10 )
+
+[node name="ayaktafare" type="Sprite" parent="floor0"]
+position = Vector2( 9157.73, 22526.7 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 12 )
+
+[node name="pencere1" type="Sprite" parent="floor0"]
+position = Vector2( 3377.1, 22497.8 )
+scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 3 )
 
-[node name="door4" type="Sprite" parent="Control"]
-position = Vector2( 4495.52, 5309.39 )
+[node name="pencere2" type="Sprite" parent="floor0"]
+position = Vector2( 12785.2, 22497.8 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="pencere3" type="Sprite" parent="floor0"]
+position = Vector2( 19701.1, 22497.8 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="pencere4" type="Sprite" parent="floor0"]
+position = Vector2( 31098.1, 22568.4 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="door9" type="Sprite" parent="floor0"]
+position = Vector2( 17178.3, 22434.8 )
 texture = ExtResource( 4 )
 
-[node name="door7" type="Sprite" parent="Control"]
-position = Vector2( 6158.2, 7437.25 )
+[node name="fici" type="Sprite" parent="floor0"]
+position = Vector2( 14216.7, 23069.4 )
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 6 )
 
-[node name="door10" type="Sprite" parent="Control"]
-position = Vector2( 1279.6, 7152.33 )
+[node name="column1" type="Sprite" parent="floor0"]
+modulate = Color( 1, 0.776471, 0.305882, 1 )
+position = Vector2( 6102.11, 22495.8 )
+scale = Vector2( 0.921, 0.799 )
+texture = ExtResource( 11 )
+
+[node name="column2" type="Sprite" parent="floor0"]
+modulate = Color( 1, 0.776471, 0.305882, 1 )
+position = Vector2( 15709.4, 22490.8 )
+scale = Vector2( 0.921, 0.799 )
+texture = ExtResource( 11 )
+
+[node name="column3" type="Sprite" parent="floor0"]
+modulate = Color( 1, 0.776471, 0.305882, 1 )
+position = Vector2( 24844.6, 22493 )
+scale = Vector2( 0.921, 0.799 )
+texture = ExtResource( 11 )
+
+[node name="door11" type="Sprite" parent="floor0"]
+position = Vector2( 7427.83, 22753.5 )
+texture = ExtResource( 9 )
+
+[node name="kafes" type="Sprite" parent="floor0"]
+position = Vector2( 9258.98, 22220.4 )
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 7 )
 
-[node name="door12" type="Sprite" parent="Control"]
-position = Vector2( 7892.46, 5429.26 )
+[node name="kafes2" type="Sprite" parent="floor0"]
+position = Vector2( 31094.7, 22241 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="iskenc2" type="Sprite" parent="floor0"]
+position = Vector2( 4313.64, 23031.3 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 8 )
+
+[node name="bones" type="Sprite" parent="floor0"]
+position = Vector2( 11388.2, 23097.8 )
+scale = Vector2( 0.2, 0.2 )
+z_index = -1
+texture = ExtResource( 14 )
+
+[node name="bone2" type="Sprite" parent="floor0"]
+position = Vector2( 20296.3, 23199.2 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 16 )
+
+[node name="bone3" type="Sprite" parent="floor0"]
+position = Vector2( 14205.1, 22826.8 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 10 )
+
+[node name="bones2" type="Sprite" parent="floor0"]
+position = Vector2( 25507.3, 23095.1 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 14 )
+
+[node name="bones3" type="Sprite" parent="floor0"]
+position = Vector2( 32433.3, 23094.2 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 14 )
+
+[node name="door10" type="Sprite" parent="floor0"]
+position = Vector2( 28295.3, 22434 )
+texture = ExtResource( 13 )
+
+[node name="iskence2" type="Sprite" parent="floor0"]
+position = Vector2( 33113.6, 22886.3 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 15 )
+
+[node name="iskence" type="Sprite" parent="floor0"]
+position = Vector2( 21317.1, 22884.8 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 15 )
+
+[node name="iskenc3" type="Sprite" parent="floor0"]
+position = Vector2( 26308.5, 23045.9 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 8 )
+
+[node name="floor1" type="Control" parent="."]
+margin_left = 40.5986
+margin_top = -577.599
+margin_right = 80.5986
+margin_bottom = -537.599
+rect_scale = Vector2( 0.3, 0.3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bone1" type="Sprite" parent="floor1"]
+position = Vector2( 1935.82, 22523.8 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 10 )
+
+[node name="pencere1" type="Sprite" parent="floor1"]
+modulate = Color( 0.87451, 0.239216, 0.239216, 1 )
+position = Vector2( 826.936, 22530.5 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 24 )
+
+[node name="pencere2" type="Sprite" parent="floor1"]
+modulate = Color( 0.87451, 0.239216, 0.239216, 1 )
+position = Vector2( 8286.69, 22478.3 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 24 )
+
+[node name="pencere3" type="Sprite" parent="floor1"]
+modulate = Color( 0.87451, 0.239216, 0.239216, 1 )
+position = Vector2( 17356.1, 22434.4 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 24 )
+
+[node name="pencere4" type="Sprite" parent="floor1"]
+modulate = Color( 0.87451, 0.239216, 0.239216, 1 )
+position = Vector2( 25852, 22421.9 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 24 )
+
+[node name="door9" type="Sprite" parent="floor1"]
+position = Vector2( 19952.2, 22588.7 )
+texture = ExtResource( 23 )
+
+[node name="fici" type="Sprite" parent="floor1"]
+position = Vector2( 17941.9, 23093.4 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+
+[node name="column1" type="Sprite" parent="floor1"]
+modulate = Color( 1, 0.776471, 0.305882, 1 )
+position = Vector2( 4742.4, 22506.9 )
+scale = Vector2( 0.921, 0.799 )
+texture = ExtResource( 11 )
+
+[node name="column2" type="Sprite" parent="floor1"]
+modulate = Color( 1, 0.776471, 0.305882, 1 )
+position = Vector2( 11884.1, 22490.8 )
+scale = Vector2( 0.921, 0.799 )
+texture = ExtResource( 11 )
+
+[node name="column3" type="Sprite" parent="floor1"]
+modulate = Color( 1, 0.776471, 0.305882, 1 )
+position = Vector2( 18775.6, 22493 )
+scale = Vector2( 0.921, 0.799 )
+texture = ExtResource( 11 )
+
+[node name="door11" type="Sprite" parent="floor1"]
+position = Vector2( 10381.6, 22682.9 )
+texture = ExtResource( 18 )
+
+[node name="kafes" type="Sprite" parent="floor1"]
+position = Vector2( 1968.13, 22204.1 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="kafes2" type="Sprite" parent="floor1"]
+position = Vector2( 24263.9, 22220.4 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="iskenc2" type="Sprite" parent="floor1"]
+position = Vector2( 14277.4, 23031.5 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 8 )
+
+[node name="bones" type="Sprite" parent="floor1"]
+position = Vector2( 13845.9, 23095.3 )
+scale = Vector2( 0.2, 0.2 )
+z_index = -1
+texture = ExtResource( 14 )
+
+[node name="bone2" type="Sprite" parent="floor1"]
+position = Vector2( 20834.6, 23199.2 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 16 )
+
+[node name="bone3" type="Sprite" parent="floor1"]
+position = Vector2( 14279.6, 22675.9 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 10 )
+
+[node name="bones2" type="Sprite" parent="floor1"]
+position = Vector2( 6410.85, 23107.7 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 14 )
+
+[node name="bones4" type="Sprite" parent="floor1"]
+position = Vector2( 1851.14, 23093.9 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 14 )
+
+[node name="bones3" type="Sprite" parent="floor1"]
+position = Vector2( 29629.5, 23104.1 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 14 )
+
+[node name="door10" type="Sprite" parent="floor1"]
+position = Vector2( 31922.4, 22653.7 )
+texture = ExtResource( 17 )
+
+[node name="iskence2" type="Sprite" parent="floor1"]
+position = Vector2( 30113.6, 22894.9 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 15 )
+
+[node name="iskence" type="Sprite" parent="floor1"]
+position = Vector2( 6976.5, 22888.1 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 15 )
+
+[node name="iskenc3" type="Sprite" parent="floor1"]
+position = Vector2( 24536.1, 23045.9 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 8 )
+
+[node name="floor2" type="Control" parent="."]
+margin_left = 79.4126
+margin_top = -1153.48
+margin_right = 119.413
+margin_bottom = -1113.48
+rect_scale = Vector2( 0.3, 0.3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bone1" type="Sprite" parent="floor2"]
+position = Vector2( 9372.39, 22549.4 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 10 )
+
+[node name="ayaktafare" type="Sprite" parent="floor2"]
+position = Vector2( 9157.73, 22526.7 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 12 )
+
+[node name="pencere1" type="Sprite" parent="floor2"]
+modulate = Color( 0.882353, 0.933333, 0.521569, 1 )
+position = Vector2( 5340.96, 22497.8 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="pencere2" type="Sprite" parent="floor2"]
+modulate = Color( 0.882353, 0.933333, 0.521569, 1 )
+position = Vector2( 10421, 22591.4 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="pencere3" type="Sprite" parent="floor2"]
+modulate = Color( 0.882353, 0.933333, 0.521569, 1 )
+position = Vector2( 22968.4, 22497.8 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="pencere4" type="Sprite" parent="floor2"]
+modulate = Color( 0.882353, 0.933333, 0.521569, 1 )
+position = Vector2( 31098.1, 22568.4 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="door9" type="Sprite" parent="floor2"]
+position = Vector2( 17921.4, 22527.6 )
+texture = ExtResource( 22 )
+
+[node name="fici" type="Sprite" parent="floor2"]
+position = Vector2( 15316.4, 23063.7 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+
+[node name="column1" type="Sprite" parent="floor2"]
+modulate = Color( 1, 0.776471, 0.305882, 1 )
+position = Vector2( 1692.16, 22493.4 )
+scale = Vector2( 0.921, 0.799 )
+texture = ExtResource( 11 )
+
+[node name="column2" type="Sprite" parent="floor2"]
+modulate = Color( 1, 0.776471, 0.305882, 1 )
+position = Vector2( 9324.57, 22486.3 )
+scale = Vector2( 0.921, 0.799 )
+texture = ExtResource( 11 )
+
+[node name="column3" type="Sprite" parent="floor2"]
+modulate = Color( 1, 0.776471, 0.305882, 1 )
+position = Vector2( 24844.6, 22493 )
+scale = Vector2( 0.921, 0.799 )
+texture = ExtResource( 11 )
+
+[node name="door11" type="Sprite" parent="floor2"]
+position = Vector2( 7383.81, 22792.8 )
+texture = ExtResource( 20 )
+
+[node name="kafes" type="Sprite" parent="floor2"]
+position = Vector2( 9258.98, 22220.4 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="kafes2" type="Sprite" parent="floor2"]
+position = Vector2( 31141.2, 22213.1 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="iskenc2" type="Sprite" parent="floor2"]
+position = Vector2( 834.953, 23046.8 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 8 )
+
+[node name="bones" type="Sprite" parent="floor2"]
+position = Vector2( 486.78, 23112.2 )
+scale = Vector2( 0.2, 0.2 )
+z_index = -1
+texture = ExtResource( 14 )
+
+[node name="bone2" type="Sprite" parent="floor2"]
+position = Vector2( 21752.1, 23206 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 16 )
+
+[node name="bone3" type="Sprite" parent="floor2"]
+position = Vector2( 15312.1, 23211.3 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 10 )
+
+[node name="bones2" type="Sprite" parent="floor2"]
+position = Vector2( 25907.2, 23095.1 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 14 )
+
+[node name="bones3" type="Sprite" parent="floor2"]
+position = Vector2( 29855.9, 23116.8 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 14 )
+
+[node name="iskence2" type="Sprite" parent="floor2"]
+position = Vector2( 29187.6, 22882.9 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 15 )
+
+[node name="iskence" type="Sprite" parent="floor2"]
+position = Vector2( 21317.1, 22884.8 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 15 )
+
+[node name="iskenc3" type="Sprite" parent="floor2"]
+position = Vector2( 26308.5, 23045.9 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 8 )
+
+[node name="floor3" type="Control" parent="."]
+margin_left = 97.6567
+margin_top = -1729.78
+margin_right = 137.657
+margin_bottom = -1689.78
+rect_scale = Vector2( 0.3, 0.3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bone1" type="Sprite" parent="floor3"]
+position = Vector2( 1860.16, 22530.3 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 10 )
+
+[node name="ayaktafare" type="Sprite" parent="floor3"]
+position = Vector2( 1645.5, 22507.6 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 12 )
+
+[node name="pencere1" type="Sprite" parent="floor3"]
+position = Vector2( 3186.46, 22475.6 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 21 )
+
+[node name="pencere2" type="Sprite" parent="floor3"]
+position = Vector2( 9347.71, 22483 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 21 )
+
+[node name="pencere3" type="Sprite" parent="floor3"]
+position = Vector2( 23939.3, 22473.2 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 21 )
+
+[node name="pencere4" type="Sprite" parent="floor3"]
+position = Vector2( 29775.9, 22351 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 21 )
+
+[node name="door9" type="Sprite" parent="floor3"]
+position = Vector2( 12808.8, 22618.1 )
+texture = ExtResource( 19 )
+
+[node name="fici" type="Sprite" parent="floor3"]
+position = Vector2( 18144.8, 23071 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+
+[node name="column1" type="Sprite" parent="floor3"]
+modulate = Color( 1, 0.776471, 0.305882, 1 )
+position = Vector2( 6697.06, 22489.1 )
+scale = Vector2( 0.921, 0.799 )
+texture = ExtResource( 11 )
+
+[node name="column2" type="Sprite" parent="floor3"]
+modulate = Color( 1, 0.776471, 0.305882, 1 )
+position = Vector2( 13792.4, 22496.1 )
+scale = Vector2( 0.921, 0.799 )
+texture = ExtResource( 11 )
+
+[node name="column3" type="Sprite" parent="floor3"]
+modulate = Color( 1, 0.776471, 0.305882, 1 )
+position = Vector2( 31333, 22497.8 )
+scale = Vector2( 0.921, 0.799 )
+texture = ExtResource( 11 )
+
+[node name="door11" type="Sprite" parent="floor3"]
+position = Vector2( 1854.36, 22570.7 )
+texture = ExtResource( 26 )
+
+[node name="kafes" type="Sprite" parent="floor3"]
+position = Vector2( 4641.83, 22232.3 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="kafes2" type="Sprite" parent="floor3"]
+position = Vector2( 30404.4, 22230.7 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="iskenc2" type="Sprite" parent="floor3"]
+position = Vector2( 7953.46, 23050.8 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 8 )
+
+[node name="bones" type="Sprite" parent="floor3"]
+position = Vector2( 4629.91, 23112.8 )
+scale = Vector2( 0.2, 0.2 )
+z_index = -1
+texture = ExtResource( 14 )
+
+[node name="bone2" type="Sprite" parent="floor3"]
+position = Vector2( 20925.2, 23207.8 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 16 )
+
+[node name="bone3" type="Sprite" parent="floor3"]
+position = Vector2( 8522.84, 23227.2 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 10 )
+
+[node name="bones2" type="Sprite" parent="floor3"]
+position = Vector2( 25507.3, 23095.1 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 14 )
+
+[node name="door10" type="Sprite" parent="floor3"]
+position = Vector2( 27439.8, 22424.7 )
+texture = ExtResource( 4 )
+
+[node name="iskence2" type="Sprite" parent="floor3"]
+position = Vector2( 32557, 22886.3 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 15 )
+
+[node name="iskence" type="Sprite" parent="floor3"]
+position = Vector2( 21317.1, 22884.8 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 15 )
+
+[node name="iskenc3" type="Sprite" parent="floor3"]
+position = Vector2( 26308.5, 23045.9 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 8 )
+
+[node name="bones3" type="Sprite" parent="floor3"]
+position = Vector2( 32197.5, 23116.9 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 14 )
+
+[node name="floor4" type="Control" parent="."]
+margin_left = 86.2729
+margin_top = -2303.05
+margin_right = 126.273
+margin_bottom = -2263.05
+rect_scale = Vector2( 0.3, 0.3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bone1" type="Sprite" parent="floor4"]
+position = Vector2( 5711.72, 22508.8 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 10 )
+
+[node name="ayaktafare" type="Sprite" parent="floor4"]
+position = Vector2( 5497.05, 22486.1 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 12 )
+
+[node name="pencere1" type="Sprite" parent="floor4"]
+position = Vector2( 3259.65, 22409.7 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="pencere2" type="Sprite" parent="floor4"]
+position = Vector2( 9791.13, 22480.6 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="pencere3" type="Sprite" parent="floor4"]
+position = Vector2( 21235.5, 22453.3 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="pencere4" type="Sprite" parent="floor4"]
+position = Vector2( 25738.7, 22346 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="door9" type="Sprite" parent="floor4"]
+position = Vector2( 656.772, 22634 )
+texture = ExtResource( 9 )
+
+[node name="fici" type="Sprite" parent="floor4"]
+position = Vector2( 14216.7, 23069.4 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+
+[node name="column1" type="Sprite" parent="floor4"]
+modulate = Color( 1, 0.776471, 0.305882, 1 )
+position = Vector2( 11868.7, 22483.9 )
+scale = Vector2( 0.921, 0.799 )
+texture = ExtResource( 11 )
+
+[node name="column2" type="Sprite" parent="floor4"]
+modulate = Color( 1, 0.776471, 0.305882, 1 )
+position = Vector2( 14903.4, 22484.6 )
+scale = Vector2( 0.921, 0.799 )
+texture = ExtResource( 11 )
+
+[node name="column3" type="Sprite" parent="floor4"]
+modulate = Color( 1, 0.776471, 0.305882, 1 )
+position = Vector2( 26584.6, 22494.1 )
+scale = Vector2( 0.921, 0.799 )
+texture = ExtResource( 11 )
+
+[node name="door11" type="Sprite" parent="floor4"]
+position = Vector2( 16804.8, 22644.3 )
+texture = ExtResource( 17 )
+
+[node name="kafes" type="Sprite" parent="floor4"]
+position = Vector2( 5598.31, 22179.8 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="kafes2" type="Sprite" parent="floor4"]
+position = Vector2( 28382.8, 22143.8 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="iskenc2" type="Sprite" parent="floor4"]
+position = Vector2( 4313.64, 23031.3 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 8 )
+
+[node name="bones" type="Sprite" parent="floor4"]
+position = Vector2( 3945.76, 23104.3 )
+scale = Vector2( 0.2, 0.2 )
+z_index = -1
+texture = ExtResource( 14 )
+
+[node name="bone2" type="Sprite" parent="floor4"]
+position = Vector2( 18606.6, 23203.2 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 16 )
+
+[node name="bone3" type="Sprite" parent="floor4"]
+position = Vector2( 14205.1, 22826.8 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 10 )
+
+[node name="bones2" type="Sprite" parent="floor4"]
+position = Vector2( 24218.4, 23110.6 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 14 )
+
+[node name="bones3" type="Sprite" parent="floor4"]
+position = Vector2( 32433.3, 23094.2 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 14 )
+
+[node name="door10" type="Sprite" parent="floor4"]
+position = Vector2( 22622.3, 22789.3 )
+texture = ExtResource( 20 )
+
+[node name="iskence2" type="Sprite" parent="floor4"]
+position = Vector2( 24764.4, 22876.6 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 15 )
+
+[node name="iskence" type="Sprite" parent="floor4"]
+position = Vector2( 19063, 22881.5 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 15 )
+
+[node name="iskenc3" type="Sprite" parent="floor4"]
+position = Vector2( 32822.8, 23033.2 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 8 )
+
+[node name="floor5" type="Control" parent="."]
+margin_left = 52.0249
+margin_top = -2871.56
+margin_right = 92.0249
+margin_bottom = -2831.56
+rect_scale = Vector2( 0.3, 0.3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bone1" type="Sprite" parent="floor5"]
+position = Vector2( 2420.52, 22480.6 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 10 )
+
+[node name="ayaktafare" type="Sprite" parent="floor5"]
+position = Vector2( 2205.87, 22457.9 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 12 )
+
+[node name="kafes" type="Sprite" parent="floor5"]
+position = Vector2( 2307.11, 22151.6 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="pencere1" type="Sprite" parent="floor5"]
+position = Vector2( 727.13, 22377.4 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="pencere2" type="Sprite" parent="floor5"]
+position = Vector2( 15097.8, 22371.7 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="pencere3" type="Sprite" parent="floor5"]
+position = Vector2( 19212, 22606.5 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="pencere4" type="Sprite" parent="floor5"]
+position = Vector2( 25128.9, 22498.1 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="door9" type="Sprite" parent="floor5"]
+position = Vector2( 11719.9, 22359.1 )
+texture = ExtResource( 25 )
+
+[node name="fici" type="Sprite" parent="floor5"]
+position = Vector2( 16674.6, 23042.9 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+
+[node name="fici2" type="Sprite" parent="floor5"]
+position = Vector2( 16367.5, 23042.9 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+
+[node name="fici3" type="Sprite" parent="floor5"]
+position = Vector2( 16678.5, 22661.9 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+
+[node name="column1" type="Sprite" parent="floor5"]
+modulate = Color( 1, 0.776471, 0.305882, 1 )
+position = Vector2( 1661.04, 22464.8 )
+scale = Vector2( 0.921, 0.799 )
+texture = ExtResource( 11 )
+
+[node name="column2" type="Sprite" parent="floor5"]
+modulate = Color( 1, 0.776471, 0.305882, 1 )
+position = Vector2( 15218.8, 22462.8 )
+scale = Vector2( 0.921, 0.799 )
+texture = ExtResource( 11 )
+
+[node name="column3" type="Sprite" parent="floor5"]
+modulate = Color( 1, 0.776471, 0.305882, 1 )
+position = Vector2( 23069.1, 22481 )
+scale = Vector2( 0.921, 0.799 )
+texture = ExtResource( 11 )
+
+[node name="door11" type="Sprite" parent="floor5"]
+position = Vector2( 5728.01, 22502.9 )
+texture = ExtResource( 22 )
+
+[node name="kafes2" type="Sprite" parent="floor5"]
+position = Vector2( 30491.8, 22118.2 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="iskenc2" type="Sprite" parent="floor5"]
+position = Vector2( 4313.64, 23031.3 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 8 )
+
+[node name="bones" type="Sprite" parent="floor5"]
+position = Vector2( 4444.35, 23068.3 )
+scale = Vector2( 0.2, 0.2 )
+z_index = -1
+texture = ExtResource( 14 )
+
+[node name="bone2" type="Sprite" parent="floor5"]
+position = Vector2( 20798.7, 23172.7 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 16 )
+
+[node name="bone3" type="Sprite" parent="floor5"]
+position = Vector2( 16849.8, 23183.8 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 10 )
+
+[node name="bones2" type="Sprite" parent="floor5"]
+position = Vector2( 32087.7, 23073.6 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 14 )
+
+[node name="bones3" type="Sprite" parent="floor5"]
+position = Vector2( 32433.3, 23094.2 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 14 )
+
+[node name="door10" type="Sprite" parent="floor5"]
+position = Vector2( 27637.5, 22623.8 )
+texture = ExtResource( 18 )
+
+[node name="iskence2" type="Sprite" parent="floor5"]
+position = Vector2( 33113.6, 22886.3 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 15 )
+
+[node name="iskence" type="Sprite" parent="floor5"]
+position = Vector2( 21317.1, 22884.8 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 15 )
+
+[node name="iskenc3" type="Sprite" parent="floor5"]
+position = Vector2( 17578, 23005.8 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 8 )
+
+[node name="floor6" type="Control" parent="."]
+margin_left = 47.7075
+margin_top = -3456.4
+margin_right = 87.7075
+margin_bottom = -3416.4
+rect_scale = Vector2( 0.3, 0.3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bone1" type="Sprite" parent="floor6"]
+position = Vector2( 10936.2, 22534.7 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 10 )
+
+[node name="ayaktafare" type="Sprite" parent="floor6"]
+position = Vector2( 10721.6, 22511.9 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 12 )
+
+[node name="pencere1" type="Sprite" parent="floor6"]
+position = Vector2( 1702.95, 22529.7 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="pencere2" type="Sprite" parent="floor6"]
+position = Vector2( 13331.1, 22512.6 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="pencere3" type="Sprite" parent="floor6"]
+position = Vector2( 23555.6, 22532.2 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="pencere4" type="Sprite" parent="floor6"]
+position = Vector2( 33197.4, 22465.1 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="door9" type="Sprite" parent="floor6"]
+position = Vector2( 17560.4, 22791.8 )
+texture = ExtResource( 20 )
+
+[node name="fici" type="Sprite" parent="floor6"]
+position = Vector2( 14216.7, 23069.4 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+
+[node name="fici2" type="Sprite" parent="floor6/fici"]
+position = Vector2( -616.699, -18.1367 )
+texture = ExtResource( 6 )
+
+[node name="fici3" type="Sprite" parent="floor6/fici"]
+position = Vector2( -1206.19, -9.06836 )
+texture = ExtResource( 6 )
+
+[node name="fici4" type="Sprite" parent="floor6/fici"]
+position = Vector2( -607.627, -770.871 )
+texture = ExtResource( 6 )
+
+[node name="fici5" type="Sprite" parent="floor6/fici"]
+position = Vector2( -1197.12, -761.803 )
+texture = ExtResource( 6 )
+
+[node name="column1" type="Sprite" parent="floor6"]
+modulate = Color( 1, 0.776471, 0.305882, 1 )
+position = Vector2( 5276.14, 22484.4 )
+scale = Vector2( 0.921, 0.799 )
+texture = ExtResource( 11 )
+
+[node name="column2" type="Sprite" parent="floor6"]
+modulate = Color( 1, 0.776471, 0.305882, 1 )
+position = Vector2( 15613.2, 22490.8 )
+scale = Vector2( 0.921, 0.799 )
+texture = ExtResource( 11 )
+
+[node name="column3" type="Sprite" parent="floor6"]
+modulate = Color( 1, 0.776471, 0.305882, 1 )
+position = Vector2( 23043.2, 22508.5 )
+scale = Vector2( 0.921, 0.799 )
+texture = ExtResource( 11 )
+
+[node name="door11" type="Sprite" parent="floor6"]
+position = Vector2( 3276.37, 22416 )
+texture = ExtResource( 4 )
+
+[node name="kafes" type="Sprite" parent="floor6"]
+position = Vector2( 10822.8, 22205.6 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="kafes2" type="Sprite" parent="floor6"]
+position = Vector2( 29268.3, 22241 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="iskenc2" type="Sprite" parent="floor6"]
+position = Vector2( 1704.53, 23051.4 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 8 )
+
+[node name="bones" type="Sprite" parent="floor6"]
+position = Vector2( 13828.9, 22339.2 )
+scale = Vector2( 0.2, 0.2 )
+z_index = -1
+texture = ExtResource( 14 )
+
+[node name="bone2" type="Sprite" parent="floor6"]
+position = Vector2( 18193.9, 23199.2 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 16 )
+
+[node name="bone3" type="Sprite" parent="floor6"]
+position = Vector2( 14205.1, 22826.8 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 10 )
+
+[node name="bones2" type="Sprite" parent="floor6"]
+position = Vector2( 25507.3, 23095.1 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 14 )
+
+[node name="bones3" type="Sprite" parent="floor6"]
+position = Vector2( 32433.3, 23094.2 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 14 )
+
+[node name="door10" type="Sprite" parent="floor6"]
+position = Vector2( 30430.2, 22672.1 )
+texture = ExtResource( 17 )
+
+[node name="iskence2" type="Sprite" parent="floor6"]
+position = Vector2( 28558.7, 22863.5 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 15 )
+
+[node name="iskence" type="Sprite" parent="floor6"]
+position = Vector2( 20004.3, 22873.4 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 15 )
+
+[node name="iskenc3" type="Sprite" parent="floor6"]
+position = Vector2( 26308.5, 23045.9 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 8 )
+
+[node name="floor7" type="Control" parent="."]
+margin_left = 38.3369
+margin_top = -4034.78
+margin_right = 78.3369
+margin_bottom = -3994.78
+rect_scale = Vector2( 0.3, 0.3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="kafes" type="Sprite" parent="floor7"]
+position = Vector2( 8264.67, 22252.1 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="bone1" type="Sprite" parent="floor7/kafes"]
+position = Vector2( 226.818, 657.994 )
+scale = Vector2( 0.4, 0.4 )
+z_index = -1
+texture = ExtResource( 10 )
+
+[node name="pencere1" type="Sprite" parent="floor7"]
+position = Vector2( 7688.07, 22497.8 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="pencere2" type="Sprite" parent="floor7"]
+position = Vector2( 9968.74, 22612.8 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="pencere3" type="Sprite" parent="floor7"]
+position = Vector2( 25132.9, 22526.5 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="pencere4" type="Sprite" parent="floor7"]
+position = Vector2( 18076.7, 22348.6 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="door9" type="Sprite" parent="floor7"]
+position = Vector2( 1067.91, 22802.7 )
+texture = ExtResource( 20 )
+
+[node name="fici" type="Sprite" parent="floor7"]
+position = Vector2( 14216.7, 23069.4 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+
+[node name="fici2" type="Sprite" parent="floor7/fici"]
+position = Vector2( -672.934, 0 )
+texture = ExtResource( 6 )
+
+[node name="fici4" type="Sprite" parent="floor7/fici"]
+position = Vector2( -1437.93, 139.742 )
+rotation = 1.5708
+texture = ExtResource( 6 )
+
+[node name="fici3" type="Sprite" parent="floor7/fici"]
+position = Vector2( -382.055, -632.725 )
+rotation = 0.541052
+texture = ExtResource( 6 )
+
+[node name="column1" type="Sprite" parent="floor7"]
+modulate = Color( 1, 0.776471, 0.305882, 1 )
+position = Vector2( 1878, 22492.1 )
+scale = Vector2( 0.921, 0.799 )
+texture = ExtResource( 11 )
+
+[node name="column2" type="Sprite" parent="floor7"]
+modulate = Color( 1, 0.776471, 0.305882, 1 )
+position = Vector2( 12143.5, 22509.1 )
+scale = Vector2( 0.921, 0.799 )
+texture = ExtResource( 11 )
+
+[node name="column3" type="Sprite" parent="floor7"]
+modulate = Color( 1, 0.776471, 0.305882, 1 )
+position = Vector2( 22765.7, 22501 )
+scale = Vector2( 0.921, 0.799 )
+texture = ExtResource( 11 )
+
+[node name="door11" type="Sprite" parent="floor7"]
+position = Vector2( 5703.28, 22648.8 )
+texture = ExtResource( 9 )
+
+[node name="kafes2" type="Sprite" parent="floor7"]
+position = Vector2( 30133.7, 22167.1 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="iskenc2" type="Sprite" parent="floor7"]
+position = Vector2( 8601.14, 23055.9 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 8 )
+
+[node name="bones" type="Sprite" parent="floor7"]
+position = Vector2( 8147.42, 23115.8 )
+scale = Vector2( 0.2, 0.2 )
+z_index = -1
+texture = ExtResource( 14 )
+
+[node name="bone2" type="Sprite" parent="floor7"]
+position = Vector2( 20791.2, 23206.5 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 16 )
+
+[node name="bone3" type="Sprite" parent="floor7"]
+position = Vector2( 14205.1, 22826.8 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 10 )
+
+[node name="bones2" type="Sprite" parent="floor7"]
+position = Vector2( 23108, 23147.3 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 14 )
+
+[node name="bones3" type="Sprite" parent="floor7"]
+position = Vector2( 32433.3, 23094.2 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 14 )
+
+[node name="door10" type="Sprite" parent="floor7"]
+position = Vector2( 27744.6, 22459.7 )
+texture = ExtResource( 13 )
+
+[node name="iskence2" type="Sprite" parent="floor7"]
+position = Vector2( 33113.6, 22886.3 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 15 )
+
+[node name="iskence" type="Sprite" parent="floor7"]
+position = Vector2( 21317.1, 22884.8 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 15 )
+
+[node name="iskenc3" type="Sprite" parent="floor7"]
+position = Vector2( 17958, 23045.9 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 8 )
+
+[node name="floor8" type="Control" parent="."]
+margin_left = 7.48633
+margin_top = -4607.95
+margin_right = 47.4863
+margin_bottom = -4567.95
+rect_scale = Vector2( 0.3, 0.3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pencere1" type="Sprite" parent="floor8"]
+position = Vector2( 10813.6, 22582.3 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="pencere2" type="Sprite" parent="floor8"]
+position = Vector2( 14623.2, 22392.2 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="pencere3" type="Sprite" parent="floor8"]
+position = Vector2( 25489.7, 22434.4 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="pencere4" type="Sprite" parent="floor8"]
+position = Vector2( 26915.1, 22378.2 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="door9" type="Sprite" parent="floor8"]
+position = Vector2( 12132.5, 22617.4 )
+texture = ExtResource( 19 )
+
+[node name="fici" type="Sprite" parent="floor8"]
+position = Vector2( 12797.8, 23064 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+
+[node name="column1" type="Sprite" parent="floor8"]
+modulate = Color( 1, 0.776471, 0.305882, 1 )
+position = Vector2( 4775.42, 22481.6 )
+scale = Vector2( 0.921, 0.799 )
+texture = ExtResource( 11 )
+
+[node name="column2" type="Sprite" parent="floor8"]
+modulate = Color( 1, 0.776471, 0.305882, 1 )
+position = Vector2( 20766.6, 22487 )
+scale = Vector2( 0.921, 0.799 )
+texture = ExtResource( 11 )
+
+[node name="column3" type="Sprite" parent="floor8"]
+modulate = Color( 1, 0.776471, 0.305882, 1 )
+position = Vector2( 23939.9, 22499.6 )
+scale = Vector2( 0.921, 0.799 )
+texture = ExtResource( 11 )
+
+[node name="door11" type="Sprite" parent="floor8"]
+position = Vector2( 7740.26, 22645.4 )
+texture = ExtResource( 9 )
+
+[node name="kafes" type="Sprite" parent="floor8"]
+position = Vector2( 8870.73, 22204.9 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="kafes2" type="Sprite" parent="floor8"]
+position = Vector2( 28071, 22196.8 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="iskenc2" type="Sprite" parent="floor8"]
+position = Vector2( 6501.95, 23031.3 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 8 )
+
+[node name="bones" type="Sprite" parent="floor8"]
+position = Vector2( 6117.38, 23097.7 )
+scale = Vector2( 0.2, 0.2 )
+z_index = -1
+texture = ExtResource( 14 )
+
+[node name="bone2" type="Sprite" parent="floor8"]
+position = Vector2( 17904.9, 23199.2 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 16 )
+
+[node name="bone3" type="Sprite" parent="floor8"]
+position = Vector2( 17636.8, 23211.8 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 10 )
+
+[node name="bones2" type="Sprite" parent="floor8"]
+position = Vector2( 17339.2, 23094.4 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 14 )
+
+[node name="bones3" type="Sprite" parent="floor8"]
+position = Vector2( 18319.5, 23099.5 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 14 )
+
+[node name="door10" type="Sprite" parent="floor8"]
+position = Vector2( 30824, 22784.3 )
+texture = ExtResource( 20 )
+
+[node name="iskence2" type="Sprite" parent="floor8"]
+position = Vector2( 16510.7, 22879.9 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 15 )
+
+[node name="iskence" type="Sprite" parent="floor8"]
+position = Vector2( 18932, 22879 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 15 )
+
+[node name="iskenc3" type="Sprite" parent="floor8"]
+position = Vector2( 22858.8, 23036.6 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 8 )
+
+[node name="floor9" type="Control" parent="."]
+margin_left = -6.10156
+margin_top = -5185.42
+margin_right = 33.8984
+margin_bottom = -5145.42
+rect_scale = Vector2( 0.3, 0.3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pencere1" type="Sprite" parent="floor9"]
+position = Vector2( 1060.86, 22325.3 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="pencere2" type="Sprite" parent="floor9"]
+position = Vector2( 12341.7, 22571.7 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="pencere3" type="Sprite" parent="floor9"]
+position = Vector2( 19701.1, 22497.8 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="pencere4" type="Sprite" parent="floor9"]
+position = Vector2( 31098.1, 22568.4 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="door9" type="Sprite" parent="floor9"]
+position = Vector2( 2271.82, 22643.5 )
+texture = ExtResource( 9 )
+
+[node name="fici" type="Sprite" parent="floor9"]
+position = Vector2( 12228.3, 23059.1 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+
+[node name="fici2" type="Sprite" parent="floor9/fici"]
+position = Vector2( 597.564, 20.6055 )
+texture = ExtResource( 6 )
+
+[node name="column1" type="Sprite" parent="floor9"]
+modulate = Color( 1, 0.776471, 0.305882, 1 )
+position = Vector2( 8650.69, 22495.9 )
+scale = Vector2( 0.921, 0.799 )
+texture = ExtResource( 11 )
+
+[node name="column2" type="Sprite" parent="floor9"]
+modulate = Color( 1, 0.776471, 0.305882, 1 )
+position = Vector2( 15960.2, 22520.4 )
+scale = Vector2( 0.921, 0.799 )
+texture = ExtResource( 11 )
+
+[node name="column3" type="Sprite" parent="floor9"]
+modulate = Color( 1, 0.776471, 0.305882, 1 )
+position = Vector2( 27072.4, 22507.8 )
+scale = Vector2( 0.921, 0.799 )
+texture = ExtResource( 11 )
+
+[node name="door11" type="Sprite" parent="floor9"]
+position = Vector2( 7427.83, 22513.8 )
+texture = ExtResource( 22 )
+
+[node name="kafes" type="Sprite" parent="floor9"]
+position = Vector2( 9258.98, 22220.4 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="kafes2" type="Sprite" parent="floor9"]
+position = Vector2( 31094.7, 22241 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="iskenc2" type="Sprite" parent="floor9"]
+position = Vector2( 4313.64, 23031.3 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 8 )
+
+[node name="bones" type="Sprite" parent="floor9"]
+position = Vector2( 3685.5, 23097.8 )
+scale = Vector2( 0.2, 0.2 )
+z_index = -1
+texture = ExtResource( 14 )
+
+[node name="bone2" type="Sprite" parent="floor9"]
+position = Vector2( 20815.5, 23206.2 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 16 )
+
+[node name="bone3" type="Sprite" parent="floor9"]
+position = Vector2( 17958.6, 23218 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 10 )
+
+[node name="bones2" type="Sprite" parent="floor9"]
+position = Vector2( 22904.8, 23120 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 14 )
+
+[node name="bones3" type="Sprite" parent="floor9"]
+position = Vector2( 32433.3, 23094.2 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 14 )
+
+[node name="door10" type="Sprite" parent="floor9"]
+position = Vector2( 28719.7, 22578.8 )
+texture = ExtResource( 26 )
+
+[node name="iskence2" type="Sprite" parent="floor9"]
+position = Vector2( 33113.6, 22886.3 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 15 )
+
+[node name="iskence" type="Sprite" parent="floor9"]
+position = Vector2( 21317.1, 22884.8 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 15 )
+
+[node name="iskenc3" type="Sprite" parent="floor9"]
+position = Vector2( 26308.5, 23045.9 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 8 )
+
+[node name="floor10" type="Control" parent="."]
+margin_left = -6.10156
+margin_top = -5757.42
+margin_right = 33.8984
+margin_bottom = -5717.42
+rect_scale = Vector2( 0.3, 0.3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pencere1" type="Sprite" parent="floor10"]
+position = Vector2( 5489.74, 22582.3 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="pencere2" type="Sprite" parent="floor10"]
+position = Vector2( 16397.9, 22413.3 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="pencere3" type="Sprite" parent="floor10"]
+position = Vector2( 23582.4, 22497.8 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="pencere4" type="Sprite" parent="floor10"]
+position = Vector2( 28405.7, 22598.6 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="door9" type="Sprite" parent="floor10"]
+position = Vector2( 979.133, 22777.4 )
+texture = ExtResource( 20 )
+
+[node name="fici" type="Sprite" parent="floor10"]
+position = Vector2( 14216.7, 23069.4 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+
+[node name="column1" type="Sprite" parent="floor10"]
+modulate = Color( 1, 0.776471, 0.305882, 1 )
+position = Vector2( 2489.49, 22475.7 )
+scale = Vector2( 0.921, 0.799 )
+texture = ExtResource( 11 )
+
+[node name="column2" type="Sprite" parent="floor10"]
+modulate = Color( 1, 0.776471, 0.305882, 1 )
+position = Vector2( 15709.4, 22490.8 )
+scale = Vector2( 0.921, 0.799 )
+texture = ExtResource( 11 )
+
+[node name="column3" type="Sprite" parent="floor10"]
+modulate = Color( 1, 0.776471, 0.305882, 1 )
+position = Vector2( 29685.9, 22487.6 )
+scale = Vector2( 0.921, 0.799 )
+texture = ExtResource( 11 )
+
+[node name="door11" type="Sprite" parent="floor10"]
+position = Vector2( 19112.5, 22620.7 )
+texture = ExtResource( 19 )
+
+[node name="kafes" type="Sprite" parent="floor10"]
+position = Vector2( 8404.84, 22204.9 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="kafes2" type="Sprite" parent="floor10"]
+position = Vector2( 22364.2, 22140.7 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="iskenc2" type="Sprite" parent="floor10"]
+position = Vector2( 7163.59, 23031.3 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 8 )
+
+[node name="bones" type="Sprite" parent="floor10"]
+position = Vector2( 8380.87, 23095.7 )
+scale = Vector2( 0.2, 0.2 )
+z_index = -1
+texture = ExtResource( 14 )
+
+[node name="bone2" type="Sprite" parent="floor10"]
+position = Vector2( 20296.3, 23199.2 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 16 )
+
+[node name="bone3" type="Sprite" parent="floor10"]
+position = Vector2( 15023.5, 23210.2 )
+rotation = 0.404916
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 10 )
+
+[node name="bones2" type="Sprite" parent="floor10"]
+position = Vector2( 25507.3, 23095.1 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 14 )
+
+[node name="bones3" type="Sprite" parent="floor10"]
+position = Vector2( 9545.8, 23090.3 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 14 )
+
+[node name="door10" type="Sprite" parent="floor10"]
+position = Vector2( 33294.5, 22597 )
+texture = ExtResource( 26 )
+
+[node name="iskence2" type="Sprite" parent="floor10"]
+position = Vector2( 10226.1, 22882.5 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 15 )
+
+[node name="iskence" type="Sprite" parent="floor10"]
+position = Vector2( 22604.6, 22867.3 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 15 )
+
+[node name="iskenc3" type="Sprite" parent="floor10"]
+position = Vector2( 26308.5, 23045.9 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 8 )
+
+[node name="floor11" type="Control" parent="."]
+margin_left = -68.2598
+margin_top = -6339.16
+margin_right = -28.2598
+margin_bottom = -6299.16
+rect_scale = Vector2( 0.3, 0.3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pencere1" type="Sprite" parent="floor11"]
+position = Vector2( 2543.89, 22461.6 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="pencere2" type="Sprite" parent="floor11"]
+position = Vector2( 7395.07, 22354.8 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="pencere3" type="Sprite" parent="floor11"]
+position = Vector2( 14538.8, 22407.2 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="pencere4" type="Sprite" parent="floor11"]
+position = Vector2( 25350.2, 22477.6 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="door9" type="Sprite" parent="floor11"]
+position = Vector2( 12610.6, 22436.6 )
+texture = ExtResource( 4 )
+
+[node name="fici" type="Sprite" parent="floor11"]
+position = Vector2( 17888.8, 23069.4 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+
+[node name="fici2" type="Sprite" parent="floor11/fici"]
+position = Vector2( 424.117, 15.1472 )
+texture = ExtResource( 6 )
+
+[node name="fici3" type="Sprite" parent="floor11/fici"]
+position = Vector2( 954.539, 0 )
+texture = ExtResource( 6 )
+
+[node name="fici5" type="Sprite" parent="floor11/fici"]
+position = Vector2( 754.488, -743.053 )
+texture = ExtResource( 6 )
+
+[node name="fici4" type="Sprite" parent="floor11/fici"]
+position = Vector2( 160.043, -743.053 )
+texture = ExtResource( 6 )
+
+[node name="fici8" type="Sprite" parent="floor11/fici"]
+position = Vector2( 543.004, -1497.54 )
+texture = ExtResource( 6 )
+
+[node name="kafes" type="Sprite" parent="floor11"]
+position = Vector2( 9970.05, 22007.2 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="kafes2" type="Sprite" parent="floor11"]
+position = Vector2( 31979.9, 21883.8 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="iskenc2" type="Sprite" parent="floor11"]
+position = Vector2( 4313.64, 23031.3 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 8 )
+
+[node name="bones5" type="Sprite" parent="floor11"]
+position = Vector2( 4024.55, 23102.4 )
+scale = Vector2( 0.2, 0.2 )
+z_index = -1
+texture = ExtResource( 14 )
+
+[node name="bones" type="Sprite" parent="floor11/bones5"]
+position = Vector2( -1851.09, 132.187 )
+z_index = -1
+texture = ExtResource( 14 )
+
+[node name="bones4" type="Sprite" parent="floor11/bones5"]
+position = Vector2( -846.211, 26.4082 )
+z_index = -1
+texture = ExtResource( 14 )
+
+[node name="bones6" type="Sprite" parent="floor11"]
+position = Vector2( 22381.3, 23106.1 )
+scale = Vector2( 0.2, 0.2 )
+z_index = -1
+texture = ExtResource( 14 )
+
+[node name="bones" type="Sprite" parent="floor11/bones6"]
+position = Vector2( -1851.09, 132.187 )
+z_index = -1
+texture = ExtResource( 14 )
+
+[node name="bones4" type="Sprite" parent="floor11/bones6"]
+position = Vector2( -846.211, 26.4082 )
+z_index = -1
+texture = ExtResource( 14 )
+
+[node name="bone2" type="Sprite" parent="floor11"]
+position = Vector2( 20587.8, 23206.9 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 16 )
+
+[node name="bone3" type="Sprite" parent="floor11"]
+position = Vector2( 17930.5, 22468.8 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 10 )
+
+[node name="bones2" type="Sprite" parent="floor11"]
+position = Vector2( 26698.7, 23106.2 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 14 )
+
+[node name="bones3" type="Sprite" parent="floor11"]
+position = Vector2( 32433.3, 23094.2 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 14 )
+
+[node name="door10" type="Sprite" parent="floor11"]
+position = Vector2( 28735.7, 22443.8 )
+texture = ExtResource( 13 )
+
+[node name="iskence2" type="Sprite" parent="floor11"]
+position = Vector2( 33113.6, 22886.3 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 15 )
+
+[node name="iskence" type="Sprite" parent="floor11"]
+position = Vector2( 21317.1, 22884.8 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 15 )
+
+[node name="iskenc3" type="Sprite" parent="floor11"]
+position = Vector2( 27100, 23063.1 )
+scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 8 )
 
 [node name="TileMap" parent="." instance=ExtResource( 5 )]

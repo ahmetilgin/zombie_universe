@@ -41,10 +41,10 @@ func _on_load_level():
 	if(get_tree().get_root().get_node("Game") != null):
 		get_tree().get_root().get_node("Game").queue_free()
 		get_tree().get_root().remove_child(get_tree().get_root().get_node("Game"))
-	get_tree().get_root().print_tree_pretty()
+#	get_tree().get_root().print_tree_pretty()
 	get_tree().get_root().add_child(scene);
 	scene.set_name("Game")
-	get_tree().get_root().print_tree_pretty()
+#	get_tree().get_root().print_tree_pretty()
 
 	if is_continue:
 		load_game()
