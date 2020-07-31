@@ -372,7 +372,7 @@ func _play_animation(animation_state, backward = false):
 	$AnimatedSprite.play(anim, backward)
 	
 func _play_idle_animation():
-	if !is_attack:
+	if !is_attack and !is_jump:
 		_play_animation("idle")
 
 func _play_jump_animation():
@@ -387,11 +387,11 @@ func _play_slide_animation():
 	_play_animation("slide")	
 	
 func _play_attack_animation():
-	if !is_attack and !is_down and !is_move:
+	if !is_attack and !is_down :
 		_play_animation("attack")	
 
 func _play_run_animation():
-	if !is_jump:
+	if !is_jump and is_on_floor():
 		if !is_attack:
 			_play_animation("run")
 		else:
@@ -512,12 +512,14 @@ func check_fire_pressed():
 				empty_gun()
 	if Input.is_action_just_released("ui_focus_next") :
 		is_attack = false
-
+var is_fall_begin = false
 func check_jump():
-	if(Input.is_action_just_released("ui_up")) and motion.y < 0:
+	if(Input.is_action_just_released("ui_up")) and motion.y < 0 and !is_fall_begin:
+		is_fall_begin = true
 		motion.y = jump / 2
 	if is_on_floor():
-		if (Input.is_action_pressed("ui_up") ) :		
+		is_fall_begin = false
+		if (Input.is_action_pressed("ui_up") ) :
 			motion.y = jump
 			_play_jump_animation()
 				

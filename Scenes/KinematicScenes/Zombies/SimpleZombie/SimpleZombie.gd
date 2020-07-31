@@ -25,7 +25,7 @@ const N_FLASHES = 4
 var flash_zombie_tween = Tween.new()
 var is_continue = false
 export (int) var hp=5
-export (int) var speed=400
+export (int) var speed = 400
 export (int) var jump_speed=150
 var motion=Vector2(0,0)
 const UP=Vector2(0,-1)
@@ -214,14 +214,15 @@ func create_extra_resources():
 func dead(damage,whodead):
 	hp-=damage
 	flash_damage()
+	set_collision_layer(512)
 	if hp < 0 and !is_dead:
 		is_dead=true
 		if whodead=="player":
 			player.increase_dead_counter()
 		zombie_dead_player.play()
-		motion=Vector2(0,0)
+		motion.x = 0
+		_set_layers(10)
 		$AnimatedSprite.play("dead")
-		$CollisionShape2D.set_deferred("disabled",true)
 		zombie_dead_timer.start()
 	else:
 		var back = 0;
@@ -239,10 +240,11 @@ func dead_from_turrent(damage,whodead,dir):
 		if whodead=="player":
 			player.increase_dead_counter()
 		is_dead=true
+		set_collision_layer(512)
+		motion.x = 0
 		zombie_dead_player.play()
-		motion=Vector2(0,0)
 		$AnimatedSprite.play("dead")
-		$CollisionShape2D.set_deferred("disabled",true)
+		
 		zombie_dead_timer.start()
 	else:
 #		is_hurt=true
@@ -318,12 +320,12 @@ func _physics_process(delta):
 		if jumping_started and jumping_peak and is_on_floor():
 			jumping_started = false
 			jumping_peak = false
-
-		
-		motion = move_and_slide(motion , UP)
 		chech_zombie_colliding()
+	motion = move_and_slide(motion , UP)
+	
  
 func _zombie_dead_timer_timeout():
+	$CollisionShape2D.set_deferred("disabled",true)
 	create_extra_resources()
 	queue_free()
 	emit_signal("dead_counter_for_wave")
