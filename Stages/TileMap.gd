@@ -279,7 +279,7 @@ var current_target = Vector2()
 func set_target_point(target):
 	current_target = target
 
-func _draw():
+#func _draw():
 #	draw_circle(init_pos , 64, PLAYER_COLOR)
 #	draw_circle(target_pos, 64, TARGET_COLOR)
 #	draw_circle(current_target, 84, Color("#fff"))
@@ -299,15 +299,15 @@ func _draw():
 #
 #	for corner in right_corners:
 #		draw_circle(map_to_world(corner) + _half_cell_size, 30,Color("F00") )
-	for name in founded_path:
-		for point_index in range(0,len(founded_path[name]) - 1):
-				if len(founded_path[name]) > 2:
-					draw_line(founded_path[name][point_index],founded_path[name][point_index + 1], DRAW_COLOR, 10)
-	for target in founded_zombie_target_path:
-		draw_circle(founded_zombie_target_path[target], 100, TARGET_COLOR)
-	pass
-
-	
+#	for name in founded_path:
+#		for point_index in range(0,len(founded_path[name]) - 1):
+#				if len(founded_path[name]) > 2:
+#					draw_line(founded_path[name][point_index],founded_path[name][point_index + 1], DRAW_COLOR, 10)
+#	for target in founded_zombie_target_path:
+#		draw_circle(founded_zombie_target_path[target], 100, TARGET_COLOR)
+#	pass
+#
+#
 func find_path(start_position: Vector2, end_position: Vector2) -> Array:
 	var map_path = []
 	map_path = astar.get_point_path(
