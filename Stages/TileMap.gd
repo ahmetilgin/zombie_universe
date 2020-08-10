@@ -11,7 +11,8 @@ const TARGET_COLOR = Color('#f00')
 var init_pos = Vector2()
 var target_pos = Vector2()
 var connected_cells = []
-
+var miniMap = Image.new()
+var imageTexture = ImageTexture.new()
 var founded_path = {}
 
 var max_x = 0
@@ -137,6 +138,7 @@ func do_top_to_down_detect(start_cell,cell):
 			lines.append([cell,Vector2(start_cell.x,direct_connection)])
 			astar.connect_points(calculate_point_index(cell),calculate_point_index(Vector2(start_cell.x,direct_connection)), true)
 			break
+			
 func connect_corners(cells):	
 	for cell in corners:
 		var start_cell = Vector2()
@@ -195,15 +197,29 @@ func connect_corners(cells):
 
 var lines = []
 var connected_points = []
+
 func _ready() -> void:
 	var obstacles: = get_used_cells()
 	calculate_bounds(obstacles)
+	
 	map_size = Vector2(max_x, max_y)
+	
+	imageTexture.create(max_x + 5,max_y + 5, Image.FORMAT_RGBA8, 0)
+	miniMap.create(max_x + 5,max_y + 5,false,Image.FORMAT_RGBA8)
+	
 	connected_points = add_walkable_cells(obstacles)
 	get_corners(connected_points)
 	connect_corners(connected_points)
 	connect_walkable_cells(connected_points)
 	connected_points.sort()
+
+
+	miniMap.lock()
+	for grid in obstacles:
+		miniMap.set_pixel(grid.x,grid.y,Color(1,1,1,1))
+	miniMap.unlock()
+	imageTexture.set_data(miniMap)
+	get_tree().get_root().get_node("Game").get_node("Game_UI/MiniMap").texture = imageTexture
 #	for connectedPoint in connected_cells:
 #		if(get_cellv(connectedPoint) == -1):	
 #			if(get_cellv(connectedPoint) == INVALID_CELL):
@@ -277,9 +293,10 @@ func _get_path(init_position: Vector2, target_position: Vector2, name) -> Array:
 		
 var current_target = Vector2()
 func set_target_point(target):
-	current_target = target
+	current_target = world_to_map(target)
 
-#func _draw():
+func _draw():
+	pass
 #	draw_circle(init_pos , 64, PLAYER_COLOR)
 #	draw_circle(target_pos, 64, TARGET_COLOR)
 #	draw_circle(current_target, 84, Color("#fff"))
@@ -306,7 +323,7 @@ func set_target_point(target):
 #	for target in founded_zombie_target_path:
 #		draw_circle(founded_zombie_target_path[target], 100, TARGET_COLOR)
 #	pass
-#
+##
 #
 func find_path(start_position: Vector2, end_position: Vector2) -> Array:
 	var map_path = []

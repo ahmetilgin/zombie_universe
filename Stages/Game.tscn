@@ -327,6 +327,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="MiniMap" type="TextureRect" parent="Game_UI"]
+margin_left = 917.448
+margin_top = 124.144
+margin_right = 957.448
+margin_bottom = 164.144
+rect_scale = Vector2( 1.5, 1.5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Stage1Sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 28 )
 volume_db = -31.424

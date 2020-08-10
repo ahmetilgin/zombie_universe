@@ -183,7 +183,8 @@ onready var player_health_back = get_node("../Game_UI/Player_Health_Back")
 const basic_zombie = preload("res://Scenes/KinematicScenes/Zombies/SimpleZombie/SimpleZombie.tscn")
 #basic zombie nerede kullanıyor??
 var slow_shot_timer = Timer.new()
-
+var mini_map = null
+var tile_map = null
 func _create_zombie_shot_slow_timer():
 	slow_shot_timer.connect("timeout",self,"_on_slow_motion_timer_start") 
 	add_child(slow_shot_timer) #to process
@@ -290,7 +291,8 @@ func _ready():
 	flash_healtbar_tween()
 	set_sounds()
 	load_images()
-
+	mini_map = get_tree().get_root().get_node("Game").get_node("Game_UI/MiniMap")
+	tile_map = get_tree().get_root().get_node("Game").get_node("Background/TileMap")
 	if OS.get_name() == "Windows" or OS.get_name() == "OSX" or OS.get_name() == "X11":
 		$Controller/move.set_visible(false)
 		$Controller/action.set_visible(false)
@@ -314,6 +316,8 @@ func _check_bullet_count():
 func _fire_bullet():
 	bullet_size-=1
 	bullet_number.text=String(bullet_size)
+	get_tree().get_root().get_node("Game/Background").get_node("bg").get_material().set_shader_param("fire_position", $Position2D.get_global_position())
+	
 	
 func set_current_weapon(bullet_power):
 	var stream_texture = load(bullet_icons[bullet_power])
@@ -534,10 +538,36 @@ func check_falling():
 #			print("Zıplama yüksekliği",player_peak_height)
 		if !is_attack:
 			_play_fall_animation()
+
+var old_coord = null
+func show_player_position_on_mini_map():
+	var image = mini_map.texture.get_data()
+	image.lock()
+	
+	var wordtomap = tile_map.world_to_map(get_global_position())
+	var white = Color(1,1,1,1)
+	if old_coord != null:
+		for x in range(-3,1):
+			for y in range(-3,1):
+				var current_px = image.get_pixel(old_coord.x + x,old_coord.y + y)
+				if !(current_px.r == white.r and current_px.b == white.b and current_px.g == white.g and current_px.a == white.a):
+					image.set_pixel(old_coord.x + x,old_coord.y + y, Color(0,0,0,0))
+
+	for x in range(-3,1):
+		for y in range(-3,1):
+			var current_px = image.get_pixel(wordtomap.x + x,wordtomap.y + y)
+			if !(current_px.r == white.r and current_px.b == white.b and current_px.g == white.g and current_px.a == white.a):
+				image.set_pixel(wordtomap.x + x,wordtomap.y + y, Color(1,0,0,1))
 		
+	
+	image.unlock()
+	mini_map.texture.set_data(image)
+	old_coord = wordtomap
+	
+
+
 
 func _physics_process(delta):
-	
 	motion.y += gravity 
 	if !_is_dead():
 		_set_shift_stop(false)
@@ -552,7 +582,7 @@ func _physics_process(delta):
 		if is_on_floor() and _is_idle():
 			_play_idle_animation()
 			motion.x = lerp(motion.x, 0, 0.2)	
-	
+		show_player_position_on_mini_map()
 		
 
 	motion = move_and_slide(motion,UP)
